@@ -1,62 +1,889 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Homelab on Keep calm and write something</title><link>https://cychong47.github.io/categories/homelab/</link><description>Recent content in Homelab on Keep calm and write something</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Tue, 20 Feb 2024 00:00:00 +0000</lastBuildDate><atom:link href="https://cychong47.github.io/categories/homelab/index.xml" rel="self" type="application/rss+xml"/><item><title>Monitoring Cilium and Hubble with Prometheus and Grafana</title><link>https://cychong47.github.io/post/2024/2024-02-20-cilium-and-hubble-with-prometheus-and-grafana/</link><pubDate>Tue, 20 Feb 2024 00:00:00 +0000</pubDate><guid>https://cychong47.github.io/post/2024/2024-02-20-cilium-and-hubble-with-prometheus-and-grafana/</guid><description>Setup Prometheus and Grafana to scrap Cilium metrics This will create a new namespace cilium-monitoring
-kubectl apply -f https://raw.githubusercontent.com/cilium/cilium/1.15.1/examples/kubernetes/addons/prometheus/monitoring-example.yaml Some warnings&amp;hellip; namespace/cilium-monitoring created serviceaccount/prometheus-k8s created configmap/grafana-config created configmap/grafana-cilium-dashboard created configmap/grafana-cilium-operator-dashboard created configmap/grafana-hubble-dashboard created configmap/grafana-hubble-l7-http-metrics-by-workload created configmap/prometheus created clusterrole.rbac.authorization.k8s.io/prometheus created clusterrolebinding.rbac.authorization.k8s.io/prometheus created service/grafana created service/prometheus created Warning: would violate PodSecurity &amp;#34;restricted:latest&amp;#34;: allowPrivilegeEscalation != false (container &amp;#34;grafana-core&amp;#34; must set securityContext.allowPrivilegeEscalation=false), unrestricted capabilities (container &amp;#34;grafana-core&amp;#34; must set securityContext.capabilities.drop=[&amp;#34;ALL&amp;#34;]), runAsNonRoot != true (pod or container &amp;#34;grafana-core&amp;#34; must set securityContext.</description></item><item><title>hugo에 검색 기능 추가하기 - pagefind</title><link>https://cychong47.github.io/post/2023/2023-05-18-add-search-to-hugo/</link><pubDate>Thu, 18 May 2023 00:00:00 +0000</pubDate><guid>https://cychong47.github.io/post/2023/2023-05-18-add-search-to-hugo/</guid><description>Why not Agollia algolla 는 site indexing 을 위해 Algollia 서버로 정보를 보내는 듯 함. 대신 hugo에 아주 seamless 하게 연동이 되는데. 좀 아쉽네. (Privacy 건은 좀 더 확인해 봐야겠다)
-Algollia를 잘 결합해서 사용하는 사이트 하나 https://inchan.dev Search를 클릭하면 입력 창의 크기가 자동으로 커져서 결과가 보여지는 창도 적당해서 보기 좋다.
-Install Pagefind 설치는 npx를 이용해서 설치하거나, cargo build하거나. 혹은 github에 올려져 있는 바이너리 다운받아 설치하거나. 이 중에 마지막 방법 선택</description></item><item><title>Homelab server 3rd gen.</title><link>https://cychong47.github.io/post/2022/2022-12-31-homeserver-3rd-gen/</link><pubDate>Sat, 31 Dec 2022 00:00:00 +0000</pubDate><guid>https://cychong47.github.io/post/2022/2022-12-31-homeserver-3rd-gen/</guid><description>homelab 서버로 사용할 PC를 당근마켓을 통해 구입. 제품 사양에 비해 저렴하고,, 구입 과정도 매끄러워서 기분좋게 구입한 제품이다.
-오랜만에 AMD CPU를 사용하는 PC를 사용하게 되었네. 조립 PC를 사본 지가 언제인지. 최근 10년 넘게는 맥만 구입해서 궁금하다. 완성품(특히 애플 노트북)에 비해 좋은 점은 원하는 사양으로 변경할 수 있다는 거 일텐데, 그래서 그 장점을 십분 활용하고자, 중고로 얻어온 제품이 이미 16 GiB 메모리가 실장되어 있지만, 32 GiB를 하나 추가로 구입했다. 다른 건 못해도 RAM Flex라도 해 보자.</description></item><item><title>Traefik 로그의 timezone 수정</title><link>https://cychong47.github.io/post/2022/2022-01-06-how-to-change-timezone-of-traefik-log/</link><pubDate>Thu, 06 Jan 2022 00:00:00 +0000</pubDate><guid>https://cychong47.github.io/post/2022/2022-01-06-how-to-change-timezone-of-traefik-log/</guid><description>문제점 Traefik 로그에 time 정보가 제대로 나오게 하려면
-helm chart에 환경 변수에 TZ를 설정해도 로그 시간이 제대로 나오지 않음.
-192.168.0.101 - - [06/Jan/2022:1:18:17 +0000] &amp;#34;GET /ping HTTP/1.1&amp;#34; 200 2 &amp;#34;-&amp;#34; &amp;#34;-&amp;#34; 100 &amp;#34;ping@internal&amp;#34; &amp;#34;-&amp;#34; 0ms env: - name: TZ value: Asia/Seoul kubectl describe 명령으로 확인하면 환경변수가 제대로 설정된 것으로 나옴
-Environment: TZ: Asia/Seoul 해결책 https://doc.traefik.io/traefik/observability/access-logs/#time-zones 위 페이지를 보니 다음과 같이 몇 가지 설정을 해야 한다고.
-Traefik will timestamp each log line in UTC time by default.</description></item><item><title>Blog의 text와 image를 합쳤다</title><link>https://cychong47.github.io/post/2021/2021-11-24-merge-blog-post-and-image-repos/</link><pubDate>Wed, 24 Nov 2021 13:51:30 +0900</pubDate><guid>https://cychong47.github.io/post/2021/2021-11-24-merge-blog-post-and-image-repos/</guid><description>홈 블로그에 사용하는 텍스트로 된 포스트와 포스트에서 사용하는 이미지 파일을 각자 다른 github repo에서 관리해 오고 있었다. 혻시나 포스트만 클론해서 글을 수정하고 싶을 때 수 GB에 달하는 이미지를 다운받아야 하는 건 아닌 것 같아서.</description></item><item><title>HP mini PC의 소모전력</title><link>https://cychong47.github.io/post/2021/2021-09-24-power-consumption-of-mini3/</link><pubDate>Fri, 24 Sep 2021 11:24:23 +0900</pubDate><guid>https://cychong47.github.io/post/2021/2021-09-24-power-consumption-of-mini3/</guid><description/></item><item><title>Traefik middleware를 이용한 접근 제한</title><link>https://cychong47.github.io/post/2021/2021-05-08-access-control-with-traefik-middleware/</link><pubDate>Sat, 08 May 2021 23:16:00 +0900</pubDate><guid>https://cychong47.github.io/post/2021/2021-05-08-access-control-with-traefik-middleware/</guid><description>특정 서비스를 외부에 공개하고 싶지 않고, 내부 망에서만 접근하게 하려면 Traefik의 middleware가 제공하는 ipWhilteList 기능을 활용할 수 있다.
-(이름은 요즘 추세에 맞게 ipAllowList 정도로 변경되어야 할 것 같은데..)
-전체적인 동작은 IpWhitelist - Traefik 페이지에 있는 그림으로 간단하게 요약이 가능할 듯. 사이트에 접근하려는 client가 미리 정의된 list에 있는 경우에만 접근을 허용한다는.
-middleware 정의 접근을 허용할 client들의 CIDR을 정의한다. 특정 subnet을 정의하거나, 특정 host를 정의할 수 있다. 당연히 복수 정의도 가능하고.
-아래 예는 192.</description></item><item><title>Install kubernetes on mini3</title><link>https://cychong47.github.io/post/2021/2021-04-13-install-kubernetes-on-mini3/</link><pubDate>Tue, 13 Apr 2021 11:26:01 +0900</pubDate><guid>https://cychong47.github.io/post/2021/2021-04-13-install-kubernetes-on-mini3/</guid><description>mini1에서 mini3로의 이전을 준비 중. 기존에 mini3에는 재미삼아 k3s를 설치해 놓았는데 왠지 새로운 설정 방식을 알아야 할 필요가 있나 하는 생각이 들어 이전처럼 다시 vanilla kubernetes 를 설치하기로 했다. minkkube처럼 VM을 만들어야 설치가 되는 것도 아니고 그냥 host OS에 설치하면 되니까 설치도 간단하고(물론 바이너리 하나 설치하면 되는 k3s와는 비교하기 어렵지만) 부하를 감당하기 어려운 정도의 CPU도 아니라서.
-Installing kubeadm | Kubernetes
-# /etc/modules-load.d/k8s.conf br_netfilter # /etc/sysctl.d/k8s.conf net.bridge.bridge-nf-call-ip6tables = 1 net.bridge.bridge-nf-call-iptables = 1 $ sudo sysctl --system Install Containerd as a Container Runtime docker를 CRI로 사용하는 것은 곧 deprecated예정이니까 containerd를 사용해 보자.</description></item><item><title>Replace NodePort with ClsuterIP - Thx to Traefik</title><link>https://cychong47.github.io/post/2021/2021-03-31-change-nodeport-to-clusterip/</link><pubDate>Sat, 03 Apr 2021 22:00:00 +0900</pubDate><guid>https://cychong47.github.io/post/2021/2021-03-31-change-nodeport-to-clusterip/</guid><description>Traefik을 이용한 Ingress/Ingress Controller를 이용해서 nginx 기반 Pod를 cluster 외부에서 접속할 수 있도록 설정했는데 곰곰히 생각해 보니 그렇다면 nginx service에 굳이 NodePort를 사용해야 하나 라는 생각이 들었다. 이제 외부로부터의 요청은 든든한 Traefik이 처리해 줄 테니 직접 각 pod가 서비스를 NodePort를 이용해서 외부에 오픈할 필요가 없어 보였다.
-이를 위해 기존에 사용하던 nginx의 value 파일을 다음과 같이 수정했다. NodePort를 위해 필요했던 정보들이 사라지고, 수신하고 싶은 Port만 지정하면 되니설정 파일이 무척 깔끔해졌다.
-service: # type: NodePort # targetPort: 80 # container app.</description></item><item><title>Setup Ingress with Traefik</title><link>https://cychong47.github.io/post/2021/2021-03-31-setup-ingress-with-traefik/</link><pubDate>Wed, 31 Mar 2021 23:00:00 +0900</pubDate><guid>https://cychong47.github.io/post/2021/2021-03-31-setup-ingress-with-traefik/</guid><description>Ingress Controller 를 설치(Helm으로 Traefik 설치하기)했으니 이제 Ingress를 설정해서 실제 cluster 외부로부터의 http/https 메시지를 nginx pod에 전달되게 해 본다.
-Ingress Ingress는 Cluster 외부에서 접근하는 http/https request에 대한 라우팅을 제어하는 기능을 제공한다. Ingress | Kubernetes
-ingress.yaml 파일을 다음과 같이 작성한다. . 아래는 두 가지 rule을 설정하고 있는데 host가 ‘mini1’이고, URL path가 /ost면 podcast-nginx라는 서비스로 전달하게 하는 것과 host는 상관없이 path가 /ost면 역시 같은 podcast-nginx로 보내는 것이다.
-kind: Ingress apiVersion: extensions/v1beta1 metadata: name: &amp;#34;test&amp;#34; namespace: default spec: rules: - host: mini1 http: paths: - path: /ost backend: serviceName: podcast-nginx servicePort: 8099 - http: paths: - path: /ost backend: serviceName: podcast-nginx servicePort: 8099 Kubectl 명령을 이용해 적용해 본다.</description></item><item><title>Helm으로 Traefik 설치하기</title><link>https://cychong47.github.io/post/2021/2021-03-30-install-traefik-with-helm/</link><pubDate>Tue, 30 Mar 2021 09:00:00 +0900</pubDate><guid>https://cychong47.github.io/post/2021/2021-03-30-install-traefik-with-helm/</guid><description>지금 집에 있는 서버(mac mini 2009)에서 nginx를 이용해서 블로그를 호스팅하는데 port를 구분해서 외부에 노출하고 있다. 외부에서의 &amp;gt;접근을 위해 NodePort를 사용하고, 각 nginx instance는 서로 다른 port를 이용하고 있는데 port번호가 아니라 URL 경로를 이용해서 서로 다른 서비스를 이용할 수 있는 reverse proxy 기능을 사용하면 좀 더 깔끔할 듯 하다. Kubernetes에서는 ingress와 ingress controller를 이용해서 이 reverse proxy를 구현할 수 있다고 한다. Kubernetes에서는 ingress는 기본적으로 제공하는 object 지만, ingress controller는 제공하고 있지 않아, 별도로 설치해야 한다.</description></item><item><title>Install cockpit - linux server manager</title><link>https://cychong47.github.io/post/2021/2021-03-04-install-cockpit/</link><pubDate>Thu, 04 Mar 2021 22:06:00 +0900</pubDate><guid>https://cychong47.github.io/post/2021/2021-03-04-install-cockpit/</guid><description>$ sudo apt install -y cockpit sssd-dbus $ sudo ufw allow 9090/tcp ; sudo systemctl start cockpit` $ ss -tunlp |grep 9090 tcp LISTEN 0 4096 *:9090 *:* CPU load 정보가 주기적으로 100%까지 튀네. 거의 10초 단위로. 뭘까 여러 개의 리눅스 서버가 있는 경우 한 곳에 추가해서 single glass of pane을 만들 수도 있다. 추가된 서버들은 dashboard에서 drop list로 보여지므로 원하는 대상을 선택</description></item><item><title>Change the server IP address of k3s</title><link>https://cychong47.github.io/post/2021/2021-03-03-change-the-server-ip-address-of-k3s/</link><pubDate>Wed, 03 Mar 2021 13:17:28 +0900</pubDate><guid>https://cychong47.github.io/post/2021/2021-03-03-change-the-server-ip-address-of-k3s/</guid><description>How to change IP address of k3s By default, as k3s operates in the local host, it is not possible to connect from other host.
-To get the server Ip address,
-$ kubectl config view --raw |grep server server: https://127.0.0.1:6443 The listening server IP address can be specified by giving parameter in running the k3s binary.
-K3s configuration is on /etc/systemd/system/k3s.service
-$ cat /etc/systemd/system/k3s.service [Unit] Description=Lightweight Kubernetes Documentation=https://k3s.io Wants=network-online.target After=network-online.target [Install] WantedBy=multi-user.</description></item><item><title>Use the Secret and ConfigMaps</title><link>https://cychong47.github.io/post/2020/2020-10-19-use-the-secret-and-configmaps/</link><pubDate>Mon, 19 Oct 2020 14:21:03 +0900</pubDate><guid>https://cychong47.github.io/post/2020/2020-10-19-use-the-secret-and-configmaps/</guid><description>Use the Secret and ConfigMaps $ cat my-secret.yaml apiVersion: v1 kind: Secret metadata: name: mysecret type: Opaque stringData: WSO2_CLOUD_ORG_KEY: &amp;#34;mycompany&amp;#34; WSO2_CLOUD_EMAIL: &amp;#34;sample-email@wso2.com&amp;#34; WSO2_CLOUD_PASSWORD: &amp;#34;password&amp;#34; $ kubectl apply -f my-secret.yaml secret/mysecret created From Using Kubernetes Secrets as Environment Variables
-spec: containers: - env: - name: WSO2_CLOUD_ORG_KEY valueFrom: secretKeyRef: name: mysecret key: WSO2_CLOUD_ORG_KEY ... apiVersion: v1 kind: Secret metadata: name: my-tokens type: Opaque stringData: pinboard_key: &amp;#34;FIXME&amp;#34; pocket_consumer_key: &amp;#34;FIXME&amp;#34; pocket_access_token: &amp;#34;FIXME&amp;#34; slack_api_token: &amp;#34;FIXME&amp;#34; slack_events_token: &amp;#34;FIXME&amp;#34; slack_verification_token: &amp;#34;FIXME&amp;#34; slack_signing_secret: &amp;#34;FIXME&amp;#34; telegram_token: &amp;#34;FIXME&amp;#34; telegram_api_id: &amp;#34;FIXME&amp;#34; telegram_api_hash: &amp;#34;FIXME&amp;#34; $ kubectl apply -f my-tokens.</description></item><item><title>How to make cronjob to support timezone</title><link>https://cychong47.github.io/post/2020/2020-10-19-how-to-fix-no-timezone-support-of-cronjob/</link><pubDate>Mon, 19 Oct 2020 14:16:45 +0900</pubDate><guid>https://cychong47.github.io/post/2020/2020-10-19-how-to-fix-no-timezone-support-of-cronjob/</guid><description>Problem CronJob이 지정된 시간에 잘 동작했는 지 확인해 본 결과 이상한 점을 발견했다.
-오후 2시 32분에 CronJob 의 동작을 확인했는데 이전에 실행된 시간이 4시간 32분 전이라고, 즉 새벽 1시가 아니라 오전 10시에 실행이 되었다는 나오는 것이다.
-$ date Sat Oct 10 14:32:36 KST 2020 $ kubectl get cronjob NAME SCHEDULE SUSPEND ACTIVE LAST SCHEDULE AGE pocket-stat 0 1 * * * False 0 4h32m 14h 혹시 10시를 1시로 잘못 설정했나 하고 kubectl describe cronjob 명령으로 확인해 봤지만 schedule 정보는 정상적으로 설정되어 있었다는.</description></item><item><title>New homelab rack</title><link>https://cychong47.github.io/post/2020/2020-10-19-new-homelab-rack/</link><pubDate>Mon, 19 Oct 2020 00:00:00 +0900</pubDate><guid>https://cychong47.github.io/post/2020/2020-10-19-new-homelab-rack/</guid><description>서재 방을 뒤집으면서 이참에 책상 밑, 뒤 등에 숨겨(?)놨던 맥미니, 공유기, 나스 등을 나름 랙에 모아놓고, 랜선이 나오는 바로 벽 바로 옆에 뒀다. 그 덕에 벽에서 책상쪽으로 건너가기 위해 바닥에 있던 선 들이 이제 1개로 줄었다. 이전에는 전원선 2개, 유선 랜 2개 였는데 이제는 전원선 하나만 보냈다는.
-덕분에 바닥이 깔끔해 지긴 했는데 랙이 너무 비좁다.
-IKEA 칼락스가 하나 있으면 딱 일 것 같은데. 당근에서 저렴하게 하나 안 나오나?</description></item><item><title>주기적으로 실행되는 앱은 CronJob으로</title><link>https://cychong47.github.io/post/2020/2020-10-09-cronjob-in-kubernetes/</link><pubDate>Fri, 09 Oct 2020 02:00:00 +0900</pubDate><guid>https://cychong47.github.io/post/2020/2020-10-09-cronjob-in-kubernetes/</guid><description>만일 job을 일정 주기 혹은 특정 시간에 실행시키려면 CronJob resource를 만들어 사용하면 된다.
-Job과 CronJob간의 관계는? CronJob에 대한 설명에 따르면 CronJob정의에 기술한 특정 시간이 되면 CronJob이 Job을 실행한다고. 그리고 그 Job이 Pod를 실행한다.
-그럼 Job을 위한 resource 정의와 CronJob을 위한 resource 정의를 각각 정의해야 하나? 그렇지는 않은 듯. CronJob의 정의 파일을 보면 JobTemplate 항목이 Job에서 볼 수 있는 Template과 유사한 container spec 등을 가지고 있다. 물론 CronJob 에서만 유효한 schedule spec 등을 추가로 가지고 있긴 하지만.</description></item><item><title>일회성 앱은 Deployment가 아닌 Job으로</title><link>https://cychong47.github.io/post/2020/2020-10-09-job-instead-of-deployment/</link><pubDate>Fri, 09 Oct 2020 01:00:00 +0900</pubDate><guid>https://cychong47.github.io/post/2020/2020-10-09-job-instead-of-deployment/</guid><description>한 번 실행되면 데몬 처럼 계속해서 동작하는 앱이 아니라 필요한 일을 수행하고 종료되는 앱도 있다. 실행된 시점에 필요한 일을 수행하고 종료하는 형태로 예를 들면 특정 위치에 있는 파일을 처리하고 종료한다거나, 실행된 시점에 외부 서비스에서 필요한 정보를 가져와 어딘가 저장하는 등의 일을 하는. 이런 종류의 앱을 kubernetes에서 Deployment로 배포한 경우 해당 앱은 자신이 해야 할 일을 정상적으로 수행하고 종료되지만, kubernetes scheduler 입장에서는 해당 container가 (의도하지 않게) 종료된 것으로 판단하여 다시 복구하는 절차를 수행한다.</description></item><item><title>Install Influxdb and Grafana With Helm</title><link>https://cychong47.github.io/post/2020/2020-10-04-install-influxdb-grafana-with-helm/</link><pubDate>Sun, 04 Oct 2020 23:36:26 +0900</pubDate><guid>https://cychong47.github.io/post/2020/2020-10-04-install-influxdb-grafana-with-helm/</guid><description>Install InfluxDB with helm GitHub - influxdata/helm-charts: Official Helm Chart Repository for InfluxData Applications 가 helm chart를 이용한 설치법을 제공하는 공식 페이지.
-helm repo add influxdata https://helm.influxdata.com/ $ helm repo list WARNING: Kubernetes configuration file is group-readable. This is insecure. Location: /home/cychong/.kube/config WARNING: Kubernetes configuration file is world-readable. This is insecure. Location: /home/cychong/.kube/config NAME URL myhelmrepo https://cychong47.github.io/helm-chart/ infracloudio	https://infracloudio.github.io/charts influxdata https://helm.influxdata.com/ $ helm search repo influxdata NAME CHART VERSION	APP VERSION	DESCRIPTION influxdata/chronograf 1.</description></item><item><title>블로그에 몇 몇 사진이 안 보이는 문제 해결</title><link>https://cychong47.github.io/post/2020/2020-09-12-image-is-not-jpg-but-heic/</link><pubDate>Sat, 12 Sep 2020 22:26:02 +0900</pubDate><guid>https://cychong47.github.io/post/2020/2020-09-12-image-is-not-jpg-but-heic/</guid><description>혹시나 했더니 사진 파일 형식이 JPEG이 아니라 HEIC(High Efficiency Image File) 였다는.
-아이패드에서는 사진을 찍지 않고, 아이폰으로만 사진을 찍고 있는데, 사진을 Mac으로 옮길 때 사용하는 PhotoSync에서는 파일 변환 기능을 켜서 자동으로 JPG로 변환하고 있으니 거기서 올린 사진은 아닌 듯 하고, iPad에서 iOS shortcut을 이용해서 git repo에 직접 사진을 업로드하는데, 이때 올린 사진이 iPhone에서 HEIC로 저장하고, iCloud를 통해 iPad로 동히과된 사진이었다.
-iOS Shortcut에서는 사진의 크기를 resize만 해서 올리고 있어서 그랬다는.
-사진을 그냥 Mac에서 열었을 때는 전혀 문제 없이 열리고, 같은 MD 파일에 정상적으로 표시되는 다른 JPG 파일을 포함시켜도 잘 출력이 되서 찾기가 힘들었는데 화면에 표시가 잘 되는 사진과 잘 되지 않는 것 사이에 무슨 차이가 있나 하고 확인한 exiftool에서 단서를 찾은 것이다.</description></item><item><title>Botkube to monitor K8s cluster in Slack</title><link>https://cychong47.github.io/post/2020/2020-09-04-install-botkube/</link><pubDate>Fri, 04 Sep 2020 23:51:45 +0900</pubDate><guid>https://cychong47.github.io/post/2020/2020-09-04-install-botkube/</guid><description>Install BotKube for k8s and slack Slack :: Messaging bot for monitoring and debugging Kubernetes clusters
-cychong@mini1:~$ helm repo add infracloudio https://infracloudio.github.io/charts &amp;#34;infracloudio&amp;#34; has been added to your repositories cychong@mini1:~$ helm repo update Hang tight while we grab the latest from your chart repositories... ...Successfully got an update from the &amp;#34;infracloudio&amp;#34; chart repository ...Successfully got an update from the &amp;#34;myhelmrepo&amp;#34; chart repository Update Complete. ⎈ Happy Helming!⎈ botkube를 위한 namespace 만들어주기</description></item><item><title>RSS feed URL for podcast</title><link>https://cychong47.github.io/post/2020/2020-08-31-rss-feed-url-for-podcast/</link><pubDate>Mon, 31 Aug 2020 10:09:56 +0900</pubDate><guid>https://cychong47.github.io/post/2020/2020-08-31-rss-feed-url-for-podcast/</guid><description>http://sosa0sa.com:8099/podcast/index.xml
-매번 까먹네. 중간에 podcast가 있다는 거. 블로그 자체는 http://sosa0sa.com:8099만으로 접속이 되니 저렇게 다른 경로가 기억이 나지 않네.
-수정할 수 있는 지 확인해 봐야겠다.</description></item><item><title>Setup GitHub based Helm repo</title><link>https://cychong47.github.io/post/2020/2020-08-19-setup-github-based-helm-repo/</link><pubDate>Wed, 19 Aug 2020 00:00:00 +0900</pubDate><guid>https://cychong47.github.io/post/2020/2020-08-19-setup-github-based-helm-repo/</guid><description>Setup GitHub based Helm repo GitHub에 구성한 helm repository에 있는 Helm chart를 이용해서 nginx deploy하기
-GitHub에 Helm Repository 구축하기 Create a public Helm chart repository with GitHub Pages | by Mattia Peri | Medium 글을 참고해서 따라하면 특별한 문제 없이 Helm Repostiroy로 동작할 GitHub Page를 만들 수 있다.
-cychong@mini1:~/tmp$ wget https://cychong47.github.io/helm-chart/index.html --2020-08-18 23:49:28-- https://cychong47.github.io/helm-chart/index.html Resolving cychong47.github.io (cychong47.github.io)... 185.199.111.153, 185.199.109.153, 185.199.110.153, ... Connecting to cychong47.github.io (cychong47.github.io)|185.199.111.153|:443... connected. HTTP request sent, awaiting response.</description></item><item><title>Upgrade Kubernetes 1 18 2</title><link>https://cychong47.github.io/post/2020/2020-05-07-upgrade-kubernetes-1-18-2/</link><pubDate>Sat, 01 Aug 2020 22:52:47 +0900</pubDate><guid>https://cychong47.github.io/post/2020/2020-05-07-upgrade-kubernetes-1-18-2/</guid><description>Upgrade kubernetes to 1.18.2
-Note etcd might be need to be upgrade
-cychong@mini1:~$ sudo kubeadm upgrade apply v1.18.2 [upgrade/config] Making sure the configuration is correct: [upgrade/config] Reading configuration from the cluster... [upgrade/config] FYI: You can look at this config file with &amp;#39;kubectl -n kube-system get cm kubeadm-config -oyaml&amp;#39; [preflight] Running pre-flight checks. [upgrade] Running cluster health checks [upgrade/version] You have chosen to change the cluster version to &amp;#34;v1.18.2&amp;#34; [upgrade/versions] Cluster version: v1.</description></item><item><title>Troubleshooting - rss.xml is not updated</title><link>https://cychong47.github.io/post/2020/2020-07-24-rss-is-not-updated/</link><pubDate>Fri, 24 Jul 2020 00:22:45 +0900</pubDate><guid>https://cychong47.github.io/post/2020/2020-07-24-rss-is-not-updated/</guid><description>갑자기 어느 날 부터(정확히 말하면 7월 14일부터) podcast가 업데이트가 되지 않는다.
-다음 날도, 그 다음 날도. 흠. 뭐가 문제일까?
-아무튼 hugo를 이용해서 직접 사이트를 빌드해 봤다. 그랬더니 이상한 에러가 난다. os.Stat 파일이 없다는 이야기도 나오고.
-뭔가 문제가 있는데 밤이라 그런지 그냥 단순하게 Hugo zen-theme 이 rss를 제대로 생성하지 못한다는 내용으로 검색을 해 봤는데 결과가 안 나온다.
-cychong@mini1:~/work/cbs-ost$ hugo -t zen Building sites … WARN 2020/07/23 23:21:25 .File.UniqueID on zero object. Wrap it in if or with: {{ with .</description></item><item><title>Deploy nginx with helm</title><link>https://cychong47.github.io/post/2020/2020-07-02-deploy-nginx-with-helm/</link><pubDate>Thu, 02 Jul 2020 23:58:41 +0900</pubDate><guid>https://cychong47.github.io/post/2020/2020-07-02-deploy-nginx-with-helm/</guid><description>우선 docker로 실행한 nginx container를 종료시키고
-cychong@mini1:~/work/helm-chart-github$ docker ps -a |grep nginx a66786635c60 nginx &amp;#34;/docker-entrypoint.…&amp;#34; 7 minutes ago Up 7 minutes k8s_nginx_my-nginx-77596b9fc6-7txns_default_44840d63-b496-4a58-9e18-83e503c6d2cf_0 85c85322ea59 k8s.gcr.io/pause:3.1 &amp;#34;/pause&amp;#34; 7 minutes ago Up 7 minutes k8s_POD_my-nginx-77596b9fc6-7txns_default_44840d63-b496-4a58-9e18-83e503c6d2cf_0 5be06dc3b184 nginx &amp;#34;nginx -g &amp;#39;daemon of…&amp;#34; 2 weeks ago Up 2 weeks 0.0.0.0:8099-&amp;gt;80/tcp podcast 2812c510a5b6 nginx &amp;#34;nginx -g &amp;#39;daemon of…&amp;#34; 2 weeks ago Up 2 weeks 0.0.0.0:80-&amp;gt;80/tcp sosa0sa cychong@mini1:~/work/helm-chart-github$ docker stop 5be06dc3b184 5be06dc3b184 nginx를 구동시킬 helm chart 준비</description></item><item><title>2020 06 28 Podcast Another Issue</title><link>https://cychong47.github.io/post/2020/2020-06-28-podcast-another-issue/</link><pubDate>Sun, 28 Jun 2020 23:27:48 +0900</pubDate><guid>https://cychong47.github.io/post/2020/2020-06-28-podcast-another-issue/</guid><description>금요일 밤에 지난 오류를 수정한 후 토요일, 일요일에는 제대로 동작하는 듯&amp;hellip;
-그런데 오늘 우연히 발견한 문제는 토요일과 금요일에 올라온 에피소드에 곡 목록이 없다. 추정되는 이유가 있긴했는데 집에 와서 확인해 보니 예상대로. 주말이라 곡 목록이 늦게 업데이트가 되었다.
-토요일, 일요일 곡 목록이 모두 일요일 저녁 7시 반 경에 올라온 것이다.
-흠.. 그렇다고 mp3를 그때 포스팅하지 않을 수도 없고. 이럴 때는 어떻게 해야 할까&amp;hellip;
-고민 중..</description></item><item><title>How to embed video in hugo</title><link>https://cychong47.github.io/post/2020/2020-06-27-how-to-support-video/</link><pubDate>Sat, 27 Jun 2020 00:24:41 +0900</pubDate><guid>https://cychong47.github.io/post/2020/2020-06-27-how-to-support-video/</guid><description>한줄요약 : Hugo로 만든 blog 에서 video 파일을 지원하려면 shortcode를 활용한다.
-아래 shortcode는 mp3, mp4 파일을 지원하는 zen에서 사용하는 shortcode(zen/layouts/shortcodes/video.html)
-&amp;lt;figure {{ with .Get &amp;#34;class&amp;#34; }}class=&amp;#34;{{ . }}&amp;#34;{{ end }}&amp;gt; &amp;lt;video controls preload=&amp;#34;{{ .Get &amp;#34;preload&amp;#34; | default &amp;#34;metadata&amp;#34; }}&amp;#34; {{ with .Get &amp;#34;width&amp;#34; }}width=&amp;#34;{{ . }}&amp;#34;{{ end }}&amp;gt; {{ with .Get &amp;#34;src&amp;#34; }}&amp;lt;source src=&amp;#34;{{ . | relURL }}&amp;#34; type=&amp;#34;video/mp4&amp;#34;&amp;gt;{{ end }} &amp;lt;/video&amp;gt; {{ with .Get &amp;#34;caption&amp;#34; }}&amp;lt;figcaption&amp;gt;{{ . }}&amp;lt;/figcaption&amp;gt;{{ end }} &amp;lt;/figure&amp;gt; 이 파일을 hugo site의 layouts/shortcodes 디렉토리에 복사하고 md 파일에서 다음과 같이 작성한다.</description></item><item><title>Setup podcast blog - 자동화</title><link>https://cychong47.github.io/post/2020/2020-06-20-setup-podcast-blog-5/</link><pubDate>Sat, 20 Jun 2020 22:33:02 +0900</pubDate><guid>https://cychong47.github.io/post/2020/2020-06-20-setup-podcast-blog-5/</guid><description>Scripts Automation
-mini2 - record mp3 file $ crontab -l 00 11 * * * cd /Users/cychong/work/cbs-ost/script &amp;amp;&amp;amp; ./record.sh &amp;gt;&amp;gt; /tmp/cron.out 2&amp;gt;&amp;amp;1 mini1 - create MD file and publish podcast $ crontab -l 04 12 * * * cd /home/cychong/work/cbs-ost/script &amp;amp;&amp;amp; ./scp.sh &amp;gt;&amp;gt; /tmp/cron.out 2&amp;gt;&amp;amp;1 05 12 * * * cd /home/cychong/work/cbs-ost/script &amp;amp;&amp;amp; ./publish.sh &amp;gt;&amp;gt; /tmp/cron.out 2&amp;gt;&amp;amp;1 Get mp3 file from mini2 Create md file after getting song list Rebuild site to publish the updated podcast</description></item><item><title>Setup podcast blog - recording 동작 확인</title><link>https://cychong47.github.io/post/2020/2020-06-18-setup-podcast-blog-2/</link><pubDate>Thu, 18 Jun 2020 23:10:45 +0900</pubDate><guid>https://cychong47.github.io/post/2020/2020-06-18-setup-podcast-blog-2/</guid><description>듣고 싶은 mp3 파일을 mini2를 이용해서 1시간 짜리 녹음 동작확인 결과 정상 동작 확인
-$ mp3info -p &amp;#34;%S&amp;#34; cinema-2020-06-18.mp3 3600 역시 mini1의 processing power 부족 때문에 제대로 1시간 녹음이 안된 듯.</description></item><item><title>Setup podcast blog - post 작성</title><link>https://cychong47.github.io/post/2020/2020-06-16-setup-podcast-blog-3/</link><pubDate>Tue, 16 Jun 2020 06:53:24 +0900</pubDate><guid>https://cychong47.github.io/post/2020/2020-06-16-setup-podcast-blog-3/</guid><description>Podcast post 작성하기 Zen theme 덕분에 mp3 파일을 포함한 blog post를 markdown 파일로 작성하고 site build만 시키면 자동적으로 podcast feed를 만들어 준다.
-https://github.com/frjo/hugo-theme-zen에 있는 내용을 보면 md 파일의 frontformatter에 아래 내용을 채워야 하는 듯 하다. 이 중에서 필수인 항목은 mp3 파일의 위치를 가리키는 mp3와 mp3 파일의 길이를 알려주는 duration 두 개 필요. hugo에서 image 파일 위치를 가리킬 때 static\images\a.jpg에 위치한 파일을 markdown 파일에서는 \images.a.jpg로 표현하는 것과 같은 형식을 사용하면 된다.</description></item><item><title>Setup podcast blog - Setup Hugo</title><link>https://cychong47.github.io/post/2020/2020-06-16-setup-podcast-blog-1/</link><pubDate>Tue, 16 Jun 2020 06:53:24 +0900</pubDate><guid>https://cychong47.github.io/post/2020/2020-06-16-setup-podcast-blog-1/</guid><description>Install Create Hugo for podcast cychong15:writing_factory cychong$ hugo new site cbs-ost Congratulations! Your new Hugo site is created in /Users/cychong/workspace/writing_factory/cbs-ost. Just a few more steps and you&amp;#39;re ready to go: 1. Download a theme into the same-named folder. Choose a theme from https://themes.gohugo.io/ or create your own with the &amp;#34;hugo new theme &amp;lt;THEMENAME&amp;gt;&amp;#34; command. 2. Perhaps you want to add some content. You can add single files with &amp;#34;hugo new &amp;lt;SECTIONNAME&amp;gt;/&amp;lt;FILENAME&amp;gt;.</description></item><item><title>Hugo에 Main menu 추가하기</title><link>https://cychong47.github.io/post/2020/2020-06-13-add-menu-to-hugo/</link><pubDate>Sat, 13 Jun 2020 23:46:10 +0900</pubDate><guid>https://cychong47.github.io/post/2020/2020-06-13-add-menu-to-hugo/</guid><description>Hugo로 옮긴 후 아직 찾지 못한 기능 중 하나가 글 들을 종류 별로 구분해서 보는 것이었다. 각 글마다 지정한 category나 tag별로 볼 수 있는 것은 지금 사용하는 mainroad theme에서도 지원하는데 예전에 wordpress에서 많이 사용하던, post, page 등 성격 별로 다른 글들을 볼 수 있는 방법이 아쉬웠다.
-하지만 hugo의 다른 theme 을 사용하는 다른 사이트에서도 유사한 기능을 사용하는 것이 보였고, 심지어 mainroad theme을 사용하는 다른 사이트에서도 같은 기능을 사용한는 것이 보였다.</description></item><item><title>Migrate Ghost to Hugo</title><link>https://cychong47.github.io/post/2020/2020-06-07-migrate-ghost-to-hugo/</link><pubDate>Sun, 07 Jun 2020 22:14:02 +0900</pubDate><guid>https://cychong47.github.io/post/2020/2020-06-07-migrate-ghost-to-hugo/</guid><description>Wordpress 블로그를 hugo로 바꾼 김에 ghost 블로그도 hugo로 이사하기로 결심했다.
-Ghost 정말 애증이 담긴&amp;hellip;
-Ghost가 1.0이 되기 전에 markdown 기반의 블로그 툴을 찾는 과정 에서 발견해서 0.9 버전인가 부터 사용해 왔다. Ghost가 node 기반이라 생전 처음 듣는 node를 OS X에 설치해보고, docker for OS X이 나와서 docker로 실행해 오다, docker-compose 도 써 보고, Ansible 로 deploy도 해보고. 그러다 2019년에는 kubernetes hands-on을 해 볼 겸해서 리눅스에서 microk8s를 설치해서 ghost도 k8s로 실행해 봈다.</description></item><item><title>Migrate wordpress to hugo</title><link>https://cychong47.github.io/post/2020/hugo-seutp-with-git/</link><pubDate>Sun, 31 May 2020 14:56:52 +0900</pubDate><guid>https://cychong47.github.io/post/2020/hugo-seutp-with-git/</guid><description>Wordpress 에서 hugo로 이사한 후 첫번째 시도. Hugo theme은 harbor를 사용하고, site 호스팅 방법은 nginx docker를 사용. (이상하게 nginx를 helm으로 띄우는 게 간단하지 않네)
-Clone repogistry for raw blog data cychong15:migration_to_hugo cychong$ git clone https://github.com/cychong47/sosa0sa.git Cloning into &amp;#39;sosa0sa&amp;#39;... warning: You appear to have cloned an empty repository. Setup hugo inside of the git repository cychong15:migration_to_hugo cychong$ hugo new site sosa0sa Error: /Users/cychong/workspace/migration_to_hugo/sosa0sa already exists and is not empty. See --force. cychong15:migration_to_hugo cychong$ hugo new site sosa0sa --force Congratulations!</description></item><item><title>Upgrade kubernetes to 1.16.1</title><link>https://cychong47.github.io/post/2019/upgrade-kubernetes/</link><pubDate>Mon, 07 Oct 2019 15:37:14 +0900</pubDate><guid>https://cychong47.github.io/post/2019/upgrade-kubernetes/</guid><description>cychong@mini1:~/work/ghost-with-helm-x$ sudo apt update [sudo] password for cychong: Ign:2 http://dl.google.com/linux/chrome/deb stable InRelease Hit:3 http://archive.ubuntu.com/ubuntu bionic InRelease Hit:4 https://download.docker.com/linux/ubuntu bionic InRelease Hit:5 http://dl.google.com/linux/chrome/deb stable Release Get:6 http://archive.ubuntu.com/ubuntu bionic-updates InRelease [88.7 kB] Hit:1 https://packages.cloud.google.com/apt kubernetes-xenial InRelease Get:8 http://archive.ubuntu.com/ubuntu bionic-backports InRelease [74.6 kB] Get:9 http://archive.ubuntu.com/ubuntu bionic-security InRelease [88.7 kB] Get:10 http://archive.ubuntu.com/ubuntu bionic-updates/main amd64 DEP-11 Metadata [295 kB] Get:11 http://archive.ubuntu.com/ubuntu bionic-updates/main DEP-11 48x48 Icons [73.8 kB] Get:12 http://archive.ubuntu.com/ubuntu bionic-updates/main DEP-11 64x64 Icons [147 kB] Get:13 http://archive.</description></item><item><title>Setup kubernetes in a single host</title><link>https://cychong47.github.io/post/2019/setup-kubernetes-with-a-single-host/</link><pubDate>Mon, 23 Sep 2019 15:03:13 +0900</pubDate><guid>https://cychong47.github.io/post/2019/setup-kubernetes-with-a-single-host/</guid><description>Replace microk8s with kubernetes in mini1
-remove micro.k8s with snap command cychong@mini1:~$ sudo snap remove microk8s Save data of snap &amp;#34;microk8s&amp;#34; in automatic snapshot set microk8s removed cychong@mini1:~$ setup kubernetes Reference : https://phoenixnap.com/kb/install-kubernetes-on-ubuntu
-cychong@mini1:~$ sudo kubeadm init --pod-network-cidr=10.244.0.0/16 [init] Using Kubernetes version: v1.15.3 cychong@mini1:~$ kubectl get pods --all-namespaces -o wide NAMESPACE NAME READY STATUS RESTARTS AGE IP NODE NOMINATED NODE READINESS GATES kube-system coredns-5c98db65d4-r468f 0/1 Pending 0 2m3s &amp;lt;none&amp;gt; &amp;lt;none&amp;gt; &amp;lt;none&amp;gt; &amp;lt;none&amp;gt; kube-system coredns-5c98db65d4-wcm2n 0/1 Pending 0 2m3s &amp;lt;none&amp;gt; &amp;lt;none&amp;gt; &amp;lt;none&amp;gt; &amp;lt;none&amp;gt; kube-system etcd-mini1 1/1 Running 0 79s 192.</description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Homelab on Keep calm and Write something</title><link>https://cychong47.github.io/categories/homelab/</link><description>Recent content in Homelab on Keep calm and Write something</description><generator>Hugo</generator><language>en-us</language><lastBuildDate>Tue, 20 Feb 2024 00:00:00 +0000</lastBuildDate><atom:link href="https://cychong47.github.io/categories/homelab/index.xml" rel="self" type="application/rss+xml"/><item><title>Monitoring Cilium and Hubble with Prometheus and Grafana</title><link>https://cychong47.github.io/post/2024/2024-02-20-cilium-and-hubble-with-prometheus-and-grafana/</link><pubDate>Tue, 20 Feb 2024 00:00:00 +0000</pubDate><guid>https://cychong47.github.io/post/2024/2024-02-20-cilium-and-hubble-with-prometheus-and-grafana/</guid><description>&lt;h2 id="setup-prometheus-and-grafana-to-scrap-cilium-metrics"&gt;Setup Prometheus and Grafana to scrap Cilium metrics&lt;/h2&gt;
+&lt;p&gt;This will create a new namespace &lt;code&gt;cilium-monitoring&lt;/code&gt;&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"&gt;&lt;code class="language-sh" data-lang="sh"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;kubectl apply -f https://raw.githubusercontent.com/cilium/cilium/1.15.1/examples/kubernetes/addons/prometheus/monitoring-example.yaml
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id="some-warnings"&gt;Some warnings&amp;hellip;&lt;/h3&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"&gt;&lt;code class="language-sh" data-lang="sh"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;namespace/cilium-monitoring created
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;serviceaccount/prometheus-k8s created
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;configmap/grafana-config created
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;configmap/grafana-cilium-dashboard created
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;configmap/grafana-cilium-operator-dashboard created
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;configmap/grafana-hubble-dashboard created
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;configmap/grafana-hubble-l7-http-metrics-by-workload created
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;configmap/prometheus created
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;clusterrole.rbac.authorization.k8s.io/prometheus created
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;clusterrolebinding.rbac.authorization.k8s.io/prometheus created
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;service/grafana created
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;service/prometheus created
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;Warning: would violate PodSecurity &lt;span style="color:#e6db74"&gt;&amp;#34;restricted:latest&amp;#34;&lt;/span&gt;: allowPrivilegeEscalation !&lt;span style="color:#f92672"&gt;=&lt;/span&gt; false &lt;span style="color:#f92672"&gt;(&lt;/span&gt;container &lt;span style="color:#e6db74"&gt;&amp;#34;grafana-core&amp;#34;&lt;/span&gt; must set securityContext.allowPrivilegeEscalation&lt;span style="color:#f92672"&gt;=&lt;/span&gt;false&lt;span style="color:#f92672"&gt;)&lt;/span&gt;, unrestricted capabilities &lt;span style="color:#f92672"&gt;(&lt;/span&gt;container &lt;span style="color:#e6db74"&gt;&amp;#34;grafana-core&amp;#34;&lt;/span&gt; must set securityContext.capabilities.drop&lt;span style="color:#f92672"&gt;=[&lt;/span&gt;&lt;span style="color:#e6db74"&gt;&amp;#34;ALL&amp;#34;&lt;/span&gt;&lt;span style="color:#f92672"&gt;])&lt;/span&gt;, runAsNonRoot !&lt;span style="color:#f92672"&gt;=&lt;/span&gt; true &lt;span style="color:#f92672"&gt;(&lt;/span&gt;pod or container &lt;span style="color:#e6db74"&gt;&amp;#34;grafana-core&amp;#34;&lt;/span&gt; must set securityContext.runAsNonRoot&lt;span style="color:#f92672"&gt;=&lt;/span&gt;true&lt;span style="color:#f92672"&gt;)&lt;/span&gt;, seccompProfile &lt;span style="color:#f92672"&gt;(&lt;/span&gt;pod or container &lt;span style="color:#e6db74"&gt;&amp;#34;grafana-core&amp;#34;&lt;/span&gt; must set securityContext.seccompProfile.type to &lt;span style="color:#e6db74"&gt;&amp;#34;RuntimeDefault&amp;#34;&lt;/span&gt; or &lt;span style="color:#e6db74"&gt;&amp;#34;Localhost&amp;#34;&lt;/span&gt;&lt;span style="color:#f92672"&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;deployment.apps/grafana created
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;Warning: would violate PodSecurity &lt;span style="color:#e6db74"&gt;&amp;#34;restricted:latest&amp;#34;&lt;/span&gt;: allowPrivilegeEscalation !&lt;span style="color:#f92672"&gt;=&lt;/span&gt; false &lt;span style="color:#f92672"&gt;(&lt;/span&gt;container &lt;span style="color:#e6db74"&gt;&amp;#34;prometheus&amp;#34;&lt;/span&gt; must set securityContext.allowPrivilegeEscalation&lt;span style="color:#f92672"&gt;=&lt;/span&gt;false&lt;span style="color:#f92672"&gt;)&lt;/span&gt;, unrestricted capabilities &lt;span style="color:#f92672"&gt;(&lt;/span&gt;container &lt;span style="color:#e6db74"&gt;&amp;#34;prometheus&amp;#34;&lt;/span&gt; must set securityContext.capabilities.drop&lt;span style="color:#f92672"&gt;=[&lt;/span&gt;&lt;span style="color:#e6db74"&gt;&amp;#34;ALL&amp;#34;&lt;/span&gt;&lt;span style="color:#f92672"&gt;])&lt;/span&gt;, runAsNonRoot !&lt;span style="color:#f92672"&gt;=&lt;/span&gt; true &lt;span style="color:#f92672"&gt;(&lt;/span&gt;pod or container &lt;span style="color:#e6db74"&gt;&amp;#34;prometheus&amp;#34;&lt;/span&gt; must set securityContext.runAsNonRoot&lt;span style="color:#f92672"&gt;=&lt;/span&gt;true&lt;span style="color:#f92672"&gt;)&lt;/span&gt;, seccompProfile &lt;span style="color:#f92672"&gt;(&lt;/span&gt;pod or container &lt;span style="color:#e6db74"&gt;&amp;#34;prometheus&amp;#34;&lt;/span&gt; must set securityContext.seccompProfile.type to &lt;span style="color:#e6db74"&gt;&amp;#34;RuntimeDefault&amp;#34;&lt;/span&gt; or &lt;span style="color:#e6db74"&gt;&amp;#34;Localhost&amp;#34;&lt;/span&gt;&lt;span style="color:#f92672"&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;deployment.apps/prometheus created
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id="kubectl-get-all"&gt;kubectl get all&lt;/h3&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"&gt;&lt;code class="language-sh" data-lang="sh"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;❯ kubectl get all -n cilium-monitoring 
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;NAME READY STATUS RESTARTS AGE
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;pod/grafana-6f4755f98c-8c7sg 1/1 Running &lt;span style="color:#ae81ff"&gt;0&lt;/span&gt; 57s
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;pod/prometheus-67fdcf4796-vc8hd 1/1 Running &lt;span style="color:#ae81ff"&gt;0&lt;/span&gt; 57s
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;NAME TYPE CLUSTER-IP EXTERNAL-IP PORT&lt;span style="color:#f92672"&gt;(&lt;/span&gt;S&lt;span style="color:#f92672"&gt;)&lt;/span&gt; AGE
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;service/grafana ClusterIP 10.102.147.187 &amp;lt;none&amp;gt; 3000/TCP 57s
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;service/prometheus ClusterIP 10.104.8.139 &amp;lt;none&amp;gt; 9090/TCP 57s
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;NAME READY UP-TO-DATE AVAILABLE AGE
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;deployment.apps/grafana 1/1 &lt;span style="color:#ae81ff"&gt;1&lt;/span&gt; &lt;span style="color:#ae81ff"&gt;1&lt;/span&gt; 57s
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;deployment.apps/prometheus 1/1 &lt;span style="color:#ae81ff"&gt;1&lt;/span&gt; &lt;span style="color:#ae81ff"&gt;1&lt;/span&gt; 57s
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;NAME DESIRED CURRENT READY AGE
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;replicaset.apps/grafana-6f4755f98c &lt;span style="color:#ae81ff"&gt;1&lt;/span&gt; &lt;span style="color:#ae81ff"&gt;1&lt;/span&gt; &lt;span style="color:#ae81ff"&gt;1&lt;/span&gt; 57s
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;replicaset.apps/prometheus-67fdcf4796 &lt;span style="color:#ae81ff"&gt;1&lt;/span&gt; &lt;span style="color:#ae81ff"&gt;1&lt;/span&gt; &lt;span style="color:#ae81ff"&gt;1&lt;/span&gt; 57s
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id="change-service-type-to-loadbalancer"&gt;Change service type to LoadBalancer&lt;/h3&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"&gt;&lt;code class="language-sh" data-lang="sh"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;❯ kubectl patch svc prometheus -n cilium-monitoring -p &lt;span style="color:#e6db74"&gt;&amp;#39;{&amp;#34;spec&amp;#34;: {&amp;#34;type&amp;#34;: &amp;#34;LoadBalancer&amp;#34;}}&amp;#39;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;❯ kubectl patch svc grafana -n cilium-monitoring -p &lt;span style="color:#e6db74"&gt;&amp;#39;{&amp;#34;spec&amp;#34;: {&amp;#34;type&amp;#34;: &amp;#34;LoadBalancer&amp;#34;}}&amp;#39;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Now &lt;code&gt;TYPE&lt;/code&gt; is &lt;code&gt;LoadBalancer&lt;/code&gt; and &lt;code&gt;EXTERNAL-IP&lt;/code&gt; is assigned for each service&lt;/p&gt;</description></item><item><title>hugo에 검색 기능 추가하기 - pagefind</title><link>https://cychong47.github.io/post/2023/2023-05-18-add-search-to-hugo/</link><pubDate>Thu, 18 May 2023 00:00:00 +0000</pubDate><guid>https://cychong47.github.io/post/2023/2023-05-18-add-search-to-hugo/</guid><description>&lt;h2 id="why-not-agollia"&gt;Why not Agollia&lt;/h2&gt;
+&lt;p&gt;&lt;code&gt;algolla&lt;/code&gt; 는 site indexing 을 위해 Algollia 서버로 정보를 보내는 듯 함.
+대신 hugo에 아주 seamless 하게 연동이 되는데. 좀 아쉽네.
+(Privacy 건은 좀 더 확인해 봐야겠다)&lt;/p&gt;
+&lt;p&gt;Algollia를 잘 결합해서 사용하는 사이트 하나 &lt;a href="https://inchan.dev"&gt;https://inchan.dev&lt;/a&gt;
+Search를 클릭하면 입력 창의 크기가 자동으로 커져서 결과가 보여지는 창도 적당해서 보기 좋다.&lt;/p&gt;
+&lt;h2 id="install-pagefind"&gt;Install Pagefind&lt;/h2&gt;
+&lt;p&gt;설치는 &lt;code&gt;npx&lt;/code&gt;를 이용해서 설치하거나, cargo build하거나. 혹은 github에 올려져 있는 바이너리 다운받아 설치하거나. 이 중에 마지막 방법 선택&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://github.com/CloudCannon/pagefind/releases"&gt;https://github.com/CloudCannon/pagefind/releases&lt;/a&gt;&lt;/p&gt;</description></item><item><title>Homelab server 3rd gen.</title><link>https://cychong47.github.io/post/2022/2022-12-31-homeserver-3rd-gen/</link><pubDate>Sat, 31 Dec 2022 00:00:00 +0000</pubDate><guid>https://cychong47.github.io/post/2022/2022-12-31-homeserver-3rd-gen/</guid><description>&lt;p&gt;homelab 서버로 사용할 PC를 당근마켓을 통해 구입.
+제품 사양에 비해 저렴하고,, 구입 과정도 매끄러워서 기분좋게 구입한 제품이다.&lt;/p&gt;
+&lt;p&gt;오랜만에 AMD CPU를 사용하는 PC를 사용하게 되었네.
+조립 PC를 사본 지가 언제인지. 최근 10년 넘게는 맥만 구입해서 궁금하다.
+완성품(특히 애플 노트북)에 비해 좋은 점은 원하는 사양으로 변경할 수 있다는 거 일텐데, 그래서 그 장점을 십분 활용하고자, 중고로 얻어온 제품이 이미 16 GiB 메모리가 실장되어 있지만, 32 GiB를 하나 추가로 구입했다.
+다른 건 못해도 RAM Flex라도 해 보자.&lt;/p&gt;</description></item><item><title>Traefik 로그의 timezone 수정</title><link>https://cychong47.github.io/post/2022/2022-01-06-how-to-change-timezone-of-traefik-log/</link><pubDate>Thu, 06 Jan 2022 00:00:00 +0000</pubDate><guid>https://cychong47.github.io/post/2022/2022-01-06-how-to-change-timezone-of-traefik-log/</guid><description>&lt;h2 id="문제점"&gt;문제점&lt;/h2&gt;
+&lt;p&gt;Traefik 로그에 time 정보가 제대로 나오게 하려면&lt;/p&gt;
+&lt;p&gt;helm chart에 환경 변수에 &lt;code&gt;TZ&lt;/code&gt;를 설정해도 로그 시간이 제대로 나오지 않음.&lt;/p&gt;
+&lt;pre tabindex="0"&gt;&lt;code&gt;192.168.0.101 - - [06/Jan/2022:1:18:17 +0000] &amp;#34;GET /ping HTTP/1.1&amp;#34; 200 2 &amp;#34;-&amp;#34; &amp;#34;-&amp;#34; 100 &amp;#34;ping@internal&amp;#34; &amp;#34;-&amp;#34; 0ms
+&lt;/code&gt;&lt;/pre&gt;&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"&gt;&lt;code class="language-yaml" data-lang="yaml"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#f92672"&gt;env&lt;/span&gt;: 
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; - &lt;span style="color:#f92672"&gt;name&lt;/span&gt;: &lt;span style="color:#ae81ff"&gt;TZ&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#f92672"&gt;value&lt;/span&gt;: &lt;span style="color:#ae81ff"&gt;Asia/Seoul&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;code&gt;kubectl describe&lt;/code&gt; 명령으로 확인하면 환경변수가 제대로 설정된 것으로 나옴&lt;/p&gt;
+&lt;pre tabindex="0"&gt;&lt;code&gt; Environment:
+ TZ: Asia/Seoul
+&lt;/code&gt;&lt;/pre&gt;&lt;h2 id="해결책"&gt;해결책&lt;/h2&gt;
+&lt;p&gt;&lt;a href="https://doc.traefik.io/traefik/observability/access-logs/#time-zones"&gt;https://doc.traefik.io/traefik/observability/access-logs/#time-zones&lt;/a&gt;
+위 페이지를 보니 다음과 같이 몇 가지 설정을 해야 한다고.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Traefik will timestamp each log line in UTC time by default.&lt;/p&gt;</description></item><item><title>Blog의 text와 image를 합쳤다</title><link>https://cychong47.github.io/post/2021/2021-11-24-merge-blog-post-and-image-repos/</link><pubDate>Wed, 24 Nov 2021 13:51:30 +0900</pubDate><guid>https://cychong47.github.io/post/2021/2021-11-24-merge-blog-post-and-image-repos/</guid><description>&lt;p&gt;홈 블로그에 사용하는 텍스트로 된 포스트와 포스트에서 사용하는 이미지 파일을 각자 다른 github repo에서 관리해 오고 있었다.
+혻시나 포스트만 클론해서 글을 수정하고 싶을 때 수 GB에 달하는 이미지를 다운받아야 하는 건 아닌 것 같아서.&lt;/p&gt;
+&lt;p&gt;&lt;img src="https://cychong47.github.io/images/2021/11/2021-11-24-IMG_9266.jpg" alt=""&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src="https://cychong47.github.io/images/2021/11/2021-11-24-IMG_9267.jpg" alt=""&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src="https://cychong47.github.io/images/2021/11/2021-11-24-IMG_9268.jpg" alt=""&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src="https://cychong47.github.io/images/2021/11/2021-11-24-IMG_0505.jpg" alt=""&gt;&lt;/p&gt;</description></item><item><title>HP mini PC의 소모전력</title><link>https://cychong47.github.io/post/2021/2021-09-24-power-consumption-of-mini3/</link><pubDate>Fri, 24 Sep 2021 11:24:23 +0900</pubDate><guid>https://cychong47.github.io/post/2021/2021-09-24-power-consumption-of-mini3/</guid><description>&lt;p&gt;&lt;img src="https://cychong47.github.io/images/2021/09/2021-09-24-IMG_7884.jpg" alt=""&gt;&lt;/p&gt;</description></item><item><title>Traefik middleware를 이용한 접근 제한</title><link>https://cychong47.github.io/post/2021/2021-05-08-access-control-with-traefik-middleware/</link><pubDate>Sat, 08 May 2021 23:16:00 +0900</pubDate><guid>https://cychong47.github.io/post/2021/2021-05-08-access-control-with-traefik-middleware/</guid><description>&lt;p&gt;특정 서비스를 외부에 공개하고 싶지 않고, 내부 망에서만 접근하게 하려면 Traefik의 middleware가 제공하는 &lt;code&gt;ipWhilteList&lt;/code&gt; 기능을 활용할 수 있다.&lt;/p&gt;
+&lt;p&gt;(이름은 요즘 추세에 맞게 &lt;code&gt;ipAllowList&lt;/code&gt; 정도로 변경되어야 할 것 같은데..)&lt;/p&gt;
+&lt;p&gt;전체적인 동작은 &lt;a href="https://doc.traefik.io/traefik/middlewares/ipwhitelist/"&gt;IpWhitelist - Traefik&lt;/a&gt; 페이지에 있는 그림으로 간단하게 요약이 가능할 듯. 사이트에 접근하려는 client가 미리 정의된 list에 있는 경우에만 접근을 허용한다는.&lt;/p&gt;
+&lt;p&gt;&lt;img src="https://doc.traefik.io/traefik/assets/img/middleware/ipwhitelist.png" alt=""&gt;&lt;/p&gt;
+&lt;h2 id="middleware-정의"&gt;middleware 정의&lt;/h2&gt;
+&lt;p&gt;접근을 허용할 client들의 CIDR을 정의한다. 특정 subnet을 정의하거나, 특정 host를 정의할 수 있다. 당연히 복수 정의도 가능하고.&lt;/p&gt;
+&lt;p&gt;아래 예는 &lt;code&gt;192.168.0.0/16&lt;/code&gt; 에서의 접근만 허용하는 설정이다.&lt;/p&gt;</description></item><item><title>Install kubernetes on mini3</title><link>https://cychong47.github.io/post/2021/2021-04-13-install-kubernetes-on-mini3/</link><pubDate>Tue, 13 Apr 2021 11:26:01 +0900</pubDate><guid>https://cychong47.github.io/post/2021/2021-04-13-install-kubernetes-on-mini3/</guid><description>&lt;p&gt;mini1에서 mini3로의 이전을 준비 중.
+기존에 mini3에는 재미삼아 k3s를 설치해 놓았는데 왠지 새로운 설정 방식을 알아야 할 필요가 있나 하는 생각이 들어 이전처럼 다시 vanilla kubernetes 를 설치하기로 했다. minkkube처럼 VM을 만들어야 설치가 되는 것도 아니고 그냥 host OS에 설치하면 되니까 설치도 간단하고(물론 바이너리 하나 설치하면 되는 k3s와는 비교하기 어렵지만) 부하를 감당하기 어려운 정도의 CPU도 아니라서.&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://kubernetes.io/docs/setup/production-environment/tools/kubeadm/install-kubeadm/"&gt;Installing kubeadm | Kubernetes&lt;/a&gt;&lt;/p&gt;
+&lt;pre tabindex="0"&gt;&lt;code&gt;# /etc/modules-load.d/k8s.conf
+br_netfilter
+&lt;/code&gt;&lt;/pre&gt;&lt;pre tabindex="0"&gt;&lt;code&gt;# /etc/sysctl.d/k8s.conf
+net.bridge.bridge-nf-call-ip6tables = 1
+net.bridge.bridge-nf-call-iptables = 1
+&lt;/code&gt;&lt;/pre&gt;&lt;pre tabindex="0"&gt;&lt;code&gt;$ sudo sysctl --system
+&lt;/code&gt;&lt;/pre&gt;&lt;h1 id="install-containerd-as-a-container-runtime"&gt;Install Containerd as a Container Runtime&lt;/h1&gt;
+&lt;p&gt;docker를 CRI로 사용하는 것은 곧 deprecated예정이니까 containerd를 사용해 보자.&lt;/p&gt;</description></item><item><title>Replace NodePort with ClsuterIP - Thx to Traefik</title><link>https://cychong47.github.io/post/2021/2021-03-31-change-nodeport-to-clusterip/</link><pubDate>Sat, 03 Apr 2021 22:00:00 +0900</pubDate><guid>https://cychong47.github.io/post/2021/2021-03-31-change-nodeport-to-clusterip/</guid><description>&lt;p&gt;Traefik을 이용한 Ingress/Ingress Controller를 이용해서 nginx 기반 Pod를 cluster 외부에서 접속할 수 있도록 설정했는데 곰곰히 생각해 보니 그렇다면 nginx service에 굳이 &lt;code&gt;NodePort&lt;/code&gt;를 사용해야 하나 라는 생각이 들었다. 이제 외부로부터의 요청은 든든한 Traefik이 처리해 줄 테니 직접 각 pod가 서비스를 NodePort를 이용해서 외부에 오픈할 필요가 없어 보였다.&lt;/p&gt;
+&lt;p&gt;이를 위해 기존에 사용하던 nginx의 value 파일을 다음과 같이 수정했다. NodePort를 위해 필요했던 정보들이 사라지고, 수신하고 싶은 Port만 지정하면 되니설정 파일이 무척 깔끔해졌다.&lt;/p&gt;
+&lt;pre tabindex="0"&gt;&lt;code&gt;service:
+ # type: NodePort
+ # targetPort: 80 # container app. itself
+ # port: 8099 # pod
+ # nodePort: 8099 # cluster-wise
+ # externalTrafficPolicy: Local
+ # externalIPs: [192.168.0.100]
+ type: ClusterIP
+ port: 80
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;변경된 value 파일을 이용해서 다시 deploy.&lt;/p&gt;</description></item><item><title>Setup Ingress with Traefik</title><link>https://cychong47.github.io/post/2021/2021-03-31-setup-ingress-with-traefik/</link><pubDate>Wed, 31 Mar 2021 23:00:00 +0900</pubDate><guid>https://cychong47.github.io/post/2021/2021-03-31-setup-ingress-with-traefik/</guid><description>&lt;p&gt;Ingress Controller 를 설치(&lt;a href="https://cychong47.github.io/post/2021/2021-03-30-install-traefik-with-helm/"&gt;Helm으로 Traefik 설치하기&lt;/a&gt;)했으니 이제 Ingress를 설정해서 실제 cluster 외부로부터의 http/https 메시지를 nginx pod에 전달되게 해 본다.&lt;/p&gt;
+&lt;h1 id="ingress"&gt;Ingress&lt;/h1&gt;
+&lt;p&gt;Ingress는 Cluster 외부에서 접근하는 http/https request에 대한 라우팅을 제어하는 기능을 제공한다.
+&lt;a href="https://kubernetes.io/docs/concepts/services-networking/ingress/"&gt;Ingress | Kubernetes&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;ingress.yaml 파일을 다음과 같이 작성한다. . 아래는 두 가지 rule을 설정하고 있는데 host가 ‘mini1’이고, URL path가 &lt;code&gt;/ost&lt;/code&gt;면 podcast-nginx라는 서비스로 전달하게 하는 것과 host는 상관없이 path가 &lt;code&gt;/ost&lt;/code&gt;면 역시 같은 podcast-nginx로 보내는 것이다.&lt;/p&gt;
+&lt;pre tabindex="0"&gt;&lt;code&gt;kind: Ingress
+apiVersion: extensions/v1beta1
+metadata:
+ name: &amp;#34;test&amp;#34;
+ namespace: default
+
+spec:
+ rules:
+ - host: mini1
+ http:
+ paths:
+ - path: /ost
+ backend:
+ serviceName: podcast-nginx
+ servicePort: 8099
+ - http:
+ paths:
+ - path: /ost
+ backend:
+ serviceName: podcast-nginx
+ servicePort: 8099
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Kubectl 명령을 이용해 적용해 본다.&lt;/p&gt;</description></item><item><title>Helm으로 Traefik 설치하기</title><link>https://cychong47.github.io/post/2021/2021-03-30-install-traefik-with-helm/</link><pubDate>Tue, 30 Mar 2021 09:00:00 +0900</pubDate><guid>https://cychong47.github.io/post/2021/2021-03-30-install-traefik-with-helm/</guid><description>&lt;p&gt;지금 집에 있는 서버(mac mini 2009)에서 nginx를 이용해서 블로그를 호스팅하는데 port를 구분해서 외부에 노출하고 있다. 외부에서의 &amp;gt;접근을 위해 NodePort를 사용하고, 각 nginx instance는 서로 다른 port를 이용하고 있는데 port번호가 아니라 URL 경로를 이용해서 서로
+다른 서비스를 이용할 수 있는 reverse proxy 기능을 사용하면 좀 더 깔끔할 듯 하다.
+Kubernetes에서는 ingress와 ingress controller를 이용해서 이 reverse proxy를 구현할 수 있다고 한다. Kubernetes에서는 ingress는 기본적으로 제공하는 object 지만, ingress controller는 제공하고 있지 않아, 별도로 설치해야 한다.&lt;/p&gt;</description></item><item><title>Install cockpit - linux server manager</title><link>https://cychong47.github.io/post/2021/2021-03-04-install-cockpit/</link><pubDate>Thu, 04 Mar 2021 22:06:00 +0900</pubDate><guid>https://cychong47.github.io/post/2021/2021-03-04-install-cockpit/</guid><description>&lt;pre tabindex="0"&gt;&lt;code&gt;$ sudo apt install -y cockpit sssd-dbus
+&lt;/code&gt;&lt;/pre&gt;&lt;pre tabindex="0"&gt;&lt;code&gt;$ sudo ufw allow 9090/tcp ; sudo systemctl start cockpit`
+&lt;/code&gt;&lt;/pre&gt;&lt;pre tabindex="0"&gt;&lt;code&gt;$ ss -tunlp |grep 9090
+tcp LISTEN 0 4096 *:9090 *:*
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;&lt;img src="https://cychong47.github.io/images/2021/03/2021-03-04-cockpit-web.png" alt=""&gt;&lt;/p&gt;
+&lt;p&gt;CPU load 정보가 주기적으로 100%까지 튀네. 거의 10초 단위로. 뭘까
+&lt;img src="https://cychong47.github.io/images/2021/03/2021-03-04-cockpit-cpu.png" alt=""&gt;&lt;/p&gt;
+&lt;p&gt;여러 개의 리눅스 서버가 있는 경우 한 곳에 추가해서 single glass of pane을 만들 수도 있다.
+&lt;img src="https://cychong47.github.io/images/2021/03/2021-03-04-cockpit-add-another-host.png" alt=""&gt;&lt;/p&gt;
+&lt;p&gt;추가된 서버들은 dashboard에서 drop list로 보여지므로 원하는 대상을 선택
+&lt;img src="https://cychong47.github.io/images/2021/03/2021-03-04-cockpit-show-another-host.png" alt=""&gt;&lt;/p&gt;</description></item><item><title>Change the server IP address of k3s</title><link>https://cychong47.github.io/post/2021/2021-03-03-change-the-server-ip-address-of-k3s/</link><pubDate>Wed, 03 Mar 2021 13:17:28 +0900</pubDate><guid>https://cychong47.github.io/post/2021/2021-03-03-change-the-server-ip-address-of-k3s/</guid><description>&lt;h1 id="how-to-change-ip-address-of-k3s"&gt;How to change IP address of k3s&lt;/h1&gt;
+&lt;p&gt;By default, as k3s operates in the local host, it is not possible to connect from other host.&lt;/p&gt;
+&lt;p&gt;To get the server Ip address,&lt;/p&gt;
+&lt;pre tabindex="0"&gt;&lt;code&gt;$ kubectl config view --raw |grep server
+ server: https://127.0.0.1:6443
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;The listening server IP address can be specified by giving parameter in running the k3s binary.&lt;/p&gt;
+&lt;p&gt;K3s configuration is on &lt;code&gt;/etc/systemd/system/k3s.service&lt;/code&gt;&lt;/p&gt;
+&lt;pre tabindex="0"&gt;&lt;code&gt;$ cat /etc/systemd/system/k3s.service
+[Unit]
+Description=Lightweight Kubernetes
+Documentation=https://k3s.io
+Wants=network-online.target
+After=network-online.target
+
+[Install]
+WantedBy=multi-user.target
+
+[Service]
+Type=notify
+EnvironmentFile=/etc/systemd/system/k3s.service.env
+KillMode=process
+Delegate=yes
+# Having non-zero Limit*s causes performance problems due to accounting overhead
+# in the kernel. We recommend using cgroups to do container-local accounting.
+LimitNOFILE=1048576
+LimitNPROC=infinity
+LimitCORE=infinity
+TasksMax=infinity
+TimeoutStartSec=0
+Restart=always
+RestartSec=5s
+ExecStartPre=-/sbin/modprobe br_netfilter
+ExecStartPre=-/sbin/modprobe overlay
+ExecStart=/usr/local/bin/k3s \
+ server \
+	&amp;#39;--write-kubeconfig-mode&amp;#39; \
+	&amp;#39;644&amp;#39; \
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Append server IP address of &lt;code&gt;ExecStart&lt;/code&gt; option&lt;/p&gt;</description></item><item><title>Use the Secret and ConfigMaps</title><link>https://cychong47.github.io/post/2020/2020-10-19-use-the-secret-and-configmaps/</link><pubDate>Mon, 19 Oct 2020 14:21:03 +0900</pubDate><guid>https://cychong47.github.io/post/2020/2020-10-19-use-the-secret-and-configmaps/</guid><description>&lt;h1 id="use-the-secret-and-configmaps"&gt;Use the Secret and ConfigMaps&lt;/h1&gt;
+&lt;pre tabindex="0"&gt;&lt;code&gt;$ cat my-secret.yaml
+apiVersion: v1
+kind: Secret
+metadata:
+ name: mysecret
+type: Opaque
+stringData:
+ WSO2_CLOUD_ORG_KEY: &amp;#34;mycompany&amp;#34;
+ WSO2_CLOUD_EMAIL: &amp;#34;sample-email@wso2.com&amp;#34;
+ WSO2_CLOUD_PASSWORD: &amp;#34;password&amp;#34;
+
+$ kubectl apply -f my-secret.yaml
+secret/mysecret created
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;From &lt;a href="https://medium.com/faun/using-kubernetes-secrets-as-environment-variables-5ea3ef7581ef"&gt;Using Kubernetes Secrets as Environment Variables&lt;/a&gt;&lt;/p&gt;
+&lt;pre tabindex="0"&gt;&lt;code&gt; spec: 
+ containers: 
+ - 
+ env: 
+ - 
+ name: WSO2_CLOUD_ORG_KEY
+ valueFrom:
+ secretKeyRef:
+ name: mysecret
+ key: WSO2_CLOUD_ORG_KEY
+ ...
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;&lt;img src="Use%20the%20Secret%20and%20ConfigMaps/bear_sketch@2x.png" alt=""&gt;&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"&gt;&lt;code class="language-yaml" data-lang="yaml"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#f92672"&gt;apiVersion&lt;/span&gt;: &lt;span style="color:#ae81ff"&gt;v1&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#f92672"&gt;kind&lt;/span&gt;: &lt;span style="color:#ae81ff"&gt;Secret&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#f92672"&gt;metadata&lt;/span&gt;:
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#f92672"&gt;name&lt;/span&gt;: &lt;span style="color:#ae81ff"&gt;my-tokens&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#f92672"&gt;type&lt;/span&gt;: &lt;span style="color:#ae81ff"&gt;Opaque&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#f92672"&gt;stringData&lt;/span&gt;:
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#f92672"&gt;pinboard_key&lt;/span&gt;: &lt;span style="color:#e6db74"&gt;&amp;#34;FIXME&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#f92672"&gt;pocket_consumer_key&lt;/span&gt;: &lt;span style="color:#e6db74"&gt;&amp;#34;FIXME&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#f92672"&gt;pocket_access_token&lt;/span&gt;: &lt;span style="color:#e6db74"&gt;&amp;#34;FIXME&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#f92672"&gt;slack_api_token&lt;/span&gt;: &lt;span style="color:#e6db74"&gt;&amp;#34;FIXME&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#f92672"&gt;slack_events_token&lt;/span&gt;: &lt;span style="color:#e6db74"&gt;&amp;#34;FIXME&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#f92672"&gt;slack_verification_token&lt;/span&gt;: &lt;span style="color:#e6db74"&gt;&amp;#34;FIXME&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#f92672"&gt;slack_signing_secret&lt;/span&gt;: &lt;span style="color:#e6db74"&gt;&amp;#34;FIXME&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#f92672"&gt;telegram_token&lt;/span&gt;: &lt;span style="color:#e6db74"&gt;&amp;#34;FIXME&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#f92672"&gt;telegram_api_id&lt;/span&gt;: &lt;span style="color:#e6db74"&gt;&amp;#34;FIXME&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#f92672"&gt;telegram_api_hash&lt;/span&gt;: &lt;span style="color:#e6db74"&gt;&amp;#34;FIXME&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;pre tabindex="0"&gt;&lt;code&gt;$ kubectl apply -f my-tokens.yaml 
+secret/my-tokens created
+
+$ kubectl get secrets
+NAME TYPE DATA AGE
+default-token-57nq8 kubernetes.io/service-account-token 3 395d
+grafana Opaque 3 2d23h
+grafana-test-token-88vrz kubernetes.io/service-account-token 3 2d23h
+grafana-token-zc79r kubernetes.io/service-account-token 3 2d23h
+influxdb-token-bjb5d kubernetes.io/service-account-token 3 4d12h
+my-secret kubernetes.io/dockerconfigjson 1 269d
+my-tokens Opaque 7 4s
+sh.helm.release.v1.grafana.v1 helm.sh/release.v1 1 2d23h
+sh.helm.release.v1.influxdb.v1 helm.sh/release.v1 1 4d12h
+sh.helm.release.v1.podcast.v1 helm.sh/release.v1 1 4d13h
+sh.helm.release.v1.sosa0sa.v1 helm.sh/release.v1 1 4d13h
+
+$ kubectl get secrets my-tokens
+NAME TYPE DATA AGE
+my-tokens Opaque 7 7s
+
+$ kubectl describe secret my-tokens
+Name: my-tokens
+Namespace: default
+Labels: &amp;lt;none&amp;gt;
+Annotations:
+Type: Opaque
+
+Data
+====
+pinboard_key: 30 bytes
+slack_signing_secret: 32 bytes
+telegram_api_id: 7 bytes
+verification_token: 24 bytes
+pocket_access_token: 30 bytes
+pocket_consumer_key: 30 bytes
+slack_api_token: 56 bytes
+slack_events_token: 32 bytes
+telegram_api_hash: 32 bytes
+telegram_token: 46 bytes
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;#fun-for-life #kubernetes #TIL #publish&lt;/p&gt;</description></item><item><title>How to make cronjob to support timezone</title><link>https://cychong47.github.io/post/2020/2020-10-19-how-to-fix-no-timezone-support-of-cronjob/</link><pubDate>Mon, 19 Oct 2020 14:16:45 +0900</pubDate><guid>https://cychong47.github.io/post/2020/2020-10-19-how-to-fix-no-timezone-support-of-cronjob/</guid><description>&lt;h2 id="problem"&gt;Problem&lt;/h2&gt;
+&lt;p&gt;&lt;code&gt;CronJob&lt;/code&gt;이 지정된 시간에 잘 동작했는 지 확인해 본 결과 이상한 점을 발견했다.&lt;/p&gt;
+&lt;p&gt;오후 2시 32분에 &lt;code&gt;CronJob&lt;/code&gt; 의 동작을 확인했는데 이전에 실행된 시간이 4시간 32분 전이라고, 즉 새벽 1시가 아니라 오전 10시에 실행이 되었다는 나오는 것이다.&lt;/p&gt;
+&lt;pre tabindex="0"&gt;&lt;code&gt;$ date
+Sat Oct 10 14:32:36 KST 2020
+
+$ kubectl get cronjob
+NAME SCHEDULE SUSPEND ACTIVE LAST SCHEDULE AGE
+pocket-stat 0 1 * * * False 0 4h32m 14h
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;혹시 10시를 1시로 잘못 설정했나 하고 &lt;code&gt;kubectl describe cronjob&lt;/code&gt; 명령으로 확인해 봤지만 &lt;code&gt;schedule&lt;/code&gt; 정보는 정상적으로 설정되어 있었다는.&lt;/p&gt;</description></item><item><title>New homelab rack</title><link>https://cychong47.github.io/post/2020/2020-10-19-new-homelab-rack/</link><pubDate>Mon, 19 Oct 2020 00:00:00 +0900</pubDate><guid>https://cychong47.github.io/post/2020/2020-10-19-new-homelab-rack/</guid><description>&lt;p&gt;서재 방을 뒤집으면서 이참에 책상 밑, 뒤 등에 숨겨(?)놨던 맥미니, 공유기, 나스 등을 나름 랙에 모아놓고, 랜선이 나오는 바로 벽 바로 옆에 뒀다. 그 덕에 벽에서 책상쪽으로 건너가기 위해 바닥에 있던 선 들이 이제 1개로 줄었다. 이전에는 전원선 2개, 유선 랜 2개 였는데 이제는 전원선 하나만 보냈다는.&lt;/p&gt;
+&lt;p&gt;&lt;img src="https://cychong47.github.io/images/2020/10/2020-10-19-IMG_0007.jpg" alt=""&gt;&lt;/p&gt;
+&lt;p&gt;덕분에 바닥이 깔끔해 지긴 했는데 랙이 너무 비좁다.&lt;/p&gt;
+&lt;p&gt;IKEA 칼락스가 하나 있으면 딱 일 것 같은데. 당근에서 저렴하게 하나 안 나오나?&lt;/p&gt;
+&lt;p&gt;&lt;img src="https://cychong47.github.io/images/2020/10/2020-10-20-ikea-kallax-4x4.jpg" alt=""&gt;&lt;/p&gt;</description></item><item><title>주기적으로 실행되는 앱은 CronJob으로</title><link>https://cychong47.github.io/post/2020/2020-10-09-cronjob-in-kubernetes/</link><pubDate>Fri, 09 Oct 2020 02:00:00 +0900</pubDate><guid>https://cychong47.github.io/post/2020/2020-10-09-cronjob-in-kubernetes/</guid><description>&lt;p&gt;만일 &lt;code&gt;job&lt;/code&gt;을 일정 주기 혹은 특정 시간에 실행시키려면 &lt;code&gt;CronJob&lt;/code&gt; resource를 만들어 사용하면 된다.&lt;/p&gt;
+&lt;h2 id="job과-cronjob간의-관계는"&gt;&lt;code&gt;Job&lt;/code&gt;과 &lt;code&gt;CronJob&lt;/code&gt;간의 관계는?&lt;/h2&gt;
+&lt;p&gt;&lt;code&gt;CronJob&lt;/code&gt;에 대한 설명에 따르면 &lt;code&gt;CronJob&lt;/code&gt;정의에 기술한 특정 시간이 되면 &lt;code&gt;CronJob&lt;/code&gt;이 &lt;code&gt;Job&lt;/code&gt;을 실행한다고. 그리고 그 &lt;code&gt;Job&lt;/code&gt;이 &lt;code&gt;Pod&lt;/code&gt;를 실행한다.&lt;/p&gt;
+&lt;p&gt;그럼 &lt;code&gt;Job&lt;/code&gt;을 위한 resource 정의와 &lt;code&gt;CronJob&lt;/code&gt;을 위한 resource 정의를 각각 정의해야 하나?
+그렇지는 않은 듯. &lt;code&gt;CronJob&lt;/code&gt;의 정의 파일을 보면 &lt;code&gt;JobTemplate&lt;/code&gt; 항목이 &lt;code&gt;Job&lt;/code&gt;에서 볼 수 있는 &lt;code&gt;Template&lt;/code&gt;과 유사한 container spec 등을 가지고 있다. 물론 &lt;code&gt;CronJob&lt;/code&gt; 에서만 유효한 &lt;code&gt;schedule&lt;/code&gt; spec 등을 추가로 가지고 있긴 하지만.&lt;/p&gt;</description></item><item><title>일회성 앱은 Deployment가 아닌 Job으로</title><link>https://cychong47.github.io/post/2020/2020-10-09-job-instead-of-deployment/</link><pubDate>Fri, 09 Oct 2020 01:00:00 +0900</pubDate><guid>https://cychong47.github.io/post/2020/2020-10-09-job-instead-of-deployment/</guid><description>&lt;p&gt;한 번 실행되면 데몬 처럼 계속해서 동작하는 앱이 아니라 필요한 일을 수행하고 종료되는 앱도 있다. 실행된 시점에 필요한 일을 수행하고 종료하는 형태로 예를 들면 특정 위치에 있는 파일을 처리하고 종료한다거나, 실행된 시점에 외부 서비스에서 필요한 정보를 가져와 어딘가 저장하는 등의 일을 하는. 이런 종류의 앱을 kubernetes에서 &lt;code&gt;Deployment&lt;/code&gt;로 배포한 경우 해당 앱은 자신이 해야 할 일을 정상적으로 수행하고 종료되지만, kubernetes scheduler 입장에서는 해당 container가 (의도하지 않게) 종료된 것으로 판단하여 다시 복구하는 절차를 수행한다. 이는 &lt;code&gt;Deployment&lt;/code&gt;로 배포된 container는 scheduler를 통해 배포된 것처럼 scheduler를 통해 제거되지 않으면 비정상이라고 판단하기 때문이다.&lt;/p&gt;</description></item><item><title>Install Influxdb and Grafana With Helm</title><link>https://cychong47.github.io/post/2020/2020-10-04-install-influxdb-grafana-with-helm/</link><pubDate>Sun, 04 Oct 2020 23:36:26 +0900</pubDate><guid>https://cychong47.github.io/post/2020/2020-10-04-install-influxdb-grafana-with-helm/</guid><description>&lt;h2 id="install-influxdb-with-helm"&gt;Install InfluxDB with helm&lt;/h2&gt;
+&lt;p&gt;&lt;a href="https://github.com/influxdata/helm-charts"&gt;GitHub - influxdata/helm-charts: Official Helm Chart Repository for InfluxData Applications&lt;/a&gt; 가 helm chart를 이용한 설치법을 제공하는 공식 페이지.&lt;/p&gt;
+&lt;pre tabindex="0"&gt;&lt;code&gt;helm repo add influxdata https://helm.influxdata.com/
+&lt;/code&gt;&lt;/pre&gt;&lt;pre tabindex="0"&gt;&lt;code&gt;$ helm repo list
+WARNING: Kubernetes configuration file is group-readable. This is insecure. Location: /home/cychong/.kube/config
+WARNING: Kubernetes configuration file is world-readable. This is insecure. Location: /home/cychong/.kube/config
+NAME 	URL
+myhelmrepo 	https://cychong47.github.io/helm-chart/
+infracloudio	https://infracloudio.github.io/charts
+influxdata 	https://helm.influxdata.com/
+&lt;/code&gt;&lt;/pre&gt;&lt;pre tabindex="0"&gt;&lt;code&gt;$ helm search repo influxdata
+NAME 	CHART VERSION	APP VERSION	DESCRIPTION
+influxdata/chronograf 	1.1.17 	1.8.0 	Open-source web application written in Go and R...
+influxdata/influxdb 	4.8.5 	1.8.0 	Scalable datastore for metrics, events, and rea...
+influxdata/influxdb-enterprise	0.1.10 	1.8.0 	Run InfluxDB Enterprise on Kubernetes
+influxdata/influxdb2 	1.0.7 	2.0.0-beta 	A Helm chart for InfluxDB v2
+influxdata/kapacitor 	1.3.1 	1.5.4 	InfluxDB&amp;#39;s native data processing engine. It ca...
+influxdata/telegraf 	1.7.25 	1.14 	Telegraf is an agent written in Go for collecti...
+influxdata/telegraf-ds 	1.0.16 	1.14 	Telegraf is an agent written in Go for collecti...
+influxdata/telegraf-operator 	1.1.3 	v1.1.0 	A Helm chart for Kubernetes to deploy telegraf-...
+&lt;/code&gt;&lt;/pre&gt;&lt;pre tabindex="0"&gt;&lt;code&gt;$ helm upgrade --install -f influxdb-value.yaml influxdb influxdata/influxdb
+Release &amp;#34;influxdb&amp;#34; does not exist. Installing it now.
+NAME: influxdb
+LAST DEPLOYED: Sat Oct 3 10:22:32 2020
+NAMESPACE: default
+STATUS: deployed
+REVISION: 1
+TEST SUITE: None
+NOTES:
+InfluxDB can be accessed via port 8086 on the following DNS name from within your cluster:
+
+ http://influxdb.default:8086
+
+You can connect to the remote instance with the influx CLI. To forward the API port to localhost:8086, run the following:
+
+ kubectl port-forward --namespace default $(kubectl get pods --namespace default -l app=influxdb -o jsonpath=&amp;#39;{ .items[0].metadata.name }&amp;#39;) 8086:8086
+
+You can also connect to the influx CLI from inside the container. To open a shell session in the InfluxDB pod, run the following:
+
+ kubectl exec -i -t --namespace default $(kubectl get pods --namespace default -l app=influxdb -o jsonpath=&amp;#39;{.items[0].metadata.name}&amp;#39;) /bin/sh
+
+To view the logs for the InfluxDB pod, run the following:
+
+ kubectl logs -f --namespace default $(kubectl get pods --namespace default -l app=influxdb -o jsonpath=&amp;#39;{ .items[0].metadata.name }&amp;#39;)
+&lt;/code&gt;&lt;/pre&gt;&lt;pre tabindex="0"&gt;&lt;code&gt;$ kubectl get pods
+NAME READY STATUS RESTARTS AGE
+influxdb-0 1/1 Running 0 87s
+podcast-nginx-659bcb6485-ps7qq 1/1 Running 0 86m
+sosa0sa-nginx-87fc9949c-wb4jp 1/1 Running 0 95m
+
+$ kubectl get svc
+NAME TYPE CLUSTER-IP EXTERNAL-IP PORT(S) AGE
+influxdb ClusterIP 10.110.66.138 &amp;lt;none&amp;gt; 8086/TCP,8088/TCP 92s
+kubernetes ClusterIP 10.96.0.1 &amp;lt;none&amp;gt; 443/TCP 390d
+podcast-nginx NodePort 10.108.15.141 192.168.1.100 8099:30912/TCP 86m
+sosa0sa-nginx NodePort 10.100.21.119 192.168.1.100 80:31806/TCP 95m
+&lt;/code&gt;&lt;/pre&gt;&lt;h3 id="influxdb-container에-접속해서-cli확인"&gt;InfluxDB container에 접속해서 CLI확인&lt;/h3&gt;
+&lt;pre tabindex="0"&gt;&lt;code&gt;kubectl exec [POD] [COMMAND] is DEPRECATED and will be removed in a future version. Use kubectl kubectl exec [POD] -- [COMMAND] instead.
+bash-4.4# influx
+Connected to http://localhost:8086 version 1.8.0
+InfluxDB shell version: 1.8.0
+&amp;gt; show databases
+name: databases
+name
+----
+_internal
+&lt;/code&gt;&lt;/pre&gt;&lt;pre tabindex="0"&gt;&lt;code&gt;$ helm install -f pocket-stat-value.yaml pocket-stat helm-chart/charts/pocket-stat/
+NAME: pocket-stat
+LAST DEPLOYED: Sun Oct 4 20:40:11 2020
+NAMESPACE: default
+STATUS: deployed
+REVISION: 1
+NOTES:
+1. Get the application URL by running these commands:
+ export NODE_PORT=$(kubectl get --namespace default -o jsonpath=&amp;#34;{.spec.ports[0].nodePort}&amp;#34; services pocket-stat)
+ export NODE_IP=$(kubectl get nodes --namespace default -o jsonpath=&amp;#34;{.items[0].status.addresses[0].address}&amp;#34;)
+ echo http://$NODE_IP:$NODE_PORT
+&lt;/code&gt;&lt;/pre&gt;&lt;h2 id="pocket-stat-container를-이용해서-임시-데이터-입력"&gt;&lt;code&gt;pocket-stat&lt;/code&gt; container를 이용해서 임시 데이터 입력&lt;/h2&gt;
+&lt;pre tabindex="0"&gt;&lt;code&gt;$ helm install -f pocket-stat-value.yaml pocket-stat ./helm-chart/charts/pocket-stat
+NAME: pocket-stat
+LAST DEPLOYED: Sun Oct 4 22:46:26 2020
+NAMESPACE: default
+STATUS: deployed
+REVISION: 1
+NOTES:
+1. Get the application URL by running these commands:
+ export NODE_PORT=$(kubectl get --namespace default -o jsonpath=&amp;#34;{.spec.ports[0].nodePort}&amp;#34; services pocket-stat)
+ export NODE_IP=$(kubectl get nodes --namespace default -o jsonpath=&amp;#34;{.items[0].status.addresses[0].address}&amp;#34;)
+ echo http://$NODE_IP:$NODE_PORT
+
+$ kubectl get pods
+NAME READY STATUS RESTARTS AGE
+influxdb-0 1/1 Running 0 36h
+pocket-stat-5b86fbc8f7-xpf9j 1/1 Running 0 20s
+podcast-nginx-659bcb6485-ps7qq 1/1 Running 0 37h
+sosa0sa-nginx-87fc9949c-wb4jp 1/1 Running 0 37h
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;&lt;code&gt;pocket-stat&lt;/code&gt; example app은 5초 주기로 임의의 데이터를 influxdb에 저장하는 동작 수행&lt;/p&gt;</description></item><item><title>블로그에 몇 몇 사진이 안 보이는 문제 해결</title><link>https://cychong47.github.io/post/2020/2020-09-12-image-is-not-jpg-but-heic/</link><pubDate>Sat, 12 Sep 2020 22:26:02 +0900</pubDate><guid>https://cychong47.github.io/post/2020/2020-09-12-image-is-not-jpg-but-heic/</guid><description>&lt;p&gt;혹시나 했더니 사진 파일 형식이 JPEG이 아니라 HEIC(High Efficiency Image File) 였다는.&lt;br&gt;
+아이패드에서는 사진을 찍지 않고, 아이폰으로만 사진을 찍고 있는데, 사진을 Mac으로 옮길 때 사용하는 PhotoSync에서는 파일 변환 기능을 켜서 자동으로 JPG로 변환하고 있으니 거기서 올린 사진은 아닌 듯 하고, iPad에서 iOS shortcut을 이용해서 git repo에 직접 사진을 업로드하는데, 이때 올린 사진이 iPhone에서 HEIC로 저장하고, iCloud를 통해 iPad로 동히과된 사진이었다.&lt;/p&gt;
+&lt;p&gt;iOS Shortcut에서는 사진의 크기를 resize만 해서 올리고 있어서 그랬다는.&lt;/p&gt;
+&lt;p&gt;&lt;img src="https://cychong47.github.io/images/2020/09/2020-09-12-image-is-not-jpg-but-heic.png" alt=""&gt;&lt;/p&gt;</description></item><item><title>Botkube to monitor K8s cluster in Slack</title><link>https://cychong47.github.io/post/2020/2020-09-04-install-botkube/</link><pubDate>Fri, 04 Sep 2020 23:51:45 +0900</pubDate><guid>https://cychong47.github.io/post/2020/2020-09-04-install-botkube/</guid><description>&lt;h1 id="install-botkube-for-k8s-and-slack"&gt;Install BotKube for k8s and slack&lt;/h1&gt;
+&lt;p&gt;&lt;a href="https://www.botkube.io/installation/slack/"&gt;Slack :: Messaging bot for monitoring and debugging Kubernetes clusters&lt;/a&gt;&lt;/p&gt;
+&lt;pre tabindex="0"&gt;&lt;code&gt;cychong@mini1:~$ helm repo add infracloudio https://infracloudio.github.io/charts
+&amp;#34;infracloudio&amp;#34; has been added to your repositories
+cychong@mini1:~$ helm repo update
+Hang tight while we grab the latest from your chart repositories...
+...Successfully got an update from the &amp;#34;infracloudio&amp;#34; chart repository
+...Successfully got an update from the &amp;#34;myhelmrepo&amp;#34; chart repository
+Update Complete. ⎈ Happy Helming!⎈
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;botkube를 위한 namespace 만들어주기&lt;/p&gt;</description></item><item><title>RSS feed URL for podcast</title><link>https://cychong47.github.io/post/2020/2020-08-31-rss-feed-url-for-podcast/</link><pubDate>Mon, 31 Aug 2020 10:09:56 +0900</pubDate><guid>https://cychong47.github.io/post/2020/2020-08-31-rss-feed-url-for-podcast/</guid><description>&lt;p&gt;&lt;code&gt;http://sosa0sa.com:8099/podcast/index.xml&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;매번 까먹네. 중간에 &lt;code&gt;podcast&lt;/code&gt;가 있다는 거. 블로그 자체는 &lt;code&gt;http://sosa0sa.com:8099&lt;/code&gt;만으로 접속이 되니 저렇게 다른 경로가 기억이 나지 않네.&lt;/p&gt;
+&lt;p&gt;수정할 수 있는 지 확인해 봐야겠다.&lt;/p&gt;</description></item><item><title>Setup GitHub based Helm repo</title><link>https://cychong47.github.io/post/2020/2020-08-19-setup-github-based-helm-repo/</link><pubDate>Wed, 19 Aug 2020 00:00:00 +0900</pubDate><guid>https://cychong47.github.io/post/2020/2020-08-19-setup-github-based-helm-repo/</guid><description>&lt;h1 id="setup-github-based-helm-repo"&gt;Setup GitHub based Helm repo&lt;/h1&gt;
+&lt;p&gt;GitHub에 구성한 helm repository에 있는 Helm chart를 이용해서 nginx deploy하기&lt;/p&gt;
+&lt;h2 id="github에-helm-repository-구축하기"&gt;GitHub에 Helm Repository 구축하기&lt;/h2&gt;
+&lt;p&gt;&lt;a href="https://medium.com/@mattiaperi/create-a-public-helm-chart-repository-with-github-pages-49b180dbb417"&gt;Create a public Helm chart repository with GitHub Pages | by Mattia Peri | Medium&lt;/a&gt; 글을 참고해서 따라하면 특별한 문제 없이 Helm Repostiroy로 동작할 GitHub Page를 만들 수 있다.&lt;/p&gt;
+&lt;p&gt;&lt;img src="https://cychong47.github.io/images/2020/08/2020-08-18-IMG_0070.jpg" alt=""&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src="https://cychong47.github.io/images/2020/08/2020-08-18-IMG_0072.jpg" alt=""&gt;&lt;/p&gt;
+&lt;pre tabindex="0"&gt;&lt;code&gt;cychong@mini1:~/tmp$ wget https://cychong47.github.io/helm-chart/index.html
+--2020-08-18 23:49:28-- https://cychong47.github.io/helm-chart/index.html
+Resolving cychong47.github.io (cychong47.github.io)... 185.199.111.153, 185.199.109.153, 185.199.110.153, ...
+Connecting to cychong47.github.io (cychong47.github.io)|185.199.111.153|:443... connected.
+HTTP request sent, awaiting response... 200 OK
+Length: 1501 (1.5K) [text/html]
+Saving to: ‘index.html’
+
+index.html 100%[=======================================================&amp;gt;] 1.47K --.-KB/s in 0s
+
+2020-08-18 23:49:29 (13.2 MB/s) - ‘index.html’ saved [1501/1501]
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;&lt;code&gt;index.html&lt;/code&gt; 의 내용을 보면&lt;/p&gt;</description></item><item><title>Upgrade Kubernetes 1 18 2</title><link>https://cychong47.github.io/post/2020/2020-05-07-upgrade-kubernetes-1-18-2/</link><pubDate>Sat, 01 Aug 2020 22:52:47 +0900</pubDate><guid>https://cychong47.github.io/post/2020/2020-05-07-upgrade-kubernetes-1-18-2/</guid><description>&lt;p&gt;Upgrade kubernetes to 1.18.2&lt;/p&gt;
+&lt;p&gt;Note etcd might be need to be upgrade&lt;/p&gt;
+&lt;pre tabindex="0"&gt;&lt;code&gt;cychong@mini1:~$ sudo kubeadm upgrade apply v1.18.2
+[upgrade/config] Making sure the configuration is correct:
+[upgrade/config] Reading configuration from the cluster...
+[upgrade/config] FYI: You can look at this config file with &amp;#39;kubectl -n kube-system get cm kubeadm-config -oyaml&amp;#39;
+[preflight] Running pre-flight checks.
+[upgrade] Running cluster health checks
+[upgrade/version] You have chosen to change the cluster version to &amp;#34;v1.18.2&amp;#34;
+[upgrade/versions] Cluster version: v1.17.2
+[upgrade/versions] kubeadm version: v1.18.2
+[upgrade/confirm] Are you sure you want to proceed with the upgrade? [y/N]: y
+[upgrade/prepull] Will prepull images for components [kube-apiserver kube-controller-manager kube-scheduler etcd]
+[upgrade/prepull] Prepulling image for component etcd.
+[upgrade/prepull] Prepulling image for component kube-apiserver.
+[upgrade/prepull] Prepulling image for component kube-controller-manager.
+[upgrade/prepull] Prepulling image for component kube-scheduler.
+[apiclient] Found 0 Pods for label selector k8s-app=upgrade-prepull-etcd
+[apiclient] Found 1 Pods for label selector k8s-app=upgrade-prepull-kube-controller-manager
+[apiclient] Found 0 Pods for label selector k8s-app=upgrade-prepull-kube-scheduler
+[apiclient] Found 1 Pods for label selector k8s-app=upgrade-prepull-kube-apiserver
+[apiclient] Found 1 Pods for label selector k8s-app=upgrade-prepull-etcd
+[apiclient] Found 1 Pods for label selector k8s-app=upgrade-prepull-kube-scheduler
+[upgrade/prepull] Prepulled image for component etcd.
+[upgrade/prepull] Prepulled image for component kube-scheduler.
+[upgrade/prepull] Prepulled image for component kube-apiserver.
+[upgrade/prepull] Prepulled image for component kube-controller-manager.
+[upgrade/prepull] Successfully prepulled the images for all the control plane components
+[upgrade/apply] Upgrading your Static Pod-hosted control plane to version &amp;#34;v1.18.2&amp;#34;...
+Static pod: kube-apiserver-mini1 hash: 4d9a965c0a14a45ea3d7db1e023096d4
+Static pod: kube-controller-manager-mini1 hash: 85a33dac6d806801ba5efe4a4544194c
+Static pod: kube-scheduler-mini1 hash: 9c994ea62a2d8d6f1bb7498f10aa6fcf
+[upgrade/etcd] Upgrading to TLS for etcd
+[upgrade/etcd] Non fatal issue encountered during upgrade: the desired etcd version for this Kubernetes version &amp;#34;v1.18.2&amp;#34; is &amp;#34;3.4.3-0&amp;#34;, but the current etcd version is &amp;#34;3.4.3&amp;#34;. Won&amp;#39;t downgrade etcd, instead just continue
+[upgrade/staticpods] Writing new Static Pod manifests to &amp;#34;/etc/kubernetes/tmp/kubeadm-upgraded-manifests306630380&amp;#34;
+W0502 23:43:36.998909 12626 manifests.go:225] the default kube-apiserver authorization-mode is &amp;#34;Node,RBAC&amp;#34;; using &amp;#34;Node,RBAC&amp;#34;
+[upgrade/staticpods] Preparing for &amp;#34;kube-apiserver&amp;#34; upgrade
+[upgrade/staticpods] Renewing apiserver certificate
+[upgrade/staticpods] Renewing apiserver-kubelet-client certificate
+[upgrade/staticpods] Renewing front-proxy-client certificate
+[upgrade/staticpods] Renewing apiserver-etcd-client certificate
+[upgrade/staticpods] Moved new manifest to &amp;#34;/etc/kubernetes/manifests/kube-apiserver.yaml&amp;#34; and backed up old manifest to &amp;#34;/etc/kubernetes/tmp/kubeadm-backup-manifests-2020-05-02-23-43-31/kube-apiserver.yaml&amp;#34;
+[upgrade/staticpods] Waiting for the kubelet to restart the component
+[upgrade/staticpods] This might take a minute or longer depending on the component/version gap (timeout 5m0s)
+Static pod: kube-apiserver-mini1 hash: 4d9a965c0a14a45ea3d7db1e023096d4
+Static pod: kube-apiserver-mini1 hash: 275339182618620ef41c93754b550d1b
+[apiclient] Found 1 Pods for label selector component=kube-apiserver
+[upgrade/staticpods] Component &amp;#34;kube-apiserver&amp;#34; upgraded successfully!
+[upgrade/staticpods] Preparing for &amp;#34;kube-controller-manager&amp;#34; upgrade
+[upgrade/staticpods] Renewing controller-manager.conf certificate
+[upgrade/staticpods] Moved new manifest to &amp;#34;/etc/kubernetes/manifests/kube-controller-manager.yaml&amp;#34; and backed up old manifest to &amp;#34;/etc/kubernetes/tmp/kubeadm-backup-manifests-2020-05-02-23-43-31/kube-controller-manager.yaml&amp;#34;
+[upgrade/staticpods] Waiting for the kubelet to restart the component
+[upgrade/staticpods] This might take a minute or longer depending on the component/version gap (timeout 5m0s)
+Static pod: kube-controller-manager-mini1 hash: 85a33dac6d806801ba5efe4a4544194c
+Static pod: kube-controller-manager-mini1 hash: 02126aeb8d0589669175da92c56e4904
+[apiclient] Found 1 Pods for label selector component=kube-controller-manager
+[upgrade/staticpods] Component &amp;#34;kube-controller-manager&amp;#34; upgraded successfully!
+[upgrade/staticpods] Preparing for &amp;#34;kube-scheduler&amp;#34; upgrade
+[upgrade/staticpods] Renewing scheduler.conf certificate
+[upgrade/staticpods] Moved new manifest to &amp;#34;/etc/kubernetes/manifests/kube-scheduler.yaml&amp;#34; and backed up old manifest to &amp;#34;/etc/kubernetes/tmp/kubeadm-backup-manifests-2020-05-02-23-43-31/kube-scheduler.yaml&amp;#34;
+[upgrade/staticpods] Waiting for the kubelet to restart the component
+[upgrade/staticpods] This might take a minute or longer depending on the component/version gap (timeout 5m0s)
+Static pod: kube-scheduler-mini1 hash: 9c994ea62a2d8d6f1bb7498f10aa6fcf
+Static pod: kube-scheduler-mini1 hash: 7abb78dfbb4eae6cb52175046063ac8f
+[apiclient] Found 1 Pods for label selector component=kube-scheduler
+[upgrade/staticpods] Component &amp;#34;kube-scheduler&amp;#34; upgraded successfully!
+[upload-config] Storing the configuration used in ConfigMap &amp;#34;kubeadm-config&amp;#34; in the &amp;#34;kube-system&amp;#34; Namespace
+[kubelet] Creating a ConfigMap &amp;#34;kubelet-config-1.18&amp;#34; in namespace kube-system with the configuration for the kubelets in the cluster
+[kubelet-start] Downloading configuration for the kubelet from the &amp;#34;kubelet-config-1.18&amp;#34; ConfigMap in the kube-system namespace
+[kubelet-start] Writing kubelet configuration to file &amp;#34;/var/lib/kubelet/config.yaml&amp;#34;
+[bootstrap-token] configured RBAC rules to allow Node Bootstrap tokens to get nodes
+[bootstrap-token] configured RBAC rules to allow Node Bootstrap tokens to post CSRs in order for nodes to get long term certificate credentials
+[bootstrap-token] configured RBAC rules to allow the csrapprover controller automatically approve CSRs from a Node Bootstrap Token
+[bootstrap-token] configured RBAC rules to allow certificate rotation for all node client certificates in the cluster
+[addons] Applied essential addon: CoreDNS
+[addons] Applied essential addon: kube-proxy
+
+[upgrade/successful] SUCCESS! Your cluster was upgraded to &amp;#34;v1.18.2&amp;#34;. Enjoy!
+
+[upgrade/kubelet] Now that your control plane is upgraded, please proceed with upgrading your kubelets if you haven&amp;#39;t already done so.
+&lt;/code&gt;&lt;/pre&gt;</description></item><item><title>Troubleshooting - rss.xml is not updated</title><link>https://cychong47.github.io/post/2020/2020-07-24-rss-is-not-updated/</link><pubDate>Fri, 24 Jul 2020 00:22:45 +0900</pubDate><guid>https://cychong47.github.io/post/2020/2020-07-24-rss-is-not-updated/</guid><description>&lt;p&gt;갑자기 어느 날 부터(정확히 말하면 7월 14일부터) podcast가 업데이트가 되지 않는다.&lt;/p&gt;
+&lt;p&gt;다음 날도, 그 다음 날도. 흠. 뭐가 문제일까?&lt;/p&gt;
+&lt;p&gt;아무튼 &lt;code&gt;hugo&lt;/code&gt;를 이용해서 직접 사이트를 빌드해 봤다. 그랬더니 이상한 에러가 난다. &lt;code&gt;os.Stat&lt;/code&gt; 파일이 없다는 이야기도 나오고.&lt;/p&gt;
+&lt;p&gt;뭔가 문제가 있는데 밤이라 그런지 그냥 단순하게 Hugo &lt;code&gt;zen-theme&lt;/code&gt; 이 rss를 제대로 생성하지 못한다는 내용으로 검색을 해 봤는데 결과가 안 나온다.&lt;/p&gt;
+&lt;pre tabindex="0"&gt;&lt;code&gt;cychong@mini1:~/work/cbs-ost$ hugo -t zen
+Building sites … WARN 2020/07/23 23:21:25 .File.UniqueID on zero object. Wrap it in if or with: {{ with .File }}{{ .UniqueID }}{{ end }}
+Total in 10016 ms
+Error: Error building site: failed to render pages: render of &amp;#34;section&amp;#34; failed: &amp;#34;/home/cychong/work/cbs-ost/themes/zen/layouts/podcast/rss.xml:53:55&amp;#34;: execute of template failed: template: podcast/rss.xml:53:55: executing &amp;#34;podcast/rss.xml&amp;#34; at &amp;lt;os.Stat&amp;gt;: error calling Stat: LStat content/static/podcast/cinema-2020-07-14.mp3: file does not exist
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;똑같은 방법을 시도하면서 다른 결과를 기다하는 건 바보라는 말을 잊고 그 다음 날도 똑같은 짓을 했다. 여전히 답이 나올리가.&lt;/p&gt;</description></item><item><title>Deploy nginx with helm</title><link>https://cychong47.github.io/post/2020/2020-07-02-deploy-nginx-with-helm/</link><pubDate>Thu, 02 Jul 2020 23:58:41 +0900</pubDate><guid>https://cychong47.github.io/post/2020/2020-07-02-deploy-nginx-with-helm/</guid><description>&lt;p&gt;우선 &lt;code&gt;docker&lt;/code&gt;로 실행한 nginx container를 종료시키고&lt;/p&gt;
+&lt;pre tabindex="0"&gt;&lt;code&gt;cychong@mini1:~/work/helm-chart-github$ docker ps -a |grep nginx
+a66786635c60 nginx &amp;#34;/docker-entrypoint.…&amp;#34; 7 minutes ago Up 7 minutes k8s_nginx_my-nginx-77596b9fc6-7txns_default_44840d63-b496-4a58-9e18-83e503c6d2cf_0
+85c85322ea59 k8s.gcr.io/pause:3.1 &amp;#34;/pause&amp;#34; 7 minutes ago Up 7 minutes k8s_POD_my-nginx-77596b9fc6-7txns_default_44840d63-b496-4a58-9e18-83e503c6d2cf_0
+5be06dc3b184 nginx &amp;#34;nginx -g &amp;#39;daemon of…&amp;#34; 2 weeks ago Up 2 weeks 0.0.0.0:8099-&amp;gt;80/tcp podcast
+2812c510a5b6 nginx &amp;#34;nginx -g &amp;#39;daemon of…&amp;#34; 2 weeks ago Up 2 weeks 0.0.0.0:80-&amp;gt;80/tcp sosa0sa
+cychong@mini1:~/work/helm-chart-github$ docker stop 5be06dc3b184
+5be06dc3b184
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;nginx를 구동시킬 helm chart 준비&lt;/p&gt;
+&lt;pre tabindex="0"&gt;&lt;code&gt;cychong@mini1:~/work/helm-chart/nginx$ tree -f
+.
+├── ./Chart.yaml
+├── ./README.md
+├── ./charts
+├── ./nginx-pv.yaml
+├── ./templates
+│   ├── ./templates/NOTES.txt
+│   ├── ./templates/_helpers.tpl
+│   ├── ./templates/deployment.yaml
+│   ├── ./templates/ingress.yaml
+│   ├── ./templates/pvc.yaml
+│   ├── ./templates/service.yaml
+│   └── ./templates/tests
+│   └── ./templates/tests/test-connection.yaml
+└── ./values.yaml
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;우선 PV(&lt;code&gt;Persistent Volume&lt;/code&gt;) 생성.&lt;/p&gt;</description></item><item><title>2020 06 28 Podcast Another Issue</title><link>https://cychong47.github.io/post/2020/2020-06-28-podcast-another-issue/</link><pubDate>Sun, 28 Jun 2020 23:27:48 +0900</pubDate><guid>https://cychong47.github.io/post/2020/2020-06-28-podcast-another-issue/</guid><description>&lt;p&gt;금요일 밤에 지난 오류를 수정한 후 토요일, 일요일에는 제대로 동작하는 듯&amp;hellip;&lt;/p&gt;
+&lt;p&gt;그런데 오늘 우연히 발견한 문제는 토요일과 금요일에 올라온 에피소드에 곡 목록이 없다.
+추정되는 이유가 있긴했는데 집에 와서 확인해 보니 예상대로. 주말이라 곡 목록이 늦게 업데이트가 되었다.&lt;br&gt;
+토요일, 일요일 곡 목록이 모두 일요일 저녁 7시 반 경에 올라온 것이다.&lt;/p&gt;
+&lt;p&gt;흠..
+그렇다고 mp3를 그때 포스팅하지 않을 수도 없고. 이럴 때는 어떻게 해야 할까&amp;hellip;&lt;/p&gt;
+&lt;p&gt;고민 중..&lt;/p&gt;</description></item><item><title>How to embed video in hugo</title><link>https://cychong47.github.io/post/2020/2020-06-27-how-to-support-video/</link><pubDate>Sat, 27 Jun 2020 00:24:41 +0900</pubDate><guid>https://cychong47.github.io/post/2020/2020-06-27-how-to-support-video/</guid><description>&lt;p&gt;한줄요약 : Hugo로 만든 blog 에서 video 파일을 지원하려면 shortcode를 활용한다.&lt;/p&gt;
+&lt;p&gt;아래 shortcode는 mp3, mp4 파일을 지원하는 &lt;a href="https://github.com/frjo/hugo-theme-zen"&gt;zen&lt;/a&gt;에서 사용하는 shortcode(&lt;code&gt;zen/layouts/shortcodes/video.html&lt;/code&gt;)&lt;/p&gt;
+&lt;pre tabindex="0"&gt;&lt;code&gt;&amp;lt;figure {{ with .Get &amp;#34;class&amp;#34; }}class=&amp;#34;{{ . }}&amp;#34;{{ end }}&amp;gt;
+&amp;lt;video controls preload=&amp;#34;{{ .Get &amp;#34;preload&amp;#34; | default &amp;#34;metadata&amp;#34; }}&amp;#34; {{ with .Get &amp;#34;width&amp;#34; }}width=&amp;#34;{{ . }}&amp;#34;{{ end }}&amp;gt;
+{{ with .Get &amp;#34;src&amp;#34; }}&amp;lt;source src=&amp;#34;{{ . | relURL }}&amp;#34; type=&amp;#34;video/mp4&amp;#34;&amp;gt;{{ end }}
+&amp;lt;/video&amp;gt;
+{{ with .Get &amp;#34;caption&amp;#34; }}&amp;lt;figcaption&amp;gt;{{ . }}&amp;lt;/figcaption&amp;gt;{{ end }}
+&amp;lt;/figure&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;이 파일을 hugo site의 &lt;code&gt;layouts/shortcodes&lt;/code&gt; 디렉토리에 복사하고 md 파일에서 다음과 같이 작성한다.&lt;/p&gt;</description></item><item><title>Setup podcast blog - 자동화</title><link>https://cychong47.github.io/post/2020/2020-06-20-setup-podcast-blog-5/</link><pubDate>Sat, 20 Jun 2020 22:33:02 +0900</pubDate><guid>https://cychong47.github.io/post/2020/2020-06-20-setup-podcast-blog-5/</guid><description>&lt;h1 id="scripts"&gt;Scripts&lt;/h1&gt;
+&lt;p&gt;Automation&lt;/p&gt;
+&lt;h3 id="mini2---record-mp3-file"&gt;mini2 - record mp3 file&lt;/h3&gt;
+&lt;pre tabindex="0"&gt;&lt;code&gt;$ crontab -l
+00 11 * * * cd /Users/cychong/work/cbs-ost/script &amp;amp;&amp;amp; ./record.sh &amp;gt;&amp;gt; /tmp/cron.out 2&amp;gt;&amp;amp;1
+&lt;/code&gt;&lt;/pre&gt;&lt;h3 id="mini1---create-md-file-and-publish-podcast"&gt;mini1 - create MD file and publish podcast&lt;/h3&gt;
+&lt;pre tabindex="0"&gt;&lt;code&gt;$ crontab -l
+04 12 * * * cd /home/cychong/work/cbs-ost/script &amp;amp;&amp;amp; ./scp.sh &amp;gt;&amp;gt; /tmp/cron.out 2&amp;gt;&amp;amp;1
+05 12 * * * cd /home/cychong/work/cbs-ost/script &amp;amp;&amp;amp; ./publish.sh &amp;gt;&amp;gt; /tmp/cron.out 2&amp;gt;&amp;amp;1
+&lt;/code&gt;&lt;/pre&gt;&lt;ul&gt;
+&lt;li&gt;Get mp3 file from mini2&lt;/li&gt;
+&lt;li&gt;Create md file after getting song list&lt;/li&gt;
+&lt;li&gt;Rebuild site to publish the updated podcast&lt;/li&gt;
+&lt;/ul&gt;</description></item><item><title>Setup podcast blog - recording 동작 확인</title><link>https://cychong47.github.io/post/2020/2020-06-18-setup-podcast-blog-2/</link><pubDate>Thu, 18 Jun 2020 23:10:45 +0900</pubDate><guid>https://cychong47.github.io/post/2020/2020-06-18-setup-podcast-blog-2/</guid><description>&lt;p&gt;듣고 싶은 mp3 파일을
+mini2를 이용해서 1시간 짜리 녹음 동작확인 결과 정상 동작 확인&lt;/p&gt;
+&lt;pre tabindex="0"&gt;&lt;code&gt;$ mp3info -p &amp;#34;%S&amp;#34; cinema-2020-06-18.mp3
+3600
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;역시 mini1의 processing power 부족 때문에 제대로 1시간 녹음이 안된 듯.&lt;/p&gt;</description></item><item><title>Setup podcast blog - post 작성</title><link>https://cychong47.github.io/post/2020/2020-06-16-setup-podcast-blog-3/</link><pubDate>Tue, 16 Jun 2020 06:53:24 +0900</pubDate><guid>https://cychong47.github.io/post/2020/2020-06-16-setup-podcast-blog-3/</guid><description>&lt;h2 id="podcast-post-작성하기"&gt;Podcast post 작성하기&lt;/h2&gt;
+&lt;p&gt;Zen theme 덕분에 mp3 파일을 포함한 blog post를 markdown 파일로 작성하고 site build만 시키면 자동적으로 podcast feed를 만들어 준다.&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://github.com/frjo/hugo-theme-zen"&gt;https://github.com/frjo/hugo-theme-zen&lt;/a&gt;에 있는 내용을 보면 md 파일의 frontformatter에 아래 내용을 채워야 하는 듯 하다. 이 중에서 필수인 항목은 mp3 파일의 위치를 가리키는 &lt;code&gt;mp3&lt;/code&gt;와 mp3 파일의 길이를 알려주는 &lt;code&gt;duration&lt;/code&gt; 두 개 필요.
+hugo에서 image 파일 위치를 가리킬 때 &lt;code&gt;static\images\a.jpg&lt;/code&gt;에 위치한 파일을 markdown 파일에서는 &lt;code&gt;\images.a.jpg&lt;/code&gt;로 표현하는 것과 같은 형식을 사용하면 된다.&lt;/p&gt;</description></item><item><title>Setup podcast blog - Setup Hugo</title><link>https://cychong47.github.io/post/2020/2020-06-16-setup-podcast-blog-1/</link><pubDate>Tue, 16 Jun 2020 06:53:24 +0900</pubDate><guid>https://cychong47.github.io/post/2020/2020-06-16-setup-podcast-blog-1/</guid><description>&lt;h1 id="install"&gt;Install&lt;/h1&gt;
+&lt;h2 id="create-hugo-for-podcast"&gt;Create Hugo for podcast&lt;/h2&gt;
+&lt;pre tabindex="0"&gt;&lt;code&gt;cychong15:writing_factory cychong$ hugo new site cbs-ost
+Congratulations! Your new Hugo site is created in /Users/cychong/workspace/writing_factory/cbs-ost.
+
+Just a few more steps and you&amp;#39;re ready to go:
+
+1. Download a theme into the same-named folder.
+ Choose a theme from https://themes.gohugo.io/ or
+ create your own with the &amp;#34;hugo new theme &amp;lt;THEMENAME&amp;gt;&amp;#34; command.
+2. Perhaps you want to add some content. You can add single files
+ with &amp;#34;hugo new &amp;lt;SECTIONNAME&amp;gt;/&amp;lt;FILENAME&amp;gt;.&amp;lt;FORMAT&amp;gt;&amp;#34;.
+3. Start the built-in live server via &amp;#34;hugo server&amp;#34;.
+
+Visit https://gohugo.io/ for quickstart guide and full documentation.
+cychong15:writing_factory cychong$ cd cbs-ost
+cychong15:cbs-ost cychong$
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;갓 만들어진 빈 Hugo site 구조&lt;/p&gt;</description></item><item><title>Hugo에 Main menu 추가하기</title><link>https://cychong47.github.io/post/2020/2020-06-13-add-menu-to-hugo/</link><pubDate>Sat, 13 Jun 2020 23:46:10 +0900</pubDate><guid>https://cychong47.github.io/post/2020/2020-06-13-add-menu-to-hugo/</guid><description>&lt;p&gt;Hugo로 옮긴 후 아직 찾지 못한 기능 중 하나가 글 들을 &lt;strong&gt;종류&lt;/strong&gt; 별로 구분해서 보는 것이었다. 각 글마다 지정한 &lt;code&gt;category&lt;/code&gt;나 &lt;code&gt;tag&lt;/code&gt;별로 볼 수 있는 것은 지금 사용하는 &lt;a href="https://github.com/Vimux/Mainroad/"&gt;mainroad&lt;/a&gt; theme에서도 지원하는데 예전에 wordpress에서 많이 사용하던, &lt;code&gt;post&lt;/code&gt;, &lt;code&gt;page&lt;/code&gt; 등 성격 별로 다른 글들을 볼 수 있는 방법이 아쉬웠다.&lt;/p&gt;
+&lt;p&gt;하지만 hugo의 다른 theme 을 사용하는 다른 사이트에서도 유사한 기능을 사용하는 것이 보였고, 심지어 mainroad theme을 사용하는 다른 사이트에서도 같은 기능을 사용한는 것이 보였다.&lt;/p&gt;
+&lt;p&gt;다만 이걸 어떻게 불러야 하는 지를 몰라 관련 정보를 찾는 것이 쉽지 않았는데 처음 hugo를 설치하려고 여기저기 정보를 찾던 때 봤던 내용이 우연히 기억이 나서 그걸 적용해 보니 짜잔 하고 이렇게 내가 원하던 기능을 사용할 수 있게 되었다.&lt;/p&gt;</description></item><item><title>Migrate Ghost to Hugo</title><link>https://cychong47.github.io/post/2020/2020-06-07-migrate-ghost-to-hugo/</link><pubDate>Sun, 07 Jun 2020 22:14:02 +0900</pubDate><guid>https://cychong47.github.io/post/2020/2020-06-07-migrate-ghost-to-hugo/</guid><description>&lt;p&gt;Wordpress 블로그를 hugo로 바꾼 김에 ghost 블로그도 hugo로 이사하기로 결심했다.&lt;br&gt;
+&lt;a href="http://ghost.org"&gt;Ghost&lt;/a&gt; 정말 애증이 담긴&amp;hellip;&lt;/p&gt;
+&lt;p&gt;Ghost가 1.0이 되기 전에 markdown 기반의 블로그 툴을 찾는 과정
+에서 발견해서 0.9 버전인가 부터 사용해 왔다. &lt;code&gt;Ghost&lt;/code&gt;가 node 기반이라 생전 처음 듣는 node를 OS X에 설치해보고, docker for OS X이 나와서 &lt;a href="https://cychong47.github.io/2017/04/move-to-docker/"&gt;docker&lt;/a&gt;로 실행해 오다, &lt;a href="https://cychong47.github.io/2017/09/ghost-container-with-docker-compose/"&gt;docker-compose&lt;/a&gt; 도 써 보고, &lt;a href="https://cychong47.github.io/2017/12/recreate-ghost-container/"&gt;Ansible&lt;/a&gt; 로 deploy도 해보고.
+그러다 2019년에는 kubernetes hands-on을 해 볼 겸해서 리눅스에서 microk8s를 설치해서 ghost도 &lt;a href="https://cychong47.github.io/2019/05/setup-ghost-in-microk8s-2/"&gt;k8s&lt;/a&gt;로 실행해 봈다. 그리고 k8s에서 기본처럼 사용되는 SW 배포/관리 툴인 helm도 hands-on을 해 보고 싶어서 &lt;a href="https://cychong47.github.io/2019/09/ghost-season-5-helm/"&gt;helm chart로 ghost도 배포&lt;/a&gt;해 보고. 횟수로 치면 대략 2016년 정보 부터 같은데 그간 &lt;code&gt;Ghost&lt;/code&gt;는 1.0을 거쳐 2.0 그리고 지금은 3.0까지 업데이트가 된 상태이다.&lt;/p&gt;</description></item><item><title>Migrate wordpress to hugo</title><link>https://cychong47.github.io/post/2020/hugo-seutp-with-git/</link><pubDate>Sun, 31 May 2020 14:56:52 +0900</pubDate><guid>https://cychong47.github.io/post/2020/hugo-seutp-with-git/</guid><description>&lt;p&gt;Wordpress 에서 hugo로 이사한 후 첫번째 시도.
+Hugo theme은 harbor를 사용하고, site 호스팅 방법은 nginx docker를 사용.
+(이상하게 nginx를 helm으로 띄우는 게 간단하지 않네)&lt;/p&gt;
+&lt;h3 id="clone-repogistry-for-raw-blog-data"&gt;Clone repogistry for raw blog data&lt;/h3&gt;
+&lt;pre tabindex="0"&gt;&lt;code&gt;cychong15:migration_to_hugo cychong$ git clone https://github.com/cychong47/sosa0sa.git
+Cloning into &amp;#39;sosa0sa&amp;#39;...
+warning: You appear to have cloned an empty repository.
+&lt;/code&gt;&lt;/pre&gt;&lt;h3 id="setup-hugo-inside-of-the-git-repository"&gt;Setup hugo inside of the git repository&lt;/h3&gt;
+&lt;pre tabindex="0"&gt;&lt;code&gt;cychong15:migration_to_hugo cychong$ hugo new site sosa0sa
+Error: /Users/cychong/workspace/migration_to_hugo/sosa0sa already exists and is not empty. See --force.
+
+cychong15:migration_to_hugo cychong$ hugo new site sosa0sa --force
+Congratulations! Your new Hugo site is created in /Users/cychong/workspace/migration_to_hugo/sosa0sa.
+
+Just a few more steps and you&amp;#39;re ready to go:
+
+1. Download a theme into the same-named folder.
+ Choose a theme from https://themes.gohugo.io/ or
+ create your own with the &amp;#34;hugo new theme &amp;lt;THEMENAME&amp;gt;&amp;#34; command.
+2. Perhaps you want to add some content. You can add single files
+ with &amp;#34;hugo new &amp;lt;SECTIONNAME&amp;gt;/&amp;lt;FILENAME&amp;gt;.&amp;lt;FORMAT&amp;gt;&amp;#34;.
+3. Start the built-in live server via &amp;#34;hugo server&amp;#34;.
+
+Visit https://gohugo.io/ for quickstart guide and full documentation.
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Maybe not good to &lt;strong&gt;enforce&lt;/strong&gt; to do something.&lt;/p&gt;</description></item><item><title>Upgrade kubernetes to 1.16.1</title><link>https://cychong47.github.io/post/2019/upgrade-kubernetes/</link><pubDate>Mon, 07 Oct 2019 15:37:14 +0900</pubDate><guid>https://cychong47.github.io/post/2019/upgrade-kubernetes/</guid><description>&lt;pre tabindex="0"&gt;&lt;code&gt;cychong@mini1:~/work/ghost-with-helm-x$ sudo apt update
+[sudo] password for cychong:
+Ign:2 http://dl.google.com/linux/chrome/deb stable InRelease
+Hit:3 http://archive.ubuntu.com/ubuntu bionic InRelease
+Hit:4 https://download.docker.com/linux/ubuntu bionic InRelease
+Hit:5 http://dl.google.com/linux/chrome/deb stable Release
+Get:6 http://archive.ubuntu.com/ubuntu bionic-updates InRelease [88.7 kB]
+Hit:1 https://packages.cloud.google.com/apt kubernetes-xenial InRelease
+Get:8 http://archive.ubuntu.com/ubuntu bionic-backports InRelease [74.6 kB]
+Get:9 http://archive.ubuntu.com/ubuntu bionic-security InRelease [88.7 kB]
+Get:10 http://archive.ubuntu.com/ubuntu bionic-updates/main amd64 DEP-11 Metadata [295 kB]
+Get:11 http://archive.ubuntu.com/ubuntu bionic-updates/main DEP-11 48x48 Icons [73.8 kB]
+Get:12 http://archive.ubuntu.com/ubuntu bionic-updates/main DEP-11 64x64 Icons [147 kB]
+Get:13 http://archive.ubuntu.com/ubuntu bionic-updates/universe amd64 DEP-11 Metadata [254 kB]
+Get:14 http://archive.ubuntu.com/ubuntu bionic-updates/universe DEP-11 48x48 Icons [197 kB]
+Get:15 http://archive.ubuntu.com/ubuntu bionic-updates/universe DEP-11 64x64 Icons [453 kB]
+Get:16 http://archive.ubuntu.com/ubuntu bionic-updates/multiverse amd64 DEP-11 Metadata [2468 B]
+Get:17 http://archive.ubuntu.com/ubuntu bionic-backports/universe amd64 DEP-11 Metadata [7916 B]
+Get:18 http://archive.ubuntu.com/ubuntu bionic-security/main amd64 Packages [526 kB]
+Get:19 http://archive.ubuntu.com/ubuntu bionic-security/main Translation-en [176 kB]
+Get:20 http://archive.ubuntu.com/ubuntu bionic-security/main amd64 DEP-11 Metadata [38.5 kB]
+Get:21 http://archive.ubuntu.com/ubuntu bionic-security/main DEP-11 48x48 Icons [17.6 kB]
+Get:22 http://archive.ubuntu.com/ubuntu bionic-security/main DEP-11 64x64 Icons [41.5 kB]
+Get:23 http://archive.ubuntu.com/ubuntu bionic-security/universe amd64 Packages [611 kB]
+Get:24 http://archive.ubuntu.com/ubuntu bionic-security/universe Translation-en [203 kB]
+Get:25 http://archive.ubuntu.com/ubuntu bionic-security/universe amd64 DEP-11 Metadata [42.2 kB]
+Get:26 http://archive.ubuntu.com/ubuntu bionic-security/universe DEP-11 48x48 Icons [16.4 kB]
+Get:27 http://archive.ubuntu.com/ubuntu bionic-security/universe DEP-11 64x64 Icons [111 kB]
+Get:28 http://archive.ubuntu.com/ubuntu bionic-security/multiverse amd64 DEP-11 Metadata [2464 B]
+Fetched 3467 kB in 27s (128 kB/s)
+Reading package lists... Done
+Building dependency tree
+Reading state information... Done
+41 packages can be upgraded. Run &amp;#39;apt list --upgradable&amp;#39; to see them.
+
+cychong@mini1:~/work/ghost-with-helm-x$ sudo apt-cache policy kubeadm
+kubeadm:
+ Installed: 1.15.3-00
+ Candidate: 1.16.1-00
+&lt;/code&gt;&lt;/pre&gt;&lt;pre tabindex="0"&gt;&lt;code&gt;cychong@mini1:~/work/ghost-with-helm-x$ sudo apt-get install -y kubeadm=1.16.1-00 &amp;amp;&amp;amp; sudo apt-mark hold kubeadm
+Reading package lists... Done
+Building dependency tree
+Reading state information... Done
+The following package was automatically installed and is no longer required:
+ libllvm7
+Use &amp;#39;sudo apt autoremove&amp;#39; to remove it.
+The following packages will be upgraded:
+ kubeadm
+1 upgraded, 0 newly installed, 0 to remove and 40 not upgraded.
+Need to get 8764 kB of archives.
+After this operation, 4062 kB of additional disk space will be used.
+Get:1 https://packages.cloud.google.com/apt kubernetes-xenial/main amd64 kubeadm amd64 1.16.1-00 [8764 kB]
+Fetched 8764 kB in 6s (1489 kB/s)
+(Reading database ... 237550 files and directories currently installed.)
+Preparing to unpack .../kubeadm_1.16.1-00_amd64.deb ...
+Unpacking kubeadm (1.16.1-00) over (1.15.3-00) ...
+Setting up kubeadm (1.16.1-00) ...
+kubeadm set on hold.
+
+cychong@mini1:~/work/ghost-with-helm-x$ kubeadm version
+kubeadm version: &amp;amp;version.Info{Major:&amp;#34;1&amp;#34;, Minor:&amp;#34;16&amp;#34;, GitVersion:&amp;#34;v1.16.1&amp;#34;, GitCommit:&amp;#34;d647ddbd755faf07169599a625faf302ffc34458&amp;#34;, GitTreeState:&amp;#34;clean&amp;#34;, BuildDate:&amp;#34;2019-10-02T16:58:27Z&amp;#34;, GoVersion:&amp;#34;go1.12.10&amp;#34;, Compiler:&amp;#34;gc&amp;#34;, Platform:&amp;#34;linux/amd64&amp;#34;}
+
+cychong@mini1:~/work/ghost-with-helm-x$ sudo kubeadm upgrade plan
+[upgrade/config] Making sure the configuration is correct:
+[upgrade/config] Reading configuration from the cluster...
+[upgrade/config] FYI: You can look at this config file with &amp;#39;kubectl -n kube-system get cm kubeadm-config -oyaml&amp;#39;
+[preflight] Running pre-flight checks.
+[upgrade] Making sure the cluster is healthy:
+[upgrade] Fetching available versions to upgrade to
+[upgrade/versions] Cluster version: v1.15.3
+[upgrade/versions] kubeadm version: v1.16.1
+[upgrade/versions] Latest stable version: v1.16.1
+[upgrade/versions] Latest version in the v1.15 series: v1.15.4
+
+Components that must be upgraded manually after you have upgraded the control plane with &amp;#39;kubeadm upgrade apply&amp;#39;:
+COMPONENT CURRENT AVAILABLE
+Kubelet 1 x v1.15.3 v1.15.4
+
+Upgrade to the latest version in the v1.15 series:
+
+COMPONENT CURRENT AVAILABLE
+API Server v1.15.3 v1.15.4
+Controller Manager v1.15.3 v1.15.4
+Scheduler v1.15.3 v1.15.4
+Kube Proxy v1.15.3 v1.15.4
+CoreDNS 1.3.1 1.6.2
+Etcd 3.3.10 3.3.10
+
+You can now apply the upgrade by executing the following command:
+
+	kubeadm upgrade apply v1.15.4
+
+_____________________________________________________________________
+
+Components that must be upgraded manually after you have upgraded the control plane with &amp;#39;kubeadm upgrade apply&amp;#39;:
+COMPONENT CURRENT AVAILABLE
+Kubelet 1 x v1.15.3 v1.16.1
+
+Upgrade to the latest stable version:
+
+COMPONENT CURRENT AVAILABLE
+API Server v1.15.3 v1.16.1
+Controller Manager v1.15.3 v1.16.1
+Scheduler v1.15.3 v1.16.1
+Kube Proxy v1.15.3 v1.16.1
+CoreDNS 1.3.1 1.6.2
+Etcd 3.3.10 3.3.15-0
+
+You can now apply the upgrade by executing the following command:
+
+	kubeadm upgrade apply v1.16.1
+
+_____________________________________________________________________
+&lt;/code&gt;&lt;/pre&gt;&lt;h3 id="failed"&gt;failed&lt;/h3&gt;
+&lt;pre tabindex="0"&gt;&lt;code&gt;cychong@mini1:~/work/ghost-with-helm-x$ sudo kubeadm upgrade apply v1.16.1
+[upgrade/config] Making sure the configuration is correct:
+[upgrade/config] Reading configuration from the cluster...
+[upgrade/config] FYI: You can look at this config file with &amp;#39;kubectl -n kube-system get cm kubeadm-config -oyaml&amp;#39;
+[preflight] Running pre-flight checks.
+[upgrade] Making sure the cluster is healthy:
+[upgrade/version] You have chosen to change the cluster version to &amp;#34;v1.16.1&amp;#34;
+[upgrade/versions] Cluster version: v1.15.3
+[upgrade/versions] kubeadm version: v1.16.1
+[upgrade/confirm] Are you sure you want to proceed with the upgrade? [y/N]: y
+[upgrade/prepull] Will prepull images for components [kube-apiserver kube-controller-manager kube-scheduler etcd]
+[upgrade/prepull] Prepulling image for component etcd.
+[upgrade/prepull] Prepulling image for component kube-controller-manager.
+[upgrade/prepull] Prepulling image for component kube-apiserver.
+[upgrade/prepull] Prepulling image for component kube-scheduler.
+[apiclient] Found 0 Pods for label selector k8s-app=upgrade-prepull-kube-scheduler
+[apiclient] Found 0 Pods for label selector k8s-app=upgrade-prepull-kube-apiserver
+[apiclient] Found 0 Pods for label selector k8s-app=upgrade-prepull-kube-controller-manager
+[apiclient] Found 0 Pods for label selector k8s-app=upgrade-prepull-etcd
+[apiclient] Found 1 Pods for label selector k8s-app=upgrade-prepull-kube-scheduler
+[apiclient] Found 1 Pods for label selector k8s-app=upgrade-prepull-etcd
+[apiclient] Found 1 Pods for label selector k8s-app=upgrade-prepull-kube-controller-manager
+[apiclient] Found 1 Pods for label selector k8s-app=upgrade-prepull-kube-apiserver
+
+
+[upgrade/prepull] Failed prepulled the images for the control plane components error: the prepull operation timed out
+To see the stack trace of this error execute with --v=5 or higher
+&lt;/code&gt;&lt;/pre&gt;&lt;h3 id="retry"&gt;retry&lt;/h3&gt;
+&lt;pre tabindex="0"&gt;&lt;code&gt;cychong@mini1:~$ sudo kubeadm upgrade apply v1.16.1
+[sudo] password for cychong:
+[upgrade/config] Making sure the configuration is correct:
+[upgrade/config] Reading configuration from the cluster...
+[upgrade/config] FYI: You can look at this config file with &amp;#39;kubectl -n kube-system get cm kubeadm-config -oyaml&amp;#39;
+[preflight] Running pre-flight checks.
+[upgrade] Making sure the cluster is healthy:
+[upgrade/version] You have chosen to change the cluster version to &amp;#34;v1.16.1&amp;#34;
+[upgrade/versions] Cluster version: v1.15.3
+[upgrade/versions] kubeadm version: v1.16.1
+[upgrade/confirm] Are you sure you want to proceed with the upgrade? [y/N]: y
+[upgrade/prepull] Will prepull images for components [kube-apiserver kube-controller-manager kube-scheduler etcd]
+[upgrade/prepull] Prepulling image for component etcd.
+[upgrade/prepull] Prepulling image for component kube-controller-manager.
+[upgrade/prepull] Prepulling image for component kube-scheduler.
+[upgrade/prepull] Prepulling image for component kube-apiserver.
+[apiclient] Found 1 Pods for label selector k8s-app=upgrade-prepull-kube-apiserver
+[apiclient] Found 1 Pods for label selector k8s-app=upgrade-prepull-etcd
+[apiclient] Found 1 Pods for label selector k8s-app=upgrade-prepull-kube-controller-manager
+[apiclient] Found 1 Pods for label selector k8s-app=upgrade-prepull-kube-scheduler
+[upgrade/prepull] Prepulled image for component kube-apiserver.
+[upgrade/prepull] Prepulled image for component etcd.
+[upgrade/prepull] Prepulled image for component kube-controller-manager.
+[upgrade/prepull] Prepulled image for component kube-scheduler.
+[upgrade/prepull] Successfully prepulled the images for all the control plane components
+[upgrade/apply] Upgrading your Static Pod-hosted control plane to version &amp;#34;v1.16.1&amp;#34;...
+Static pod: kube-apiserver-mini1 hash: 868871559cc75dab75f106d4af342538
+Static pod: kube-controller-manager-mini1 hash: 44f6b9cce90e81a472520a3fb9751d10
+Static pod: kube-scheduler-mini1 hash: 7d5d3c0a6786e517a8973fa06754cb75
+[upgrade/etcd] Upgrading to TLS for etcd
+Static pod: etcd-mini1 hash: 71542aaa2829652ef14b22098a4b46aa
+[upgrade/staticpods] Preparing for &amp;#34;etcd&amp;#34; upgrade
+[upgrade/staticpods] Renewing etcd-server certificate
+[upgrade/staticpods] Renewing etcd-peer certificate
+[upgrade/staticpods] Renewing etcd-healthcheck-client certificate
+[upgrade/staticpods] Moved new manifest to &amp;#34;/etc/kubernetes/manifests/etcd.yaml&amp;#34; and backed up old manifest to &amp;#34;/etc/kubernetes/tmp/kubeadm-backup-manifests-2019-10-07-23-43-23/etcd.yaml&amp;#34;
+[upgrade/staticpods] Waiting for the kubelet to restart the component
+[upgrade/staticpods] This might take a minute or longer depending on the component/version gap (timeout 5m0s)
+Static pod: etcd-mini1 hash: 71542aaa2829652ef14b22098a4b46aa
+Static pod: etcd-mini1 hash: 71542aaa2829652ef14b22098a4b46aa
+Static pod: etcd-mini1 hash: 71542aaa2829652ef14b22098a4b46aa
+Static pod: etcd-mini1 hash: 71542aaa2829652ef14b22098a4b46aa
+Static pod: etcd-mini1 hash: 71542aaa2829652ef14b22098a4b46aa
+Static pod: etcd-mini1 hash: 71542aaa2829652ef14b22098a4b46aa
+Static pod: etcd-mini1 hash: 71542aaa2829652ef14b22098a4b46aa
+Static pod: etcd-mini1 hash: 71542aaa2829652ef14b22098a4b46aa
+Static pod: etcd-mini1 hash: d96090bab45a5dababb3c3015960926b
+[apiclient] Found 1 Pods for label selector component=etcd
+[upgrade/staticpods] Component &amp;#34;etcd&amp;#34; upgraded successfully!
+[upgrade/etcd] Waiting for etcd to become available
+[upgrade/staticpods] Writing new Static Pod manifests to &amp;#34;/etc/kubernetes/tmp/kubeadm-upgraded-manifests306281752&amp;#34;
+[upgrade/staticpods] Preparing for &amp;#34;kube-apiserver&amp;#34; upgrade
+[upgrade/staticpods] Renewing apiserver certificate
+[upgrade/staticpods] Renewing apiserver-kubelet-client certificate
+[upgrade/staticpods] Renewing front-proxy-client certificate
+[upgrade/staticpods] Renewing apiserver-etcd-client certificate
+[upgrade/staticpods] Moved new manifest to &amp;#34;/etc/kubernetes/manifests/kube-apiserver.yaml&amp;#34; and backed up old manifest to &amp;#34;/etc/kubernetes/tmp/kubeadm-backup-manifests-2019-10-07-23-43-23/kube-apiserver.yaml&amp;#34;
+[upgrade/staticpods] Waiting for the kubelet to restart the component
+[upgrade/staticpods] This might take a minute or longer depending on the component/version gap (timeout 5m0s)
+Static pod: kube-apiserver-mini1 hash: 868871559cc75dab75f106d4af342538
+Static pod: kube-apiserver-mini1 hash: 01800dd11dfbda441372caf7cbf8aa39
+[apiclient] Found 1 Pods for label selector component=kube-apiserver
+[upgrade/staticpods] Component &amp;#34;kube-apiserver&amp;#34; upgraded successfully!
+[upgrade/staticpods] Preparing for &amp;#34;kube-controller-manager&amp;#34; upgrade
+[upgrade/staticpods] Renewing controller-manager.conf certificate
+[upgrade/staticpods] Moved new manifest to &amp;#34;/etc/kubernetes/manifests/kube-controller-manager.yaml&amp;#34; and backed up old manifest to &amp;#34;/etc/kubernetes/tmp/kubeadm-backup-manifests-2019-10-07-23-43-23/kube-controller-manager.yaml&amp;#34;
+[upgrade/staticpods] Waiting for the kubelet to restart the component
+[upgrade/staticpods] This might take a minute or longer depending on the component/version gap (timeout 5m0s)
+Static pod: kube-controller-manager-mini1 hash: 44f6b9cce90e81a472520a3fb9751d10
+Static pod: kube-controller-manager-mini1 hash: e12d193633dcf11f6095d89ee58c45a9
+[apiclient] Found 1 Pods for label selector component=kube-controller-manager
+[upgrade/staticpods] Component &amp;#34;kube-controller-manager&amp;#34; upgraded successfully!
+[upgrade/staticpods] Preparing for &amp;#34;kube-scheduler&amp;#34; upgrade
+[upgrade/staticpods] Renewing scheduler.conf certificate
+[upgrade/staticpods] Moved new manifest to &amp;#34;/etc/kubernetes/manifests/kube-scheduler.yaml&amp;#34; and backed up old manifest to &amp;#34;/etc/kubernetes/tmp/kubeadm-backup-manifests-2019-10-07-23-43-23/kube-scheduler.yaml&amp;#34;
+[upgrade/staticpods] Waiting for the kubelet to restart the component
+[upgrade/staticpods] This might take a minute or longer depending on the component/version gap (timeout 5m0s)
+Static pod: kube-scheduler-mini1 hash: 7d5d3c0a6786e517a8973fa06754cb75
+Static pod: kube-scheduler-mini1 hash: bf9014e67294b0df0bc373fd7024ced7
+[apiclient] Found 1 Pods for label selector component=kube-scheduler
+[upgrade/staticpods] Component &amp;#34;kube-scheduler&amp;#34; upgraded successfully!
+[upload-config] Storing the configuration used in ConfigMap &amp;#34;kubeadm-config&amp;#34; in the &amp;#34;kube-system&amp;#34; Namespace
+[kubelet] Creating a ConfigMap &amp;#34;kubelet-config-1.16&amp;#34; in namespace kube-system with the configuration for the kubelets in the cluster
+[kubelet-start] Downloading configuration for the kubelet from the &amp;#34;kubelet-config-1.16&amp;#34; ConfigMap in the kube-system namespace
+[kubelet-start] Writing kubelet configuration to file &amp;#34;/var/lib/kubelet/config.yaml&amp;#34;
+[bootstrap-token] configured RBAC rules to allow Node Bootstrap tokens to post CSRs in order for nodes to get long term certificate credentials
+[bootstrap-token] configured RBAC rules to allow the csrapprover controller automatically approve CSRs from a Node Bootstrap Token
+[bootstrap-token] configured RBAC rules to allow certificate rotation for all node client certificates in the cluster
+[addons] Applied essential addon: CoreDNS
+[addons] Applied essential addon: kube-proxy
+
+[upgrade/successful] SUCCESS! Your cluster was upgraded to &amp;#34;v1.16.1&amp;#34;. Enjoy!
+
+[upgrade/kubelet] Now that your control plane is upgraded, please proceed with upgrading your kubelets if you haven&amp;#39;t already done so.
+&lt;/code&gt;&lt;/pre&gt;&lt;h3 id="upgrade-calico-from-v38-to-v39"&gt;Upgrade calico from v3.8 to v3.9&lt;/h3&gt;
+&lt;pre tabindex="0"&gt;&lt;code&gt;kubectl apply -f https://docs.projectcalico.org/v3.9/manifests/calico.yaml
+configmap/calico-config unchanged
+customresourcedefinition.apiextensions.k8s.io/felixconfigurations.crd.projectcalico.org unchanged
+customresourcedefinition.apiextensions.k8s.io/ipamblocks.crd.projectcalico.org unchanged
+customresourcedefinition.apiextensions.k8s.io/blockaffinities.crd.projectcalico.org unchanged
+customresourcedefinition.apiextensions.k8s.io/ipamhandles.crd.projectcalico.org unchanged
+customresourcedefinition.apiextensions.k8s.io/ipamconfigs.crd.projectcalico.org unchanged
+customresourcedefinition.apiextensions.k8s.io/bgppeers.crd.projectcalico.org unchanged
+customresourcedefinition.apiextensions.k8s.io/bgpconfigurations.crd.projectcalico.org unchanged
+customresourcedefinition.apiextensions.k8s.io/ippools.crd.projectcalico.org unchanged
+customresourcedefinition.apiextensions.k8s.io/hostendpoints.crd.projectcalico.org unchanged
+customresourcedefinition.apiextensions.k8s.io/clusterinformations.crd.projectcalico.org unchanged
+customresourcedefinition.apiextensions.k8s.io/globalnetworkpolicies.crd.projectcalico.org unchanged
+customresourcedefinition.apiextensions.k8s.io/globalnetworksets.crd.projectcalico.org unchanged
+customresourcedefinition.apiextensions.k8s.io/networkpolicies.crd.projectcalico.org unchanged
+customresourcedefinition.apiextensions.k8s.io/networksets.crd.projectcalico.org unchanged
+clusterrole.rbac.authorization.k8s.io/calico-kube-controllers unchanged
+clusterrolebinding.rbac.authorization.k8s.io/calico-kube-controllers unchanged
+clusterrole.rbac.authorization.k8s.io/calico-node configured
+clusterrolebinding.rbac.authorization.k8s.io/calico-node unchanged
+daemonset.apps/calico-node configured
+serviceaccount/calico-node unchanged
+deployment.apps/calico-kube-controllers configured
+serviceaccount/calico-kube-controllers unchanged
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;앗. 서브넷 변경하는 걸 깜빡&lt;/p&gt;</description></item><item><title>Setup kubernetes in a single host</title><link>https://cychong47.github.io/post/2019/setup-kubernetes-with-a-single-host/</link><pubDate>Mon, 23 Sep 2019 15:03:13 +0900</pubDate><guid>https://cychong47.github.io/post/2019/setup-kubernetes-with-a-single-host/</guid><description>&lt;p&gt;Replace microk8s with kubernetes in mini1&lt;/p&gt;
+&lt;h1 id="remove-microk8s-with-snap-command"&gt;remove micro.k8s with snap command&lt;/h1&gt;
+&lt;pre tabindex="0"&gt;&lt;code&gt;cychong@mini1:~$ sudo snap remove microk8s
+Save data of snap &amp;#34;microk8s&amp;#34; in automatic snapshot set 
+microk8s removed
+cychong@mini1:~$
+&lt;/code&gt;&lt;/pre&gt;&lt;h1 id="setup-kubernetes"&gt;setup kubernetes&lt;/h1&gt;
+&lt;p&gt;Reference : &lt;a href="https://phoenixnap.com/kb/install-kubernetes-on-ubuntu"&gt;https://phoenixnap.com/kb/install-kubernetes-on-ubuntu&lt;/a&gt;&lt;/p&gt;
+&lt;pre tabindex="0"&gt;&lt;code&gt;cychong@mini1:~$ sudo kubeadm init --pod-network-cidr=10.244.0.0/16
+[init] Using Kubernetes version: v1.15.3
+&lt;/code&gt;&lt;/pre&gt;&lt;pre tabindex="0"&gt;&lt;code&gt;cychong@mini1:~$ kubectl get pods --all-namespaces -o wide
+NAMESPACE NAME READY STATUS RESTARTS AGE IP NODE NOMINATED NODE READINESS GATES
+kube-system coredns-5c98db65d4-r468f 0/1 Pending 0 2m3s &amp;lt;none&amp;gt; &amp;lt;none&amp;gt; &amp;lt;none&amp;gt; &amp;lt;none&amp;gt;
+kube-system coredns-5c98db65d4-wcm2n 0/1 Pending 0 2m3s &amp;lt;none&amp;gt; &amp;lt;none&amp;gt; &amp;lt;none&amp;gt; &amp;lt;none&amp;gt;
+kube-system etcd-mini1 1/1 Running 0 79s 192.168.1.100 mini1 &amp;lt;none&amp;gt; &amp;lt;none&amp;gt;
+kube-system kube-apiserver-mini1 1/1 Running 0 76s 192.168.1.100 mini1 &amp;lt;none&amp;gt; &amp;lt;none&amp;gt;
+kube-system kube-controller-manager-mini1 1/1 Running 0 72s 192.168.1.100 mini1 &amp;lt;none&amp;gt; &amp;lt;none&amp;gt;
+kube-system kube-proxy-rzpkc 1/1 Running 0 2m4s 192.168.1.100 mini1 &amp;lt;none&amp;gt; &amp;lt;none&amp;gt;
+kube-system kube-scheduler-mini1 1/1 Running 0 82s 192.168.1.100 mini1 &amp;lt;none&amp;gt; &amp;lt;none&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;h2 id="install-calico"&gt;Install Calico&lt;/h2&gt;
+&lt;pre tabindex="0"&gt;&lt;code&gt;cychong@mini1:~$ wget https://docs.projectcalico.org/v3.8/manifests/calico.yaml
+--2019-09-08 21:53:13-- https://docs.projectcalico.org/v3.8/manifests/calico.yaml
+Resolving docs.projectcalico.org (docs.projectcalico.org)... 178.128.115.5, 2400:6180:0:d1::575:a001
+Connecting to docs.projectcalico.org (docs.projectcalico.org)|178.128.115.5|:443... connected.
+HTTP request sent, awaiting response... 200 OK
+Length: 20628 (20K) [application/x-yaml]
+Saving to: ‘calico.yaml’
+
+calico.yaml 100%[====================================================================================&amp;gt;] 20.14K --.-KB/s in 0.08s
+
+2019-09-08 21:53:14 (240 KB/s) - ‘calico.yaml’ saved [20628/20628]
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Change &lt;code&gt;CALICO_IPV4POOL_CIDR&lt;/code&gt;&lt;/p&gt;</description></item></channel></rss>

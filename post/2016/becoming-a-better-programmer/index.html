@@ -1,311 +1,385 @@
-<!doctype html><html class=no-js lang=en><head><meta charset=UTF-8><meta name=viewport content="width=device-width,initial-scale=1"><meta http-equiv=X-UA-Compatible content="IE=edge"><title>(책) Becoming a better Programmer - Keep calm and write something</title>
-<script>(function(e,t){e[t]=e[t].replace("no-js","js")})(document.documentElement,"className")</script><meta name=description content><link rel=dns-prefetch href=//fonts.googleapis.com><link rel=dns-prefetch href=//fonts.gstatic.com><link rel=stylesheet href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700"><link rel=stylesheet href=/css/style.css><link rel=stylesheet href=/css/custom.css><link rel="shortcut icon" href=/favicon.ico></head><body class=body><div class="container container--outer"><header class=header><div class="container header__container"><div class=logo><a class=logo__link href=/ title="Keep calm and write something" rel=home><div class="logo__item logo__text"><div class=logo__title>Keep calm and write something</div><div class=logo__tagline>Just another blog</div></div></a></div><nav class=menu><button class=menu__btn aria-haspopup=true aria-expanded=false tabindex=0>
-<span class=menu__btn-title tabindex=-1>Menu</span></button><ul class=menu__list><li class=menu__item><a class=menu__link href=/page><span class=menu__text>Page</span></a></li><li class=menu__item><a class=menu__link href=/post><span class=menu__text>Post</span></a></li><li class=menu__item><a class=menu__link href=/series><span class=menu__text>Series</span></a></li></ul></nav></div></header><div class="wrapper flex"><div class=primary><main class=main role=main><article class=post><header class=post__header><h1 class=post__title>(책) Becoming a better Programmer</h1><div class="post__meta meta"><div class="meta__item-datetime meta__item"><svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class=meta__text datetime=2016-03-14T14:50:15+09:00>March 14, 2016</time>
-<time class=meta__text datetime=2018-07-28T11:22:08Z>(Last Modified: July 28, 2018)</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2 1 2h8v11H0V2z"/></svg><span class=meta__text><a class=meta__link href=/categories/book/ rel=category>Book</a></span></div></div></header><div class="post__toc toc"><div class=toc__title>Page content</div><div class=toc__menu><nav id=TableOfContents></nav></div></div><div class="content post__content clearfix"><ol><li>코드에 신경쓰기<ul><li>어떤 코드든 간에 수정한 후에는 이전 보다 나아져야 한다</li><li>기능이 추가된 것은 &lsquo;나아진&rsquo; 것이 아니다. 기능이 추가되고, 코드 수가 늘어나도 여전히 좋은 구조를 유지하는 것이 &lsquo;나아진&rsquo; 것이다.</li></ul></li><li>정돈된 코드 유지하기<ul><li>좋은 코드는 명백하며 일관성이 있다. 보기 좋은 코드는 의도를 드러낸다(예술)</li><li>코드를 읽을 사람은 지금 당장의 나 외에 몇 달 후의 나, 다른 동료 그리고 미래의 유지 보수 프로그래머다. 그들이 혼란을 덜 겪도록 코드를 작성해야 한다.</li><li>실은 다른 사람을 위해 코딩한다는 것을 인정해야 하고, 잊으면 안된다.</li><li>코딩 스타일 가이드를 정리한다. 코딩 스타일의 목적은 일관성이다.</li><li>불필요하게 반복되는 단어를 피한다. DataObject(?)</li><li>간결함보다 중요한 것은 명확함이다.</li><li>코드를 &lsquo;정리정돈&rsquo;해야 할 경우에는 기능 변경과 모양 변경을 동시에 진행하지 말라</li><li>프로젝트의 공통 관습이 존재한다면 따른다.</li></ul></li><li>코드 작게 쓰기<ul><li>소프트웨어를 개선하는 최고의 방법 가운데 하나는 바로 코드를 제거하는 것이다.</li><li>매일 같이 코드를 더 좋게 만들라. 중복 코드는 발견 즉시 제거한다.</li><li>더 많은 양의 코드가 더 좋은 SW를 의미하지는 않는다. 필요하지 않다면 코딩하지 말라. 적게 쓰고 그 대신 더 재미난 것을 찾으라.</li></ul></li><li>코드 줄여 개선하기<ul><li>C의 전처리기는 사용되지 않는 코드를 만들어 내는 역효과를 낼 수 있다.</li><li>함수의 return 값이 사용되지 않으면 void로 변경한다.</li><li>가능하면 죽은 코드를 제거한다.</li><li>죽은 코드를 발견했음에도 아무런 조치를 취하지 않는 것이야말로 실패의 징조다.</li></ul></li><li>코드베이스의 망령<ul><li>프로그래머로서 자질은 작성한 코드가 아닐 그것을 대하는 태도와 작성하는 방식에 의해 결정된다.</li><li>예전에 작성한 코드가 최신 라이브러리에 의해 대체할 수 있을 경우도 있다.</li><li>기존의 코드를 돌아보는 것은 자신을 위한 코드 리뷰이자, 가치있는 행동이다.</li></ul></li><li>경로 탐색하기<ul><li>코드를 작성하는 것이 읽는 것보다 쉽다.(하지만 숨겨진 의도를 파악하지 못하고 새로 작성하면 새로운 문제를 일으킨다. 실은 예전에 발생했던 문제를 부활시키는…)</li><li>코드 분석을 통해 알아낸 것이 있으면 프로젝트의 최상위 위치에 README파일을 만든다. 의도, 주의사항, 의존성, 빌드 방법 등</li></ul></li><li>똥통에서 뒹굴기<ul><li>goto 문이 남발되면 알고리즘 구조를 읽기 어렵다.</li><li>외부에 노출하는 API는 깔끔하고 합리적인가?</li><li>자료형을 잘 고르고, 변수 명이 적절한가?</li><li>코드의 레이아웃을 정돈하여 일관성 있게 작성했는가?<ul><li>코드의 외관이 코드의 근본적인 품질을 보장하지는 않지만, 일관성 없고 지저분한 코드가 대개 구조도 부적절하고, 다루기 어려웠다(저자의 경험상)</li></ul></li><li>특정 기능을 구현하는 코드 부분이 어디에 있는 지 쉽게 찾을 수 있는가?</li><li>보이스카웃 규칙을 따른다. 어떤 코드를 건드리건 이전보다 나아지도록 한다.</li><li>거대한 함수는 더 작으면서도 적절히 명명된 작은 함수들로 나눈다.<ul><li>성능 최적화 측면에서 함수 호출이 갖는 penalty는 어떻게 할 것인지?</li></ul></li><li>주기적으로 코드 일부라도 확인하고 그때마다 조금씩 나아지게 만든다.</li><li>수정으로 인해 기존 기능에 문제가 생기지 않음을 보장할 수 있는 모든 수단을 사용한다.</li><li>똥떵어리 수정을 별 의미없는 작업이라 치부하기보다는 더 나은 품질을 실현할 기회로 삼으라</li><li>수정하면서 자신의 태도도 확인하라. 어쩌면 당신은 원 저자보다 자신이 더 잘 알고 있다고 생각할 수도 있다. 과연 언제나 그럴까?</li></ul></li><li>오류 무시하지 않기<ul><li>반환 코드는 주로 정수 값으로 0은 성공, 그 외의 수는 오류를 의미</li></ul></li><li>예상하지 못한 것을 예상하기<ul><li>에러 코드는 절대로 무시하지 말라</li></ul></li><li>버그 사냥하기<ul><li>버그를 피할 수 있는 가장 좋은 충고는 믿기 힘들 정도로 &lsquo;영리한(종종 복잡한 것과 동일시 되는)&rsquo; 코드를 만들리 말라는 것이다.</li><li>Martin Fowler, 미련한 프로그래머는 컴퓨터가 이해할 수 있는 코드를 만들고, 좋은 프로그래머는 사람이 이해할 수 있는 코드를 만든다.</li><li>단위 테스트에 시간을 투자</li><li>특정 코드가 test coverage에 포함되지 않으면 제대로 작동한다고 신뢰할 수 없다.</li><li>문제를 다른 사람에게 설명해 보라. Rubber Duck strategy</li><li>버그를 찾고 해결하려 할 때 마구잡이로 달려들어서는 안된다.</li><li>코드의 어느 부분에 더 많은 문제가 있는 지 메모해둔다. 핫스팟을 찾으면 집중적인 개선 노력을 기울일 수 잇다.</li><li>아이젠버그. &lsquo;관찰자&rsquo;가 있으면 양상이 달라질 수 있다는 &lsquo;관리자 효과&rsquo;라는 용어를 만든 Werner Heisenberg</li></ul></li><li>테스트하기<ul><li>위대한 소프트웨어를 제대로 만들려면 피드백을 받아야 한다. 가능하면 자주, 그리고 빨리</li><li>좋은 테스트 전략은 피드백 절차를 간소화하는 것</li><li>피드백 과정이 짧을 수록 설계 변경을 더 빠르게 반복할 수 있고, 코드에 대해 더 강하게 확신할 수 있다.</li><li>더 열심히 일하려 하기보다 더 영리하게 일하라</li><li>코드에 대한 확신은 곧 테스트 코드의 품질이 결정한다.</li><li>실패 경우를 유닛 테스트로 만들어 재발을 방지한다.</li><li>성능이 주요 요구사항이면, 코드의 성능을 모니터링하는 테스트도 수행한다.</li><li>나쁜 테스트는 짐이 된다. 자산이라기보다 채무다</li><li>나쁜 테스트는 코드에 약간만 수정을 가해도 처리하기 어렵고, 조밀하며 이해하기 힘들다</li><li>좋은 테스트의 조건</li><li>나쁜 테스트란</li><li>테스트 코드도 유지 보수한다.</li><li>프로그램 테스트를 통해 버그의 존재를 확인할 수는 있지만, 버그가 없음을 확신할 수는 없다.</li></ul></li><li>복잡도 다루기<ul><li>Blob(Binary Large Object)은 정확한 역할과 책임을 확실히 가져야 한다.</li><li>우리의 뇌는 문제를 계층으로 나누고 추상화하여 추론하는데 최적화되어 있다.</li><li>사용하지 않은 helper method는 제거한다.</li><li>순환 의존 관계는 가장 복잡한 관계다.</li><li>프로그래머들에게 리팩토링할 시간도 허락하지 않은 채, 시스템을 확장하고 확장하며 또 확장한다. 버려야할 prototype을 출시 시스템으로 둔갑시킨다.</li></ul></li><li>두 개의 시스템에 대한 이야기<ul><li>대도시 이야기 vs. 디자인 타운</li><li>소프트웨어는 건강하지 못한 회사 구조와 개발 절차로 인해 잘못 설계될 수 있다.</li><li>이해 불가. 소프트웨어 설계의 품질을 유지 보수하라. 나쁜 설계는 더 나쁜 설계를 불러온다.</li><li>응집도의 부족. 각각의 컴포넌트는 필요하지 않은 다양한 기능을 포함하고 있다.<ul><li>개발팀의 작업자들 간의 관계가 얼마나 건강한지는 소프트웨어 설계의 품질에 직접적 영향을 끼친다. 부적절한 관계와 자만심은 잘못된 소프트웨어를 만든다.</li><li>훌륭한 소프트웨어 디자인은 모듈 간의 상호 작동에서 필요한 것들만 허용한다.</li></ul></li><li>불필요한 결합. 좋은 설계는 상호 연결 구조나 컴포넌트 간 연결의 분량을 검토한다. 시스템의 개별 부분은 단독으로 작동할 수 있어야 한다. 밀착 결합은 테스트하기 어렵게 만든다.<ul><li>코드 문제. 공통된 규칙이나 공통 라이브러리 사용, 공통된 관례에 대한 무신경</li></ul></li><li>새로운 기능을 붙이기가 너무 어렵다 보니 사람들은 점점 더 자주 실수했고,</li><li>디자인 타운은 초기 설계를 작동하기에 알맞은 수준으로 결정. 최상위 수준의 디렉토리 구조, 명명 규칙, 일반적 코딩 관례에 덧붙인 코드 작성 방법, 유닛 테스트 프레임워크 선택과 기반 구조가 되는 내부 구조들.</li><li>시스템 구조에 대한 명확한 비전.</li><li>일관성. 모든 수준에서의 모든 결정을 전체 설계의 관점에서 수행</li><li>구조 확장. 그 어떤 것도 변하지 않은 것은 없다. 소프트웨어의 구조는 불변이 아니다. 필요하다면 변경하라. 변경 가능하게 만들려면 구조를 간결하게 유지해야 한다.</li><li>기술 부채에 대한 인정과 후속 개선 작업</li><li>훌륭한 자동화 테스트는 최소한의 위험만으로 근본적인 구조 변경을 수행할 수 있게 한다.</li><li>팀이 분열되어 있다면, 코드도 어색하게 엮인다.</li><li>코드 작성에 앞서 계획적으로 설계한다. 더도 말고 덜도 말고 알맞게 설계.</li></ul></li><li>소프트웨어 개발이란<ul><li>훌륭한 프로그래머의 주요 특징 중 하나는 작성한 소프트웨어와 그 작성법에 대해 진심으로 주의를 기울이는 것이다.</li><li>좋은 소프트웨어는 정확하고, 입증되고, 측정되고, 실험되며, 검증되어야 한다 -> 좋은 테스트</li><li>자신이 작성한 소프트웨어는 언제나 완전히 정확하고 완벽하게 정밀한가? 이를 증명하는 방법은 무엇인가? 어떻게 하면 현재와 미래에 명시화 할 수 있는가?</li><li>일련의 규칙과 특정 팀 문화를 기반으로 개발을 진행</li><li>효율적인 프로그래머가 되려면 집안일을 두려워해서는 안 된다. 제품의 최신 버전에 대해 멋진 설계를 하는 것은 대단한 일이지만, 제품을 출시하고 지저분한 코드에서 오류를 찾아 수정하는 지루한 작업을 해야 할 때도 종종 있다.</li><li>문제의 수정 방법을 찾으면 적절한 시점에 파괴적이지 않은 방식으로 수정해야 하낟. 청소부로서 다른 사람에게 즐겁지 않은 작업을 넘겨버리지 말고 책임을 져야 한다.</li><li>죽은 코드를 제거하고, 망가진 코드를 수정한다. 적절하지 않은 코드를 리팩토링하고 재구성하며, 코드를 줄이고 깔끔하게 만든다. 코드가 황폐한 상태에 빠지지 않도록 하기 위함이다.</li></ul></li><li>규칙 가지고 놀기<ul><li>때때로 못난 프로그래머들에게는 더 많은 규칙이 필요하다.</li><li>규칙은 새로운 팀원에게 줄 수 있을 만큼의 단순해야 한다. 단순히 방법론과 절차에 대한 것이 아닌 팀에서 좋은 플레이어가 되는 방법과 같은 코딩 문화를 설명하는 규칙이어야 한다.</li><li>좋은 코드를 작성하기 위한 세개의 규칙이란<ul><li>간결하게 하라</li><li>머리를 쓰라</li><li>변하지 않는 것은 없다.</li></ul></li></ul></li><li>간결하게 하기<ul><li>간결한 코드는 설계하는 데 많은 노력이 필요하다. 다만 간결한 코드가 곧 과도하게 단순한 코드를 의미하지는 않는다.</li><li>잘못되고 단세포적인 &lsquo;단순함&rsquo;이 아니라 가장 간결한 코드를 작성하기 위해 노력해야</li><li>간결한 설계는 빠르고 명확하게 묘사할 수 있고, 쉽게 이해할 수 있다</li><li>&lsquo;간결한&rsquo; 인터페이스 설계에서는 동적으로 할당한 객체를 받아 사용 후 사용자가 그 객체를 직접 삭제할 필요가 없다.</li><li>간결한 코드는 읽기 쉽고 이해하기 쉽다. 따라서 작업하기에도 쉽다.</li><li>명백한 방식으로 납득할 만한 코드를 작성하면, 코딩 스타일도 그렇게 된다. 그러면 유지 보수하는 프로그래머들이 고마워할 것이다.</li><li>오류를 수정하면서 간결함을 유지해야 한다. 증상 부위가 아닌 근본 원인에 대해 버그 수정을 적용하라</li><li>설계/구현을 위해 세운 가설이 있다면 코드에 명시한다.</li><li>유용할 것이라고 생각되는 대량의 코드를 작성하지 말라. 사용되지 않는 코드는 그저 잠일 뿐이다. 요구사항을 충족시키는 데 필요한 만큼의 코드만 작성하라. 코드를 적게 작성할 수로고 더 적은 버그가 만들어질 것이다.</li></ul></li><li>머리 쓰기<ul><li>일을 멈추고 생각하라. 바보 같은 코드를 작성하지 말라.</li><li>일단 작업을 멈추고 정신을 차린 뒤 대안이 있는 지 확인해보라.</li><li>가차없는 수정이 필요한 누더기 코드를 발견했을 때는 거기에 또 다른 누더기 코드를 덧씌우지 말라.</li></ul></li><li>변하지 않는 것은 없다.<ul><li>항상 시간이 해결해 준다고들 하지만, 실제로는 당신 스스로 변하게 만들어야 한다.</li><li>프로그래머는 두려움을 느끼고 코드를 깨뜨리지 않도록 하려다 보니, 코드를 단단히 얼어붙게 만든다. 이것이 바로 소프트웨어 사후 경직이다.</li><li>본래의 개발자가 프로젝트를 떠나고 오래된 중요한 코드를 완벽하게 이해하는 사람이 남지 않았을 때, 해당 코드가 사후 경직되는 경우가 종종 있다.</li><li>코드가 구속력을 가지면, 더 이상 소프트웨어를 개발한다고 볼 수 없으며 코드에 맞서 싸우는 형태가 된다.</li><li>코딩 시 두려움을 가지고 피하기만 한다면, 코더의 인생은 쉽게 만들어줄 지 몰라도, 설계는 썩어간다.</li><li>코드 성장에 도움이 되는 태도<ul><li>수정하기 두려운 코드를 발견한다면 반드시 수정해야 한다.</li><li>리팩토링 또한 권장한다.</li><li>누구도 코드의 어떤 영역을 소유하고 있지 않다.</li><li>좋은 프로그래머는 변화를 기대한다. 변화야말로 소프트웨어 개발의 전부다.</li></ul></li><li>모양과 의도를 드러내고, 간결함과 명확함, 일관성을 표방하는 코드.</li></ul></li><li>코드 재사용 사례<ul><li>코드가 하나의 프로젝트가 아닌 더 많은 용도로 사용될 지 의심스러운 상황에서 처음부터 다양하게 사용할 수 있도록 처리하는 것은 가치가 없는 일이다.</li><li>당장의 요구사항을 만족할 수 있는 가장 간단한 코드를 만드는 데에만 집중한다.</li><li>가능한 가장 적은 양의 소프트웨어를 만듦으로써, 버그를 양산하거나 향후 수년간 지원해야 하는 불필요한 API를 만들 위험을 줄일 수 있다.</li><li>한 곳이 아닌 여러 곳에서 사용되어야 한다면 공통 라이브러리 혹은 공통 코드 파일을 만든다.</li><li>가능하다면 기존에 존재하는 코드를 재사용한다.</li></ul></li><li>효과적인 버전 관리<ul><li>최상위 디렉토리에 도움이 되는 README 문서를 포함한다.</li><li>자주 조금씩 변경 사항을 체크인한다.</li><li>한 번에 두 가지 이상의 변경 사항을 다루는 체크인을 해서는 안 된다.</li><li>커밋 메시지는 코드와 같은 성격을 갖는다. 명확/간결/DRY. 변경한 파일을 나열할 필요는 없다.</li><li>개선하려면 변화해야 한다. 완벽하려면 자주 변화해야 한다.</li></ul></li><li>골기퍼 있다고 골 안 들어가랴<ul><li>QA와 개발을 별도의 단계이자 행위로 보고 다른 팀으로 나누어버리면, 경쟁심은 커지고 단절감은 심해진다. 신뢰감이 없어진다. 그러나 비개발 출신의 관리자는 부서간의 관계를 신뢰하지 못하고 별개의 부서로 만든다</li><li>품질 보장 업무는 개발자들과 테스터들이 긴밀히 연계될 때 비로소 효과적으로 수행될 수 있다.</li><li>팀 간의 의사소통이 건전하지 않으면 코드도 건전해지지 않는다.</li><li>개발자는 반드시 QA와 좋은 관계를 유지해야 하며, 우정과 동지애를 가져야 한다.</li><li>정확하고 신뢰할 만한 오류 보고서를 만든 뒤 구조화되고 규칙을 따르는 방식, 예를 들면 좋은 오류 추적 체계를 사용해 전달하는 것은 테스터의 의무이다.</li><li>오류 보고서를 개인적으로 받아들이지 말라. 개인적 모욕이 아니다!!</li><li>다툼이 있는 곳에는 언제나 관계를 해치는 결과와 더 긴밀히 만드는 결과로 구분 짓는 하나의 요소가 존재한다. 바로 &lsquo;태도&rsquo;이다.</li><li>폭포수 모델에 따라 테스트에 도달하기 전에 90%수준에 도달했다면, 프로젝트를 마감하기 위해 또 다른 90%수준의 노력이 필요함을 깨닫게 될 것이다.</li><li>QA는 같은 팀의 일부임을 기억하라. 그들은 경쟁 집단이 아니다.</li></ul></li><li>동결된 코드의 신기한 사례<ul><li>코드 동결은 코드가 완전해졌다고 판단되는 시점으로 모든 기능이 구현되었을 뿐 아니라, 어처구니 없는 버그가 없는 때를 의미한다.</li><li>&lsquo;코드 동결&rsquo;은 변경을 완전히 막는다기보다는 개발 작업에 대해 새로운 규칙을 적용한다는 의미 가깝다. 변경 사항이 아무리 가치 있다 해도 신중한 합의 후에 이루어져야 한다.</li><li>코드 동결 기간에는 기술적 부채가 발생할 수도 있다. 부채의 발생을 감시하고, 배포 이후에 곧바로 빚을 갚을 준비를 하라.</li></ul></li><li>제발 저를 배포해주세요</li><li>배움을 사랑하며 살기<ul><li>프로그래머에게는 배움, 즉 기량과 능력의 향상이 지속적으로 요구된다.</li><li>배움을 즐기는 것을 배우라</li><li>배울 때 재미있을 만한 것을 조사하는데 우선 시간을 들이라.</li><li>새로운 기술/기법/문제 영역에 대해 배우라.</li><li>사람들과 함께 일하는 것을 배우라. 사회학이나 경영학 책을 공부해보라. 소프트웨어 팀의 리더가 되는 것에 대해 읽어보라.</li><li>어떻게 배워야 할 지 배우라.</li><li>완전히 다른 것을 배우라. 새로운 외국어나 악기, 다른 과학 분야 미술 혹은 철학을 배우라.</li><li>나중에 버릴지언정 지금 배우고 있는 것을 기록하라</li><li>Knowledge Portfolio. 현재 업무 지식을 투자 포트폴리오로 간주해보라. 수집한 정보를 어떻게 관리해야 하고, 현재의 포트폴리오를 유지하기 위해 어떤 방식으로 신중하게 투자해야 하며, 포트폴리오를 강화하기 위해 새로운 투자를 어떻게 이끌어낼지를 밝혀낼 수 있다.</li><li>아인슈타인. 간단하게 설명할 수 없다면, 충분히 잘 이해하지 못했다는 증거이다.</li><li>배움에 있어 핵심적인 기술은 행동하는 것이다.</li><li>추상적으로만 알고 있던 것들을 구체적이고 실천적으로 알 수 있도록 하라. 뛰어들어 실행해보라.</li></ul></li><li>테스트 기반 개발자<ul><li>아무런 생각 없이 &lsquo;성급하게 반응하는&rsquo; 식의 접근 방법은 카우보이 코더에게나 찾아볼 수 있는 증상이다.</li><li>오랜 경력을 가진 코드라고 해도 누구나 전문적인 기술자가 되지 않는다. 관련 업계에서 보낸 시간만으로는 판단할 수 없다.</li><li>승진했다고 해서 당신이 처음 개발을 시작했을 때보다 더 좋은 프로그래머라는 의미는 아니다.</li></ul></li><li>도전 즐기기<ul><li>코딩 연습, 코딩 문제, 개인적인 프로젝트, 새로운 직업을 찾아본다.</li><li>작업 중인 진행 상황을 볼 수 있도록 하라. 무엇을 성취했는 지 확인할 수 있도록 소스 로그를 리뷰하라.</li></ul></li><li>부진 피하기<ul><li>자신의 능력 이상을 해낸 마지막 시점은 언제였는가?</li><li>안전지대는 유해한 영역이다. 편한 삶이란 곧 학습하지 않고, 진행하지 않으며, 더 이상의 발전이 없는 것을 의미한다. 안전지대에 있는 것은 정체되었다는 뜻이다. 안전지대는 퇴보로 가는 지름길이다.</li><li>타성에 젖어버리기란 쉬운 일이다.</li><li>스스로를 불편한 상황에 두어야 하고 많은 노력을 쏟아 부어야 한다. 위험하고 어려운 일이며 자신을 난처하게 만들 수도 있다.</li><li>의식적으로 자신의 기술에 투자하려 해야 한다. 그런 결정을 지속해야 한다. 힘든 일이라 생각하지 말라. 도전 안에서 즐거움을 느끼라.</li><li>다른 도구/프로그래밍 언어/OS/편집기를 사용해 본다.</li><li>키보드 단축키를 알아본다.</li><li>개인적인 프로젝트를 시작한다.</li><li>프로젝트의 새로운 부분을 담당하라.</li><li>한 가지 직업/역할에 너무 오래 머물거나 아무런 도전거리도 없는 같은 일만 반복하는 것은 위험하다. 자신만의 작은 코딩 제국의 왕이 되는 것이다. 참으로 안락한 상황이다.</li><li>좋은 프로그래머는 코드에 대한 접근 방식에서든 자신의 경력에 대한 접근 방식에서든 과감하다.</li></ul></li><li>윤리적인 프로그래머<ul><li>기술 부채를 추후 탐금하기 위해 작업 목록에 새로운 업무에 추가한다.</li></ul></li><li>언어에 대한 사랑<ul><li>좋은 프로그래머들은 다양한 언어와 방법론을 알고 있는 만큼 문제 해결의 범위가 넓다.</li><li>언어 고유의 방식과 관습에 돌입해야 한다.</li><li>의사소통은 말하는 것만큼이나 듣는 것도 중요하다.</li></ul></li><li>프로그래머의 자세</li><li>&lsquo;더 열심히&rsquo;보다는 &lsquo;더 현명하게&rsquo;<ul><li>기술적 통찰력만이 아닌 문제를 풀고 전투를 선택하는 방법에서 찾아볼 수 있다.</li><li>좋은 프로그래머는 일을 빠르게 끝낸다. 어떻게 하면 문제를 잘 해결할 수 있는 지 아는 것이다.</li><li>현명하게 재사용한다. 직접 만들기보다는 이미 있는 코드를 사용하고, 더 중요한 일에 시간을 투자하라.</li><li>다른 사람이 거들어줄 수 있거나 훨씬 빨리 완료할 수 있다면, 그의 작업 목록에 올려주는편이 훨신 나을 것이다.</li><li>모든 것을 테스트하지 않고 취약할 것으로 예상되는 지점들에 집중하라. 테스트의 전장을 잘 선택하라.</li><li>최선책을 골라내기 위해 심사숙고하느라 많은 시간을 소모하지 말라.</li><li>우선 순위 설정에 엄격하라. 중요하지 않은 사소한 것에 몰두하지 말라.</li><li>새로운 업무가 할당될 때는 지금 당장 필요한 일인지부터 확인한다. 초기부터 지나치게 많은 코드를 작성하는 행동은 위험하다.</li><li>하나를 끝내고 다른 것을 하라.</li><li>코드와 설계를 가능한 한 작고 간결하게 유지하라.</li><li>미래의 요구사항이 무엇일지 지금 정확히 예견할 수는 없다. 지금 당장은 나중에 코드를 고치기 쉽도록 하는 정도에서 만족하는 것이 더 쉽고 똑똑한 일이다. 언젠가 발생할 가능성이 있는 기능을 미리 만들어주는 것은 더 어렵고 어리석다.</li><li>어려운 일을 미뤄두지 말라. 코드 통합 등이 그 예이다. 많은 사람들이 고통을 줄이기 위해 일을 미뤄두고 있다.</li><li>반복 작업은 손수하는 것보다는 도구를 작성하고 해당 도구를 한 번만 실행하는 편이 더 빠를 수 있다.</li><li>건전한 프로젝트는 연속한 야근을 요구하지 않는다.</li><li>항상 업무 흐름을 가속화해줄 새로운 도구를 찾으라. 다만 새로운 도구를 찾는 일에 노예가 되지는 말자.</li></ul></li><li>끝나야 끝나는 것<ul><li>&lsquo;완료 상태란 어떤 것인지, 그리고 &lsquo;완료&rsquo; 상태에 얼마나 가까운 지를 현실적으로 파악하는 것이다.</li><li>엄청난 업무를 할당받았다면, 일을 시작하기 전에 더 작고 이해할 만한 부분으로 일을 나누도록 하라.</li><li>&lsquo;완료&rsquo; 상태를 정의해야 한다.</li><li>&lsquo;완료 상태&rsquo;는 명확하고 구체적어야 한다. 구현해야 할 기능, 추가 혹은 확장해야 할 모든 API, 수정해야 할 특저 오류를 목록화한다. 모든 주요 관련자들이 성공 기준을 확인하도록 하라. 작동함을 증명하기 위해 코드로 작성된 테스트를 사용하라.</li><li>필요 이상으로 많은 작업을 수행하지 말라. &lsquo;완료&rsquo; 상태까지만 작업하라. 그런 뒤에는 중지하라.</li><li></li></ul></li><li>교훈 얻기<ul><li>다른 프로그래머에게 의무감을 가지라. 그들과 주기적으로 작업 경과를 확인하라.</li></ul></li><li>사람의 힘</li><li>생각이 중요하다.<ul><li>작업의 품질을 보증하기 위해 다른 프로그래머들에 대한 의무감을 가지면, 코드 품질을 환상적으로 높일 수 있다.</li><li>다른 사람이 코드를 읽고 품평하리라는 것을 알고 나면 좋은 코드를 짜고 싶은 마음이 더 커진다.</li></ul></li><li>말하기<ul><li>코드는 다른 사람과의 의사소통이다. 명백하고 애매호호함이 없어야만 다른 사람들이 코드를 유지 보수할 수 있다.</li></ul></li><li>선언문<ul><li>코드에 신경 쓰라</li><li>팀의 힘을 키우라</li><li>간결함을 유지하라</li><li>머리를 쓰라</li><li>그 무엇도 고정된 것은 없다.</li><li>꾸준히 배우라</li><li>(주체가 자신이든 팀이든 코드든 간에) 나아질 방향을 꾸준히 모색하라</li><li>언제나 가치를 전달하려 애쓰라. 길게 볼 수 있도록 해보라.</li></ul></li><li>코드 찬가<ul><li>Rober C. Martin 보이스카웃 규칙</li><li>리더 자신이 문제의 일부라면?</li><li>보통 소프트웨어 개발과 관련해 까다로운 부분은 기술적인 측면에 있지 않다. 결국 사람의 문제다.</li><li>나쁜 습관에 빠져들지 않도록 하라.</li><li>보통 소프트웨어 개발과 관련핸 까다로운 부분은 기술적인 측면에 있지 않다. 결국 사람의 문제다.</li><li>나쁜 습관에 빠져들지 않도록 하라.</li><li>코드에 신경 쓰지 않는 코더에게 둘러싸여 있다면, 자신만이라도 건전한 태도를 유지하라.</li></ul></li><li>태도가 핵심이다.<ul><li>좋은 프로그래머와 나쁜 프로그래머를 구분하는 요소는 바로 태도다.</li><li>태도는 기술적인 부분을 넘어선다.</li></ul></li></ol></div><footer class=post__footer><div class="post__tags tags clearfix"><svg class="tags__badge icon icon-tag" width="16" height="16" viewBox="0 0 32 32"><path d="M32 19c0 1-1 2-1 2L21 31s-1 1-2 1-2-1-2-1L2 16c-1-1-1.4-2-1.4-2S0 12.5.0 11V3C0 1.5.8.8.8.8S1.5.0 3 0h8c1.5.0 3 .6 3 .6S15 1 16 2l15 15s1 1 1 2zM7 10a3 3 0 100-6 3 3 0 000 6z"/></svg><ul class=tags__list><li class=tags__item><a class="tags__link btn" href=/tags/book/ rel=tag>Book</a></li><li class=tags__item><a class="tags__link btn" href=/tags/programming/ rel=tag>programming</a></li></ul></div></footer></article></main><nav class="pager flex"><div class="pager__item pager__item--prev"><a class=pager__link href=/post/2016/header-length-in-mbuf/ rel=prev><span class=pager__subtitle>«&#8201;Previous</span><p class=pager__title>DPDK new mbuf 사용 주의사항</p></a></div><div class="pager__item pager__item--next"><a class=pager__link href=/post/2016/dpdk-ipv4-reassembly/ rel=next><span class=pager__subtitle>Next&#8201;»</span><p class=pager__title>DPDK IPv4 reassembly</p></a></div></nav></div><aside class=sidebar><link href=/_pagefind/pagefind-ui.css rel=stylesheet><script src=/_pagefind/pagefind-ui.js type=text/javascript></script><div class="widget-categories widget"><h4 class=widget__title>Search</h4><div id=search></div><script>window.addEventListener("DOMContentLoaded",e=>{new PagefindUI({element:"#search"})})</script></div><div class="widget-categories widget"><h4 class=widget__title>Category</h4><div class=widget__content><ul class=widget__list><li class=widget__item><a class=widget__link href=/categories/book/>Book</a></li><li class=widget__item><a class=widget__link href=/categories/gadget/>Gadget</a></li><li class=widget__item><a class=widget__link href=/categories/homelab/>Homelab</a></li><li class=widget__item><a class=widget__link href=/categories/life/>Life</a></li><li class=widget__item><a class=widget__link href=/categories/note/>Note</a></li><li class=widget__item><a class=widget__link href=/categories/study/>Study</a></li><li class=widget__item><a class=widget__link href=/categories/til/>Til</a></li></ul></div></div><div class="widget-categories widget"><h4 class=widget__title>Series</h4><div class=widget__content><ul class=widget__list><li class=widget__item><a class=widget__link href=/series/homelab-2024/>HomeLab 2024</a></li><li class=widget__item><a class=widget__link href=/series/how-to-run-dpdk-in-k8s/>How to Run DPDK in K8s</a></li><li class=widget__item><a class=widget__link href=/series/kubernetes-hands-on/>Kubernetes Hands-On</a></li><li class=widget__item><a class=widget__link href=/series/learn-cuda-programming/>Learn CUDA Programming</a></li><li class=widget__item><a class=widget__link href=/series/setup-homelab-server-2023/>Setup Homelab Server 2023</a></li><li class=widget__item><a class=widget__link href=/series/setup-hugo-blog/>Setup Hugo Blog</a></li><li class=widget__item><a class=widget__link href=/series/setup-k8s-cluster/>Setup K8s Cluster</a></li><li class=widget__item><a class=widget__link href=/series/setup-podcast-blog/>Setup Podcast Blog</a></li><li class=widget__item><a class=widget__link href=/series/setup-traefik/>Setup Traefik</a></li><li class=widget__item><a class=widget__link href=/series/setup-hugo-blog/>“Setup-Hugo-Blog”</a></li></ul></div></div><div class="widget-taglist widget"><h4 class=widget__title>Tags</h4><div class=widget__content><a class="widget-taglist__link widget__link btn" href=/tags/2015/ title=2015>2015 (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/5g/ title=5g>5g (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/agile/ title=Agile>Agile (6)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/aic/ title=Aic>Aic (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/algorithm/ title=Algorithm>Algorithm (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/amazon/ title=Amazon>Amazon (2)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/amd/ title=Amd>Amd (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/amdocs/ title=Amdocs>Amdocs (2)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/amsterdam-release/ title="Amsterdam Release">Amsterdam Release (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/andromeda/ title=Andromeda>Andromeda (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/ansible/ title=Ansible>Ansible (7)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/ansible-playbook/ title=Ansible-Playbook>Ansible-Playbook (4)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/anti-work-pattern/ title="Anti-Work Pattern">Anti-Work Pattern (3)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/apple/ title=Apple>Apple (3)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/apple-silicon/ title="Apple Silicon">Apple Silicon (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/apple-watch/ title=Apple-Watch>Apple-Watch (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/arm/ title=Arm>Arm (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/att/ title=ATT>ATT (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/automation/ title=Automation>Automation (3)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/b4/ title=B4>B4 (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/backup/ title=Backup>Backup (2)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/barometer/ title=Barometer>Barometer (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/blog/ title=Blog>Blog (2)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/blogging/ title=Blogging>Blogging (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/book/ title=Book>Book (47)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/brew/ title=Brew>Brew (2)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/brocade/ title=Brocade>Brocade (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/c/ title=C>C (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/calico/ title=Calico>Calico (2)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/car/ title=Car>Car (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/cavium/ title=Cavium>Cavium (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/chair/ title=Chair>Chair (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/cilium/ title=Cilium>Cilium (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/cisco/ title=Cisco>Cisco (7)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/click/ title=Click>Click (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/cncf/ title=Cncf>Cncf (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/cni/ title=Cni>Cni (2)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/cockpit/ title=Cockpit>Cockpit (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/coding-style/ title="Coding Style">Coding Style (2)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/collaboration/ title=Collaboration>Collaboration (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/collectd/ title=Collectd>Collectd (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/configmap/ title=Configmap>Configmap (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/connectx-5/ title=ConnectX-5>ConnectX-5 (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/container/ title=Container>Container (10)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/continuous-deployment/ title="Continuous Deployment">Continuous Deployment (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/cpu/ title=Cpu>Cpu (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/cran/ title=Cran>Cran (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/cron/ title=Cron>Cron (2)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/crond/ title=Crond>Crond (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/cronjob/ title=Cronjob>Cronjob (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/cubb/ title=Cubb>Cubb (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/cuda/ title=CUDA>CUDA (2)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/culture/ title=Culture>Culture (2)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/cuphy/ title=Cuphy>Cuphy (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/cuvnf/ title=Cuvnf>Cuvnf (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/database/ title=Database>Database (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/dev-culture/ title="Dev Culture">Dev Culture (2)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/devnothink/ title=Devnothink>Devnothink (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/devonthink/ title=Devonthink>Devonthink (2)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/docker/ title=Docker>Docker (15)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/docker-compose/ title=Docker-Compose>Docker-Compose (2)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/dpdk/ title=DPDK>DPDK (26)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/dpi/ title=Dpi>Dpi (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/dpkt/ title=Dpkt>Dpkt (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/edge/ title=Edge>Edge (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/elasticsearch/ title=Elasticsearch>Elasticsearch (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/elk/ title=Elk>Elk (3)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/english/ title=English>English (2)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/espresso/ title=Espresso>Espresso (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/fapi/ title=Fapi>Fapi (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/feature-flag-driven-development/ title="Feature Flag Driven Development">Feature Flag Driven Development (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/feedback/ title=Feedback>Feedback (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/ffmpeg/ title=Ffmpeg>Ffmpeg (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/finder/ title=Finder>Finder (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/flask/ title=Flask>Flask (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/fragment/ title=Fragment>Fragment (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/ftp/ title=Ftp>Ftp (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/getting-started/ title="Getting Started">Getting Started (2)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/ghost/ title=Ghost>Ghost (11)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/ghost-theme/ title=Ghost-Theme>Ghost-Theme (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/git/ title=Git>Git (3)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/github/ title=Github>Github (3)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/go/ title=Go>Go (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/golang/ title=Golang>Golang (2)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/google/ title=Google>Google (4)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/google-cloud-platform/ title=Google-Cloud-Platform>Google-Cloud-Platform (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/gpb/ title=Gpb>Gpb (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/gpu/ title=Gpu>Gpu (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/grafana/ title=Grafana>Grafana (2)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/grafana/ title='Grafana"'>Grafana" (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/graviton/ title=Graviton>Graviton (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/grpc/ title=Grpc>Grpc (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/happy-hacking/ title=Happy-Hacking>Happy-Hacking (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/hbr/ title=HBR>HBR (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/helm/ title=Helm>Helm (6)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/homebrew/ title=Homebrew>Homebrew (3)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/homelab/ title=Homelab>Homelab (2)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/homepod/ title=HomePod>HomePod (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/http/ title=Http>Http (2)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/hugepage/ title=Hugepage>Hugepage (4)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/hugo/ title=Hugo>Hugo (16)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/influxdb/ title=Influxdb>Influxdb (2)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/inspiration/ title=Inspiration>Inspiration (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/intel/ title=Intel>Intel (4)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/ios14/ title=IOS14>IOS14 (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/ipad/ title=IPad>IPad (3)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/iphone/ title=IPhone>IPhone (2)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/iphone6/ title=IPhone6>IPhone6 (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/iphonex/ title=IPhoneX>IPhoneX (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/ipsec/ title=IPsec>IPsec (2)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/ipv4/ title=Ipv4>Ipv4 (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/istio/ title=Istio>Istio (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/jetpack/ title=Jetpack>Jetpack (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/job/ title=Job>Job (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/json/ title=Json>Json (2)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/jtbc/ title=Jtbc>Jtbc (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/jupiter/ title=Jupiter>Jupiter (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/k3s/ title=K3s>K3s (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/kafka/ title=Kafka>Kafka (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/kldp/ title=KLDP>KLDP (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/kni/ title=Kni>Kni (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/kubelet/ title=Kubelet>Kubelet (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/kubernetes/ title=Kubernetes>Kubernetes (25)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/kuberntes/ title=Kuberntes>Kuberntes (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/launchd/ title=Launchd>Launchd (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/lb/ title=Lb>Lb (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/life/ title=Life>Life (3)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/lifehack/ title=Lifehack>Lifehack (2)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/linux/ title=Linux>Linux (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/load-balancer/ title="Load Balancer">Load Balancer (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/lte/ title=Lte>Lte (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/m1/ title=M1>M1 (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/mac/ title=Mac>Mac (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/mac-mini-2009/ title="Mac Mini 2009">Mac Mini 2009 (3)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/maglev/ title=Maglev>Maglev (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/manager/ title=Manager>Manager (3)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/markdown/ title=Markdown>Markdown (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/mbuf/ title=Mbuf>Mbuf (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/mec/ title=Mec>Mec (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/mediawiki/ title=Mediawiki>Mediawiki (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/meetup/ title=Meetup>Meetup (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/message-queue/ title="Message Queue">Message Queue (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/metricbeat/ title=Metricbeat>Metricbeat (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/microk8s/ title=Microk8s>Microk8s (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/microservice/ title=Microservice>Microservice (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/mindmap/ title=Mindmap>Mindmap (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/model-driven/ title=Model-Driven>Model-Driven (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/monitoring/ title=Monitoring>Monitoring (2)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/multipass/ title=Multipass>Multipass (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/mysql/ title=Mysql>Mysql (5)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/naim/ title=Naim>Naim (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/nas/ title=Nas>Nas (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/nasa/ title=Nasa>Nasa (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/nec/ title=NEC>NEC (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/nested-chart/ title=Nested-Chart>Nested-Chart (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/netconf/ title=Netconf>Netconf (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/network/ title=Network>Network (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/neuron/ title=Neuron>Neuron (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/nfv/ title=NFV>NFV (9)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/nginmesh/ title=Nginmesh>Nginmesh (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/nginx/ title=Nginx>Nginx (2)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/nhn/ title=NHN>NHN (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/nic/ title=NIC>NIC (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/nokia/ title=Nokia>Nokia (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/note/ title=Note>Note (2)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/nvidia/ title=Nvidia>Nvidia (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/odp/ title=Odp>Odp (3)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/ofp/ title=OFP>OFP (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/onap/ title=Onap>Onap (3)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/onp/ title=ONP>ONP (2)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/openfastpath/ title=OpenFastPath>OpenFastPath (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/opensource/ title=Opensource>Opensource (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/openstack/ title=Openstack>Openstack (2)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/opnfv/ title=Opnfv>Opnfv (3)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/osx/ title=Osx>Osx (3)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/ovdk/ title=OVDK>OVDK (3)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/ovs/ title=OVS>OVS (2)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/p4/ title=P4>P4 (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/pagefind/ title=Pagefind>Pagefind (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/patch/ title=Patch>Patch (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/perl/ title=Perl>Perl (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/photo/ title=Photo>Photo (31)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/photoaa/ title=Photoaa>Photoaa (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/pinpoint/ title=Pinpoint>Pinpoint (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/plist/ title=Plist>Plist (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/pluribus/ title=Pluribus>Pluribus (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/podcast/ title=Podcast>Podcast (8)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/powermate/ title=Powermate>Powermate (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/prediction/ title=Prediction>Prediction (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/programming/ title=Programming>Programming (2)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/prometheus/ title=Prometheus>Prometheus (2)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/protobufs/ title=Protobufs>Protobufs (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/protocol-buffer/ title="Protocol Buffer">Protocol Buffer (2)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/pyftplib/ title=Pyftplib>Pyftplib (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/python/ title=Python>Python (14)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/qat/ title=QAT>QAT (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/quality/ title=Quality>Quality (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/quanta/ title=Quanta>Quanta (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/quicklook/ title=Quicklook>Quicklook (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/r210/ title=R210>R210 (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/readiness/ title=Readiness>Readiness (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/reassembly/ title=Reassembly>Reassembly (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/recovery/ title=Recovery>Recovery (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/resources/ title=Resources>Resources (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/restful/ title=RESTful>RESTful (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/rmda/ title=RMDA>RMDA (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/scapy/ title=Scapy>Scapy (5)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/sci/ title=Sci>Sci (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/scrum/ title=Scrum>Scrum (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/sctp/ title=Sctp>Sctp (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/sdn/ title=SDN>SDN (5)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/secret/ title=Secret>Secret (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/service-agility/ title="Service Agility">Service Agility (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/service-mesh/ title="Service Mesh">Service Mesh (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/setup/ title=Setup>Setup (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/slack/ title=Slack>Slack (4)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/sleeve/ title=Sleeve>Sleeve (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/snmp/ title=Snmp>Snmp (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/soft-skill/ title=Soft-Skill>Soft-Skill (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/sqlite/ title=Sqlite>Sqlite (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/sriov/ title=SRIOV>SRIOV (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/standingdesk/ title=StandingDesk>StandingDesk (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/startup/ title=Startup>Startup (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/storage/ title=Storage>Storage (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/study/ title=Study>Study (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/subchart/ title=Subchart>Subchart (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/sw/ title=SW>SW (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/sw-quality/ title="SW Quality">SW Quality (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/sw-%EA%B0%9C%EB%B0%9C-%EB%AC%B8%ED%99%94/ title="SW 개발 문화">SW 개발 문화 (9)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/swarm/ title=Swarm>Swarm (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/synology/ title=Synology>Synology (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/tag/ title=Tag>Tag (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/tcp/ title=Tcp>Tcp (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/team/ title=Team>Team (2)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/telemetry/ title=Telemetry>Telemetry (3)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/the-pragmatic-programmer/ title="The Pragmatic Programmer">The Pragmatic Programmer (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/theme/ title=Theme>Theme (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/til/ title=Til>Til (8)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/time-machine/ title="Time Machine">Time Machine (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/track-pad/ title=Track-Pad>Track-Pad (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/traefik/ title=Traefik>Traefik (5)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/troubleshooting/ title=Troubleshooting>Troubleshooting (9)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/tutorial/ title=Tutorial>Tutorial (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/ubuntu/ title=Ubuntu>Ubuntu (2)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/vagrant/ title=Vagrant>Vagrant (2)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/vertical-pod-autoscaler/ title=Vertical-Pod-Autoscaler>Vertical-Pod-Autoscaler (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/ves/ title=Ves>Ves (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/video/ title=Video>Video (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/vim/ title=Vim>Vim (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/virtualbox/ title=Virtualbox>Virtualbox (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/virtualenv/ title=Virtualenv>Virtualenv (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/virtualization/ title=Virtualization>Virtualization (2)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/vmware/ title=Vmware>Vmware (2)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/vnf/ title=VNF>VNF (2)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/volvo/ title=Volvo>Volvo (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/vran/ title=Vran>Vran (3)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/vrouter/ title=VRouter>VRouter (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/vswitch/ title=VSwitch>VSwitch (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/web-scrapping/ title=Web-Scrapping>Web-Scrapping (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/webdav/ title=Webdav>Webdav (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/wiki/ title=Wiki>Wiki (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/windows10/ title=Windows10>Windows10 (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/wordpress/ title=Wordpress>Wordpress (11)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/work_rules/ title=Work_rules>Work_rules (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/writing/ title=Writing>Writing (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/xcrun/ title=Xcrun>Xcrun (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/yang/ title=Yang>Yang (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/automation/ title=“Automation”>“Automation” (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/book/ title=“Book”>“Book” (2)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/containerd/ title=“Containerd”>“Containerd” (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/cronjob/ title=“CronJob”>“CronJob” (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/github-action/ title="“GitHub Action”">“GitHub Action” (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/github/ title=“GitHub”>“GitHub” (2)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/go/ title=“Go”>“Go” (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/gpu/ title=“GPU”>“GPU” (2)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/helm/ title=“Helm”>“Helm” (2)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/ios-shortcut/ title=“IOS-Shortcut”>“IOS-Shortcut” (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/kubernetes/ title=“Kubernetes”>“Kubernetes” (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/podcast/ title=“Podcast”>“Podcast” (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/rust/ title=“Rust”>“Rust” (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/timezone/ title=“Timezone”>“Timezone” (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/%EA%B0%9C%EB%B0%9C%EC%9D%B4%EC%95%BC%EA%B8%B0/ title=개발이야기>개발이야기 (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/%EA%B2%BD%EC%9F%81/ title=경쟁>경쟁 (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/%EA%B3%B5%EB%B6%80/ title=공부>공부 (2)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/%EA%B3%B5%EC%9C%A0/ title=공유>공유 (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/%EA%B4%80%EB%A6%AC%EB%8A%A5%EB%A0%A5/ title=관리능력>관리능력 (2)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/%EA%B8%B0%EB%A1%9D/ title=기록>기록 (2)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/%EB%85%BC%EB%AC%B8/ title=논문>논문 (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/%EB%A6%AC%EB%8D%94/ title=리더>리더 (2)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/%EB%A7%A4%EB%84%88%EB%A6%AC%EC%A6%98/ title=매너리즘>매너리즘 (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/%EB%AC%B8%ED%99%94/ title=문화>문화 (2)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/%EC%82%AC%EB%9E%8C%EC%9D%B4-%ED%95%B5%EC%8B%AC/ title="사람이 핵심">사람이 핵심 (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/%EC%83%9D%EA%B0%81/ title=생각>생각 (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/%EC%83%9D%EC%82%B0%EC%84%B1/ title=생산성>생산성 (2)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/%EC%9C%A4%EC%8B%9D%EB%8B%B9/ title=윤식당>윤식당 (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/%EC%9D%B8%EC%9A%A9/ title=인용>인용 (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/%EC%9E%84%EB%B0%B1%EC%A4%80/ title=임백준>임백준 (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/%EC%9E%A1%EC%83%9D%EA%B0%81/ title=잡생각>잡생각 (9)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/%EC%A0%84%EB%9E%8C%ED%9A%8C/ title=전람회>전람회 (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/%EC%A1%B0%EC%A7%81/ title=조직>조직 (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/%EC%A1%B0%EC%A7%81%EA%B4%80%EB%A6%AC/ title=조직관리>조직관리 (4)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/%EC%A1%B0%EC%A7%81%EB%AC%B8%ED%99%94/ title=조직문화>조직문화 (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/%EC%A2%8B%EC%9D%80%EA%B8%80/ title=좋은글>좋은글 (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/%EC%B0%A9%EA%B0%81%ED%95%98%EB%8A%94-ceo/ title="착각하는 CEO">착각하는 CEO (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/%EC%B6%94%EC%96%B5/ title=추억>추억 (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/%EC%BD%94%EB%93%9C%EB%A6%AC%EB%B7%B0/ title=코드리뷰>코드리뷰 (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/%ED%9A%8C%EC%9D%98/ title=회의>회의 (2)</a></div></div></aside></div><footer class=footer><div class="container footer__container flex"><div class=footer__copyright>&copy; 2024 Chaeyong Chong.
-<span class=footer__copyright-credits>Generated with <a href=https://gohugo.io/ rel="nofollow noopener" target=_blank>Hugo</a> and <a href=https://github.com/Vimux/Mainroad/ rel="nofollow noopener" target=_blank>Mainroad</a> theme.</span></div></div></footer></div><script async defer src=/js/menu.js></script></body></html>
+<!doctype html><html lang=en-us><head><meta http-equiv=X-Clacks-Overhead content="GNU Terry Pratchett"><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><title>(책) Becoming a better Programmer | Keep calm and Write something</title><meta name=title content="(책) Becoming a better Programmer"><meta name=description content="
+코드에 신경쓰기
+
+어떤 코드든 간에 수정한 후에는 이전 보다 나아져야 한다
+기능이 추가된 것은 &lsquo;나아진&rsquo; 것이 아니다. 기능이 추가되고, 코드 수가 늘어나도 여전히 좋은 구조를 유지하는 것이 &lsquo;나아진&rsquo; 것이다.
+
+
+정돈된 코드 유지하기
+
+좋은 코드는 명백하며 일관성이 있다. 보기 좋은 코드는 의도를 드러낸다(예술)
+코드를 읽을 사람은 지금 당장의 나 외에 몇 달 후의 나, 다른 동료 그리고 미래의 유지 보수 프로그래머다. 그들이 혼란을 덜 겪도록 코드를 작성해야 한다.
+실은 다른 사람을 위해 코딩한다는 것을 인정해야 하고, 잊으면 안된다.
+코딩 스타일 가이드를 정리한다.  코딩 스타일의 목적은 일관성이다.
+불필요하게 반복되는 단어를 피한다. DataObject(?)
+간결함보다 중요한 것은 명확함이다.
+코드를 &lsquo;정리정돈&rsquo;해야 할 경우에는 기능 변경과 모양 변경을 동시에 진행하지 말라
+프로젝트의 공통 관습이 존재한다면 따른다.
+
+
+코드 작게 쓰기
+
+소프트웨어를 개선하는 최고의 방법 가운데 하나는 바로 코드를 제거하는 것이다.
+매일 같이 코드를 더 좋게 만들라. 중복 코드는 발견 즉시 제거한다.
+더 많은 양의 코드가 더 좋은 SW를 의미하지는 않는다. 필요하지 않다면 코딩하지 말라. 적게 쓰고 그 대신 더 재미난 것을 찾으라.
+
+
+코드 줄여 개선하기
+
+C의 전처리기는 사용되지 않는 코드를 만들어 내는 역효과를 낼 수 있다.
+함수의 return 값이 사용되지 않으면 void로 변경한다.
+가능하면 죽은 코드를 제거한다.
+죽은 코드를 발견했음에도 아무런 조치를 취하지 않는 것이야말로 실패의 징조다.
+
+
+코드베이스의 망령
+
+프로그래머로서 자질은 작성한 코드가 아닐 그것을 대하는 태도와 작성하는 방식에 의해 결정된다.
+예전에 작성한 코드가 최신 라이브러리에 의해 대체할 수 있을 경우도 있다.
+기존의 코드를 돌아보는 것은 자신을 위한 코드 리뷰이자, 가치있는 행동이다.
+
+
+경로 탐색하기
+
+코드를 작성하는 것이 읽는 것보다 쉽다.(하지만 숨겨진 의도를 파악하지 못하고 새로 작성하면 새로운 문제를 일으킨다. 실은 예전에 발생했던 문제를 부활시키는…)
+코드 분석을 통해 알아낸 것이 있으면 프로젝트의 최상위 위치에 README파일을 만든다. 의도, 주의사항, 의존성, 빌드 방법 등
+
+
+똥통에서 뒹굴기
+
+goto 문이 남발되면 알고리즘 구조를 읽기 어렵다.
+외부에 노출하는 API는 깔끔하고 합리적인가?
+자료형을 잘 고르고, 변수 명이 적절한가?
+코드의 레이아웃을 정돈하여 일관성 있게 작성했는가?
+
+코드의 외관이 코드의 근본적인 품질을 보장하지는 않지만, 일관성 없고 지저분한 코드가 대개 구조도 부적절하고, 다루기 어려웠다(저자의 경험상)
+
+
+특정 기능을 구현하는 코드 부분이 어디에 있는 지 쉽게 찾을 수 있는가?
+보이스카웃 규칙을 따른다. 어떤 코드를 건드리건 이전보다 나아지도록 한다.
+거대한 함수는 더 작으면서도 적절히 명명된 작은 함수들로 나눈다.
+
+성능 최적화 측면에서 함수 호출이 갖는 penalty는 어떻게 할 것인지?
+
+
+주기적으로 코드 일부라도 확인하고 그때마다 조금씩 나아지게 만든다.
+수정으로 인해 기존 기능에 문제가 생기지 않음을 보장할 수 있는 모든 수단을 사용한다.
+똥떵어리 수정을 별 의미없는 작업이라 치부하기보다는 더 나은 품질을 실현할 기회로 삼으라
+수정하면서 자신의 태도도 확인하라. 어쩌면 당신은 원 저자보다 자신이 더 잘 알고 있다고 생각할 수도 있다. 과연 언제나 그럴까?
+
+
+오류 무시하지 않기
+
+반환 코드는 주로 정수 값으로 0은 성공, 그 외의 수는 오류를 의미
+
+
+예상하지 못한 것을 예상하기
+
+에러 코드는 절대로 무시하지 말라
+
+
+버그 사냥하기
+
+버그를 피할 수 있는 가장 좋은 충고는 믿기 힘들 정도로 &lsquo;영리한(종종 복잡한 것과 동일시 되는)&rsquo; 코드를 만들리 말라는 것이다.
+Martin Fowler, 미련한 프로그래머는 컴퓨터가 이해할 수 있는 코드를 만들고, 좋은 프로그래머는 사람이 이해할 수 있는 코드를 만든다.
+단위 테스트에 시간을 투자
+특정 코드가 test coverage에 포함되지 않으면 제대로 작동한다고 신뢰할 수 없다.
+문제를 다른 사람에게 설명해 보라. Rubber Duck strategy
+버그를 찾고 해결하려 할 때 마구잡이로 달려들어서는 안된다.
+코드의 어느 부분에 더 많은 문제가 있는 지 메모해둔다. 핫스팟을 찾으면 집중적인 개선 노력을 기울일 수 잇다.
+아이젠버그. &lsquo;관찰자&rsquo;가 있으면 양상이 달라질 수 있다는 &lsquo;관리자 효과&rsquo;라는 용어를 만든 Werner Heisenberg
+
+
+테스트하기
+
+위대한 소프트웨어를 제대로 만들려면 피드백을 받아야 한다. 가능하면 자주, 그리고 빨리
+좋은 테스트 전략은 피드백 절차를 간소화하는 것
+피드백 과정이 짧을 수록 설계 변경을 더 빠르게 반복할 수 있고, 코드에 대해 더 강하게 확신할 수 있다.
+더 열심히 일하려 하기보다 더 영리하게 일하라
+코드에 대한 확신은 곧 테스트 코드의 품질이 결정한다.
+실패 경우를 유닛 테스트로 만들어 재발을 방지한다.
+성능이 주요 요구사항이면, 코드의 성능을 모니터링하는 테스트도 수행한다.
+나쁜 테스트는 짐이 된다. 자산이라기보다 채무다
+나쁜 테스트는 코드에 약간만 수정을 가해도 처리하기 어렵고, 조밀하며 이해하기 힘들다
+좋은 테스트의 조건
+나쁜 테스트란
+테스트 코드도 유지 보수한다.
+프로그램 테스트를 통해 버그의 존재를 확인할 수는 있지만, 버그가 없음을 확신할 수는 없다.
+
+
+복잡도 다루기
+
+Blob(Binary Large Object)은 정확한 역할과 책임을 확실히 가져야 한다.
+우리의 뇌는 문제를 계층으로 나누고 추상화하여 추론하는데 최적화되어 있다.
+사용하지 않은 helper method는 제거한다.
+순환 의존 관계는 가장 복잡한 관계다.
+프로그래머들에게 리팩토링할 시간도 허락하지 않은 채, 시스템을 확장하고 확장하며 또 확장한다. 버려야할 prototype을 출시 시스템으로 둔갑시킨다.
+
+
+두 개의 시스템에 대한 이야기
+
+대도시 이야기 vs. 디자인 타운
+소프트웨어는 건강하지 못한 회사 구조와 개발 절차로 인해 잘못 설계될 수 있다.
+이해 불가. 소프트웨어 설계의 품질을 유지 보수하라. 나쁜 설계는 더 나쁜 설계를 불러온다.
+응집도의 부족. 각각의 컴포넌트는 필요하지 않은 다양한 기능을 포함하고 있다.
+
+개발팀의 작업자들 간의 관계가 얼마나 건강한지는 소프트웨어 설계의 품질에 직접적 영향을 끼친다. 부적절한 관계와 자만심은 잘못된 소프트웨어를 만든다.
+훌륭한 소프트웨어 디자인은 모듈 간의 상호 작동에서 필요한 것들만 허용한다.
+
+
+불필요한 결합. 좋은 설계는 상호 연결 구조나 컴포넌트 간 연결의 분량을 검토한다. 시스템의 개별 부분은 단독으로 작동할 수 있어야 한다. 밀착 결합은 테스트하기 어렵게 만든다.
+
+코드 문제. 공통된 규칙이나 공통 라이브러리 사용, 공통된 관례에 대한 무신경
+
+
+새로운 기능을 붙이기가 너무 어렵다 보니 사람들은 점점 더 자주 실수했고,
+디자인 타운은 초기 설계를 작동하기에 알맞은 수준으로 결정. 최상위 수준의 디렉토리 구조, 명명 규칙, 일반적 코딩 관례에 덧붙인 코드 작성 방법, 유닛 테스트 프레임워크 선택과 기반 구조가 되는 내부 구조들.
+시스템 구조에 대한 명확한 비전.
+일관성. 모든 수준에서의 모든 결정을 전체 설계의 관점에서 수행
+구조 확장. 그 어떤 것도 변하지 않은 것은 없다. 소프트웨어의 구조는 불변이 아니다. 필요하다면 변경하라. 변경 가능하게 만들려면 구조를 간결하게 유지해야 한다.
+기술 부채에 대한 인정과 후속 개선 작업
+훌륭한 자동화 테스트는 최소한의 위험만으로 근본적인 구조 변경을 수행할 수 있게 한다.
+팀이 분열되어 있다면, 코드도 어색하게 엮인다.
+코드 작성에 앞서 계획적으로 설계한다. 더도 말고 덜도 말고 알맞게 설계.
+
+
+소프트웨어 개발이란
+
+훌륭한 프로그래머의 주요 특징 중 하나는 작성한 소프트웨어와 그 작성법에 대해 진심으로 주의를 기울이는 것이다.
+좋은 소프트웨어는 정확하고, 입증되고, 측정되고, 실험되며, 검증되어야 한다 -> 좋은 테스트
+자신이 작성한 소프트웨어는 언제나 완전히 정확하고 완벽하게 정밀한가? 이를 증명하는 방법은 무엇인가? 어떻게 하면 현재와 미래에 명시화 할 수 있는가?
+일련의 규칙과 특정 팀 문화를 기반으로 개발을 진행
+효율적인 프로그래머가 되려면 집안일을 두려워해서는 안 된다. 제품의 최신 버전에 대해 멋진 설계를 하는 것은 대단한 일이지만, 제품을 출시하고 지저분한 코드에서 오류를 찾아 수정하는 지루한 작업을 해야 할 때도 종종 있다.
+문제의 수정 방법을 찾으면 적절한 시점에 파괴적이지 않은 방식으로 수정해야 하낟. 청소부로서 다른 사람에게 즐겁지 않은 작업을 넘겨버리지 말고 책임을 져야 한다.
+죽은 코드를 제거하고, 망가진 코드를 수정한다. 적절하지 않은 코드를 리팩토링하고 재구성하며, 코드를 줄이고 깔끔하게 만든다. 코드가 황폐한 상태에 빠지지 않도록 하기 위함이다.
+
+
+규칙 가지고 놀기
+
+때때로 못난 프로그래머들에게는 더 많은 규칙이 필요하다.
+규칙은 새로운 팀원에게 줄 수 있을 만큼의 단순해야 한다. 단순히 방법론과 절차에 대한 것이 아닌 팀에서 좋은 플레이어가 되는 방법과 같은 코딩 문화를 설명하는 규칙이어야 한다.
+좋은 코드를 작성하기 위한 세개의 규칙이란
+
+간결하게 하라
+머리를 쓰라
+변하지 않는 것은 없다.
+
+
+
+
+간결하게 하기
+
+간결한 코드는 설계하는 데 많은 노력이 필요하다. 다만 간결한 코드가 곧 과도하게 단순한 코드를 의미하지는 않는다.
+잘못되고 단세포적인 &lsquo;단순함&rsquo;이 아니라 가장 간결한 코드를 작성하기 위해 노력해야
+간결한 설계는 빠르고 명확하게 묘사할 수 있고, 쉽게 이해할 수 있다
+&lsquo;간결한&rsquo; 인터페이스 설계에서는 동적으로 할당한 객체를 받아 사용 후 사용자가 그 객체를 직접 삭제할 필요가 없다.
+간결한 코드는 읽기 쉽고 이해하기 쉽다. 따라서 작업하기에도 쉽다.
+명백한 방식으로 납득할 만한 코드를 작성하면, 코딩 스타일도 그렇게 된다. 그러면 유지 보수하는 프로그래머들이 고마워할 것이다.
+오류를 수정하면서 간결함을 유지해야 한다. 증상 부위가 아닌 근본 원인에 대해 버그 수정을 적용하라
+설계/구현을 위해 세운 가설이 있다면 코드에 명시한다.
+유용할 것이라고 생각되는 대량의 코드를 작성하지 말라. 사용되지 않는 코드는 그저 잠일 뿐이다. 요구사항을 충족시키는 데 필요한 만큼의 코드만 작성하라. 코드를 적게 작성할 수로고 더 적은 버그가 만들어질 것이다.
+
+
+머리 쓰기
+
+일을 멈추고 생각하라. 바보 같은 코드를 작성하지 말라.
+일단 작업을 멈추고 정신을 차린 뒤 대안이 있는 지 확인해보라.
+가차없는 수정이 필요한 누더기 코드를 발견했을 때는 거기에 또 다른 누더기 코드를 덧씌우지 말라.
+
+
+변하지 않는 것은 없다.
+
+항상 시간이 해결해 준다고들 하지만, 실제로는 당신 스스로 변하게 만들어야 한다.
+프로그래머는 두려움을 느끼고 코드를 깨뜨리지 않도록 하려다 보니, 코드를 단단히 얼어붙게 만든다. 이것이 바로 소프트웨어 사후 경직이다.
+본래의 개발자가 프로젝트를 떠나고 오래된 중요한 코드를 완벽하게 이해하는 사람이 남지 않았을 때, 해당 코드가 사후 경직되는 경우가 종종 있다.
+코드가 구속력을 가지면, 더 이상 소프트웨어를 개발한다고 볼 수 없으며 코드에 맞서 싸우는 형태가 된다.
+코딩 시 두려움을 가지고 피하기만 한다면, 코더의 인생은 쉽게 만들어줄 지 몰라도, 설계는 썩어간다.
+코드 성장에 도움이 되는 태도
+
+수정하기 두려운 코드를 발견한다면 반드시 수정해야 한다.
+리팩토링 또한 권장한다.
+누구도 코드의 어떤 영역을 소유하고 있지 않다.
+좋은 프로그래머는 변화를 기대한다. 변화야말로 소프트웨어 개발의 전부다.
+
+
+모양과 의도를 드러내고, 간결함과 명확함, 일관성을 표방하는 코드.
+
+
+코드 재사용 사례
+
+코드가 하나의 프로젝트가 아닌 더 많은 용도로 사용될 지 의심스러운 상황에서 처음부터 다양하게 사용할 수 있도록 처리하는 것은 가치가 없는 일이다.
+당장의 요구사항을 만족할 수 있는 가장 간단한 코드를 만드는 데에만 집중한다.
+가능한 가장 적은 양의 소프트웨어를 만듦으로써, 버그를 양산하거나 향후 수년간 지원해야 하는 불필요한 API를 만들 위험을 줄일 수 있다.
+한 곳이 아닌 여러 곳에서 사용되어야 한다면 공통 라이브러리 혹은 공통 코드 파일을 만든다.
+가능하다면 기존에 존재하는 코드를 재사용한다.
+
+
+효과적인 버전 관리
+
+최상위 디렉토리에 도움이 되는 README 문서를 포함한다.
+자주 조금씩 변경 사항을 체크인한다.
+한 번에 두 가지 이상의 변경 사항을 다루는 체크인을 해서는 안 된다.
+커밋 메시지는 코드와 같은 성격을 갖는다. 명확/간결/DRY. 변경한 파일을 나열할 필요는 없다.
+개선하려면 변화해야 한다. 완벽하려면 자주 변화해야 한다.
+
+
+골기퍼 있다고 골 안 들어가랴
+
+QA와 개발을 별도의 단계이자 행위로 보고 다른 팀으로 나누어버리면, 경쟁심은 커지고 단절감은 심해진다. 신뢰감이 없어진다. 그러나 비개발 출신의 관리자는 부서간의 관계를 신뢰하지 못하고 별개의 부서로 만든다
+품질 보장 업무는 개발자들과 테스터들이 긴밀히 연계될 때 비로소 효과적으로 수행될 수 있다.
+팀 간의 의사소통이 건전하지 않으면 코드도 건전해지지 않는다.
+개발자는 반드시 QA와 좋은 관계를 유지해야 하며, 우정과 동지애를 가져야 한다.
+정확하고 신뢰할 만한 오류 보고서를 만든 뒤 구조화되고 규칙을 따르는 방식, 예를 들면 좋은 오류 추적 체계를 사용해 전달하는 것은 테스터의 의무이다.
+오류 보고서를 개인적으로 받아들이지 말라. 개인적 모욕이 아니다!!
+다툼이 있는 곳에는 언제나 관계를 해치는 결과와 더 긴밀히 만드는 결과로 구분 짓는 하나의 요소가 존재한다. 바로 &lsquo;태도&rsquo;이다.
+폭포수 모델에 따라 테스트에 도달하기 전에 90%수준에 도달했다면, 프로젝트를 마감하기 위해 또 다른 90%수준의 노력이 필요함을 깨닫게 될 것이다.
+QA는 같은 팀의 일부임을 기억하라. 그들은 경쟁 집단이 아니다.
+
+
+동결된 코드의 신기한 사례
+
+코드 동결은 코드가 완전해졌다고 판단되는 시점으로 모든 기능이 구현되었을 뿐 아니라, 어처구니 없는 버그가 없는 때를 의미한다.
+&lsquo;코드 동결&rsquo;은 변경을 완전히 막는다기보다는 개발 작업에 대해 새로운 규칙을 적용한다는 의미 가깝다. 변경 사항이 아무리 가치 있다 해도 신중한 합의 후에 이루어져야 한다.
+코드 동결 기간에는 기술적 부채가 발생할 수도 있다. 부채의 발생을 감시하고, 배포 이후에 곧바로 빚을 갚을 준비를 하라.
+
+
+제발 저를 배포해주세요
+배움을 사랑하며 살기
+
+프로그래머에게는 배움, 즉 기량과 능력의 향상이 지속적으로 요구된다.
+배움을 즐기는 것을 배우라
+배울 때 재미있을 만한 것을 조사하는데 우선 시간을 들이라.
+새로운 기술/기법/문제 영역에 대해 배우라.
+사람들과 함께 일하는 것을 배우라. 사회학이나 경영학 책을 공부해보라. 소프트웨어 팀의 리더가 되는 것에 대해 읽어보라.
+어떻게 배워야 할 지 배우라.
+완전히 다른 것을 배우라. 새로운 외국어나 악기, 다른 과학 분야 미술 혹은 철학을 배우라.
+나중에 버릴지언정 지금 배우고 있는 것을 기록하라
+Knowledge Portfolio. 현재 업무 지식을 투자 포트폴리오로 간주해보라. 수집한 정보를 어떻게 관리해야 하고, 현재의 포트폴리오를 유지하기 위해 어떤 방식으로 신중하게 투자해야 하며, 포트폴리오를 강화하기 위해 새로운 투자를 어떻게 이끌어낼지를 밝혀낼 수 있다.
+아인슈타인. 간단하게 설명할 수 없다면, 충분히 잘 이해하지 못했다는 증거이다.
+배움에 있어 핵심적인 기술은 행동하는 것이다.
+추상적으로만 알고 있던 것들을 구체적이고 실천적으로 알 수 있도록 하라. 뛰어들어 실행해보라.
+
+
+테스트 기반 개발자
+
+아무런 생각 없이 &lsquo;성급하게 반응하는&rsquo; 식의 접근 방법은 카우보이 코더에게나 찾아볼 수 있는 증상이다.
+오랜 경력을 가진 코드라고 해도 누구나 전문적인 기술자가 되지 않는다. 관련 업계에서 보낸 시간만으로는 판단할 수 없다.
+승진했다고 해서 당신이 처음 개발을 시작했을 때보다 더 좋은 프로그래머라는 의미는 아니다.
+
+
+도전 즐기기
+
+코딩 연습, 코딩 문제, 개인적인 프로젝트, 새로운 직업을 찾아본다.
+작업 중인 진행 상황을 볼 수 있도록 하라. 무엇을 성취했는 지 확인할 수 있도록 소스 로그를 리뷰하라.
+
+
+부진 피하기
+
+자신의 능력 이상을 해낸 마지막 시점은 언제였는가?
+안전지대는 유해한 영역이다. 편한 삶이란 곧 학습하지 않고, 진행하지 않으며, 더 이상의 발전이 없는 것을 의미한다. 안전지대에 있는 것은 정체되었다는 뜻이다.  안전지대는 퇴보로 가는 지름길이다.
+타성에 젖어버리기란 쉬운 일이다.
+스스로를 불편한 상황에 두어야 하고 많은 노력을 쏟아 부어야 한다. 위험하고 어려운 일이며 자신을 난처하게 만들 수도 있다.
+의식적으로 자신의 기술에 투자하려 해야 한다. 그런 결정을 지속해야 한다. 힘든 일이라 생각하지 말라. 도전 안에서 즐거움을 느끼라.
+다른 도구/프로그래밍 언어/OS/편집기를 사용해 본다.
+키보드 단축키를 알아본다.
+개인적인 프로젝트를 시작한다.
+프로젝트의 새로운 부분을 담당하라.
+한 가지 직업/역할에 너무 오래 머물거나 아무런 도전거리도 없는 같은 일만 반복하는 것은 위험하다. 자신만의 작은 코딩 제국의 왕이 되는 것이다. 참으로 안락한 상황이다.
+좋은 프로그래머는 코드에 대한 접근 방식에서든 자신의 경력에 대한 접근 방식에서든 과감하다.
+
+
+윤리적인 프로그래머
+
+기술 부채를 추후 탐금하기 위해 작업 목록에 새로운 업무에 추가한다.
+
+
+언어에 대한 사랑
+
+좋은 프로그래머들은 다양한 언어와 방법론을 알고 있는 만큼 문제 해결의 범위가 넓다.
+언어 고유의 방식과 관습에 돌입해야 한다.
+의사소통은 말하는 것만큼이나 듣는 것도 중요하다.
+
+
+프로그래머의 자세
+&lsquo;더 열심히&rsquo;보다는 &lsquo;더 현명하게&rsquo;
+
+기술적 통찰력만이 아닌 문제를 풀고 전투를 선택하는 방법에서 찾아볼 수 있다.
+좋은 프로그래머는 일을 빠르게 끝낸다. 어떻게 하면 문제를 잘 해결할 수 있는 지 아는 것이다.
+현명하게 재사용한다. 직접 만들기보다는 이미 있는 코드를 사용하고, 더 중요한 일에 시간을 투자하라.
+다른 사람이 거들어줄 수 있거나 훨씬 빨리 완료할 수 있다면, 그의 작업 목록에 올려주는편이 훨신 나을 것이다.
+모든 것을 테스트하지 않고 취약할 것으로 예상되는 지점들에 집중하라. 테스트의 전장을 잘 선택하라.
+최선책을 골라내기 위해 심사숙고하느라 많은 시간을 소모하지 말라.
+우선 순위 설정에 엄격하라. 중요하지 않은 사소한 것에 몰두하지 말라.
+새로운 업무가 할당될 때는 지금 당장 필요한 일인지부터 확인한다. 초기부터 지나치게 많은 코드를 작성하는 행동은 위험하다.
+하나를 끝내고 다른 것을 하라.
+코드와 설계를 가능한 한 작고 간결하게 유지하라.
+미래의 요구사항이 무엇일지 지금 정확히 예견할 수는 없다. 지금 당장은 나중에 코드를 고치기 쉽도록 하는 정도에서 만족하는 것이 더 쉽고 똑똑한 일이다. 언젠가 발생할 가능성이 있는 기능을 미리 만들어주는 것은 더 어렵고 어리석다.
+어려운 일을 미뤄두지 말라. 코드 통합 등이 그 예이다. 많은 사람들이 고통을 줄이기 위해 일을 미뤄두고 있다.
+반복 작업은 손수하는 것보다는 도구를 작성하고 해당 도구를 한 번만 실행하는 편이 더 빠를 수 있다.
+건전한 프로젝트는 연속한 야근을 요구하지 않는다.
+항상 업무 흐름을 가속화해줄 새로운 도구를 찾으라. 다만 새로운 도구를 찾는 일에 노예가 되지는 말자.
+
+
+끝나야 끝나는 것
+
+&lsquo;완료 상태란 어떤 것인지, 그리고 &lsquo;완료&rsquo; 상태에 얼마나 가까운 지를 현실적으로 파악하는 것이다.
+엄청난 업무를 할당받았다면, 일을 시작하기 전에 더 작고 이해할 만한 부분으로 일을 나누도록 하라.
+&lsquo;완료&rsquo; 상태를 정의해야 한다.
+&lsquo;완료 상태&rsquo;는 명확하고 구체적어야 한다. 구현해야 할 기능, 추가 혹은 확장해야 할 모든 API, 수정해야 할 특저 오류를 목록화한다. 모든 주요 관련자들이 성공 기준을 확인하도록 하라. 작동함을 증명하기 위해 코드로 작성된 테스트를 사용하라.
+필요 이상으로 많은 작업을 수행하지 말라. &lsquo;완료&rsquo; 상태까지만 작업하라. 그런 뒤에는 중지하라.
+
+
+
+교훈 얻기
+
+다른 프로그래머에게 의무감을 가지라. 그들과 주기적으로 작업 경과를 확인하라.
+
+
+사람의 힘
+생각이 중요하다.
+
+작업의 품질을 보증하기 위해 다른 프로그래머들에 대한 의무감을 가지면, 코드 품질을 환상적으로 높일 수 있다.
+다른 사람이 코드를 읽고 품평하리라는 것을 알고 나면 좋은 코드를 짜고 싶은 마음이 더 커진다.
+
+
+말하기
+
+코드는 다른 사람과의 의사소통이다. 명백하고 애매호호함이 없어야만 다른 사람들이 코드를 유지 보수할 수 있다.
+
+
+선언문
+
+코드에 신경 쓰라
+팀의 힘을 키우라
+간결함을 유지하라
+머리를 쓰라
+그 무엇도 고정된 것은 없다.
+꾸준히 배우라
+(주체가 자신이든 팀이든 코드든 간에) 나아질 방향을 꾸준히 모색하라
+언제나 가치를 전달하려 애쓰라. 길게 볼 수 있도록 해보라.
+
+
+코드 찬가
+
+Rober C. Martin 보이스카웃 규칙
+리더 자신이 문제의 일부라면?
+보통 소프트웨어 개발과 관련해 까다로운 부분은 기술적인 측면에 있지 않다. 결국 사람의 문제다.
+나쁜 습관에 빠져들지 않도록 하라.
+보통 소프트웨어 개발과 관련핸 까다로운 부분은 기술적인 측면에 있지 않다. 결국 사람의 문제다.
+나쁜 습관에 빠져들지 않도록 하라.
+코드에 신경 쓰지 않는 코더에게 둘러싸여 있다면, 자신만이라도 건전한 태도를 유지하라.
+
+
+태도가 핵심이다.
+
+좋은 프로그래머와 나쁜 프로그래머를 구분하는 요소는 바로 태도다.
+태도는 기술적인 부분을 넘어선다.
+
+
+"><meta name=keywords content="Book,programming,"><meta property="og:url" content="https://cychong47.github.io/post/2016/becoming-a-better-programmer/"><meta property="og:site_name" content="Keep calm and Write something"><meta property="og:title" content="(책) Becoming a better Programmer"><meta property="og:description" content="코드에 신경쓰기 어떤 코드든 간에 수정한 후에는 이전 보다 나아져야 한다 기능이 추가된 것은 ‘나아진’ 것이 아니다. 기능이 추가되고, 코드 수가 늘어나도 여전히 좋은 구조를 유지하는 것이 ‘나아진’ 것이다. 정돈된 코드 유지하기 좋은 코드는 명백하며 일관성이 있다. 보기 좋은 코드는 의도를 드러낸다(예술) 코드를 읽을 사람은 지금 당장의 나 외에 몇 달 후의 나, 다른 동료 그리고 미래의 유지 보수 프로그래머다. 그들이 혼란을 덜 겪도록 코드를 작성해야 한다. 실은 다른 사람을 위해 코딩한다는 것을 인정해야 하고, 잊으면 안된다. 코딩 스타일 가이드를 정리한다. 코딩 스타일의 목적은 일관성이다. 불필요하게 반복되는 단어를 피한다. DataObject(?) 간결함보다 중요한 것은 명확함이다. 코드를 ‘정리정돈’해야 할 경우에는 기능 변경과 모양 변경을 동시에 진행하지 말라 프로젝트의 공통 관습이 존재한다면 따른다. 코드 작게 쓰기 소프트웨어를 개선하는 최고의 방법 가운데 하나는 바로 코드를 제거하는 것이다. 매일 같이 코드를 더 좋게 만들라. 중복 코드는 발견 즉시 제거한다. 더 많은 양의 코드가 더 좋은 SW를 의미하지는 않는다. 필요하지 않다면 코딩하지 말라. 적게 쓰고 그 대신 더 재미난 것을 찾으라. 코드 줄여 개선하기 C의 전처리기는 사용되지 않는 코드를 만들어 내는 역효과를 낼 수 있다. 함수의 return 값이 사용되지 않으면 void로 변경한다. 가능하면 죽은 코드를 제거한다. 죽은 코드를 발견했음에도 아무런 조치를 취하지 않는 것이야말로 실패의 징조다. 코드베이스의 망령 프로그래머로서 자질은 작성한 코드가 아닐 그것을 대하는 태도와 작성하는 방식에 의해 결정된다. 예전에 작성한 코드가 최신 라이브러리에 의해 대체할 수 있을 경우도 있다. 기존의 코드를 돌아보는 것은 자신을 위한 코드 리뷰이자, 가치있는 행동이다. 경로 탐색하기 코드를 작성하는 것이 읽는 것보다 쉽다.(하지만 숨겨진 의도를 파악하지 못하고 새로 작성하면 새로운 문제를 일으킨다. 실은 예전에 발생했던 문제를 부활시키는…) 코드 분석을 통해 알아낸 것이 있으면 프로젝트의 최상위 위치에 README파일을 만든다. 의도, 주의사항, 의존성, 빌드 방법 등 똥통에서 뒹굴기 goto 문이 남발되면 알고리즘 구조를 읽기 어렵다. 외부에 노출하는 API는 깔끔하고 합리적인가? 자료형을 잘 고르고, 변수 명이 적절한가? 코드의 레이아웃을 정돈하여 일관성 있게 작성했는가? 코드의 외관이 코드의 근본적인 품질을 보장하지는 않지만, 일관성 없고 지저분한 코드가 대개 구조도 부적절하고, 다루기 어려웠다(저자의 경험상) 특정 기능을 구현하는 코드 부분이 어디에 있는 지 쉽게 찾을 수 있는가? 보이스카웃 규칙을 따른다. 어떤 코드를 건드리건 이전보다 나아지도록 한다. 거대한 함수는 더 작으면서도 적절히 명명된 작은 함수들로 나눈다. 성능 최적화 측면에서 함수 호출이 갖는 penalty는 어떻게 할 것인지? 주기적으로 코드 일부라도 확인하고 그때마다 조금씩 나아지게 만든다. 수정으로 인해 기존 기능에 문제가 생기지 않음을 보장할 수 있는 모든 수단을 사용한다. 똥떵어리 수정을 별 의미없는 작업이라 치부하기보다는 더 나은 품질을 실현할 기회로 삼으라 수정하면서 자신의 태도도 확인하라. 어쩌면 당신은 원 저자보다 자신이 더 잘 알고 있다고 생각할 수도 있다. 과연 언제나 그럴까? 오류 무시하지 않기 반환 코드는 주로 정수 값으로 0은 성공, 그 외의 수는 오류를 의미 예상하지 못한 것을 예상하기 에러 코드는 절대로 무시하지 말라 버그 사냥하기 버그를 피할 수 있는 가장 좋은 충고는 믿기 힘들 정도로 ‘영리한(종종 복잡한 것과 동일시 되는)’ 코드를 만들리 말라는 것이다. Martin Fowler, 미련한 프로그래머는 컴퓨터가 이해할 수 있는 코드를 만들고, 좋은 프로그래머는 사람이 이해할 수 있는 코드를 만든다. 단위 테스트에 시간을 투자 특정 코드가 test coverage에 포함되지 않으면 제대로 작동한다고 신뢰할 수 없다. 문제를 다른 사람에게 설명해 보라. Rubber Duck strategy 버그를 찾고 해결하려 할 때 마구잡이로 달려들어서는 안된다. 코드의 어느 부분에 더 많은 문제가 있는 지 메모해둔다. 핫스팟을 찾으면 집중적인 개선 노력을 기울일 수 잇다. 아이젠버그. ‘관찰자’가 있으면 양상이 달라질 수 있다는 ‘관리자 효과’라는 용어를 만든 Werner Heisenberg 테스트하기 위대한 소프트웨어를 제대로 만들려면 피드백을 받아야 한다. 가능하면 자주, 그리고 빨리 좋은 테스트 전략은 피드백 절차를 간소화하는 것 피드백 과정이 짧을 수록 설계 변경을 더 빠르게 반복할 수 있고, 코드에 대해 더 강하게 확신할 수 있다. 더 열심히 일하려 하기보다 더 영리하게 일하라 코드에 대한 확신은 곧 테스트 코드의 품질이 결정한다. 실패 경우를 유닛 테스트로 만들어 재발을 방지한다. 성능이 주요 요구사항이면, 코드의 성능을 모니터링하는 테스트도 수행한다. 나쁜 테스트는 짐이 된다. 자산이라기보다 채무다 나쁜 테스트는 코드에 약간만 수정을 가해도 처리하기 어렵고, 조밀하며 이해하기 힘들다 좋은 테스트의 조건 나쁜 테스트란 테스트 코드도 유지 보수한다. 프로그램 테스트를 통해 버그의 존재를 확인할 수는 있지만, 버그가 없음을 확신할 수는 없다. 복잡도 다루기 Blob(Binary Large Object)은 정확한 역할과 책임을 확실히 가져야 한다. 우리의 뇌는 문제를 계층으로 나누고 추상화하여 추론하는데 최적화되어 있다. 사용하지 않은 helper method는 제거한다. 순환 의존 관계는 가장 복잡한 관계다. 프로그래머들에게 리팩토링할 시간도 허락하지 않은 채, 시스템을 확장하고 확장하며 또 확장한다. 버려야할 prototype을 출시 시스템으로 둔갑시킨다. 두 개의 시스템에 대한 이야기 대도시 이야기 vs. 디자인 타운 소프트웨어는 건강하지 못한 회사 구조와 개발 절차로 인해 잘못 설계될 수 있다. 이해 불가. 소프트웨어 설계의 품질을 유지 보수하라. 나쁜 설계는 더 나쁜 설계를 불러온다. 응집도의 부족. 각각의 컴포넌트는 필요하지 않은 다양한 기능을 포함하고 있다. 개발팀의 작업자들 간의 관계가 얼마나 건강한지는 소프트웨어 설계의 품질에 직접적 영향을 끼친다. 부적절한 관계와 자만심은 잘못된 소프트웨어를 만든다. 훌륭한 소프트웨어 디자인은 모듈 간의 상호 작동에서 필요한 것들만 허용한다. 불필요한 결합. 좋은 설계는 상호 연결 구조나 컴포넌트 간 연결의 분량을 검토한다. 시스템의 개별 부분은 단독으로 작동할 수 있어야 한다. 밀착 결합은 테스트하기 어렵게 만든다. 코드 문제. 공통된 규칙이나 공통 라이브러리 사용, 공통된 관례에 대한 무신경 새로운 기능을 붙이기가 너무 어렵다 보니 사람들은 점점 더 자주 실수했고, 디자인 타운은 초기 설계를 작동하기에 알맞은 수준으로 결정. 최상위 수준의 디렉토리 구조, 명명 규칙, 일반적 코딩 관례에 덧붙인 코드 작성 방법, 유닛 테스트 프레임워크 선택과 기반 구조가 되는 내부 구조들. 시스템 구조에 대한 명확한 비전. 일관성. 모든 수준에서의 모든 결정을 전체 설계의 관점에서 수행 구조 확장. 그 어떤 것도 변하지 않은 것은 없다. 소프트웨어의 구조는 불변이 아니다. 필요하다면 변경하라. 변경 가능하게 만들려면 구조를 간결하게 유지해야 한다. 기술 부채에 대한 인정과 후속 개선 작업 훌륭한 자동화 테스트는 최소한의 위험만으로 근본적인 구조 변경을 수행할 수 있게 한다. 팀이 분열되어 있다면, 코드도 어색하게 엮인다. 코드 작성에 앞서 계획적으로 설계한다. 더도 말고 덜도 말고 알맞게 설계. 소프트웨어 개발이란 훌륭한 프로그래머의 주요 특징 중 하나는 작성한 소프트웨어와 그 작성법에 대해 진심으로 주의를 기울이는 것이다. 좋은 소프트웨어는 정확하고, 입증되고, 측정되고, 실험되며, 검증되어야 한다 -> 좋은 테스트 자신이 작성한 소프트웨어는 언제나 완전히 정확하고 완벽하게 정밀한가? 이를 증명하는 방법은 무엇인가? 어떻게 하면 현재와 미래에 명시화 할 수 있는가? 일련의 규칙과 특정 팀 문화를 기반으로 개발을 진행 효율적인 프로그래머가 되려면 집안일을 두려워해서는 안 된다. 제품의 최신 버전에 대해 멋진 설계를 하는 것은 대단한 일이지만, 제품을 출시하고 지저분한 코드에서 오류를 찾아 수정하는 지루한 작업을 해야 할 때도 종종 있다. 문제의 수정 방법을 찾으면 적절한 시점에 파괴적이지 않은 방식으로 수정해야 하낟. 청소부로서 다른 사람에게 즐겁지 않은 작업을 넘겨버리지 말고 책임을 져야 한다. 죽은 코드를 제거하고, 망가진 코드를 수정한다. 적절하지 않은 코드를 리팩토링하고 재구성하며, 코드를 줄이고 깔끔하게 만든다. 코드가 황폐한 상태에 빠지지 않도록 하기 위함이다. 규칙 가지고 놀기 때때로 못난 프로그래머들에게는 더 많은 규칙이 필요하다. 규칙은 새로운 팀원에게 줄 수 있을 만큼의 단순해야 한다. 단순히 방법론과 절차에 대한 것이 아닌 팀에서 좋은 플레이어가 되는 방법과 같은 코딩 문화를 설명하는 규칙이어야 한다. 좋은 코드를 작성하기 위한 세개의 규칙이란 간결하게 하라 머리를 쓰라 변하지 않는 것은 없다. 간결하게 하기 간결한 코드는 설계하는 데 많은 노력이 필요하다. 다만 간결한 코드가 곧 과도하게 단순한 코드를 의미하지는 않는다. 잘못되고 단세포적인 ‘단순함’이 아니라 가장 간결한 코드를 작성하기 위해 노력해야 간결한 설계는 빠르고 명확하게 묘사할 수 있고, 쉽게 이해할 수 있다 ‘간결한’ 인터페이스 설계에서는 동적으로 할당한 객체를 받아 사용 후 사용자가 그 객체를 직접 삭제할 필요가 없다. 간결한 코드는 읽기 쉽고 이해하기 쉽다. 따라서 작업하기에도 쉽다. 명백한 방식으로 납득할 만한 코드를 작성하면, 코딩 스타일도 그렇게 된다. 그러면 유지 보수하는 프로그래머들이 고마워할 것이다. 오류를 수정하면서 간결함을 유지해야 한다. 증상 부위가 아닌 근본 원인에 대해 버그 수정을 적용하라 설계/구현을 위해 세운 가설이 있다면 코드에 명시한다. 유용할 것이라고 생각되는 대량의 코드를 작성하지 말라. 사용되지 않는 코드는 그저 잠일 뿐이다. 요구사항을 충족시키는 데 필요한 만큼의 코드만 작성하라. 코드를 적게 작성할 수로고 더 적은 버그가 만들어질 것이다. 머리 쓰기 일을 멈추고 생각하라. 바보 같은 코드를 작성하지 말라. 일단 작업을 멈추고 정신을 차린 뒤 대안이 있는 지 확인해보라. 가차없는 수정이 필요한 누더기 코드를 발견했을 때는 거기에 또 다른 누더기 코드를 덧씌우지 말라. 변하지 않는 것은 없다. 항상 시간이 해결해 준다고들 하지만, 실제로는 당신 스스로 변하게 만들어야 한다. 프로그래머는 두려움을 느끼고 코드를 깨뜨리지 않도록 하려다 보니, 코드를 단단히 얼어붙게 만든다. 이것이 바로 소프트웨어 사후 경직이다. 본래의 개발자가 프로젝트를 떠나고 오래된 중요한 코드를 완벽하게 이해하는 사람이 남지 않았을 때, 해당 코드가 사후 경직되는 경우가 종종 있다. 코드가 구속력을 가지면, 더 이상 소프트웨어를 개발한다고 볼 수 없으며 코드에 맞서 싸우는 형태가 된다. 코딩 시 두려움을 가지고 피하기만 한다면, 코더의 인생은 쉽게 만들어줄 지 몰라도, 설계는 썩어간다. 코드 성장에 도움이 되는 태도 수정하기 두려운 코드를 발견한다면 반드시 수정해야 한다. 리팩토링 또한 권장한다. 누구도 코드의 어떤 영역을 소유하고 있지 않다. 좋은 프로그래머는 변화를 기대한다. 변화야말로 소프트웨어 개발의 전부다. 모양과 의도를 드러내고, 간결함과 명확함, 일관성을 표방하는 코드. 코드 재사용 사례 코드가 하나의 프로젝트가 아닌 더 많은 용도로 사용될 지 의심스러운 상황에서 처음부터 다양하게 사용할 수 있도록 처리하는 것은 가치가 없는 일이다. 당장의 요구사항을 만족할 수 있는 가장 간단한 코드를 만드는 데에만 집중한다. 가능한 가장 적은 양의 소프트웨어를 만듦으로써, 버그를 양산하거나 향후 수년간 지원해야 하는 불필요한 API를 만들 위험을 줄일 수 있다. 한 곳이 아닌 여러 곳에서 사용되어야 한다면 공통 라이브러리 혹은 공통 코드 파일을 만든다. 가능하다면 기존에 존재하는 코드를 재사용한다. 효과적인 버전 관리 최상위 디렉토리에 도움이 되는 README 문서를 포함한다. 자주 조금씩 변경 사항을 체크인한다. 한 번에 두 가지 이상의 변경 사항을 다루는 체크인을 해서는 안 된다. 커밋 메시지는 코드와 같은 성격을 갖는다. 명확/간결/DRY. 변경한 파일을 나열할 필요는 없다. 개선하려면 변화해야 한다. 완벽하려면 자주 변화해야 한다. 골기퍼 있다고 골 안 들어가랴 QA와 개발을 별도의 단계이자 행위로 보고 다른 팀으로 나누어버리면, 경쟁심은 커지고 단절감은 심해진다. 신뢰감이 없어진다. 그러나 비개발 출신의 관리자는 부서간의 관계를 신뢰하지 못하고 별개의 부서로 만든다 품질 보장 업무는 개발자들과 테스터들이 긴밀히 연계될 때 비로소 효과적으로 수행될 수 있다. 팀 간의 의사소통이 건전하지 않으면 코드도 건전해지지 않는다. 개발자는 반드시 QA와 좋은 관계를 유지해야 하며, 우정과 동지애를 가져야 한다. 정확하고 신뢰할 만한 오류 보고서를 만든 뒤 구조화되고 규칙을 따르는 방식, 예를 들면 좋은 오류 추적 체계를 사용해 전달하는 것은 테스터의 의무이다. 오류 보고서를 개인적으로 받아들이지 말라. 개인적 모욕이 아니다!! 다툼이 있는 곳에는 언제나 관계를 해치는 결과와 더 긴밀히 만드는 결과로 구분 짓는 하나의 요소가 존재한다. 바로 ‘태도’이다. 폭포수 모델에 따라 테스트에 도달하기 전에 90%수준에 도달했다면, 프로젝트를 마감하기 위해 또 다른 90%수준의 노력이 필요함을 깨닫게 될 것이다. QA는 같은 팀의 일부임을 기억하라. 그들은 경쟁 집단이 아니다. 동결된 코드의 신기한 사례 코드 동결은 코드가 완전해졌다고 판단되는 시점으로 모든 기능이 구현되었을 뿐 아니라, 어처구니 없는 버그가 없는 때를 의미한다. ‘코드 동결’은 변경을 완전히 막는다기보다는 개발 작업에 대해 새로운 규칙을 적용한다는 의미 가깝다. 변경 사항이 아무리 가치 있다 해도 신중한 합의 후에 이루어져야 한다. 코드 동결 기간에는 기술적 부채가 발생할 수도 있다. 부채의 발생을 감시하고, 배포 이후에 곧바로 빚을 갚을 준비를 하라. 제발 저를 배포해주세요 배움을 사랑하며 살기 프로그래머에게는 배움, 즉 기량과 능력의 향상이 지속적으로 요구된다. 배움을 즐기는 것을 배우라 배울 때 재미있을 만한 것을 조사하는데 우선 시간을 들이라. 새로운 기술/기법/문제 영역에 대해 배우라. 사람들과 함께 일하는 것을 배우라. 사회학이나 경영학 책을 공부해보라. 소프트웨어 팀의 리더가 되는 것에 대해 읽어보라. 어떻게 배워야 할 지 배우라. 완전히 다른 것을 배우라. 새로운 외국어나 악기, 다른 과학 분야 미술 혹은 철학을 배우라. 나중에 버릴지언정 지금 배우고 있는 것을 기록하라 Knowledge Portfolio. 현재 업무 지식을 투자 포트폴리오로 간주해보라. 수집한 정보를 어떻게 관리해야 하고, 현재의 포트폴리오를 유지하기 위해 어떤 방식으로 신중하게 투자해야 하며, 포트폴리오를 강화하기 위해 새로운 투자를 어떻게 이끌어낼지를 밝혀낼 수 있다. 아인슈타인. 간단하게 설명할 수 없다면, 충분히 잘 이해하지 못했다는 증거이다. 배움에 있어 핵심적인 기술은 행동하는 것이다. 추상적으로만 알고 있던 것들을 구체적이고 실천적으로 알 수 있도록 하라. 뛰어들어 실행해보라. 테스트 기반 개발자 아무런 생각 없이 ‘성급하게 반응하는’ 식의 접근 방법은 카우보이 코더에게나 찾아볼 수 있는 증상이다. 오랜 경력을 가진 코드라고 해도 누구나 전문적인 기술자가 되지 않는다. 관련 업계에서 보낸 시간만으로는 판단할 수 없다. 승진했다고 해서 당신이 처음 개발을 시작했을 때보다 더 좋은 프로그래머라는 의미는 아니다. 도전 즐기기 코딩 연습, 코딩 문제, 개인적인 프로젝트, 새로운 직업을 찾아본다. 작업 중인 진행 상황을 볼 수 있도록 하라. 무엇을 성취했는 지 확인할 수 있도록 소스 로그를 리뷰하라. 부진 피하기 자신의 능력 이상을 해낸 마지막 시점은 언제였는가? 안전지대는 유해한 영역이다. 편한 삶이란 곧 학습하지 않고, 진행하지 않으며, 더 이상의 발전이 없는 것을 의미한다. 안전지대에 있는 것은 정체되었다는 뜻이다. 안전지대는 퇴보로 가는 지름길이다. 타성에 젖어버리기란 쉬운 일이다. 스스로를 불편한 상황에 두어야 하고 많은 노력을 쏟아 부어야 한다. 위험하고 어려운 일이며 자신을 난처하게 만들 수도 있다. 의식적으로 자신의 기술에 투자하려 해야 한다. 그런 결정을 지속해야 한다. 힘든 일이라 생각하지 말라. 도전 안에서 즐거움을 느끼라. 다른 도구/프로그래밍 언어/OS/편집기를 사용해 본다. 키보드 단축키를 알아본다. 개인적인 프로젝트를 시작한다. 프로젝트의 새로운 부분을 담당하라. 한 가지 직업/역할에 너무 오래 머물거나 아무런 도전거리도 없는 같은 일만 반복하는 것은 위험하다. 자신만의 작은 코딩 제국의 왕이 되는 것이다. 참으로 안락한 상황이다. 좋은 프로그래머는 코드에 대한 접근 방식에서든 자신의 경력에 대한 접근 방식에서든 과감하다. 윤리적인 프로그래머 기술 부채를 추후 탐금하기 위해 작업 목록에 새로운 업무에 추가한다. 언어에 대한 사랑 좋은 프로그래머들은 다양한 언어와 방법론을 알고 있는 만큼 문제 해결의 범위가 넓다. 언어 고유의 방식과 관습에 돌입해야 한다. 의사소통은 말하는 것만큼이나 듣는 것도 중요하다. 프로그래머의 자세 ‘더 열심히’보다는 ‘더 현명하게’ 기술적 통찰력만이 아닌 문제를 풀고 전투를 선택하는 방법에서 찾아볼 수 있다. 좋은 프로그래머는 일을 빠르게 끝낸다. 어떻게 하면 문제를 잘 해결할 수 있는 지 아는 것이다. 현명하게 재사용한다. 직접 만들기보다는 이미 있는 코드를 사용하고, 더 중요한 일에 시간을 투자하라. 다른 사람이 거들어줄 수 있거나 훨씬 빨리 완료할 수 있다면, 그의 작업 목록에 올려주는편이 훨신 나을 것이다. 모든 것을 테스트하지 않고 취약할 것으로 예상되는 지점들에 집중하라. 테스트의 전장을 잘 선택하라. 최선책을 골라내기 위해 심사숙고하느라 많은 시간을 소모하지 말라. 우선 순위 설정에 엄격하라. 중요하지 않은 사소한 것에 몰두하지 말라. 새로운 업무가 할당될 때는 지금 당장 필요한 일인지부터 확인한다. 초기부터 지나치게 많은 코드를 작성하는 행동은 위험하다. 하나를 끝내고 다른 것을 하라. 코드와 설계를 가능한 한 작고 간결하게 유지하라. 미래의 요구사항이 무엇일지 지금 정확히 예견할 수는 없다. 지금 당장은 나중에 코드를 고치기 쉽도록 하는 정도에서 만족하는 것이 더 쉽고 똑똑한 일이다. 언젠가 발생할 가능성이 있는 기능을 미리 만들어주는 것은 더 어렵고 어리석다. 어려운 일을 미뤄두지 말라. 코드 통합 등이 그 예이다. 많은 사람들이 고통을 줄이기 위해 일을 미뤄두고 있다. 반복 작업은 손수하는 것보다는 도구를 작성하고 해당 도구를 한 번만 실행하는 편이 더 빠를 수 있다. 건전한 프로젝트는 연속한 야근을 요구하지 않는다. 항상 업무 흐름을 가속화해줄 새로운 도구를 찾으라. 다만 새로운 도구를 찾는 일에 노예가 되지는 말자. 끝나야 끝나는 것 ‘완료 상태란 어떤 것인지, 그리고 ‘완료’ 상태에 얼마나 가까운 지를 현실적으로 파악하는 것이다. 엄청난 업무를 할당받았다면, 일을 시작하기 전에 더 작고 이해할 만한 부분으로 일을 나누도록 하라. ‘완료’ 상태를 정의해야 한다. ‘완료 상태’는 명확하고 구체적어야 한다. 구현해야 할 기능, 추가 혹은 확장해야 할 모든 API, 수정해야 할 특저 오류를 목록화한다. 모든 주요 관련자들이 성공 기준을 확인하도록 하라. 작동함을 증명하기 위해 코드로 작성된 테스트를 사용하라. 필요 이상으로 많은 작업을 수행하지 말라. ‘완료’ 상태까지만 작업하라. 그런 뒤에는 중지하라. 교훈 얻기 다른 프로그래머에게 의무감을 가지라. 그들과 주기적으로 작업 경과를 확인하라. 사람의 힘 생각이 중요하다. 작업의 품질을 보증하기 위해 다른 프로그래머들에 대한 의무감을 가지면, 코드 품질을 환상적으로 높일 수 있다. 다른 사람이 코드를 읽고 품평하리라는 것을 알고 나면 좋은 코드를 짜고 싶은 마음이 더 커진다. 말하기 코드는 다른 사람과의 의사소통이다. 명백하고 애매호호함이 없어야만 다른 사람들이 코드를 유지 보수할 수 있다. 선언문 코드에 신경 쓰라 팀의 힘을 키우라 간결함을 유지하라 머리를 쓰라 그 무엇도 고정된 것은 없다. 꾸준히 배우라 (주체가 자신이든 팀이든 코드든 간에) 나아질 방향을 꾸준히 모색하라 언제나 가치를 전달하려 애쓰라. 길게 볼 수 있도록 해보라. 코드 찬가 Rober C. Martin 보이스카웃 규칙 리더 자신이 문제의 일부라면? 보통 소프트웨어 개발과 관련해 까다로운 부분은 기술적인 측면에 있지 않다. 결국 사람의 문제다. 나쁜 습관에 빠져들지 않도록 하라. 보통 소프트웨어 개발과 관련핸 까다로운 부분은 기술적인 측면에 있지 않다. 결국 사람의 문제다. 나쁜 습관에 빠져들지 않도록 하라. 코드에 신경 쓰지 않는 코더에게 둘러싸여 있다면, 자신만이라도 건전한 태도를 유지하라. 태도가 핵심이다. 좋은 프로그래머와 나쁜 프로그래머를 구분하는 요소는 바로 태도다. 태도는 기술적인 부분을 넘어선다."><meta property="og:locale" content="en_us"><meta property="og:type" content="article"><meta property="article:section" content="post"><meta property="article:published_time" content="2016-03-14T14:50:15+09:00"><meta property="article:modified_time" content="2018-07-28T11:22:08+00:00"><meta property="article:tag" content="Book"><meta property="article:tag" content="Programming"><meta name=twitter:card content="summary"><meta name=twitter:title content="(책) Becoming a better Programmer"><meta name=twitter:description content="코드에 신경쓰기 어떤 코드든 간에 수정한 후에는 이전 보다 나아져야 한다 기능이 추가된 것은 ‘나아진’ 것이 아니다. 기능이 추가되고, 코드 수가 늘어나도 여전히 좋은 구조를 유지하는 것이 ‘나아진’ 것이다. 정돈된 코드 유지하기 좋은 코드는 명백하며 일관성이 있다. 보기 좋은 코드는 의도를 드러낸다(예술) 코드를 읽을 사람은 지금 당장의 나 외에 몇 달 후의 나, 다른 동료 그리고 미래의 유지 보수 프로그래머다. 그들이 혼란을 덜 겪도록 코드를 작성해야 한다. 실은 다른 사람을 위해 코딩한다는 것을 인정해야 하고, 잊으면 안된다. 코딩 스타일 가이드를 정리한다. 코딩 스타일의 목적은 일관성이다. 불필요하게 반복되는 단어를 피한다. DataObject(?) 간결함보다 중요한 것은 명확함이다. 코드를 ‘정리정돈’해야 할 경우에는 기능 변경과 모양 변경을 동시에 진행하지 말라 프로젝트의 공통 관습이 존재한다면 따른다. 코드 작게 쓰기 소프트웨어를 개선하는 최고의 방법 가운데 하나는 바로 코드를 제거하는 것이다. 매일 같이 코드를 더 좋게 만들라. 중복 코드는 발견 즉시 제거한다. 더 많은 양의 코드가 더 좋은 SW를 의미하지는 않는다. 필요하지 않다면 코딩하지 말라. 적게 쓰고 그 대신 더 재미난 것을 찾으라. 코드 줄여 개선하기 C의 전처리기는 사용되지 않는 코드를 만들어 내는 역효과를 낼 수 있다. 함수의 return 값이 사용되지 않으면 void로 변경한다. 가능하면 죽은 코드를 제거한다. 죽은 코드를 발견했음에도 아무런 조치를 취하지 않는 것이야말로 실패의 징조다. 코드베이스의 망령 프로그래머로서 자질은 작성한 코드가 아닐 그것을 대하는 태도와 작성하는 방식에 의해 결정된다. 예전에 작성한 코드가 최신 라이브러리에 의해 대체할 수 있을 경우도 있다. 기존의 코드를 돌아보는 것은 자신을 위한 코드 리뷰이자, 가치있는 행동이다. 경로 탐색하기 코드를 작성하는 것이 읽는 것보다 쉽다.(하지만 숨겨진 의도를 파악하지 못하고 새로 작성하면 새로운 문제를 일으킨다. 실은 예전에 발생했던 문제를 부활시키는…) 코드 분석을 통해 알아낸 것이 있으면 프로젝트의 최상위 위치에 README파일을 만든다. 의도, 주의사항, 의존성, 빌드 방법 등 똥통에서 뒹굴기 goto 문이 남발되면 알고리즘 구조를 읽기 어렵다. 외부에 노출하는 API는 깔끔하고 합리적인가? 자료형을 잘 고르고, 변수 명이 적절한가? 코드의 레이아웃을 정돈하여 일관성 있게 작성했는가? 코드의 외관이 코드의 근본적인 품질을 보장하지는 않지만, 일관성 없고 지저분한 코드가 대개 구조도 부적절하고, 다루기 어려웠다(저자의 경험상) 특정 기능을 구현하는 코드 부분이 어디에 있는 지 쉽게 찾을 수 있는가? 보이스카웃 규칙을 따른다. 어떤 코드를 건드리건 이전보다 나아지도록 한다. 거대한 함수는 더 작으면서도 적절히 명명된 작은 함수들로 나눈다. 성능 최적화 측면에서 함수 호출이 갖는 penalty는 어떻게 할 것인지? 주기적으로 코드 일부라도 확인하고 그때마다 조금씩 나아지게 만든다. 수정으로 인해 기존 기능에 문제가 생기지 않음을 보장할 수 있는 모든 수단을 사용한다. 똥떵어리 수정을 별 의미없는 작업이라 치부하기보다는 더 나은 품질을 실현할 기회로 삼으라 수정하면서 자신의 태도도 확인하라. 어쩌면 당신은 원 저자보다 자신이 더 잘 알고 있다고 생각할 수도 있다. 과연 언제나 그럴까? 오류 무시하지 않기 반환 코드는 주로 정수 값으로 0은 성공, 그 외의 수는 오류를 의미 예상하지 못한 것을 예상하기 에러 코드는 절대로 무시하지 말라 버그 사냥하기 버그를 피할 수 있는 가장 좋은 충고는 믿기 힘들 정도로 ‘영리한(종종 복잡한 것과 동일시 되는)’ 코드를 만들리 말라는 것이다. Martin Fowler, 미련한 프로그래머는 컴퓨터가 이해할 수 있는 코드를 만들고, 좋은 프로그래머는 사람이 이해할 수 있는 코드를 만든다. 단위 테스트에 시간을 투자 특정 코드가 test coverage에 포함되지 않으면 제대로 작동한다고 신뢰할 수 없다. 문제를 다른 사람에게 설명해 보라. Rubber Duck strategy 버그를 찾고 해결하려 할 때 마구잡이로 달려들어서는 안된다. 코드의 어느 부분에 더 많은 문제가 있는 지 메모해둔다. 핫스팟을 찾으면 집중적인 개선 노력을 기울일 수 잇다. 아이젠버그. ‘관찰자’가 있으면 양상이 달라질 수 있다는 ‘관리자 효과’라는 용어를 만든 Werner Heisenberg 테스트하기 위대한 소프트웨어를 제대로 만들려면 피드백을 받아야 한다. 가능하면 자주, 그리고 빨리 좋은 테스트 전략은 피드백 절차를 간소화하는 것 피드백 과정이 짧을 수록 설계 변경을 더 빠르게 반복할 수 있고, 코드에 대해 더 강하게 확신할 수 있다. 더 열심히 일하려 하기보다 더 영리하게 일하라 코드에 대한 확신은 곧 테스트 코드의 품질이 결정한다. 실패 경우를 유닛 테스트로 만들어 재발을 방지한다. 성능이 주요 요구사항이면, 코드의 성능을 모니터링하는 테스트도 수행한다. 나쁜 테스트는 짐이 된다. 자산이라기보다 채무다 나쁜 테스트는 코드에 약간만 수정을 가해도 처리하기 어렵고, 조밀하며 이해하기 힘들다 좋은 테스트의 조건 나쁜 테스트란 테스트 코드도 유지 보수한다. 프로그램 테스트를 통해 버그의 존재를 확인할 수는 있지만, 버그가 없음을 확신할 수는 없다. 복잡도 다루기 Blob(Binary Large Object)은 정확한 역할과 책임을 확실히 가져야 한다. 우리의 뇌는 문제를 계층으로 나누고 추상화하여 추론하는데 최적화되어 있다. 사용하지 않은 helper method는 제거한다. 순환 의존 관계는 가장 복잡한 관계다. 프로그래머들에게 리팩토링할 시간도 허락하지 않은 채, 시스템을 확장하고 확장하며 또 확장한다. 버려야할 prototype을 출시 시스템으로 둔갑시킨다. 두 개의 시스템에 대한 이야기 대도시 이야기 vs. 디자인 타운 소프트웨어는 건강하지 못한 회사 구조와 개발 절차로 인해 잘못 설계될 수 있다. 이해 불가. 소프트웨어 설계의 품질을 유지 보수하라. 나쁜 설계는 더 나쁜 설계를 불러온다. 응집도의 부족. 각각의 컴포넌트는 필요하지 않은 다양한 기능을 포함하고 있다. 개발팀의 작업자들 간의 관계가 얼마나 건강한지는 소프트웨어 설계의 품질에 직접적 영향을 끼친다. 부적절한 관계와 자만심은 잘못된 소프트웨어를 만든다. 훌륭한 소프트웨어 디자인은 모듈 간의 상호 작동에서 필요한 것들만 허용한다. 불필요한 결합. 좋은 설계는 상호 연결 구조나 컴포넌트 간 연결의 분량을 검토한다. 시스템의 개별 부분은 단독으로 작동할 수 있어야 한다. 밀착 결합은 테스트하기 어렵게 만든다. 코드 문제. 공통된 규칙이나 공통 라이브러리 사용, 공통된 관례에 대한 무신경 새로운 기능을 붙이기가 너무 어렵다 보니 사람들은 점점 더 자주 실수했고, 디자인 타운은 초기 설계를 작동하기에 알맞은 수준으로 결정. 최상위 수준의 디렉토리 구조, 명명 규칙, 일반적 코딩 관례에 덧붙인 코드 작성 방법, 유닛 테스트 프레임워크 선택과 기반 구조가 되는 내부 구조들. 시스템 구조에 대한 명확한 비전. 일관성. 모든 수준에서의 모든 결정을 전체 설계의 관점에서 수행 구조 확장. 그 어떤 것도 변하지 않은 것은 없다. 소프트웨어의 구조는 불변이 아니다. 필요하다면 변경하라. 변경 가능하게 만들려면 구조를 간결하게 유지해야 한다. 기술 부채에 대한 인정과 후속 개선 작업 훌륭한 자동화 테스트는 최소한의 위험만으로 근본적인 구조 변경을 수행할 수 있게 한다. 팀이 분열되어 있다면, 코드도 어색하게 엮인다. 코드 작성에 앞서 계획적으로 설계한다. 더도 말고 덜도 말고 알맞게 설계. 소프트웨어 개발이란 훌륭한 프로그래머의 주요 특징 중 하나는 작성한 소프트웨어와 그 작성법에 대해 진심으로 주의를 기울이는 것이다. 좋은 소프트웨어는 정확하고, 입증되고, 측정되고, 실험되며, 검증되어야 한다 -> 좋은 테스트 자신이 작성한 소프트웨어는 언제나 완전히 정확하고 완벽하게 정밀한가? 이를 증명하는 방법은 무엇인가? 어떻게 하면 현재와 미래에 명시화 할 수 있는가? 일련의 규칙과 특정 팀 문화를 기반으로 개발을 진행 효율적인 프로그래머가 되려면 집안일을 두려워해서는 안 된다. 제품의 최신 버전에 대해 멋진 설계를 하는 것은 대단한 일이지만, 제품을 출시하고 지저분한 코드에서 오류를 찾아 수정하는 지루한 작업을 해야 할 때도 종종 있다. 문제의 수정 방법을 찾으면 적절한 시점에 파괴적이지 않은 방식으로 수정해야 하낟. 청소부로서 다른 사람에게 즐겁지 않은 작업을 넘겨버리지 말고 책임을 져야 한다. 죽은 코드를 제거하고, 망가진 코드를 수정한다. 적절하지 않은 코드를 리팩토링하고 재구성하며, 코드를 줄이고 깔끔하게 만든다. 코드가 황폐한 상태에 빠지지 않도록 하기 위함이다. 규칙 가지고 놀기 때때로 못난 프로그래머들에게는 더 많은 규칙이 필요하다. 규칙은 새로운 팀원에게 줄 수 있을 만큼의 단순해야 한다. 단순히 방법론과 절차에 대한 것이 아닌 팀에서 좋은 플레이어가 되는 방법과 같은 코딩 문화를 설명하는 규칙이어야 한다. 좋은 코드를 작성하기 위한 세개의 규칙이란 간결하게 하라 머리를 쓰라 변하지 않는 것은 없다. 간결하게 하기 간결한 코드는 설계하는 데 많은 노력이 필요하다. 다만 간결한 코드가 곧 과도하게 단순한 코드를 의미하지는 않는다. 잘못되고 단세포적인 ‘단순함’이 아니라 가장 간결한 코드를 작성하기 위해 노력해야 간결한 설계는 빠르고 명확하게 묘사할 수 있고, 쉽게 이해할 수 있다 ‘간결한’ 인터페이스 설계에서는 동적으로 할당한 객체를 받아 사용 후 사용자가 그 객체를 직접 삭제할 필요가 없다. 간결한 코드는 읽기 쉽고 이해하기 쉽다. 따라서 작업하기에도 쉽다. 명백한 방식으로 납득할 만한 코드를 작성하면, 코딩 스타일도 그렇게 된다. 그러면 유지 보수하는 프로그래머들이 고마워할 것이다. 오류를 수정하면서 간결함을 유지해야 한다. 증상 부위가 아닌 근본 원인에 대해 버그 수정을 적용하라 설계/구현을 위해 세운 가설이 있다면 코드에 명시한다. 유용할 것이라고 생각되는 대량의 코드를 작성하지 말라. 사용되지 않는 코드는 그저 잠일 뿐이다. 요구사항을 충족시키는 데 필요한 만큼의 코드만 작성하라. 코드를 적게 작성할 수로고 더 적은 버그가 만들어질 것이다. 머리 쓰기 일을 멈추고 생각하라. 바보 같은 코드를 작성하지 말라. 일단 작업을 멈추고 정신을 차린 뒤 대안이 있는 지 확인해보라. 가차없는 수정이 필요한 누더기 코드를 발견했을 때는 거기에 또 다른 누더기 코드를 덧씌우지 말라. 변하지 않는 것은 없다. 항상 시간이 해결해 준다고들 하지만, 실제로는 당신 스스로 변하게 만들어야 한다. 프로그래머는 두려움을 느끼고 코드를 깨뜨리지 않도록 하려다 보니, 코드를 단단히 얼어붙게 만든다. 이것이 바로 소프트웨어 사후 경직이다. 본래의 개발자가 프로젝트를 떠나고 오래된 중요한 코드를 완벽하게 이해하는 사람이 남지 않았을 때, 해당 코드가 사후 경직되는 경우가 종종 있다. 코드가 구속력을 가지면, 더 이상 소프트웨어를 개발한다고 볼 수 없으며 코드에 맞서 싸우는 형태가 된다. 코딩 시 두려움을 가지고 피하기만 한다면, 코더의 인생은 쉽게 만들어줄 지 몰라도, 설계는 썩어간다. 코드 성장에 도움이 되는 태도 수정하기 두려운 코드를 발견한다면 반드시 수정해야 한다. 리팩토링 또한 권장한다. 누구도 코드의 어떤 영역을 소유하고 있지 않다. 좋은 프로그래머는 변화를 기대한다. 변화야말로 소프트웨어 개발의 전부다. 모양과 의도를 드러내고, 간결함과 명확함, 일관성을 표방하는 코드. 코드 재사용 사례 코드가 하나의 프로젝트가 아닌 더 많은 용도로 사용될 지 의심스러운 상황에서 처음부터 다양하게 사용할 수 있도록 처리하는 것은 가치가 없는 일이다. 당장의 요구사항을 만족할 수 있는 가장 간단한 코드를 만드는 데에만 집중한다. 가능한 가장 적은 양의 소프트웨어를 만듦으로써, 버그를 양산하거나 향후 수년간 지원해야 하는 불필요한 API를 만들 위험을 줄일 수 있다. 한 곳이 아닌 여러 곳에서 사용되어야 한다면 공통 라이브러리 혹은 공통 코드 파일을 만든다. 가능하다면 기존에 존재하는 코드를 재사용한다. 효과적인 버전 관리 최상위 디렉토리에 도움이 되는 README 문서를 포함한다. 자주 조금씩 변경 사항을 체크인한다. 한 번에 두 가지 이상의 변경 사항을 다루는 체크인을 해서는 안 된다. 커밋 메시지는 코드와 같은 성격을 갖는다. 명확/간결/DRY. 변경한 파일을 나열할 필요는 없다. 개선하려면 변화해야 한다. 완벽하려면 자주 변화해야 한다. 골기퍼 있다고 골 안 들어가랴 QA와 개발을 별도의 단계이자 행위로 보고 다른 팀으로 나누어버리면, 경쟁심은 커지고 단절감은 심해진다. 신뢰감이 없어진다. 그러나 비개발 출신의 관리자는 부서간의 관계를 신뢰하지 못하고 별개의 부서로 만든다 품질 보장 업무는 개발자들과 테스터들이 긴밀히 연계될 때 비로소 효과적으로 수행될 수 있다. 팀 간의 의사소통이 건전하지 않으면 코드도 건전해지지 않는다. 개발자는 반드시 QA와 좋은 관계를 유지해야 하며, 우정과 동지애를 가져야 한다. 정확하고 신뢰할 만한 오류 보고서를 만든 뒤 구조화되고 규칙을 따르는 방식, 예를 들면 좋은 오류 추적 체계를 사용해 전달하는 것은 테스터의 의무이다. 오류 보고서를 개인적으로 받아들이지 말라. 개인적 모욕이 아니다!! 다툼이 있는 곳에는 언제나 관계를 해치는 결과와 더 긴밀히 만드는 결과로 구분 짓는 하나의 요소가 존재한다. 바로 ‘태도’이다. 폭포수 모델에 따라 테스트에 도달하기 전에 90%수준에 도달했다면, 프로젝트를 마감하기 위해 또 다른 90%수준의 노력이 필요함을 깨닫게 될 것이다. QA는 같은 팀의 일부임을 기억하라. 그들은 경쟁 집단이 아니다. 동결된 코드의 신기한 사례 코드 동결은 코드가 완전해졌다고 판단되는 시점으로 모든 기능이 구현되었을 뿐 아니라, 어처구니 없는 버그가 없는 때를 의미한다. ‘코드 동결’은 변경을 완전히 막는다기보다는 개발 작업에 대해 새로운 규칙을 적용한다는 의미 가깝다. 변경 사항이 아무리 가치 있다 해도 신중한 합의 후에 이루어져야 한다. 코드 동결 기간에는 기술적 부채가 발생할 수도 있다. 부채의 발생을 감시하고, 배포 이후에 곧바로 빚을 갚을 준비를 하라. 제발 저를 배포해주세요 배움을 사랑하며 살기 프로그래머에게는 배움, 즉 기량과 능력의 향상이 지속적으로 요구된다. 배움을 즐기는 것을 배우라 배울 때 재미있을 만한 것을 조사하는데 우선 시간을 들이라. 새로운 기술/기법/문제 영역에 대해 배우라. 사람들과 함께 일하는 것을 배우라. 사회학이나 경영학 책을 공부해보라. 소프트웨어 팀의 리더가 되는 것에 대해 읽어보라. 어떻게 배워야 할 지 배우라. 완전히 다른 것을 배우라. 새로운 외국어나 악기, 다른 과학 분야 미술 혹은 철학을 배우라. 나중에 버릴지언정 지금 배우고 있는 것을 기록하라 Knowledge Portfolio. 현재 업무 지식을 투자 포트폴리오로 간주해보라. 수집한 정보를 어떻게 관리해야 하고, 현재의 포트폴리오를 유지하기 위해 어떤 방식으로 신중하게 투자해야 하며, 포트폴리오를 강화하기 위해 새로운 투자를 어떻게 이끌어낼지를 밝혀낼 수 있다. 아인슈타인. 간단하게 설명할 수 없다면, 충분히 잘 이해하지 못했다는 증거이다. 배움에 있어 핵심적인 기술은 행동하는 것이다. 추상적으로만 알고 있던 것들을 구체적이고 실천적으로 알 수 있도록 하라. 뛰어들어 실행해보라. 테스트 기반 개발자 아무런 생각 없이 ‘성급하게 반응하는’ 식의 접근 방법은 카우보이 코더에게나 찾아볼 수 있는 증상이다. 오랜 경력을 가진 코드라고 해도 누구나 전문적인 기술자가 되지 않는다. 관련 업계에서 보낸 시간만으로는 판단할 수 없다. 승진했다고 해서 당신이 처음 개발을 시작했을 때보다 더 좋은 프로그래머라는 의미는 아니다. 도전 즐기기 코딩 연습, 코딩 문제, 개인적인 프로젝트, 새로운 직업을 찾아본다. 작업 중인 진행 상황을 볼 수 있도록 하라. 무엇을 성취했는 지 확인할 수 있도록 소스 로그를 리뷰하라. 부진 피하기 자신의 능력 이상을 해낸 마지막 시점은 언제였는가? 안전지대는 유해한 영역이다. 편한 삶이란 곧 학습하지 않고, 진행하지 않으며, 더 이상의 발전이 없는 것을 의미한다. 안전지대에 있는 것은 정체되었다는 뜻이다. 안전지대는 퇴보로 가는 지름길이다. 타성에 젖어버리기란 쉬운 일이다. 스스로를 불편한 상황에 두어야 하고 많은 노력을 쏟아 부어야 한다. 위험하고 어려운 일이며 자신을 난처하게 만들 수도 있다. 의식적으로 자신의 기술에 투자하려 해야 한다. 그런 결정을 지속해야 한다. 힘든 일이라 생각하지 말라. 도전 안에서 즐거움을 느끼라. 다른 도구/프로그래밍 언어/OS/편집기를 사용해 본다. 키보드 단축키를 알아본다. 개인적인 프로젝트를 시작한다. 프로젝트의 새로운 부분을 담당하라. 한 가지 직업/역할에 너무 오래 머물거나 아무런 도전거리도 없는 같은 일만 반복하는 것은 위험하다. 자신만의 작은 코딩 제국의 왕이 되는 것이다. 참으로 안락한 상황이다. 좋은 프로그래머는 코드에 대한 접근 방식에서든 자신의 경력에 대한 접근 방식에서든 과감하다. 윤리적인 프로그래머 기술 부채를 추후 탐금하기 위해 작업 목록에 새로운 업무에 추가한다. 언어에 대한 사랑 좋은 프로그래머들은 다양한 언어와 방법론을 알고 있는 만큼 문제 해결의 범위가 넓다. 언어 고유의 방식과 관습에 돌입해야 한다. 의사소통은 말하는 것만큼이나 듣는 것도 중요하다. 프로그래머의 자세 ‘더 열심히’보다는 ‘더 현명하게’ 기술적 통찰력만이 아닌 문제를 풀고 전투를 선택하는 방법에서 찾아볼 수 있다. 좋은 프로그래머는 일을 빠르게 끝낸다. 어떻게 하면 문제를 잘 해결할 수 있는 지 아는 것이다. 현명하게 재사용한다. 직접 만들기보다는 이미 있는 코드를 사용하고, 더 중요한 일에 시간을 투자하라. 다른 사람이 거들어줄 수 있거나 훨씬 빨리 완료할 수 있다면, 그의 작업 목록에 올려주는편이 훨신 나을 것이다. 모든 것을 테스트하지 않고 취약할 것으로 예상되는 지점들에 집중하라. 테스트의 전장을 잘 선택하라. 최선책을 골라내기 위해 심사숙고하느라 많은 시간을 소모하지 말라. 우선 순위 설정에 엄격하라. 중요하지 않은 사소한 것에 몰두하지 말라. 새로운 업무가 할당될 때는 지금 당장 필요한 일인지부터 확인한다. 초기부터 지나치게 많은 코드를 작성하는 행동은 위험하다. 하나를 끝내고 다른 것을 하라. 코드와 설계를 가능한 한 작고 간결하게 유지하라. 미래의 요구사항이 무엇일지 지금 정확히 예견할 수는 없다. 지금 당장은 나중에 코드를 고치기 쉽도록 하는 정도에서 만족하는 것이 더 쉽고 똑똑한 일이다. 언젠가 발생할 가능성이 있는 기능을 미리 만들어주는 것은 더 어렵고 어리석다. 어려운 일을 미뤄두지 말라. 코드 통합 등이 그 예이다. 많은 사람들이 고통을 줄이기 위해 일을 미뤄두고 있다. 반복 작업은 손수하는 것보다는 도구를 작성하고 해당 도구를 한 번만 실행하는 편이 더 빠를 수 있다. 건전한 프로젝트는 연속한 야근을 요구하지 않는다. 항상 업무 흐름을 가속화해줄 새로운 도구를 찾으라. 다만 새로운 도구를 찾는 일에 노예가 되지는 말자. 끝나야 끝나는 것 ‘완료 상태란 어떤 것인지, 그리고 ‘완료’ 상태에 얼마나 가까운 지를 현실적으로 파악하는 것이다. 엄청난 업무를 할당받았다면, 일을 시작하기 전에 더 작고 이해할 만한 부분으로 일을 나누도록 하라. ‘완료’ 상태를 정의해야 한다. ‘완료 상태’는 명확하고 구체적어야 한다. 구현해야 할 기능, 추가 혹은 확장해야 할 모든 API, 수정해야 할 특저 오류를 목록화한다. 모든 주요 관련자들이 성공 기준을 확인하도록 하라. 작동함을 증명하기 위해 코드로 작성된 테스트를 사용하라. 필요 이상으로 많은 작업을 수행하지 말라. ‘완료’ 상태까지만 작업하라. 그런 뒤에는 중지하라. 교훈 얻기 다른 프로그래머에게 의무감을 가지라. 그들과 주기적으로 작업 경과를 확인하라. 사람의 힘 생각이 중요하다. 작업의 품질을 보증하기 위해 다른 프로그래머들에 대한 의무감을 가지면, 코드 품질을 환상적으로 높일 수 있다. 다른 사람이 코드를 읽고 품평하리라는 것을 알고 나면 좋은 코드를 짜고 싶은 마음이 더 커진다. 말하기 코드는 다른 사람과의 의사소통이다. 명백하고 애매호호함이 없어야만 다른 사람들이 코드를 유지 보수할 수 있다. 선언문 코드에 신경 쓰라 팀의 힘을 키우라 간결함을 유지하라 머리를 쓰라 그 무엇도 고정된 것은 없다. 꾸준히 배우라 (주체가 자신이든 팀이든 코드든 간에) 나아질 방향을 꾸준히 모색하라 언제나 가치를 전달하려 애쓰라. 길게 볼 수 있도록 해보라. 코드 찬가 Rober C. Martin 보이스카웃 규칙 리더 자신이 문제의 일부라면? 보통 소프트웨어 개발과 관련해 까다로운 부분은 기술적인 측면에 있지 않다. 결국 사람의 문제다. 나쁜 습관에 빠져들지 않도록 하라. 보통 소프트웨어 개발과 관련핸 까다로운 부분은 기술적인 측면에 있지 않다. 결국 사람의 문제다. 나쁜 습관에 빠져들지 않도록 하라. 코드에 신경 쓰지 않는 코더에게 둘러싸여 있다면, 자신만이라도 건전한 태도를 유지하라. 태도가 핵심이다. 좋은 프로그래머와 나쁜 프로그래머를 구분하는 요소는 바로 태도다. 태도는 기술적인 부분을 넘어선다."><meta itemprop=name content="(책) Becoming a better Programmer"><meta itemprop=description content="코드에 신경쓰기 어떤 코드든 간에 수정한 후에는 이전 보다 나아져야 한다 기능이 추가된 것은 ‘나아진’ 것이 아니다. 기능이 추가되고, 코드 수가 늘어나도 여전히 좋은 구조를 유지하는 것이 ‘나아진’ 것이다. 정돈된 코드 유지하기 좋은 코드는 명백하며 일관성이 있다. 보기 좋은 코드는 의도를 드러낸다(예술) 코드를 읽을 사람은 지금 당장의 나 외에 몇 달 후의 나, 다른 동료 그리고 미래의 유지 보수 프로그래머다. 그들이 혼란을 덜 겪도록 코드를 작성해야 한다. 실은 다른 사람을 위해 코딩한다는 것을 인정해야 하고, 잊으면 안된다. 코딩 스타일 가이드를 정리한다. 코딩 스타일의 목적은 일관성이다. 불필요하게 반복되는 단어를 피한다. DataObject(?) 간결함보다 중요한 것은 명확함이다. 코드를 ‘정리정돈’해야 할 경우에는 기능 변경과 모양 변경을 동시에 진행하지 말라 프로젝트의 공통 관습이 존재한다면 따른다. 코드 작게 쓰기 소프트웨어를 개선하는 최고의 방법 가운데 하나는 바로 코드를 제거하는 것이다. 매일 같이 코드를 더 좋게 만들라. 중복 코드는 발견 즉시 제거한다. 더 많은 양의 코드가 더 좋은 SW를 의미하지는 않는다. 필요하지 않다면 코딩하지 말라. 적게 쓰고 그 대신 더 재미난 것을 찾으라. 코드 줄여 개선하기 C의 전처리기는 사용되지 않는 코드를 만들어 내는 역효과를 낼 수 있다. 함수의 return 값이 사용되지 않으면 void로 변경한다. 가능하면 죽은 코드를 제거한다. 죽은 코드를 발견했음에도 아무런 조치를 취하지 않는 것이야말로 실패의 징조다. 코드베이스의 망령 프로그래머로서 자질은 작성한 코드가 아닐 그것을 대하는 태도와 작성하는 방식에 의해 결정된다. 예전에 작성한 코드가 최신 라이브러리에 의해 대체할 수 있을 경우도 있다. 기존의 코드를 돌아보는 것은 자신을 위한 코드 리뷰이자, 가치있는 행동이다. 경로 탐색하기 코드를 작성하는 것이 읽는 것보다 쉽다.(하지만 숨겨진 의도를 파악하지 못하고 새로 작성하면 새로운 문제를 일으킨다. 실은 예전에 발생했던 문제를 부활시키는…) 코드 분석을 통해 알아낸 것이 있으면 프로젝트의 최상위 위치에 README파일을 만든다. 의도, 주의사항, 의존성, 빌드 방법 등 똥통에서 뒹굴기 goto 문이 남발되면 알고리즘 구조를 읽기 어렵다. 외부에 노출하는 API는 깔끔하고 합리적인가? 자료형을 잘 고르고, 변수 명이 적절한가? 코드의 레이아웃을 정돈하여 일관성 있게 작성했는가? 코드의 외관이 코드의 근본적인 품질을 보장하지는 않지만, 일관성 없고 지저분한 코드가 대개 구조도 부적절하고, 다루기 어려웠다(저자의 경험상) 특정 기능을 구현하는 코드 부분이 어디에 있는 지 쉽게 찾을 수 있는가? 보이스카웃 규칙을 따른다. 어떤 코드를 건드리건 이전보다 나아지도록 한다. 거대한 함수는 더 작으면서도 적절히 명명된 작은 함수들로 나눈다. 성능 최적화 측면에서 함수 호출이 갖는 penalty는 어떻게 할 것인지? 주기적으로 코드 일부라도 확인하고 그때마다 조금씩 나아지게 만든다. 수정으로 인해 기존 기능에 문제가 생기지 않음을 보장할 수 있는 모든 수단을 사용한다. 똥떵어리 수정을 별 의미없는 작업이라 치부하기보다는 더 나은 품질을 실현할 기회로 삼으라 수정하면서 자신의 태도도 확인하라. 어쩌면 당신은 원 저자보다 자신이 더 잘 알고 있다고 생각할 수도 있다. 과연 언제나 그럴까? 오류 무시하지 않기 반환 코드는 주로 정수 값으로 0은 성공, 그 외의 수는 오류를 의미 예상하지 못한 것을 예상하기 에러 코드는 절대로 무시하지 말라 버그 사냥하기 버그를 피할 수 있는 가장 좋은 충고는 믿기 힘들 정도로 ‘영리한(종종 복잡한 것과 동일시 되는)’ 코드를 만들리 말라는 것이다. Martin Fowler, 미련한 프로그래머는 컴퓨터가 이해할 수 있는 코드를 만들고, 좋은 프로그래머는 사람이 이해할 수 있는 코드를 만든다. 단위 테스트에 시간을 투자 특정 코드가 test coverage에 포함되지 않으면 제대로 작동한다고 신뢰할 수 없다. 문제를 다른 사람에게 설명해 보라. Rubber Duck strategy 버그를 찾고 해결하려 할 때 마구잡이로 달려들어서는 안된다. 코드의 어느 부분에 더 많은 문제가 있는 지 메모해둔다. 핫스팟을 찾으면 집중적인 개선 노력을 기울일 수 잇다. 아이젠버그. ‘관찰자’가 있으면 양상이 달라질 수 있다는 ‘관리자 효과’라는 용어를 만든 Werner Heisenberg 테스트하기 위대한 소프트웨어를 제대로 만들려면 피드백을 받아야 한다. 가능하면 자주, 그리고 빨리 좋은 테스트 전략은 피드백 절차를 간소화하는 것 피드백 과정이 짧을 수록 설계 변경을 더 빠르게 반복할 수 있고, 코드에 대해 더 강하게 확신할 수 있다. 더 열심히 일하려 하기보다 더 영리하게 일하라 코드에 대한 확신은 곧 테스트 코드의 품질이 결정한다. 실패 경우를 유닛 테스트로 만들어 재발을 방지한다. 성능이 주요 요구사항이면, 코드의 성능을 모니터링하는 테스트도 수행한다. 나쁜 테스트는 짐이 된다. 자산이라기보다 채무다 나쁜 테스트는 코드에 약간만 수정을 가해도 처리하기 어렵고, 조밀하며 이해하기 힘들다 좋은 테스트의 조건 나쁜 테스트란 테스트 코드도 유지 보수한다. 프로그램 테스트를 통해 버그의 존재를 확인할 수는 있지만, 버그가 없음을 확신할 수는 없다. 복잡도 다루기 Blob(Binary Large Object)은 정확한 역할과 책임을 확실히 가져야 한다. 우리의 뇌는 문제를 계층으로 나누고 추상화하여 추론하는데 최적화되어 있다. 사용하지 않은 helper method는 제거한다. 순환 의존 관계는 가장 복잡한 관계다. 프로그래머들에게 리팩토링할 시간도 허락하지 않은 채, 시스템을 확장하고 확장하며 또 확장한다. 버려야할 prototype을 출시 시스템으로 둔갑시킨다. 두 개의 시스템에 대한 이야기 대도시 이야기 vs. 디자인 타운 소프트웨어는 건강하지 못한 회사 구조와 개발 절차로 인해 잘못 설계될 수 있다. 이해 불가. 소프트웨어 설계의 품질을 유지 보수하라. 나쁜 설계는 더 나쁜 설계를 불러온다. 응집도의 부족. 각각의 컴포넌트는 필요하지 않은 다양한 기능을 포함하고 있다. 개발팀의 작업자들 간의 관계가 얼마나 건강한지는 소프트웨어 설계의 품질에 직접적 영향을 끼친다. 부적절한 관계와 자만심은 잘못된 소프트웨어를 만든다. 훌륭한 소프트웨어 디자인은 모듈 간의 상호 작동에서 필요한 것들만 허용한다. 불필요한 결합. 좋은 설계는 상호 연결 구조나 컴포넌트 간 연결의 분량을 검토한다. 시스템의 개별 부분은 단독으로 작동할 수 있어야 한다. 밀착 결합은 테스트하기 어렵게 만든다. 코드 문제. 공통된 규칙이나 공통 라이브러리 사용, 공통된 관례에 대한 무신경 새로운 기능을 붙이기가 너무 어렵다 보니 사람들은 점점 더 자주 실수했고, 디자인 타운은 초기 설계를 작동하기에 알맞은 수준으로 결정. 최상위 수준의 디렉토리 구조, 명명 규칙, 일반적 코딩 관례에 덧붙인 코드 작성 방법, 유닛 테스트 프레임워크 선택과 기반 구조가 되는 내부 구조들. 시스템 구조에 대한 명확한 비전. 일관성. 모든 수준에서의 모든 결정을 전체 설계의 관점에서 수행 구조 확장. 그 어떤 것도 변하지 않은 것은 없다. 소프트웨어의 구조는 불변이 아니다. 필요하다면 변경하라. 변경 가능하게 만들려면 구조를 간결하게 유지해야 한다. 기술 부채에 대한 인정과 후속 개선 작업 훌륭한 자동화 테스트는 최소한의 위험만으로 근본적인 구조 변경을 수행할 수 있게 한다. 팀이 분열되어 있다면, 코드도 어색하게 엮인다. 코드 작성에 앞서 계획적으로 설계한다. 더도 말고 덜도 말고 알맞게 설계. 소프트웨어 개발이란 훌륭한 프로그래머의 주요 특징 중 하나는 작성한 소프트웨어와 그 작성법에 대해 진심으로 주의를 기울이는 것이다. 좋은 소프트웨어는 정확하고, 입증되고, 측정되고, 실험되며, 검증되어야 한다 -> 좋은 테스트 자신이 작성한 소프트웨어는 언제나 완전히 정확하고 완벽하게 정밀한가? 이를 증명하는 방법은 무엇인가? 어떻게 하면 현재와 미래에 명시화 할 수 있는가? 일련의 규칙과 특정 팀 문화를 기반으로 개발을 진행 효율적인 프로그래머가 되려면 집안일을 두려워해서는 안 된다. 제품의 최신 버전에 대해 멋진 설계를 하는 것은 대단한 일이지만, 제품을 출시하고 지저분한 코드에서 오류를 찾아 수정하는 지루한 작업을 해야 할 때도 종종 있다. 문제의 수정 방법을 찾으면 적절한 시점에 파괴적이지 않은 방식으로 수정해야 하낟. 청소부로서 다른 사람에게 즐겁지 않은 작업을 넘겨버리지 말고 책임을 져야 한다. 죽은 코드를 제거하고, 망가진 코드를 수정한다. 적절하지 않은 코드를 리팩토링하고 재구성하며, 코드를 줄이고 깔끔하게 만든다. 코드가 황폐한 상태에 빠지지 않도록 하기 위함이다. 규칙 가지고 놀기 때때로 못난 프로그래머들에게는 더 많은 규칙이 필요하다. 규칙은 새로운 팀원에게 줄 수 있을 만큼의 단순해야 한다. 단순히 방법론과 절차에 대한 것이 아닌 팀에서 좋은 플레이어가 되는 방법과 같은 코딩 문화를 설명하는 규칙이어야 한다. 좋은 코드를 작성하기 위한 세개의 규칙이란 간결하게 하라 머리를 쓰라 변하지 않는 것은 없다. 간결하게 하기 간결한 코드는 설계하는 데 많은 노력이 필요하다. 다만 간결한 코드가 곧 과도하게 단순한 코드를 의미하지는 않는다. 잘못되고 단세포적인 ‘단순함’이 아니라 가장 간결한 코드를 작성하기 위해 노력해야 간결한 설계는 빠르고 명확하게 묘사할 수 있고, 쉽게 이해할 수 있다 ‘간결한’ 인터페이스 설계에서는 동적으로 할당한 객체를 받아 사용 후 사용자가 그 객체를 직접 삭제할 필요가 없다. 간결한 코드는 읽기 쉽고 이해하기 쉽다. 따라서 작업하기에도 쉽다. 명백한 방식으로 납득할 만한 코드를 작성하면, 코딩 스타일도 그렇게 된다. 그러면 유지 보수하는 프로그래머들이 고마워할 것이다. 오류를 수정하면서 간결함을 유지해야 한다. 증상 부위가 아닌 근본 원인에 대해 버그 수정을 적용하라 설계/구현을 위해 세운 가설이 있다면 코드에 명시한다. 유용할 것이라고 생각되는 대량의 코드를 작성하지 말라. 사용되지 않는 코드는 그저 잠일 뿐이다. 요구사항을 충족시키는 데 필요한 만큼의 코드만 작성하라. 코드를 적게 작성할 수로고 더 적은 버그가 만들어질 것이다. 머리 쓰기 일을 멈추고 생각하라. 바보 같은 코드를 작성하지 말라. 일단 작업을 멈추고 정신을 차린 뒤 대안이 있는 지 확인해보라. 가차없는 수정이 필요한 누더기 코드를 발견했을 때는 거기에 또 다른 누더기 코드를 덧씌우지 말라. 변하지 않는 것은 없다. 항상 시간이 해결해 준다고들 하지만, 실제로는 당신 스스로 변하게 만들어야 한다. 프로그래머는 두려움을 느끼고 코드를 깨뜨리지 않도록 하려다 보니, 코드를 단단히 얼어붙게 만든다. 이것이 바로 소프트웨어 사후 경직이다. 본래의 개발자가 프로젝트를 떠나고 오래된 중요한 코드를 완벽하게 이해하는 사람이 남지 않았을 때, 해당 코드가 사후 경직되는 경우가 종종 있다. 코드가 구속력을 가지면, 더 이상 소프트웨어를 개발한다고 볼 수 없으며 코드에 맞서 싸우는 형태가 된다. 코딩 시 두려움을 가지고 피하기만 한다면, 코더의 인생은 쉽게 만들어줄 지 몰라도, 설계는 썩어간다. 코드 성장에 도움이 되는 태도 수정하기 두려운 코드를 발견한다면 반드시 수정해야 한다. 리팩토링 또한 권장한다. 누구도 코드의 어떤 영역을 소유하고 있지 않다. 좋은 프로그래머는 변화를 기대한다. 변화야말로 소프트웨어 개발의 전부다. 모양과 의도를 드러내고, 간결함과 명확함, 일관성을 표방하는 코드. 코드 재사용 사례 코드가 하나의 프로젝트가 아닌 더 많은 용도로 사용될 지 의심스러운 상황에서 처음부터 다양하게 사용할 수 있도록 처리하는 것은 가치가 없는 일이다. 당장의 요구사항을 만족할 수 있는 가장 간단한 코드를 만드는 데에만 집중한다. 가능한 가장 적은 양의 소프트웨어를 만듦으로써, 버그를 양산하거나 향후 수년간 지원해야 하는 불필요한 API를 만들 위험을 줄일 수 있다. 한 곳이 아닌 여러 곳에서 사용되어야 한다면 공통 라이브러리 혹은 공통 코드 파일을 만든다. 가능하다면 기존에 존재하는 코드를 재사용한다. 효과적인 버전 관리 최상위 디렉토리에 도움이 되는 README 문서를 포함한다. 자주 조금씩 변경 사항을 체크인한다. 한 번에 두 가지 이상의 변경 사항을 다루는 체크인을 해서는 안 된다. 커밋 메시지는 코드와 같은 성격을 갖는다. 명확/간결/DRY. 변경한 파일을 나열할 필요는 없다. 개선하려면 변화해야 한다. 완벽하려면 자주 변화해야 한다. 골기퍼 있다고 골 안 들어가랴 QA와 개발을 별도의 단계이자 행위로 보고 다른 팀으로 나누어버리면, 경쟁심은 커지고 단절감은 심해진다. 신뢰감이 없어진다. 그러나 비개발 출신의 관리자는 부서간의 관계를 신뢰하지 못하고 별개의 부서로 만든다 품질 보장 업무는 개발자들과 테스터들이 긴밀히 연계될 때 비로소 효과적으로 수행될 수 있다. 팀 간의 의사소통이 건전하지 않으면 코드도 건전해지지 않는다. 개발자는 반드시 QA와 좋은 관계를 유지해야 하며, 우정과 동지애를 가져야 한다. 정확하고 신뢰할 만한 오류 보고서를 만든 뒤 구조화되고 규칙을 따르는 방식, 예를 들면 좋은 오류 추적 체계를 사용해 전달하는 것은 테스터의 의무이다. 오류 보고서를 개인적으로 받아들이지 말라. 개인적 모욕이 아니다!! 다툼이 있는 곳에는 언제나 관계를 해치는 결과와 더 긴밀히 만드는 결과로 구분 짓는 하나의 요소가 존재한다. 바로 ‘태도’이다. 폭포수 모델에 따라 테스트에 도달하기 전에 90%수준에 도달했다면, 프로젝트를 마감하기 위해 또 다른 90%수준의 노력이 필요함을 깨닫게 될 것이다. QA는 같은 팀의 일부임을 기억하라. 그들은 경쟁 집단이 아니다. 동결된 코드의 신기한 사례 코드 동결은 코드가 완전해졌다고 판단되는 시점으로 모든 기능이 구현되었을 뿐 아니라, 어처구니 없는 버그가 없는 때를 의미한다. ‘코드 동결’은 변경을 완전히 막는다기보다는 개발 작업에 대해 새로운 규칙을 적용한다는 의미 가깝다. 변경 사항이 아무리 가치 있다 해도 신중한 합의 후에 이루어져야 한다. 코드 동결 기간에는 기술적 부채가 발생할 수도 있다. 부채의 발생을 감시하고, 배포 이후에 곧바로 빚을 갚을 준비를 하라. 제발 저를 배포해주세요 배움을 사랑하며 살기 프로그래머에게는 배움, 즉 기량과 능력의 향상이 지속적으로 요구된다. 배움을 즐기는 것을 배우라 배울 때 재미있을 만한 것을 조사하는데 우선 시간을 들이라. 새로운 기술/기법/문제 영역에 대해 배우라. 사람들과 함께 일하는 것을 배우라. 사회학이나 경영학 책을 공부해보라. 소프트웨어 팀의 리더가 되는 것에 대해 읽어보라. 어떻게 배워야 할 지 배우라. 완전히 다른 것을 배우라. 새로운 외국어나 악기, 다른 과학 분야 미술 혹은 철학을 배우라. 나중에 버릴지언정 지금 배우고 있는 것을 기록하라 Knowledge Portfolio. 현재 업무 지식을 투자 포트폴리오로 간주해보라. 수집한 정보를 어떻게 관리해야 하고, 현재의 포트폴리오를 유지하기 위해 어떤 방식으로 신중하게 투자해야 하며, 포트폴리오를 강화하기 위해 새로운 투자를 어떻게 이끌어낼지를 밝혀낼 수 있다. 아인슈타인. 간단하게 설명할 수 없다면, 충분히 잘 이해하지 못했다는 증거이다. 배움에 있어 핵심적인 기술은 행동하는 것이다. 추상적으로만 알고 있던 것들을 구체적이고 실천적으로 알 수 있도록 하라. 뛰어들어 실행해보라. 테스트 기반 개발자 아무런 생각 없이 ‘성급하게 반응하는’ 식의 접근 방법은 카우보이 코더에게나 찾아볼 수 있는 증상이다. 오랜 경력을 가진 코드라고 해도 누구나 전문적인 기술자가 되지 않는다. 관련 업계에서 보낸 시간만으로는 판단할 수 없다. 승진했다고 해서 당신이 처음 개발을 시작했을 때보다 더 좋은 프로그래머라는 의미는 아니다. 도전 즐기기 코딩 연습, 코딩 문제, 개인적인 프로젝트, 새로운 직업을 찾아본다. 작업 중인 진행 상황을 볼 수 있도록 하라. 무엇을 성취했는 지 확인할 수 있도록 소스 로그를 리뷰하라. 부진 피하기 자신의 능력 이상을 해낸 마지막 시점은 언제였는가? 안전지대는 유해한 영역이다. 편한 삶이란 곧 학습하지 않고, 진행하지 않으며, 더 이상의 발전이 없는 것을 의미한다. 안전지대에 있는 것은 정체되었다는 뜻이다. 안전지대는 퇴보로 가는 지름길이다. 타성에 젖어버리기란 쉬운 일이다. 스스로를 불편한 상황에 두어야 하고 많은 노력을 쏟아 부어야 한다. 위험하고 어려운 일이며 자신을 난처하게 만들 수도 있다. 의식적으로 자신의 기술에 투자하려 해야 한다. 그런 결정을 지속해야 한다. 힘든 일이라 생각하지 말라. 도전 안에서 즐거움을 느끼라. 다른 도구/프로그래밍 언어/OS/편집기를 사용해 본다. 키보드 단축키를 알아본다. 개인적인 프로젝트를 시작한다. 프로젝트의 새로운 부분을 담당하라. 한 가지 직업/역할에 너무 오래 머물거나 아무런 도전거리도 없는 같은 일만 반복하는 것은 위험하다. 자신만의 작은 코딩 제국의 왕이 되는 것이다. 참으로 안락한 상황이다. 좋은 프로그래머는 코드에 대한 접근 방식에서든 자신의 경력에 대한 접근 방식에서든 과감하다. 윤리적인 프로그래머 기술 부채를 추후 탐금하기 위해 작업 목록에 새로운 업무에 추가한다. 언어에 대한 사랑 좋은 프로그래머들은 다양한 언어와 방법론을 알고 있는 만큼 문제 해결의 범위가 넓다. 언어 고유의 방식과 관습에 돌입해야 한다. 의사소통은 말하는 것만큼이나 듣는 것도 중요하다. 프로그래머의 자세 ‘더 열심히’보다는 ‘더 현명하게’ 기술적 통찰력만이 아닌 문제를 풀고 전투를 선택하는 방법에서 찾아볼 수 있다. 좋은 프로그래머는 일을 빠르게 끝낸다. 어떻게 하면 문제를 잘 해결할 수 있는 지 아는 것이다. 현명하게 재사용한다. 직접 만들기보다는 이미 있는 코드를 사용하고, 더 중요한 일에 시간을 투자하라. 다른 사람이 거들어줄 수 있거나 훨씬 빨리 완료할 수 있다면, 그의 작업 목록에 올려주는편이 훨신 나을 것이다. 모든 것을 테스트하지 않고 취약할 것으로 예상되는 지점들에 집중하라. 테스트의 전장을 잘 선택하라. 최선책을 골라내기 위해 심사숙고하느라 많은 시간을 소모하지 말라. 우선 순위 설정에 엄격하라. 중요하지 않은 사소한 것에 몰두하지 말라. 새로운 업무가 할당될 때는 지금 당장 필요한 일인지부터 확인한다. 초기부터 지나치게 많은 코드를 작성하는 행동은 위험하다. 하나를 끝내고 다른 것을 하라. 코드와 설계를 가능한 한 작고 간결하게 유지하라. 미래의 요구사항이 무엇일지 지금 정확히 예견할 수는 없다. 지금 당장은 나중에 코드를 고치기 쉽도록 하는 정도에서 만족하는 것이 더 쉽고 똑똑한 일이다. 언젠가 발생할 가능성이 있는 기능을 미리 만들어주는 것은 더 어렵고 어리석다. 어려운 일을 미뤄두지 말라. 코드 통합 등이 그 예이다. 많은 사람들이 고통을 줄이기 위해 일을 미뤄두고 있다. 반복 작업은 손수하는 것보다는 도구를 작성하고 해당 도구를 한 번만 실행하는 편이 더 빠를 수 있다. 건전한 프로젝트는 연속한 야근을 요구하지 않는다. 항상 업무 흐름을 가속화해줄 새로운 도구를 찾으라. 다만 새로운 도구를 찾는 일에 노예가 되지는 말자. 끝나야 끝나는 것 ‘완료 상태란 어떤 것인지, 그리고 ‘완료’ 상태에 얼마나 가까운 지를 현실적으로 파악하는 것이다. 엄청난 업무를 할당받았다면, 일을 시작하기 전에 더 작고 이해할 만한 부분으로 일을 나누도록 하라. ‘완료’ 상태를 정의해야 한다. ‘완료 상태’는 명확하고 구체적어야 한다. 구현해야 할 기능, 추가 혹은 확장해야 할 모든 API, 수정해야 할 특저 오류를 목록화한다. 모든 주요 관련자들이 성공 기준을 확인하도록 하라. 작동함을 증명하기 위해 코드로 작성된 테스트를 사용하라. 필요 이상으로 많은 작업을 수행하지 말라. ‘완료’ 상태까지만 작업하라. 그런 뒤에는 중지하라. 교훈 얻기 다른 프로그래머에게 의무감을 가지라. 그들과 주기적으로 작업 경과를 확인하라. 사람의 힘 생각이 중요하다. 작업의 품질을 보증하기 위해 다른 프로그래머들에 대한 의무감을 가지면, 코드 품질을 환상적으로 높일 수 있다. 다른 사람이 코드를 읽고 품평하리라는 것을 알고 나면 좋은 코드를 짜고 싶은 마음이 더 커진다. 말하기 코드는 다른 사람과의 의사소통이다. 명백하고 애매호호함이 없어야만 다른 사람들이 코드를 유지 보수할 수 있다. 선언문 코드에 신경 쓰라 팀의 힘을 키우라 간결함을 유지하라 머리를 쓰라 그 무엇도 고정된 것은 없다. 꾸준히 배우라 (주체가 자신이든 팀이든 코드든 간에) 나아질 방향을 꾸준히 모색하라 언제나 가치를 전달하려 애쓰라. 길게 볼 수 있도록 해보라. 코드 찬가 Rober C. Martin 보이스카웃 규칙 리더 자신이 문제의 일부라면? 보통 소프트웨어 개발과 관련해 까다로운 부분은 기술적인 측면에 있지 않다. 결국 사람의 문제다. 나쁜 습관에 빠져들지 않도록 하라. 보통 소프트웨어 개발과 관련핸 까다로운 부분은 기술적인 측면에 있지 않다. 결국 사람의 문제다. 나쁜 습관에 빠져들지 않도록 하라. 코드에 신경 쓰지 않는 코더에게 둘러싸여 있다면, 자신만이라도 건전한 태도를 유지하라. 태도가 핵심이다. 좋은 프로그래머와 나쁜 프로그래머를 구분하는 요소는 바로 태도다. 태도는 기술적인 부분을 넘어선다."><meta itemprop=datePublished content="2016-03-14T14:50:15+09:00"><meta itemprop=dateModified content="2018-07-28T11:22:08+00:00"><meta itemprop=wordCount content="2510"><meta itemprop=keywords content="Book,Programming"><meta name=referrer content="no-referrer-when-downgrade"><style>:root{--width:720px;--font-main:Verdana, sans-serif;--font-secondary:Verdana, sans-serif;--font-scale:1em;--background-color:#fafafa;--heading-color:#222;--text-color:#444;--link-color:#3273dc;--visited-color:#8b6fcb;--blockquote-color:#222}@media(prefers-color-scheme:dark){:root{--background-color:#fafafa;--heading-color:#222;--text-color:#444;--link-color:#3273dc;--visited-color:#8b6fcb;--blockquote-color:#222}}body{font-family:var(--font-secondary);font-size:var(--font-scale);margin:auto;padding:20px;max-width:var(--width);text-align:left;background-color:var(--background-color);word-wrap:break-word;overflow-wrap:break-word;line-height:1.5;color:var(--text-color)}h1,h2,h3,h4,h5,h6{font-family:var(--font-main);color:var(--heading-color)}a{color:var(--link-color);cursor:pointer;text-decoration:none}a:hover{text-decoration:underline}nav a{margin-right:8px}strong,b{color:var(--heading-color)}button{margin:0;cursor:pointer}time{font-family:monospace;font-style:normal;font-size:15px}main{line-height:1.6}table{width:100%}hr{border:0;border-top:1px dashed}img{max-width:100%}code{font-family:monospace;padding:2px;border-radius:3px}blockquote{border-left:1px solid #999;color:var(--blockquote-color);padding-left:20px;font-style:italic}footer{padding:25px 0;text-align:center}.title:hover{text-decoration:none}.title h1{font-size:1.5em}.inline{width:auto!important}.highlight,.code{border-radius:3px;margin-block-start:1em;margin-block-end:1em;overflow-x:auto}ul.blog-posts{list-style-type:none;padding:unset}ul.blog-posts li{display:flex}ul.blog-posts li span{flex:0 0 130px}ul.blog-posts li a:visited{color:var(--visited-color)}</style></head><body><header><a href=/ class=title><h2>Keep calm and Write something</h2></a><nav><a href=/post/>Post</a>
+<a href=/page/>Page</a>
+<a href=/series/>Series</a>
+<a href=/tags/>Tag</a>
+<a href=/archive/>Archive</a>
+<a href=/search/>Search</a></nav></header><main><content><ol><li>코드에 신경쓰기<ul><li>어떤 코드든 간에 수정한 후에는 이전 보다 나아져야 한다</li><li>기능이 추가된 것은 &lsquo;나아진&rsquo; 것이 아니다. 기능이 추가되고, 코드 수가 늘어나도 여전히 좋은 구조를 유지하는 것이 &lsquo;나아진&rsquo; 것이다.</li></ul></li><li>정돈된 코드 유지하기<ul><li>좋은 코드는 명백하며 일관성이 있다. 보기 좋은 코드는 의도를 드러낸다(예술)</li><li>코드를 읽을 사람은 지금 당장의 나 외에 몇 달 후의 나, 다른 동료 그리고 미래의 유지 보수 프로그래머다. 그들이 혼란을 덜 겪도록 코드를 작성해야 한다.</li><li>실은 다른 사람을 위해 코딩한다는 것을 인정해야 하고, 잊으면 안된다.</li><li>코딩 스타일 가이드를 정리한다. 코딩 스타일의 목적은 일관성이다.</li><li>불필요하게 반복되는 단어를 피한다. DataObject(?)</li><li>간결함보다 중요한 것은 명확함이다.</li><li>코드를 &lsquo;정리정돈&rsquo;해야 할 경우에는 기능 변경과 모양 변경을 동시에 진행하지 말라</li><li>프로젝트의 공통 관습이 존재한다면 따른다.</li></ul></li><li>코드 작게 쓰기<ul><li>소프트웨어를 개선하는 최고의 방법 가운데 하나는 바로 코드를 제거하는 것이다.</li><li>매일 같이 코드를 더 좋게 만들라. 중복 코드는 발견 즉시 제거한다.</li><li>더 많은 양의 코드가 더 좋은 SW를 의미하지는 않는다. 필요하지 않다면 코딩하지 말라. 적게 쓰고 그 대신 더 재미난 것을 찾으라.</li></ul></li><li>코드 줄여 개선하기<ul><li>C의 전처리기는 사용되지 않는 코드를 만들어 내는 역효과를 낼 수 있다.</li><li>함수의 return 값이 사용되지 않으면 void로 변경한다.</li><li>가능하면 죽은 코드를 제거한다.</li><li>죽은 코드를 발견했음에도 아무런 조치를 취하지 않는 것이야말로 실패의 징조다.</li></ul></li><li>코드베이스의 망령<ul><li>프로그래머로서 자질은 작성한 코드가 아닐 그것을 대하는 태도와 작성하는 방식에 의해 결정된다.</li><li>예전에 작성한 코드가 최신 라이브러리에 의해 대체할 수 있을 경우도 있다.</li><li>기존의 코드를 돌아보는 것은 자신을 위한 코드 리뷰이자, 가치있는 행동이다.</li></ul></li><li>경로 탐색하기<ul><li>코드를 작성하는 것이 읽는 것보다 쉽다.(하지만 숨겨진 의도를 파악하지 못하고 새로 작성하면 새로운 문제를 일으킨다. 실은 예전에 발생했던 문제를 부활시키는…)</li><li>코드 분석을 통해 알아낸 것이 있으면 프로젝트의 최상위 위치에 README파일을 만든다. 의도, 주의사항, 의존성, 빌드 방법 등</li></ul></li><li>똥통에서 뒹굴기<ul><li>goto 문이 남발되면 알고리즘 구조를 읽기 어렵다.</li><li>외부에 노출하는 API는 깔끔하고 합리적인가?</li><li>자료형을 잘 고르고, 변수 명이 적절한가?</li><li>코드의 레이아웃을 정돈하여 일관성 있게 작성했는가?<ul><li>코드의 외관이 코드의 근본적인 품질을 보장하지는 않지만, 일관성 없고 지저분한 코드가 대개 구조도 부적절하고, 다루기 어려웠다(저자의 경험상)</li></ul></li><li>특정 기능을 구현하는 코드 부분이 어디에 있는 지 쉽게 찾을 수 있는가?</li><li>보이스카웃 규칙을 따른다. 어떤 코드를 건드리건 이전보다 나아지도록 한다.</li><li>거대한 함수는 더 작으면서도 적절히 명명된 작은 함수들로 나눈다.<ul><li>성능 최적화 측면에서 함수 호출이 갖는 penalty는 어떻게 할 것인지?</li></ul></li><li>주기적으로 코드 일부라도 확인하고 그때마다 조금씩 나아지게 만든다.</li><li>수정으로 인해 기존 기능에 문제가 생기지 않음을 보장할 수 있는 모든 수단을 사용한다.</li><li>똥떵어리 수정을 별 의미없는 작업이라 치부하기보다는 더 나은 품질을 실현할 기회로 삼으라</li><li>수정하면서 자신의 태도도 확인하라. 어쩌면 당신은 원 저자보다 자신이 더 잘 알고 있다고 생각할 수도 있다. 과연 언제나 그럴까?</li></ul></li><li>오류 무시하지 않기<ul><li>반환 코드는 주로 정수 값으로 0은 성공, 그 외의 수는 오류를 의미</li></ul></li><li>예상하지 못한 것을 예상하기<ul><li>에러 코드는 절대로 무시하지 말라</li></ul></li><li>버그 사냥하기<ul><li>버그를 피할 수 있는 가장 좋은 충고는 믿기 힘들 정도로 &lsquo;영리한(종종 복잡한 것과 동일시 되는)&rsquo; 코드를 만들리 말라는 것이다.</li><li>Martin Fowler, 미련한 프로그래머는 컴퓨터가 이해할 수 있는 코드를 만들고, 좋은 프로그래머는 사람이 이해할 수 있는 코드를 만든다.</li><li>단위 테스트에 시간을 투자</li><li>특정 코드가 test coverage에 포함되지 않으면 제대로 작동한다고 신뢰할 수 없다.</li><li>문제를 다른 사람에게 설명해 보라. Rubber Duck strategy</li><li>버그를 찾고 해결하려 할 때 마구잡이로 달려들어서는 안된다.</li><li>코드의 어느 부분에 더 많은 문제가 있는 지 메모해둔다. 핫스팟을 찾으면 집중적인 개선 노력을 기울일 수 잇다.</li><li>아이젠버그. &lsquo;관찰자&rsquo;가 있으면 양상이 달라질 수 있다는 &lsquo;관리자 효과&rsquo;라는 용어를 만든 Werner Heisenberg</li></ul></li><li>테스트하기<ul><li>위대한 소프트웨어를 제대로 만들려면 피드백을 받아야 한다. 가능하면 자주, 그리고 빨리</li><li>좋은 테스트 전략은 피드백 절차를 간소화하는 것</li><li>피드백 과정이 짧을 수록 설계 변경을 더 빠르게 반복할 수 있고, 코드에 대해 더 강하게 확신할 수 있다.</li><li>더 열심히 일하려 하기보다 더 영리하게 일하라</li><li>코드에 대한 확신은 곧 테스트 코드의 품질이 결정한다.</li><li>실패 경우를 유닛 테스트로 만들어 재발을 방지한다.</li><li>성능이 주요 요구사항이면, 코드의 성능을 모니터링하는 테스트도 수행한다.</li><li>나쁜 테스트는 짐이 된다. 자산이라기보다 채무다</li><li>나쁜 테스트는 코드에 약간만 수정을 가해도 처리하기 어렵고, 조밀하며 이해하기 힘들다</li><li>좋은 테스트의 조건</li><li>나쁜 테스트란</li><li>테스트 코드도 유지 보수한다.</li><li>프로그램 테스트를 통해 버그의 존재를 확인할 수는 있지만, 버그가 없음을 확신할 수는 없다.</li></ul></li><li>복잡도 다루기<ul><li>Blob(Binary Large Object)은 정확한 역할과 책임을 확실히 가져야 한다.</li><li>우리의 뇌는 문제를 계층으로 나누고 추상화하여 추론하는데 최적화되어 있다.</li><li>사용하지 않은 helper method는 제거한다.</li><li>순환 의존 관계는 가장 복잡한 관계다.</li><li>프로그래머들에게 리팩토링할 시간도 허락하지 않은 채, 시스템을 확장하고 확장하며 또 확장한다. 버려야할 prototype을 출시 시스템으로 둔갑시킨다.</li></ul></li><li>두 개의 시스템에 대한 이야기<ul><li>대도시 이야기 vs. 디자인 타운</li><li>소프트웨어는 건강하지 못한 회사 구조와 개발 절차로 인해 잘못 설계될 수 있다.</li><li>이해 불가. 소프트웨어 설계의 품질을 유지 보수하라. 나쁜 설계는 더 나쁜 설계를 불러온다.</li><li>응집도의 부족. 각각의 컴포넌트는 필요하지 않은 다양한 기능을 포함하고 있다.<ul><li>개발팀의 작업자들 간의 관계가 얼마나 건강한지는 소프트웨어 설계의 품질에 직접적 영향을 끼친다. 부적절한 관계와 자만심은 잘못된 소프트웨어를 만든다.</li><li>훌륭한 소프트웨어 디자인은 모듈 간의 상호 작동에서 필요한 것들만 허용한다.</li></ul></li><li>불필요한 결합. 좋은 설계는 상호 연결 구조나 컴포넌트 간 연결의 분량을 검토한다. 시스템의 개별 부분은 단독으로 작동할 수 있어야 한다. 밀착 결합은 테스트하기 어렵게 만든다.<ul><li>코드 문제. 공통된 규칙이나 공통 라이브러리 사용, 공통된 관례에 대한 무신경</li></ul></li><li>새로운 기능을 붙이기가 너무 어렵다 보니 사람들은 점점 더 자주 실수했고,</li><li>디자인 타운은 초기 설계를 작동하기에 알맞은 수준으로 결정. 최상위 수준의 디렉토리 구조, 명명 규칙, 일반적 코딩 관례에 덧붙인 코드 작성 방법, 유닛 테스트 프레임워크 선택과 기반 구조가 되는 내부 구조들.</li><li>시스템 구조에 대한 명확한 비전.</li><li>일관성. 모든 수준에서의 모든 결정을 전체 설계의 관점에서 수행</li><li>구조 확장. 그 어떤 것도 변하지 않은 것은 없다. 소프트웨어의 구조는 불변이 아니다. 필요하다면 변경하라. 변경 가능하게 만들려면 구조를 간결하게 유지해야 한다.</li><li>기술 부채에 대한 인정과 후속 개선 작업</li><li>훌륭한 자동화 테스트는 최소한의 위험만으로 근본적인 구조 변경을 수행할 수 있게 한다.</li><li>팀이 분열되어 있다면, 코드도 어색하게 엮인다.</li><li>코드 작성에 앞서 계획적으로 설계한다. 더도 말고 덜도 말고 알맞게 설계.</li></ul></li><li>소프트웨어 개발이란<ul><li>훌륭한 프로그래머의 주요 특징 중 하나는 작성한 소프트웨어와 그 작성법에 대해 진심으로 주의를 기울이는 것이다.</li><li>좋은 소프트웨어는 정확하고, 입증되고, 측정되고, 실험되며, 검증되어야 한다 -> 좋은 테스트</li><li>자신이 작성한 소프트웨어는 언제나 완전히 정확하고 완벽하게 정밀한가? 이를 증명하는 방법은 무엇인가? 어떻게 하면 현재와 미래에 명시화 할 수 있는가?</li><li>일련의 규칙과 특정 팀 문화를 기반으로 개발을 진행</li><li>효율적인 프로그래머가 되려면 집안일을 두려워해서는 안 된다. 제품의 최신 버전에 대해 멋진 설계를 하는 것은 대단한 일이지만, 제품을 출시하고 지저분한 코드에서 오류를 찾아 수정하는 지루한 작업을 해야 할 때도 종종 있다.</li><li>문제의 수정 방법을 찾으면 적절한 시점에 파괴적이지 않은 방식으로 수정해야 하낟. 청소부로서 다른 사람에게 즐겁지 않은 작업을 넘겨버리지 말고 책임을 져야 한다.</li><li>죽은 코드를 제거하고, 망가진 코드를 수정한다. 적절하지 않은 코드를 리팩토링하고 재구성하며, 코드를 줄이고 깔끔하게 만든다. 코드가 황폐한 상태에 빠지지 않도록 하기 위함이다.</li></ul></li><li>규칙 가지고 놀기<ul><li>때때로 못난 프로그래머들에게는 더 많은 규칙이 필요하다.</li><li>규칙은 새로운 팀원에게 줄 수 있을 만큼의 단순해야 한다. 단순히 방법론과 절차에 대한 것이 아닌 팀에서 좋은 플레이어가 되는 방법과 같은 코딩 문화를 설명하는 규칙이어야 한다.</li><li>좋은 코드를 작성하기 위한 세개의 규칙이란<ul><li>간결하게 하라</li><li>머리를 쓰라</li><li>변하지 않는 것은 없다.</li></ul></li></ul></li><li>간결하게 하기<ul><li>간결한 코드는 설계하는 데 많은 노력이 필요하다. 다만 간결한 코드가 곧 과도하게 단순한 코드를 의미하지는 않는다.</li><li>잘못되고 단세포적인 &lsquo;단순함&rsquo;이 아니라 가장 간결한 코드를 작성하기 위해 노력해야</li><li>간결한 설계는 빠르고 명확하게 묘사할 수 있고, 쉽게 이해할 수 있다</li><li>&lsquo;간결한&rsquo; 인터페이스 설계에서는 동적으로 할당한 객체를 받아 사용 후 사용자가 그 객체를 직접 삭제할 필요가 없다.</li><li>간결한 코드는 읽기 쉽고 이해하기 쉽다. 따라서 작업하기에도 쉽다.</li><li>명백한 방식으로 납득할 만한 코드를 작성하면, 코딩 스타일도 그렇게 된다. 그러면 유지 보수하는 프로그래머들이 고마워할 것이다.</li><li>오류를 수정하면서 간결함을 유지해야 한다. 증상 부위가 아닌 근본 원인에 대해 버그 수정을 적용하라</li><li>설계/구현을 위해 세운 가설이 있다면 코드에 명시한다.</li><li>유용할 것이라고 생각되는 대량의 코드를 작성하지 말라. 사용되지 않는 코드는 그저 잠일 뿐이다. 요구사항을 충족시키는 데 필요한 만큼의 코드만 작성하라. 코드를 적게 작성할 수로고 더 적은 버그가 만들어질 것이다.</li></ul></li><li>머리 쓰기<ul><li>일을 멈추고 생각하라. 바보 같은 코드를 작성하지 말라.</li><li>일단 작업을 멈추고 정신을 차린 뒤 대안이 있는 지 확인해보라.</li><li>가차없는 수정이 필요한 누더기 코드를 발견했을 때는 거기에 또 다른 누더기 코드를 덧씌우지 말라.</li></ul></li><li>변하지 않는 것은 없다.<ul><li>항상 시간이 해결해 준다고들 하지만, 실제로는 당신 스스로 변하게 만들어야 한다.</li><li>프로그래머는 두려움을 느끼고 코드를 깨뜨리지 않도록 하려다 보니, 코드를 단단히 얼어붙게 만든다. 이것이 바로 소프트웨어 사후 경직이다.</li><li>본래의 개발자가 프로젝트를 떠나고 오래된 중요한 코드를 완벽하게 이해하는 사람이 남지 않았을 때, 해당 코드가 사후 경직되는 경우가 종종 있다.</li><li>코드가 구속력을 가지면, 더 이상 소프트웨어를 개발한다고 볼 수 없으며 코드에 맞서 싸우는 형태가 된다.</li><li>코딩 시 두려움을 가지고 피하기만 한다면, 코더의 인생은 쉽게 만들어줄 지 몰라도, 설계는 썩어간다.</li><li>코드 성장에 도움이 되는 태도<ul><li>수정하기 두려운 코드를 발견한다면 반드시 수정해야 한다.</li><li>리팩토링 또한 권장한다.</li><li>누구도 코드의 어떤 영역을 소유하고 있지 않다.</li><li>좋은 프로그래머는 변화를 기대한다. 변화야말로 소프트웨어 개발의 전부다.</li></ul></li><li>모양과 의도를 드러내고, 간결함과 명확함, 일관성을 표방하는 코드.</li></ul></li><li>코드 재사용 사례<ul><li>코드가 하나의 프로젝트가 아닌 더 많은 용도로 사용될 지 의심스러운 상황에서 처음부터 다양하게 사용할 수 있도록 처리하는 것은 가치가 없는 일이다.</li><li>당장의 요구사항을 만족할 수 있는 가장 간단한 코드를 만드는 데에만 집중한다.</li><li>가능한 가장 적은 양의 소프트웨어를 만듦으로써, 버그를 양산하거나 향후 수년간 지원해야 하는 불필요한 API를 만들 위험을 줄일 수 있다.</li><li>한 곳이 아닌 여러 곳에서 사용되어야 한다면 공통 라이브러리 혹은 공통 코드 파일을 만든다.</li><li>가능하다면 기존에 존재하는 코드를 재사용한다.</li></ul></li><li>효과적인 버전 관리<ul><li>최상위 디렉토리에 도움이 되는 README 문서를 포함한다.</li><li>자주 조금씩 변경 사항을 체크인한다.</li><li>한 번에 두 가지 이상의 변경 사항을 다루는 체크인을 해서는 안 된다.</li><li>커밋 메시지는 코드와 같은 성격을 갖는다. 명확/간결/DRY. 변경한 파일을 나열할 필요는 없다.</li><li>개선하려면 변화해야 한다. 완벽하려면 자주 변화해야 한다.</li></ul></li><li>골기퍼 있다고 골 안 들어가랴<ul><li>QA와 개발을 별도의 단계이자 행위로 보고 다른 팀으로 나누어버리면, 경쟁심은 커지고 단절감은 심해진다. 신뢰감이 없어진다. 그러나 비개발 출신의 관리자는 부서간의 관계를 신뢰하지 못하고 별개의 부서로 만든다</li><li>품질 보장 업무는 개발자들과 테스터들이 긴밀히 연계될 때 비로소 효과적으로 수행될 수 있다.</li><li>팀 간의 의사소통이 건전하지 않으면 코드도 건전해지지 않는다.</li><li>개발자는 반드시 QA와 좋은 관계를 유지해야 하며, 우정과 동지애를 가져야 한다.</li><li>정확하고 신뢰할 만한 오류 보고서를 만든 뒤 구조화되고 규칙을 따르는 방식, 예를 들면 좋은 오류 추적 체계를 사용해 전달하는 것은 테스터의 의무이다.</li><li>오류 보고서를 개인적으로 받아들이지 말라. 개인적 모욕이 아니다!!</li><li>다툼이 있는 곳에는 언제나 관계를 해치는 결과와 더 긴밀히 만드는 결과로 구분 짓는 하나의 요소가 존재한다. 바로 &lsquo;태도&rsquo;이다.</li><li>폭포수 모델에 따라 테스트에 도달하기 전에 90%수준에 도달했다면, 프로젝트를 마감하기 위해 또 다른 90%수준의 노력이 필요함을 깨닫게 될 것이다.</li><li>QA는 같은 팀의 일부임을 기억하라. 그들은 경쟁 집단이 아니다.</li></ul></li><li>동결된 코드의 신기한 사례<ul><li>코드 동결은 코드가 완전해졌다고 판단되는 시점으로 모든 기능이 구현되었을 뿐 아니라, 어처구니 없는 버그가 없는 때를 의미한다.</li><li>&lsquo;코드 동결&rsquo;은 변경을 완전히 막는다기보다는 개발 작업에 대해 새로운 규칙을 적용한다는 의미 가깝다. 변경 사항이 아무리 가치 있다 해도 신중한 합의 후에 이루어져야 한다.</li><li>코드 동결 기간에는 기술적 부채가 발생할 수도 있다. 부채의 발생을 감시하고, 배포 이후에 곧바로 빚을 갚을 준비를 하라.</li></ul></li><li>제발 저를 배포해주세요</li><li>배움을 사랑하며 살기<ul><li>프로그래머에게는 배움, 즉 기량과 능력의 향상이 지속적으로 요구된다.</li><li>배움을 즐기는 것을 배우라</li><li>배울 때 재미있을 만한 것을 조사하는데 우선 시간을 들이라.</li><li>새로운 기술/기법/문제 영역에 대해 배우라.</li><li>사람들과 함께 일하는 것을 배우라. 사회학이나 경영학 책을 공부해보라. 소프트웨어 팀의 리더가 되는 것에 대해 읽어보라.</li><li>어떻게 배워야 할 지 배우라.</li><li>완전히 다른 것을 배우라. 새로운 외국어나 악기, 다른 과학 분야 미술 혹은 철학을 배우라.</li><li>나중에 버릴지언정 지금 배우고 있는 것을 기록하라</li><li>Knowledge Portfolio. 현재 업무 지식을 투자 포트폴리오로 간주해보라. 수집한 정보를 어떻게 관리해야 하고, 현재의 포트폴리오를 유지하기 위해 어떤 방식으로 신중하게 투자해야 하며, 포트폴리오를 강화하기 위해 새로운 투자를 어떻게 이끌어낼지를 밝혀낼 수 있다.</li><li>아인슈타인. 간단하게 설명할 수 없다면, 충분히 잘 이해하지 못했다는 증거이다.</li><li>배움에 있어 핵심적인 기술은 행동하는 것이다.</li><li>추상적으로만 알고 있던 것들을 구체적이고 실천적으로 알 수 있도록 하라. 뛰어들어 실행해보라.</li></ul></li><li>테스트 기반 개발자<ul><li>아무런 생각 없이 &lsquo;성급하게 반응하는&rsquo; 식의 접근 방법은 카우보이 코더에게나 찾아볼 수 있는 증상이다.</li><li>오랜 경력을 가진 코드라고 해도 누구나 전문적인 기술자가 되지 않는다. 관련 업계에서 보낸 시간만으로는 판단할 수 없다.</li><li>승진했다고 해서 당신이 처음 개발을 시작했을 때보다 더 좋은 프로그래머라는 의미는 아니다.</li></ul></li><li>도전 즐기기<ul><li>코딩 연습, 코딩 문제, 개인적인 프로젝트, 새로운 직업을 찾아본다.</li><li>작업 중인 진행 상황을 볼 수 있도록 하라. 무엇을 성취했는 지 확인할 수 있도록 소스 로그를 리뷰하라.</li></ul></li><li>부진 피하기<ul><li>자신의 능력 이상을 해낸 마지막 시점은 언제였는가?</li><li>안전지대는 유해한 영역이다. 편한 삶이란 곧 학습하지 않고, 진행하지 않으며, 더 이상의 발전이 없는 것을 의미한다. 안전지대에 있는 것은 정체되었다는 뜻이다. 안전지대는 퇴보로 가는 지름길이다.</li><li>타성에 젖어버리기란 쉬운 일이다.</li><li>스스로를 불편한 상황에 두어야 하고 많은 노력을 쏟아 부어야 한다. 위험하고 어려운 일이며 자신을 난처하게 만들 수도 있다.</li><li>의식적으로 자신의 기술에 투자하려 해야 한다. 그런 결정을 지속해야 한다. 힘든 일이라 생각하지 말라. 도전 안에서 즐거움을 느끼라.</li><li>다른 도구/프로그래밍 언어/OS/편집기를 사용해 본다.</li><li>키보드 단축키를 알아본다.</li><li>개인적인 프로젝트를 시작한다.</li><li>프로젝트의 새로운 부분을 담당하라.</li><li>한 가지 직업/역할에 너무 오래 머물거나 아무런 도전거리도 없는 같은 일만 반복하는 것은 위험하다. 자신만의 작은 코딩 제국의 왕이 되는 것이다. 참으로 안락한 상황이다.</li><li>좋은 프로그래머는 코드에 대한 접근 방식에서든 자신의 경력에 대한 접근 방식에서든 과감하다.</li></ul></li><li>윤리적인 프로그래머<ul><li>기술 부채를 추후 탐금하기 위해 작업 목록에 새로운 업무에 추가한다.</li></ul></li><li>언어에 대한 사랑<ul><li>좋은 프로그래머들은 다양한 언어와 방법론을 알고 있는 만큼 문제 해결의 범위가 넓다.</li><li>언어 고유의 방식과 관습에 돌입해야 한다.</li><li>의사소통은 말하는 것만큼이나 듣는 것도 중요하다.</li></ul></li><li>프로그래머의 자세</li><li>&lsquo;더 열심히&rsquo;보다는 &lsquo;더 현명하게&rsquo;<ul><li>기술적 통찰력만이 아닌 문제를 풀고 전투를 선택하는 방법에서 찾아볼 수 있다.</li><li>좋은 프로그래머는 일을 빠르게 끝낸다. 어떻게 하면 문제를 잘 해결할 수 있는 지 아는 것이다.</li><li>현명하게 재사용한다. 직접 만들기보다는 이미 있는 코드를 사용하고, 더 중요한 일에 시간을 투자하라.</li><li>다른 사람이 거들어줄 수 있거나 훨씬 빨리 완료할 수 있다면, 그의 작업 목록에 올려주는편이 훨신 나을 것이다.</li><li>모든 것을 테스트하지 않고 취약할 것으로 예상되는 지점들에 집중하라. 테스트의 전장을 잘 선택하라.</li><li>최선책을 골라내기 위해 심사숙고하느라 많은 시간을 소모하지 말라.</li><li>우선 순위 설정에 엄격하라. 중요하지 않은 사소한 것에 몰두하지 말라.</li><li>새로운 업무가 할당될 때는 지금 당장 필요한 일인지부터 확인한다. 초기부터 지나치게 많은 코드를 작성하는 행동은 위험하다.</li><li>하나를 끝내고 다른 것을 하라.</li><li>코드와 설계를 가능한 한 작고 간결하게 유지하라.</li><li>미래의 요구사항이 무엇일지 지금 정확히 예견할 수는 없다. 지금 당장은 나중에 코드를 고치기 쉽도록 하는 정도에서 만족하는 것이 더 쉽고 똑똑한 일이다. 언젠가 발생할 가능성이 있는 기능을 미리 만들어주는 것은 더 어렵고 어리석다.</li><li>어려운 일을 미뤄두지 말라. 코드 통합 등이 그 예이다. 많은 사람들이 고통을 줄이기 위해 일을 미뤄두고 있다.</li><li>반복 작업은 손수하는 것보다는 도구를 작성하고 해당 도구를 한 번만 실행하는 편이 더 빠를 수 있다.</li><li>건전한 프로젝트는 연속한 야근을 요구하지 않는다.</li><li>항상 업무 흐름을 가속화해줄 새로운 도구를 찾으라. 다만 새로운 도구를 찾는 일에 노예가 되지는 말자.</li></ul></li><li>끝나야 끝나는 것<ul><li>&lsquo;완료 상태란 어떤 것인지, 그리고 &lsquo;완료&rsquo; 상태에 얼마나 가까운 지를 현실적으로 파악하는 것이다.</li><li>엄청난 업무를 할당받았다면, 일을 시작하기 전에 더 작고 이해할 만한 부분으로 일을 나누도록 하라.</li><li>&lsquo;완료&rsquo; 상태를 정의해야 한다.</li><li>&lsquo;완료 상태&rsquo;는 명확하고 구체적어야 한다. 구현해야 할 기능, 추가 혹은 확장해야 할 모든 API, 수정해야 할 특저 오류를 목록화한다. 모든 주요 관련자들이 성공 기준을 확인하도록 하라. 작동함을 증명하기 위해 코드로 작성된 테스트를 사용하라.</li><li>필요 이상으로 많은 작업을 수행하지 말라. &lsquo;완료&rsquo; 상태까지만 작업하라. 그런 뒤에는 중지하라.</li><li></li></ul></li><li>교훈 얻기<ul><li>다른 프로그래머에게 의무감을 가지라. 그들과 주기적으로 작업 경과를 확인하라.</li></ul></li><li>사람의 힘</li><li>생각이 중요하다.<ul><li>작업의 품질을 보증하기 위해 다른 프로그래머들에 대한 의무감을 가지면, 코드 품질을 환상적으로 높일 수 있다.</li><li>다른 사람이 코드를 읽고 품평하리라는 것을 알고 나면 좋은 코드를 짜고 싶은 마음이 더 커진다.</li></ul></li><li>말하기<ul><li>코드는 다른 사람과의 의사소통이다. 명백하고 애매호호함이 없어야만 다른 사람들이 코드를 유지 보수할 수 있다.</li></ul></li><li>선언문<ul><li>코드에 신경 쓰라</li><li>팀의 힘을 키우라</li><li>간결함을 유지하라</li><li>머리를 쓰라</li><li>그 무엇도 고정된 것은 없다.</li><li>꾸준히 배우라</li><li>(주체가 자신이든 팀이든 코드든 간에) 나아질 방향을 꾸준히 모색하라</li><li>언제나 가치를 전달하려 애쓰라. 길게 볼 수 있도록 해보라.</li></ul></li><li>코드 찬가<ul><li>Rober C. Martin 보이스카웃 규칙</li><li>리더 자신이 문제의 일부라면?</li><li>보통 소프트웨어 개발과 관련해 까다로운 부분은 기술적인 측면에 있지 않다. 결국 사람의 문제다.</li><li>나쁜 습관에 빠져들지 않도록 하라.</li><li>보통 소프트웨어 개발과 관련핸 까다로운 부분은 기술적인 측면에 있지 않다. 결국 사람의 문제다.</li><li>나쁜 습관에 빠져들지 않도록 하라.</li><li>코드에 신경 쓰지 않는 코더에게 둘러싸여 있다면, 자신만이라도 건전한 태도를 유지하라.</li></ul></li><li>태도가 핵심이다.<ul><li>좋은 프로그래머와 나쁜 프로그래머를 구분하는 요소는 바로 태도다.</li><li>태도는 기술적인 부분을 넘어선다.</li></ul></li></ol></content><p><a href=https://cychong47.github.io/tags/book/>#Book</a>
+<a href=https://cychong47.github.io/tags/programming/>#Programming</a></p></main><footer>Made with <a href=https://github.com/janraasch/hugo-bearblog/>Hugo ʕ•ᴥ•ʔ Bear</a></footer></body></html>

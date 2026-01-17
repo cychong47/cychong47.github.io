@@ -1,2 +1,22 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Xcrun on Keep calm and write something</title><link>https://cychong47.github.io/tags/xcrun/</link><description>Recent content in Xcrun on Keep calm and write something</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Sun, 01 Apr 2018 02:38:51 +0000</lastBuildDate><atom:link href="https://cychong47.github.io/tags/xcrun/index.xml" rel="self" type="application/rss+xml"/><item><title>Error in using homebrew module in ansible</title><link>https://cychong47.github.io/post/2017/untitled-2/</link><pubDate>Sun, 08 Oct 2017 17:25:43 +0900</pubDate><guid>https://cychong47.github.io/post/2017/untitled-2/</guid><description>When I call the homebrew modules for three hosts including the localhost, one host reports error.
-mbpr15:~ cychong$ ansible-playbook install_brew_ack.yaml --verbose No config file found; using defaults PLAY [all] ************************************************************************************************** TASK [Gathering Facts] ************************************************************************************** ok: [localhost] ok: [mini2] ok: [mini1] TASK [install ack in homebrew] ****************************************************************************** ok: [localhost] =&amp;gt; {&amp;#34;changed&amp;#34;: false, &amp;#34;failed&amp;#34;: false, &amp;#34;msg&amp;#34;: &amp;#34;Package already installed: ack&amp;#34;} ok: [mini1] =&amp;gt; {&amp;#34;changed&amp;#34;: false, &amp;#34;failed&amp;#34;: false, &amp;#34;msg&amp;#34;: &amp;#34;Package already installed: ack&amp;#34;} fatal: [mini2]: FAILED!</description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Xcrun on Keep calm and Write something</title><link>https://cychong47.github.io/tags/xcrun/</link><description>Recent content in Xcrun on Keep calm and Write something</description><generator>Hugo</generator><language>en-us</language><lastBuildDate>Sun, 01 Apr 2018 02:38:51 +0000</lastBuildDate><atom:link href="https://cychong47.github.io/tags/xcrun/index.xml" rel="self" type="application/rss+xml"/><item><title>Error in using homebrew module in ansible</title><link>https://cychong47.github.io/post/2017/untitled-2/</link><pubDate>Sun, 08 Oct 2017 17:25:43 +0900</pubDate><guid>https://cychong47.github.io/post/2017/untitled-2/</guid><description>&lt;p&gt;When I call the homebrew modules for three hosts including the localhost, one host reports error.&lt;/p&gt;
+&lt;pre tabindex="0"&gt;&lt;code&gt;mbpr15:~ cychong$ ansible-playbook install_brew_ack.yaml --verbose
+No config file found; using defaults
+
+PLAY [all] **************************************************************************************************
+
+TASK [Gathering Facts] **************************************************************************************
+ok: [localhost]
+ok: [mini2]
+ok: [mini1]
+
+TASK [install ack in homebrew] ******************************************************************************
+ok: [localhost] =&amp;gt; {&amp;#34;changed&amp;#34;: false, &amp;#34;failed&amp;#34;: false, &amp;#34;msg&amp;#34;: &amp;#34;Package already installed: ack&amp;#34;}
+ok: [mini1] =&amp;gt; {&amp;#34;changed&amp;#34;: false, &amp;#34;failed&amp;#34;: false, &amp;#34;msg&amp;#34;: &amp;#34;Package already installed: ack&amp;#34;}
+fatal: [mini2]: FAILED! =&amp;gt; {&amp;#34;changed&amp;#34;: false, &amp;#34;failed&amp;#34;: true, &amp;#34;msg&amp;#34;: &amp;#34;Warning: git 2.14.2 is already installed\nError: Git must be installed and in your PATH!\nxcrun: error: invalid active developer path (/Library/Developer/CommandLineTools), missing xcrun at: /Library/Developer/CommandLineTools/usr/bin/xcrun\nError: ack cannot be built with any available compilers.\nInstall GNU&amp;#39;s GCC\n brew install gcc&amp;#34;}
+	to retry, use: --limit @/Users/cychong/install_brew_ack.retry
+
+PLAY RECAP **************************************************************************************************
+localhost : ok=2 changed=0 unreachable=0 failed=0 
+mini1 : ok=2 changed=0 unreachable=0 failed=0 
+mini2 : ok=1 changed=0 unreachable=0 failed=1 
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;This requires xcrun is not installed. (The following command will have a pop-up window to install command line tool).&lt;/p&gt;</description></item></channel></rss>

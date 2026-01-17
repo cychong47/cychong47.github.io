@@ -1,5 +1,12 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>R210 on Keep calm and write something</title><link>https://cychong47.github.io/tags/r210/</link><description>Recent content in R210 on Keep calm and write something</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Sun, 01 Apr 2018 02:38:40 +0000</lastBuildDate><atom:link href="https://cychong47.github.io/tags/r210/index.xml" rel="self" type="application/rss+xml"/><item><title>DPDK IP reassembly example</title><link>https://cychong47.github.io/post/2015/dpdk-ip-reassembly-example/</link><pubDate>Tue, 17 Nov 2015 13:49:57 +0900</pubDate><guid>https://cychong47.github.io/post/2015/dpdk-ip-reassembly-example/</guid><description>TAILQ_HEAD(ip_pkt_list, ip_frag_pkt); /**&amp;lt; @internal fragments tailq */ 자료 구조체 Fragment 관리용 table struct rte_ip_frag_tbl *frag_tbl; locking 없이 IP reassembly를 수행할 단위(통상 core)로 한 개씩 만든다. 즉 하나의 core가 여러 rx queue를 처리하더라도 하나의 frag_tbl만 가지면 된다.
-아래 rte_ip_frag_table_create()함수를 이용해서 생성한다.
-struct rte_ip_frag_death_row death_row core별로 갖는 death_row. IP reassembly를 호출한 후 해당 함수내에서 free할 mbuf를 이 리스트에 담아줌.
-main loop에서 reassembly작업 후 rte_ip_frag_free_death_row()함수를 호출해 reassembly에 실패한 mbuf를 free함
-IP_MAX_FRAG_NUM defines the maximum fragments of one reassembly.</description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>R210 on Keep calm and Write something</title><link>https://cychong47.github.io/tags/r210/</link><description>Recent content in R210 on Keep calm and Write something</description><generator>Hugo</generator><language>en-us</language><lastBuildDate>Sun, 01 Apr 2018 02:38:40 +0000</lastBuildDate><atom:link href="https://cychong47.github.io/tags/r210/index.xml" rel="self" type="application/rss+xml"/><item><title>DPDK IP reassembly example</title><link>https://cychong47.github.io/post/2015/dpdk-ip-reassembly-example/</link><pubDate>Tue, 17 Nov 2015 13:49:57 +0900</pubDate><guid>https://cychong47.github.io/post/2015/dpdk-ip-reassembly-example/</guid><description>&lt;pre&gt;&lt;code&gt;TAILQ_HEAD(ip_pkt_list, ip_frag_pkt); /**&amp;lt; @internal fragments tailq */
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id="자료-구조체"&gt;자료 구조체&lt;/h3&gt;
+&lt;h5 id="fragment-관리용-table"&gt;Fragment 관리용 table&lt;/h5&gt;
+&lt;pre&gt;&lt;code&gt;struct rte_ip_frag_tbl *frag_tbl; 
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;locking 없이 IP reassembly를 수행할 단위(통상 core)로 한 개씩 만든다. 즉 하나의 core가 여러 rx queue를 처리하더라도 하나의 &lt;code&gt;frag_tbl&lt;/code&gt;만 가지면 된다.&lt;br&gt;
+아래 &lt;code&gt;rte_ip_frag_table_create()&lt;/code&gt;함수를 이용해서 생성한다.&lt;/p&gt;
+&lt;h5 id="struct-rte_ip_frag_death_row-death_row"&gt;&lt;code&gt;struct rte_ip_frag_death_row death_row&lt;/code&gt;&lt;/h5&gt;
+&lt;p&gt;core별로 갖는 death_row. IP reassembly를 호출한 후 해당 함수내에서 free할 mbuf를 이 리스트에 담아줌.&lt;br&gt;
+main loop에서 reassembly작업 후 &lt;code&gt;rte_ip_frag_free_death_row()&lt;/code&gt;함수를 호출해 reassembly에 실패한 mbuf를 free함&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;IP_MAX_FRAG_NUM&lt;/code&gt; defines the maximum fragments of one reassembly. Defined same as &lt;code&gt;RTE_LIBRTE_IP_FRAG_MAX_FRAG&lt;/code&gt; aka 4.&lt;/p&gt;</description></item></channel></rss>

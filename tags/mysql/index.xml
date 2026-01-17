@@ -1,15 +1,126 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Mysql on Keep calm and write something</title><link>https://cychong47.github.io/tags/mysql/</link><description>Recent content in Mysql on Keep calm and write something</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Sat, 09 May 2020 15:00:09 +0000</lastBuildDate><atom:link href="https://cychong47.github.io/tags/mysql/index.xml" rel="self" type="application/rss+xml"/><item><title>WordPress 로그인 불가 문제 해결</title><link>https://cychong47.github.io/post/2020/recover-broken-users-table/</link><pubDate>Fri, 08 May 2020 23:36:45 +0900</pubDate><guid>https://cychong47.github.io/post/2020/recover-broken-users-table/</guid><description>말썽쟁이(?) wordpress 블로그가 또 문제를 일으켰다.
-이번에도 로그인이 안되는 현상인데 지난 번과는 다른 에러 메시지가 나온다. 즉 지난 번 해결책은 소용이 없을 거라는 불길한 예감이.
-로그인 계정 자체가 없다는 이 어이없는 상황.
-그래서 지난 번에 유용하게 사용했던 phpmyadmin을 이용해서 DB 정보를 확인해봤다. (다행히 MySql, wordpress 와 함께 실행시켜놓은 phpmyadmin container가 동작하고 있어서 지난 번과 같이 8181 포트로 접속하면 된단. 다만 로그인 암호를 기억하지 못하고 있는 나 대신 Safari가 기억하고 있어서 그냥 접속했다는)</description></item><item><title>Recover WordPress container</title><link>https://cychong47.github.io/post/2018/recovery-failed-wordpress-container/</link><pubDate>Wed, 05 Sep 2018 14:10:39 +0900</pubDate><guid>https://cychong47.github.io/post/2018/recovery-failed-wordpress-container/</guid><description>One day The Wordpress container does not work at all. docker ps로 확인하면 1분 주기로 restart를 반복하고 있다. 경험상 이건 wordpress 앱이 초기화 과정에서 문제가 있는 거라는 걸로 짐작된다. 로그를 확인해 보니 아래와 같은 에러만 출력.
-뭐가 문제일까 멀쩡히 잘 돌던 녀석들인데.
-mini2:html cychong$ docker logs -f f12c3b3a57ef ... Warning: mysqli::__construct(): Unexpected server respose while doing caching_sha2 auth: 109 in Standard input code on line 22 MySQL Connection Error: (2006) MySQL server has gone away Warning: mysqli::__construct(): MySQL server has gone away in Standard input code on line 22 Warning: mysqli::__construct(): (HY000/2006): MySQL server has gone away in Standard input code on line 22 Warning: mysqli::__construct(): Unexpected server respose while doing caching_sha2 auth: 109 in Standard input code on line 22 Warning: mysqli::__construct(): MySQL server has gone away in Standard input code on line 22 Warning: mysqli::__construct(): (HY000/2006): MySQL server has gone away in Standard input code on line 22 MySQL Connection Error: (2006) MySQL server has gone away Warning: mysqli::__construct(): Unexpected server respose while doing caching_sha2 auth: 109 in Standard input code on line 22 MySQL Connection Error: (2006) MySQL server has gone away Warning: mysqli::__construct(): MySQL server has gone away in Standard input code on line 22 Warning: mysqli::__construct(): (HY000/2006): MySQL server has gone away in Standard input code on line 22 Let’s debug 하지만 뭔가 달라진 게 있으니 갑자기 문제가 발생했겠지.</description></item><item><title>wordpress admin 계정 복구</title><link>https://cychong47.github.io/post/2018/wordpress-admin-login-fail/</link><pubDate>Thu, 14 Jun 2018 14:21:13 +0900</pubDate><guid>https://cychong47.github.io/post/2018/wordpress-admin-login-fail/</guid><description>문제 블로그 보는 거 자체는 문제가 없는데 admin 계정으로 로그인 시도하면 반복해서 로그인 페이지로 redirect됨
-http://sosa0sa.com/wp-login.php?redirect_to=http://sosa0sa.com/wp-admin/&amp;amp;reauth=1 구글링을 하니 대부분 쿠키를 초기화하고, theme, plugin등을 초기화하라는 의견이 대부분. 모두 따라해 봤으니 제대로 동작하지 않는다&amp;hellip; -_-;;;
-마지막으로 wp_usermeta table에서 session_token 값을 초기화하라는 말이 있어 이것도 해 보기로. phpmyadmin을 설치해서 table의 값을 변경하라고 해서 phpmyadmin을 역시 docker로 설치해 보기로
-https://wordpress.org/support/topic/possible-fix-for-sudden-redirect-loop-at-wp-login-with-reauth1/
-Phpmyadmin docker 설치 Wordpress ansible-playbook 에 다음과 같이 추가
-links를 통해 mysql container와 연결하고 PMA_HOST를 해당 mysql container의 name으로 지정하는 것이 중요한 내용임.</description></item><item><title>Install Wordpress with docker</title><link>https://cychong47.github.io/post/2017/install-wordpress-with-docker/</link><pubDate>Tue, 19 Dec 2017 22:20:06 +0900</pubDate><guid>https://cychong47.github.io/post/2017/install-wordpress-with-docker/</guid><description>Summary docker run --restart=always -e MYSQL_ROOT_PASSWORD=aqwe123 -e MYSQL_USER=wpuser -e MYSQL_PASSWORD=wpuser@ -e MYSQL_DATABASE=wordpress_db -v /Users/cychong/Dropbox/Apps/wordpress/database:/var/lib/mysql --name mysql -d mysql docker run --restart=always -e WORDPRESS_DB_USER=wpuser -e WORDPRESS_DB_PASSWORD=wpuser@ -e WORDPRESS_DB_NAME=wordpress_db -p 80:80 -v /Users/cychong/Documents/wordpress/html:/var/www/html -v /Users/cychong/Documents/wordpress/uploads:/var/www/html/wp-content/uploads -v /Users/cychong/Documents/wordpress/conf/php_uploads.ini:/usr/local/etc/php/conf.d/uploads.ini --link mysql:mysql --name wpcontainer -d wordpress If required, import database to mysql (Once wordpress data is imported into mysql, upgrading mysql does not requires re-import ingof wordpress data)
-mysql install container cychong:~ cychong$ docker run --restart=always -e MYSQL_ROOT_PASSWORD=aqwe123 -e MYSQL_USER=wpuser -e MYSQL_PASSWORD=wpuser@ -e MYSQL_DATABASE=wordpress_db -v /Users/cychong/Dropbox/Apps/wordpress/database:/var/lib/mysql --name mysql -d mysql Unable to find image &amp;#39;mysql:latest&amp;#39; locally latest: Pulling from library/mysql aa18ad1a0d33: Pull complete a5745c3b8bcc: Pull complete 76375fcd129c: Pull complete 4f72cfb004cf: Pull complete 1d6a01e515fb: Pull complete a71e1163fa7e: Pull complete 8c1a568fa442: Pull complete e7a69cecc173: Pull complete 9759a0f979a1: Pull complete 3f71dac6110f: Pull complete 58f37de54392: Pull complete Digest: sha256:790b7b18b832822ef400e44ad9fac885a746db1a7028ec52325730cf9b831753 Status: Downloaded newer image for mysql:latest b1f54c680120898fc7ff16751048fe18ae461399d5d7f10308c156c68d40577b check container is started cychong:~ cychong$ docker ps CONTAINER ID IMAGE COMMAND CREATED STATUS PORTS NAMES b1f54c680120 mysql &amp;#34;docker-entrypoint.</description></item><item><title>Wordpress with docker-compose</title><link>https://cychong47.github.io/post/2017/wordpress-with-docker-compose-failing/</link><pubDate>Sun, 03 Sep 2017 15:00:57 +0900</pubDate><guid>https://cychong47.github.io/post/2017/wordpress-with-docker-compose-failing/</guid><description>Under construction!!
-Error https://docs.docker.com/compose/wordpress/#define-the-project 에 있는 에제대로 docker-compose.yaml 파일을 만든 후 도전~~
-근데 실패
-cychong:~/work/my_wordpress cychong$ docker-compose up -d Pulling db (mysql:5.7)... Traceback (most recent call last): File &amp;#34;docker-compose&amp;#34;, line 3, in &amp;lt;module&amp;gt; File &amp;#34;compose/cli/main.py&amp;#34;, line 68, in main File &amp;#34;compose/cli/main.py&amp;#34;, line 118, in perform_command File &amp;#34;compose/cli/main.py&amp;#34;, line 928, in up File &amp;#34;compose/project.py&amp;#34;, line 427, in up File &amp;#34;compose/service.py&amp;#34;, line 311, in ensure_image_exists File &amp;#34;compose/service.py&amp;#34;, line 1016, in pull File &amp;#34;site-packages/docker/api/image.</description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Mysql on Keep calm and Write something</title><link>https://cychong47.github.io/tags/mysql/</link><description>Recent content in Mysql on Keep calm and Write something</description><generator>Hugo</generator><language>en-us</language><lastBuildDate>Sat, 09 May 2020 15:00:09 +0000</lastBuildDate><atom:link href="https://cychong47.github.io/tags/mysql/index.xml" rel="self" type="application/rss+xml"/><item><title>WordPress 로그인 불가 문제 해결</title><link>https://cychong47.github.io/post/2020/recover-broken-users-table/</link><pubDate>Fri, 08 May 2020 23:36:45 +0900</pubDate><guid>https://cychong47.github.io/post/2020/recover-broken-users-table/</guid><description>&lt;p&gt;말썽쟁이(?) wordpress 블로그가 또 문제를 일으켰다.&lt;br&gt;
+이번에도 로그인이 안되는 현상인데 &lt;a href="https://cychong47.github.io/post/wordpress-admin-login-fail/"&gt;지난 번&lt;/a&gt;과는 다른 에러 메시지가 나온다. 즉 지난 번 해결책은 소용이 없을 거라는 불길한 예감이.&lt;/p&gt;
+&lt;p&gt;&lt;img src="https://cychong47.github.io/images/2020/05/wordpress_login_error_account_is_missing.png" alt="wordpress_login_error_account_is_missing"&gt;&lt;/p&gt;
+&lt;p&gt;로그인 계정 자체가 없다는 이 어이없는 상황.&lt;/p&gt;
+&lt;p&gt;그래서 지난 번에 유용하게 사용했던 phpmyadmin을 이용해서 DB 정보를 확인해봤다.
+(다행히 MySql, wordpress 와 함께 실행시켜놓은 phpmyadmin container가 동작하고 있어서 지난 번과 같이 &lt;code&gt;8181&lt;/code&gt; 포트로 접속하면 된단. 다만 로그인 암호를 기억하지 못하고 있는 나 대신 Safari가 기억하고 있어서 그냥 접속했다는)&lt;/p&gt;</description></item><item><title>Recover WordPress container</title><link>https://cychong47.github.io/post/2018/recovery-failed-wordpress-container/</link><pubDate>Wed, 05 Sep 2018 14:10:39 +0900</pubDate><guid>https://cychong47.github.io/post/2018/recovery-failed-wordpress-container/</guid><description>&lt;h2 id="one-day"&gt;One day&lt;/h2&gt;
+&lt;p&gt;The Wordpress container does not work at all. &lt;code&gt;docker ps&lt;/code&gt;로 확인하면 1분 주기로 restart를 반복하고 있다. 경험상 이건 wordpress 앱이 초기화 과정에서 문제가 있는 거라는 걸로 짐작된다. 로그를 확인해 보니 아래와 같은 에러만 출력.&lt;/p&gt;
+&lt;p&gt;뭐가 문제일까 멀쩡히 잘 돌던 녀석들인데.&lt;/p&gt;
+&lt;pre tabindex="0"&gt;&lt;code&gt;mini2:html cychong$ docker logs -f f12c3b3a57ef
+...
+
+Warning: mysqli::__construct(): Unexpected server respose while doing caching_sha2 auth: 109 in Standard input code on line 22
+
+MySQL Connection Error: (2006) MySQL server has gone away
+
+Warning: mysqli::__construct(): MySQL server has gone away in Standard input code on line 22
+
+Warning: mysqli::__construct(): (HY000/2006): MySQL server has gone away in Standard input code on line 22
+
+Warning: mysqli::__construct(): Unexpected server respose while doing caching_sha2 auth: 109 in Standard input code on line 22
+
+Warning: mysqli::__construct(): MySQL server has gone away in Standard input code on line 22
+
+Warning: mysqli::__construct(): (HY000/2006): MySQL server has gone away in Standard input code on line 22
+
+MySQL Connection Error: (2006) MySQL server has gone away
+
+Warning: mysqli::__construct(): Unexpected server respose while doing caching_sha2 auth: 109 in Standard input code on line 22
+
+MySQL Connection Error: (2006) MySQL server has gone away
+
+Warning: mysqli::__construct(): MySQL server has gone away in Standard input code on line 22
+
+Warning: mysqli::__construct(): (HY000/2006): MySQL server has gone away in Standard input code on line 22
+&lt;/code&gt;&lt;/pre&gt;&lt;h2 id="lets-debug"&gt;Let’s debug&lt;/h2&gt;
+&lt;blockquote&gt;
+&lt;p&gt;하지만 뭔가 달라진 게 있으니 갑자기 문제가 발생했겠지.&lt;/p&gt;</description></item><item><title>wordpress admin 계정 복구</title><link>https://cychong47.github.io/post/2018/wordpress-admin-login-fail/</link><pubDate>Thu, 14 Jun 2018 14:21:13 +0900</pubDate><guid>https://cychong47.github.io/post/2018/wordpress-admin-login-fail/</guid><description>&lt;h2 id="문제"&gt;문제&lt;/h2&gt;
+&lt;p&gt;블로그 보는 거 자체는 문제가 없는데 admin 계정으로 로그인 시도하면 반복해서 로그인 페이지로 redirect됨&lt;/p&gt;
+&lt;pre tabindex="0"&gt;&lt;code&gt;http://sosa0sa.com/wp-login.php?redirect_to=http://sosa0sa.com/wp-admin/&amp;amp;reauth=1
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;구글링을 하니 대부분 쿠키를 초기화하고, theme, plugin등을 초기화하라는 의견이 대부분. 모두 따라해 봤으니 제대로 동작하지 않는다&amp;hellip; &lt;code&gt;-_-&lt;/code&gt;;;;&lt;/p&gt;
+&lt;p&gt;마지막으로 wp_usermeta table에서 session_token 값을 초기화하라는 말이 있어 이것도 해 보기로. &lt;code&gt;phpmyadmin&lt;/code&gt;을 설치해서 table의 값을 변경하라고 해서 &lt;code&gt;phpmyadmin&lt;/code&gt;을 역시 docker로 설치해 보기로&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://wordpress.org/support/topic/possible-fix-for-sudden-redirect-loop-at-wp-login-with-reauth1/"&gt;https://wordpress.org/support/topic/possible-fix-for-sudden-redirect-loop-at-wp-login-with-reauth1/&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id="phpmyadmin-docker-설치"&gt;Phpmyadmin docker 설치&lt;/h2&gt;
+&lt;p&gt;Wordpress ansible-playbook 에 다음과 같이 추가&lt;/p&gt;
+&lt;p&gt;links를 통해 mysql container와 연결하고 PMA_HOST를 해당 mysql container의 name으로 지정하는 것이 중요한 내용임.
+처음에는 PMA_HOST를 “localhost”나 “127.0.0.1”로 지정하니 정상적으로 mysql에 로그인이 되지 않음&lt;/p&gt;</description></item><item><title>Install Wordpress with docker</title><link>https://cychong47.github.io/post/2017/install-wordpress-with-docker/</link><pubDate>Tue, 19 Dec 2017 22:20:06 +0900</pubDate><guid>https://cychong47.github.io/post/2017/install-wordpress-with-docker/</guid><description>&lt;h2 id="summary"&gt;Summary&lt;/h2&gt;
+&lt;pre tabindex="0"&gt;&lt;code&gt;docker run --restart=always -e MYSQL_ROOT_PASSWORD=aqwe123 -e MYSQL_USER=wpuser -e MYSQL_PASSWORD=wpuser@ -e MYSQL_DATABASE=wordpress_db -v /Users/cychong/Dropbox/Apps/wordpress/database:/var/lib/mysql --name mysql -d mysql
+
+docker run --restart=always -e WORDPRESS_DB_USER=wpuser -e WORDPRESS_DB_PASSWORD=wpuser@ -e WORDPRESS_DB_NAME=wordpress_db -p 80:80 -v /Users/cychong/Documents/wordpress/html:/var/www/html -v /Users/cychong/Documents/wordpress/uploads:/var/www/html/wp-content/uploads -v /Users/cychong/Documents/wordpress/conf/php_uploads.ini:/usr/local/etc/php/conf.d/uploads.ini --link mysql:mysql --name wpcontainer -d wordpress
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;If required, import database to mysql
+(Once wordpress data is imported into mysql, upgrading mysql does not requires re-import ingof wordpress data)&lt;/p&gt;
+&lt;h2 id="mysql"&gt;mysql&lt;/h2&gt;
+&lt;h3 id="install-container"&gt;install container&lt;/h3&gt;
+&lt;pre tabindex="0"&gt;&lt;code&gt;cychong:~ cychong$ docker run --restart=always -e MYSQL_ROOT_PASSWORD=aqwe123 -e MYSQL_USER=wpuser -e MYSQL_PASSWORD=wpuser@ -e MYSQL_DATABASE=wordpress_db -v /Users/cychong/Dropbox/Apps/wordpress/database:/var/lib/mysql --name mysql -d mysql
+Unable to find image &amp;#39;mysql:latest&amp;#39; locally
+latest: Pulling from library/mysql
+aa18ad1a0d33: Pull complete 
+a5745c3b8bcc: Pull complete 
+76375fcd129c: Pull complete 
+4f72cfb004cf: Pull complete 
+1d6a01e515fb: Pull complete 
+a71e1163fa7e: Pull complete 
+8c1a568fa442: Pull complete 
+e7a69cecc173: Pull complete 
+9759a0f979a1: Pull complete 
+3f71dac6110f: Pull complete 
+58f37de54392: Pull complete 
+Digest: sha256:790b7b18b832822ef400e44ad9fac885a746db1a7028ec52325730cf9b831753
+Status: Downloaded newer image for mysql:latest
+b1f54c680120898fc7ff16751048fe18ae461399d5d7f10308c156c68d40577b
+&lt;/code&gt;&lt;/pre&gt;&lt;h3 id="check-container-is-started"&gt;check container is started&lt;/h3&gt;
+&lt;pre tabindex="0"&gt;&lt;code&gt;cychong:~ cychong$ docker ps
+CONTAINER ID IMAGE COMMAND CREATED STATUS PORTS NAMES
+b1f54c680120 mysql &amp;#34;docker-entrypoint...&amp;#34; 13 seconds ago Up 10 seconds 3306/tcp mysql
+dea965b550e6 ghost:latest &amp;#34;docker-entrypoint...&amp;#34; 8 days ago Up 8 days 0.0.0.0:2368-&amp;gt;2368/tcp ghost
+&lt;/code&gt;&lt;/pre&gt;&lt;h3 id="check-files-are-located-where-volume-is-mounted"&gt;check files are located where volume is mounted&lt;/h3&gt;
+&lt;pre tabindex="0"&gt;&lt;code&gt;cychong:~/Dropbox/Apps/wordpress/database cychong$ ls
+auto.cnf		ib_buffer_pool		mysql			server-key.pem
+ca-key.pem		ib_logfile0		performance_schema	sys
+ca.pem			ib_logfile1		private_key.pem		wordpress_db
+client-cert.pem		ibdata1			public_key.pem
+client-key.pem		ibtmp1			server-cert.pem
+&lt;/code&gt;&lt;/pre&gt;&lt;h2 id="wordpress"&gt;wordpress&lt;/h2&gt;
+&lt;h2 id="install-container-1"&gt;install container&lt;/h2&gt;
+&lt;pre tabindex="0"&gt;&lt;code&gt;cychong:~ cychong$ docker run --restart=always -e WORDPRESS_DB_USER=wpuser -e WORDPRESS_DB_PASSWORD=wpuser@ -e WORDPRESS_DB_NAME=wordpress_db -p 80:80 -v /Users/cychong/Documents/wordpress/html:/var/www/html -v /Users/cychong/Documents/wordpress/uploads:/var/www/html/wp-content/uploads -v /Users/cychong/Documents/wordpress/conf/php_uploads.ini:/usr/local/etc/php/conf.d/uploads.ini --link mysql:mysql --name wpcontainer -d wordpress
+525ba1e4fff2caccc020960908e4f538be9512c2541e62a94c5a36a341e7ff3c
+
+cychong:~ cychong$ docker ps
+CONTAINER ID IMAGE COMMAND CREATED STATUS PORTS NAMES
+525ba1e4fff2 wordpress &amp;#34;docker-entrypoint...&amp;#34; 44 seconds ago Up 42 seconds 0.0.0.0:80-&amp;gt;80/tcp wpcontainer
+b1f54c680120 mysql &amp;#34;docker-entrypoint...&amp;#34; 11 minutes ago Up 11 minutes 3306/tcp mysql
+dea965b550e6 ghost:latest &amp;#34;docker-entrypoint...&amp;#34; 8 days ago Up 8 days 0.0.0.0:2368-&amp;gt;2368/tcp ghost
+&lt;/code&gt;&lt;/pre&gt;&lt;h3 id="check-containers"&gt;check containers&lt;/h3&gt;
+&lt;pre tabindex="0"&gt;&lt;code&gt;cychong:~ cychong$ docker ps
+CONTAINER ID IMAGE COMMAND CREATED STATUS PORTS NAMES
+8ea2303518ad wordpress &amp;#34;docker-entrypoint...&amp;#34; About a minute ago Up About a minute 0.0.0.0:80-&amp;gt;80/tcp wpcontainer
+b1f54c680120 mysql &amp;#34;docker-entrypoint...&amp;#34; 3 minutes ago Up 3 minutes 3306/tcp mysql
+dea965b550e6 ghost:latest &amp;#34;docker-entrypoint...&amp;#34; 8 days ago Up 8 days 0.0.0.0:2368-&amp;gt;2368/tcp ghost
+&lt;/code&gt;&lt;/pre&gt;&lt;h3 id="check-files"&gt;check files&lt;/h3&gt;
+&lt;pre tabindex="0"&gt;&lt;code&gt;cychong:~ cychong$ ls Documents/wordpress/html/
+index.php		wp-admin		wp-config.php		wp-links-opml.php	wp-settings.php
+license.txt		wp-blog-header.php	wp-content		wp-load.php		wp-signup.php
+readme.html		wp-comments-post.php	wp-cron.php		wp-login.php		wp-trackback.php
+wp-activate.php		wp-config-sample.php	wp-includes		wp-mail.php		xmlrpc.php
+&lt;/code&gt;&lt;/pre&gt;&lt;h3 id="mysql-dump-data-is-not-imported"&gt;mysql dump data is not imported.&lt;/h3&gt;
+&lt;p&gt;copy mysql dump file to mounted volume directory&lt;/p&gt;</description></item><item><title>Wordpress with docker-compose</title><link>https://cychong47.github.io/post/2017/wordpress-with-docker-compose-failing/</link><pubDate>Sun, 03 Sep 2017 15:00:57 +0900</pubDate><guid>https://cychong47.github.io/post/2017/wordpress-with-docker-compose-failing/</guid><description>&lt;p&gt;Under construction!!&lt;/p&gt;
+&lt;h3 id="error"&gt;Error&lt;/h3&gt;
+&lt;p&gt;&lt;a href="https://docs.docker.com/compose/wordpress/#define-the-project"&gt;https://docs.docker.com/compose/wordpress/#define-the-project&lt;/a&gt; 에 있는 에제대로 docker-compose.yaml 파일을 만든 후 도전~~&lt;/p&gt;
+&lt;p&gt;근데 실패&lt;/p&gt;
+&lt;pre tabindex="0"&gt;&lt;code&gt;cychong:~/work/my_wordpress cychong$ docker-compose up -d
+Pulling db (mysql:5.7)...
+Traceback (most recent call last):
+ File &amp;#34;docker-compose&amp;#34;, line 3, in &amp;lt;module&amp;gt;
+ File &amp;#34;compose/cli/main.py&amp;#34;, line 68, in main
+ File &amp;#34;compose/cli/main.py&amp;#34;, line 118, in perform_command
+ File &amp;#34;compose/cli/main.py&amp;#34;, line 928, in up
+ File &amp;#34;compose/project.py&amp;#34;, line 427, in up
+ File &amp;#34;compose/service.py&amp;#34;, line 311, in ensure_image_exists
+ File &amp;#34;compose/service.py&amp;#34;, line 1016, in pull
+ File &amp;#34;site-packages/docker/api/image.py&amp;#34;, line 358, in pull
+ File &amp;#34;site-packages/docker/auth.py&amp;#34;, line 50, in get_config_header
+ File &amp;#34;site-packages/docker/auth.py&amp;#34;, line 97, in resolve_authconfig
+ File &amp;#34;site-packages/docker/auth.py&amp;#34;, line 142, in _resolve_authconfig_credstore
+docker.errors.DockerException: Credentials store error: StoreError(&amp;#39;Credentials store docker-credential-osxkeychain exited with &amp;#34;User interaction is not allowed.&amp;#34;.&amp;#39;,)
+Failed to execute script docker-compose
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;저 에러가 뭘까 하고 Googling을 해 보니 &lt;code&gt;&amp;quot;Credentials store docker-credential-osxkeychain exited with &amp;quot;User interaction is not allowed&amp;quot;&lt;/code&gt; 이런 해결책이 나왔다.&lt;/p&gt;</description></item></channel></rss>

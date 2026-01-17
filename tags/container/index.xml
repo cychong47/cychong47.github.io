@@ -1,26 +1,306 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Container on Keep calm and write something</title><link>https://cychong47.github.io/tags/container/</link><description>Recent content in Container on Keep calm and write something</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Fri, 08 May 2020 23:34:12 +0000</lastBuildDate><atom:link href="https://cychong47.github.io/tags/container/index.xml" rel="self" type="application/rss+xml"/><item><title>Calico CNI (draft)</title><link>https://cychong47.github.io/post/2019/calico-cni-1/</link><pubDate>Sun, 18 Aug 2019 15:20:01 +0900</pubDate><guid>https://cychong47.github.io/post/2019/calico-cni-1/</guid><description>Getting started with Calico on Kubernetes Calico를 사용하는 경우 kubelet의 실행 옵션 중 --network-plugin=cni와 같이 변경된다.
-kube-controller-manager의 실행 옵션 중 --allocate-node-cidrs=false 로 역시 변경된다. 이는 CNI(여기서는 Calico의 IPAM)에서 IP 주소를 할당하기 때문
-Pod 내 route table에서는 host의 link local address를 default route로 사용한다.
-Pod가 갖는 eth0 interface는 root(혹은 default) namespace에 존재하는 &amp;lsquo;cali&amp;rsquo;로 시작하는 interface와 veh pair 관계를 갖는다.
-veth pairs는 아래 설명과 같이 서로 연결된 두 개의 interface를 의미하는데 한쪽으로 들어가면 연결된 다른 인터페이스로 나온다.</description></item><item><title>Recover WordPress container</title><link>https://cychong47.github.io/post/2018/recovery-failed-wordpress-container/</link><pubDate>Wed, 05 Sep 2018 14:10:39 +0900</pubDate><guid>https://cychong47.github.io/post/2018/recovery-failed-wordpress-container/</guid><description>One day The Wordpress container does not work at all. docker ps로 확인하면 1분 주기로 restart를 반복하고 있다. 경험상 이건 wordpress 앱이 초기화 과정에서 문제가 있는 거라는 걸로 짐작된다. 로그를 확인해 보니 아래와 같은 에러만 출력.
-뭐가 문제일까 멀쩡히 잘 돌던 녀석들인데.
-mini2:html cychong$ docker logs -f f12c3b3a57ef ... Warning: mysqli::__construct(): Unexpected server respose while doing caching_sha2 auth: 109 in Standard input code on line 22 MySQL Connection Error: (2006) MySQL server has gone away Warning: mysqli::__construct(): MySQL server has gone away in Standard input code on line 22 Warning: mysqli::__construct(): (HY000/2006): MySQL server has gone away in Standard input code on line 22 Warning: mysqli::__construct(): Unexpected server respose while doing caching_sha2 auth: 109 in Standard input code on line 22 Warning: mysqli::__construct(): MySQL server has gone away in Standard input code on line 22 Warning: mysqli::__construct(): (HY000/2006): MySQL server has gone away in Standard input code on line 22 MySQL Connection Error: (2006) MySQL server has gone away Warning: mysqli::__construct(): Unexpected server respose while doing caching_sha2 auth: 109 in Standard input code on line 22 MySQL Connection Error: (2006) MySQL server has gone away Warning: mysqli::__construct(): MySQL server has gone away in Standard input code on line 22 Warning: mysqli::__construct(): (HY000/2006): MySQL server has gone away in Standard input code on line 22 Let’s debug 하지만 뭔가 달라진 게 있으니 갑자기 문제가 발생했겠지.</description></item><item><title>Elastic stack and Metricbeat</title><link>https://cychong47.github.io/post/2018/install_elasticstack_and_metricbeat/</link><pubDate>Thu, 31 May 2018 21:58:51 +0900</pubDate><guid>https://cychong47.github.io/post/2018/install_elasticstack_and_metricbeat/</guid><description>Install Elastic Stack(ELK stack) with docker mbpr15:elk-wireshark cychong$ git clonehttps://github.com/deviantony/docker-elk.git git: &amp;#39;clonehttps://github.com/deviantony/docker-elk.git&amp;#39; is not a git command. See &amp;#39;git --help&amp;#39;. mbpr15:elk-wireshark cychong$ git clone https://github.com/deviantony/docker-elk.git Cloning into &amp;#39;docker-elk&amp;#39;... remote: Counting objects: 1235, done. remote: Total 1235 (delta 0), reused 0 (delta 0), pack-reused 1235 Receiving objects: 100% (1235/1235), 259.29 KiB | 77.00 KiB/s, done. Resolving deltas: 100% (470/470), done. mbpr15:elk-wireshark cychong$ cd elk mbpr15:elk-wireshark cychong$ cd docker-elk/ mbpr15:docker-elk cychong$ ls LICENSE	elasticsearch	logstash README.</description></item><item><title>Install Wordpress with docker</title><link>https://cychong47.github.io/post/2017/install-wordpress-with-docker/</link><pubDate>Tue, 19 Dec 2017 22:20:06 +0900</pubDate><guid>https://cychong47.github.io/post/2017/install-wordpress-with-docker/</guid><description>Summary docker run --restart=always -e MYSQL_ROOT_PASSWORD=aqwe123 -e MYSQL_USER=wpuser -e MYSQL_PASSWORD=wpuser@ -e MYSQL_DATABASE=wordpress_db -v /Users/cychong/Dropbox/Apps/wordpress/database:/var/lib/mysql --name mysql -d mysql docker run --restart=always -e WORDPRESS_DB_USER=wpuser -e WORDPRESS_DB_PASSWORD=wpuser@ -e WORDPRESS_DB_NAME=wordpress_db -p 80:80 -v /Users/cychong/Documents/wordpress/html:/var/www/html -v /Users/cychong/Documents/wordpress/uploads:/var/www/html/wp-content/uploads -v /Users/cychong/Documents/wordpress/conf/php_uploads.ini:/usr/local/etc/php/conf.d/uploads.ini --link mysql:mysql --name wpcontainer -d wordpress If required, import database to mysql (Once wordpress data is imported into mysql, upgrading mysql does not requires re-import ingof wordpress data)
-mysql install container cychong:~ cychong$ docker run --restart=always -e MYSQL_ROOT_PASSWORD=aqwe123 -e MYSQL_USER=wpuser -e MYSQL_PASSWORD=wpuser@ -e MYSQL_DATABASE=wordpress_db -v /Users/cychong/Dropbox/Apps/wordpress/database:/var/lib/mysql --name mysql -d mysql Unable to find image &amp;#39;mysql:latest&amp;#39; locally latest: Pulling from library/mysql aa18ad1a0d33: Pull complete a5745c3b8bcc: Pull complete 76375fcd129c: Pull complete 4f72cfb004cf: Pull complete 1d6a01e515fb: Pull complete a71e1163fa7e: Pull complete 8c1a568fa442: Pull complete e7a69cecc173: Pull complete 9759a0f979a1: Pull complete 3f71dac6110f: Pull complete 58f37de54392: Pull complete Digest: sha256:790b7b18b832822ef400e44ad9fac885a746db1a7028ec52325730cf9b831753 Status: Downloaded newer image for mysql:latest b1f54c680120898fc7ff16751048fe18ae461399d5d7f10308c156c68d40577b check container is started cychong:~ cychong$ docker ps CONTAINER ID IMAGE COMMAND CREATED STATUS PORTS NAMES b1f54c680120 mysql &amp;#34;docker-entrypoint.</description></item><item><title>(Summary) AT&amp;T Container Strategy</title><link>https://cychong47.github.io/post/2017/summary-at-t-container-strategy/</link><pubDate>Thu, 21 Sep 2017 15:21:45 +0900</pubDate><guid>https://cychong47.github.io/post/2017/summary-at-t-container-strategy/</guid><description>From https://www.youtube.com/watch?v=rYRiH3HZFN4&amp;amp;t=3s
-Presented in OpenStack Summit 2017 Boston
-Container will be used for workload processing after 2019 VNF is differ from Enterprise IT worklaod(4:19)
-VNF is not a simple VM Maintain a state Complex network configuration Sophisticated Storage Connectivity HA is important 2018-2019 vendor and open source project especially openstack should do something to meet the requirements.
-Even it takes some time for container to replace VM for workload perspective, running the Openstack service as a container is possible today.</description></item><item><title>Prometheus</title><link>https://cychong47.github.io/post/2017/prometheus/</link><pubDate>Mon, 18 Sep 2017 13:59:00 +0900</pubDate><guid>https://cychong47.github.io/post/2017/prometheus/</guid><description>Cloud Native Computing Foundation(http://cncf.io)에 포함된 Container monitoring tool.
-집 맥미니에서 돌리고 있는 3개 container들을 관리하는데 사용할 수 있나 싶어(실은 관리할 것도 없지만 그냥 재미로 container monitor 기능을 보고 싶어서) 설치 해 봤다
-Install cncf.io의 많은 툴이 그렇지만 golang으로 작성되어 있어 golang부터 설치했다
-brew install go OSX에서 brew는 사용할 때마다 감탄을 금치 못하게 한다. 물론 우분투에도 apt가 있지만 apt보다 brew가 훨씬 편한 것 같다.
-그 다음에는 그냥 docker hub에 있는 prometheus docker 가져다 설치</description></item><item><title>Wordpress with docker-compose</title><link>https://cychong47.github.io/post/2017/wordpress-with-docker-compose-failing/</link><pubDate>Sun, 03 Sep 2017 15:00:57 +0900</pubDate><guid>https://cychong47.github.io/post/2017/wordpress-with-docker-compose-failing/</guid><description>Under construction!!
-Error https://docs.docker.com/compose/wordpress/#define-the-project 에 있는 에제대로 docker-compose.yaml 파일을 만든 후 도전~~
-근데 실패
-cychong:~/work/my_wordpress cychong$ docker-compose up -d Pulling db (mysql:5.7)... Traceback (most recent call last): File &amp;#34;docker-compose&amp;#34;, line 3, in &amp;lt;module&amp;gt; File &amp;#34;compose/cli/main.py&amp;#34;, line 68, in main File &amp;#34;compose/cli/main.py&amp;#34;, line 118, in perform_command File &amp;#34;compose/cli/main.py&amp;#34;, line 928, in up File &amp;#34;compose/project.py&amp;#34;, line 427, in up File &amp;#34;compose/service.py&amp;#34;, line 311, in ensure_image_exists File &amp;#34;compose/service.py&amp;#34;, line 1016, in pull File &amp;#34;site-packages/docker/api/image.</description></item><item><title>ghost container with docker-compose</title><link>https://cychong47.github.io/post/2017/ghost-container-with-docker-compose/</link><pubDate>Sun, 03 Sep 2017 01:26:28 +0900</pubDate><guid>https://cychong47.github.io/post/2017/ghost-container-with-docker-compose/</guid><description>얼마전에 구성한 ghost container는 ghost가 1.x로 업데이트가 되면서 설정 정보의 위치가 변경되었는데 그걸 미처 몰라 블로그 주소가 기본값인 localhost로 설정되는 문제가 있었다. 기존 ghost container에 접근해서 확인해 보니 `/var/lib/ghost/config.production.json&amp;rsquo; 파일에 주소가 설정되어 있는 걸 보고 이 파일도 따로 지정해 주도록 변경했다. 그러면서 docker-compose를 한번 써 보기로
-일단 기존 ghost를 정리하고
-cychong:~ cychong$ docker stop ghost ghost cychong:~ cychong$ docker rm ghost ghost cychong:~ cychong$ docker rmi ghost Untagged: ghost:latest Untagged: ghost@sha256:a1f70641d35755395eb16827de4e67861e01bffe18bac8e54ab5c68cd170a2ea Deleted: sha256:e6ba3dd3c2491c6086d570fa9769a9f60d7c004129ff9ae7ff9fa0bad16a993b Deleted: sha256:c1ee9d43624bb4a1922c15d7a9175a80d1952cb71464d6d9d900fe21948227af Deleted: sha256:f8f95cdbafce4ecd226cdd690e6f909203a0f83d3507c53a71d4e59826ea881b Deleted: sha256:935d8847555992b702173b83b0d210f2728a24b5287467396dc8d5c68907691f Deleted: sha256:f4766b72a49d4cd2e897da0efcec94c33a0d24a95cb8426a790e1c45e6e39fae Deleted: sha256:0c0dbaebe17c6f585eb596e705ed5acba668097698a7780844c12597bb99b34a Deleted: sha256:c807796bea7a34c0b73eae853b728f2bbcd7a4fecc19d049455b322120f95ce7 Deleted: sha256:15f9f4e44e22d3287b6caf9555110383d3ff2e88ee9cc03823b1ba5a01b75eac Deleted: sha256:77809f11069f2abfb571cba07ee3d696ec32823df0f5d0587042ffdb27a80add Deleted: sha256:5d6bba18f7b25c9b93d3cc0d93a4cff54eb88b0ba22ed867633a21fc3ded5f57 하는 김에 최신 버전의 ghost받아오고</description></item><item><title>Try to restore Wordpress container</title><link>https://cychong47.github.io/post/2017/try-to-restore-wordpress-docker/</link><pubDate>Sun, 03 Sep 2017 00:36:25 +0900</pubDate><guid>https://cychong47.github.io/post/2017/try-to-restore-wordpress-docker/</guid><description>docker 버전이 업데이트되고, 몇 가지 변경사항이 있은 후 ghost, wordpress/mysql 조합의 container들이 접속이 되질 않는다. 한참을 두고 보다 ghost는 새 버전(1.x)이 나온 걸 계기로 새로 설치를 했는데(당연히 이전 설치에서 데이터를 container 내부가 아니라 local machine에 두도록 해서 데이터는 그대로 보존) wordpress는 그러질 못했다.
-이것 역시 참다참다 못해 https://docs.docker.com/compose/wordpress/#define-the-project 에 나와있는 docker swarm을 이용해서 복구해 보려고 삽을 들었다.
-위 페이지에 있는 대로 설정 파일을 만들고
-version: &amp;#39;3&amp;#39; services: db: image: mysql:5.7 volumes: - /Users/cychong/Dropbox/Apps/wordpress/:/var/lib/mysql restart: always environment: MYSQL_ROOT_PASSWORD: xxx MYSQL_DATABASE: xxx MYSQL_USER: xxx MYSQL_PASSWORD: xxx wordpress: depends_on: - db image: wordpress:latest volumes: - /Users/cychong/Documents/wordpress/:/var/www/html - /Users/cychong/Documents/wordpress/php_uploads.</description></item><item><title>Move to docker</title><link>https://cychong47.github.io/post/2017/move-to-docker/</link><pubDate>Tue, 04 Apr 2017 13:51:03 +0900</pubDate><guid>https://cychong47.github.io/post/2017/move-to-docker/</guid><description>지금 집에 있는 두 대의 mac mini를 이용해서 각각 wordpress와 ghost를 돌리고 있다.
-wordpress의 경우 2013년부터 시작한 블로그를 운영하는데 사용하고 있는데, 웹호스팅 회사 몇 군데를 전전하다 몇 년 전부터 집에 있는 mac mini 2009에 MAMP를 이용해서 자체 서버를 이용하고 있었다.
-Ghost는 내가 좋아하는 markdown을 기본으로 사용하는 블로그 툴을 찾다 만났는데 지금은 사라졌지만 초기 홈페이지에 있던 멋진 dashboard에 낚여 설치했다. Open source 답지 않고 느린 개발 속도가 이해되지는 않지만, 여전히 markdwon을 제대로 지원하는 흔치 않은 설치형 블로그 툴이라 아직 희망을 버리지 않고 사용하고 있다.</description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Container on Keep calm and Write something</title><link>https://cychong47.github.io/tags/container/</link><description>Recent content in Container on Keep calm and Write something</description><generator>Hugo</generator><language>en-us</language><lastBuildDate>Fri, 08 May 2020 23:34:12 +0000</lastBuildDate><atom:link href="https://cychong47.github.io/tags/container/index.xml" rel="self" type="application/rss+xml"/><item><title>Calico CNI (draft)</title><link>https://cychong47.github.io/post/2019/calico-cni-1/</link><pubDate>Sun, 18 Aug 2019 15:20:01 +0900</pubDate><guid>https://cychong47.github.io/post/2019/calico-cni-1/</guid><description>&lt;h2 id="getting-started-with-calico-on-kubernetes"&gt;&lt;a href="https://www.dasblinkenlichten.com/getting-started-with-calico-on-kubernetes/"&gt;Getting started with Calico on Kubernetes&lt;/a&gt;&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Calico를 사용하는 경우 kubelet의 실행 옵션 중 &lt;code&gt;--network-plugin=cni&lt;/code&gt;와 같이 변경된다.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;kube-controller-manager의 실행 옵션 중 &lt;code&gt;--allocate-node-cidrs=false&lt;/code&gt; 로 역시 변경된다. 이는 CNI(여기서는 Calico의 IPAM)에서 IP 주소를 할당하기 때문&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Pod 내 route table에서는 host의 link local address를 default route로 사용한다.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Pod가 갖는 eth0 interface는 root(혹은 default) namespace에 존재하는 &amp;lsquo;cali&amp;rsquo;로 시작하는 interface와 veh pair 관계를 갖는다.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;veth pairs는 아래 설명과 같이 서로 연결된 두 개의 interface를 의미하는데 한쪽으로 들어가면 연결된 다른 인터페이스로 나온다. 즉 pod의 eth0 interface를 통해 패킷을 전송하면 host의 cali interface로 나와 커널의 라우팅 혹은 iptable 처리를 받는다.&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://www.fir3net.com/Networking/Terms-and-Concepts/virtual-networking-devices-tun-tap-and-veth-pairs-explained.html"&gt;https://www.fir3net.com/Networking/Terms-and-Concepts/virtual-networking-devices-tun-tap-and-veth-pairs-explained.html&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;blockquote&gt;
+&lt;p&gt;What goes in one end will come out the other.&lt;/p&gt;</description></item><item><title>Recover WordPress container</title><link>https://cychong47.github.io/post/2018/recovery-failed-wordpress-container/</link><pubDate>Wed, 05 Sep 2018 14:10:39 +0900</pubDate><guid>https://cychong47.github.io/post/2018/recovery-failed-wordpress-container/</guid><description>&lt;h2 id="one-day"&gt;One day&lt;/h2&gt;
+&lt;p&gt;The Wordpress container does not work at all. &lt;code&gt;docker ps&lt;/code&gt;로 확인하면 1분 주기로 restart를 반복하고 있다. 경험상 이건 wordpress 앱이 초기화 과정에서 문제가 있는 거라는 걸로 짐작된다. 로그를 확인해 보니 아래와 같은 에러만 출력.&lt;/p&gt;
+&lt;p&gt;뭐가 문제일까 멀쩡히 잘 돌던 녀석들인데.&lt;/p&gt;
+&lt;pre tabindex="0"&gt;&lt;code&gt;mini2:html cychong$ docker logs -f f12c3b3a57ef
+...
+
+Warning: mysqli::__construct(): Unexpected server respose while doing caching_sha2 auth: 109 in Standard input code on line 22
+
+MySQL Connection Error: (2006) MySQL server has gone away
+
+Warning: mysqli::__construct(): MySQL server has gone away in Standard input code on line 22
+
+Warning: mysqli::__construct(): (HY000/2006): MySQL server has gone away in Standard input code on line 22
+
+Warning: mysqli::__construct(): Unexpected server respose while doing caching_sha2 auth: 109 in Standard input code on line 22
+
+Warning: mysqli::__construct(): MySQL server has gone away in Standard input code on line 22
+
+Warning: mysqli::__construct(): (HY000/2006): MySQL server has gone away in Standard input code on line 22
+
+MySQL Connection Error: (2006) MySQL server has gone away
+
+Warning: mysqli::__construct(): Unexpected server respose while doing caching_sha2 auth: 109 in Standard input code on line 22
+
+MySQL Connection Error: (2006) MySQL server has gone away
+
+Warning: mysqli::__construct(): MySQL server has gone away in Standard input code on line 22
+
+Warning: mysqli::__construct(): (HY000/2006): MySQL server has gone away in Standard input code on line 22
+&lt;/code&gt;&lt;/pre&gt;&lt;h2 id="lets-debug"&gt;Let’s debug&lt;/h2&gt;
+&lt;blockquote&gt;
+&lt;p&gt;하지만 뭔가 달라진 게 있으니 갑자기 문제가 발생했겠지.&lt;/p&gt;</description></item><item><title>Elastic stack and Metricbeat</title><link>https://cychong47.github.io/post/2018/install_elasticstack_and_metricbeat/</link><pubDate>Thu, 31 May 2018 21:58:51 +0900</pubDate><guid>https://cychong47.github.io/post/2018/install_elasticstack_and_metricbeat/</guid><description>&lt;h2 id="install-elastic-stackelk-stack-with-docker"&gt;Install Elastic Stack(ELK stack) with docker&lt;/h2&gt;
+&lt;pre tabindex="0"&gt;&lt;code&gt;mbpr15:elk-wireshark cychong$ git clonehttps://github.com/deviantony/docker-elk.git
+git: &amp;#39;clonehttps://github.com/deviantony/docker-elk.git&amp;#39; is not a git command. See &amp;#39;git --help&amp;#39;.
+mbpr15:elk-wireshark cychong$ git clone https://github.com/deviantony/docker-elk.git
+Cloning into &amp;#39;docker-elk&amp;#39;...
+remote: Counting objects: 1235, done.
+remote: Total 1235 (delta 0), reused 0 (delta 0), pack-reused 1235
+Receiving objects: 100% (1235/1235), 259.29 KiB | 77.00 KiB/s, done.
+Resolving deltas: 100% (470/470), done.
+mbpr15:elk-wireshark cychong$ cd elk
+mbpr15:elk-wireshark cychong$ cd docker-elk/
+mbpr15:docker-elk cychong$ ls
+LICENSE			elasticsearch		logstash
+README.md		extensions
+docker-compose.yml	kibana
+&lt;/code&gt;&lt;/pre&gt;&lt;h2 id="install-elk-with-docker-compose"&gt;Install ELK with docker-compose&lt;/h2&gt;
+&lt;pre tabindex="0"&gt;&lt;code&gt;mbpr15:docker-elk cychong$ docker-compose up -d
+Creating network &amp;#34;docker-elk_elk&amp;#34; with driver &amp;#34;bridge&amp;#34;
+Building elasticsearch
+Step 1/1 : FROM docker.elastic.co/elasticsearch/elasticsearch-oss:6.2.4
+6.2.4: Pulling from elasticsearch/elasticsearch-oss
+469cfcc7a4b3: Pull complete
+8e27facfa9e0: Pull complete
+cdd15392adc7: Pull complete
+19ff08a29664: Pull complete
+ddc4fd93fdcc: Pull complete
+b723bede0878: Pull complete
+Digest: sha256:2d9c774c536bd1f64abc4993ebc96a2344404d780cbeb81a8b3b4c3807550e57
+Status: Downloaded newer image for docker.elastic.co/elasticsearch/elasticsearch-oss:6.2.4
+ ---&amp;gt; 3822ba554fe9
+Successfully built 3822ba554fe9
+Successfully tagged docker-elk_elasticsearch:latest
+WARNING: Image for service elasticsearch was built because it did not already exist. To rebuild this image you must use `docker-compose build` or `docker-compose up --build`.
+Building logstash
+Step 1/1 : FROM docker.elastic.co/logstash/logstash-oss:6.2.4
+6.2.4: Pulling from logstash/logstash-oss
+469cfcc7a4b3: Already exists
+b4cfa2eb1616: Pull complete
+ec994fa6fa7f: Pull complete
+ccf455902ac6: Pull complete
+6d54f3767ae5: Pull complete
+af0dd1a720da: Pull complete
+457dbabd3f63: Pull complete
+f2c481bd6da1: Pull complete
+d04342e2b9a1: Pull complete
+e8bca7e9b0d9: Pull complete
+d0096563f301: Pull complete
+Digest: sha256:28668a65f6b6a4f1e2abef7aa3fd3b9c8476a16aa5bebc1a9acf0f7de5b80eef
+Status: Downloaded newer image for docker.elastic.co/logstash/logstash-oss:6.2.4
+ ---&amp;gt; 0bade66b6bee
+Successfully built 0bade66b6bee
+Successfully tagged docker-elk_logstash:latest
+WARNING: Image for service logstash was built because it did not already exist. To rebuild this image you must use `docker-compose build` or `docker-compose up --build`.
+Building kibana
+Step 1/1 : FROM docker.elastic.co/kibana/kibana-oss:6.2.4
+6.2.4: Pulling from kibana/kibana-oss
+469cfcc7a4b3: Already exists
+78e4c5fdc069: Pull complete
+d9ecdaefa1b8: Pull complete
+c8e48c8f74d7: Pull complete
+1606c56cdbff: Pull complete
+4e23ce1503d4: Pull complete
+d36b703b3f90: Pull complete
+da5da7625f92: Pull complete
+Digest: sha256:1d1f9bac326bf276010df82a2b4593619f48a5207619e8817c8b20d5a1bb3547
+Status: Downloaded newer image for docker.elastic.co/kibana/kibana-oss:6.2.4
+ ---&amp;gt; 32510971af4e
+Successfully built 32510971af4e
+Successfully tagged docker-elk_kibana:latest
+WARNING: Image for service kibana was built because it did not already exist. To rebuild this image you must use `docker-compose build` or `docker-compose up --build`.
+Creating docker-elk_elasticsearch_1 ... done
+Creating docker-elk_kibana_1 ... done
+Creating docker-elk_logstash_1 ... done
+&lt;/code&gt;&lt;/pre&gt;&lt;pre tabindex="0"&gt;&lt;code&gt;mbpr15:docker-elk cychong$ docker ps
+CONTAINER ID IMAGE COMMAND CREATED STATUS PORTS NAMES
+4fc052e81fae docker-elk_logstash “/usr/local/bin/dock…” 9 minutes ago Up 9 minutes 5044/tcp, 0.0.0.0:5000-&amp;gt;5000/tcp, 9600/tcp docker-elk_logstash_1
+46f049297c7b docker-elk_kibana “/bin/bash /usr/loca…” 9 minutes ago Up 9 minutes 0.0.0.0:5601-&amp;gt;5601/tcp docker-elk_kibana_1
+8ff911ebab03 docker-elk_elasticsearch “/usr/local/bin/dock…” 9 minutes ago Up 9 minutes 0.0.0.0:9200-&amp;gt;9200/tcp, 0.0.0.0:9300-&amp;gt;9300/tcp docker-elk_elasticsearch_1
+&lt;/code&gt;&lt;/pre&gt;&lt;pre tabindex="0"&gt;&lt;code&gt;mbpr15:docker-elk cychong$ curl http://localhost:9200
+{
+ “name” : “npNAiWg”,
+ “cluster_name” : “docker-cluster”,
+ “cluster_uuid” : “7nY4KVvNS4epY4Z80NCUZw”,
+ “version” : {
+ “number” : “6.2.4”,
+ “build_hash” : “ccec39f”,
+ “build_date” : “2018-04-12T20:37:28.497551Z”,
+ “build_snapshot” : false,
+ “lucene_version” : “7.2.1”,
+ “minimum_wire_compatibility_version” : “5.6.0”,
+ “minimum_index_compatibility_version” : “5.0.0”
+ },
+ “tagline” : “You Know, for Search”
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;h2 id="open-httplocalhost5601-with-browser"&gt;Open http://localhost:5601 with browser&lt;/h2&gt;
+&lt;h2 id="install-metricbeats-with-docker---check-the-latest-version-from-elasticco"&gt;install metricbeats with docker - check the latest version from elastic.co&lt;/h2&gt;
+&lt;pre tabindex="0"&gt;&lt;code&gt;docker pull docker.elastic.co/beats/metricbeat:6.2.4
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;metricbeat 는 시스템 통계 정보를 수집해서 elasticsearch로 보내는 역할을 함.
+다양한 모듈들이 &lt;code&gt;modules.d&lt;/code&gt; 디렉토리 아래 위치하고, metricbeats.yml은 수집한 정보를 보낼 위치를 변경하는 정도면 기본적인 동작을 확인할 수 있음.&lt;/p&gt;</description></item><item><title>Install Wordpress with docker</title><link>https://cychong47.github.io/post/2017/install-wordpress-with-docker/</link><pubDate>Tue, 19 Dec 2017 22:20:06 +0900</pubDate><guid>https://cychong47.github.io/post/2017/install-wordpress-with-docker/</guid><description>&lt;h2 id="summary"&gt;Summary&lt;/h2&gt;
+&lt;pre tabindex="0"&gt;&lt;code&gt;docker run --restart=always -e MYSQL_ROOT_PASSWORD=aqwe123 -e MYSQL_USER=wpuser -e MYSQL_PASSWORD=wpuser@ -e MYSQL_DATABASE=wordpress_db -v /Users/cychong/Dropbox/Apps/wordpress/database:/var/lib/mysql --name mysql -d mysql
+
+docker run --restart=always -e WORDPRESS_DB_USER=wpuser -e WORDPRESS_DB_PASSWORD=wpuser@ -e WORDPRESS_DB_NAME=wordpress_db -p 80:80 -v /Users/cychong/Documents/wordpress/html:/var/www/html -v /Users/cychong/Documents/wordpress/uploads:/var/www/html/wp-content/uploads -v /Users/cychong/Documents/wordpress/conf/php_uploads.ini:/usr/local/etc/php/conf.d/uploads.ini --link mysql:mysql --name wpcontainer -d wordpress
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;If required, import database to mysql
+(Once wordpress data is imported into mysql, upgrading mysql does not requires re-import ingof wordpress data)&lt;/p&gt;
+&lt;h2 id="mysql"&gt;mysql&lt;/h2&gt;
+&lt;h3 id="install-container"&gt;install container&lt;/h3&gt;
+&lt;pre tabindex="0"&gt;&lt;code&gt;cychong:~ cychong$ docker run --restart=always -e MYSQL_ROOT_PASSWORD=aqwe123 -e MYSQL_USER=wpuser -e MYSQL_PASSWORD=wpuser@ -e MYSQL_DATABASE=wordpress_db -v /Users/cychong/Dropbox/Apps/wordpress/database:/var/lib/mysql --name mysql -d mysql
+Unable to find image &amp;#39;mysql:latest&amp;#39; locally
+latest: Pulling from library/mysql
+aa18ad1a0d33: Pull complete 
+a5745c3b8bcc: Pull complete 
+76375fcd129c: Pull complete 
+4f72cfb004cf: Pull complete 
+1d6a01e515fb: Pull complete 
+a71e1163fa7e: Pull complete 
+8c1a568fa442: Pull complete 
+e7a69cecc173: Pull complete 
+9759a0f979a1: Pull complete 
+3f71dac6110f: Pull complete 
+58f37de54392: Pull complete 
+Digest: sha256:790b7b18b832822ef400e44ad9fac885a746db1a7028ec52325730cf9b831753
+Status: Downloaded newer image for mysql:latest
+b1f54c680120898fc7ff16751048fe18ae461399d5d7f10308c156c68d40577b
+&lt;/code&gt;&lt;/pre&gt;&lt;h3 id="check-container-is-started"&gt;check container is started&lt;/h3&gt;
+&lt;pre tabindex="0"&gt;&lt;code&gt;cychong:~ cychong$ docker ps
+CONTAINER ID IMAGE COMMAND CREATED STATUS PORTS NAMES
+b1f54c680120 mysql &amp;#34;docker-entrypoint...&amp;#34; 13 seconds ago Up 10 seconds 3306/tcp mysql
+dea965b550e6 ghost:latest &amp;#34;docker-entrypoint...&amp;#34; 8 days ago Up 8 days 0.0.0.0:2368-&amp;gt;2368/tcp ghost
+&lt;/code&gt;&lt;/pre&gt;&lt;h3 id="check-files-are-located-where-volume-is-mounted"&gt;check files are located where volume is mounted&lt;/h3&gt;
+&lt;pre tabindex="0"&gt;&lt;code&gt;cychong:~/Dropbox/Apps/wordpress/database cychong$ ls
+auto.cnf		ib_buffer_pool		mysql			server-key.pem
+ca-key.pem		ib_logfile0		performance_schema	sys
+ca.pem			ib_logfile1		private_key.pem		wordpress_db
+client-cert.pem		ibdata1			public_key.pem
+client-key.pem		ibtmp1			server-cert.pem
+&lt;/code&gt;&lt;/pre&gt;&lt;h2 id="wordpress"&gt;wordpress&lt;/h2&gt;
+&lt;h2 id="install-container-1"&gt;install container&lt;/h2&gt;
+&lt;pre tabindex="0"&gt;&lt;code&gt;cychong:~ cychong$ docker run --restart=always -e WORDPRESS_DB_USER=wpuser -e WORDPRESS_DB_PASSWORD=wpuser@ -e WORDPRESS_DB_NAME=wordpress_db -p 80:80 -v /Users/cychong/Documents/wordpress/html:/var/www/html -v /Users/cychong/Documents/wordpress/uploads:/var/www/html/wp-content/uploads -v /Users/cychong/Documents/wordpress/conf/php_uploads.ini:/usr/local/etc/php/conf.d/uploads.ini --link mysql:mysql --name wpcontainer -d wordpress
+525ba1e4fff2caccc020960908e4f538be9512c2541e62a94c5a36a341e7ff3c
+
+cychong:~ cychong$ docker ps
+CONTAINER ID IMAGE COMMAND CREATED STATUS PORTS NAMES
+525ba1e4fff2 wordpress &amp;#34;docker-entrypoint...&amp;#34; 44 seconds ago Up 42 seconds 0.0.0.0:80-&amp;gt;80/tcp wpcontainer
+b1f54c680120 mysql &amp;#34;docker-entrypoint...&amp;#34; 11 minutes ago Up 11 minutes 3306/tcp mysql
+dea965b550e6 ghost:latest &amp;#34;docker-entrypoint...&amp;#34; 8 days ago Up 8 days 0.0.0.0:2368-&amp;gt;2368/tcp ghost
+&lt;/code&gt;&lt;/pre&gt;&lt;h3 id="check-containers"&gt;check containers&lt;/h3&gt;
+&lt;pre tabindex="0"&gt;&lt;code&gt;cychong:~ cychong$ docker ps
+CONTAINER ID IMAGE COMMAND CREATED STATUS PORTS NAMES
+8ea2303518ad wordpress &amp;#34;docker-entrypoint...&amp;#34; About a minute ago Up About a minute 0.0.0.0:80-&amp;gt;80/tcp wpcontainer
+b1f54c680120 mysql &amp;#34;docker-entrypoint...&amp;#34; 3 minutes ago Up 3 minutes 3306/tcp mysql
+dea965b550e6 ghost:latest &amp;#34;docker-entrypoint...&amp;#34; 8 days ago Up 8 days 0.0.0.0:2368-&amp;gt;2368/tcp ghost
+&lt;/code&gt;&lt;/pre&gt;&lt;h3 id="check-files"&gt;check files&lt;/h3&gt;
+&lt;pre tabindex="0"&gt;&lt;code&gt;cychong:~ cychong$ ls Documents/wordpress/html/
+index.php		wp-admin		wp-config.php		wp-links-opml.php	wp-settings.php
+license.txt		wp-blog-header.php	wp-content		wp-load.php		wp-signup.php
+readme.html		wp-comments-post.php	wp-cron.php		wp-login.php		wp-trackback.php
+wp-activate.php		wp-config-sample.php	wp-includes		wp-mail.php		xmlrpc.php
+&lt;/code&gt;&lt;/pre&gt;&lt;h3 id="mysql-dump-data-is-not-imported"&gt;mysql dump data is not imported.&lt;/h3&gt;
+&lt;p&gt;copy mysql dump file to mounted volume directory&lt;/p&gt;</description></item><item><title>(Summary) AT&amp;T Container Strategy</title><link>https://cychong47.github.io/post/2017/summary-at-t-container-strategy/</link><pubDate>Thu, 21 Sep 2017 15:21:45 +0900</pubDate><guid>https://cychong47.github.io/post/2017/summary-at-t-container-strategy/</guid><description>&lt;p&gt;From &lt;a href="https://www.youtube.com/watch?v=rYRiH3HZFN4&amp;amp;t=3s"&gt;https://www.youtube.com/watch?v=rYRiH3HZFN4&amp;amp;t=3s&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Presented in OpenStack Summit 2017 Boston&lt;/p&gt;
+&lt;h2 id="container-will-be-used-for-workload-processing-after-2019"&gt;Container will be used for workload processing after 2019&lt;/h2&gt;
+&lt;p&gt;&lt;img src="https://cychong47.github.io/images/2017/09/Openstack-Summit-2017---ATT-Container-Strategy-03-1.png" alt="Openstack-Summit-2017&amp;mdash;ATT-Container-Strategy-03-1"&gt;&lt;/p&gt;
+&lt;p&gt;VNF is differ from Enterprise IT worklaod(4:19)&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;VNF is not a simple VM&lt;/li&gt;
+&lt;li&gt;Maintain a state&lt;/li&gt;
+&lt;li&gt;Complex network configuration&lt;/li&gt;
+&lt;li&gt;Sophisticated Storage Connectivity&lt;/li&gt;
+&lt;li&gt;HA is important&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;2018-2019 vendor and open source project especially openstack should do something to meet the requirements.&lt;/p&gt;
+&lt;p&gt;Even it takes some time for container to replace VM for workload perspective, running the Openstack service as a container is possible today.&lt;/p&gt;</description></item><item><title>Prometheus</title><link>https://cychong47.github.io/post/2017/prometheus/</link><pubDate>Mon, 18 Sep 2017 13:59:00 +0900</pubDate><guid>https://cychong47.github.io/post/2017/prometheus/</guid><description>&lt;p&gt;Cloud Native Computing Foundation(&lt;a href="http://cncf.io"&gt;http://cncf.io&lt;/a&gt;)에 포함된 Container monitoring tool.&lt;/p&gt;
+&lt;p&gt;집 맥미니에서 돌리고 있는 3개 container들을 관리하는데 사용할 수 있나 싶어(실은 관리할 것도 없지만 그냥 재미로 container monitor 기능을 보고 싶어서) 설치 해 봤다&lt;/p&gt;
+&lt;h3 id="install"&gt;Install&lt;/h3&gt;
+&lt;p&gt;cncf.io의 많은 툴이 그렇지만 golang으로 작성되어 있어 golang부터 설치했다&lt;/p&gt;
+&lt;pre tabindex="0"&gt;&lt;code&gt;brew install go
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;OSX에서 brew는 사용할 때마다 감탄을 금치 못하게 한다. 물론 우분투에도 apt가 있지만 apt보다 brew가 훨씬 편한 것 같다.&lt;/p&gt;
+&lt;p&gt;그 다음에는 그냥 docker hub에 있는 prometheus docker 가져다 설치&lt;/p&gt;</description></item><item><title>Wordpress with docker-compose</title><link>https://cychong47.github.io/post/2017/wordpress-with-docker-compose-failing/</link><pubDate>Sun, 03 Sep 2017 15:00:57 +0900</pubDate><guid>https://cychong47.github.io/post/2017/wordpress-with-docker-compose-failing/</guid><description>&lt;p&gt;Under construction!!&lt;/p&gt;
+&lt;h3 id="error"&gt;Error&lt;/h3&gt;
+&lt;p&gt;&lt;a href="https://docs.docker.com/compose/wordpress/#define-the-project"&gt;https://docs.docker.com/compose/wordpress/#define-the-project&lt;/a&gt; 에 있는 에제대로 docker-compose.yaml 파일을 만든 후 도전~~&lt;/p&gt;
+&lt;p&gt;근데 실패&lt;/p&gt;
+&lt;pre tabindex="0"&gt;&lt;code&gt;cychong:~/work/my_wordpress cychong$ docker-compose up -d
+Pulling db (mysql:5.7)...
+Traceback (most recent call last):
+ File &amp;#34;docker-compose&amp;#34;, line 3, in &amp;lt;module&amp;gt;
+ File &amp;#34;compose/cli/main.py&amp;#34;, line 68, in main
+ File &amp;#34;compose/cli/main.py&amp;#34;, line 118, in perform_command
+ File &amp;#34;compose/cli/main.py&amp;#34;, line 928, in up
+ File &amp;#34;compose/project.py&amp;#34;, line 427, in up
+ File &amp;#34;compose/service.py&amp;#34;, line 311, in ensure_image_exists
+ File &amp;#34;compose/service.py&amp;#34;, line 1016, in pull
+ File &amp;#34;site-packages/docker/api/image.py&amp;#34;, line 358, in pull
+ File &amp;#34;site-packages/docker/auth.py&amp;#34;, line 50, in get_config_header
+ File &amp;#34;site-packages/docker/auth.py&amp;#34;, line 97, in resolve_authconfig
+ File &amp;#34;site-packages/docker/auth.py&amp;#34;, line 142, in _resolve_authconfig_credstore
+docker.errors.DockerException: Credentials store error: StoreError(&amp;#39;Credentials store docker-credential-osxkeychain exited with &amp;#34;User interaction is not allowed.&amp;#34;.&amp;#39;,)
+Failed to execute script docker-compose
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;저 에러가 뭘까 하고 Googling을 해 보니 &lt;code&gt;&amp;quot;Credentials store docker-credential-osxkeychain exited with &amp;quot;User interaction is not allowed&amp;quot;&lt;/code&gt; 이런 해결책이 나왔다.&lt;/p&gt;</description></item><item><title>ghost container with docker-compose</title><link>https://cychong47.github.io/post/2017/ghost-container-with-docker-compose/</link><pubDate>Sun, 03 Sep 2017 01:26:28 +0900</pubDate><guid>https://cychong47.github.io/post/2017/ghost-container-with-docker-compose/</guid><description>&lt;p&gt;얼마전에 구성한 ghost container는 ghost가 1.x로 업데이트가 되면서 설정 정보의 위치가 변경되었는데 그걸 미처 몰라 블로그 주소가 기본값인 localhost로 설정되는 문제가 있었다.
+기존 ghost container에 접근해서 확인해 보니 `/var/lib/ghost/config.production.json&amp;rsquo; 파일에 주소가 설정되어 있는 걸 보고 이 파일도 따로 지정해 주도록 변경했다.
+그러면서 docker-compose를 한번 써 보기로&lt;/p&gt;
+&lt;p&gt;일단 기존 ghost를 정리하고&lt;/p&gt;
+&lt;pre tabindex="0"&gt;&lt;code&gt;cychong:~ cychong$ docker stop ghost
+ghost
+cychong:~ cychong$ docker rm ghost
+ghost
+cychong:~ cychong$ docker rmi ghost
+Untagged: ghost:latest
+Untagged: ghost@sha256:a1f70641d35755395eb16827de4e67861e01bffe18bac8e54ab5c68cd170a2ea
+Deleted: sha256:e6ba3dd3c2491c6086d570fa9769a9f60d7c004129ff9ae7ff9fa0bad16a993b
+Deleted: sha256:c1ee9d43624bb4a1922c15d7a9175a80d1952cb71464d6d9d900fe21948227af
+Deleted: sha256:f8f95cdbafce4ecd226cdd690e6f909203a0f83d3507c53a71d4e59826ea881b
+Deleted: sha256:935d8847555992b702173b83b0d210f2728a24b5287467396dc8d5c68907691f
+Deleted: sha256:f4766b72a49d4cd2e897da0efcec94c33a0d24a95cb8426a790e1c45e6e39fae
+Deleted: sha256:0c0dbaebe17c6f585eb596e705ed5acba668097698a7780844c12597bb99b34a
+Deleted: sha256:c807796bea7a34c0b73eae853b728f2bbcd7a4fecc19d049455b322120f95ce7
+Deleted: sha256:15f9f4e44e22d3287b6caf9555110383d3ff2e88ee9cc03823b1ba5a01b75eac
+Deleted: sha256:77809f11069f2abfb571cba07ee3d696ec32823df0f5d0587042ffdb27a80add
+Deleted: sha256:5d6bba18f7b25c9b93d3cc0d93a4cff54eb88b0ba22ed867633a21fc3ded5f57
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;하는 김에 최신 버전의 ghost받아오고&lt;/p&gt;</description></item><item><title>Try to restore Wordpress container</title><link>https://cychong47.github.io/post/2017/try-to-restore-wordpress-docker/</link><pubDate>Sun, 03 Sep 2017 00:36:25 +0900</pubDate><guid>https://cychong47.github.io/post/2017/try-to-restore-wordpress-docker/</guid><description>&lt;p&gt;docker 버전이 업데이트되고, 몇 가지 변경사항이 있은 후 ghost, wordpress/mysql 조합의 container들이 접속이 되질 않는다.
+한참을 두고 보다 ghost는 새 버전(1.x)이 나온 걸 계기로 새로 설치를 했는데(당연히 이전 설치에서 데이터를 container 내부가 아니라 local machine에 두도록 해서 데이터는 그대로 보존) wordpress는 그러질 못했다.&lt;/p&gt;
+&lt;p&gt;이것 역시 참다참다 못해 &lt;a href="https://docs.docker.com/compose/wordpress/#define-the-project"&gt;https://docs.docker.com/compose/wordpress/#define-the-project&lt;/a&gt; 에 나와있는 docker swarm을 이용해서 복구해 보려고 삽을 들었다.&lt;/p&gt;
+&lt;p&gt;위 페이지에 있는 대로 설정 파일을 만들고&lt;/p&gt;
+&lt;pre tabindex="0"&gt;&lt;code&gt;version: &amp;#39;3&amp;#39;
+
+services:
+ db:
+ image: mysql:5.7
+ volumes:
+ - /Users/cychong/Dropbox/Apps/wordpress/:/var/lib/mysql
+ restart: always
+ environment:
+ MYSQL_ROOT_PASSWORD: xxx
+ MYSQL_DATABASE: xxx
+ MYSQL_USER: xxx
+ MYSQL_PASSWORD: xxx
+
+ wordpress:
+ depends_on:
+ - db
+ image: wordpress:latest
+ volumes:
+ - /Users/cychong/Documents/wordpress/:/var/www/html
+ - /Users/cychong/Documents/wordpress/php_uploads.ini:/usr/local/etc/php/conf.d/uploads.ini
+ ports:
+ - &amp;#34;8000:80&amp;#34;
+ restart: always
+ environment:
+ WORDPRESS_DB_HOST: db:3306
+ WORDPRESS_DB_USER: xxx
+ WORDPRESS_DB_PASSWORD: xxx
+volumes:
+ db_data:
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;문서에 있는 대로 docker compose 명령을 실행했는데&lt;/p&gt;</description></item><item><title>Move to docker</title><link>https://cychong47.github.io/post/2017/move-to-docker/</link><pubDate>Tue, 04 Apr 2017 13:51:03 +0900</pubDate><guid>https://cychong47.github.io/post/2017/move-to-docker/</guid><description>&lt;p&gt;지금 집에 있는 두 대의 mac mini를 이용해서 각각 wordpress와 ghost를 돌리고 있다.&lt;br&gt;
+wordpress의 경우 2013년부터 시작한 블로그를 운영하는데 사용하고 있는데, 웹호스팅 회사 몇 군데를 전전하다 몇 년 전부터 집에 있는 mac mini 2009에 &lt;a href="https://www.mamp.info/"&gt;MAMP&lt;/a&gt;를 이용해서 자체 서버를 이용하고 있었다.&lt;/p&gt;
+&lt;p&gt;Ghost는 내가 좋아하는 markdown을 기본으로 사용하는 블로그 툴을 찾다 만났는데 지금은 사라졌지만 초기 홈페이지에 있던 멋진 dashboard에 낚여 설치했다. Open source 답지 않고 느린 개발 속도가 이해되지는 않지만, 여전히 markdwon을 제대로 지원하는 흔치 않은 설치형 블로그 툴이라 아직 희망을 버리지 않고 사용하고 있다. 현재는 0.11.2 버전이 공식 stable 버전이고 올해 나올 걸로 예상되는 1.0의 alpha 버전이 개발중이다.&lt;/p&gt;</description></item></channel></rss>

@@ -1,3 +1,32 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Setup on Keep calm and write something</title><link>https://cychong47.github.io/tags/setup/</link><description>Recent content in Setup on Keep calm and write something</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Mon, 07 Oct 2019 15:44:06 +0000</lastBuildDate><atom:link href="https://cychong47.github.io/tags/setup/index.xml" rel="self" type="application/rss+xml"/><item><title>Setup kubernetes in a single host</title><link>https://cychong47.github.io/post/2019/setup-kubernetes-with-a-single-host/</link><pubDate>Mon, 23 Sep 2019 15:03:13 +0900</pubDate><guid>https://cychong47.github.io/post/2019/setup-kubernetes-with-a-single-host/</guid><description>Replace microk8s with kubernetes in mini1
-remove micro.k8s with snap command cychong@mini1:~$ sudo snap remove microk8s Save data of snap &amp;#34;microk8s&amp;#34; in automatic snapshot set microk8s removed cychong@mini1:~$ setup kubernetes Reference : https://phoenixnap.com/kb/install-kubernetes-on-ubuntu
-cychong@mini1:~$ sudo kubeadm init --pod-network-cidr=10.244.0.0/16 [init] Using Kubernetes version: v1.15.3 cychong@mini1:~$ kubectl get pods --all-namespaces -o wide NAMESPACE NAME READY STATUS RESTARTS AGE IP NODE NOMINATED NODE READINESS GATES kube-system coredns-5c98db65d4-r468f 0/1 Pending 0 2m3s &amp;lt;none&amp;gt; &amp;lt;none&amp;gt; &amp;lt;none&amp;gt; &amp;lt;none&amp;gt; kube-system coredns-5c98db65d4-wcm2n 0/1 Pending 0 2m3s &amp;lt;none&amp;gt; &amp;lt;none&amp;gt; &amp;lt;none&amp;gt; &amp;lt;none&amp;gt; kube-system etcd-mini1 1/1 Running 0 79s 192.</description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Setup on Keep calm and Write something</title><link>https://cychong47.github.io/tags/setup/</link><description>Recent content in Setup on Keep calm and Write something</description><generator>Hugo</generator><language>en-us</language><lastBuildDate>Mon, 07 Oct 2019 15:44:06 +0000</lastBuildDate><atom:link href="https://cychong47.github.io/tags/setup/index.xml" rel="self" type="application/rss+xml"/><item><title>Setup kubernetes in a single host</title><link>https://cychong47.github.io/post/2019/setup-kubernetes-with-a-single-host/</link><pubDate>Mon, 23 Sep 2019 15:03:13 +0900</pubDate><guid>https://cychong47.github.io/post/2019/setup-kubernetes-with-a-single-host/</guid><description>&lt;p&gt;Replace microk8s with kubernetes in mini1&lt;/p&gt;
+&lt;h1 id="remove-microk8s-with-snap-command"&gt;remove micro.k8s with snap command&lt;/h1&gt;
+&lt;pre tabindex="0"&gt;&lt;code&gt;cychong@mini1:~$ sudo snap remove microk8s
+Save data of snap &amp;#34;microk8s&amp;#34; in automatic snapshot set 
+microk8s removed
+cychong@mini1:~$
+&lt;/code&gt;&lt;/pre&gt;&lt;h1 id="setup-kubernetes"&gt;setup kubernetes&lt;/h1&gt;
+&lt;p&gt;Reference : &lt;a href="https://phoenixnap.com/kb/install-kubernetes-on-ubuntu"&gt;https://phoenixnap.com/kb/install-kubernetes-on-ubuntu&lt;/a&gt;&lt;/p&gt;
+&lt;pre tabindex="0"&gt;&lt;code&gt;cychong@mini1:~$ sudo kubeadm init --pod-network-cidr=10.244.0.0/16
+[init] Using Kubernetes version: v1.15.3
+&lt;/code&gt;&lt;/pre&gt;&lt;pre tabindex="0"&gt;&lt;code&gt;cychong@mini1:~$ kubectl get pods --all-namespaces -o wide
+NAMESPACE NAME READY STATUS RESTARTS AGE IP NODE NOMINATED NODE READINESS GATES
+kube-system coredns-5c98db65d4-r468f 0/1 Pending 0 2m3s &amp;lt;none&amp;gt; &amp;lt;none&amp;gt; &amp;lt;none&amp;gt; &amp;lt;none&amp;gt;
+kube-system coredns-5c98db65d4-wcm2n 0/1 Pending 0 2m3s &amp;lt;none&amp;gt; &amp;lt;none&amp;gt; &amp;lt;none&amp;gt; &amp;lt;none&amp;gt;
+kube-system etcd-mini1 1/1 Running 0 79s 192.168.1.100 mini1 &amp;lt;none&amp;gt; &amp;lt;none&amp;gt;
+kube-system kube-apiserver-mini1 1/1 Running 0 76s 192.168.1.100 mini1 &amp;lt;none&amp;gt; &amp;lt;none&amp;gt;
+kube-system kube-controller-manager-mini1 1/1 Running 0 72s 192.168.1.100 mini1 &amp;lt;none&amp;gt; &amp;lt;none&amp;gt;
+kube-system kube-proxy-rzpkc 1/1 Running 0 2m4s 192.168.1.100 mini1 &amp;lt;none&amp;gt; &amp;lt;none&amp;gt;
+kube-system kube-scheduler-mini1 1/1 Running 0 82s 192.168.1.100 mini1 &amp;lt;none&amp;gt; &amp;lt;none&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;h2 id="install-calico"&gt;Install Calico&lt;/h2&gt;
+&lt;pre tabindex="0"&gt;&lt;code&gt;cychong@mini1:~$ wget https://docs.projectcalico.org/v3.8/manifests/calico.yaml
+--2019-09-08 21:53:13-- https://docs.projectcalico.org/v3.8/manifests/calico.yaml
+Resolving docs.projectcalico.org (docs.projectcalico.org)... 178.128.115.5, 2400:6180:0:d1::575:a001
+Connecting to docs.projectcalico.org (docs.projectcalico.org)|178.128.115.5|:443... connected.
+HTTP request sent, awaiting response... 200 OK
+Length: 20628 (20K) [application/x-yaml]
+Saving to: ‘calico.yaml’
+
+calico.yaml 100%[====================================================================================&amp;gt;] 20.14K --.-KB/s in 0.08s
+
+2019-09-08 21:53:14 (240 KB/s) - ‘calico.yaml’ saved [20628/20628]
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Change &lt;code&gt;CALICO_IPV4POOL_CIDR&lt;/code&gt;&lt;/p&gt;</description></item></channel></rss>

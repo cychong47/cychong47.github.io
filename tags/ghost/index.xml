@@ -1,26 +1,276 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Ghost on Keep calm and write something</title><link>https://cychong47.github.io/tags/ghost/</link><description>Recent content in Ghost on Keep calm and write something</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Sun, 07 Jun 2020 22:14:02 +0900</lastBuildDate><atom:link href="https://cychong47.github.io/tags/ghost/index.xml" rel="self" type="application/rss+xml"/><item><title>Migrate Ghost to Hugo</title><link>https://cychong47.github.io/post/2020/2020-06-07-migrate-ghost-to-hugo/</link><pubDate>Sun, 07 Jun 2020 22:14:02 +0900</pubDate><guid>https://cychong47.github.io/post/2020/2020-06-07-migrate-ghost-to-hugo/</guid><description>Wordpress 블로그를 hugo로 바꾼 김에 ghost 블로그도 hugo로 이사하기로 결심했다.
-Ghost 정말 애증이 담긴&amp;hellip;
-Ghost가 1.0이 되기 전에 markdown 기반의 블로그 툴을 찾는 과정 에서 발견해서 0.9 버전인가 부터 사용해 왔다. Ghost가 node 기반이라 생전 처음 듣는 node를 OS X에 설치해보고, docker for OS X이 나와서 docker로 실행해 오다, docker-compose 도 써 보고, Ansible 로 deploy도 해보고. 그러다 2019년에는 kubernetes hands-on을 해 볼 겸해서 리눅스에서 microk8s를 설치해서 ghost도 k8s로 실행해 봈다.</description></item><item><title>Backup Ghost Database Periodically</title><link>https://cychong47.github.io/post/2020/2020-03-03-backup-ghost-database-periodically/</link><pubDate>Tue, 03 Mar 2020 00:00:00 +0900</pubDate><guid>https://cychong47.github.io/post/2020/2020-03-03-backup-ghost-database-periodically/</guid><description>This ghost-backup container will backup in every 3am
-Start ghost-backup container cychong@mini1:~/Documents/docker-daily-backup$ docker run --name ghost-backup -d -v /home/cychong/Documents/docker-daily-backup:/backups --volumes-from 388c84247267 bennetimo/ghost-backup ea33f148122bbe0d90a502bfd884e4c988e9f8837921f725ca7317afff7fa149 Instant backup cychong@mini1:~/Documents/docker-daily-backup$ ls -al total 8 drwxrwxr-x 2 cychong cychong 4096 Mar 3 23:25 . drwxr-xr-x 5 cychong cychong 4096 Mar 3 23:25 .. cychong@mini1:~/Documents/docker-daily-backup$ docker exec ghost-backup backup Tue Mar 3 14:27:27 UTC 2020: Checking if a mysql container exists on the network at mysql:3306 Tue Mar 3 14:27:33 UTC 2020: .</description></item><item><title>Upgrade ghost to v3.0</title><link>https://cychong47.github.io/post/2019/upgrade-ghost-to-v3-0/</link><pubDate>Tue, 05 Nov 2019 14:58:16 +0900</pubDate><guid>https://cychong47.github.io/post/2019/upgrade-ghost-to-v3-0/</guid><description>부제 1. pod가 동작하지 않을때 원인 찾기 부제 2. helm upgrade 명령을 이용하여 업데이트 하기 부제 3. sqlite를 이용해서 ghost.db 직접 수정하기 values.yaml에 명시되어 있는 ghost docker image의 버전 정보를 2.31.0에서 3.0.2 최신 버전으로 업데이트 후 아래 명령어로 업데이트
-$ helm upgrade --debug my-ghost ghost-with-helm [debug] Created tunnel using local port: &amp;#39;45263&amp;#39; [debug] SERVER: &amp;#34;127.0.0.1:45263&amp;#34; REVISION: 6 RELEASED: Tue Nov 5 22:25:19 2019 CHART: ghost-0.1.0 USER-SUPPLIED VALUES: {} COMPUTED VALUES: affinity: {} env: node_env: production url: http://sosa0sa.</description></item><item><title>Ghost Season 5 - Helm</title><link>https://cychong47.github.io/post/2019/ghost-season-5-helm/</link><pubDate>Sun, 22 Sep 2019 13:14:16 +0900</pubDate><guid>https://cychong47.github.io/post/2019/ghost-season-5-helm/</guid><description>ghost를 설치한 지 몇 년이 지났는데 그 동안 여러 가지 방법으로 Ghost 운용 환경을 구축해왔다.
-Host 환경, Docker, Ansible, kubernetes 에 이어 이번은 5번째 시즌인데 Helm Chart 를 시용해서 설치해 보는 것이다. 처음 시작은 helm repository에 있는 공식(?) 공개된 helm chart를 이용하여 values.yaml 파일만 내 환경에 맞게 변경해서 사용하려던 것이었는데 아쉽게 아직은 그렇게 하기 힘든 것으로 보여 직접 helm chart를 만들어서 사용하고 있다. 이 문서는 그 과정을 기술한 것으로 향후 공식 helm chart를 활용할 수 있는 때가 오면 시즌 6에 해당하는 글을 또 쓸 듯 하다.</description></item><item><title>Setup Ghost in microk8s</title><link>https://cychong47.github.io/post/2019/setup-ghost-in-microk8s-2/</link><pubDate>Mon, 20 May 2019 16:00:56 +0900</pubDate><guid>https://cychong47.github.io/post/2019/setup-ghost-in-microk8s-2/</guid><description>Install microk8s MicroK8s - Fast, Light, Upstream Developer Kubernetes
-설치는 위 링크에 있는 공식 홈페이지에 있는 대로 snap 명령어 하나로 간단하게 설치할 수 있다.
-cychong@mini1:~$ sudo snap install microk8s --classic 2019-05-18T09:43:53+09:00 INFO Waiting for restart... microk8s v1.14.1 from Canonical✓ installed 설치된 microk8s의 정보를 확인하려면 snap info microk8s
-cychong@mini1:~$ sudo snap info microk8s name: microk8s summary: Kubernetes for workstations and appliances publisher: Canonical✓ contact: &amp;lt;https://github.com/ubuntu/microk8s&amp;gt; license: unset description: | MicroK8s is a small, fast, secure, single node Kubernetes that installs on just about any Linux box.</description></item><item><title>ghost deployment season 4</title><link>https://cychong47.github.io/post/2019/ghost-deployment-season-4/</link><pubDate>Sun, 19 May 2019 12:45:58 +0900</pubDate><guid>https://cychong47.github.io/post/2019/ghost-deployment-season-4/</guid><description>ghost blog를 구성해서 사용한 게 벌써 2014년 이다. 당시 0.x 버전 이었던 초반에는 얼마 못 가고 사라지지 않을까 걱정했는데 한참을 1.0버전을 발표하지 않더니 벌써 2.x 버전이다.
-그동안 내가 ghost 블로그를 운용하는 방식도 몇 번의 변화를 가졌다.
-시즌 1 - brew &amp;amp; tar-ball 처음에는 매뉴얼 대로 직접 Node.js와 ghost 소스를 이용해서 직접 OS X에 설치해서 운용했다.
-시즌 2 - Docker 그러다 Node.js 버전이 꼬이는 것도 그렇고, docker를 쓰면 ghost 버전이 새로 나왔을 때 편할 듯 해서 docker를 쓰는 방식으로 변경했다.</description></item><item><title>Ansible - recreate ghost container</title><link>https://cychong47.github.io/post/2017/recreate-ghost-container/</link><pubDate>Sat, 30 Dec 2017 02:31:41 +0900</pubDate><guid>https://cychong47.github.io/post/2017/recreate-ghost-container/</guid><description>YAML file state:absent 는 현재 존재하는 container를 중지시키고, 삭제한다. 단순히 stop만 시키려면 state:stopped로 지정하면 된다.
-pull: yes 옵션을 사용하면 항상 최신 image를 pull한다고 한다.
-recreate Use with present and started states to force the re-creation of an existing container.
-mbpr15:ansible cychong$ cat recreate_container_ghost.yaml --- - hosts: mini2 tasks: - name: Stop and remove contianer docker_container: name: ghost state: absent - name: Create ghost Container docker_container: name: ghost image: ghost # always pull the latest image pull: yes state: started recreate: yes volumes: - &amp;#34;/Users/cychong/Dropbox/Apps/ghost/content/:/var/lib/ghost/content&amp;#34; - &amp;#34;/Users/cychong/Dropbox/Apps/ghost/config.</description></item><item><title>ghost container with docker-compose</title><link>https://cychong47.github.io/post/2017/ghost-container-with-docker-compose/</link><pubDate>Sun, 03 Sep 2017 01:26:28 +0900</pubDate><guid>https://cychong47.github.io/post/2017/ghost-container-with-docker-compose/</guid><description>얼마전에 구성한 ghost container는 ghost가 1.x로 업데이트가 되면서 설정 정보의 위치가 변경되었는데 그걸 미처 몰라 블로그 주소가 기본값인 localhost로 설정되는 문제가 있었다. 기존 ghost container에 접근해서 확인해 보니 `/var/lib/ghost/config.production.json&amp;rsquo; 파일에 주소가 설정되어 있는 걸 보고 이 파일도 따로 지정해 주도록 변경했다. 그러면서 docker-compose를 한번 써 보기로
-일단 기존 ghost를 정리하고
-cychong:~ cychong$ docker stop ghost ghost cychong:~ cychong$ docker rm ghost ghost cychong:~ cychong$ docker rmi ghost Untagged: ghost:latest Untagged: ghost@sha256:a1f70641d35755395eb16827de4e67861e01bffe18bac8e54ab5c68cd170a2ea Deleted: sha256:e6ba3dd3c2491c6086d570fa9769a9f60d7c004129ff9ae7ff9fa0bad16a993b Deleted: sha256:c1ee9d43624bb4a1922c15d7a9175a80d1952cb71464d6d9d900fe21948227af Deleted: sha256:f8f95cdbafce4ecd226cdd690e6f909203a0f83d3507c53a71d4e59826ea881b Deleted: sha256:935d8847555992b702173b83b0d210f2728a24b5287467396dc8d5c68907691f Deleted: sha256:f4766b72a49d4cd2e897da0efcec94c33a0d24a95cb8426a790e1c45e6e39fae Deleted: sha256:0c0dbaebe17c6f585eb596e705ed5acba668097698a7780844c12597bb99b34a Deleted: sha256:c807796bea7a34c0b73eae853b728f2bbcd7a4fecc19d049455b322120f95ce7 Deleted: sha256:15f9f4e44e22d3287b6caf9555110383d3ff2e88ee9cc03823b1ba5a01b75eac Deleted: sha256:77809f11069f2abfb571cba07ee3d696ec32823df0f5d0587042ffdb27a80add Deleted: sha256:5d6bba18f7b25c9b93d3cc0d93a4cff54eb88b0ba22ed867633a21fc3ded5f57 하는 김에 최신 버전의 ghost받아오고</description></item><item><title>Slack + Ghost</title><link>https://cychong47.github.io/post/2017/slack-ghost/</link><pubDate>Wed, 12 Apr 2017 15:37:39 +0900</pubDate><guid>https://cychong47.github.io/post/2017/slack-ghost/</guid><description>Slack에 개인 채널(?)을 만들었다. 이런 저런 내가 수집(?)하는 정보들을 한 군데서 모아서 히스토리를 만들면 어떨까 하는 생각에
-누구는 slack과 빌드 상황도 연동해서 사용한다고 하는데 그건 좀 공부가 필요해 보이고, 일단 제일 쉬워 보이는 ghost와 연동을 시도해 봤다.
-Ghost의 admin 화면에서 Apps를 선택하면 이런 화면이 나온다.
-여기서 Slack항목의 Active를 선택하면 slack와 연동할 수 있는 URL을 입력하라고 나온다. 아래는 이미 연동이 된 상태로 처음 선택한 경우에는 URL 아래에 있는 &amp;ldquo;Set up a new incoming webhook here&amp;quot;의 here를 선택한다.</description></item><item><title>Move to docker</title><link>https://cychong47.github.io/post/2017/move-to-docker/</link><pubDate>Tue, 04 Apr 2017 13:51:03 +0900</pubDate><guid>https://cychong47.github.io/post/2017/move-to-docker/</guid><description>지금 집에 있는 두 대의 mac mini를 이용해서 각각 wordpress와 ghost를 돌리고 있다.
-wordpress의 경우 2013년부터 시작한 블로그를 운영하는데 사용하고 있는데, 웹호스팅 회사 몇 군데를 전전하다 몇 년 전부터 집에 있는 mac mini 2009에 MAMP를 이용해서 자체 서버를 이용하고 있었다.
-Ghost는 내가 좋아하는 markdown을 기본으로 사용하는 블로그 툴을 찾다 만났는데 지금은 사라졌지만 초기 홈페이지에 있던 멋진 dashboard에 낚여 설치했다. Open source 답지 않고 느린 개발 속도가 이해되지는 않지만, 여전히 markdwon을 제대로 지원하는 흔치 않은 설치형 블로그 툴이라 아직 희망을 버리지 않고 사용하고 있다.</description></item><item><title>Ghost 본문 다 보이기</title><link>https://cychong47.github.io/post/2016/display-post-by-default-ghost/</link><pubDate>Mon, 09 May 2016 15:23:57 +0900</pubDate><guid>https://cychong47.github.io/post/2016/display-post-by-default-ghost/</guid><description>theme을 수정해서 ghost blog 화면에서 글 본문이 다 나오도록 할 수 있다.
-대신 theme마다 조금씩 적용 방법이 다른데 기본적으로 변경해야 할 내용은 동일
-casper theme casper는 index.hbs 파일에서 loop.hbs라는 별도 파일을 통해 본문을 보이게 하고 있다.
-index.hbs
-21 {{! The main content area on the homepage }} 22 &amp;lt;main id=&amp;#34;content&amp;#34; class=&amp;#34;content&amp;#34; role=&amp;#34;main&amp;#34;&amp;gt; 23 24 {{! The tag below includes the post loop - partials/loop.hbs }} 25 {{&amp;gt; &amp;#34;loop&amp;#34;}} 26 27 &amp;lt;/main&amp;gt; 위 코드에서 가리키는 partials/loop.</description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Ghost on Keep calm and Write something</title><link>https://cychong47.github.io/tags/ghost/</link><description>Recent content in Ghost on Keep calm and Write something</description><generator>Hugo</generator><language>en-us</language><lastBuildDate>Sun, 07 Jun 2020 22:14:02 +0900</lastBuildDate><atom:link href="https://cychong47.github.io/tags/ghost/index.xml" rel="self" type="application/rss+xml"/><item><title>Migrate Ghost to Hugo</title><link>https://cychong47.github.io/post/2020/2020-06-07-migrate-ghost-to-hugo/</link><pubDate>Sun, 07 Jun 2020 22:14:02 +0900</pubDate><guid>https://cychong47.github.io/post/2020/2020-06-07-migrate-ghost-to-hugo/</guid><description>&lt;p&gt;Wordpress 블로그를 hugo로 바꾼 김에 ghost 블로그도 hugo로 이사하기로 결심했다.&lt;br&gt;
+&lt;a href="http://ghost.org"&gt;Ghost&lt;/a&gt; 정말 애증이 담긴&amp;hellip;&lt;/p&gt;
+&lt;p&gt;Ghost가 1.0이 되기 전에 markdown 기반의 블로그 툴을 찾는 과정
+에서 발견해서 0.9 버전인가 부터 사용해 왔다. &lt;code&gt;Ghost&lt;/code&gt;가 node 기반이라 생전 처음 듣는 node를 OS X에 설치해보고, docker for OS X이 나와서 &lt;a href="https://cychong47.github.io/2017/04/move-to-docker/"&gt;docker&lt;/a&gt;로 실행해 오다, &lt;a href="https://cychong47.github.io/2017/09/ghost-container-with-docker-compose/"&gt;docker-compose&lt;/a&gt; 도 써 보고, &lt;a href="https://cychong47.github.io/2017/12/recreate-ghost-container/"&gt;Ansible&lt;/a&gt; 로 deploy도 해보고.
+그러다 2019년에는 kubernetes hands-on을 해 볼 겸해서 리눅스에서 microk8s를 설치해서 ghost도 &lt;a href="https://cychong47.github.io/2019/05/setup-ghost-in-microk8s-2/"&gt;k8s&lt;/a&gt;로 실행해 봈다. 그리고 k8s에서 기본처럼 사용되는 SW 배포/관리 툴인 helm도 hands-on을 해 보고 싶어서 &lt;a href="https://cychong47.github.io/2019/09/ghost-season-5-helm/"&gt;helm chart로 ghost도 배포&lt;/a&gt;해 보고. 횟수로 치면 대략 2016년 정보 부터 같은데 그간 &lt;code&gt;Ghost&lt;/code&gt;는 1.0을 거쳐 2.0 그리고 지금은 3.0까지 업데이트가 된 상태이다.&lt;/p&gt;</description></item><item><title>Backup Ghost Database Periodically</title><link>https://cychong47.github.io/post/2020/2020-03-03-backup-ghost-database-periodically/</link><pubDate>Tue, 03 Mar 2020 00:00:00 +0900</pubDate><guid>https://cychong47.github.io/post/2020/2020-03-03-backup-ghost-database-periodically/</guid><description>&lt;p&gt;This ghost-backup container will backup in every 3am&lt;/p&gt;
+&lt;h1 id="start-ghost-backup-container"&gt;Start ghost-backup container&lt;/h1&gt;
+&lt;pre tabindex="0"&gt;&lt;code&gt;cychong@mini1:~/Documents/docker-daily-backup$ docker run --name ghost-backup -d -v /home/cychong/Documents/docker-daily-backup:/backups --volumes-from 388c84247267 bennetimo/ghost-backup
+ea33f148122bbe0d90a502bfd884e4c988e9f8837921f725ca7317afff7fa149
+&lt;/code&gt;&lt;/pre&gt;&lt;h1 id="instant-backup"&gt;Instant backup&lt;/h1&gt;
+&lt;pre tabindex="0"&gt;&lt;code&gt;cychong@mini1:~/Documents/docker-daily-backup$ ls -al
+total 8
+drwxrwxr-x 2 cychong cychong 4096 Mar 3 23:25 .
+drwxr-xr-x 5 cychong cychong 4096 Mar 3 23:25 ..
+cychong@mini1:~/Documents/docker-daily-backup$ docker exec ghost-backup backup
+Tue Mar 3 14:27:27 UTC 2020: Checking if a mysql container exists on the network at mysql:3306
+Tue Mar 3 14:27:33 UTC 2020: ...no mysql container exists on the network. Using sqlite mode
+Tue Mar 3 14:27:33 UTC 2020: creating backup: 20200303-1427...
+Tue Mar 3 14:27:33 UTC 2020: backing up ghost database
+Tue Mar 3 14:27:33 UTC 2020: creating ghost db archive (sqlite)...
+Tue Mar 3 14:27:33 UTC 2020: ...completed: /backups/backup-db_20200303-1427.gz
+Tue Mar 3 14:27:33 UTC 2020: backing up ghost content files
+Tue Mar 3 14:27:33 UTC 2020: creating ghost content files archive...
+Tue Mar 3 14:27:40 UTC 2020: ...completed: /backups/backup-ghost_20200303-1427.tar.gz
+Tue Mar 3 14:27:40 UTC 2020: backing up ghost json file
+Tue Mar 3 14:27:40 UTC 2020: ...checking if a ghost container exists on the network at ghost:2368
+Tue Mar 3 14:27:41 UTC 2020: ...no ghost service found on the network
+Tue Mar 3 14:27:41 UTC 2020: ...skipping: Your ghost service was not found on the network. Configure GHOST_SERVICE_NAME and GHOST_SERVICE_PORT
+Tue Mar 3 14:27:41 UTC 2020: purging old backups (set to retain the most recent 30)
+Tue Mar 3 14:27:41 UTC 2020: ...found 1 database files (purging 0)
+Tue Mar 3 14:27:41 UTC 2020: ...found 1 ghost content archive files (purging 0)
+Tue Mar 3 14:27:41 UTC 2020: ...found 0 ghost json files (purging 0)
+Tue Mar 3 14:27:41 UTC 2020: completed backup to /backups
+&lt;/code&gt;&lt;/pre&gt;&lt;h1 id="check-backup-output"&gt;Check backup output&lt;/h1&gt;
+&lt;pre tabindex="0"&gt;&lt;code&gt;cychong@mini1:~/Documents/docker-daily-backup$ ls -al
+total 67236
+drwxrwxr-x 2 cychong cychong 4096 Mar 3 23:27 .
+drwxr-xr-x 5 cychong cychong 4096 Mar 3 23:25 ..
+-rw-r--r-- 1 root root 1829326 Mar 3 23:27 backup-db_20200303-1427.gz
+-rw-r--r-- 1 root root 67004766 Mar 3 23:27 backup-ghost_20200303-1427.tar.gz
+&lt;/code&gt;&lt;/pre&gt;&lt;h1 id="reference"&gt;reference&lt;/h1&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="https://hub.docker.com/r/bennetimo/ghost-backup/?ref=login"&gt;https://hub.docker.com/r/bennetimo/ghost-backup/?ref=login&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;</description></item><item><title>Upgrade ghost to v3.0</title><link>https://cychong47.github.io/post/2019/upgrade-ghost-to-v3-0/</link><pubDate>Tue, 05 Nov 2019 14:58:16 +0900</pubDate><guid>https://cychong47.github.io/post/2019/upgrade-ghost-to-v3-0/</guid><description>&lt;ul&gt;
+&lt;li&gt;부제 1. pod가 동작하지 않을때 원인 찾기&lt;/li&gt;
+&lt;li&gt;부제 2. helm upgrade 명령을 이용하여 업데이트 하기&lt;/li&gt;
+&lt;li&gt;부제 3. sqlite를 이용해서 ghost.db 직접 수정하기&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;values.yaml에 명시되어 있는 ghost docker image의 버전 정보를 2.31.0에서 3.0.2 최신 버전으로 업데이트 후 아래 명령어로 업데이트&lt;/p&gt;
+&lt;pre tabindex="0"&gt;&lt;code&gt;$ helm upgrade --debug my-ghost ghost-with-helm
+[debug] Created tunnel using local port: &amp;#39;45263&amp;#39;
+
+[debug] SERVER: &amp;#34;127.0.0.1:45263&amp;#34;
+
+REVISION: 6
+RELEASED: Tue Nov 5 22:25:19 2019
+CHART: ghost-0.1.0
+USER-SUPPLIED VALUES:
+{}
+
+COMPUTED VALUES:
+affinity: {}
+env:
+ node_env: production
+ url: http://sosa0sa.com:2368
+fullnameOverride: &amp;#34;&amp;#34;
+image:
+ pullPolicy: Always
+ registry: docekr.io
+ repository: ghost
+ tag: 3.0.2
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Helm upgrade는 완료되었지만 ghost 블로그가 접속이 되지 않는다. 상태를 확인해 보니&lt;/p&gt;</description></item><item><title>Ghost Season 5 - Helm</title><link>https://cychong47.github.io/post/2019/ghost-season-5-helm/</link><pubDate>Sun, 22 Sep 2019 13:14:16 +0900</pubDate><guid>https://cychong47.github.io/post/2019/ghost-season-5-helm/</guid><description>&lt;p&gt;ghost를 설치한 지 몇 년이 지났는데 그 동안 여러 가지 방법으로 &lt;a href="http://sosa0sa.com:2368/ghost-deployment-season-4/"&gt;Ghost 운용 환경을 구축&lt;/a&gt;해왔다.&lt;/p&gt;
+&lt;p&gt;Host 환경, Docker, Ansible, kubernetes 에 이어 이번은 5번째 시즌인데 &lt;a href="https://helm.sh"&gt;Helm Chart&lt;/a&gt; 를 시용해서 설치해 보는 것이다. 처음 시작은 helm repository에 있는 공식(?) 공개된 helm chart를 이용하여 values.yaml 파일만 내 환경에 맞게 변경해서 사용하려던 것이었는데 아쉽게 아직은 그렇게 하기 힘든 것으로 보여 직접 helm chart를 만들어서 사용하고 있다. 이 문서는 그 과정을 기술한 것으로 향후 공식 helm chart를 활용할 수 있는 때가 오면 시즌 6에 해당하는 글을 또 쓸 듯 하다.&lt;/p&gt;</description></item><item><title>Setup Ghost in microk8s</title><link>https://cychong47.github.io/post/2019/setup-ghost-in-microk8s-2/</link><pubDate>Mon, 20 May 2019 16:00:56 +0900</pubDate><guid>https://cychong47.github.io/post/2019/setup-ghost-in-microk8s-2/</guid><description>&lt;h1 id="install-microk8s"&gt;Install microk8s&lt;/h1&gt;
+&lt;p&gt;&lt;a href="https://microk8s.io/"&gt;MicroK8s - Fast, Light, Upstream Developer Kubernetes&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;설치는 위 링크에 있는 공식 홈페이지에 있는 대로 &lt;code&gt;snap&lt;/code&gt; 명령어 하나로 간단하게 설치할 수 있다.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;cychong@mini1:~$ sudo snap install microk8s --classic
+2019-05-18T09:43:53+09:00 INFO Waiting for restart...
+microk8s v1.14.1 from Canonical✓ installed
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;설치된 &lt;code&gt;microk8s&lt;/code&gt;의 정보를 확인하려면 &lt;code&gt;snap info microk8s&lt;/code&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;cychong@mini1:~$ sudo snap info microk8s
+name: microk8s
+summary: Kubernetes for workstations and appliances
+publisher: Canonical✓
+contact: &amp;lt;https://github.com/ubuntu/microk8s&amp;gt;
+license: unset
+description: |
+ MicroK8s is a small, fast, secure, single node Kubernetes that installs on just about any Linux
+ box. Use it for offline development, prototyping, testing, or use it on a VM as a small, cheap,
+ reliable k8s for CI/CD. It's also a great k8s for appliances - develop your IoT apps for k8s and
+ deploy them to MicroK8s on your boxes.
+commands:
+ - microk8s.config
+ - microk8s.ctr
+ - microk8s.disable
+ - microk8s.enable
+ - microk8s.inspect
+ - microk8s.istioctl
+ - microk8s.kubectl
+ - microk8s.reset
+ - microk8s.start
+ - microk8s.status
+ - microk8s.stop
+services:
+ microk8s.daemon-apiserver: simple, enabled, active
+ microk8s.daemon-apiserver-kicker: simple, enabled, active
+ microk8s.daemon-containerd: simple, enabled, active
+ microk8s.daemon-controller-manager: simple, enabled, active
+ microk8s.daemon-etcd: simple, enabled, active
+ microk8s.daemon-kubelet: simple, enabled, active
+ microk8s.daemon-proxy: simple, enabled, active
+ microk8s.daemon-scheduler: simple, enabled, active
+snap-id: EaXqgt1lyCaxKaQCU349mlodBkDCXRcg
+tracking: stable
+refresh-date: today at 09:44 KST
+channels:
+ stable: v1.14.1 2019-04-18 (522) 214MB classic
+ candidate: v1.14.1 2019-04-15 (522) 214MB classic
+ beta: v1.14.1 2019-04-15 (522) 214MB classic
+ edge: v1.14.2 2019-05-17 (604) 217MB classic
+ 1.15/stable: –
+ 1.15/candidate: –
+ 1.15/beta: –
+ 1.15/edge: v1.15.0-alpha.3 2019-05-08 (578) 215MB classic
+ 1.14/stable: v1.14.1 2019-04-18 (521) 214MB classic
+ 1.14/candidate: v1.14.1 2019-04-15 (521) 214MB classic
+ 1.14/beta: v1.14.1 2019-04-15 (521) 214MB classic
+ 1.14/edge: v1.14.2 2019-05-17 (603) 217MB classic
+ 1.13/stable: v1.13.5 2019-04-22 (526) 237MB classic
+ 1.13/candidate: v1.13.6 2019-05-09 (581) 237MB classic
+ 1.13/beta: v1.13.6 2019-05-09 (581) 237MB classic
+ 1.13/edge: v1.13.6 2019-05-08 (581) 237MB classic
+ 1.12/stable: v1.12.8 2019-05-02 (547) 259MB classic
+ 1.12/candidate: v1.12.8 2019-05-01 (547) 259MB classic
+ 1.12/beta: v1.12.8 2019-05-01 (547) 259MB classic
+ 1.12/edge: v1.12.8 2019-04-24 (547) 259MB classic
+ 1.11/stable: v1.11.10 2019-05-10 (557) 258MB classic
+ 1.11/candidate: v1.11.10 2019-05-02 (557) 258MB classic
+ 1.11/beta: v1.11.10 2019-05-02 (557) 258MB classic
+ 1.11/edge: v1.11.10 2019-05-01 (557) 258MB classic
+ 1.10/stable: v1.10.13 2019-04-22 (546) 222MB classic
+ 1.10/candidate: v1.10.13 2019-04-22 (546) 222MB classic
+ 1.10/beta: v1.10.13 2019-04-22 (546) 222MB classic
+ 1.10/edge: v1.10.13 2019-04-22 (546) 222MB classic
+installed: v1.14.1 (522) 214MB classic
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id="enable-servicesmicrok8s"&gt;Enable services(microk8s)&lt;/h2&gt;
+&lt;pre&gt;&lt;code&gt;cychong@mini1:~$ sudo microk8s.enable dashboard registry dns
+Enabling dashboard
+secret/kubernetes-dashboard-certs created
+serviceaccount/kubernetes-dashboard created
+deployment.apps/kubernetes-dashboard created
+service/kubernetes-dashboard created
+service/monitoring-grafana created
+service/monitoring-influxdb created
+service/heapster created
+deployment.extensions/monitoring-influxdb-grafana-v4 created
+serviceaccount/heapster created
+configmap/heapster-config created
+configmap/eventer-config created
+deployment.extensions/heapster-v1.5.2 created
+dashboard enabled
+Enabling the private registry
+Enabling default storage class
+deployment.extensions/hostpath-provisioner created
+storageclass.storage.k8s.io/microk8s-hostpath created
+Storage will be available soon
+Applying registry manifest
+namespace/container-registry created
+persistentvolumeclaim/registry-claim created
+deployment.extensions/registry created
+service/registry created
+The registry is enabled
+Enabling DNS
+Applying manifest
+service/kube-dns created
+serviceaccount/kube-dns created
+configmap/kube-dns created
+deployment.extensions/kube-dns created
+Restarting kubelet
+DNS is enabled
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;서비스 상태는 &lt;code&gt;microk8s.status&lt;/code&gt;로 확인 가능&lt;/p&gt;</description></item><item><title>ghost deployment season 4</title><link>https://cychong47.github.io/post/2019/ghost-deployment-season-4/</link><pubDate>Sun, 19 May 2019 12:45:58 +0900</pubDate><guid>https://cychong47.github.io/post/2019/ghost-deployment-season-4/</guid><description>&lt;p&gt;ghost blog를 구성해서 사용한 게 벌써 2014년 이다. 당시 0.x 버전 이었던 초반에는 얼마 못 가고 사라지지 않을까 걱정했는데 한참을 1.0버전을 발표하지 않더니 벌써 2.x 버전이다.&lt;/p&gt;
+&lt;p&gt;그동안 내가 ghost 블로그를 운용하는 방식도 몇 번의 변화를 가졌다.&lt;/p&gt;
+&lt;h3 id="시즌-1---brew--tar-ball"&gt;시즌 1 - brew &amp;amp; tar-ball&lt;/h3&gt;
+&lt;p&gt;처음에는 매뉴얼 대로 직접 Node.js와 ghost 소스를 이용해서 직접 OS X에 설치해서 운용했다.&lt;/p&gt;
+&lt;h3 id="시즌-2---docker"&gt;시즌 2 - Docker&lt;/h3&gt;
+&lt;p&gt;그러다 Node.js 버전이 꼬이는 것도 그렇고, docker를 쓰면 ghost 버전이 새로 나왔을 때 편할 듯 해서 &lt;a href="http://sosa0sa.com:2368/move-to-docker/"&gt;docker를 쓰는 방식으로 변경했다&lt;/a&gt;. 이 시점에 docker의 stateless 속성을 이용하고, 데이터의 백업도 고려해서 ghost content는 Dropbox에 두고, docker 실행할 때 volume으로 마운트 하는 방식을 사용했다.
+그 당시 ghost보다 먼저 운용하고 있던 &lt;a href="http://sosa0sa.com:2368/install-wordpress-with-docker/"&gt;wordpress도 함께 docker로 실행 환경을 바꿨다&lt;/a&gt;. wordpess는 ghost와 달리 MySql을 필요로 해서 docker-compose를 이용해서 두 개의 container를 연동해서 실행했다.&lt;/p&gt;</description></item><item><title>Ansible - recreate ghost container</title><link>https://cychong47.github.io/post/2017/recreate-ghost-container/</link><pubDate>Sat, 30 Dec 2017 02:31:41 +0900</pubDate><guid>https://cychong47.github.io/post/2017/recreate-ghost-container/</guid><description>&lt;h2 id="yaml-file"&gt;YAML file&lt;/h2&gt;
+&lt;p&gt;&lt;code&gt;state:absent&lt;/code&gt; 는 현재 존재하는 container를 중지시키고, 삭제한다.
+단순히 stop만 시키려면 &lt;code&gt;state:stopped&lt;/code&gt;로 지정하면 된다.&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;pull: yes&lt;/code&gt; 옵션을 사용하면 항상 최신 image를 pull한다고 한다.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;recreate
+Use with present and started states to force the re-creation of an existing container.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;pre tabindex="0"&gt;&lt;code&gt;mbpr15:ansible cychong$ cat recreate_container_ghost.yaml 
+---
+- hosts: mini2
+ tasks:
+
+ - name: Stop and remove contianer
+ docker_container:
+ name: ghost
+ state: absent
+
+ - name: Create ghost Container
+ docker_container:
+ name: ghost
+ image: ghost
+ # always pull the latest image
+ pull: yes
+ state: started
+ recreate: yes
+ volumes:
+ - &amp;#34;/Users/cychong/Dropbox/Apps/ghost/content/:/var/lib/ghost/content&amp;#34; 
+ - &amp;#34;/Users/cychong/Dropbox/Apps/ghost/config.production.json:/var/lib/ghost/config.production.json&amp;#34;
+ ports:
+ - &amp;#34;2368:2368&amp;#34;
+ env:
+ NODE_ENV: production
+&lt;/code&gt;&lt;/pre&gt;&lt;pre tabindex="0"&gt;&lt;code&gt;mbpr15:ansible cychong$ ansible-playbook recreate_container_ghost.yaml 
+
+PLAY [mini2] ***************************************************************************************************************************************************************
+
+TASK [Gathering Facts] *****************************************************************************************************************************************************
+ok: [mini2]
+
+TASK [Stop and remove contianer] *******************************************************************************************************************************************
+changed: [mini2]
+
+TASK [Create ghost Container] **********************************************************************************************************************************************
+changed: [mini2]
+
+PLAY RECAP *****************************************************************************************************************************************************************
+mini2 : ok=3 changed=2 unreachable=0 failed=0 
+&lt;/code&gt;&lt;/pre&gt;</description></item><item><title>ghost container with docker-compose</title><link>https://cychong47.github.io/post/2017/ghost-container-with-docker-compose/</link><pubDate>Sun, 03 Sep 2017 01:26:28 +0900</pubDate><guid>https://cychong47.github.io/post/2017/ghost-container-with-docker-compose/</guid><description>&lt;p&gt;얼마전에 구성한 ghost container는 ghost가 1.x로 업데이트가 되면서 설정 정보의 위치가 변경되었는데 그걸 미처 몰라 블로그 주소가 기본값인 localhost로 설정되는 문제가 있었다.
+기존 ghost container에 접근해서 확인해 보니 `/var/lib/ghost/config.production.json&amp;rsquo; 파일에 주소가 설정되어 있는 걸 보고 이 파일도 따로 지정해 주도록 변경했다.
+그러면서 docker-compose를 한번 써 보기로&lt;/p&gt;
+&lt;p&gt;일단 기존 ghost를 정리하고&lt;/p&gt;
+&lt;pre tabindex="0"&gt;&lt;code&gt;cychong:~ cychong$ docker stop ghost
+ghost
+cychong:~ cychong$ docker rm ghost
+ghost
+cychong:~ cychong$ docker rmi ghost
+Untagged: ghost:latest
+Untagged: ghost@sha256:a1f70641d35755395eb16827de4e67861e01bffe18bac8e54ab5c68cd170a2ea
+Deleted: sha256:e6ba3dd3c2491c6086d570fa9769a9f60d7c004129ff9ae7ff9fa0bad16a993b
+Deleted: sha256:c1ee9d43624bb4a1922c15d7a9175a80d1952cb71464d6d9d900fe21948227af
+Deleted: sha256:f8f95cdbafce4ecd226cdd690e6f909203a0f83d3507c53a71d4e59826ea881b
+Deleted: sha256:935d8847555992b702173b83b0d210f2728a24b5287467396dc8d5c68907691f
+Deleted: sha256:f4766b72a49d4cd2e897da0efcec94c33a0d24a95cb8426a790e1c45e6e39fae
+Deleted: sha256:0c0dbaebe17c6f585eb596e705ed5acba668097698a7780844c12597bb99b34a
+Deleted: sha256:c807796bea7a34c0b73eae853b728f2bbcd7a4fecc19d049455b322120f95ce7
+Deleted: sha256:15f9f4e44e22d3287b6caf9555110383d3ff2e88ee9cc03823b1ba5a01b75eac
+Deleted: sha256:77809f11069f2abfb571cba07ee3d696ec32823df0f5d0587042ffdb27a80add
+Deleted: sha256:5d6bba18f7b25c9b93d3cc0d93a4cff54eb88b0ba22ed867633a21fc3ded5f57
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;하는 김에 최신 버전의 ghost받아오고&lt;/p&gt;</description></item><item><title>Slack + Ghost</title><link>https://cychong47.github.io/post/2017/slack-ghost/</link><pubDate>Wed, 12 Apr 2017 15:37:39 +0900</pubDate><guid>https://cychong47.github.io/post/2017/slack-ghost/</guid><description>&lt;p&gt;Slack에 개인 채널(?)을 만들었다.
+이런 저런 내가 수집(?)하는 정보들을 한 군데서 모아서 히스토리를 만들면 어떨까 하는 생각에&lt;/p&gt;
+&lt;p&gt;누구는 slack과 빌드 상황도 연동해서 사용한다고 하는데 그건 좀 공부가 필요해 보이고, 일단 제일 쉬워 보이는 ghost와 연동을 시도해 봤다.&lt;/p&gt;
+&lt;p&gt;Ghost의 admin 화면에서 Apps를 선택하면 이런 화면이 나온다.&lt;/p&gt;
+&lt;p&gt;&lt;img src="https://cychong47.github.io/images/2017/04/ghost_apps_menu.png" alt=""&gt;&lt;/p&gt;
+&lt;p&gt;여기서 Slack항목의 Active를 선택하면 slack와 연동할 수 있는 URL을 입력하라고 나온다. 아래는 이미 연동이 된 상태로 처음 선택한 경우에는 URL 아래에 있는 &amp;ldquo;Set up a new incoming webhook here&amp;quot;의 here를 선택한다.&lt;/p&gt;</description></item><item><title>Move to docker</title><link>https://cychong47.github.io/post/2017/move-to-docker/</link><pubDate>Tue, 04 Apr 2017 13:51:03 +0900</pubDate><guid>https://cychong47.github.io/post/2017/move-to-docker/</guid><description>&lt;p&gt;지금 집에 있는 두 대의 mac mini를 이용해서 각각 wordpress와 ghost를 돌리고 있다.&lt;br&gt;
+wordpress의 경우 2013년부터 시작한 블로그를 운영하는데 사용하고 있는데, 웹호스팅 회사 몇 군데를 전전하다 몇 년 전부터 집에 있는 mac mini 2009에 &lt;a href="https://www.mamp.info/"&gt;MAMP&lt;/a&gt;를 이용해서 자체 서버를 이용하고 있었다.&lt;/p&gt;
+&lt;p&gt;Ghost는 내가 좋아하는 markdown을 기본으로 사용하는 블로그 툴을 찾다 만났는데 지금은 사라졌지만 초기 홈페이지에 있던 멋진 dashboard에 낚여 설치했다. Open source 답지 않고 느린 개발 속도가 이해되지는 않지만, 여전히 markdwon을 제대로 지원하는 흔치 않은 설치형 블로그 툴이라 아직 희망을 버리지 않고 사용하고 있다. 현재는 0.11.2 버전이 공식 stable 버전이고 올해 나올 걸로 예상되는 1.0의 alpha 버전이 개발중이다.&lt;/p&gt;</description></item><item><title>Ghost 본문 다 보이기</title><link>https://cychong47.github.io/post/2016/display-post-by-default-ghost/</link><pubDate>Mon, 09 May 2016 15:23:57 +0900</pubDate><guid>https://cychong47.github.io/post/2016/display-post-by-default-ghost/</guid><description>&lt;p&gt;theme을 수정해서 ghost blog 화면에서 글 본문이 다 나오도록 할 수 있다.&lt;/p&gt;
+&lt;p&gt;대신 theme마다 조금씩 적용 방법이 다른데 기본적으로 변경해야 할 내용은 동일&lt;/p&gt;
+&lt;h1 id="casper-theme"&gt;casper theme&lt;/h1&gt;
+&lt;p&gt;casper는 &lt;code&gt;index.hbs&lt;/code&gt; 파일에서 &lt;code&gt;loop.hbs&lt;/code&gt;라는 별도 파일을 통해 본문을 보이게 하고 있다.&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;index.hbs&lt;/code&gt;&lt;/p&gt;
+&lt;pre tabindex="0"&gt;&lt;code&gt; 21 {{! The main content area on the homepage }}
+ 22 &amp;lt;main id=&amp;#34;content&amp;#34; class=&amp;#34;content&amp;#34; role=&amp;#34;main&amp;#34;&amp;gt;
+ 23
+ 24 {{! The tag below includes the post loop - partials/loop.hbs }}
+ 25 {{&amp;gt; &amp;#34;loop&amp;#34;}}
+ 26
+ 27 &amp;lt;/main&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;위 코드에서 가리키는 partials/loop.hbs 코드에서 exceprt인 부분을 찾아서 다음과 같이 변경한다. 아래에서 13라인부터 15라인이 원본으로 각 post의 일부만 보이게 하고, 더 읽으려면 &lt;code&gt;&amp;gt;&amp;gt;&lt;/code&gt;등을 클릭하게 한다. 이 부분을 막고 post 전체를 표시하는 17라인에서 19라인까지의 내용을 추가한다.&lt;/p&gt;</description></item></channel></rss>

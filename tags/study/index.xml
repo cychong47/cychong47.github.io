@@ -1,4 +1,30 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Study on Keep calm and write something</title><link>https://cychong47.github.io/tags/study/</link><description>Recent content in Study on Keep calm and write something</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Sun, 01 Apr 2018 02:38:40 +0000</lastBuildDate><atom:link href="https://cychong47.github.io/tags/study/index.xml" rel="self" type="application/rss+xml"/><item><title>KNI가 buffer를 free 하는 방법</title><link>https://cychong47.github.io/post/2016/how_kni_free_mbuf/</link><pubDate>Sun, 06 Mar 2016 08:17:58 +0900</pubDate><guid>https://cychong47.github.io/post/2016/how_kni_free_mbuf/</guid><description>DPDK to KNI RX KNI는 rx_q로부터 mbuf를 수신한 후 data_len 크기의 skb를 할당하여 데이터를 복사한 후 netif_rx를 호출한다. 그러므로 mbuf는 KNI kernel module까지만 사용되고, 커널 networking stack에서는 사용되지는 않는다.
-kni_net.c의 kni_net_rx_normal() 함수가 DPDK application으로부터 mbuf를 받아 커널에 전달하는 함수인데 실제 함수는 batch processing을 위해 한번에 여러 개의 패킷을 rx_q로부터 읽어 처리하도록 구현되어 있다.
-아래는 하나의 패킷에 대해 수행되는 코드를 간략화 한 것이다(예외 처리 부분도 제외)
-num_rx = kni_fifo_get(kni-&amp;gt;rx_q, (void **)va, num_rx); kva = (void *)va[i] - kni-&amp;gt;mbuf_va + kni-&amp;gt;mbuf_kva; len = kva-&amp;gt;data_len; data_kva = kva-&amp;gt;buf_addr + kva-&amp;gt;data_off - kni-&amp;gt;mbuf_va + kni-&amp;gt;mbuf_kva; skb = dev_alloc_skb(len + 2); /* Align IP on 16B boundary */ skb_reserve(skb, 2); memcpy(skb_put(skb, len), data_kva, len); skb-&amp;gt;dev = dev; skb-&amp;gt;protocol = eth_type_trans(skb, dev); skb-&amp;gt;ip_summed = CHECKSUM_UNNECESSARY; /* Call netif interface */ netif_rx(skb); /* Update statistics */ kni-&amp;gt;stats.</description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Study on Keep calm and Write something</title><link>https://cychong47.github.io/tags/study/</link><description>Recent content in Study on Keep calm and Write something</description><generator>Hugo</generator><language>en-us</language><lastBuildDate>Sun, 01 Apr 2018 02:38:40 +0000</lastBuildDate><atom:link href="https://cychong47.github.io/tags/study/index.xml" rel="self" type="application/rss+xml"/><item><title>KNI가 buffer를 free 하는 방법</title><link>https://cychong47.github.io/post/2016/how_kni_free_mbuf/</link><pubDate>Sun, 06 Mar 2016 08:17:58 +0900</pubDate><guid>https://cychong47.github.io/post/2016/how_kni_free_mbuf/</guid><description>&lt;h1 id="dpdk-to-kni-rx"&gt;DPDK to KNI RX&lt;/h1&gt;
+&lt;p&gt;KNI는 &lt;code&gt;rx_q&lt;/code&gt;로부터 mbuf를 수신한 후 &lt;code&gt;data_len&lt;/code&gt; 크기의 skb를 할당하여 데이터를 복사한 후 &lt;code&gt;netif_rx&lt;/code&gt;를 호출한다.
+그러므로 mbuf는 KNI kernel module까지만 사용되고, 커널 networking stack에서는 사용되지는 않는다.&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;kni_net.c&lt;/code&gt;의 &lt;code&gt;kni_net_rx_normal()&lt;/code&gt; 함수가 DPDK application으로부터 mbuf를 받아 커널에 전달하는 함수인데 실제 함수는 batch processing을 위해 한번에 여러 개의 패킷을 &lt;code&gt;rx_q&lt;/code&gt;로부터 읽어 처리하도록 구현되어 있다.&lt;/p&gt;
+&lt;p&gt;아래는 하나의 패킷에 대해 수행되는 코드를 간략화 한 것이다(예외 처리 부분도 제외)&lt;/p&gt;
+&lt;pre tabindex="0"&gt;&lt;code&gt;num_rx = kni_fifo_get(kni-&amp;gt;rx_q, (void **)va, num_rx);
+
+kva = (void *)va[i] - kni-&amp;gt;mbuf_va + kni-&amp;gt;mbuf_kva;
+len = kva-&amp;gt;data_len;
+data_kva = kva-&amp;gt;buf_addr + kva-&amp;gt;data_off - kni-&amp;gt;mbuf_va + kni-&amp;gt;mbuf_kva;
+
+skb = dev_alloc_skb(len + 2);
+
+/* Align IP on 16B boundary */
+skb_reserve(skb, 2);
+memcpy(skb_put(skb, len), data_kva, len);
+skb-&amp;gt;dev = dev;
+skb-&amp;gt;protocol = eth_type_trans(skb, dev);
+skb-&amp;gt;ip_summed = CHECKSUM_UNNECESSARY;
+
+/* Call netif interface */
+netif_rx(skb);
+
+/* Update statistics */
+kni-&amp;gt;stats.rx_bytes += len;
+kni-&amp;gt;stats.rx_packets++;
+
+/* Burst enqueue mbufs into free_q */
+ret = kni_fifo_put(kni-&amp;gt;free_q, (void **)va, num_rx);
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;In case DPDK application restarted&lt;/p&gt;</description></item></channel></rss>

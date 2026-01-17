@@ -1,6 +1,51 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Setup K8s Cluster on Keep calm and write something</title><link>https://cychong47.github.io/series/setup-k8s-cluster/</link><description>Recent content in Setup K8s Cluster on Keep calm and write something</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Tue, 13 Apr 2021 11:26:01 +0900</lastBuildDate><atom:link href="https://cychong47.github.io/series/setup-k8s-cluster/index.xml" rel="self" type="application/rss+xml"/><item><title>Install kubernetes on mini3</title><link>https://cychong47.github.io/post/2021/2021-04-13-install-kubernetes-on-mini3/</link><pubDate>Tue, 13 Apr 2021 11:26:01 +0900</pubDate><guid>https://cychong47.github.io/post/2021/2021-04-13-install-kubernetes-on-mini3/</guid><description>mini1에서 mini3로의 이전을 준비 중. 기존에 mini3에는 재미삼아 k3s를 설치해 놓았는데 왠지 새로운 설정 방식을 알아야 할 필요가 있나 하는 생각이 들어 이전처럼 다시 vanilla kubernetes 를 설치하기로 했다. minkkube처럼 VM을 만들어야 설치가 되는 것도 아니고 그냥 host OS에 설치하면 되니까 설치도 간단하고(물론 바이너리 하나 설치하면 되는 k3s와는 비교하기 어렵지만) 부하를 감당하기 어려운 정도의 CPU도 아니라서.
-Installing kubeadm | Kubernetes
-# /etc/modules-load.d/k8s.conf br_netfilter # /etc/sysctl.d/k8s.conf net.bridge.bridge-nf-call-ip6tables = 1 net.bridge.bridge-nf-call-iptables = 1 $ sudo sysctl --system Install Containerd as a Container Runtime docker를 CRI로 사용하는 것은 곧 deprecated예정이니까 containerd를 사용해 보자.</description></item><item><title>Botkube to monitor K8s cluster in Slack</title><link>https://cychong47.github.io/post/2020/2020-09-04-install-botkube/</link><pubDate>Fri, 04 Sep 2020 23:51:45 +0900</pubDate><guid>https://cychong47.github.io/post/2020/2020-09-04-install-botkube/</guid><description>Install BotKube for k8s and slack Slack :: Messaging bot for monitoring and debugging Kubernetes clusters
-cychong@mini1:~$ helm repo add infracloudio https://infracloudio.github.io/charts &amp;#34;infracloudio&amp;#34; has been added to your repositories cychong@mini1:~$ helm repo update Hang tight while we grab the latest from your chart repositories... ...Successfully got an update from the &amp;#34;infracloudio&amp;#34; chart repository ...Successfully got an update from the &amp;#34;myhelmrepo&amp;#34; chart repository Update Complete. ⎈ Happy Helming!⎈ botkube를 위한 namespace 만들어주기</description></item><item><title>Setup kubernetes in a single host</title><link>https://cychong47.github.io/post/2019/setup-kubernetes-with-a-single-host/</link><pubDate>Mon, 23 Sep 2019 15:03:13 +0900</pubDate><guid>https://cychong47.github.io/post/2019/setup-kubernetes-with-a-single-host/</guid><description>Replace microk8s with kubernetes in mini1
-remove micro.k8s with snap command cychong@mini1:~$ sudo snap remove microk8s Save data of snap &amp;#34;microk8s&amp;#34; in automatic snapshot set microk8s removed cychong@mini1:~$ setup kubernetes Reference : https://phoenixnap.com/kb/install-kubernetes-on-ubuntu
-cychong@mini1:~$ sudo kubeadm init --pod-network-cidr=10.244.0.0/16 [init] Using Kubernetes version: v1.15.3 cychong@mini1:~$ kubectl get pods --all-namespaces -o wide NAMESPACE NAME READY STATUS RESTARTS AGE IP NODE NOMINATED NODE READINESS GATES kube-system coredns-5c98db65d4-r468f 0/1 Pending 0 2m3s &amp;lt;none&amp;gt; &amp;lt;none&amp;gt; &amp;lt;none&amp;gt; &amp;lt;none&amp;gt; kube-system coredns-5c98db65d4-wcm2n 0/1 Pending 0 2m3s &amp;lt;none&amp;gt; &amp;lt;none&amp;gt; &amp;lt;none&amp;gt; &amp;lt;none&amp;gt; kube-system etcd-mini1 1/1 Running 0 79s 192.</description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Setup K8s Cluster on Keep calm and Write something</title><link>https://cychong47.github.io/series/setup-k8s-cluster/</link><description>Recent content in Setup K8s Cluster on Keep calm and Write something</description><generator>Hugo</generator><language>en-us</language><lastBuildDate>Tue, 13 Apr 2021 11:26:01 +0900</lastBuildDate><atom:link href="https://cychong47.github.io/series/setup-k8s-cluster/index.xml" rel="self" type="application/rss+xml"/><item><title>Install kubernetes on mini3</title><link>https://cychong47.github.io/post/2021/2021-04-13-install-kubernetes-on-mini3/</link><pubDate>Tue, 13 Apr 2021 11:26:01 +0900</pubDate><guid>https://cychong47.github.io/post/2021/2021-04-13-install-kubernetes-on-mini3/</guid><description>&lt;p&gt;mini1에서 mini3로의 이전을 준비 중.
+기존에 mini3에는 재미삼아 k3s를 설치해 놓았는데 왠지 새로운 설정 방식을 알아야 할 필요가 있나 하는 생각이 들어 이전처럼 다시 vanilla kubernetes 를 설치하기로 했다. minkkube처럼 VM을 만들어야 설치가 되는 것도 아니고 그냥 host OS에 설치하면 되니까 설치도 간단하고(물론 바이너리 하나 설치하면 되는 k3s와는 비교하기 어렵지만) 부하를 감당하기 어려운 정도의 CPU도 아니라서.&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://kubernetes.io/docs/setup/production-environment/tools/kubeadm/install-kubeadm/"&gt;Installing kubeadm | Kubernetes&lt;/a&gt;&lt;/p&gt;
+&lt;pre tabindex="0"&gt;&lt;code&gt;# /etc/modules-load.d/k8s.conf
+br_netfilter
+&lt;/code&gt;&lt;/pre&gt;&lt;pre tabindex="0"&gt;&lt;code&gt;# /etc/sysctl.d/k8s.conf
+net.bridge.bridge-nf-call-ip6tables = 1
+net.bridge.bridge-nf-call-iptables = 1
+&lt;/code&gt;&lt;/pre&gt;&lt;pre tabindex="0"&gt;&lt;code&gt;$ sudo sysctl --system
+&lt;/code&gt;&lt;/pre&gt;&lt;h1 id="install-containerd-as-a-container-runtime"&gt;Install Containerd as a Container Runtime&lt;/h1&gt;
+&lt;p&gt;docker를 CRI로 사용하는 것은 곧 deprecated예정이니까 containerd를 사용해 보자.&lt;/p&gt;</description></item><item><title>Botkube to monitor K8s cluster in Slack</title><link>https://cychong47.github.io/post/2020/2020-09-04-install-botkube/</link><pubDate>Fri, 04 Sep 2020 23:51:45 +0900</pubDate><guid>https://cychong47.github.io/post/2020/2020-09-04-install-botkube/</guid><description>&lt;h1 id="install-botkube-for-k8s-and-slack"&gt;Install BotKube for k8s and slack&lt;/h1&gt;
+&lt;p&gt;&lt;a href="https://www.botkube.io/installation/slack/"&gt;Slack :: Messaging bot for monitoring and debugging Kubernetes clusters&lt;/a&gt;&lt;/p&gt;
+&lt;pre tabindex="0"&gt;&lt;code&gt;cychong@mini1:~$ helm repo add infracloudio https://infracloudio.github.io/charts
+&amp;#34;infracloudio&amp;#34; has been added to your repositories
+cychong@mini1:~$ helm repo update
+Hang tight while we grab the latest from your chart repositories...
+...Successfully got an update from the &amp;#34;infracloudio&amp;#34; chart repository
+...Successfully got an update from the &amp;#34;myhelmrepo&amp;#34; chart repository
+Update Complete. ⎈ Happy Helming!⎈
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;botkube를 위한 namespace 만들어주기&lt;/p&gt;</description></item><item><title>Setup kubernetes in a single host</title><link>https://cychong47.github.io/post/2019/setup-kubernetes-with-a-single-host/</link><pubDate>Mon, 23 Sep 2019 15:03:13 +0900</pubDate><guid>https://cychong47.github.io/post/2019/setup-kubernetes-with-a-single-host/</guid><description>&lt;p&gt;Replace microk8s with kubernetes in mini1&lt;/p&gt;
+&lt;h1 id="remove-microk8s-with-snap-command"&gt;remove micro.k8s with snap command&lt;/h1&gt;
+&lt;pre tabindex="0"&gt;&lt;code&gt;cychong@mini1:~$ sudo snap remove microk8s
+Save data of snap &amp;#34;microk8s&amp;#34; in automatic snapshot set 
+microk8s removed
+cychong@mini1:~$
+&lt;/code&gt;&lt;/pre&gt;&lt;h1 id="setup-kubernetes"&gt;setup kubernetes&lt;/h1&gt;
+&lt;p&gt;Reference : &lt;a href="https://phoenixnap.com/kb/install-kubernetes-on-ubuntu"&gt;https://phoenixnap.com/kb/install-kubernetes-on-ubuntu&lt;/a&gt;&lt;/p&gt;
+&lt;pre tabindex="0"&gt;&lt;code&gt;cychong@mini1:~$ sudo kubeadm init --pod-network-cidr=10.244.0.0/16
+[init] Using Kubernetes version: v1.15.3
+&lt;/code&gt;&lt;/pre&gt;&lt;pre tabindex="0"&gt;&lt;code&gt;cychong@mini1:~$ kubectl get pods --all-namespaces -o wide
+NAMESPACE NAME READY STATUS RESTARTS AGE IP NODE NOMINATED NODE READINESS GATES
+kube-system coredns-5c98db65d4-r468f 0/1 Pending 0 2m3s &amp;lt;none&amp;gt; &amp;lt;none&amp;gt; &amp;lt;none&amp;gt; &amp;lt;none&amp;gt;
+kube-system coredns-5c98db65d4-wcm2n 0/1 Pending 0 2m3s &amp;lt;none&amp;gt; &amp;lt;none&amp;gt; &amp;lt;none&amp;gt; &amp;lt;none&amp;gt;
+kube-system etcd-mini1 1/1 Running 0 79s 192.168.1.100 mini1 &amp;lt;none&amp;gt; &amp;lt;none&amp;gt;
+kube-system kube-apiserver-mini1 1/1 Running 0 76s 192.168.1.100 mini1 &amp;lt;none&amp;gt; &amp;lt;none&amp;gt;
+kube-system kube-controller-manager-mini1 1/1 Running 0 72s 192.168.1.100 mini1 &amp;lt;none&amp;gt; &amp;lt;none&amp;gt;
+kube-system kube-proxy-rzpkc 1/1 Running 0 2m4s 192.168.1.100 mini1 &amp;lt;none&amp;gt; &amp;lt;none&amp;gt;
+kube-system kube-scheduler-mini1 1/1 Running 0 82s 192.168.1.100 mini1 &amp;lt;none&amp;gt; &amp;lt;none&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;h2 id="install-calico"&gt;Install Calico&lt;/h2&gt;
+&lt;pre tabindex="0"&gt;&lt;code&gt;cychong@mini1:~$ wget https://docs.projectcalico.org/v3.8/manifests/calico.yaml
+--2019-09-08 21:53:13-- https://docs.projectcalico.org/v3.8/manifests/calico.yaml
+Resolving docs.projectcalico.org (docs.projectcalico.org)... 178.128.115.5, 2400:6180:0:d1::575:a001
+Connecting to docs.projectcalico.org (docs.projectcalico.org)|178.128.115.5|:443... connected.
+HTTP request sent, awaiting response... 200 OK
+Length: 20628 (20K) [application/x-yaml]
+Saving to: ‘calico.yaml’
+
+calico.yaml 100%[====================================================================================&amp;gt;] 20.14K --.-KB/s in 0.08s
+
+2019-09-08 21:53:14 (240 KB/s) - ‘calico.yaml’ saved [20628/20628]
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Change &lt;code&gt;CALICO_IPV4POOL_CIDR&lt;/code&gt;&lt;/p&gt;</description></item></channel></rss>

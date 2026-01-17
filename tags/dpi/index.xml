@@ -1,1 +1,48 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Dpi on Keep calm and write something</title><link>https://cychong47.github.io/tags/dpi/</link><description>Recent content in Dpi on Keep calm and write something</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Sun, 01 Apr 2018 02:38:51 +0000</lastBuildDate><atom:link href="https://cychong47.github.io/tags/dpi/index.xml" rel="self" type="application/rss+xml"/><item><title>DPI &amp; Traffic analysis in networks based on NFV and SDN</title><link>https://cychong47.github.io/post/2014/dpi-traffic-analysis-in-networks-based-on-nfv-and-sdn/</link><pubDate>Tue, 12 Aug 2014 15:10:23 +0900</pubDate><guid>https://cychong47.github.io/post/2014/dpi-traffic-analysis-in-networks-based-on-nfv-and-sdn/</guid><description>출처 Heavy-ReadingQosmosDPI-SDN-NFVWhite-PaperJan2014.pdf 2014년 1월 전반적인 내용 The largest use case (by number of vendors citing it) is service assurance for QoS/QoE; the second largest is policy control (PCEF), which we believe is the largest use case by volume Half of respondents said that encryption of protocols is reducing the effectiveness of DPI . Packet metric analysis (heuristics) was identified as the main remedy - packet size, spacing, frequency DPI 용도 Service Awarence (QoS, QoE)가 가장 높음(60%) Policy Control(PCEF)도 비슷 3GPP TDF 기능.</description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Dpi on Keep calm and Write something</title><link>https://cychong47.github.io/tags/dpi/</link><description>Recent content in Dpi on Keep calm and Write something</description><generator>Hugo</generator><language>en-us</language><lastBuildDate>Sun, 01 Apr 2018 02:38:51 +0000</lastBuildDate><atom:link href="https://cychong47.github.io/tags/dpi/index.xml" rel="self" type="application/rss+xml"/><item><title>DPI &amp; Traffic analysis in networks based on NFV and SDN</title><link>https://cychong47.github.io/post/2014/dpi-traffic-analysis-in-networks-based-on-nfv-and-sdn/</link><pubDate>Tue, 12 Aug 2014 15:10:23 +0900</pubDate><guid>https://cychong47.github.io/post/2014/dpi-traffic-analysis-in-networks-based-on-nfv-and-sdn/</guid><description>&lt;h2 id="출처"&gt;출처&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="http://www.qosmos.com/wp-content/uploads/2014/01/Heavy-Reading_Qosmos_DPI-SDN-NFV_White-Paper_Jan2014.pdf"&gt;Heavy-ReadingQosmosDPI-SDN-NFVWhite-PaperJan2014.pdf&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;2014년 1월&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id="전반적인-내용"&gt;전반적인 내용&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;The largest use case (by number of vendors citing it) is service assurance for QoS/QoE; the second largest is policy control (PCEF), which we believe is the largest use case by volume&lt;/li&gt;
+&lt;li&gt;Half of respondents said that encryption of protocols is reducing the effectiveness of DPI . Packet metric analysis (heuristics) was identified as the main remedy - packet size, spacing, frequency&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id="dpi-용도"&gt;DPI 용도&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Service Awarence (QoS, QoE)가 가장 높음(60%)&lt;/li&gt;
+&lt;li&gt;Policy Control(PCEF)도 비슷&lt;/li&gt;
+&lt;li&gt;3GPP TDF 기능. 표준 내용 확인 필요&lt;/li&gt;
+&lt;li&gt;Service Analystics system도 높은 관심
+&lt;ul&gt;
+&lt;li&gt;가입자 수준에서 분석하려는 의도가 많아짐.&lt;/li&gt;
+&lt;li&gt;Customer prefrences and load/characteristics&lt;/li&gt;
+&lt;li&gt;Real-time analytics&lt;/li&gt;
+&lt;li&gt;Real-time subscriber data analysis and RAN congenstion control at cell level&lt;/li&gt;
+&lt;li&gt;Pose hard challenge to engineers.&lt;/li&gt;
+&lt;li&gt;Accurate real-time detection of application and protocols is essential.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;대부분의 대형 벤더가 자체 DPI 솔류션 확보. 작은 업체일 수록 third-party solution 사용
+&lt;ul&gt;
+&lt;li&gt;대략 응답자의 30%가 third-party solution 사용하나, 대형 벤더의 응답율이 높아 실제 사용률은 더 높을 듯&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;암호화된 패킷 때문에 Packet Metric analysis(size, spacing, frequency) 등 DPI 이상의 기술로 해결해 가야 함.&lt;/li&gt;
+&lt;li&gt;NFV는 새로운 제품 개발의 H/W 및 S/W 설계에 영향을 줄거라는 의견이 92%로 지배적.
+&lt;ul&gt;
+&lt;li&gt;그렇지만, 가상화 할때 고려하는 H/W platform으로는 COTS만큼 자체 H/W를 고려하고 있음&lt;/li&gt;
+&lt;li&gt;아직 어떤 것이 H/W platform인지 맞는 것인지 확신이 없기 때문에 그만큼 보수적으로 자체 플랫폼을 고려하는 것으로 분석됨.&lt;/li&gt;
+&lt;li&gt;그렇지만 appliance-selling(H/W) 모델에서 usage-selling(Software license) 모델로 이동할 거라는 예상&lt;/li&gt;
+&lt;li&gt;NFV와 표준화된 third-party component의 출현은 점점 outsouring 비율을 높일 거라는 예상.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id="nfvsdn을-고려한-dpi"&gt;NFV/SDN을 고려한 DPI&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;DPI는 Switch node의 Hypervisor(OVS), VM 내(DPI VNFC-Virtual Network Function) 그리고 Controller에 위치할 것으로 보임
+&lt;ul&gt;
+&lt;li&gt;VM내 DPI(DPI VNFC)는 ETSI ISG(July 2013)에서 정리한 공식 use case중 하나.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;</description></item></channel></rss>

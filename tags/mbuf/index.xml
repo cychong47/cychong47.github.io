@@ -1,4 +1,25 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Mbuf on Keep calm and write something</title><link>https://cychong47.github.io/tags/mbuf/</link><description>Recent content in Mbuf on Keep calm and write something</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Sun, 01 Apr 2018 02:38:40 +0000</lastBuildDate><atom:link href="https://cychong47.github.io/tags/mbuf/index.xml" rel="self" type="application/rss+xml"/><item><title>DPDK new mbuf 사용 주의사항</title><link>https://cychong47.github.io/post/2016/header-length-in-mbuf/</link><pubDate>Sun, 06 Mar 2016 08:22:24 +0900</pubDate><guid>https://cychong47.github.io/post/2016/header-length-in-mbuf/</guid><description>l2_len, l3_len, l4_len 등을 사용하는 라이브러리가 존재함
-reassembly Tx checksum offload Reassembly rte_ipv6_frag_reassemble_packet(), rte_ipv4_frag_reassemble_packet() Incoming mbuf should have its l2_len and l3_len fields setup correctly.
-L4 checksum HW offloading To use hardware L4 checksum offload, the user needs to
-fill l2_len and l3_len in mbuf set the flags PKT_TX_TCP_CKSUM, PKT_TX_SCTP_CKSUM or PKT_TX_UDP_CKSUM set the flag PKT_TX_IPV4 or PKT_TX_IPV6 calculate the pseudo header checksum and set it in the L4 header (only for TCP or UDP).</description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Mbuf on Keep calm and Write something</title><link>https://cychong47.github.io/tags/mbuf/</link><description>Recent content in Mbuf on Keep calm and Write something</description><generator>Hugo</generator><language>en-us</language><lastBuildDate>Sun, 01 Apr 2018 02:38:40 +0000</lastBuildDate><atom:link href="https://cychong47.github.io/tags/mbuf/index.xml" rel="self" type="application/rss+xml"/><item><title>DPDK new mbuf 사용 주의사항</title><link>https://cychong47.github.io/post/2016/header-length-in-mbuf/</link><pubDate>Sun, 06 Mar 2016 08:22:24 +0900</pubDate><guid>https://cychong47.github.io/post/2016/header-length-in-mbuf/</guid><description>&lt;p&gt;&lt;code&gt;l2_len&lt;/code&gt;, &lt;code&gt;l3_len&lt;/code&gt;, &lt;code&gt;l4_len&lt;/code&gt; 등을 사용하는 라이브러리가 존재함&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;reassembly&lt;/li&gt;
+&lt;li&gt;Tx checksum offload&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id="reassembly"&gt;Reassembly&lt;/h3&gt;
+&lt;p&gt;&lt;code&gt;rte_ipv6_frag_reassemble_packet()&lt;/code&gt;, &lt;code&gt;rte_ipv4_frag_reassemble_packet()&lt;/code&gt;
+Incoming mbuf should have its &lt;code&gt;l2_len&lt;/code&gt; and &lt;code&gt;l3_len&lt;/code&gt; fields setup correctly.&lt;/p&gt;
+&lt;h3 id="l4-checksum-hw-offloading"&gt;L4 checksum HW offloading&lt;/h3&gt;
+&lt;p&gt;To use hardware L4 checksum offload, the user needs to&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;fill &lt;code&gt;l2_len&lt;/code&gt; and &lt;code&gt;l3_len&lt;/code&gt; in mbuf&lt;/li&gt;
+&lt;li&gt;set the flags &lt;code&gt;PKT_TX_TCP_CKSUM&lt;/code&gt;, &lt;code&gt;PKT_TX_SCTP_CKSUM&lt;/code&gt; or &lt;code&gt;PKT_TX_UDP_CKSUM&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;set the flag &lt;code&gt;PKT_TX_IPV4&lt;/code&gt; or &lt;code&gt;PKT_TX_IPV6&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;calculate the pseudo header checksum and set it in the L4 header (only for TCP or UDP). See &lt;code&gt;rte_ipv4_phdr_cksum()&lt;/code&gt; and &lt;code&gt;rte_ipv6_phdr_cksum()&lt;/code&gt;. For SCTP, set the crc field to 0.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id="l3-checksum-hw-offloading"&gt;L3 checksum HW offloading&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;set the flag &lt;code&gt;PKT_TX_IPV4&lt;/code&gt; (IP checksum은 IPv4에만 존재)&lt;/li&gt;
+&lt;li&gt;set the IP checksum field in the packet to 0&lt;/li&gt;
+&lt;li&gt;fill the mbuf offload information: &lt;code&gt;l2_len&lt;/code&gt;, &lt;code&gt;l3_len&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;PKT_TX_IP_CKSUM&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id="ip-checksum-offloading"&gt;IP checksum offloading&lt;/h3&gt;
+&lt;p&gt;example from &lt;code&gt;prog_guide/mbuf_lib.rst&lt;/code&gt;&lt;/p&gt;</description></item></channel></rss>

@@ -1,31 +1,399 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Docker on Keep calm and write something</title><link>https://cychong47.github.io/tags/docker/</link><description>Recent content in Docker on Keep calm and write something</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Thu, 10 Sep 2020 23:38:18 +0900</lastBuildDate><atom:link href="https://cychong47.github.io/tags/docker/index.xml" rel="self" type="application/rss+xml"/><item><title>Helmize Slackbot</title><link>https://cychong47.github.io/post/2020/2020-09-10-helmize-slackbot/</link><pubDate>Thu, 10 Sep 2020 23:38:18 +0900</pubDate><guid>https://cychong47.github.io/post/2020/2020-09-10-helmize-slackbot/</guid><description>docker로 실행할 대는 환경 변수 파일에 필요한 token정보 등을 적어서 넘겼는데
-docker run -d -p 3010:3010 --env-file=slackbot.env my-slackbot helm으로 할 때는 configmap을 사용하거나, value의 env를 사용하거나 등등.
-$ helm repo update Hang tight while we grab the latest from your chart repositories... ...Successfully got an update from the &amp;#34;infracloudio&amp;#34; chart repository ...Successfully got an update from the &amp;#34;myhelmrepo&amp;#34; chart repository Update Complete. ⎈Happy Helming!⎈ $ helm search repo slackbot NAME CHART VERSION	APP VERSION	DESCRIPTION myhelmrepo/slackbot	0.</description></item><item><title>Remove docker images referenced in multiple repos</title><link>https://cychong47.github.io/post/2020/2020-09-08-remove-docker-images-referenced-multiple-repos/</link><pubDate>Tue, 08 Sep 2020 23:38:16 +0900</pubDate><guid>https://cychong47.github.io/post/2020/2020-09-08-remove-docker-images-referenced-multiple-repos/</guid><description>docker image를 GHCR(GitHub Container Registry)에 업로드한 다음 같은 image ID를 갖는 여러 항목이 나타났다. 그동안 local machine에 있던 docker image를 GHCR에 업로드 했으니 더 이상 local host에 이미지가 없어도 되지 않을까 하는 생각에 원래 있던 image를 삭제하려고 하는데 이 경우 에러가 발생한다.
-cychong@mini1:~/work/slackbot$ docker images |grep slackbot my-slackbot latest 16cdaacd672e 5 days ago 133MB ghcr.io/cychong47/my-slackbot 0.1 16cdaacd672e 5 days ago 133MB ghcr.io/cychong47/slackbot 0.1 16cdaacd672e 5 days ago 133MB cychong@mini1:~/work/slackbot$ docker images |grep pocket pocket-retagger latest 942ef4cc7a60 2 days ago 285MB ghcr.</description></item><item><title>Find container with its name</title><link>https://cychong47.github.io/post/2020/2020-06-22-docker-ps-with-name/</link><pubDate>Mon, 22 Jun 2020 23:54:09 +0900</pubDate><guid>https://cychong47.github.io/post/2020/2020-06-22-docker-ps-with-name/</guid><description>Get docker container id from container name
-docker ps -aqf &amp;#34;name=containername&amp;#34; docker ps -aqf &amp;#34;name=^containername$&amp;#34; -q for quiet. output only the ID -a for all. works even if your container is not running -f for filter. ^ container name must start with this string $ container name must end with this string</description></item><item><title>Backup Ghost Database Periodically</title><link>https://cychong47.github.io/post/2020/2020-03-03-backup-ghost-database-periodically/</link><pubDate>Tue, 03 Mar 2020 00:00:00 +0900</pubDate><guid>https://cychong47.github.io/post/2020/2020-03-03-backup-ghost-database-periodically/</guid><description>This ghost-backup container will backup in every 3am
-Start ghost-backup container cychong@mini1:~/Documents/docker-daily-backup$ docker run --name ghost-backup -d -v /home/cychong/Documents/docker-daily-backup:/backups --volumes-from 388c84247267 bennetimo/ghost-backup ea33f148122bbe0d90a502bfd884e4c988e9f8837921f725ca7317afff7fa149 Instant backup cychong@mini1:~/Documents/docker-daily-backup$ ls -al total 8 drwxrwxr-x 2 cychong cychong 4096 Mar 3 23:25 . drwxr-xr-x 5 cychong cychong 4096 Mar 3 23:25 .. cychong@mini1:~/Documents/docker-daily-backup$ docker exec ghost-backup backup Tue Mar 3 14:27:27 UTC 2020: Checking if a mysql container exists on the network at mysql:3306 Tue Mar 3 14:27:33 UTC 2020: .</description></item><item><title>Update ansible-playbook for wordpress</title><link>https://cychong47.github.io/post/2018/update-ansible-playbook-for-wordpress/</link><pubDate>Thu, 14 Jun 2018 15:13:52 +0900</pubDate><guid>https://cychong47.github.io/post/2018/update-ansible-playbook-for-wordpress/</guid><description>이상하게 wordpress 버전이 올라가면 docker용 wordpress 버전도 함께 올라갈 텐데 아무리 최신 docker image를 받아 container를 만들어도 wordpress admin 계정에 들어가면 wordpress를 업데이트 해야 한다고 한다. docket store(http://store.docker.com)에 가면 분명히 wordpress 최신 버전으로 패키징되어 있는 데&amp;hellip;
-혹시나 하고 ansible-playbook을 보니 /var/www/html에 마운트되는 위치에 이전 버전의 wordpress 파일들이 존재하고 있었다.
-volumes: - &amp;#34;/Users/cychong/Documents/wordpress/html:/var/www/html&amp;#34; - &amp;#34;/Users/cychong/Documents/wordpress/uploads:/var/www/html/wp-content/uploads&amp;#34; - &amp;#34;/Users/cychong/Documents/wordpress/conf/php_uploads.ini:/usr/local/etc/php/conf.d/uploads.ini&amp;#34; 바로 첫번째 줄이 문제를 유발하고 있는 곳&amp;hellip; 내가 왜 굳이 저렇게 했을까 생각해 보니 저 디렉토리에 바로 wp-content가 있고, 그 아래 themes와 plugins가 있다.</description></item><item><title>Grafana, influxDB and python</title><link>https://cychong47.github.io/post/2018/grafana-influxdb-and-python/</link><pubDate>Wed, 06 Jun 2018 04:33:06 +0900</pubDate><guid>https://cychong47.github.io/post/2018/grafana-influxdb-and-python/</guid><description>Time-series data를 python을 이용해서 influxDB에 저장하고, Grafana로 그래프를 보여주는 예제
-https://github.com/cychong47/influxdb_example.git
-Install Grafana and influxDB Install Grafana 직접 호스트에 설치할 수도 있지만, 세상 편하게 만들어준 docker를 이용해서 grafana, influxdb등을 설치하자.
-mbpr15:~ cychong$ docker pull grafana/grafana Using default tag: latest latest: Pulling from grafana/grafana f2aa67a397c4: Pull complete 89573effc7c8: Pull complete b55c103da375: Pull complete Digest: sha256:364bec4a39ecbec744ea4270aae35f6554eb6f2047b3ee08f7b5f1134857c32c Status: Downloaded newer image for grafana/grafana:latest Start grafana
-mbpr15:~ cychong$ docker run -d -p 3000:3000 —name grafana grafana/grafana 148894d7009259b02b04e1a98467f549400be91f9b055f8686557d69b9339e4b Install influxDB influxdb도 docker 명령어 하나로 설치</description></item><item><title>Elastic stack and Metricbeat</title><link>https://cychong47.github.io/post/2018/install_elasticstack_and_metricbeat/</link><pubDate>Thu, 31 May 2018 21:58:51 +0900</pubDate><guid>https://cychong47.github.io/post/2018/install_elasticstack_and_metricbeat/</guid><description>Install Elastic Stack(ELK stack) with docker mbpr15:elk-wireshark cychong$ git clonehttps://github.com/deviantony/docker-elk.git git: &amp;#39;clonehttps://github.com/deviantony/docker-elk.git&amp;#39; is not a git command. See &amp;#39;git --help&amp;#39;. mbpr15:elk-wireshark cychong$ git clone https://github.com/deviantony/docker-elk.git Cloning into &amp;#39;docker-elk&amp;#39;... remote: Counting objects: 1235, done. remote: Total 1235 (delta 0), reused 0 (delta 0), pack-reused 1235 Receiving objects: 100% (1235/1235), 259.29 KiB | 77.00 KiB/s, done. Resolving deltas: 100% (470/470), done. mbpr15:elk-wireshark cychong$ cd elk mbpr15:elk-wireshark cychong$ cd docker-elk/ mbpr15:docker-elk cychong$ ls LICENSE	elasticsearch	logstash README.</description></item><item><title>Ansible - recreate ghost container</title><link>https://cychong47.github.io/post/2017/recreate-ghost-container/</link><pubDate>Sat, 30 Dec 2017 02:31:41 +0900</pubDate><guid>https://cychong47.github.io/post/2017/recreate-ghost-container/</guid><description>YAML file state:absent 는 현재 존재하는 container를 중지시키고, 삭제한다. 단순히 stop만 시키려면 state:stopped로 지정하면 된다.
-pull: yes 옵션을 사용하면 항상 최신 image를 pull한다고 한다.
-recreate Use with present and started states to force the re-creation of an existing container.
-mbpr15:ansible cychong$ cat recreate_container_ghost.yaml --- - hosts: mini2 tasks: - name: Stop and remove contianer docker_container: name: ghost state: absent - name: Create ghost Container docker_container: name: ghost image: ghost # always pull the latest image pull: yes state: started recreate: yes volumes: - &amp;#34;/Users/cychong/Dropbox/Apps/ghost/content/:/var/lib/ghost/content&amp;#34; - &amp;#34;/Users/cychong/Dropbox/Apps/ghost/config.</description></item><item><title>Install Wordpress with docker</title><link>https://cychong47.github.io/post/2017/install-wordpress-with-docker/</link><pubDate>Tue, 19 Dec 2017 22:20:06 +0900</pubDate><guid>https://cychong47.github.io/post/2017/install-wordpress-with-docker/</guid><description>Summary docker run --restart=always -e MYSQL_ROOT_PASSWORD=aqwe123 -e MYSQL_USER=wpuser -e MYSQL_PASSWORD=wpuser@ -e MYSQL_DATABASE=wordpress_db -v /Users/cychong/Dropbox/Apps/wordpress/database:/var/lib/mysql --name mysql -d mysql docker run --restart=always -e WORDPRESS_DB_USER=wpuser -e WORDPRESS_DB_PASSWORD=wpuser@ -e WORDPRESS_DB_NAME=wordpress_db -p 80:80 -v /Users/cychong/Documents/wordpress/html:/var/www/html -v /Users/cychong/Documents/wordpress/uploads:/var/www/html/wp-content/uploads -v /Users/cychong/Documents/wordpress/conf/php_uploads.ini:/usr/local/etc/php/conf.d/uploads.ini --link mysql:mysql --name wpcontainer -d wordpress If required, import database to mysql (Once wordpress data is imported into mysql, upgrading mysql does not requires re-import ingof wordpress data)
-mysql install container cychong:~ cychong$ docker run --restart=always -e MYSQL_ROOT_PASSWORD=aqwe123 -e MYSQL_USER=wpuser -e MYSQL_PASSWORD=wpuser@ -e MYSQL_DATABASE=wordpress_db -v /Users/cychong/Dropbox/Apps/wordpress/database:/var/lib/mysql --name mysql -d mysql Unable to find image &amp;#39;mysql:latest&amp;#39; locally latest: Pulling from library/mysql aa18ad1a0d33: Pull complete a5745c3b8bcc: Pull complete 76375fcd129c: Pull complete 4f72cfb004cf: Pull complete 1d6a01e515fb: Pull complete a71e1163fa7e: Pull complete 8c1a568fa442: Pull complete e7a69cecc173: Pull complete 9759a0f979a1: Pull complete 3f71dac6110f: Pull complete 58f37de54392: Pull complete Digest: sha256:790b7b18b832822ef400e44ad9fac885a746db1a7028ec52325730cf9b831753 Status: Downloaded newer image for mysql:latest b1f54c680120898fc7ff16751048fe18ae461399d5d7f10308c156c68d40577b check container is started cychong:~ cychong$ docker ps CONTAINER ID IMAGE COMMAND CREATED STATUS PORTS NAMES b1f54c680120 mysql &amp;#34;docker-entrypoint.</description></item><item><title>Prometheus</title><link>https://cychong47.github.io/post/2017/prometheus/</link><pubDate>Mon, 18 Sep 2017 13:59:00 +0900</pubDate><guid>https://cychong47.github.io/post/2017/prometheus/</guid><description>Cloud Native Computing Foundation(http://cncf.io)에 포함된 Container monitoring tool.
-집 맥미니에서 돌리고 있는 3개 container들을 관리하는데 사용할 수 있나 싶어(실은 관리할 것도 없지만 그냥 재미로 container monitor 기능을 보고 싶어서) 설치 해 봤다
-Install cncf.io의 많은 툴이 그렇지만 golang으로 작성되어 있어 golang부터 설치했다
-brew install go OSX에서 brew는 사용할 때마다 감탄을 금치 못하게 한다. 물론 우분투에도 apt가 있지만 apt보다 brew가 훨씬 편한 것 같다.
-그 다음에는 그냥 docker hub에 있는 prometheus docker 가져다 설치</description></item><item><title>Wordpress with docker-compose</title><link>https://cychong47.github.io/post/2017/wordpress-with-docker-compose-failing/</link><pubDate>Sun, 03 Sep 2017 15:00:57 +0900</pubDate><guid>https://cychong47.github.io/post/2017/wordpress-with-docker-compose-failing/</guid><description>Under construction!!
-Error https://docs.docker.com/compose/wordpress/#define-the-project 에 있는 에제대로 docker-compose.yaml 파일을 만든 후 도전~~
-근데 실패
-cychong:~/work/my_wordpress cychong$ docker-compose up -d Pulling db (mysql:5.7)... Traceback (most recent call last): File &amp;#34;docker-compose&amp;#34;, line 3, in &amp;lt;module&amp;gt; File &amp;#34;compose/cli/main.py&amp;#34;, line 68, in main File &amp;#34;compose/cli/main.py&amp;#34;, line 118, in perform_command File &amp;#34;compose/cli/main.py&amp;#34;, line 928, in up File &amp;#34;compose/project.py&amp;#34;, line 427, in up File &amp;#34;compose/service.py&amp;#34;, line 311, in ensure_image_exists File &amp;#34;compose/service.py&amp;#34;, line 1016, in pull File &amp;#34;site-packages/docker/api/image.</description></item><item><title>ghost container with docker-compose</title><link>https://cychong47.github.io/post/2017/ghost-container-with-docker-compose/</link><pubDate>Sun, 03 Sep 2017 01:26:28 +0900</pubDate><guid>https://cychong47.github.io/post/2017/ghost-container-with-docker-compose/</guid><description>얼마전에 구성한 ghost container는 ghost가 1.x로 업데이트가 되면서 설정 정보의 위치가 변경되었는데 그걸 미처 몰라 블로그 주소가 기본값인 localhost로 설정되는 문제가 있었다. 기존 ghost container에 접근해서 확인해 보니 `/var/lib/ghost/config.production.json&amp;rsquo; 파일에 주소가 설정되어 있는 걸 보고 이 파일도 따로 지정해 주도록 변경했다. 그러면서 docker-compose를 한번 써 보기로
-일단 기존 ghost를 정리하고
-cychong:~ cychong$ docker stop ghost ghost cychong:~ cychong$ docker rm ghost ghost cychong:~ cychong$ docker rmi ghost Untagged: ghost:latest Untagged: ghost@sha256:a1f70641d35755395eb16827de4e67861e01bffe18bac8e54ab5c68cd170a2ea Deleted: sha256:e6ba3dd3c2491c6086d570fa9769a9f60d7c004129ff9ae7ff9fa0bad16a993b Deleted: sha256:c1ee9d43624bb4a1922c15d7a9175a80d1952cb71464d6d9d900fe21948227af Deleted: sha256:f8f95cdbafce4ecd226cdd690e6f909203a0f83d3507c53a71d4e59826ea881b Deleted: sha256:935d8847555992b702173b83b0d210f2728a24b5287467396dc8d5c68907691f Deleted: sha256:f4766b72a49d4cd2e897da0efcec94c33a0d24a95cb8426a790e1c45e6e39fae Deleted: sha256:0c0dbaebe17c6f585eb596e705ed5acba668097698a7780844c12597bb99b34a Deleted: sha256:c807796bea7a34c0b73eae853b728f2bbcd7a4fecc19d049455b322120f95ce7 Deleted: sha256:15f9f4e44e22d3287b6caf9555110383d3ff2e88ee9cc03823b1ba5a01b75eac Deleted: sha256:77809f11069f2abfb571cba07ee3d696ec32823df0f5d0587042ffdb27a80add Deleted: sha256:5d6bba18f7b25c9b93d3cc0d93a4cff54eb88b0ba22ed867633a21fc3ded5f57 하는 김에 최신 버전의 ghost받아오고</description></item><item><title>Try to restore Wordpress container</title><link>https://cychong47.github.io/post/2017/try-to-restore-wordpress-docker/</link><pubDate>Sun, 03 Sep 2017 00:36:25 +0900</pubDate><guid>https://cychong47.github.io/post/2017/try-to-restore-wordpress-docker/</guid><description>docker 버전이 업데이트되고, 몇 가지 변경사항이 있은 후 ghost, wordpress/mysql 조합의 container들이 접속이 되질 않는다. 한참을 두고 보다 ghost는 새 버전(1.x)이 나온 걸 계기로 새로 설치를 했는데(당연히 이전 설치에서 데이터를 container 내부가 아니라 local machine에 두도록 해서 데이터는 그대로 보존) wordpress는 그러질 못했다.
-이것 역시 참다참다 못해 https://docs.docker.com/compose/wordpress/#define-the-project 에 나와있는 docker swarm을 이용해서 복구해 보려고 삽을 들었다.
-위 페이지에 있는 대로 설정 파일을 만들고
-version: &amp;#39;3&amp;#39; services: db: image: mysql:5.7 volumes: - /Users/cychong/Dropbox/Apps/wordpress/:/var/lib/mysql restart: always environment: MYSQL_ROOT_PASSWORD: xxx MYSQL_DATABASE: xxx MYSQL_USER: xxx MYSQL_PASSWORD: xxx wordpress: depends_on: - db image: wordpress:latest volumes: - /Users/cychong/Documents/wordpress/:/var/www/html - /Users/cychong/Documents/wordpress/php_uploads.</description></item><item><title>Move to docker</title><link>https://cychong47.github.io/post/2017/move-to-docker/</link><pubDate>Tue, 04 Apr 2017 13:51:03 +0900</pubDate><guid>https://cychong47.github.io/post/2017/move-to-docker/</guid><description>지금 집에 있는 두 대의 mac mini를 이용해서 각각 wordpress와 ghost를 돌리고 있다.
-wordpress의 경우 2013년부터 시작한 블로그를 운영하는데 사용하고 있는데, 웹호스팅 회사 몇 군데를 전전하다 몇 년 전부터 집에 있는 mac mini 2009에 MAMP를 이용해서 자체 서버를 이용하고 있었다.
-Ghost는 내가 좋아하는 markdown을 기본으로 사용하는 블로그 툴을 찾다 만났는데 지금은 사라졌지만 초기 홈페이지에 있던 멋진 dashboard에 낚여 설치했다. Open source 답지 않고 느린 개발 속도가 이해되지는 않지만, 여전히 markdwon을 제대로 지원하는 흔치 않은 설치형 블로그 툴이라 아직 희망을 버리지 않고 사용하고 있다.</description></item><item><title>Docker for dummies 정리</title><link>https://cychong47.github.io/post/2015/docker-for-dummies-jeongri/</link><pubDate>Wed, 20 May 2015 14:18:04 +0900</pubDate><guid>https://cychong47.github.io/post/2015/docker-for-dummies-jeongri/</guid><description>출처 : Docker 무작정 따라하기
-참고 : 가장 빨리 배우는 Docker</description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Docker on Keep calm and Write something</title><link>https://cychong47.github.io/tags/docker/</link><description>Recent content in Docker on Keep calm and Write something</description><generator>Hugo</generator><language>en-us</language><lastBuildDate>Thu, 10 Sep 2020 23:38:18 +0900</lastBuildDate><atom:link href="https://cychong47.github.io/tags/docker/index.xml" rel="self" type="application/rss+xml"/><item><title>Helmize Slackbot</title><link>https://cychong47.github.io/post/2020/2020-09-10-helmize-slackbot/</link><pubDate>Thu, 10 Sep 2020 23:38:18 +0900</pubDate><guid>https://cychong47.github.io/post/2020/2020-09-10-helmize-slackbot/</guid><description>&lt;p&gt;docker로 실행할 대는 환경 변수 파일에 필요한 token정보 등을 적어서 넘겼는데&lt;/p&gt;
+&lt;pre tabindex="0"&gt;&lt;code&gt;docker run -d -p 3010:3010 --env-file=slackbot.env my-slackbot
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;helm으로 할 때는 configmap을 사용하거나, value의 &lt;code&gt;env&lt;/code&gt;를 사용하거나 등등.&lt;/p&gt;
+&lt;pre tabindex="0"&gt;&lt;code&gt;$ helm repo update
+Hang tight while we grab the latest from your chart repositories...
+...Successfully got an update from the &amp;#34;infracloudio&amp;#34; chart repository
+...Successfully got an update from the &amp;#34;myhelmrepo&amp;#34; chart repository
+Update Complete. ⎈Happy Helming!⎈
+
+$ helm search repo slackbot
+NAME 	CHART VERSION	APP VERSION	DESCRIPTION 
+myhelmrepo/slackbot	0.1.0 	1.16.0 	A Helm chart for Kubernetes
+&lt;/code&gt;&lt;/pre&gt;&lt;pre tabindex="0"&gt;&lt;code&gt;$ helm install -f ../../slackbot-value.yaml --version 0.1.0 slackbot myhelmrepo/slackbot
+NAME: slackbot
+LAST DEPLOYED: Thu Sep 10 09:47:26 2020
+NAMESPACE: default
+STATUS: deployed
+REVISION: 1
+NOTES:
+1. Get the application URL by running these commands:
+ export NODE_PORT=$(kubectl get --namespace default -o jsonpath=&amp;#34;{.spec.ports[0].nodePort}&amp;#34; services slackbot)
+ export NODE_IP=$(kubectl get nodes --namespace default -o jsonpath=&amp;#34;{.items[0].status.addresses[0].address}&amp;#34;)
+ echo http://$NODE_IP:$NODE_PORT
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;&lt;code&gt;slackbot-value.yaml&lt;/code&gt;파일의 환경 변수에 필요한 token 정보들을 기술&lt;/p&gt;</description></item><item><title>Remove docker images referenced in multiple repos</title><link>https://cychong47.github.io/post/2020/2020-09-08-remove-docker-images-referenced-multiple-repos/</link><pubDate>Tue, 08 Sep 2020 23:38:16 +0900</pubDate><guid>https://cychong47.github.io/post/2020/2020-09-08-remove-docker-images-referenced-multiple-repos/</guid><description>&lt;p&gt;docker image를 GHCR(GitHub Container Registry)에 업로드한 다음 같은 image ID를 갖는 여러 항목이 나타났다.
+그동안 local machine에 있던 docker image를 GHCR에 업로드 했으니 더 이상 local host에 이미지가 없어도 되지 않을까 하는 생각에 원래 있던 image를 삭제하려고 하는데 이 경우 에러가 발생한다.&lt;/p&gt;
+&lt;pre tabindex="0"&gt;&lt;code&gt;cychong@mini1:~/work/slackbot$ docker images |grep slackbot
+my-slackbot latest 16cdaacd672e 5 days ago 133MB
+ghcr.io/cychong47/my-slackbot 0.1 16cdaacd672e 5 days ago 133MB
+ghcr.io/cychong47/slackbot 0.1 16cdaacd672e 5 days ago 133MB
+cychong@mini1:~/work/slackbot$ docker images |grep pocket
+pocket-retagger latest 942ef4cc7a60 2 days ago 285MB
+ghcr.io/cychong47/pocket-retagger latest 942ef4cc7a60 2 days ago 285MB
+cychong@mini1:~/work/slackbot$ docker images |grep ghost
+ghost 3.8.0 a6ab8e0a010a 6 months ago 394MB
+ghcr.io/cychong47/ghost 3.8.0 a6ab8e0a010a 6 months ago 394MB
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;그래서인지 docker image로 삭제하려고 하면 에러가 난다.&lt;/p&gt;</description></item><item><title>Find container with its name</title><link>https://cychong47.github.io/post/2020/2020-06-22-docker-ps-with-name/</link><pubDate>Mon, 22 Jun 2020 23:54:09 +0900</pubDate><guid>https://cychong47.github.io/post/2020/2020-06-22-docker-ps-with-name/</guid><description>&lt;p&gt;&lt;a href="https://stackoverflow.com/questions/34496882/get-docker-container-id-from-container-name"&gt;Get docker container id from container name&lt;/a&gt;&lt;/p&gt;
+&lt;pre tabindex="0"&gt;&lt;code&gt;docker ps -aqf &amp;#34;name=containername&amp;#34;
+docker ps -aqf &amp;#34;name=^containername$&amp;#34;
+&lt;/code&gt;&lt;/pre&gt;&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;-q&lt;/code&gt; for quiet. output only the ID&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;-a&lt;/code&gt; for all. works even if your container is not running&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;-f&lt;/code&gt; for filter.&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;^&lt;/code&gt; container name must start with this string&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;$&lt;/code&gt; container name must end with this string&lt;/li&gt;
+&lt;/ul&gt;</description></item><item><title>Backup Ghost Database Periodically</title><link>https://cychong47.github.io/post/2020/2020-03-03-backup-ghost-database-periodically/</link><pubDate>Tue, 03 Mar 2020 00:00:00 +0900</pubDate><guid>https://cychong47.github.io/post/2020/2020-03-03-backup-ghost-database-periodically/</guid><description>&lt;p&gt;This ghost-backup container will backup in every 3am&lt;/p&gt;
+&lt;h1 id="start-ghost-backup-container"&gt;Start ghost-backup container&lt;/h1&gt;
+&lt;pre tabindex="0"&gt;&lt;code&gt;cychong@mini1:~/Documents/docker-daily-backup$ docker run --name ghost-backup -d -v /home/cychong/Documents/docker-daily-backup:/backups --volumes-from 388c84247267 bennetimo/ghost-backup
+ea33f148122bbe0d90a502bfd884e4c988e9f8837921f725ca7317afff7fa149
+&lt;/code&gt;&lt;/pre&gt;&lt;h1 id="instant-backup"&gt;Instant backup&lt;/h1&gt;
+&lt;pre tabindex="0"&gt;&lt;code&gt;cychong@mini1:~/Documents/docker-daily-backup$ ls -al
+total 8
+drwxrwxr-x 2 cychong cychong 4096 Mar 3 23:25 .
+drwxr-xr-x 5 cychong cychong 4096 Mar 3 23:25 ..
+cychong@mini1:~/Documents/docker-daily-backup$ docker exec ghost-backup backup
+Tue Mar 3 14:27:27 UTC 2020: Checking if a mysql container exists on the network at mysql:3306
+Tue Mar 3 14:27:33 UTC 2020: ...no mysql container exists on the network. Using sqlite mode
+Tue Mar 3 14:27:33 UTC 2020: creating backup: 20200303-1427...
+Tue Mar 3 14:27:33 UTC 2020: backing up ghost database
+Tue Mar 3 14:27:33 UTC 2020: creating ghost db archive (sqlite)...
+Tue Mar 3 14:27:33 UTC 2020: ...completed: /backups/backup-db_20200303-1427.gz
+Tue Mar 3 14:27:33 UTC 2020: backing up ghost content files
+Tue Mar 3 14:27:33 UTC 2020: creating ghost content files archive...
+Tue Mar 3 14:27:40 UTC 2020: ...completed: /backups/backup-ghost_20200303-1427.tar.gz
+Tue Mar 3 14:27:40 UTC 2020: backing up ghost json file
+Tue Mar 3 14:27:40 UTC 2020: ...checking if a ghost container exists on the network at ghost:2368
+Tue Mar 3 14:27:41 UTC 2020: ...no ghost service found on the network
+Tue Mar 3 14:27:41 UTC 2020: ...skipping: Your ghost service was not found on the network. Configure GHOST_SERVICE_NAME and GHOST_SERVICE_PORT
+Tue Mar 3 14:27:41 UTC 2020: purging old backups (set to retain the most recent 30)
+Tue Mar 3 14:27:41 UTC 2020: ...found 1 database files (purging 0)
+Tue Mar 3 14:27:41 UTC 2020: ...found 1 ghost content archive files (purging 0)
+Tue Mar 3 14:27:41 UTC 2020: ...found 0 ghost json files (purging 0)
+Tue Mar 3 14:27:41 UTC 2020: completed backup to /backups
+&lt;/code&gt;&lt;/pre&gt;&lt;h1 id="check-backup-output"&gt;Check backup output&lt;/h1&gt;
+&lt;pre tabindex="0"&gt;&lt;code&gt;cychong@mini1:~/Documents/docker-daily-backup$ ls -al
+total 67236
+drwxrwxr-x 2 cychong cychong 4096 Mar 3 23:27 .
+drwxr-xr-x 5 cychong cychong 4096 Mar 3 23:25 ..
+-rw-r--r-- 1 root root 1829326 Mar 3 23:27 backup-db_20200303-1427.gz
+-rw-r--r-- 1 root root 67004766 Mar 3 23:27 backup-ghost_20200303-1427.tar.gz
+&lt;/code&gt;&lt;/pre&gt;&lt;h1 id="reference"&gt;reference&lt;/h1&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="https://hub.docker.com/r/bennetimo/ghost-backup/?ref=login"&gt;https://hub.docker.com/r/bennetimo/ghost-backup/?ref=login&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;</description></item><item><title>Update ansible-playbook for wordpress</title><link>https://cychong47.github.io/post/2018/update-ansible-playbook-for-wordpress/</link><pubDate>Thu, 14 Jun 2018 15:13:52 +0900</pubDate><guid>https://cychong47.github.io/post/2018/update-ansible-playbook-for-wordpress/</guid><description>&lt;p&gt;이상하게 wordpress 버전이 올라가면 docker용 wordpress 버전도 함께 올라갈 텐데 아무리 최신 docker image를 받아 container를 만들어도 wordpress admin 계정에 들어가면 wordpress를 업데이트 해야 한다고 한다.
+docket store(&lt;a href="http://store.docker.com"&gt;http://store.docker.com&lt;/a&gt;)에 가면 분명히 wordpress 최신 버전으로 패키징되어 있는 데&amp;hellip;&lt;/p&gt;
+&lt;p&gt;혹시나 하고 ansible-playbook을 보니 &lt;code&gt;/var/www/html&lt;/code&gt;에 마운트되는 위치에 이전 버전의 wordpress 파일들이 존재하고 있었다.&lt;/p&gt;
+&lt;pre tabindex="0"&gt;&lt;code&gt; volumes:
+ - &amp;#34;/Users/cychong/Documents/wordpress/html:/var/www/html&amp;#34;
+ - &amp;#34;/Users/cychong/Documents/wordpress/uploads:/var/www/html/wp-content/uploads&amp;#34;
+ - &amp;#34;/Users/cychong/Documents/wordpress/conf/php_uploads.ini:/usr/local/etc/php/conf.d/uploads.ini&amp;#34;
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;바로 첫번째 줄이 문제를 유발하고 있는 곳&amp;hellip;
+내가 왜 굳이 저렇게 했을까 생각해 보니 저 디렉토리에 바로 &lt;code&gt;wp-content&lt;/code&gt;가 있고, 그 아래 &lt;code&gt;themes&lt;/code&gt;와 &lt;code&gt;plugins&lt;/code&gt;가 있다. 처음 docker로 wordpress를 띄울 때 이미 설치한 theme이나 plugin이 wordpress docker 버전이 올라가서 새로 container를 만들 때마다 다시 설치해야 하는 번거로움을 피하려고 저렇게 한 듯 하다. 지금 생각하면 참 바보같은&amp;hellip;&lt;/p&gt;</description></item><item><title>Grafana, influxDB and python</title><link>https://cychong47.github.io/post/2018/grafana-influxdb-and-python/</link><pubDate>Wed, 06 Jun 2018 04:33:06 +0900</pubDate><guid>https://cychong47.github.io/post/2018/grafana-influxdb-and-python/</guid><description>&lt;p&gt;Time-series data를 python을 이용해서 influxDB에 저장하고, Grafana로 그래프를 보여주는 예제&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://github.com/cychong47/influxdb_example.git"&gt;https://github.com/cychong47/influxdb_example.git&lt;/a&gt;&lt;/p&gt;
+&lt;h1 id="install-grafana-and-influxdb"&gt;Install Grafana and influxDB&lt;/h1&gt;
+&lt;h2 id="install-grafana"&gt;Install Grafana&lt;/h2&gt;
+&lt;p&gt;직접 호스트에 설치할 수도 있지만, 세상 편하게 만들어준 docker를 이용해서 grafana, influxdb등을 설치하자.&lt;/p&gt;
+&lt;pre tabindex="0"&gt;&lt;code&gt;mbpr15:~ cychong$ docker pull grafana/grafana 
+Using default tag: latest
+latest: Pulling from grafana/grafana
+f2aa67a397c4: Pull complete 
+89573effc7c8: Pull complete 
+b55c103da375: Pull complete 
+Digest: sha256:364bec4a39ecbec744ea4270aae35f6554eb6f2047b3ee08f7b5f1134857c32c
+Status: Downloaded newer image for grafana/grafana:latest
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Start &lt;code&gt;grafana&lt;/code&gt;&lt;/p&gt;
+&lt;pre tabindex="0"&gt;&lt;code&gt;mbpr15:~ cychong$ docker run -d -p 3000:3000 —name grafana grafana/grafana 
+148894d7009259b02b04e1a98467f549400be91f9b055f8686557d69b9339e4b
+&lt;/code&gt;&lt;/pre&gt;&lt;h2 id="install-influxdb"&gt;Install influxDB&lt;/h2&gt;
+&lt;p&gt;influxdb도 docker 명령어 하나로 설치&lt;/p&gt;</description></item><item><title>Elastic stack and Metricbeat</title><link>https://cychong47.github.io/post/2018/install_elasticstack_and_metricbeat/</link><pubDate>Thu, 31 May 2018 21:58:51 +0900</pubDate><guid>https://cychong47.github.io/post/2018/install_elasticstack_and_metricbeat/</guid><description>&lt;h2 id="install-elastic-stackelk-stack-with-docker"&gt;Install Elastic Stack(ELK stack) with docker&lt;/h2&gt;
+&lt;pre tabindex="0"&gt;&lt;code&gt;mbpr15:elk-wireshark cychong$ git clonehttps://github.com/deviantony/docker-elk.git
+git: &amp;#39;clonehttps://github.com/deviantony/docker-elk.git&amp;#39; is not a git command. See &amp;#39;git --help&amp;#39;.
+mbpr15:elk-wireshark cychong$ git clone https://github.com/deviantony/docker-elk.git
+Cloning into &amp;#39;docker-elk&amp;#39;...
+remote: Counting objects: 1235, done.
+remote: Total 1235 (delta 0), reused 0 (delta 0), pack-reused 1235
+Receiving objects: 100% (1235/1235), 259.29 KiB | 77.00 KiB/s, done.
+Resolving deltas: 100% (470/470), done.
+mbpr15:elk-wireshark cychong$ cd elk
+mbpr15:elk-wireshark cychong$ cd docker-elk/
+mbpr15:docker-elk cychong$ ls
+LICENSE			elasticsearch		logstash
+README.md		extensions
+docker-compose.yml	kibana
+&lt;/code&gt;&lt;/pre&gt;&lt;h2 id="install-elk-with-docker-compose"&gt;Install ELK with docker-compose&lt;/h2&gt;
+&lt;pre tabindex="0"&gt;&lt;code&gt;mbpr15:docker-elk cychong$ docker-compose up -d
+Creating network &amp;#34;docker-elk_elk&amp;#34; with driver &amp;#34;bridge&amp;#34;
+Building elasticsearch
+Step 1/1 : FROM docker.elastic.co/elasticsearch/elasticsearch-oss:6.2.4
+6.2.4: Pulling from elasticsearch/elasticsearch-oss
+469cfcc7a4b3: Pull complete
+8e27facfa9e0: Pull complete
+cdd15392adc7: Pull complete
+19ff08a29664: Pull complete
+ddc4fd93fdcc: Pull complete
+b723bede0878: Pull complete
+Digest: sha256:2d9c774c536bd1f64abc4993ebc96a2344404d780cbeb81a8b3b4c3807550e57
+Status: Downloaded newer image for docker.elastic.co/elasticsearch/elasticsearch-oss:6.2.4
+ ---&amp;gt; 3822ba554fe9
+Successfully built 3822ba554fe9
+Successfully tagged docker-elk_elasticsearch:latest
+WARNING: Image for service elasticsearch was built because it did not already exist. To rebuild this image you must use `docker-compose build` or `docker-compose up --build`.
+Building logstash
+Step 1/1 : FROM docker.elastic.co/logstash/logstash-oss:6.2.4
+6.2.4: Pulling from logstash/logstash-oss
+469cfcc7a4b3: Already exists
+b4cfa2eb1616: Pull complete
+ec994fa6fa7f: Pull complete
+ccf455902ac6: Pull complete
+6d54f3767ae5: Pull complete
+af0dd1a720da: Pull complete
+457dbabd3f63: Pull complete
+f2c481bd6da1: Pull complete
+d04342e2b9a1: Pull complete
+e8bca7e9b0d9: Pull complete
+d0096563f301: Pull complete
+Digest: sha256:28668a65f6b6a4f1e2abef7aa3fd3b9c8476a16aa5bebc1a9acf0f7de5b80eef
+Status: Downloaded newer image for docker.elastic.co/logstash/logstash-oss:6.2.4
+ ---&amp;gt; 0bade66b6bee
+Successfully built 0bade66b6bee
+Successfully tagged docker-elk_logstash:latest
+WARNING: Image for service logstash was built because it did not already exist. To rebuild this image you must use `docker-compose build` or `docker-compose up --build`.
+Building kibana
+Step 1/1 : FROM docker.elastic.co/kibana/kibana-oss:6.2.4
+6.2.4: Pulling from kibana/kibana-oss
+469cfcc7a4b3: Already exists
+78e4c5fdc069: Pull complete
+d9ecdaefa1b8: Pull complete
+c8e48c8f74d7: Pull complete
+1606c56cdbff: Pull complete
+4e23ce1503d4: Pull complete
+d36b703b3f90: Pull complete
+da5da7625f92: Pull complete
+Digest: sha256:1d1f9bac326bf276010df82a2b4593619f48a5207619e8817c8b20d5a1bb3547
+Status: Downloaded newer image for docker.elastic.co/kibana/kibana-oss:6.2.4
+ ---&amp;gt; 32510971af4e
+Successfully built 32510971af4e
+Successfully tagged docker-elk_kibana:latest
+WARNING: Image for service kibana was built because it did not already exist. To rebuild this image you must use `docker-compose build` or `docker-compose up --build`.
+Creating docker-elk_elasticsearch_1 ... done
+Creating docker-elk_kibana_1 ... done
+Creating docker-elk_logstash_1 ... done
+&lt;/code&gt;&lt;/pre&gt;&lt;pre tabindex="0"&gt;&lt;code&gt;mbpr15:docker-elk cychong$ docker ps
+CONTAINER ID IMAGE COMMAND CREATED STATUS PORTS NAMES
+4fc052e81fae docker-elk_logstash “/usr/local/bin/dock…” 9 minutes ago Up 9 minutes 5044/tcp, 0.0.0.0:5000-&amp;gt;5000/tcp, 9600/tcp docker-elk_logstash_1
+46f049297c7b docker-elk_kibana “/bin/bash /usr/loca…” 9 minutes ago Up 9 minutes 0.0.0.0:5601-&amp;gt;5601/tcp docker-elk_kibana_1
+8ff911ebab03 docker-elk_elasticsearch “/usr/local/bin/dock…” 9 minutes ago Up 9 minutes 0.0.0.0:9200-&amp;gt;9200/tcp, 0.0.0.0:9300-&amp;gt;9300/tcp docker-elk_elasticsearch_1
+&lt;/code&gt;&lt;/pre&gt;&lt;pre tabindex="0"&gt;&lt;code&gt;mbpr15:docker-elk cychong$ curl http://localhost:9200
+{
+ “name” : “npNAiWg”,
+ “cluster_name” : “docker-cluster”,
+ “cluster_uuid” : “7nY4KVvNS4epY4Z80NCUZw”,
+ “version” : {
+ “number” : “6.2.4”,
+ “build_hash” : “ccec39f”,
+ “build_date” : “2018-04-12T20:37:28.497551Z”,
+ “build_snapshot” : false,
+ “lucene_version” : “7.2.1”,
+ “minimum_wire_compatibility_version” : “5.6.0”,
+ “minimum_index_compatibility_version” : “5.0.0”
+ },
+ “tagline” : “You Know, for Search”
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;h2 id="open-httplocalhost5601-with-browser"&gt;Open http://localhost:5601 with browser&lt;/h2&gt;
+&lt;h2 id="install-metricbeats-with-docker---check-the-latest-version-from-elasticco"&gt;install metricbeats with docker - check the latest version from elastic.co&lt;/h2&gt;
+&lt;pre tabindex="0"&gt;&lt;code&gt;docker pull docker.elastic.co/beats/metricbeat:6.2.4
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;metricbeat 는 시스템 통계 정보를 수집해서 elasticsearch로 보내는 역할을 함.
+다양한 모듈들이 &lt;code&gt;modules.d&lt;/code&gt; 디렉토리 아래 위치하고, metricbeats.yml은 수집한 정보를 보낼 위치를 변경하는 정도면 기본적인 동작을 확인할 수 있음.&lt;/p&gt;</description></item><item><title>Ansible - recreate ghost container</title><link>https://cychong47.github.io/post/2017/recreate-ghost-container/</link><pubDate>Sat, 30 Dec 2017 02:31:41 +0900</pubDate><guid>https://cychong47.github.io/post/2017/recreate-ghost-container/</guid><description>&lt;h2 id="yaml-file"&gt;YAML file&lt;/h2&gt;
+&lt;p&gt;&lt;code&gt;state:absent&lt;/code&gt; 는 현재 존재하는 container를 중지시키고, 삭제한다.
+단순히 stop만 시키려면 &lt;code&gt;state:stopped&lt;/code&gt;로 지정하면 된다.&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;pull: yes&lt;/code&gt; 옵션을 사용하면 항상 최신 image를 pull한다고 한다.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;recreate
+Use with present and started states to force the re-creation of an existing container.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;pre tabindex="0"&gt;&lt;code&gt;mbpr15:ansible cychong$ cat recreate_container_ghost.yaml 
+---
+- hosts: mini2
+ tasks:
+
+ - name: Stop and remove contianer
+ docker_container:
+ name: ghost
+ state: absent
+
+ - name: Create ghost Container
+ docker_container:
+ name: ghost
+ image: ghost
+ # always pull the latest image
+ pull: yes
+ state: started
+ recreate: yes
+ volumes:
+ - &amp;#34;/Users/cychong/Dropbox/Apps/ghost/content/:/var/lib/ghost/content&amp;#34; 
+ - &amp;#34;/Users/cychong/Dropbox/Apps/ghost/config.production.json:/var/lib/ghost/config.production.json&amp;#34;
+ ports:
+ - &amp;#34;2368:2368&amp;#34;
+ env:
+ NODE_ENV: production
+&lt;/code&gt;&lt;/pre&gt;&lt;pre tabindex="0"&gt;&lt;code&gt;mbpr15:ansible cychong$ ansible-playbook recreate_container_ghost.yaml 
+
+PLAY [mini2] ***************************************************************************************************************************************************************
+
+TASK [Gathering Facts] *****************************************************************************************************************************************************
+ok: [mini2]
+
+TASK [Stop and remove contianer] *******************************************************************************************************************************************
+changed: [mini2]
+
+TASK [Create ghost Container] **********************************************************************************************************************************************
+changed: [mini2]
+
+PLAY RECAP *****************************************************************************************************************************************************************
+mini2 : ok=3 changed=2 unreachable=0 failed=0 
+&lt;/code&gt;&lt;/pre&gt;</description></item><item><title>Install Wordpress with docker</title><link>https://cychong47.github.io/post/2017/install-wordpress-with-docker/</link><pubDate>Tue, 19 Dec 2017 22:20:06 +0900</pubDate><guid>https://cychong47.github.io/post/2017/install-wordpress-with-docker/</guid><description>&lt;h2 id="summary"&gt;Summary&lt;/h2&gt;
+&lt;pre tabindex="0"&gt;&lt;code&gt;docker run --restart=always -e MYSQL_ROOT_PASSWORD=aqwe123 -e MYSQL_USER=wpuser -e MYSQL_PASSWORD=wpuser@ -e MYSQL_DATABASE=wordpress_db -v /Users/cychong/Dropbox/Apps/wordpress/database:/var/lib/mysql --name mysql -d mysql
+
+docker run --restart=always -e WORDPRESS_DB_USER=wpuser -e WORDPRESS_DB_PASSWORD=wpuser@ -e WORDPRESS_DB_NAME=wordpress_db -p 80:80 -v /Users/cychong/Documents/wordpress/html:/var/www/html -v /Users/cychong/Documents/wordpress/uploads:/var/www/html/wp-content/uploads -v /Users/cychong/Documents/wordpress/conf/php_uploads.ini:/usr/local/etc/php/conf.d/uploads.ini --link mysql:mysql --name wpcontainer -d wordpress
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;If required, import database to mysql
+(Once wordpress data is imported into mysql, upgrading mysql does not requires re-import ingof wordpress data)&lt;/p&gt;
+&lt;h2 id="mysql"&gt;mysql&lt;/h2&gt;
+&lt;h3 id="install-container"&gt;install container&lt;/h3&gt;
+&lt;pre tabindex="0"&gt;&lt;code&gt;cychong:~ cychong$ docker run --restart=always -e MYSQL_ROOT_PASSWORD=aqwe123 -e MYSQL_USER=wpuser -e MYSQL_PASSWORD=wpuser@ -e MYSQL_DATABASE=wordpress_db -v /Users/cychong/Dropbox/Apps/wordpress/database:/var/lib/mysql --name mysql -d mysql
+Unable to find image &amp;#39;mysql:latest&amp;#39; locally
+latest: Pulling from library/mysql
+aa18ad1a0d33: Pull complete 
+a5745c3b8bcc: Pull complete 
+76375fcd129c: Pull complete 
+4f72cfb004cf: Pull complete 
+1d6a01e515fb: Pull complete 
+a71e1163fa7e: Pull complete 
+8c1a568fa442: Pull complete 
+e7a69cecc173: Pull complete 
+9759a0f979a1: Pull complete 
+3f71dac6110f: Pull complete 
+58f37de54392: Pull complete 
+Digest: sha256:790b7b18b832822ef400e44ad9fac885a746db1a7028ec52325730cf9b831753
+Status: Downloaded newer image for mysql:latest
+b1f54c680120898fc7ff16751048fe18ae461399d5d7f10308c156c68d40577b
+&lt;/code&gt;&lt;/pre&gt;&lt;h3 id="check-container-is-started"&gt;check container is started&lt;/h3&gt;
+&lt;pre tabindex="0"&gt;&lt;code&gt;cychong:~ cychong$ docker ps
+CONTAINER ID IMAGE COMMAND CREATED STATUS PORTS NAMES
+b1f54c680120 mysql &amp;#34;docker-entrypoint...&amp;#34; 13 seconds ago Up 10 seconds 3306/tcp mysql
+dea965b550e6 ghost:latest &amp;#34;docker-entrypoint...&amp;#34; 8 days ago Up 8 days 0.0.0.0:2368-&amp;gt;2368/tcp ghost
+&lt;/code&gt;&lt;/pre&gt;&lt;h3 id="check-files-are-located-where-volume-is-mounted"&gt;check files are located where volume is mounted&lt;/h3&gt;
+&lt;pre tabindex="0"&gt;&lt;code&gt;cychong:~/Dropbox/Apps/wordpress/database cychong$ ls
+auto.cnf		ib_buffer_pool		mysql			server-key.pem
+ca-key.pem		ib_logfile0		performance_schema	sys
+ca.pem			ib_logfile1		private_key.pem		wordpress_db
+client-cert.pem		ibdata1			public_key.pem
+client-key.pem		ibtmp1			server-cert.pem
+&lt;/code&gt;&lt;/pre&gt;&lt;h2 id="wordpress"&gt;wordpress&lt;/h2&gt;
+&lt;h2 id="install-container-1"&gt;install container&lt;/h2&gt;
+&lt;pre tabindex="0"&gt;&lt;code&gt;cychong:~ cychong$ docker run --restart=always -e WORDPRESS_DB_USER=wpuser -e WORDPRESS_DB_PASSWORD=wpuser@ -e WORDPRESS_DB_NAME=wordpress_db -p 80:80 -v /Users/cychong/Documents/wordpress/html:/var/www/html -v /Users/cychong/Documents/wordpress/uploads:/var/www/html/wp-content/uploads -v /Users/cychong/Documents/wordpress/conf/php_uploads.ini:/usr/local/etc/php/conf.d/uploads.ini --link mysql:mysql --name wpcontainer -d wordpress
+525ba1e4fff2caccc020960908e4f538be9512c2541e62a94c5a36a341e7ff3c
+
+cychong:~ cychong$ docker ps
+CONTAINER ID IMAGE COMMAND CREATED STATUS PORTS NAMES
+525ba1e4fff2 wordpress &amp;#34;docker-entrypoint...&amp;#34; 44 seconds ago Up 42 seconds 0.0.0.0:80-&amp;gt;80/tcp wpcontainer
+b1f54c680120 mysql &amp;#34;docker-entrypoint...&amp;#34; 11 minutes ago Up 11 minutes 3306/tcp mysql
+dea965b550e6 ghost:latest &amp;#34;docker-entrypoint...&amp;#34; 8 days ago Up 8 days 0.0.0.0:2368-&amp;gt;2368/tcp ghost
+&lt;/code&gt;&lt;/pre&gt;&lt;h3 id="check-containers"&gt;check containers&lt;/h3&gt;
+&lt;pre tabindex="0"&gt;&lt;code&gt;cychong:~ cychong$ docker ps
+CONTAINER ID IMAGE COMMAND CREATED STATUS PORTS NAMES
+8ea2303518ad wordpress &amp;#34;docker-entrypoint...&amp;#34; About a minute ago Up About a minute 0.0.0.0:80-&amp;gt;80/tcp wpcontainer
+b1f54c680120 mysql &amp;#34;docker-entrypoint...&amp;#34; 3 minutes ago Up 3 minutes 3306/tcp mysql
+dea965b550e6 ghost:latest &amp;#34;docker-entrypoint...&amp;#34; 8 days ago Up 8 days 0.0.0.0:2368-&amp;gt;2368/tcp ghost
+&lt;/code&gt;&lt;/pre&gt;&lt;h3 id="check-files"&gt;check files&lt;/h3&gt;
+&lt;pre tabindex="0"&gt;&lt;code&gt;cychong:~ cychong$ ls Documents/wordpress/html/
+index.php		wp-admin		wp-config.php		wp-links-opml.php	wp-settings.php
+license.txt		wp-blog-header.php	wp-content		wp-load.php		wp-signup.php
+readme.html		wp-comments-post.php	wp-cron.php		wp-login.php		wp-trackback.php
+wp-activate.php		wp-config-sample.php	wp-includes		wp-mail.php		xmlrpc.php
+&lt;/code&gt;&lt;/pre&gt;&lt;h3 id="mysql-dump-data-is-not-imported"&gt;mysql dump data is not imported.&lt;/h3&gt;
+&lt;p&gt;copy mysql dump file to mounted volume directory&lt;/p&gt;</description></item><item><title>Prometheus</title><link>https://cychong47.github.io/post/2017/prometheus/</link><pubDate>Mon, 18 Sep 2017 13:59:00 +0900</pubDate><guid>https://cychong47.github.io/post/2017/prometheus/</guid><description>&lt;p&gt;Cloud Native Computing Foundation(&lt;a href="http://cncf.io"&gt;http://cncf.io&lt;/a&gt;)에 포함된 Container monitoring tool.&lt;/p&gt;
+&lt;p&gt;집 맥미니에서 돌리고 있는 3개 container들을 관리하는데 사용할 수 있나 싶어(실은 관리할 것도 없지만 그냥 재미로 container monitor 기능을 보고 싶어서) 설치 해 봤다&lt;/p&gt;
+&lt;h3 id="install"&gt;Install&lt;/h3&gt;
+&lt;p&gt;cncf.io의 많은 툴이 그렇지만 golang으로 작성되어 있어 golang부터 설치했다&lt;/p&gt;
+&lt;pre tabindex="0"&gt;&lt;code&gt;brew install go
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;OSX에서 brew는 사용할 때마다 감탄을 금치 못하게 한다. 물론 우분투에도 apt가 있지만 apt보다 brew가 훨씬 편한 것 같다.&lt;/p&gt;
+&lt;p&gt;그 다음에는 그냥 docker hub에 있는 prometheus docker 가져다 설치&lt;/p&gt;</description></item><item><title>Wordpress with docker-compose</title><link>https://cychong47.github.io/post/2017/wordpress-with-docker-compose-failing/</link><pubDate>Sun, 03 Sep 2017 15:00:57 +0900</pubDate><guid>https://cychong47.github.io/post/2017/wordpress-with-docker-compose-failing/</guid><description>&lt;p&gt;Under construction!!&lt;/p&gt;
+&lt;h3 id="error"&gt;Error&lt;/h3&gt;
+&lt;p&gt;&lt;a href="https://docs.docker.com/compose/wordpress/#define-the-project"&gt;https://docs.docker.com/compose/wordpress/#define-the-project&lt;/a&gt; 에 있는 에제대로 docker-compose.yaml 파일을 만든 후 도전~~&lt;/p&gt;
+&lt;p&gt;근데 실패&lt;/p&gt;
+&lt;pre tabindex="0"&gt;&lt;code&gt;cychong:~/work/my_wordpress cychong$ docker-compose up -d
+Pulling db (mysql:5.7)...
+Traceback (most recent call last):
+ File &amp;#34;docker-compose&amp;#34;, line 3, in &amp;lt;module&amp;gt;
+ File &amp;#34;compose/cli/main.py&amp;#34;, line 68, in main
+ File &amp;#34;compose/cli/main.py&amp;#34;, line 118, in perform_command
+ File &amp;#34;compose/cli/main.py&amp;#34;, line 928, in up
+ File &amp;#34;compose/project.py&amp;#34;, line 427, in up
+ File &amp;#34;compose/service.py&amp;#34;, line 311, in ensure_image_exists
+ File &amp;#34;compose/service.py&amp;#34;, line 1016, in pull
+ File &amp;#34;site-packages/docker/api/image.py&amp;#34;, line 358, in pull
+ File &amp;#34;site-packages/docker/auth.py&amp;#34;, line 50, in get_config_header
+ File &amp;#34;site-packages/docker/auth.py&amp;#34;, line 97, in resolve_authconfig
+ File &amp;#34;site-packages/docker/auth.py&amp;#34;, line 142, in _resolve_authconfig_credstore
+docker.errors.DockerException: Credentials store error: StoreError(&amp;#39;Credentials store docker-credential-osxkeychain exited with &amp;#34;User interaction is not allowed.&amp;#34;.&amp;#39;,)
+Failed to execute script docker-compose
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;저 에러가 뭘까 하고 Googling을 해 보니 &lt;code&gt;&amp;quot;Credentials store docker-credential-osxkeychain exited with &amp;quot;User interaction is not allowed&amp;quot;&lt;/code&gt; 이런 해결책이 나왔다.&lt;/p&gt;</description></item><item><title>ghost container with docker-compose</title><link>https://cychong47.github.io/post/2017/ghost-container-with-docker-compose/</link><pubDate>Sun, 03 Sep 2017 01:26:28 +0900</pubDate><guid>https://cychong47.github.io/post/2017/ghost-container-with-docker-compose/</guid><description>&lt;p&gt;얼마전에 구성한 ghost container는 ghost가 1.x로 업데이트가 되면서 설정 정보의 위치가 변경되었는데 그걸 미처 몰라 블로그 주소가 기본값인 localhost로 설정되는 문제가 있었다.
+기존 ghost container에 접근해서 확인해 보니 `/var/lib/ghost/config.production.json&amp;rsquo; 파일에 주소가 설정되어 있는 걸 보고 이 파일도 따로 지정해 주도록 변경했다.
+그러면서 docker-compose를 한번 써 보기로&lt;/p&gt;
+&lt;p&gt;일단 기존 ghost를 정리하고&lt;/p&gt;
+&lt;pre tabindex="0"&gt;&lt;code&gt;cychong:~ cychong$ docker stop ghost
+ghost
+cychong:~ cychong$ docker rm ghost
+ghost
+cychong:~ cychong$ docker rmi ghost
+Untagged: ghost:latest
+Untagged: ghost@sha256:a1f70641d35755395eb16827de4e67861e01bffe18bac8e54ab5c68cd170a2ea
+Deleted: sha256:e6ba3dd3c2491c6086d570fa9769a9f60d7c004129ff9ae7ff9fa0bad16a993b
+Deleted: sha256:c1ee9d43624bb4a1922c15d7a9175a80d1952cb71464d6d9d900fe21948227af
+Deleted: sha256:f8f95cdbafce4ecd226cdd690e6f909203a0f83d3507c53a71d4e59826ea881b
+Deleted: sha256:935d8847555992b702173b83b0d210f2728a24b5287467396dc8d5c68907691f
+Deleted: sha256:f4766b72a49d4cd2e897da0efcec94c33a0d24a95cb8426a790e1c45e6e39fae
+Deleted: sha256:0c0dbaebe17c6f585eb596e705ed5acba668097698a7780844c12597bb99b34a
+Deleted: sha256:c807796bea7a34c0b73eae853b728f2bbcd7a4fecc19d049455b322120f95ce7
+Deleted: sha256:15f9f4e44e22d3287b6caf9555110383d3ff2e88ee9cc03823b1ba5a01b75eac
+Deleted: sha256:77809f11069f2abfb571cba07ee3d696ec32823df0f5d0587042ffdb27a80add
+Deleted: sha256:5d6bba18f7b25c9b93d3cc0d93a4cff54eb88b0ba22ed867633a21fc3ded5f57
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;하는 김에 최신 버전의 ghost받아오고&lt;/p&gt;</description></item><item><title>Try to restore Wordpress container</title><link>https://cychong47.github.io/post/2017/try-to-restore-wordpress-docker/</link><pubDate>Sun, 03 Sep 2017 00:36:25 +0900</pubDate><guid>https://cychong47.github.io/post/2017/try-to-restore-wordpress-docker/</guid><description>&lt;p&gt;docker 버전이 업데이트되고, 몇 가지 변경사항이 있은 후 ghost, wordpress/mysql 조합의 container들이 접속이 되질 않는다.
+한참을 두고 보다 ghost는 새 버전(1.x)이 나온 걸 계기로 새로 설치를 했는데(당연히 이전 설치에서 데이터를 container 내부가 아니라 local machine에 두도록 해서 데이터는 그대로 보존) wordpress는 그러질 못했다.&lt;/p&gt;
+&lt;p&gt;이것 역시 참다참다 못해 &lt;a href="https://docs.docker.com/compose/wordpress/#define-the-project"&gt;https://docs.docker.com/compose/wordpress/#define-the-project&lt;/a&gt; 에 나와있는 docker swarm을 이용해서 복구해 보려고 삽을 들었다.&lt;/p&gt;
+&lt;p&gt;위 페이지에 있는 대로 설정 파일을 만들고&lt;/p&gt;
+&lt;pre tabindex="0"&gt;&lt;code&gt;version: &amp;#39;3&amp;#39;
+
+services:
+ db:
+ image: mysql:5.7
+ volumes:
+ - /Users/cychong/Dropbox/Apps/wordpress/:/var/lib/mysql
+ restart: always
+ environment:
+ MYSQL_ROOT_PASSWORD: xxx
+ MYSQL_DATABASE: xxx
+ MYSQL_USER: xxx
+ MYSQL_PASSWORD: xxx
+
+ wordpress:
+ depends_on:
+ - db
+ image: wordpress:latest
+ volumes:
+ - /Users/cychong/Documents/wordpress/:/var/www/html
+ - /Users/cychong/Documents/wordpress/php_uploads.ini:/usr/local/etc/php/conf.d/uploads.ini
+ ports:
+ - &amp;#34;8000:80&amp;#34;
+ restart: always
+ environment:
+ WORDPRESS_DB_HOST: db:3306
+ WORDPRESS_DB_USER: xxx
+ WORDPRESS_DB_PASSWORD: xxx
+volumes:
+ db_data:
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;문서에 있는 대로 docker compose 명령을 실행했는데&lt;/p&gt;</description></item><item><title>Move to docker</title><link>https://cychong47.github.io/post/2017/move-to-docker/</link><pubDate>Tue, 04 Apr 2017 13:51:03 +0900</pubDate><guid>https://cychong47.github.io/post/2017/move-to-docker/</guid><description>&lt;p&gt;지금 집에 있는 두 대의 mac mini를 이용해서 각각 wordpress와 ghost를 돌리고 있다.&lt;br&gt;
+wordpress의 경우 2013년부터 시작한 블로그를 운영하는데 사용하고 있는데, 웹호스팅 회사 몇 군데를 전전하다 몇 년 전부터 집에 있는 mac mini 2009에 &lt;a href="https://www.mamp.info/"&gt;MAMP&lt;/a&gt;를 이용해서 자체 서버를 이용하고 있었다.&lt;/p&gt;
+&lt;p&gt;Ghost는 내가 좋아하는 markdown을 기본으로 사용하는 블로그 툴을 찾다 만났는데 지금은 사라졌지만 초기 홈페이지에 있던 멋진 dashboard에 낚여 설치했다. Open source 답지 않고 느린 개발 속도가 이해되지는 않지만, 여전히 markdwon을 제대로 지원하는 흔치 않은 설치형 블로그 툴이라 아직 희망을 버리지 않고 사용하고 있다. 현재는 0.11.2 버전이 공식 stable 버전이고 올해 나올 걸로 예상되는 1.0의 alpha 버전이 개발중이다.&lt;/p&gt;</description></item><item><title>Docker for dummies 정리</title><link>https://cychong47.github.io/post/2015/docker-for-dummies-jeongri/</link><pubDate>Wed, 20 May 2015 14:18:04 +0900</pubDate><guid>https://cychong47.github.io/post/2015/docker-for-dummies-jeongri/</guid><description>&lt;p&gt;&lt;img src="https://cychong47.github.io/images/2015/05/Docker_for_dummies.png" alt=""&gt;&lt;/p&gt;
+&lt;p&gt;출처 : Docker 무작정 따라하기&lt;/p&gt;
+&lt;p&gt;참고 : &lt;a href="http://www.pyrasis.com/docker.html"&gt;가장 빨리 배우는 Docker&lt;/a&gt;&lt;/p&gt;</description></item></channel></rss>

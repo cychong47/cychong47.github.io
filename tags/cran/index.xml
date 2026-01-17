@@ -1,3 +1,34 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Cran on Keep calm and write something</title><link>https://cychong47.github.io/tags/cran/</link><description>Recent content in Cran on Keep calm and write something</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Sun, 15 Jul 2018 12:09:18 +0000</lastBuildDate><atom:link href="https://cychong47.github.io/tags/cran/index.xml" rel="self" type="application/rss+xml"/><item><title>Astri vRAN</title><link>https://cychong47.github.io/post/2018/astri-vran/</link><pubDate>Sun, 15 Jul 2018 12:03:00 +0900</pubDate><guid>https://cychong47.github.io/post/2018/astri-vran/</guid><description>Toward 5G RAN virtualization by Intel and Astri
-http://astri.oeg
-Flexible architecture Modular PHY processing architectures PDCP Split MAC/PHY Split - HARQ processing in RRU(How???) Lower PHY Split - High FB overhead but smallest packet latency. Good for JT and JR for COMP Good for Massive MIMO and Ultra low-latency communication(Why?) FAPI based MAC/PHY communication L1 adaptation layer for MAC/PHY split (and Lower PHY Split?) MAC/PHY split in one CPU MAC/PHY split in one machine but netrwork based MAC/PHY communication over OVS Virtual Cell A group of physical cells form a Virtual Cell which does not require HO between the physical cells.</description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Cran on Keep calm and Write something</title><link>https://cychong47.github.io/tags/cran/</link><description>Recent content in Cran on Keep calm and Write something</description><generator>Hugo</generator><language>en-us</language><lastBuildDate>Sun, 15 Jul 2018 12:09:18 +0000</lastBuildDate><atom:link href="https://cychong47.github.io/tags/cran/index.xml" rel="self" type="application/rss+xml"/><item><title>Astri vRAN</title><link>https://cychong47.github.io/post/2018/astri-vran/</link><pubDate>Sun, 15 Jul 2018 12:03:00 +0900</pubDate><guid>https://cychong47.github.io/post/2018/astri-vran/</guid><description>&lt;p&gt;&lt;a href="https://builders.intel.com/docs/networkbuilders/towards_5g_ran_virtualization_enabled_by_intel_and_astri.pdf"&gt;Toward 5G RAN virtualization by Intel and Astri&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href="http://astri.oeg"&gt;http://astri.oeg&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id="flexible-architecture"&gt;Flexible architecture&lt;/h2&gt;
+&lt;h3 id="modular-phy-processing-architectures"&gt;Modular PHY processing architectures&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;PDCP Split&lt;/li&gt;
+&lt;li&gt;MAC/PHY Split - HARQ processing in RRU(How???)&lt;/li&gt;
+&lt;li&gt;Lower PHY Split - High FB overhead but smallest packet latency.
+&lt;ul&gt;
+&lt;li&gt;Good for JT and JR for COMP&lt;/li&gt;
+&lt;li&gt;Good for Massive MIMO and Ultra low-latency communication(Why?)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;FAPI based MAC/PHY communication
+&lt;ul&gt;
+&lt;li&gt;L1 adaptation layer for MAC/PHY split (and Lower PHY Split?)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img src="https://cychong47.github.io/images/2018/07/Screenshot-2018-07-15-20.51.59.png" alt="Screenshot-2018-07-15-20.51.59"&gt;&lt;/p&gt;
+&lt;h3 id="macphy-split-in-one-cpu"&gt;MAC/PHY split in one CPU&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;MAC/PHY split in one machine but netrwork based MAC/PHY communication over OVS
+&lt;img src="https://cychong47.github.io/images/2018/07/Screenshot-2018-07-15-20.56.12.png" alt="Screenshot-2018-07-15-20.56.12"&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id="virtual-cell"&gt;Virtual Cell&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;A group of physical cells form a &lt;code&gt;Virtual Cell&lt;/code&gt; which does not require HO between the physical cells.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id="technical-specification"&gt;Technical Specification&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Commercial L1 reference design
+&lt;img src="https://cychong47.github.io/images/2018/07/Screenshot-2018-07-15-21.02.00.png" alt="Screenshot-2018-07-15-21.02.00"&gt;&lt;/p&gt;</description></item></channel></rss>

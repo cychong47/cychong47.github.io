@@ -1,4 +1,57 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Kubelet on Keep calm and write something</title><link>https://cychong47.github.io/tags/kubelet/</link><description>Recent content in Kubelet on Keep calm and write something</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Tue, 05 Nov 2019 15:03:37 +0000</lastBuildDate><atom:link href="https://cychong47.github.io/tags/kubelet/index.xml" rel="self" type="application/rss+xml"/><item><title>kubelet이 실행되지 않을때</title><link>https://cychong47.github.io/post/2019/what-if-kubelet-is-not-started/</link><pubDate>Tue, 05 Nov 2019 14:43:35 +0900</pubDate><guid>https://cychong47.github.io/post/2019/what-if-kubelet-is-not-started/</guid><description>mini1 리붓 후 ghost 접속이 안됨.
-docker를 직접 실행시키는 wordpress는 정상적으로 실행
-그래서 kubectl get svc 명령을 치니 접속이 안된다고.
-$ ps -ef |grep kube cychong 7461 2486 0 23:26 pts/0 00:00:00 grep --color=auto kube $ service kubelet status ● kubelet.service - kubelet: The Kubernetes Node Agent Loaded: loaded (/lib/systemd/system/kubelet.service; enabled; vendor preset: enabled) Drop-In: /etc/systemd/system/kubelet.service.d └─10-kubeadm.conf Active: activating (auto-restart) (Result: exit-code) since Mon 2019-11-04 23:26:47 KST; 5s ago Docs: https://kubernetes.</description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Kubelet on Keep calm and Write something</title><link>https://cychong47.github.io/tags/kubelet/</link><description>Recent content in Kubelet on Keep calm and Write something</description><generator>Hugo</generator><language>en-us</language><lastBuildDate>Tue, 05 Nov 2019 15:03:37 +0000</lastBuildDate><atom:link href="https://cychong47.github.io/tags/kubelet/index.xml" rel="self" type="application/rss+xml"/><item><title>kubelet이 실행되지 않을때</title><link>https://cychong47.github.io/post/2019/what-if-kubelet-is-not-started/</link><pubDate>Tue, 05 Nov 2019 14:43:35 +0900</pubDate><guid>https://cychong47.github.io/post/2019/what-if-kubelet-is-not-started/</guid><description>&lt;p&gt;mini1 리붓 후 ghost 접속이 안됨.&lt;/p&gt;
+&lt;p&gt;docker를 직접 실행시키는 wordpress는 정상적으로 실행&lt;/p&gt;
+&lt;p&gt;그래서 kubectl get svc 명령을 치니 접속이 안된다고.&lt;/p&gt;
+&lt;pre tabindex="0"&gt;&lt;code&gt;$ ps -ef |grep kube
+cychong 7461 2486 0 23:26 pts/0 00:00:00 grep --color=auto kube
+$ service kubelet status
+● kubelet.service - kubelet: The Kubernetes Node Agent
+ Loaded: loaded (/lib/systemd/system/kubelet.service; enabled; vendor preset: enabled)
+ Drop-In: /etc/systemd/system/kubelet.service.d
+ └─10-kubeadm.conf
+ Active: activating (auto-restart) (Result: exit-code) since Mon 2019-11-04 23:26:47 KST; 5s ago
+ Docs: https://kubernetes.io/docs/home/
+ Process: 7664 ExecStart=/usr/bin/kubelet $KUBELET_KUBECONFIG_ARGS $KUBELET_CONFIG_ARGS $KUBELET_KUBEADM_ARGS $KUBELET_EXTRA_ARGS (code=exited, status=255
+ Main PID: 7664 (code=exited, status=255)
+&lt;/code&gt;&lt;/pre&gt;&lt;pre tabindex="0"&gt;&lt;code&gt;$ journalctl -xeu kubelet
+Nov 04 23:28:32 mini1 kubelet[8695]: I1104 23:28:32.418274 8695 server.go:773] Client rotation is on, will bootstrap in background
+Nov 04 23:28:32 mini1 kubelet[8695]: I1104 23:28:32.427223 8695 certificate_store.go:129] Loading cert/key pair from &amp;#34;/var/lib/kubelet/pki/kubelet-clien
+Nov 04 23:28:32 mini1 kubelet[8695]: I1104 23:28:32.580296 8695 server.go:644] --cgroups-per-qos enabled, but --cgroup-root was not specified. defaulti
+Nov 04 23:28:32 mini1 kubelet[8695]: F1104 23:28:32.580915 8695 server.go:271] failed to run Kubelet: running with swap on is not supported, please disa
+Nov 04 23:28:32 mini1 systemd[1]: kubelet.service: Main process exited, code=exited, status=255/n/a
+Nov 04 23:28:32 mini1 systemd[1]: kubelet.service: Failed with result &amp;#39;exit-code&amp;#39;.
+Nov 04 23:28:42 mini1 systemd[1]: kubelet.service: Service hold-off time over, scheduling restart.
+Nov 04 23:28:42 mini1 systemd[1]: kubelet.service: Scheduled restart job, restart counter is at 30.
+-- Subject: Automatic restarting of a unit has been scheduled
+-- Defined-By: systemd
+-- Support: http://www.ubuntu.com/support
+--
+-- Automatic restarting of the unit kubelet.service has been scheduled, as the result for
+-- the configured Restart= setting for the unit.
+Nov 04 23:28:42 mini1 systemd[1]: Stopped kubelet: The Kubernetes Node Agent.
+-- Subject: Unit kubelet.service has finished shutting down
+-- Defined-By: systemd
+-- Support: http://www.ubuntu.com/support
+--
+-- Unit kubelet.service has finished shutting down.
+Nov 04 23:28:42 mini1 systemd[1]: Started kubelet: The Kubernetes Node Agent.
+-- Subject: Unit kubelet.service has finished start-up
+-- Defined-By: systemd
+-- Support: http://www.ubuntu.com/support
+--
+-- Unit kubelet.service has finished starting up.
+--
+-- The start-up result is RESULT.
+Nov 04 23:28:42 mini1 kubelet[8795]: Flag --cgroup-driver has been deprecated, This parameter should be set via the config file specified by the Kubelet&amp;#39;s
+Nov 04 23:28:42 mini1 kubelet[8795]: Flag --resolv-conf has been deprecated, This parameter should be set via the config file specified by the Kubelet&amp;#39;s --
+Nov 04 23:28:42 mini1 kubelet[8795]: Flag --cgroup-driver has been deprecated, This parameter should be set via the config file specified by the Kubelet&amp;#39;s
+Nov 04 23:28:42 mini1 kubelet[8795]: Flag --resolv-conf has been deprecated, This parameter should be set via the config file specified by the Kubelet&amp;#39;s --
+Nov 04 23:28:42 mini1 kubelet[8795]: I1104 23:28:42.907863 8795 server.go:410] Version: v1.16.1
+Nov 04 23:28:42 mini1 kubelet[8795]: I1104 23:28:42.908251 8795 plugins.go:100] No cloud provider specified.
+Nov 04 23:28:42 mini1 kubelet[8795]: I1104 23:28:42.908283 8795 server.go:773] Client rotation is on, will bootstrap in background
+Nov 04 23:28:42 mini1 kubelet[8795]: I1104 23:28:42.917653 8795 certificate_store.go:129] Loading cert/key pair from &amp;#34;/var/lib/kubelet/pki/kubelet-clien
+Nov 04 23:28:43 mini1 kubelet[8795]: I1104 23:28:43.073234 8795 server.go:644] --cgroups-per-qos enabled, but --cgroup-root was not specified. defaulti
+Nov 04 23:28:43 mini1 kubelet[8795]: F1104 23:28:43.073886 8795 server.go:271] failed to run Kubelet: running with swap on is not supported, please disa
+Nov 04 23:28:43 mini1 systemd[1]: kubelet.service: Main process exited, code=exited, status=255/n/a
+Nov 04 23:28:43 mini1 systemd[1]: kubelet.service: Failed with result &amp;#39;exit-code&amp;#39;.
+lines 1947-1986/1986 (END)
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;찾아보니 &lt;code&gt;docker&lt;/code&gt;가 정상적으로 실행 중인지 확인해 보라고.&lt;/p&gt;</description></item></channel></rss>

@@ -1,66 +1,505 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>DPDK on Keep calm and write something</title><link>https://cychong47.github.io/tags/dpdk/</link><description>Recent content in DPDK on Keep calm and write something</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Mon, 14 Mar 2022 00:00:03 +0900</lastBuildDate><atom:link href="https://cychong47.github.io/tags/dpdk/index.xml" rel="self" type="application/rss+xml"/><item><title>How to run DPDK in k8s - One container in each pod</title><link>https://cychong47.github.io/post/2022/2022-03-14-one-container-in-each-pod/</link><pubDate>Mon, 14 Mar 2022 00:00:03 +0900</pubDate><guid>https://cychong47.github.io/post/2022/2022-03-14-one-container-in-each-pod/</guid><description>서로 다른 pod의 container에서 실행되는 DPDK process들도 다른 경우와 마찬가지로 DPDK runtime config 파일과 hugepage map 파일만 공유하면 hugepage를 공유할 수 있다.
-이 때 서로 다른 pod가 같은 DPDK runtime config 파일들과, hugepage map 파일을 공유하기 위해 두 개 pod가 함께 사용할 수 있는 hostPath 를 이용한다. hostPath는 pod가 실행되는 node의 파일 시스템을 이용하여 volume을 만든다. 그러므로 서로 다른 pod가 동일 node에서 실행되는 경우에만 pod가 hugepage를 공유할 수 있다.
-DPDK runtime config 두 개 pod에서 hostPath 를 이용하여 DPDK runtime config 파일을 공유를 위한 volume을 만든다.</description></item><item><title>How to run DPDK in k8s - Two containers in a pod</title><link>https://cychong47.github.io/post/2022/2022-03-14-two-containers-in-a-pod/</link><pubDate>Mon, 14 Mar 2022 00:00:02 +0900</pubDate><guid>https://cychong47.github.io/post/2022/2022-03-14-two-containers-in-a-pod/</guid><description>하나의 pod에 2개의 container를 두고, 각각의 container에 primary process, secondary process를 실행하려면 두 개 container에서 실행되는 DPDK process간 runime config 파일과, hugepage map 파일을 공유하는 방법은 다음과 같다.
-하나의 pod에 하나의 container만 두는 경우와 달리 두 개의 container가 /var/run/dpdk 위치를 공유해야 하므로, 각 container가 갖는 기본 파일 시스템이 아니라 명시적으로 pod의 volume을 이용해서 파일을 공유해야 한다.
-이를 위해 pod spec에 다음과 같은 volume spec을 추가한다.
-volume: - name: dpdk-config emptyDir: emptyDir에 명시적으로 지정하지 않은 경우 tmpfs를 사용하므로, 위 volume은 tmpfs를 사용하여 생성된다.</description></item><item><title>How to run DPDK in k8s - A single container in a pod</title><link>https://cychong47.github.io/post/2022/2022-03-14-a-single-container-in-a-pod/</link><pubDate>Mon, 14 Mar 2022 00:00:01 +0900</pubDate><guid>https://cychong47.github.io/post/2022/2022-03-14-a-single-container-in-a-pod/</guid><description>How to run DPDK application in Kubernetes environment Kubernetes에서 DPDK application을 실행하기 위해서는 DPDK application이 포함된 container에 runtime config 파일이 저장될 /var/run/dpdk 디렉토리와 hugetlbfs 형태로 hugepage가 존재해야 한다. 이 중 /var/run/dpdk는 container 가 갖는 file system에 생성되는 기본 linux directory인 /var/run 아래 위치하므로, DPDK application이 실행되면서 디렉토리를 생성한다.
-반면, hugetblfs 디렉토리은 kubernetes의 volume 에서 제공하는 emptyDir을 사용하면 Pod와 lifecycle을 함께 하는 hugepage를 만들어 사용할 수 있다.
-Container에서 hugepage를 할당받기 위해서는 다음과 같이 container spec에 요구하는 hugepage 크기를 명시한다.</description></item><item><title>Hugepage in DPDK - Basics</title><link>https://cychong47.github.io/post/2022/2022-03-14-hugepage-in-dpdk-basics/</link><pubDate>Mon, 14 Mar 2022 00:00:00 +0900</pubDate><guid>https://cychong47.github.io/post/2022/2022-03-14-hugepage-in-dpdk-basics/</guid><description>Basic use of hugepage DPDK application이 hugepage를 사용할 때 다음과 같은 2가지 디렉토리를 사용한다.
-DPDK runtime config files /var/run/dpdk 로 고정된 경로를 사용요 DPDK 에서 hugepage를 어떻게 사용하는 지에 대한 meta data를 저장 hugepage map hugepage를 사용하기 위해 hugetlbfs 를 이용할 때 생성하는 hugepage map 파일들이 위치한 곳. DPDK는 이곳에 hugepage의 단위 크기를 갖는 file을 생성하고, mmap()을 사용하여 hugepage를 접근 만일 시스템에 2개 이상의 hugetlbfs가 마운트된 위치가 있는 경우 DPDK process를 실행할 때 --huge-dir 옵션을 사용하여 특정 위치를 사용하도록 할 수 있다.</description></item><item><title>NVIDIA vRAN Solution</title><link>https://cychong47.github.io/post/2020/nvidia-vran-solution/</link><pubDate>Wed, 20 May 2020 15:01:44 +0900</pubDate><guid>https://cychong47.github.io/post/2020/nvidia-vran-solution/</guid><description>https://devblogs.nvidia.com/building-accelerated-5g-cloudran-at-the-edge/
-Mellanox ConnectX-6 Dx SmartNIC exceeds stringent industry-standard timing specifications for eCPRI-based RANs by ensuring clock accuracy of 16ns or less
-5T for 5G enables packet-based, ethernet RANs to provide precise time-stamping of packets for delivering highly accurate time references to 5G fronthaul and backhaul networks.
-5T-for-5G, or time-triggered transmission technology for telco
-https://news.developer.nvidia.com/new-real-time-smartnic-technology-5t-for-5g/
-Real-time transmission hardware acceleration: 5T-for-5G simplifies time synchronization and data transmission across servers, GPUs, radios, and baseband units in wireless network rollouts, making 5G rollouts easier and more efficient.</description></item><item><title>DPDK 18.11</title><link>https://cychong47.github.io/post/2019/dpdk-18-11/</link><pubDate>Mon, 07 Jan 2019 14:57:59 +0900</pubDate><guid>https://cychong47.github.io/post/2019/dpdk-18-11/</guid><description>https://doc.dpdk.org/guides-18.11/rel_notes/release_18_11.html
-New Features Updated the C11 memory model version of the ring library. Added changes to decrease latency for architectures using the C11 memory model version of the ring library.
-On Cavium ThunderX2 platform, the changes decreased latency by 27-29% and 3-15% for MPMC and SPSC cases respectively (with 2 lcores). The real improvements may vary with the number of contending lcores and the size of the ring.
-Added support for device multi-process hotplug.</description></item><item><title>2nd patch submit to DPDK</title><link>https://cychong47.github.io/post/2018/submit-patch-to-dpdk-with-git/</link><pubDate>Sat, 21 Jul 2018 15:02:14 +0900</pubDate><guid>https://cychong47.github.io/post/2018/submit-patch-to-dpdk-with-git/</guid><description>AVX2가 지원되지 않는 머신에서 쓸데없이 ACL library 빌드할 때 AVX2를 이용해서 빌드하려는 문제를 확인했다. 지금까지 아무도 고치지 않은 게 이상하긴 한데 그래도 내가 생각한 수정 방법이 제대로 동작하는 듯 해서 패치를 한번 보내보기로 했다.
-수정사항은 비교적 간단하다. ACL 라이브러리 빌드할 때 AVX2를 이용해서 빌드해야 하는 경우인지를 검사하는 코드가 lib/librte_acl/Makefile에 정의되어 있는데 여기서 항상 -march=core-avx2 옵션을 사용해서 AVX2가 지원되지 않는 머신에서도 AVX2를 사용해서 gcc가 빌드하도록 하는 걸로 보였다. 다른 코드 빌드할 때는 문제가 없는데 유독 ACL library에서만 이런 문제가 나서 보다 보니 아무래도 Makefile이 잘못된 듯 하다.</description></item><item><title>Astri vRAN</title><link>https://cychong47.github.io/post/2018/astri-vran/</link><pubDate>Sun, 15 Jul 2018 12:03:00 +0900</pubDate><guid>https://cychong47.github.io/post/2018/astri-vran/</guid><description>Toward 5G RAN virtualization by Intel and Astri
-http://astri.oeg
-Flexible architecture Modular PHY processing architectures PDCP Split MAC/PHY Split - HARQ processing in RRU(How???) Lower PHY Split - High FB overhead but smallest packet latency. Good for JT and JR for COMP Good for Massive MIMO and Ultra low-latency communication(Why?) FAPI based MAC/PHY communication L1 adaptation layer for MAC/PHY split (and Lower PHY Split?) MAC/PHY split in one CPU MAC/PHY split in one machine but netrwork based MAC/PHY communication over OVS Virtual Cell A group of physical cells form a Virtual Cell which does not require HO between the physical cells.</description></item><item><title>DPDK IPv4 reassembly</title><link>https://cychong47.github.io/post/2016/dpdk-ipv4-reassembly/</link><pubDate>Thu, 24 Mar 2016 15:03:55 +0900</pubDate><guid>https://cychong47.github.io/post/2016/dpdk-ipv4-reassembly/</guid><description>rte_ipv4_frag_reassemble_packet()
-ip_frag_find() 기존에 존재하는 flow면 해당 flow를 저장한 entry 정보를(ip_frag_pkt *pkg) 신규 flow인 경우 해당 신규 flow를 저장할 신규 혹은 재사용된 entry를 return함 추가할 수 있는 통계 신규 flow? 기존 flow에 정상 추가 기존 flow에 비정상 추가(기존 flow가 timeouted) 이도 저도 아닌 상황(할당 실패) LRU entry free tbl-&amp;gt;max_entries tbl-&amp;gt;use_entries return 기존 존재하는 flow, 신규 할당한 flow entry 혹은 NULL 만일 NULL을 return하면 현재 수신한 mbuf를 death row에 추가한다. 불쌍한&amp;hellip; ip_frag_lookup() if matched entry is exist return flow entry return &amp;amp;stale if time-outed entry is exist if new entry return NULL return free for new empty entry return &amp;amp;stale if time-outed entry is exist ip_frag_key_cmp() return 0 if key matched if ip_frag_lookup() returns NULL if stale entry is not NULL, remove it with ip_frag_tbl_del() and save to free for reuse even if free is not NULL, check if tbl-&amp;gt;use_entries does not exceed tbl-&amp;gt;max_entries.</description></item><item><title>DPDK new mbuf 사용 주의사항</title><link>https://cychong47.github.io/post/2016/header-length-in-mbuf/</link><pubDate>Sun, 06 Mar 2016 08:22:24 +0900</pubDate><guid>https://cychong47.github.io/post/2016/header-length-in-mbuf/</guid><description>l2_len, l3_len, l4_len 등을 사용하는 라이브러리가 존재함
-reassembly Tx checksum offload Reassembly rte_ipv6_frag_reassemble_packet(), rte_ipv4_frag_reassemble_packet() Incoming mbuf should have its l2_len and l3_len fields setup correctly.
-L4 checksum HW offloading To use hardware L4 checksum offload, the user needs to
-fill l2_len and l3_len in mbuf set the flags PKT_TX_TCP_CKSUM, PKT_TX_SCTP_CKSUM or PKT_TX_UDP_CKSUM set the flag PKT_TX_IPV4 or PKT_TX_IPV6 calculate the pseudo header checksum and set it in the L4 header (only for TCP or UDP).</description></item><item><title>KNI가 buffer를 free 하는 방법</title><link>https://cychong47.github.io/post/2016/how_kni_free_mbuf/</link><pubDate>Sun, 06 Mar 2016 08:17:58 +0900</pubDate><guid>https://cychong47.github.io/post/2016/how_kni_free_mbuf/</guid><description>DPDK to KNI RX KNI는 rx_q로부터 mbuf를 수신한 후 data_len 크기의 skb를 할당하여 데이터를 복사한 후 netif_rx를 호출한다. 그러므로 mbuf는 KNI kernel module까지만 사용되고, 커널 networking stack에서는 사용되지는 않는다.
-kni_net.c의 kni_net_rx_normal() 함수가 DPDK application으로부터 mbuf를 받아 커널에 전달하는 함수인데 실제 함수는 batch processing을 위해 한번에 여러 개의 패킷을 rx_q로부터 읽어 처리하도록 구현되어 있다.
-아래는 하나의 패킷에 대해 수행되는 코드를 간략화 한 것이다(예외 처리 부분도 제외)
-num_rx = kni_fifo_get(kni-&amp;gt;rx_q, (void **)va, num_rx); kva = (void *)va[i] - kni-&amp;gt;mbuf_va + kni-&amp;gt;mbuf_kva; len = kva-&amp;gt;data_len; data_kva = kva-&amp;gt;buf_addr + kva-&amp;gt;data_off - kni-&amp;gt;mbuf_va + kni-&amp;gt;mbuf_kva; skb = dev_alloc_skb(len + 2); /* Align IP on 16B boundary */ skb_reserve(skb, 2); memcpy(skb_put(skb, len), data_kva, len); skb-&amp;gt;dev = dev; skb-&amp;gt;protocol = eth_type_trans(skb, dev); skb-&amp;gt;ip_summed = CHECKSUM_UNNECESSARY; /* Call netif interface */ netif_rx(skb); /* Update statistics */ kni-&amp;gt;stats.</description></item><item><title>fd.io</title><link>https://cychong47.github.io/post/2016/fd-io/</link><pubDate>Sat, 13 Feb 2016 01:29:43 +0900</pubDate><guid>https://cychong47.github.io/post/2016/fd-io/</guid><description>2016년 2월 11일 공개된 CISCO 주도의 프로젝트. 무려 2002년부터 개발한 것으로 현재 버전은 3번째 revision이라고 한다.
-간만에 dpdk.org mailing list에 들어갔다 가장 최근에 올라온 글 제목이 눈에 띄었다.
-[dpdk-dev] [dpdk-announce] new project using DPDK - FD.io Vincent JARDIN
-&amp;ldquo;new project&amp;rdquo;?
-그래서 내용을 봤더니 이게 다 였다는
-A new project using DPDK is available, http://FD.io said FiDo You can clone it from: http://gerrit.fd.io/ Best regards, Vincent 그래도 첫 번째 링크를 따라가 보니 화려하다.</description></item><item><title>DPDK NIC 초기화</title><link>https://cychong47.github.io/post/2016/dpdk_nic_init/</link><pubDate>Tue, 09 Feb 2016 14:54:21 +0900</pubDate><guid>https://cychong47.github.io/post/2016/dpdk_nic_init/</guid><description>constructor attribute http://phoxis.org/2011/04/27/c-language-constructors-and-destructors-with-gcc/
-constructor attribute을 가진 함수는 main 함수를 실행하기 전에 호출한다.
-예제 (출처)
-#include &amp;lt;stdio.h&amp;gt; void begin (void) __attribute__((constructor)); void end (void) __attribute__((destructor)); int main (void) { printf (&amp;#34;\nInside main ()&amp;#34;); } void begin (void) { printf (&amp;#34;\nIn begin ()&amp;#34;); } void end (void) { printf (&amp;#34;\nIn end ()\n&amp;#34;); } 실행하면
-In begin () Inside main () In end () DPDK DPDK의 경우 device driver들을 모두 constructor attirbute을 사용해서 main 함수 전에 호출되록 한다.</description></item><item><title>SR-IOV and DPDK</title><link>https://cychong47.github.io/post/2016/sriov-and-dpdk/</link><pubDate>Sun, 07 Feb 2016 23:40:26 +0900</pubDate><guid>https://cychong47.github.io/post/2016/sriov-and-dpdk/</guid><description>SR-IOV and DPDK
-Accelerating the NFV Data Plane : SR-IOV and DPDK… in my own words 를 읽고 요약
-Before HW assisted Virtualisation SR-IOV 전까지는 VMM이 패킷 송수신에 매번 개입해야 했음.
-1st interrupt from NIC to VMM 2nd interrupt from VMM to VM Intel VMDq Only one interrupt from NIC to VM as each VM has its own Rx queue.
-SR-IOV SR-IOV : Standard IO memory Memory Management Unit from Intel(VT-d) and AMD(IOV) Virtual Function - Limited, lightweight, PCIe resource and a dedicated Tx/Rx packet queue Interrupt 부담이 없다고 하는데 왜?</description></item><item><title>DPDK based applications</title><link>https://cychong47.github.io/post/2016/dpdk_based_apps/</link><pubDate>Sun, 24 Jan 2016 14:59:18 +0900</pubDate><guid>https://cychong47.github.io/post/2016/dpdk_based_apps/</guid><description>2016.02.10 기준
-DPDK-dump TRex - Realistic traffic generator
-git-hub - trex-core, trex-doc, trex-profiles, trex-qt-gui Packet-journey git-hub FD.io Fast Data Path DPDK-nginx DPDK-pktgen DPDK-ODP TCP/IP stack for DPDK</description></item><item><title>DPDK QAT example 빌드하기</title><link>https://cychong47.github.io/post/2016/build_dpdk_qat/</link><pubDate>Fri, 01 Jan 2016 10:57:39 +0900</pubDate><guid>https://cychong47.github.io/post/2016/build_dpdk_qat/</guid><description>Download dpdk-2.2.0.tar.gz Refer http://dpdk.org/download
-wget http://dpdk.org/browse/dpdk/snapshot/dpdk-2.2.0.tar.gz Download qat_mux Refer https://01.org/packet-processing/intel®-quickassist-technology-drivers-and-patches
-wget https://01.org/sites/default/files/page/qatmux.l.2.5.0-80.tgz Getting Started Guide 문서도 받아 둔다.
-wget https://01.org/sites/default/files/page/330750-004_qat_gsg.pdf Configure DPDK export RTE_SDK=/home/cychong/work/dpdk-2.2.0 export RTE_TARGET=x86_64-native-linuxapp-gcc make config T=$RTE_TARGET O=$RTE_TARGET make Configure QAT Ubuntu (14.04) 기준으로 몇 개 패키지를 설치해야 QAT를 빌드할 수 있는데 나름 기본적인 패키지들이라 그냥 설치해 놓으면 좋을 듯.
-sudo apt-get install zlib1g-dev sudo apt-get install libssl-dev 적당한 위치에 풀면 되는데 ~/work/qat에 압축을 푼 경우를 기준으로 정리</description></item><item><title>CISCO Cloud Service Platform 2100</title><link>https://cychong47.github.io/post/2015/cisco-cloud-service-platform-2100/</link><pubDate>Mon, 23 Nov 2015 14:24:35 +0900</pubDate><guid>https://cychong47.github.io/post/2015/cisco-cloud-service-platform-2100/</guid><description>Data sheet (PDF)
-Some Cisco virtual network services that use the DPDK include Cisco Cloud Services Router (CSR) 1000V, Cisco Virtual Mobile Packet Core software, and Cisco IOS® XR 9000v virtual router. Supporte CISCO appliances Cisco Cloud Services Router (CSR) 1000V virtual router Cisco Virtual Adaptive Security Appliance (ASAv) Cisco Prime™ Data Center Network Manager (DCNM) Cisco Virtual Network Analysis Module (vNAM) Cisco Virtual Security Gateway (VSG) for Cisco Nexus® 1000V Switch deployments Cisco Virtual Supervisor Module (VSM) for Cisco Nexus 1000V Switch deployments 1U 2 CPU, each has 8 core Ivy Bridge(E5-2630 v3) REST API It uses REST API and NETCONF protocol for north-bound management and orchestration (MANO) tools.</description></item><item><title>DPDK IP reassembly example</title><link>https://cychong47.github.io/post/2015/dpdk-ip-reassembly-example/</link><pubDate>Tue, 17 Nov 2015 13:49:57 +0900</pubDate><guid>https://cychong47.github.io/post/2015/dpdk-ip-reassembly-example/</guid><description>TAILQ_HEAD(ip_pkt_list, ip_frag_pkt); /**&amp;lt; @internal fragments tailq */ 자료 구조체 Fragment 관리용 table struct rte_ip_frag_tbl *frag_tbl; locking 없이 IP reassembly를 수행할 단위(통상 core)로 한 개씩 만든다. 즉 하나의 core가 여러 rx queue를 처리하더라도 하나의 frag_tbl만 가지면 된다.
-아래 rte_ip_frag_table_create()함수를 이용해서 생성한다.
-struct rte_ip_frag_death_row death_row core별로 갖는 death_row. IP reassembly를 호출한 후 해당 함수내에서 free할 mbuf를 이 리스트에 담아줌.
-main loop에서 reassembly작업 후 rte_ip_frag_free_death_row()함수를 호출해 reassembly에 실패한 mbuf를 free함
-IP_MAX_FRAG_NUM defines the maximum fragments of one reassembly.</description></item><item><title>Running DPDK on VMware Fusion</title><link>https://cychong47.github.io/post/2015/running-dpdk-on-vmware-fusion/</link><pubDate>Tue, 20 Oct 2015 14:19:05 +0900</pubDate><guid>https://cychong47.github.io/post/2015/running-dpdk-on-vmware-fusion/</guid><description>VirtualBox supports emulated e1000 NIC for VM while VMware fusion does not. VMware Fusion&amp;rsquo;s VM setting does not support configuring of NIC HW type. The NIC HW is PCnet32 which is not supported by DPDK.
-However, we can change NIC HW type by editing VM configuration file directly.
-Refer : How to emulate 10 Gbps NIC in a VMware Fusion VM
-Edit vmx file to VMX file is in where vmware image located</description></item><item><title>TRex - DPDK based traffic generator</title><link>https://cychong47.github.io/post/2015/trex-dpdk-based-traffic-generator/</link><pubDate>Mon, 12 Oct 2015 13:11:14 +0900</pubDate><guid>https://cychong47.github.io/post/2015/trex-dpdk-based-traffic-generator/</guid><description>DPDK Userspace in Dublin 2015에서 발표
-Stageful traffic generator
-특징 Generate traffic based on templates of real, captured flows No TCP/IP stack Up to 200Gbps with standard server hardware Low cost 1RU (C220M UCS-1RU) Cisco internal DPDK, ZMQ, Python libs Virtualization(vmxnet3/e1000) ~20Gbps per core Generate flow templates Support 1K templates Yaml based traffic profile GUI GUI which monitors real-time properties of TRex - min/max/average latency, jitter
-Python 연동 Code https://github.com/cisco-system-traffic-generator/trex-core</description></item><item><title>DPDK Coding style</title><link>https://cychong47.github.io/post/2015/dpdk-coding-style/</link><pubDate>Thu, 21 May 2015 14:51:37 +0900</pubDate><guid>https://cychong47.github.io/post/2015/dpdk-coding-style/</guid><description>출처 : DPDK mailing list
-Coding Style Description This document specifies the preferred style for source files in the DPDK source tree. It is based on the Linux Kernel coding guidelines and the FreeBSD 7.2 Kernel Developer&amp;rsquo;s Manual (see man style(9)), but was heavily modified for the needs of the DPDK.
-General Guidelines The rules and guidelines given in this document cannot cover every situation, so the following general guidelines should be used as a fallback:</description></item><item><title>Intel Embedded Tech Forum 2014</title><link>https://cychong47.github.io/post/2014/intel-embedded-tech-forum-2014/</link><pubDate>Tue, 09 Dec 2014 10:38:08 +0900</pubDate><guid>https://cychong47.github.io/post/2014/intel-embedded-tech-forum-2014/</guid><description>Small Cell Big Cell 256 user 이하를 small cell로 정의 mini-CRAN Paris Hill SOC을 이용하는 경우 RRH에서 LTE/3G DSP+DFE 까지 처리하고 Ethernet으로 IA core로 전달. Altiostar 구조와 유사한 듯 Wifi 와 3G/4G까지 지원하는 차세대 SOC 2/4/8 core까지 지원 Aricent와 협업하여 L1/L2/L3 Protocol stack 개발 ONP Red Rock Canyon Las Vegas에서 30분 가량 걸리는 거리 Switch와 NIC 통합 PCI-e를 지원해서 NIC없이 Xeon을 직접 연결할 수 있음. 150page 가량의 report ONP 1.1 버전.</description></item><item><title>R.I.P OVDK</title><link>https://cychong47.github.io/post/2014/r-i-p-ovdk/</link><pubDate>Thu, 27 Nov 2014 14:47:38 +0900</pubDate><guid>https://cychong47.github.io/post/2014/r-i-p-ovdk/</guid><description>며칠 밖에 보지 않았지만, 그래도 내용을 분석해 보려고 했던 OVDK인데, 오늘 기사를 보니 Intel에서 공식적으로 OVDK의 개발 중단을 발표했단다.
-Intel Dead-Ends Its Fork of Open vSwitch
-Data path(Fast path)를 커널 모듈에서 처리하는 OVS를 fork해서 DPDK를 이용해서 user space에 Fast Path를 만들려고 했는데 그러다 보니 역시 계속해서 발전하는 OVS의 기능을 수용하기 부담스러웠나 보다. 더군다나 OVS에서도 experimental feature이긴 하지만 DPDK를 이용하는 코드도 있다고 하니.
-내년 초에 나올 다음 버전 OVS에 공식 기능으로 들어가길 기대한다고.</description></item><item><title>DPDK Summit 2014 Videos</title><link>https://cychong47.github.io/post/2014/dpdk-summit-2014-videos/</link><pubDate>Wed, 19 Nov 2014 13:59:07 +0900</pubDate><guid>https://cychong47.github.io/post/2014/dpdk-summit-2014-videos/</guid><description> Application Performance Tuning and Future Optimizations in DPDK by Venky Venkatesan DPDK in a Virtual World by Bhavesh Davda Rashmin Patel High Performance Networking Leveraging the DPDK and the Growing Community by Thomas Monj alon Multi Socket Ferrari for NFV by Laszlo Vadkerti Andras Kovacs Lightning Fast IO with PacketDirect by Gabriel Silva A High Performance vSwitch of the User by the User for the User by Yoshihiro Nakajima Is It Time to Revisit the IP Stack in the Linux Kernel and KVM by Jun Xu Closing Remarks by Tim ODriscoll</description></item><item><title>DPDK on VirtualBox</title><link>https://cychong47.github.io/post/2014/dpdk-on-virtualbox/</link><pubDate>Tue, 23 Sep 2014 15:37:21 +0900</pubDate><guid>https://cychong47.github.io/post/2014/dpdk-on-virtualbox/</guid><description>VirtualBox에 DPDK 설치하기 참고
-VirtualBox 설치하기 통상적인 절차대로 VirtualBox를 설치하고, Ubuntu 14.04 LTS 설치한다. DPDK는 32bit와 64bit를 모두 지원하지만 64비트를 사용하는 것이 좋다. Application에 따라 많은 양의 Memory를 사용할 수도 있으므로.
-NIC 카드 추가 VirtualBox가 지원하는 NIC에 Intel 82540EM과 82545EM이 있다. 둘 다 DPDK에서 지원하는 1G NIC이다. 이 중에서 82545EM 카드를 2개 추가한다.
-VirtualBox의 Guest OS를 종료시킨 상태에서 환경 설정에서 Network &amp;gt; Adapter 항목에서 Adapter 2, Adapter 3를 활성화시킨다.
-그 결과 총 3개의 NIC이 설치되었다.</description></item><item><title>SDN expert group 세미나 - Play with DPDK</title><link>https://cychong47.github.io/post/2014/sdn-expert-group-semina-play-with-dpdk/</link><pubDate>Thu, 21 Aug 2014 12:11:18 +0900</pubDate><guid>https://cychong47.github.io/post/2014/sdn-expert-group-semina-play-with-dpdk/</guid><description>세미나 내용 Controller &amp;ndash;(OpenFlow)&amp;ndash; ovs-switchd &amp;ndash;(netlink)&amp;ndash; Datapath Datapath is in the kernel space OVDK move the kernel based OVS to user space. ovs-switched talk to OVDK with UDP 기존 OVDK는 port별 task handler(각각 별도의 core에서 동작) 그 결과 많은 core 필요 WR 이야기처럼 VM간 혹은 VM과 외부와의 통신을 담당하는 OVS용으로 많은 core를 사용하면 실제로 VM이 사용할 수 있는 core 개수가 줄어들어 문제 virtIO 사용시 VM에서 동작하는 application이 kernel stack의 필요한 경우 결국 OVDK와 VM내 커널 space간 copy가 필요함 최신 버전에서는 VM에서도 KNI based virtIO를 이용하도록 개선함.</description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>DPDK on Keep calm and Write something</title><link>https://cychong47.github.io/tags/dpdk/</link><description>Recent content in DPDK on Keep calm and Write something</description><generator>Hugo</generator><language>en-us</language><lastBuildDate>Mon, 14 Mar 2022 00:00:03 +0900</lastBuildDate><atom:link href="https://cychong47.github.io/tags/dpdk/index.xml" rel="self" type="application/rss+xml"/><item><title>How to run DPDK in k8s - One container in each pod</title><link>https://cychong47.github.io/post/2022/2022-03-14-one-container-in-each-pod/</link><pubDate>Mon, 14 Mar 2022 00:00:03 +0900</pubDate><guid>https://cychong47.github.io/post/2022/2022-03-14-one-container-in-each-pod/</guid><description>&lt;p&gt;서로 다른 pod의 container에서 실행되는 DPDK process들도 다른 경우와 마찬가지로 DPDK runtime config 파일과 hugepage map 파일만 공유하면 hugepage를 공유할 수 있다.&lt;/p&gt;
+&lt;p&gt;&lt;img src="https://cychong47.github.io/images/2022/03/2022-03-14-dpdk-hugepage-1c-2p-1.png" alt="2022-03-14-dpdk-hugepage-1c-2p-1.png"&gt;&lt;/p&gt;
+&lt;p&gt;이 때 서로 다른 pod가 같은 DPDK runtime config 파일들과, hugepage map 파일을 공유하기 위해 두 개 pod가 함께 사용할 수 있는 &lt;code&gt;hostPath&lt;/code&gt; 를 이용한다. &lt;code&gt;hostPath&lt;/code&gt;는 pod가 실행되는 node의 파일 시스템을 이용하여 volume을 만든다. 그러므로 서로 다른 pod가 동일 node에서 실행되는 경우에만 pod가 hugepage를 공유할 수 있다.&lt;/p&gt;</description></item><item><title>How to run DPDK in k8s - Two containers in a pod</title><link>https://cychong47.github.io/post/2022/2022-03-14-two-containers-in-a-pod/</link><pubDate>Mon, 14 Mar 2022 00:00:02 +0900</pubDate><guid>https://cychong47.github.io/post/2022/2022-03-14-two-containers-in-a-pod/</guid><description>&lt;p&gt;하나의 pod에 2개의 container를 두고, 각각의 container에 primary process, secondary process를 실행하려면 두 개 container에서 실행되는 DPDK process간 runime config 파일과, hugepage map 파일을 공유하는 방법은 다음과 같다.&lt;/p&gt;
+&lt;p&gt;&lt;img src="https://cychong47.github.io/images/2022/03/2022-03-14-dpdk-hugepage-2c-1p-1.png" alt="2022-03-14-dpdk-hugepage-2c-1p-1.png"&gt;&lt;/p&gt;
+&lt;p&gt;하나의 pod에 하나의 container만 두는 경우와 달리 두 개의 container가 &lt;code&gt;/var/run/dpdk&lt;/code&gt; 위치를 공유해야 하므로, 각 container가 갖는 기본 파일 시스템이 아니라 명시적으로 pod의 volume을 이용해서 파일을 공유해야 한다.&lt;/p&gt;
+&lt;p&gt;이를 위해 pod spec에 다음과 같은 volume spec을 추가한다.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"&gt;&lt;code class="language-yaml" data-lang="yaml"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#f92672"&gt;volume&lt;/span&gt;:
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; - &lt;span style="color:#f92672"&gt;name&lt;/span&gt;: &lt;span style="color:#ae81ff"&gt;dpdk-config&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#f92672"&gt;emptyDir&lt;/span&gt;:
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;code&gt;emptyDir&lt;/code&gt;에 명시적으로 지정하지 않은 경우 &lt;code&gt;tmpfs&lt;/code&gt;를 사용하므로, 위 volume은 &lt;code&gt;tmpfs&lt;/code&gt;를 사용하여 생성된다.&lt;/p&gt;</description></item><item><title>How to run DPDK in k8s - A single container in a pod</title><link>https://cychong47.github.io/post/2022/2022-03-14-a-single-container-in-a-pod/</link><pubDate>Mon, 14 Mar 2022 00:00:01 +0900</pubDate><guid>https://cychong47.github.io/post/2022/2022-03-14-a-single-container-in-a-pod/</guid><description>&lt;h2 id="how-to-run-dpdk-application-in-kubernetes-environment"&gt;How to run DPDK application in Kubernetes environment&lt;/h2&gt;
+&lt;p&gt;Kubernetes에서 DPDK application을 실행하기 위해서는 DPDK application이 포함된 container에 runtime config 파일이 저장될 &lt;code&gt;/var/run/dpdk&lt;/code&gt; 디렉토리와 &lt;code&gt;hugetlbfs&lt;/code&gt; 형태로 hugepage가 존재해야 한다.
+이 중 &lt;code&gt;/var/run/dpdk&lt;/code&gt;는 container 가 갖는 file system에 생성되는 기본 linux directory인 &lt;code&gt;/var/run&lt;/code&gt; 아래 위치하므로, DPDK application이 실행되면서 디렉토리를 생성한다.&lt;/p&gt;
+&lt;p&gt;반면, &lt;code&gt;hugetblfs&lt;/code&gt; 디렉토리은 kubernetes의 &lt;code&gt;volume&lt;/code&gt; 에서 제공하는 &lt;code&gt;emptyDir&lt;/code&gt;을 사용하면 Pod와 lifecycle을 함께 하는 hugepage를 만들어 사용할 수 있다.&lt;/p&gt;
+&lt;p&gt;&lt;img src="https://cychong47.github.io/images/2022/03/2022-03-14-dpdk-hugepage-1c-1p-1.png" alt="2022-03-14-dpdk-hugepage-1c-1p-1.png"&gt;&lt;/p&gt;
+&lt;p&gt;Container에서 hugepage를 할당받기 위해서는 다음과 같이 container spec에 요구하는 hugepage 크기를 명시한다.&lt;/p&gt;</description></item><item><title>Hugepage in DPDK - Basics</title><link>https://cychong47.github.io/post/2022/2022-03-14-hugepage-in-dpdk-basics/</link><pubDate>Mon, 14 Mar 2022 00:00:00 +0900</pubDate><guid>https://cychong47.github.io/post/2022/2022-03-14-hugepage-in-dpdk-basics/</guid><description>&lt;h2 id="basic-use-of-hugepage"&gt;Basic use of hugepage&lt;/h2&gt;
+&lt;p&gt;&lt;img src="https://cychong47.github.io/images/2022/03/2022-03-14-dpdk-hugepage-1.png" alt="2022-03-14-dpdk-hugepage-1.png"&gt;&lt;/p&gt;
+&lt;p&gt;DPDK application이 hugepage를 사용할 때 다음과 같은 2가지 디렉토리를 사용한다.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;DPDK runtime config files
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;/var/run/dpdk&lt;/code&gt; 로 고정된 경로를 사용요&lt;/li&gt;
+&lt;li&gt;DPDK 에서 hugepage를 어떻게 사용하는 지에 대한 meta data를 저장&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;hugepage map
+&lt;ul&gt;
+&lt;li&gt;hugepage를 사용하기 위해 &lt;code&gt;hugetlbfs&lt;/code&gt; 를 이용할 때 생성하는 hugepage map 파일들이 위치한 곳.&lt;/li&gt;
+&lt;li&gt;DPDK는 이곳에 hugepage의 단위 크기를 갖는 file을 생성하고, &lt;code&gt;mmap()&lt;/code&gt;을 사용하여 hugepage를 접근&lt;/li&gt;
+&lt;li&gt;만일 시스템에 2개 이상의 &lt;code&gt;hugetlbfs&lt;/code&gt;가 마운트된 위치가 있는 경우 DPDK process를 실행할 때 &lt;code&gt;--huge-dir&lt;/code&gt; 옵션을 사용하여 특정 위치를 사용하도록 할 수 있다.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id="multi-process-support"&gt;Multi-process support&lt;/h2&gt;
+&lt;p&gt;&lt;img src="https://cychong47.github.io/images/2022/03/2022-03-14-dpdk-hugepage-2.png" alt="2022-03-14-dpdk-hugepage-2.png"&gt;&lt;/p&gt;</description></item><item><title>NVIDIA vRAN Solution</title><link>https://cychong47.github.io/post/2020/nvidia-vran-solution/</link><pubDate>Wed, 20 May 2020 15:01:44 +0900</pubDate><guid>https://cychong47.github.io/post/2020/nvidia-vran-solution/</guid><description>&lt;p&gt;&lt;a href="https://devblogs.nvidia.com/building-accelerated-5g-cloudran-at-the-edge/"&gt;https://devblogs.nvidia.com/building-accelerated-5g-cloudran-at-the-edge/&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id="mellanox-connectx-6-dx-smartnic"&gt;Mellanox ConnectX-6 Dx SmartNIC&lt;/h2&gt;
+&lt;p&gt;exceeds stringent industry-standard timing specifications for eCPRI-based RANs by ensuring clock accuracy of 16ns or less&lt;/p&gt;
+&lt;p&gt;5T for 5G enables packet-based, ethernet RANs to provide precise time-stamping of packets for delivering highly accurate time references to 5G fronthaul and backhaul networks.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;5T-for-5G, or time-triggered transmission technology for telco&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;&lt;a href="https://news.developer.nvidia.com/new-real-time-smartnic-technology-5t-for-5g/"&gt;https://news.developer.nvidia.com/new-real-time-smartnic-technology-5t-for-5g/&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src="https://news.developer.nvidia.com/wp-content/uploads/2020/05/pasted-image-0-17-624x271.png" alt="img"&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Real-time transmission hardware acceleration&lt;/strong&gt;: 5T-for-5G simplifies time synchronization and data transmission across servers, GPUs, radios, and baseband units in wireless network rollouts, making 5G rollouts easier and more efficient.&lt;/p&gt;</description></item><item><title>DPDK 18.11</title><link>https://cychong47.github.io/post/2019/dpdk-18-11/</link><pubDate>Mon, 07 Jan 2019 14:57:59 +0900</pubDate><guid>https://cychong47.github.io/post/2019/dpdk-18-11/</guid><description>&lt;p&gt;&lt;a href="https://doc.dpdk.org/guides-18.11/rel_notes/release_18_11.html"&gt;https://doc.dpdk.org/guides-18.11/rel_notes/release_18_11.html&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id="new-features"&gt;New Features&lt;/h2&gt;
+&lt;h4 id="updated-the-c11-memory-model-version-of-the-ring-library"&gt;Updated the C11 memory model version of the ring library.&lt;/h4&gt;
+&lt;p&gt;Added changes to decrease latency for architectures using the C11 memory model version of the ring library.&lt;/p&gt;
+&lt;p&gt;On Cavium ThunderX2 platform, the changes decreased latency by 27-29% and 3-15% for MPMC and SPSC cases respectively (with 2 lcores). The real improvements may vary with the number of contending lcores and the size of the ring.&lt;/p&gt;
+&lt;h4 id="added-support-for-device-multi-process-hotplug"&gt;Added support for device multi-process hotplug.&lt;/h4&gt;
+&lt;p&gt;Added support for hotplug and hot-unplug in a multiprocessing scenario. Any ethdev devices created in the primary process will be regarded as shared and will be available for all DPDK processes. Synchronization between processes will be done using DPDK IPC.&lt;/p&gt;</description></item><item><title>2nd patch submit to DPDK</title><link>https://cychong47.github.io/post/2018/submit-patch-to-dpdk-with-git/</link><pubDate>Sat, 21 Jul 2018 15:02:14 +0900</pubDate><guid>https://cychong47.github.io/post/2018/submit-patch-to-dpdk-with-git/</guid><description>&lt;p&gt;AVX2가 지원되지 않는 머신에서 쓸데없이 ACL library 빌드할 때 AVX2를 이용해서 빌드하려는 문제를 확인했다. 지금까지 아무도 고치지 않은 게 이상하긴 한데 그래도 내가 생각한 수정 방법이 제대로 동작하는 듯 해서 패치를 한번 보내보기로 했다.&lt;/p&gt;
+&lt;p&gt;수정사항은 비교적 간단하다.
+ACL 라이브러리 빌드할 때 AVX2를 이용해서 빌드해야 하는 경우인지를 검사하는 코드가 &lt;code&gt;lib/librte_acl/Makefile&lt;/code&gt;에 정의되어 있는데 여기서 항상 &lt;code&gt;-march=core-avx2&lt;/code&gt; 옵션을 사용해서 AVX2가 지원되지 않는 머신에서도 AVX2를 사용해서 gcc가 빌드하도록 하는 걸로 보였다. 다른 코드 빌드할 때는 문제가 없는데 유독 ACL library에서만 이런 문제가 나서 보다 보니 아무래도 Makefile이 잘못된 듯 하다.&lt;/p&gt;</description></item><item><title>Astri vRAN</title><link>https://cychong47.github.io/post/2018/astri-vran/</link><pubDate>Sun, 15 Jul 2018 12:03:00 +0900</pubDate><guid>https://cychong47.github.io/post/2018/astri-vran/</guid><description>&lt;p&gt;&lt;a href="https://builders.intel.com/docs/networkbuilders/towards_5g_ran_virtualization_enabled_by_intel_and_astri.pdf"&gt;Toward 5G RAN virtualization by Intel and Astri&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href="http://astri.oeg"&gt;http://astri.oeg&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id="flexible-architecture"&gt;Flexible architecture&lt;/h2&gt;
+&lt;h3 id="modular-phy-processing-architectures"&gt;Modular PHY processing architectures&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;PDCP Split&lt;/li&gt;
+&lt;li&gt;MAC/PHY Split - HARQ processing in RRU(How???)&lt;/li&gt;
+&lt;li&gt;Lower PHY Split - High FB overhead but smallest packet latency.
+&lt;ul&gt;
+&lt;li&gt;Good for JT and JR for COMP&lt;/li&gt;
+&lt;li&gt;Good for Massive MIMO and Ultra low-latency communication(Why?)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;FAPI based MAC/PHY communication
+&lt;ul&gt;
+&lt;li&gt;L1 adaptation layer for MAC/PHY split (and Lower PHY Split?)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img src="https://cychong47.github.io/images/2018/07/Screenshot-2018-07-15-20.51.59.png" alt="Screenshot-2018-07-15-20.51.59"&gt;&lt;/p&gt;
+&lt;h3 id="macphy-split-in-one-cpu"&gt;MAC/PHY split in one CPU&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;MAC/PHY split in one machine but netrwork based MAC/PHY communication over OVS
+&lt;img src="https://cychong47.github.io/images/2018/07/Screenshot-2018-07-15-20.56.12.png" alt="Screenshot-2018-07-15-20.56.12"&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id="virtual-cell"&gt;Virtual Cell&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;A group of physical cells form a &lt;code&gt;Virtual Cell&lt;/code&gt; which does not require HO between the physical cells.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id="technical-specification"&gt;Technical Specification&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Commercial L1 reference design
+&lt;img src="https://cychong47.github.io/images/2018/07/Screenshot-2018-07-15-21.02.00.png" alt="Screenshot-2018-07-15-21.02.00"&gt;&lt;/p&gt;</description></item><item><title>DPDK IPv4 reassembly</title><link>https://cychong47.github.io/post/2016/dpdk-ipv4-reassembly/</link><pubDate>Thu, 24 Mar 2016 15:03:55 +0900</pubDate><guid>https://cychong47.github.io/post/2016/dpdk-ipv4-reassembly/</guid><description>&lt;p&gt;&lt;code&gt;rte_ipv4_frag_reassemble_packet()&lt;/code&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;ip_frag_find()&lt;/code&gt;
+&lt;ul&gt;
+&lt;li&gt;기존에 존재하는 flow면 해당 flow를 저장한 entry 정보를(&lt;code&gt;ip_frag_pkt *pkg&lt;/code&gt;)&lt;/li&gt;
+&lt;li&gt;신규 flow인 경우 해당 신규 flow를 저장할 신규 혹은 재사용된 entry를 return함&lt;/li&gt;
+&lt;li&gt;추가할 수 있는 통계
+&lt;ul&gt;
+&lt;li&gt;신규 flow?&lt;/li&gt;
+&lt;li&gt;기존 flow에 정상 추가&lt;/li&gt;
+&lt;li&gt;기존 flow에 비정상 추가(기존 flow가 timeouted)&lt;/li&gt;
+&lt;li&gt;이도 저도 아닌 상황(할당 실패)&lt;/li&gt;
+&lt;li&gt;LRU entry free&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;tbl-&amp;gt;max_entries&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;tbl-&amp;gt;use_entries&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;return
+&lt;ul&gt;
+&lt;li&gt;기존 존재하는 flow, 신규 할당한 flow entry 혹은 NULL&lt;/li&gt;
+&lt;li&gt;만일 NULL을 return하면 현재 수신한 mbuf를 death row에 추가한다. 불쌍한&amp;hellip;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;ip_frag_lookup()&lt;/code&gt;
+&lt;ul&gt;
+&lt;li&gt;if matched entry is exist
+&lt;ul&gt;
+&lt;li&gt;return flow entry&lt;/li&gt;
+&lt;li&gt;return &lt;code&gt;&amp;amp;stale&lt;/code&gt; if time-outed entry is exist&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;if new entry
+&lt;ul&gt;
+&lt;li&gt;return NULL&lt;/li&gt;
+&lt;li&gt;return free for new empty entry&lt;/li&gt;
+&lt;li&gt;return &lt;code&gt;&amp;amp;stale&lt;/code&gt; if time-outed entry is exist&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;ip_frag_key_cmp()&lt;/code&gt; return 0 if key matched&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;if &lt;code&gt;ip_frag_lookup()&lt;/code&gt; returns NULL
+&lt;ul&gt;
+&lt;li&gt;if stale entry is not NULL, remove it with &lt;code&gt;ip_frag_tbl_del()&lt;/code&gt; and save to free for reuse&lt;/li&gt;
+&lt;li&gt;even if free is not NULL, check if &lt;code&gt;tbl-&amp;gt;use_entries&lt;/code&gt; does not exceed &lt;code&gt;tbl-&amp;gt;max_entries&lt;/code&gt;. If so, check if the LRU entry is timeouted, then free the LRU entry. Otherwise, fail to add new entry to the tbl&lt;/li&gt;
+&lt;li&gt;tbl에서 할당하는 것고 &lt;code&gt;max_entries&lt;/code&gt;, &lt;code&gt;use_entries&lt;/code&gt;간의 차이점은??&lt;/li&gt;
+&lt;li&gt;If free is not NULL, add new flow to this free entry&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;if &lt;code&gt;ip_frag_lookup()&lt;/code&gt; returns non-NULL
+&lt;ul&gt;
+&lt;li&gt;if timeouted, reuse it for the received flow&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;tbl-&amp;gt;use_entries—; del_num++&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;ip_frag_process()&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;rte_ip_frag_free_death_row()&lt;/code&gt; 주기적으로 호출해줘야 함&lt;/li&gt;
+&lt;/ul&gt;</description></item><item><title>DPDK new mbuf 사용 주의사항</title><link>https://cychong47.github.io/post/2016/header-length-in-mbuf/</link><pubDate>Sun, 06 Mar 2016 08:22:24 +0900</pubDate><guid>https://cychong47.github.io/post/2016/header-length-in-mbuf/</guid><description>&lt;p&gt;&lt;code&gt;l2_len&lt;/code&gt;, &lt;code&gt;l3_len&lt;/code&gt;, &lt;code&gt;l4_len&lt;/code&gt; 등을 사용하는 라이브러리가 존재함&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;reassembly&lt;/li&gt;
+&lt;li&gt;Tx checksum offload&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id="reassembly"&gt;Reassembly&lt;/h3&gt;
+&lt;p&gt;&lt;code&gt;rte_ipv6_frag_reassemble_packet()&lt;/code&gt;, &lt;code&gt;rte_ipv4_frag_reassemble_packet()&lt;/code&gt;
+Incoming mbuf should have its &lt;code&gt;l2_len&lt;/code&gt; and &lt;code&gt;l3_len&lt;/code&gt; fields setup correctly.&lt;/p&gt;
+&lt;h3 id="l4-checksum-hw-offloading"&gt;L4 checksum HW offloading&lt;/h3&gt;
+&lt;p&gt;To use hardware L4 checksum offload, the user needs to&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;fill &lt;code&gt;l2_len&lt;/code&gt; and &lt;code&gt;l3_len&lt;/code&gt; in mbuf&lt;/li&gt;
+&lt;li&gt;set the flags &lt;code&gt;PKT_TX_TCP_CKSUM&lt;/code&gt;, &lt;code&gt;PKT_TX_SCTP_CKSUM&lt;/code&gt; or &lt;code&gt;PKT_TX_UDP_CKSUM&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;set the flag &lt;code&gt;PKT_TX_IPV4&lt;/code&gt; or &lt;code&gt;PKT_TX_IPV6&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;calculate the pseudo header checksum and set it in the L4 header (only for TCP or UDP). See &lt;code&gt;rte_ipv4_phdr_cksum()&lt;/code&gt; and &lt;code&gt;rte_ipv6_phdr_cksum()&lt;/code&gt;. For SCTP, set the crc field to 0.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id="l3-checksum-hw-offloading"&gt;L3 checksum HW offloading&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;set the flag &lt;code&gt;PKT_TX_IPV4&lt;/code&gt; (IP checksum은 IPv4에만 존재)&lt;/li&gt;
+&lt;li&gt;set the IP checksum field in the packet to 0&lt;/li&gt;
+&lt;li&gt;fill the mbuf offload information: &lt;code&gt;l2_len&lt;/code&gt;, &lt;code&gt;l3_len&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;PKT_TX_IP_CKSUM&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id="ip-checksum-offloading"&gt;IP checksum offloading&lt;/h3&gt;
+&lt;p&gt;example from &lt;code&gt;prog_guide/mbuf_lib.rst&lt;/code&gt;&lt;/p&gt;</description></item><item><title>KNI가 buffer를 free 하는 방법</title><link>https://cychong47.github.io/post/2016/how_kni_free_mbuf/</link><pubDate>Sun, 06 Mar 2016 08:17:58 +0900</pubDate><guid>https://cychong47.github.io/post/2016/how_kni_free_mbuf/</guid><description>&lt;h1 id="dpdk-to-kni-rx"&gt;DPDK to KNI RX&lt;/h1&gt;
+&lt;p&gt;KNI는 &lt;code&gt;rx_q&lt;/code&gt;로부터 mbuf를 수신한 후 &lt;code&gt;data_len&lt;/code&gt; 크기의 skb를 할당하여 데이터를 복사한 후 &lt;code&gt;netif_rx&lt;/code&gt;를 호출한다.
+그러므로 mbuf는 KNI kernel module까지만 사용되고, 커널 networking stack에서는 사용되지는 않는다.&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;kni_net.c&lt;/code&gt;의 &lt;code&gt;kni_net_rx_normal()&lt;/code&gt; 함수가 DPDK application으로부터 mbuf를 받아 커널에 전달하는 함수인데 실제 함수는 batch processing을 위해 한번에 여러 개의 패킷을 &lt;code&gt;rx_q&lt;/code&gt;로부터 읽어 처리하도록 구현되어 있다.&lt;/p&gt;
+&lt;p&gt;아래는 하나의 패킷에 대해 수행되는 코드를 간략화 한 것이다(예외 처리 부분도 제외)&lt;/p&gt;
+&lt;pre tabindex="0"&gt;&lt;code&gt;num_rx = kni_fifo_get(kni-&amp;gt;rx_q, (void **)va, num_rx);
+
+kva = (void *)va[i] - kni-&amp;gt;mbuf_va + kni-&amp;gt;mbuf_kva;
+len = kva-&amp;gt;data_len;
+data_kva = kva-&amp;gt;buf_addr + kva-&amp;gt;data_off - kni-&amp;gt;mbuf_va + kni-&amp;gt;mbuf_kva;
+
+skb = dev_alloc_skb(len + 2);
+
+/* Align IP on 16B boundary */
+skb_reserve(skb, 2);
+memcpy(skb_put(skb, len), data_kva, len);
+skb-&amp;gt;dev = dev;
+skb-&amp;gt;protocol = eth_type_trans(skb, dev);
+skb-&amp;gt;ip_summed = CHECKSUM_UNNECESSARY;
+
+/* Call netif interface */
+netif_rx(skb);
+
+/* Update statistics */
+kni-&amp;gt;stats.rx_bytes += len;
+kni-&amp;gt;stats.rx_packets++;
+
+/* Burst enqueue mbufs into free_q */
+ret = kni_fifo_put(kni-&amp;gt;free_q, (void **)va, num_rx);
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;In case DPDK application restarted&lt;/p&gt;</description></item><item><title>fd.io</title><link>https://cychong47.github.io/post/2016/fd-io/</link><pubDate>Sat, 13 Feb 2016 01:29:43 +0900</pubDate><guid>https://cychong47.github.io/post/2016/fd-io/</guid><description>&lt;p&gt;2016년 2월 11일 공개된 CISCO 주도의 프로젝트.
+무려 2002년부터 개발한 것으로 현재 버전은 3번째 revision이라고 한다.&lt;br&gt;
+간만에 dpdk.org mailing list에 들어갔다 가장 최근에 올라온 글 제목이 눈에 띄었다.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;[dpdk-dev] [dpdk-announce] new project using DPDK - FD.io Vincent JARDIN&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;&amp;ldquo;new project&amp;rdquo;?&lt;/p&gt;
+&lt;p&gt;그래서 내용을 봤더니 이게 다 였다는&lt;/p&gt;
+&lt;pre tabindex="0"&gt;&lt;code&gt;A new project using DPDK is available,
+ http://FD.io
+said
+ FiDo
+
+You can clone it from:
+ http://gerrit.fd.io/
+
+Best regards,
+ Vincent
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;그래도 첫 번째 링크를 따라가 보니 화려하다. CISCO, Ericsson, Intel이 platinum member네. 어딜가나 있는 여러 회사 이름도 보이고. Cavium도 있네. ODP를 밀고 있는데 잘 안되나? 물론 내용을 보면 조금 다르긴 하지만.&lt;br&gt;
+거기에 6wind도 있다. 역시 직접적인 경쟁회사라고 볼 수도 있을 텐데. E, H사가 보이는데 N사는 아직 없다. OFP에 집중하려는 걸까&lt;/p&gt;</description></item><item><title>DPDK NIC 초기화</title><link>https://cychong47.github.io/post/2016/dpdk_nic_init/</link><pubDate>Tue, 09 Feb 2016 14:54:21 +0900</pubDate><guid>https://cychong47.github.io/post/2016/dpdk_nic_init/</guid><description>&lt;h3 id="constructor-attribute"&gt;constructor attribute&lt;/h3&gt;
+&lt;p&gt;&lt;a href="http://phoxis.org/2011/04/27/c-language-constructors-and-destructors-with-gcc/"&gt;http://phoxis.org/2011/04/27/c-language-constructors-and-destructors-with-gcc/&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;constructor attribute을 가진 함수는 main 함수를 실행하기 전에 호출한다.&lt;/p&gt;
+&lt;p&gt;예제 (&lt;a href="http://phoxis.org/2011/04/27/c-language-constructors-and-destructors-with-gcc/"&gt;출처&lt;/a&gt;)&lt;/p&gt;
+&lt;pre tabindex="0"&gt;&lt;code&gt;#include &amp;lt;stdio.h&amp;gt;
+ 
+void begin (void) __attribute__((constructor));
+void end (void) __attribute__((destructor));
+ 
+int main (void)
+{
+ printf (&amp;#34;\nInside main ()&amp;#34;);
+}
+ 
+void begin (void)
+{
+ printf (&amp;#34;\nIn begin ()&amp;#34;);
+}
+ 
+void end (void)
+{
+ printf (&amp;#34;\nIn end ()\n&amp;#34;);
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;실행하면&lt;/p&gt;
+&lt;pre tabindex="0"&gt;&lt;code&gt;In begin ()
+Inside main ()
+In end ()
+&lt;/code&gt;&lt;/pre&gt;&lt;h3 id="dpdk"&gt;DPDK&lt;/h3&gt;
+&lt;p&gt;DPDK의 경우 device driver들을 모두 constructor attirbute을 사용해서 main 함수 전에 호출되록 한다.&lt;/p&gt;</description></item><item><title>SR-IOV and DPDK</title><link>https://cychong47.github.io/post/2016/sriov-and-dpdk/</link><pubDate>Sun, 07 Feb 2016 23:40:26 +0900</pubDate><guid>https://cychong47.github.io/post/2016/sriov-and-dpdk/</guid><description>&lt;p&gt;SR-IOV and DPDK&lt;/p&gt;
+&lt;p&gt;&lt;a href="http://www.metaswitch.com/the-switch/accelerating-the-nfv-data-plane"&gt;Accelerating the NFV Data Plane : SR-IOV and DPDK… in my own words&lt;/a&gt; 를 읽고 요약&lt;/p&gt;
+&lt;h2 id="before-hw-assisted-virtualisation"&gt;Before HW assisted Virtualisation&lt;/h2&gt;
+&lt;p&gt;SR-IOV 전까지는 VMM이 패킷 송수신에 매번 개입해야 했음.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;1st interrupt from NIC to VMM&lt;/li&gt;
+&lt;li&gt;2nd interrupt from VMM to VM&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id="intel-vmdq"&gt;Intel VMDq&lt;/h2&gt;
+&lt;p&gt;Only one interrupt from NIC to VM as each VM has its own Rx queue.&lt;/p&gt;
+&lt;h2 id="sr-iov"&gt;SR-IOV&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;SR-IOV : Standard IO memory Memory Management Unit from Intel(VT-d) and AMD(IOV)&lt;/li&gt;
+&lt;li&gt;Virtual Function - Limited, lightweight, PCIe resource and a dedicated Tx/Rx packet queue&lt;/li&gt;
+&lt;li&gt;Interrupt 부담이 없다고 하는데 왜??? 마지막 결론에서는 SR-IOV를 사용하면 interrupt를 두 개 다 없앨 수 있다고 하는데 이 부분은 잘 이해가 안된다.
+HW 기반&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id="sr-iov-and-vswitch"&gt;SR-IOV and vSwitch&lt;/h2&gt;
+&lt;p&gt;SR-IOV는 VMM의 부담을 덜어주는 장점을 가지고 있지만, 반대로 vSwitch가 제공할 수 있는 네트웍 기능들 - portability, flexibility, QoS, complex traffic steering 등을 이용할 수 없게 되었다는. 문제는 이런 기능들이 NFV환경에서 필요하고(할 거고). vSwitch의 기능을 사용할 수 없으면 service chaining 같은 건 고민할 것도 없고, 위 기능들을 모두 각 VNF에서 구현해야 하는데. 물론 기존 PNF가 그랬던 것 처럼 못할 것도 없지만, 한 곳에 모아놓은 VNF사이에 구현해야 하는 공통 기능이면 가능하면 NFVI에서 구현할 수 있으면 좋겠지&lt;/p&gt;</description></item><item><title>DPDK based applications</title><link>https://cychong47.github.io/post/2016/dpdk_based_apps/</link><pubDate>Sun, 24 Jan 2016 14:59:18 +0900</pubDate><guid>https://cychong47.github.io/post/2016/dpdk_based_apps/</guid><description>&lt;p&gt;2016.02.10 기준&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;a href="https://github.com/marty90/DPDK-Dump"&gt;DPDK-dump&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="http://trex-tgn.cisco.com"&gt;TRex - Realistic traffic generator&lt;/a&gt;&lt;br&gt;
+&lt;a href="https://github.com/cisco-system-traffic-generator"&gt;git-hub&lt;/a&gt; - &lt;a href="https://github.com/cisco-system-traffic-generator/trex-core"&gt;trex-core&lt;/a&gt;, &lt;a href="https://github.com/cisco-system-traffic-generator/trex-doc"&gt;trex-doc&lt;/a&gt;, &lt;a href="https://github.com/cisco-system-traffic-generator/trex-profiles"&gt;trex-profiles&lt;/a&gt;, &lt;a href="https://github.com/cisco-system-traffic-generator/trex-qt-gui"&gt;trex-qt-gui&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://www.gandi.net/news/en/2015-12-16/6308-packet-journey_a_free_software_router_for_linux_based_on_dpdk/"&gt;Packet-journey&lt;/a&gt;
+&lt;a href="https://github.com/Gandi/packet-journey"&gt;git-hub&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="http://fd.io"&gt;FD.io&lt;/a&gt; Fast Data Path&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/opendp/dpdk-nginx"&gt;DPDK-nginx&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="http://dpdk.org/browse/apps/pktgen-dpdk/refs/"&gt;DPDK-pktgen&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/opendp/dpdk-odp"&gt;DPDK-ODP&lt;/a&gt; TCP/IP stack for DPDK&lt;/li&gt;
+&lt;/ol&gt;</description></item><item><title>DPDK QAT example 빌드하기</title><link>https://cychong47.github.io/post/2016/build_dpdk_qat/</link><pubDate>Fri, 01 Jan 2016 10:57:39 +0900</pubDate><guid>https://cychong47.github.io/post/2016/build_dpdk_qat/</guid><description>&lt;h3 id="download-dpdk-220targz"&gt;Download dpdk-2.2.0.tar.gz&lt;/h3&gt;
+&lt;p&gt;Refer &lt;a href="http://dpdk.org/download"&gt;http://dpdk.org/download&lt;/a&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;wget http://dpdk.org/browse/dpdk/snapshot/dpdk-2.2.0.tar.gz
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id="download-qat_mux"&gt;Download qat_mux&lt;/h3&gt;
+&lt;p&gt;Refer &lt;a href="https://01.org/packet-processing/intel"&gt;https://01.org/packet-processing/intel&lt;/a&gt;®-quickassist-technology-drivers-and-patches&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;wget https://01.org/sites/default/files/page/qatmux.l.2.5.0-80.tgz 
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Getting Started Guide 문서도 받아 둔다.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;wget https://01.org/sites/default/files/page/330750-004_qat_gsg.pdf 
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id="configure-dpdk"&gt;Configure DPDK&lt;/h3&gt;
+&lt;pre&gt;&lt;code&gt;export RTE_SDK=/home/cychong/work/dpdk-2.2.0 
+export RTE_TARGET=x86_64-native-linuxapp-gcc
+make config T=$RTE_TARGET O=$RTE_TARGET
+make 
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id="configure-qat"&gt;Configure QAT&lt;/h3&gt;
+&lt;p&gt;Ubuntu (14.04) 기준으로 몇 개 패키지를 설치해야 QAT를 빌드할 수 있는데 나름 기본적인 패키지들이라 그냥 설치해 놓으면 좋을 듯.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;sudo apt-get install zlib1g-dev
+sudo apt-get install libssl-dev
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;적당한 위치에 풀면 되는데 &lt;code&gt;~/work/qat&lt;/code&gt;에 압축을 푼 경우를 기준으로 정리&lt;/p&gt;</description></item><item><title>CISCO Cloud Service Platform 2100</title><link>https://cychong47.github.io/post/2015/cisco-cloud-service-platform-2100/</link><pubDate>Mon, 23 Nov 2015 14:24:35 +0900</pubDate><guid>https://cychong47.github.io/post/2015/cisco-cloud-service-platform-2100/</guid><description>&lt;p&gt;&lt;a href="http://www.cisco.com/c/en/us/products/collateral/switches/cloud-services-platform-2100/datasheet-c78-735317.html"&gt;Data sheet&lt;/a&gt; (&lt;a href="http://www.cisco.com/c/en/us/products/collateral/switches/cloud-services-platform-2100/datasheet-c78-735317.pdf"&gt;PDF&lt;/a&gt;)&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Some Cisco virtual network services that use the DPDK include Cisco Cloud Services Router (CSR) 1000V, Cisco Virtual Mobile Packet Core software, and Cisco IOS® XR 9000v virtual router.&lt;/li&gt;
+&lt;li&gt;Supporte CISCO appliances
+&lt;ul&gt;
+&lt;li&gt;Cisco Cloud Services Router (CSR) 1000V virtual router&lt;/li&gt;
+&lt;li&gt;Cisco Virtual Adaptive Security Appliance (ASAv)&lt;/li&gt;
+&lt;li&gt;Cisco Prime™ Data Center Network Manager (DCNM)&lt;/li&gt;
+&lt;li&gt;Cisco Virtual Network Analysis Module (vNAM)&lt;/li&gt;
+&lt;li&gt;Cisco Virtual Security Gateway (VSG) for Cisco Nexus® 1000V Switch deployments&lt;/li&gt;
+&lt;li&gt;Cisco Virtual Supervisor Module (VSM) for Cisco Nexus 1000V Switch deployments&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;1U&lt;/li&gt;
+&lt;li&gt;2 CPU, each has 8 core Ivy Bridge(E5-2630 v3)&lt;/li&gt;
+&lt;li&gt;REST API&lt;/li&gt;
+&lt;li&gt;It uses REST API and NETCONF protocol for north-bound management and orchestration (MANO) tools.&lt;/li&gt;
+&lt;li&gt;Network services could be abstracted to a pool of high-availability resources among several hosts.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;a href="http://www.cisco.com/c/dam/en/us/solutions/collateral/service-provider/network-functions-virtualization-nfv/nfv-partnership.pdf"&gt;Cisco Systems and Intel Corporation NFV Partnership&lt;/a&gt;&lt;/p&gt;</description></item><item><title>DPDK IP reassembly example</title><link>https://cychong47.github.io/post/2015/dpdk-ip-reassembly-example/</link><pubDate>Tue, 17 Nov 2015 13:49:57 +0900</pubDate><guid>https://cychong47.github.io/post/2015/dpdk-ip-reassembly-example/</guid><description>&lt;pre&gt;&lt;code&gt;TAILQ_HEAD(ip_pkt_list, ip_frag_pkt); /**&amp;lt; @internal fragments tailq */
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id="자료-구조체"&gt;자료 구조체&lt;/h3&gt;
+&lt;h5 id="fragment-관리용-table"&gt;Fragment 관리용 table&lt;/h5&gt;
+&lt;pre&gt;&lt;code&gt;struct rte_ip_frag_tbl *frag_tbl; 
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;locking 없이 IP reassembly를 수행할 단위(통상 core)로 한 개씩 만든다. 즉 하나의 core가 여러 rx queue를 처리하더라도 하나의 &lt;code&gt;frag_tbl&lt;/code&gt;만 가지면 된다.&lt;br&gt;
+아래 &lt;code&gt;rte_ip_frag_table_create()&lt;/code&gt;함수를 이용해서 생성한다.&lt;/p&gt;
+&lt;h5 id="struct-rte_ip_frag_death_row-death_row"&gt;&lt;code&gt;struct rte_ip_frag_death_row death_row&lt;/code&gt;&lt;/h5&gt;
+&lt;p&gt;core별로 갖는 death_row. IP reassembly를 호출한 후 해당 함수내에서 free할 mbuf를 이 리스트에 담아줌.&lt;br&gt;
+main loop에서 reassembly작업 후 &lt;code&gt;rte_ip_frag_free_death_row()&lt;/code&gt;함수를 호출해 reassembly에 실패한 mbuf를 free함&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;IP_MAX_FRAG_NUM&lt;/code&gt; defines the maximum fragments of one reassembly. Defined same as &lt;code&gt;RTE_LIBRTE_IP_FRAG_MAX_FRAG&lt;/code&gt; aka 4.&lt;/p&gt;</description></item><item><title>Running DPDK on VMware Fusion</title><link>https://cychong47.github.io/post/2015/running-dpdk-on-vmware-fusion/</link><pubDate>Tue, 20 Oct 2015 14:19:05 +0900</pubDate><guid>https://cychong47.github.io/post/2015/running-dpdk-on-vmware-fusion/</guid><description>&lt;p&gt;VirtualBox supports emulated e1000 NIC for VM while VMware fusion does not. &lt;strong&gt;VMware Fusion&amp;rsquo;s VM setting does not support configuring of NIC HW type&lt;/strong&gt;. The NIC HW is PCnet32 which is not supported by DPDK.&lt;/p&gt;
+&lt;p&gt;However, we can change NIC HW type by editing VM configuration file directly.&lt;/p&gt;
+&lt;p&gt;Refer : &lt;a href="http://thesolutionsarchitect.net/how-to-emulate-10-gbps-nic-in-a-vmware-fusion-vm/"&gt;How to emulate 10 Gbps NIC in a VMware Fusion VM&lt;/a&gt;&lt;/p&gt;
+&lt;h5 id="edit-vmx-file-to"&gt;Edit vmx file to&lt;/h5&gt;
+&lt;p&gt;VMX file is in where vmware image located&lt;/p&gt;</description></item><item><title>TRex - DPDK based traffic generator</title><link>https://cychong47.github.io/post/2015/trex-dpdk-based-traffic-generator/</link><pubDate>Mon, 12 Oct 2015 13:11:14 +0900</pubDate><guid>https://cychong47.github.io/post/2015/trex-dpdk-based-traffic-generator/</guid><description>&lt;p&gt;DPDK Userspace in Dublin 2015에서 발표&lt;/p&gt;
+&lt;p&gt;Stageful traffic generator&lt;/p&gt;
+&lt;h5 id="특징"&gt;특징&lt;/h5&gt;
+&lt;ul&gt;
+&lt;li&gt;Generate traffic based on templates of real, captured flows&lt;/li&gt;
+&lt;li&gt;No TCP/IP stack&lt;/li&gt;
+&lt;li&gt;Up to 200Gbps with standard server hardware&lt;/li&gt;
+&lt;li&gt;Low cost 1RU (C220M UCS-1RU)&lt;/li&gt;
+&lt;li&gt;Cisco internal&lt;/li&gt;
+&lt;li&gt;DPDK, ZMQ, Python libs&lt;/li&gt;
+&lt;li&gt;Virtualization(vmxnet3/e1000)&lt;/li&gt;
+&lt;li&gt;~20Gbps per core&lt;/li&gt;
+&lt;li&gt;Generate flow templates&lt;/li&gt;
+&lt;li&gt;Support 1K templates&lt;/li&gt;
+&lt;li&gt;Yaml based traffic profile&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h5 id="gui"&gt;GUI&lt;/h5&gt;
+&lt;p&gt;GUI which monitors real-time properties of TRex - min/max/average latency, jitter&lt;/p&gt;
+&lt;h5 id="python-연동"&gt;Python 연동&lt;/h5&gt;
+&lt;p&gt;&lt;img src="https://cychong47.github.io/images/2015/10/TRex_realistic_traffic_generator.png" alt=""&gt;&lt;/p&gt;
+&lt;h5 id="code"&gt;Code&lt;/h5&gt;
+&lt;p&gt;&lt;a href="https://github.com/cisco-system-traffic-generator/trex-core"&gt;https://github.com/cisco-system-traffic-generator/trex-core&lt;/a&gt;&lt;/p&gt;</description></item><item><title>DPDK Coding style</title><link>https://cychong47.github.io/post/2015/dpdk-coding-style/</link><pubDate>Thu, 21 May 2015 14:51:37 +0900</pubDate><guid>https://cychong47.github.io/post/2015/dpdk-coding-style/</guid><description>&lt;p&gt;출처 : &lt;a href="http://dpdk.org/ml/archives/dev/2015-May/017666.html"&gt;DPDK mailing list&lt;/a&gt;&lt;/p&gt;
+&lt;h1 id="coding-style"&gt;Coding Style&lt;/h1&gt;
+&lt;h2 id="description"&gt;Description&lt;/h2&gt;
+&lt;p&gt;This document specifies the preferred style for source files in the DPDK
+source tree. It is based on the Linux Kernel coding guidelines and the
+FreeBSD 7.2 Kernel Developer&amp;rsquo;s Manual (see man style(9)), but was
+heavily modified for the needs of the DPDK.&lt;/p&gt;
+&lt;h2 id="general-guidelines"&gt;General Guidelines&lt;/h2&gt;
+&lt;p&gt;The rules and guidelines given in this document cannot cover every
+situation, so the following general guidelines should be used as a
+fallback:&lt;/p&gt;</description></item><item><title>Intel Embedded Tech Forum 2014</title><link>https://cychong47.github.io/post/2014/intel-embedded-tech-forum-2014/</link><pubDate>Tue, 09 Dec 2014 10:38:08 +0900</pubDate><guid>https://cychong47.github.io/post/2014/intel-embedded-tech-forum-2014/</guid><description>&lt;h1 id="small-cell"&gt;Small Cell&lt;/h1&gt;
+&lt;ul&gt;
+&lt;li&gt;Big Cell&lt;/li&gt;
+&lt;li&gt;256 user 이하를 small cell로 정의&lt;/li&gt;
+&lt;li&gt;mini-CRAN&lt;/li&gt;
+&lt;li&gt;Paris Hill SOC을 이용하는 경우 RRH에서 LTE/3G DSP+DFE 까지 처리하고 Ethernet으로 IA core로 전달. Altiostar 구조와 유사한 듯
+&lt;ul&gt;
+&lt;li&gt;Wifi 와 3G/4G까지 지원하는 차세대 SOC&lt;/li&gt;
+&lt;li&gt;2/4/8 core까지 지원&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Aricent와 협업하여 L1/L2/L3 Protocol stack 개발&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h1 id="onp"&gt;ONP&lt;/h1&gt;
+&lt;ul&gt;
+&lt;li&gt;Red Rock Canyon
+&lt;ul&gt;
+&lt;li&gt;Las Vegas에서 30분 가량 걸리는 거리&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Switch와 NIC 통합&lt;/li&gt;
+&lt;li&gt;PCI-e를 지원해서 NIC없이 Xeon을 직접 연결할 수 있음.&lt;/li&gt;
+&lt;li&gt;150page 가량의 report&lt;/li&gt;
+&lt;li&gt;ONP 1.1 버전. 1.2 버전은 각 OSS 버전을 업데이트할 계획
+&lt;ul&gt;
+&lt;li&gt;OpenStack Juno&lt;/li&gt;
+&lt;li&gt;OpenDayLight Helium&lt;/li&gt;
+&lt;li&gt;DPDK v1.8&lt;/li&gt;
+&lt;li&gt;Haswell 2600 v3&lt;/li&gt;
+&lt;li&gt;Ethernet Controller Fortvillle XL710&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;NTT lagopus SDN Controller
+&lt;ul&gt;
+&lt;li&gt;OpenFlow 1.3&lt;/li&gt;
+&lt;li&gt;&lt;a href="http://lagopus.github.io"&gt;http://lagopus.github.io&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;2 RX, 4 Processing, 2 Tx cores&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Juniper Virtual NX - DPDK based router
+&lt;ul&gt;
+&lt;li&gt;vMX can run in the most popular hypervisors, including: KVM, VMware, and Xen. The vMX can even run in Docker containers and on bare metal.&lt;/li&gt;
+&lt;li&gt;Buyers will be able to buy either license in increments based on capacity, for example in 100M, 1G, or 10G sizes, or any combination thereof.&lt;/li&gt;
+&lt;li&gt;&lt;a href="http://www.juniper.net/us/en/products-services/routing/mx-series/vmx/"&gt;http://www.juniper.net/us/en/products-services/routing/mx-series/vmx/&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h1 id="windriver"&gt;WindRiver&lt;/h1&gt;
+&lt;ul&gt;
+&lt;li&gt;CIE(Contents Inspection Engine)
+&lt;ul&gt;
+&lt;li&gt;Intel Hyperscan 사용&lt;/li&gt;
+&lt;li&gt;&lt;a href="http://www.intel.com/content/dam/www/public/us/en/documents/presentation/wind-river-intelligent-network-platform-presentation.pdf"&gt;http://www.intel.com/content/dam/www/public/us/en/documents/presentation/wind-river-intelligent-network-platform-presentation.pdf&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Titanium Server
+&lt;ul&gt;
+&lt;li&gt;OPNFV 와 유사하게 OSS들의 조합으로 구성 Carrier Grade 요구에 맞게 hardening
+&lt;ul&gt;
+&lt;li&gt;Carrier Grade Linux&lt;/li&gt;
+&lt;li&gt;Carrier grade high-performance Kernel-based Virtual Machine (KVM) virtualization&lt;/li&gt;
+&lt;li&gt;Carrier grade accelerated vSwitch - 20Gbps on 2 cores&lt;/li&gt;
+&lt;li&gt;Carrier grade OpenStack&lt;/li&gt;
+&lt;li&gt;Carrier grade middleware&lt;/li&gt;
+&lt;li&gt;Lifecycle development tools&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;a href="http://www.windriver.com/products/titanium-server/"&gt;http://www.windriver.com/products/titanium-server/&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;1초내 VM 복구 등&lt;/li&gt;
+&lt;li&gt;Live migration in 200ms&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h1 id="communication-infrastructure-platform"&gt;Communication Infrastructure Platform&lt;/h1&gt;
+&lt;ul&gt;
+&lt;li&gt;Broadwell-DE
+&lt;ul&gt;
+&lt;li&gt;10G 2개 포함&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h1 id="intel-software-platform-solution"&gt;Intel Software Platform Solution&lt;/h1&gt;
+&lt;ul&gt;
+&lt;li&gt;Intel System Studio&lt;/li&gt;
+&lt;li&gt;3Ghz CPU에서 10Gbps를 지원하려면 201cycle. Spin lock에 60-90 cycle, task switch에 300 cycle&lt;/li&gt;
+&lt;li&gt;Haswell은 20 core/CPU 지원. HT 켜고 QPI 연결하면 80개 logical core&lt;/li&gt;
+&lt;li&gt;OVS 2.4에서 공식적으로 DPDK 지원 포함&lt;/li&gt;
+&lt;li&gt;Linux UIO is replaced by VFIO
+&lt;ul&gt;
+&lt;li&gt;DPDK 1.7.0부터 VFIO 지원&lt;/li&gt;
+&lt;li&gt;&lt;a href="http://lwn.net/Articles/474088/"&gt;Safe device assignment with VFIO&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="http://www.linux-kvm.org/wiki/images/d/d1/2011-forum-VFIO.pdf"&gt;VFIO PCI device assignment breaks free of KVM&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="http://www.mjmwired.net/kernel/Documentation/vfio.txt"&gt;Documentation / vfio.txt&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="http://www.linux-kvm.org/wiki/images/b/b4/2012-forum-VFIO.pdf"&gt;VFIO : A User&amp;rsquo;s perspective&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;</description></item><item><title>R.I.P OVDK</title><link>https://cychong47.github.io/post/2014/r-i-p-ovdk/</link><pubDate>Thu, 27 Nov 2014 14:47:38 +0900</pubDate><guid>https://cychong47.github.io/post/2014/r-i-p-ovdk/</guid><description>&lt;p&gt;며칠 밖에 보지 않았지만, 그래도 내용을 분석해 보려고 했던 OVDK인데, 오늘 기사를 보니 Intel에서 공식적으로 OVDK의 개발 중단을 발표했단다.&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://www.sdncentral.com/news/intel-dead-ends-fork-open-vswitch/2014/11/"&gt;Intel Dead-Ends Its Fork of Open vSwitch&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Data path(Fast path)를 커널 모듈에서 처리하는 OVS를 fork해서 DPDK를 이용해서 user space에 Fast Path를 만들려고 했는데 그러다 보니 역시 계속해서 발전하는 OVS의 기능을 수용하기 부담스러웠나 보다. 더군다나 OVS에서도 experimental feature이긴 하지만 DPDK를 이용하는 코드도 있다고 하니.&lt;/p&gt;
+&lt;p&gt;내년 초에 나올 다음 버전 OVS에 공식 기능으로 들어가길 기대한다고.&lt;/p&gt;</description></item><item><title>DPDK Summit 2014 Videos</title><link>https://cychong47.github.io/post/2014/dpdk-summit-2014-videos/</link><pubDate>Wed, 19 Nov 2014 13:59:07 +0900</pubDate><guid>https://cychong47.github.io/post/2014/dpdk-summit-2014-videos/</guid><description>&lt;ul&gt;
+&lt;li&gt;&lt;a href="https://www.youtube.com/watch?v=qpfwDySweUA"&gt;Application Performance Tuning and Future Optimizations in DPDK&lt;/a&gt; by Venky Venkatesan&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://www.youtube.com/watch?v=EgjX0chfIcI&amp;amp;spfreload=10"&gt;DPDK in a Virtual World&lt;/a&gt; by Bhavesh Davda Rashmin Patel&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://www.youtube.com/watch?v=mv8dB2GiaIw&amp;amp;spfreload=10"&gt;High Performance Networking Leveraging the DPDK and the Growing Community&lt;/a&gt; by Thomas Monj alon&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://www.youtube.com/watch?v=907VShi799k&amp;amp;spfreload=10"&gt;Multi Socket Ferrari for NFV&lt;/a&gt; by Laszlo Vadkerti Andras Kovacs&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://www.youtube.com/watch?v=KaXfDjIhn0U&amp;amp;spfreload=10"&gt;Lightning Fast IO with PacketDirect&lt;/a&gt; by Gabriel Silva&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://www.youtube.com/watch?v=PSVHVDqGjcg&amp;amp;spfreload=10"&gt;A High Performance vSwitch of the User by the User for the User&lt;/a&gt; by Yoshihiro Nakajima&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://www.youtube.com/watch?v=jZYPtYPXYuU&amp;amp;spfreload=10"&gt;Is It Time to Revisit the IP Stack in the Linux Kernel and KVM&lt;/a&gt; by Jun Xu&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://www.youtube.com/watch?v=r-JA5NBybrs&amp;amp;spfreload=10"&gt;Closing Remarks&lt;/a&gt; by Tim ODriscoll&lt;/li&gt;
+&lt;/ul&gt;</description></item><item><title>DPDK on VirtualBox</title><link>https://cychong47.github.io/post/2014/dpdk-on-virtualbox/</link><pubDate>Tue, 23 Sep 2014 15:37:21 +0900</pubDate><guid>https://cychong47.github.io/post/2014/dpdk-on-virtualbox/</guid><description>&lt;h1 id="virtualbox에-dpdk-설치하기"&gt;VirtualBox에 DPDK 설치하기&lt;/h1&gt;
+&lt;p&gt;&lt;a href="http://plvision.eu/blog/deploying-intel-dpdk-in-oracle-virtualbox/#"&gt;참고&lt;/a&gt;&lt;/p&gt;
+&lt;h1 id="virtualbox-설치하기"&gt;VirtualBox 설치하기&lt;/h1&gt;
+&lt;p&gt;통상적인 절차대로 VirtualBox를 설치하고, Ubuntu 14.04 LTS 설치한다. DPDK는 32bit와 64bit를 모두 지원하지만 64비트를 사용하는 것이 좋다. Application에 따라 많은 양의 Memory를 사용할 수도 있으므로.&lt;/p&gt;
+&lt;h2 id="nic-카드-추가"&gt;NIC 카드 추가&lt;/h2&gt;
+&lt;p&gt;VirtualBox가 지원하는 NIC에 Intel 82540EM과 82545EM이 있다. 둘 다 DPDK에서 지원하는 1G NIC이다. 이 중에서 82545EM 카드를 2개 추가한다.&lt;/p&gt;
+&lt;p&gt;VirtualBox의 Guest OS를 종료시킨 상태에서 환경 설정에서 &lt;code&gt;Network &amp;gt; Adapter&lt;/code&gt; 항목에서 Adapter 2, Adapter 3를 활성화시킨다.&lt;/p&gt;
+&lt;p&gt;그 결과 총 3개의 NIC이 설치되었다.&lt;/p&gt;</description></item><item><title>SDN expert group 세미나 - Play with DPDK</title><link>https://cychong47.github.io/post/2014/sdn-expert-group-semina-play-with-dpdk/</link><pubDate>Thu, 21 Aug 2014 12:11:18 +0900</pubDate><guid>https://cychong47.github.io/post/2014/sdn-expert-group-semina-play-with-dpdk/</guid><description>&lt;h1 id="세미나-내용"&gt;세미나 내용&lt;/h1&gt;
+&lt;ul&gt;
+&lt;li&gt;Controller &amp;ndash;(OpenFlow)&amp;ndash; ovs-switchd &amp;ndash;(netlink)&amp;ndash; Datapath&lt;/li&gt;
+&lt;li&gt;Datapath is in the kernel space&lt;/li&gt;
+&lt;li&gt;OVDK move the kernel based OVS to user space.
+&lt;ul&gt;
+&lt;li&gt;ovs-switched talk to OVDK with UDP&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;기존 OVDK는 port별 task handler(각각 별도의 core에서 동작)
+&lt;ul&gt;
+&lt;li&gt;그 결과 많은 core 필요&lt;/li&gt;
+&lt;li&gt;WR 이야기처럼 VM간 혹은 VM과 외부와의 통신을 담당하는 OVS용으로 많은 core를 사용하면 실제로 VM이 사용할 수 있는 core 개수가 줄어들어 문제&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;virtIO 사용시 VM에서 동작하는 application이 kernel stack의 필요한 경우 결국 OVDK와 VM내 커널 space간 copy가 필요함
+&lt;ul&gt;
+&lt;li&gt;최신 버전에서는 VM에서도 KNI based virtIO를 이용하도록 개선함. 확인 필요&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Rainbow platform
+&lt;ul&gt;
+&lt;li&gt;DPDK의 log library를 이용해서 외부 log server로 실시간으로 메시지 보냄. sFlow나 netFlow는 실시간이 아니라고. 음..&lt;/li&gt;
+&lt;li&gt;log library에 대한 확인 필요. 쓸만하면 log library를 별도로 만들지 말고 이걸 사용하는 것도 좋을 듯.&lt;/li&gt;
+&lt;li&gt;log server는 NoSQL을 이용한 분석 서버라고&lt;/li&gt;
+&lt;li&gt;분석 서버에서 실시간 분석해서 의심되는 패킷을 받으면 OVS들에 명령을 내려 별도 DPI 서버로 경유하도록 해서 쉽게 Service Chaining 을 구현할 수 있다.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;DPDK를 접한 지는 오래 되었지만 초반에 한번 플랫폼이 정리된 후 크게 개선하지 못했다. 딱히 요구사항이 없어서 나름 안정된 걸 건드릴 이유를 찾지 못한 것이 표면적인 이유지만, 실은 기능 혹은 성능 개선을 해서 얻는 실질적인 장점이 별로 없어서.&lt;/p&gt;</description></item></channel></rss>

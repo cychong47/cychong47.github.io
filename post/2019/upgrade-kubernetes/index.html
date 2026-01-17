@@ -1,7 +1,270 @@
-<!doctype html><html class=no-js lang=en><head><meta charset=UTF-8><meta name=viewport content="width=device-width,initial-scale=1"><meta http-equiv=X-UA-Compatible content="IE=edge"><title>Upgrade kubernetes to 1.16.1 - Keep calm and write something</title>
-<script>(function(e,t){e[t]=e[t].replace("no-js","js")})(document.documentElement,"className")</script><meta name=description content><link rel=dns-prefetch href=//fonts.googleapis.com><link rel=dns-prefetch href=//fonts.gstatic.com><link rel=stylesheet href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700"><link rel=stylesheet href=/css/style.css><link rel=stylesheet href=/css/custom.css><link rel="shortcut icon" href=/favicon.ico></head><body class=body><div class="container container--outer"><header class=header><div class="container header__container"><div class=logo><a class=logo__link href=/ title="Keep calm and write something" rel=home><div class="logo__item logo__text"><div class=logo__title>Keep calm and write something</div><div class=logo__tagline>Just another blog</div></div></a></div><nav class=menu><button class=menu__btn aria-haspopup=true aria-expanded=false tabindex=0>
-<span class=menu__btn-title tabindex=-1>Menu</span></button><ul class=menu__list><li class=menu__item><a class=menu__link href=/page><span class=menu__text>Page</span></a></li><li class=menu__item><a class=menu__link href=/post><span class=menu__text>Post</span></a></li><li class=menu__item><a class=menu__link href=/series><span class=menu__text>Series</span></a></li></ul></nav></div></header><div class="wrapper flex"><div class=primary><main class=main role=main><article class=post><header class=post__header><h1 class=post__title>Upgrade kubernetes to 1.16.1</h1><div class="post__meta meta"><div class="meta__item-datetime meta__item"><svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class=meta__text datetime=2019-10-07T15:37:14+09:00>October 07, 2019</time>
-<time class=meta__text datetime=2019-10-07T15:39:18Z>(Last Modified: October 07, 2019)</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2 1 2h8v11H0V2z"/></svg><span class=meta__text><a class=meta__link href=/categories/homelab/ rel=category>Homelab</a></span></div></div></header><div class="post__toc toc"><div class=toc__title>Page content</div><div class=toc__menu><nav id=TableOfContents><ul><li><ul><li><a href=#failed>failed</a></li><li><a href=#retry>retry</a></li><li><a href=#upgrade-calico-from-v38-to-v39>Upgrade calico from v3.8 to v3.9</a></li></ul></li><li><a href=#upgrade-kubelet-and-kubectl>Upgrade kubelet and kubectl</a></li><li><a href=#check-the-status>Check the status</a></li></ul></nav></div></div><div class="content post__content clearfix"><pre tabindex=0><code>cychong@mini1:~/work/ghost-with-helm-x$ sudo apt update
+<!doctype html><html lang=en-us><head><meta http-equiv=X-Clacks-Overhead content="GNU Terry Pratchett"><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><title>Upgrade kubernetes to 1.16.1 | Keep calm and Write something</title><meta name=title content="Upgrade kubernetes to 1.16.1"><meta name=description content='cychong@mini1:~/work/ghost-with-helm-x$ sudo apt update
+[sudo] password for cychong:
+Ign:2 http://dl.google.com/linux/chrome/deb stable InRelease
+Hit:3 http://archive.ubuntu.com/ubuntu bionic InRelease
+Hit:4 https://download.docker.com/linux/ubuntu bionic InRelease
+Hit:5 http://dl.google.com/linux/chrome/deb stable Release
+Get:6 http://archive.ubuntu.com/ubuntu bionic-updates InRelease [88.7 kB]
+Hit:1 https://packages.cloud.google.com/apt kubernetes-xenial InRelease
+Get:8 http://archive.ubuntu.com/ubuntu bionic-backports InRelease [74.6 kB]
+Get:9 http://archive.ubuntu.com/ubuntu bionic-security InRelease [88.7 kB]
+Get:10 http://archive.ubuntu.com/ubuntu bionic-updates/main amd64 DEP-11 Metadata [295 kB]
+Get:11 http://archive.ubuntu.com/ubuntu bionic-updates/main DEP-11 48x48 Icons [73.8 kB]
+Get:12 http://archive.ubuntu.com/ubuntu bionic-updates/main DEP-11 64x64 Icons [147 kB]
+Get:13 http://archive.ubuntu.com/ubuntu bionic-updates/universe amd64 DEP-11 Metadata [254 kB]
+Get:14 http://archive.ubuntu.com/ubuntu bionic-updates/universe DEP-11 48x48 Icons [197 kB]
+Get:15 http://archive.ubuntu.com/ubuntu bionic-updates/universe DEP-11 64x64 Icons [453 kB]
+Get:16 http://archive.ubuntu.com/ubuntu bionic-updates/multiverse amd64 DEP-11 Metadata [2468 B]
+Get:17 http://archive.ubuntu.com/ubuntu bionic-backports/universe amd64 DEP-11 Metadata [7916 B]
+Get:18 http://archive.ubuntu.com/ubuntu bionic-security/main amd64 Packages [526 kB]
+Get:19 http://archive.ubuntu.com/ubuntu bionic-security/main Translation-en [176 kB]
+Get:20 http://archive.ubuntu.com/ubuntu bionic-security/main amd64 DEP-11 Metadata [38.5 kB]
+Get:21 http://archive.ubuntu.com/ubuntu bionic-security/main DEP-11 48x48 Icons [17.6 kB]
+Get:22 http://archive.ubuntu.com/ubuntu bionic-security/main DEP-11 64x64 Icons [41.5 kB]
+Get:23 http://archive.ubuntu.com/ubuntu bionic-security/universe amd64 Packages [611 kB]
+Get:24 http://archive.ubuntu.com/ubuntu bionic-security/universe Translation-en [203 kB]
+Get:25 http://archive.ubuntu.com/ubuntu bionic-security/universe amd64 DEP-11 Metadata [42.2 kB]
+Get:26 http://archive.ubuntu.com/ubuntu bionic-security/universe DEP-11 48x48 Icons [16.4 kB]
+Get:27 http://archive.ubuntu.com/ubuntu bionic-security/universe DEP-11 64x64 Icons [111 kB]
+Get:28 http://archive.ubuntu.com/ubuntu bionic-security/multiverse amd64 DEP-11 Metadata [2464 B]
+Fetched 3467 kB in 27s (128 kB/s)
+Reading package lists... Done
+Building dependency tree
+Reading state information... Done
+41 packages can be upgraded. Run &#39;apt list --upgradable&#39; to see them.
+
+cychong@mini1:~/work/ghost-with-helm-x$ sudo apt-cache policy kubeadm
+kubeadm:
+  Installed: 1.15.3-00
+  Candidate: 1.16.1-00
+cychong@mini1:~/work/ghost-with-helm-x$  sudo apt-get install -y kubeadm=1.16.1-00 && sudo apt-mark hold kubeadm
+Reading package lists... Done
+Building dependency tree
+Reading state information... Done
+The following package was automatically installed and is no longer required:
+  libllvm7
+Use &#39;sudo apt autoremove&#39; to remove it.
+The following packages will be upgraded:
+  kubeadm
+1 upgraded, 0 newly installed, 0 to remove and 40 not upgraded.
+Need to get 8764 kB of archives.
+After this operation, 4062 kB of additional disk space will be used.
+Get:1 https://packages.cloud.google.com/apt kubernetes-xenial/main amd64 kubeadm amd64 1.16.1-00 [8764 kB]
+Fetched 8764 kB in 6s (1489 kB/s)
+(Reading database ... 237550 files and directories currently installed.)
+Preparing to unpack .../kubeadm_1.16.1-00_amd64.deb ...
+Unpacking kubeadm (1.16.1-00) over (1.15.3-00) ...
+Setting up kubeadm (1.16.1-00) ...
+kubeadm set on hold.
+
+cychong@mini1:~/work/ghost-with-helm-x$ kubeadm version
+kubeadm version: &amp;version.Info{Major:"1", Minor:"16", GitVersion:"v1.16.1", GitCommit:"d647ddbd755faf07169599a625faf302ffc34458", GitTreeState:"clean", BuildDate:"2019-10-02T16:58:27Z", GoVersion:"go1.12.10", Compiler:"gc", Platform:"linux/amd64"}
+
+cychong@mini1:~/work/ghost-with-helm-x$ sudo kubeadm upgrade plan
+[upgrade/config] Making sure the configuration is correct:
+[upgrade/config] Reading configuration from the cluster...
+[upgrade/config] FYI: You can look at this config file with &#39;kubectl -n kube-system get cm kubeadm-config -oyaml&#39;
+[preflight] Running pre-flight checks.
+[upgrade] Making sure the cluster is healthy:
+[upgrade] Fetching available versions to upgrade to
+[upgrade/versions] Cluster version: v1.15.3
+[upgrade/versions] kubeadm version: v1.16.1
+[upgrade/versions] Latest stable version: v1.16.1
+[upgrade/versions] Latest version in the v1.15 series: v1.15.4
+
+Components that must be upgraded manually after you have upgraded the control plane with &#39;kubeadm upgrade apply&#39;:
+COMPONENT   CURRENT       AVAILABLE
+Kubelet     1 x v1.15.3   v1.15.4
+
+Upgrade to the latest version in the v1.15 series:
+
+COMPONENT            CURRENT   AVAILABLE
+API Server           v1.15.3   v1.15.4
+Controller Manager   v1.15.3   v1.15.4
+Scheduler            v1.15.3   v1.15.4
+Kube Proxy           v1.15.3   v1.15.4
+CoreDNS              1.3.1     1.6.2
+Etcd                 3.3.10    3.3.10
+
+You can now apply the upgrade by executing the following command:
+
+	kubeadm upgrade apply v1.15.4
+
+_____________________________________________________________________
+
+Components that must be upgraded manually after you have upgraded the control plane with &#39;kubeadm upgrade apply&#39;:
+COMPONENT   CURRENT       AVAILABLE
+Kubelet     1 x v1.15.3   v1.16.1
+
+Upgrade to the latest stable version:
+
+COMPONENT            CURRENT   AVAILABLE
+API Server           v1.15.3   v1.16.1
+Controller Manager   v1.15.3   v1.16.1
+Scheduler            v1.15.3   v1.16.1
+Kube Proxy           v1.15.3   v1.16.1
+CoreDNS              1.3.1     1.6.2
+Etcd                 3.3.10    3.3.15-0
+
+You can now apply the upgrade by executing the following command:
+
+	kubeadm upgrade apply v1.16.1
+
+_____________________________________________________________________
+failed
+cychong@mini1:~/work/ghost-with-helm-x$ sudo kubeadm upgrade apply v1.16.1
+[upgrade/config] Making sure the configuration is correct:
+[upgrade/config] Reading configuration from the cluster...
+[upgrade/config] FYI: You can look at this config file with &#39;kubectl -n kube-system get cm kubeadm-config -oyaml&#39;
+[preflight] Running pre-flight checks.
+[upgrade] Making sure the cluster is healthy:
+[upgrade/version] You have chosen to change the cluster version to "v1.16.1"
+[upgrade/versions] Cluster version: v1.15.3
+[upgrade/versions] kubeadm version: v1.16.1
+[upgrade/confirm] Are you sure you want to proceed with the upgrade? [y/N]: y
+[upgrade/prepull] Will prepull images for components [kube-apiserver kube-controller-manager kube-scheduler etcd]
+[upgrade/prepull] Prepulling image for component etcd.
+[upgrade/prepull] Prepulling image for component kube-controller-manager.
+[upgrade/prepull] Prepulling image for component kube-apiserver.
+[upgrade/prepull] Prepulling image for component kube-scheduler.
+[apiclient] Found 0 Pods for label selector k8s-app=upgrade-prepull-kube-scheduler
+[apiclient] Found 0 Pods for label selector k8s-app=upgrade-prepull-kube-apiserver
+[apiclient] Found 0 Pods for label selector k8s-app=upgrade-prepull-kube-controller-manager
+[apiclient] Found 0 Pods for label selector k8s-app=upgrade-prepull-etcd
+[apiclient] Found 1 Pods for label selector k8s-app=upgrade-prepull-kube-scheduler
+[apiclient] Found 1 Pods for label selector k8s-app=upgrade-prepull-etcd
+[apiclient] Found 1 Pods for label selector k8s-app=upgrade-prepull-kube-controller-manager
+[apiclient] Found 1 Pods for label selector k8s-app=upgrade-prepull-kube-apiserver
+
+
+[upgrade/prepull] Failed prepulled the images for the control plane components error: the prepull operation timed out
+To see the stack trace of this error execute with --v=5 or higher
+retry
+cychong@mini1:~$ sudo kubeadm upgrade apply v1.16.1
+[sudo] password for cychong:
+[upgrade/config] Making sure the configuration is correct:
+[upgrade/config] Reading configuration from the cluster...
+[upgrade/config] FYI: You can look at this config file with &#39;kubectl -n kube-system get cm kubeadm-config -oyaml&#39;
+[preflight] Running pre-flight checks.
+[upgrade] Making sure the cluster is healthy:
+[upgrade/version] You have chosen to change the cluster version to "v1.16.1"
+[upgrade/versions] Cluster version: v1.15.3
+[upgrade/versions] kubeadm version: v1.16.1
+[upgrade/confirm] Are you sure you want to proceed with the upgrade? [y/N]: y
+[upgrade/prepull] Will prepull images for components [kube-apiserver kube-controller-manager kube-scheduler etcd]
+[upgrade/prepull] Prepulling image for component etcd.
+[upgrade/prepull] Prepulling image for component kube-controller-manager.
+[upgrade/prepull] Prepulling image for component kube-scheduler.
+[upgrade/prepull] Prepulling image for component kube-apiserver.
+[apiclient] Found 1 Pods for label selector k8s-app=upgrade-prepull-kube-apiserver
+[apiclient] Found 1 Pods for label selector k8s-app=upgrade-prepull-etcd
+[apiclient] Found 1 Pods for label selector k8s-app=upgrade-prepull-kube-controller-manager
+[apiclient] Found 1 Pods for label selector k8s-app=upgrade-prepull-kube-scheduler
+[upgrade/prepull] Prepulled image for component kube-apiserver.
+[upgrade/prepull] Prepulled image for component etcd.
+[upgrade/prepull] Prepulled image for component kube-controller-manager.
+[upgrade/prepull] Prepulled image for component kube-scheduler.
+[upgrade/prepull] Successfully prepulled the images for all the control plane components
+[upgrade/apply] Upgrading your Static Pod-hosted control plane to version "v1.16.1"...
+Static pod: kube-apiserver-mini1 hash: 868871559cc75dab75f106d4af342538
+Static pod: kube-controller-manager-mini1 hash: 44f6b9cce90e81a472520a3fb9751d10
+Static pod: kube-scheduler-mini1 hash: 7d5d3c0a6786e517a8973fa06754cb75
+[upgrade/etcd] Upgrading to TLS for etcd
+Static pod: etcd-mini1 hash: 71542aaa2829652ef14b22098a4b46aa
+[upgrade/staticpods] Preparing for "etcd" upgrade
+[upgrade/staticpods] Renewing etcd-server certificate
+[upgrade/staticpods] Renewing etcd-peer certificate
+[upgrade/staticpods] Renewing etcd-healthcheck-client certificate
+[upgrade/staticpods] Moved new manifest to "/etc/kubernetes/manifests/etcd.yaml" and backed up old manifest to "/etc/kubernetes/tmp/kubeadm-backup-manifests-2019-10-07-23-43-23/etcd.yaml"
+[upgrade/staticpods] Waiting for the kubelet to restart the component
+[upgrade/staticpods] This might take a minute or longer depending on the component/version gap (timeout 5m0s)
+Static pod: etcd-mini1 hash: 71542aaa2829652ef14b22098a4b46aa
+Static pod: etcd-mini1 hash: 71542aaa2829652ef14b22098a4b46aa
+Static pod: etcd-mini1 hash: 71542aaa2829652ef14b22098a4b46aa
+Static pod: etcd-mini1 hash: 71542aaa2829652ef14b22098a4b46aa
+Static pod: etcd-mini1 hash: 71542aaa2829652ef14b22098a4b46aa
+Static pod: etcd-mini1 hash: 71542aaa2829652ef14b22098a4b46aa
+Static pod: etcd-mini1 hash: 71542aaa2829652ef14b22098a4b46aa
+Static pod: etcd-mini1 hash: 71542aaa2829652ef14b22098a4b46aa
+Static pod: etcd-mini1 hash: d96090bab45a5dababb3c3015960926b
+[apiclient] Found 1 Pods for label selector component=etcd
+[upgrade/staticpods] Component "etcd" upgraded successfully!
+[upgrade/etcd] Waiting for etcd to become available
+[upgrade/staticpods] Writing new Static Pod manifests to "/etc/kubernetes/tmp/kubeadm-upgraded-manifests306281752"
+[upgrade/staticpods] Preparing for "kube-apiserver" upgrade
+[upgrade/staticpods] Renewing apiserver certificate
+[upgrade/staticpods] Renewing apiserver-kubelet-client certificate
+[upgrade/staticpods] Renewing front-proxy-client certificate
+[upgrade/staticpods] Renewing apiserver-etcd-client certificate
+[upgrade/staticpods] Moved new manifest to "/etc/kubernetes/manifests/kube-apiserver.yaml" and backed up old manifest to "/etc/kubernetes/tmp/kubeadm-backup-manifests-2019-10-07-23-43-23/kube-apiserver.yaml"
+[upgrade/staticpods] Waiting for the kubelet to restart the component
+[upgrade/staticpods] This might take a minute or longer depending on the component/version gap (timeout 5m0s)
+Static pod: kube-apiserver-mini1 hash: 868871559cc75dab75f106d4af342538
+Static pod: kube-apiserver-mini1 hash: 01800dd11dfbda441372caf7cbf8aa39
+[apiclient] Found 1 Pods for label selector component=kube-apiserver
+[upgrade/staticpods] Component "kube-apiserver" upgraded successfully!
+[upgrade/staticpods] Preparing for "kube-controller-manager" upgrade
+[upgrade/staticpods] Renewing controller-manager.conf certificate
+[upgrade/staticpods] Moved new manifest to "/etc/kubernetes/manifests/kube-controller-manager.yaml" and backed up old manifest to "/etc/kubernetes/tmp/kubeadm-backup-manifests-2019-10-07-23-43-23/kube-controller-manager.yaml"
+[upgrade/staticpods] Waiting for the kubelet to restart the component
+[upgrade/staticpods] This might take a minute or longer depending on the component/version gap (timeout 5m0s)
+Static pod: kube-controller-manager-mini1 hash: 44f6b9cce90e81a472520a3fb9751d10
+Static pod: kube-controller-manager-mini1 hash: e12d193633dcf11f6095d89ee58c45a9
+[apiclient] Found 1 Pods for label selector component=kube-controller-manager
+[upgrade/staticpods] Component "kube-controller-manager" upgraded successfully!
+[upgrade/staticpods] Preparing for "kube-scheduler" upgrade
+[upgrade/staticpods] Renewing scheduler.conf certificate
+[upgrade/staticpods] Moved new manifest to "/etc/kubernetes/manifests/kube-scheduler.yaml" and backed up old manifest to "/etc/kubernetes/tmp/kubeadm-backup-manifests-2019-10-07-23-43-23/kube-scheduler.yaml"
+[upgrade/staticpods] Waiting for the kubelet to restart the component
+[upgrade/staticpods] This might take a minute or longer depending on the component/version gap (timeout 5m0s)
+Static pod: kube-scheduler-mini1 hash: 7d5d3c0a6786e517a8973fa06754cb75
+Static pod: kube-scheduler-mini1 hash: bf9014e67294b0df0bc373fd7024ced7
+[apiclient] Found 1 Pods for label selector component=kube-scheduler
+[upgrade/staticpods] Component "kube-scheduler" upgraded successfully!
+[upload-config] Storing the configuration used in ConfigMap "kubeadm-config" in the "kube-system" Namespace
+[kubelet] Creating a ConfigMap "kubelet-config-1.16" in namespace kube-system with the configuration for the kubelets in the cluster
+[kubelet-start] Downloading configuration for the kubelet from the "kubelet-config-1.16" ConfigMap in the kube-system namespace
+[kubelet-start] Writing kubelet configuration to file "/var/lib/kubelet/config.yaml"
+[bootstrap-token] configured RBAC rules to allow Node Bootstrap tokens to post CSRs in order for nodes to get long term certificate credentials
+[bootstrap-token] configured RBAC rules to allow the csrapprover controller automatically approve CSRs from a Node Bootstrap Token
+[bootstrap-token] configured RBAC rules to allow certificate rotation for all node client certificates in the cluster
+[addons] Applied essential addon: CoreDNS
+[addons] Applied essential addon: kube-proxy
+
+[upgrade/successful] SUCCESS! Your cluster was upgraded to "v1.16.1". Enjoy!
+
+[upgrade/kubelet] Now that your control plane is upgraded, please proceed with upgrading your kubelets if you haven&#39;t already done so.
+Upgrade calico from v3.8 to v3.9
+kubectl apply -f https://docs.projectcalico.org/v3.9/manifests/calico.yaml
+configmap/calico-config unchanged
+customresourcedefinition.apiextensions.k8s.io/felixconfigurations.crd.projectcalico.org unchanged
+customresourcedefinition.apiextensions.k8s.io/ipamblocks.crd.projectcalico.org unchanged
+customresourcedefinition.apiextensions.k8s.io/blockaffinities.crd.projectcalico.org unchanged
+customresourcedefinition.apiextensions.k8s.io/ipamhandles.crd.projectcalico.org unchanged
+customresourcedefinition.apiextensions.k8s.io/ipamconfigs.crd.projectcalico.org unchanged
+customresourcedefinition.apiextensions.k8s.io/bgppeers.crd.projectcalico.org unchanged
+customresourcedefinition.apiextensions.k8s.io/bgpconfigurations.crd.projectcalico.org unchanged
+customresourcedefinition.apiextensions.k8s.io/ippools.crd.projectcalico.org unchanged
+customresourcedefinition.apiextensions.k8s.io/hostendpoints.crd.projectcalico.org unchanged
+customresourcedefinition.apiextensions.k8s.io/clusterinformations.crd.projectcalico.org unchanged
+customresourcedefinition.apiextensions.k8s.io/globalnetworkpolicies.crd.projectcalico.org unchanged
+customresourcedefinition.apiextensions.k8s.io/globalnetworksets.crd.projectcalico.org unchanged
+customresourcedefinition.apiextensions.k8s.io/networkpolicies.crd.projectcalico.org unchanged
+customresourcedefinition.apiextensions.k8s.io/networksets.crd.projectcalico.org unchanged
+clusterrole.rbac.authorization.k8s.io/calico-kube-controllers unchanged
+clusterrolebinding.rbac.authorization.k8s.io/calico-kube-controllers unchanged
+clusterrole.rbac.authorization.k8s.io/calico-node configured
+clusterrolebinding.rbac.authorization.k8s.io/calico-node unchanged
+daemonset.apps/calico-node configured
+serviceaccount/calico-node unchanged
+deployment.apps/calico-kube-controllers configured
+serviceaccount/calico-kube-controllers unchanged
+앗. 서브넷 변경하는 걸 깜빡'><meta name=keywords content="kubernetes,"><meta property="og:url" content="https://cychong47.github.io/post/2019/upgrade-kubernetes/"><meta property="og:site_name" content="Keep calm and Write something"><meta property="og:title" content="Upgrade kubernetes to 1.16.1"><meta property="og:description" content='cychong@mini1:~/work/ghost-with-helm-x$ sudo apt update [sudo] password for cychong: Ign:2 http://dl.google.com/linux/chrome/deb stable InRelease Hit:3 http://archive.ubuntu.com/ubuntu bionic InRelease Hit:4 https://download.docker.com/linux/ubuntu bionic InRelease Hit:5 http://dl.google.com/linux/chrome/deb stable Release Get:6 http://archive.ubuntu.com/ubuntu bionic-updates InRelease [88.7 kB] Hit:1 https://packages.cloud.google.com/apt kubernetes-xenial InRelease Get:8 http://archive.ubuntu.com/ubuntu bionic-backports InRelease [74.6 kB] Get:9 http://archive.ubuntu.com/ubuntu bionic-security InRelease [88.7 kB] Get:10 http://archive.ubuntu.com/ubuntu bionic-updates/main amd64 DEP-11 Metadata [295 kB] Get:11 http://archive.ubuntu.com/ubuntu bionic-updates/main DEP-11 48x48 Icons [73.8 kB] Get:12 http://archive.ubuntu.com/ubuntu bionic-updates/main DEP-11 64x64 Icons [147 kB] Get:13 http://archive.ubuntu.com/ubuntu bionic-updates/universe amd64 DEP-11 Metadata [254 kB] Get:14 http://archive.ubuntu.com/ubuntu bionic-updates/universe DEP-11 48x48 Icons [197 kB] Get:15 http://archive.ubuntu.com/ubuntu bionic-updates/universe DEP-11 64x64 Icons [453 kB] Get:16 http://archive.ubuntu.com/ubuntu bionic-updates/multiverse amd64 DEP-11 Metadata [2468 B] Get:17 http://archive.ubuntu.com/ubuntu bionic-backports/universe amd64 DEP-11 Metadata [7916 B] Get:18 http://archive.ubuntu.com/ubuntu bionic-security/main amd64 Packages [526 kB] Get:19 http://archive.ubuntu.com/ubuntu bionic-security/main Translation-en [176 kB] Get:20 http://archive.ubuntu.com/ubuntu bionic-security/main amd64 DEP-11 Metadata [38.5 kB] Get:21 http://archive.ubuntu.com/ubuntu bionic-security/main DEP-11 48x48 Icons [17.6 kB] Get:22 http://archive.ubuntu.com/ubuntu bionic-security/main DEP-11 64x64 Icons [41.5 kB] Get:23 http://archive.ubuntu.com/ubuntu bionic-security/universe amd64 Packages [611 kB] Get:24 http://archive.ubuntu.com/ubuntu bionic-security/universe Translation-en [203 kB] Get:25 http://archive.ubuntu.com/ubuntu bionic-security/universe amd64 DEP-11 Metadata [42.2 kB] Get:26 http://archive.ubuntu.com/ubuntu bionic-security/universe DEP-11 48x48 Icons [16.4 kB] Get:27 http://archive.ubuntu.com/ubuntu bionic-security/universe DEP-11 64x64 Icons [111 kB] Get:28 http://archive.ubuntu.com/ubuntu bionic-security/multiverse amd64 DEP-11 Metadata [2464 B] Fetched 3467 kB in 27s (128 kB/s) Reading package lists... Done Building dependency tree Reading state information... Done 41 packages can be upgraded. Run &#39;apt list --upgradable&#39; to see them. cychong@mini1:~/work/ghost-with-helm-x$ sudo apt-cache policy kubeadm kubeadm: Installed: 1.15.3-00 Candidate: 1.16.1-00 cychong@mini1:~/work/ghost-with-helm-x$ sudo apt-get install -y kubeadm=1.16.1-00 && sudo apt-mark hold kubeadm Reading package lists... Done Building dependency tree Reading state information... Done The following package was automatically installed and is no longer required: libllvm7 Use &#39;sudo apt autoremove&#39; to remove it. The following packages will be upgraded: kubeadm 1 upgraded, 0 newly installed, 0 to remove and 40 not upgraded. Need to get 8764 kB of archives. After this operation, 4062 kB of additional disk space will be used. Get:1 https://packages.cloud.google.com/apt kubernetes-xenial/main amd64 kubeadm amd64 1.16.1-00 [8764 kB] Fetched 8764 kB in 6s (1489 kB/s) (Reading database ... 237550 files and directories currently installed.) Preparing to unpack .../kubeadm_1.16.1-00_amd64.deb ... Unpacking kubeadm (1.16.1-00) over (1.15.3-00) ... Setting up kubeadm (1.16.1-00) ... kubeadm set on hold. cychong@mini1:~/work/ghost-with-helm-x$ kubeadm version kubeadm version: &amp;version.Info{Major:"1", Minor:"16", GitVersion:"v1.16.1", GitCommit:"d647ddbd755faf07169599a625faf302ffc34458", GitTreeState:"clean", BuildDate:"2019-10-02T16:58:27Z", GoVersion:"go1.12.10", Compiler:"gc", Platform:"linux/amd64"} cychong@mini1:~/work/ghost-with-helm-x$ sudo kubeadm upgrade plan [upgrade/config] Making sure the configuration is correct: [upgrade/config] Reading configuration from the cluster... [upgrade/config] FYI: You can look at this config file with &#39;kubectl -n kube-system get cm kubeadm-config -oyaml&#39; [preflight] Running pre-flight checks. [upgrade] Making sure the cluster is healthy: [upgrade] Fetching available versions to upgrade to [upgrade/versions] Cluster version: v1.15.3 [upgrade/versions] kubeadm version: v1.16.1 [upgrade/versions] Latest stable version: v1.16.1 [upgrade/versions] Latest version in the v1.15 series: v1.15.4 Components that must be upgraded manually after you have upgraded the control plane with &#39;kubeadm upgrade apply&#39;: COMPONENT CURRENT AVAILABLE Kubelet 1 x v1.15.3 v1.15.4 Upgrade to the latest version in the v1.15 series: COMPONENT CURRENT AVAILABLE API Server v1.15.3 v1.15.4 Controller Manager v1.15.3 v1.15.4 Scheduler v1.15.3 v1.15.4 Kube Proxy v1.15.3 v1.15.4 CoreDNS 1.3.1 1.6.2 Etcd 3.3.10 3.3.10 You can now apply the upgrade by executing the following command: kubeadm upgrade apply v1.15.4 _____________________________________________________________________ Components that must be upgraded manually after you have upgraded the control plane with &#39;kubeadm upgrade apply&#39;: COMPONENT CURRENT AVAILABLE Kubelet 1 x v1.15.3 v1.16.1 Upgrade to the latest stable version: COMPONENT CURRENT AVAILABLE API Server v1.15.3 v1.16.1 Controller Manager v1.15.3 v1.16.1 Scheduler v1.15.3 v1.16.1 Kube Proxy v1.15.3 v1.16.1 CoreDNS 1.3.1 1.6.2 Etcd 3.3.10 3.3.15-0 You can now apply the upgrade by executing the following command: kubeadm upgrade apply v1.16.1 _____________________________________________________________________ failed cychong@mini1:~/work/ghost-with-helm-x$ sudo kubeadm upgrade apply v1.16.1 [upgrade/config] Making sure the configuration is correct: [upgrade/config] Reading configuration from the cluster... [upgrade/config] FYI: You can look at this config file with &#39;kubectl -n kube-system get cm kubeadm-config -oyaml&#39; [preflight] Running pre-flight checks. [upgrade] Making sure the cluster is healthy: [upgrade/version] You have chosen to change the cluster version to "v1.16.1" [upgrade/versions] Cluster version: v1.15.3 [upgrade/versions] kubeadm version: v1.16.1 [upgrade/confirm] Are you sure you want to proceed with the upgrade? [y/N]: y [upgrade/prepull] Will prepull images for components [kube-apiserver kube-controller-manager kube-scheduler etcd] [upgrade/prepull] Prepulling image for component etcd. [upgrade/prepull] Prepulling image for component kube-controller-manager. [upgrade/prepull] Prepulling image for component kube-apiserver. [upgrade/prepull] Prepulling image for component kube-scheduler. [apiclient] Found 0 Pods for label selector k8s-app=upgrade-prepull-kube-scheduler [apiclient] Found 0 Pods for label selector k8s-app=upgrade-prepull-kube-apiserver [apiclient] Found 0 Pods for label selector k8s-app=upgrade-prepull-kube-controller-manager [apiclient] Found 0 Pods for label selector k8s-app=upgrade-prepull-etcd [apiclient] Found 1 Pods for label selector k8s-app=upgrade-prepull-kube-scheduler [apiclient] Found 1 Pods for label selector k8s-app=upgrade-prepull-etcd [apiclient] Found 1 Pods for label selector k8s-app=upgrade-prepull-kube-controller-manager [apiclient] Found 1 Pods for label selector k8s-app=upgrade-prepull-kube-apiserver [upgrade/prepull] Failed prepulled the images for the control plane components error: the prepull operation timed out To see the stack trace of this error execute with --v=5 or higher retry cychong@mini1:~$ sudo kubeadm upgrade apply v1.16.1 [sudo] password for cychong: [upgrade/config] Making sure the configuration is correct: [upgrade/config] Reading configuration from the cluster... [upgrade/config] FYI: You can look at this config file with &#39;kubectl -n kube-system get cm kubeadm-config -oyaml&#39; [preflight] Running pre-flight checks. [upgrade] Making sure the cluster is healthy: [upgrade/version] You have chosen to change the cluster version to "v1.16.1" [upgrade/versions] Cluster version: v1.15.3 [upgrade/versions] kubeadm version: v1.16.1 [upgrade/confirm] Are you sure you want to proceed with the upgrade? [y/N]: y [upgrade/prepull] Will prepull images for components [kube-apiserver kube-controller-manager kube-scheduler etcd] [upgrade/prepull] Prepulling image for component etcd. [upgrade/prepull] Prepulling image for component kube-controller-manager. [upgrade/prepull] Prepulling image for component kube-scheduler. [upgrade/prepull] Prepulling image for component kube-apiserver. [apiclient] Found 1 Pods for label selector k8s-app=upgrade-prepull-kube-apiserver [apiclient] Found 1 Pods for label selector k8s-app=upgrade-prepull-etcd [apiclient] Found 1 Pods for label selector k8s-app=upgrade-prepull-kube-controller-manager [apiclient] Found 1 Pods for label selector k8s-app=upgrade-prepull-kube-scheduler [upgrade/prepull] Prepulled image for component kube-apiserver. [upgrade/prepull] Prepulled image for component etcd. [upgrade/prepull] Prepulled image for component kube-controller-manager. [upgrade/prepull] Prepulled image for component kube-scheduler. [upgrade/prepull] Successfully prepulled the images for all the control plane components [upgrade/apply] Upgrading your Static Pod-hosted control plane to version "v1.16.1"... Static pod: kube-apiserver-mini1 hash: 868871559cc75dab75f106d4af342538 Static pod: kube-controller-manager-mini1 hash: 44f6b9cce90e81a472520a3fb9751d10 Static pod: kube-scheduler-mini1 hash: 7d5d3c0a6786e517a8973fa06754cb75 [upgrade/etcd] Upgrading to TLS for etcd Static pod: etcd-mini1 hash: 71542aaa2829652ef14b22098a4b46aa [upgrade/staticpods] Preparing for "etcd" upgrade [upgrade/staticpods] Renewing etcd-server certificate [upgrade/staticpods] Renewing etcd-peer certificate [upgrade/staticpods] Renewing etcd-healthcheck-client certificate [upgrade/staticpods] Moved new manifest to "/etc/kubernetes/manifests/etcd.yaml" and backed up old manifest to "/etc/kubernetes/tmp/kubeadm-backup-manifests-2019-10-07-23-43-23/etcd.yaml" [upgrade/staticpods] Waiting for the kubelet to restart the component [upgrade/staticpods] This might take a minute or longer depending on the component/version gap (timeout 5m0s) Static pod: etcd-mini1 hash: 71542aaa2829652ef14b22098a4b46aa Static pod: etcd-mini1 hash: 71542aaa2829652ef14b22098a4b46aa Static pod: etcd-mini1 hash: 71542aaa2829652ef14b22098a4b46aa Static pod: etcd-mini1 hash: 71542aaa2829652ef14b22098a4b46aa Static pod: etcd-mini1 hash: 71542aaa2829652ef14b22098a4b46aa Static pod: etcd-mini1 hash: 71542aaa2829652ef14b22098a4b46aa Static pod: etcd-mini1 hash: 71542aaa2829652ef14b22098a4b46aa Static pod: etcd-mini1 hash: 71542aaa2829652ef14b22098a4b46aa Static pod: etcd-mini1 hash: d96090bab45a5dababb3c3015960926b [apiclient] Found 1 Pods for label selector component=etcd [upgrade/staticpods] Component "etcd" upgraded successfully! [upgrade/etcd] Waiting for etcd to become available [upgrade/staticpods] Writing new Static Pod manifests to "/etc/kubernetes/tmp/kubeadm-upgraded-manifests306281752" [upgrade/staticpods] Preparing for "kube-apiserver" upgrade [upgrade/staticpods] Renewing apiserver certificate [upgrade/staticpods] Renewing apiserver-kubelet-client certificate [upgrade/staticpods] Renewing front-proxy-client certificate [upgrade/staticpods] Renewing apiserver-etcd-client certificate [upgrade/staticpods] Moved new manifest to "/etc/kubernetes/manifests/kube-apiserver.yaml" and backed up old manifest to "/etc/kubernetes/tmp/kubeadm-backup-manifests-2019-10-07-23-43-23/kube-apiserver.yaml" [upgrade/staticpods] Waiting for the kubelet to restart the component [upgrade/staticpods] This might take a minute or longer depending on the component/version gap (timeout 5m0s) Static pod: kube-apiserver-mini1 hash: 868871559cc75dab75f106d4af342538 Static pod: kube-apiserver-mini1 hash: 01800dd11dfbda441372caf7cbf8aa39 [apiclient] Found 1 Pods for label selector component=kube-apiserver [upgrade/staticpods] Component "kube-apiserver" upgraded successfully! [upgrade/staticpods] Preparing for "kube-controller-manager" upgrade [upgrade/staticpods] Renewing controller-manager.conf certificate [upgrade/staticpods] Moved new manifest to "/etc/kubernetes/manifests/kube-controller-manager.yaml" and backed up old manifest to "/etc/kubernetes/tmp/kubeadm-backup-manifests-2019-10-07-23-43-23/kube-controller-manager.yaml" [upgrade/staticpods] Waiting for the kubelet to restart the component [upgrade/staticpods] This might take a minute or longer depending on the component/version gap (timeout 5m0s) Static pod: kube-controller-manager-mini1 hash: 44f6b9cce90e81a472520a3fb9751d10 Static pod: kube-controller-manager-mini1 hash: e12d193633dcf11f6095d89ee58c45a9 [apiclient] Found 1 Pods for label selector component=kube-controller-manager [upgrade/staticpods] Component "kube-controller-manager" upgraded successfully! [upgrade/staticpods] Preparing for "kube-scheduler" upgrade [upgrade/staticpods] Renewing scheduler.conf certificate [upgrade/staticpods] Moved new manifest to "/etc/kubernetes/manifests/kube-scheduler.yaml" and backed up old manifest to "/etc/kubernetes/tmp/kubeadm-backup-manifests-2019-10-07-23-43-23/kube-scheduler.yaml" [upgrade/staticpods] Waiting for the kubelet to restart the component [upgrade/staticpods] This might take a minute or longer depending on the component/version gap (timeout 5m0s) Static pod: kube-scheduler-mini1 hash: 7d5d3c0a6786e517a8973fa06754cb75 Static pod: kube-scheduler-mini1 hash: bf9014e67294b0df0bc373fd7024ced7 [apiclient] Found 1 Pods for label selector component=kube-scheduler [upgrade/staticpods] Component "kube-scheduler" upgraded successfully! [upload-config] Storing the configuration used in ConfigMap "kubeadm-config" in the "kube-system" Namespace [kubelet] Creating a ConfigMap "kubelet-config-1.16" in namespace kube-system with the configuration for the kubelets in the cluster [kubelet-start] Downloading configuration for the kubelet from the "kubelet-config-1.16" ConfigMap in the kube-system namespace [kubelet-start] Writing kubelet configuration to file "/var/lib/kubelet/config.yaml" [bootstrap-token] configured RBAC rules to allow Node Bootstrap tokens to post CSRs in order for nodes to get long term certificate credentials [bootstrap-token] configured RBAC rules to allow the csrapprover controller automatically approve CSRs from a Node Bootstrap Token [bootstrap-token] configured RBAC rules to allow certificate rotation for all node client certificates in the cluster [addons] Applied essential addon: CoreDNS [addons] Applied essential addon: kube-proxy [upgrade/successful] SUCCESS! Your cluster was upgraded to "v1.16.1". Enjoy! [upgrade/kubelet] Now that your control plane is upgraded, please proceed with upgrading your kubelets if you haven&#39;t already done so. Upgrade calico from v3.8 to v3.9 kubectl apply -f https://docs.projectcalico.org/v3.9/manifests/calico.yaml configmap/calico-config unchanged customresourcedefinition.apiextensions.k8s.io/felixconfigurations.crd.projectcalico.org unchanged customresourcedefinition.apiextensions.k8s.io/ipamblocks.crd.projectcalico.org unchanged customresourcedefinition.apiextensions.k8s.io/blockaffinities.crd.projectcalico.org unchanged customresourcedefinition.apiextensions.k8s.io/ipamhandles.crd.projectcalico.org unchanged customresourcedefinition.apiextensions.k8s.io/ipamconfigs.crd.projectcalico.org unchanged customresourcedefinition.apiextensions.k8s.io/bgppeers.crd.projectcalico.org unchanged customresourcedefinition.apiextensions.k8s.io/bgpconfigurations.crd.projectcalico.org unchanged customresourcedefinition.apiextensions.k8s.io/ippools.crd.projectcalico.org unchanged customresourcedefinition.apiextensions.k8s.io/hostendpoints.crd.projectcalico.org unchanged customresourcedefinition.apiextensions.k8s.io/clusterinformations.crd.projectcalico.org unchanged customresourcedefinition.apiextensions.k8s.io/globalnetworkpolicies.crd.projectcalico.org unchanged customresourcedefinition.apiextensions.k8s.io/globalnetworksets.crd.projectcalico.org unchanged customresourcedefinition.apiextensions.k8s.io/networkpolicies.crd.projectcalico.org unchanged customresourcedefinition.apiextensions.k8s.io/networksets.crd.projectcalico.org unchanged clusterrole.rbac.authorization.k8s.io/calico-kube-controllers unchanged clusterrolebinding.rbac.authorization.k8s.io/calico-kube-controllers unchanged clusterrole.rbac.authorization.k8s.io/calico-node configured clusterrolebinding.rbac.authorization.k8s.io/calico-node unchanged daemonset.apps/calico-node configured serviceaccount/calico-node unchanged deployment.apps/calico-kube-controllers configured serviceaccount/calico-kube-controllers unchanged 앗. 서브넷 변경하는 걸 깜빡'><meta property="og:locale" content="en_us"><meta property="og:type" content="article"><meta property="article:section" content="post"><meta property="article:published_time" content="2019-10-07T15:37:14+09:00"><meta property="article:modified_time" content="2019-10-07T15:39:18+00:00"><meta property="article:tag" content="Kubernetes"><meta name=twitter:card content="summary"><meta name=twitter:title content="Upgrade kubernetes to 1.16.1"><meta name=twitter:description content='cychong@mini1:~/work/ghost-with-helm-x$ sudo apt update [sudo] password for cychong: Ign:2 http://dl.google.com/linux/chrome/deb stable InRelease Hit:3 http://archive.ubuntu.com/ubuntu bionic InRelease Hit:4 https://download.docker.com/linux/ubuntu bionic InRelease Hit:5 http://dl.google.com/linux/chrome/deb stable Release Get:6 http://archive.ubuntu.com/ubuntu bionic-updates InRelease [88.7 kB] Hit:1 https://packages.cloud.google.com/apt kubernetes-xenial InRelease Get:8 http://archive.ubuntu.com/ubuntu bionic-backports InRelease [74.6 kB] Get:9 http://archive.ubuntu.com/ubuntu bionic-security InRelease [88.7 kB] Get:10 http://archive.ubuntu.com/ubuntu bionic-updates/main amd64 DEP-11 Metadata [295 kB] Get:11 http://archive.ubuntu.com/ubuntu bionic-updates/main DEP-11 48x48 Icons [73.8 kB] Get:12 http://archive.ubuntu.com/ubuntu bionic-updates/main DEP-11 64x64 Icons [147 kB] Get:13 http://archive.ubuntu.com/ubuntu bionic-updates/universe amd64 DEP-11 Metadata [254 kB] Get:14 http://archive.ubuntu.com/ubuntu bionic-updates/universe DEP-11 48x48 Icons [197 kB] Get:15 http://archive.ubuntu.com/ubuntu bionic-updates/universe DEP-11 64x64 Icons [453 kB] Get:16 http://archive.ubuntu.com/ubuntu bionic-updates/multiverse amd64 DEP-11 Metadata [2468 B] Get:17 http://archive.ubuntu.com/ubuntu bionic-backports/universe amd64 DEP-11 Metadata [7916 B] Get:18 http://archive.ubuntu.com/ubuntu bionic-security/main amd64 Packages [526 kB] Get:19 http://archive.ubuntu.com/ubuntu bionic-security/main Translation-en [176 kB] Get:20 http://archive.ubuntu.com/ubuntu bionic-security/main amd64 DEP-11 Metadata [38.5 kB] Get:21 http://archive.ubuntu.com/ubuntu bionic-security/main DEP-11 48x48 Icons [17.6 kB] Get:22 http://archive.ubuntu.com/ubuntu bionic-security/main DEP-11 64x64 Icons [41.5 kB] Get:23 http://archive.ubuntu.com/ubuntu bionic-security/universe amd64 Packages [611 kB] Get:24 http://archive.ubuntu.com/ubuntu bionic-security/universe Translation-en [203 kB] Get:25 http://archive.ubuntu.com/ubuntu bionic-security/universe amd64 DEP-11 Metadata [42.2 kB] Get:26 http://archive.ubuntu.com/ubuntu bionic-security/universe DEP-11 48x48 Icons [16.4 kB] Get:27 http://archive.ubuntu.com/ubuntu bionic-security/universe DEP-11 64x64 Icons [111 kB] Get:28 http://archive.ubuntu.com/ubuntu bionic-security/multiverse amd64 DEP-11 Metadata [2464 B] Fetched 3467 kB in 27s (128 kB/s) Reading package lists... Done Building dependency tree Reading state information... Done 41 packages can be upgraded. Run &#39;apt list --upgradable&#39; to see them. cychong@mini1:~/work/ghost-with-helm-x$ sudo apt-cache policy kubeadm kubeadm: Installed: 1.15.3-00 Candidate: 1.16.1-00 cychong@mini1:~/work/ghost-with-helm-x$ sudo apt-get install -y kubeadm=1.16.1-00 && sudo apt-mark hold kubeadm Reading package lists... Done Building dependency tree Reading state information... Done The following package was automatically installed and is no longer required: libllvm7 Use &#39;sudo apt autoremove&#39; to remove it. The following packages will be upgraded: kubeadm 1 upgraded, 0 newly installed, 0 to remove and 40 not upgraded. Need to get 8764 kB of archives. After this operation, 4062 kB of additional disk space will be used. Get:1 https://packages.cloud.google.com/apt kubernetes-xenial/main amd64 kubeadm amd64 1.16.1-00 [8764 kB] Fetched 8764 kB in 6s (1489 kB/s) (Reading database ... 237550 files and directories currently installed.) Preparing to unpack .../kubeadm_1.16.1-00_amd64.deb ... Unpacking kubeadm (1.16.1-00) over (1.15.3-00) ... Setting up kubeadm (1.16.1-00) ... kubeadm set on hold. cychong@mini1:~/work/ghost-with-helm-x$ kubeadm version kubeadm version: &amp;version.Info{Major:"1", Minor:"16", GitVersion:"v1.16.1", GitCommit:"d647ddbd755faf07169599a625faf302ffc34458", GitTreeState:"clean", BuildDate:"2019-10-02T16:58:27Z", GoVersion:"go1.12.10", Compiler:"gc", Platform:"linux/amd64"} cychong@mini1:~/work/ghost-with-helm-x$ sudo kubeadm upgrade plan [upgrade/config] Making sure the configuration is correct: [upgrade/config] Reading configuration from the cluster... [upgrade/config] FYI: You can look at this config file with &#39;kubectl -n kube-system get cm kubeadm-config -oyaml&#39; [preflight] Running pre-flight checks. [upgrade] Making sure the cluster is healthy: [upgrade] Fetching available versions to upgrade to [upgrade/versions] Cluster version: v1.15.3 [upgrade/versions] kubeadm version: v1.16.1 [upgrade/versions] Latest stable version: v1.16.1 [upgrade/versions] Latest version in the v1.15 series: v1.15.4 Components that must be upgraded manually after you have upgraded the control plane with &#39;kubeadm upgrade apply&#39;: COMPONENT CURRENT AVAILABLE Kubelet 1 x v1.15.3 v1.15.4 Upgrade to the latest version in the v1.15 series: COMPONENT CURRENT AVAILABLE API Server v1.15.3 v1.15.4 Controller Manager v1.15.3 v1.15.4 Scheduler v1.15.3 v1.15.4 Kube Proxy v1.15.3 v1.15.4 CoreDNS 1.3.1 1.6.2 Etcd 3.3.10 3.3.10 You can now apply the upgrade by executing the following command: kubeadm upgrade apply v1.15.4 _____________________________________________________________________ Components that must be upgraded manually after you have upgraded the control plane with &#39;kubeadm upgrade apply&#39;: COMPONENT CURRENT AVAILABLE Kubelet 1 x v1.15.3 v1.16.1 Upgrade to the latest stable version: COMPONENT CURRENT AVAILABLE API Server v1.15.3 v1.16.1 Controller Manager v1.15.3 v1.16.1 Scheduler v1.15.3 v1.16.1 Kube Proxy v1.15.3 v1.16.1 CoreDNS 1.3.1 1.6.2 Etcd 3.3.10 3.3.15-0 You can now apply the upgrade by executing the following command: kubeadm upgrade apply v1.16.1 _____________________________________________________________________ failed cychong@mini1:~/work/ghost-with-helm-x$ sudo kubeadm upgrade apply v1.16.1 [upgrade/config] Making sure the configuration is correct: [upgrade/config] Reading configuration from the cluster... [upgrade/config] FYI: You can look at this config file with &#39;kubectl -n kube-system get cm kubeadm-config -oyaml&#39; [preflight] Running pre-flight checks. [upgrade] Making sure the cluster is healthy: [upgrade/version] You have chosen to change the cluster version to "v1.16.1" [upgrade/versions] Cluster version: v1.15.3 [upgrade/versions] kubeadm version: v1.16.1 [upgrade/confirm] Are you sure you want to proceed with the upgrade? [y/N]: y [upgrade/prepull] Will prepull images for components [kube-apiserver kube-controller-manager kube-scheduler etcd] [upgrade/prepull] Prepulling image for component etcd. [upgrade/prepull] Prepulling image for component kube-controller-manager. [upgrade/prepull] Prepulling image for component kube-apiserver. [upgrade/prepull] Prepulling image for component kube-scheduler. [apiclient] Found 0 Pods for label selector k8s-app=upgrade-prepull-kube-scheduler [apiclient] Found 0 Pods for label selector k8s-app=upgrade-prepull-kube-apiserver [apiclient] Found 0 Pods for label selector k8s-app=upgrade-prepull-kube-controller-manager [apiclient] Found 0 Pods for label selector k8s-app=upgrade-prepull-etcd [apiclient] Found 1 Pods for label selector k8s-app=upgrade-prepull-kube-scheduler [apiclient] Found 1 Pods for label selector k8s-app=upgrade-prepull-etcd [apiclient] Found 1 Pods for label selector k8s-app=upgrade-prepull-kube-controller-manager [apiclient] Found 1 Pods for label selector k8s-app=upgrade-prepull-kube-apiserver [upgrade/prepull] Failed prepulled the images for the control plane components error: the prepull operation timed out To see the stack trace of this error execute with --v=5 or higher retry cychong@mini1:~$ sudo kubeadm upgrade apply v1.16.1 [sudo] password for cychong: [upgrade/config] Making sure the configuration is correct: [upgrade/config] Reading configuration from the cluster... [upgrade/config] FYI: You can look at this config file with &#39;kubectl -n kube-system get cm kubeadm-config -oyaml&#39; [preflight] Running pre-flight checks. [upgrade] Making sure the cluster is healthy: [upgrade/version] You have chosen to change the cluster version to "v1.16.1" [upgrade/versions] Cluster version: v1.15.3 [upgrade/versions] kubeadm version: v1.16.1 [upgrade/confirm] Are you sure you want to proceed with the upgrade? [y/N]: y [upgrade/prepull] Will prepull images for components [kube-apiserver kube-controller-manager kube-scheduler etcd] [upgrade/prepull] Prepulling image for component etcd. [upgrade/prepull] Prepulling image for component kube-controller-manager. [upgrade/prepull] Prepulling image for component kube-scheduler. [upgrade/prepull] Prepulling image for component kube-apiserver. [apiclient] Found 1 Pods for label selector k8s-app=upgrade-prepull-kube-apiserver [apiclient] Found 1 Pods for label selector k8s-app=upgrade-prepull-etcd [apiclient] Found 1 Pods for label selector k8s-app=upgrade-prepull-kube-controller-manager [apiclient] Found 1 Pods for label selector k8s-app=upgrade-prepull-kube-scheduler [upgrade/prepull] Prepulled image for component kube-apiserver. [upgrade/prepull] Prepulled image for component etcd. [upgrade/prepull] Prepulled image for component kube-controller-manager. [upgrade/prepull] Prepulled image for component kube-scheduler. [upgrade/prepull] Successfully prepulled the images for all the control plane components [upgrade/apply] Upgrading your Static Pod-hosted control plane to version "v1.16.1"... Static pod: kube-apiserver-mini1 hash: 868871559cc75dab75f106d4af342538 Static pod: kube-controller-manager-mini1 hash: 44f6b9cce90e81a472520a3fb9751d10 Static pod: kube-scheduler-mini1 hash: 7d5d3c0a6786e517a8973fa06754cb75 [upgrade/etcd] Upgrading to TLS for etcd Static pod: etcd-mini1 hash: 71542aaa2829652ef14b22098a4b46aa [upgrade/staticpods] Preparing for "etcd" upgrade [upgrade/staticpods] Renewing etcd-server certificate [upgrade/staticpods] Renewing etcd-peer certificate [upgrade/staticpods] Renewing etcd-healthcheck-client certificate [upgrade/staticpods] Moved new manifest to "/etc/kubernetes/manifests/etcd.yaml" and backed up old manifest to "/etc/kubernetes/tmp/kubeadm-backup-manifests-2019-10-07-23-43-23/etcd.yaml" [upgrade/staticpods] Waiting for the kubelet to restart the component [upgrade/staticpods] This might take a minute or longer depending on the component/version gap (timeout 5m0s) Static pod: etcd-mini1 hash: 71542aaa2829652ef14b22098a4b46aa Static pod: etcd-mini1 hash: 71542aaa2829652ef14b22098a4b46aa Static pod: etcd-mini1 hash: 71542aaa2829652ef14b22098a4b46aa Static pod: etcd-mini1 hash: 71542aaa2829652ef14b22098a4b46aa Static pod: etcd-mini1 hash: 71542aaa2829652ef14b22098a4b46aa Static pod: etcd-mini1 hash: 71542aaa2829652ef14b22098a4b46aa Static pod: etcd-mini1 hash: 71542aaa2829652ef14b22098a4b46aa Static pod: etcd-mini1 hash: 71542aaa2829652ef14b22098a4b46aa Static pod: etcd-mini1 hash: d96090bab45a5dababb3c3015960926b [apiclient] Found 1 Pods for label selector component=etcd [upgrade/staticpods] Component "etcd" upgraded successfully! [upgrade/etcd] Waiting for etcd to become available [upgrade/staticpods] Writing new Static Pod manifests to "/etc/kubernetes/tmp/kubeadm-upgraded-manifests306281752" [upgrade/staticpods] Preparing for "kube-apiserver" upgrade [upgrade/staticpods] Renewing apiserver certificate [upgrade/staticpods] Renewing apiserver-kubelet-client certificate [upgrade/staticpods] Renewing front-proxy-client certificate [upgrade/staticpods] Renewing apiserver-etcd-client certificate [upgrade/staticpods] Moved new manifest to "/etc/kubernetes/manifests/kube-apiserver.yaml" and backed up old manifest to "/etc/kubernetes/tmp/kubeadm-backup-manifests-2019-10-07-23-43-23/kube-apiserver.yaml" [upgrade/staticpods] Waiting for the kubelet to restart the component [upgrade/staticpods] This might take a minute or longer depending on the component/version gap (timeout 5m0s) Static pod: kube-apiserver-mini1 hash: 868871559cc75dab75f106d4af342538 Static pod: kube-apiserver-mini1 hash: 01800dd11dfbda441372caf7cbf8aa39 [apiclient] Found 1 Pods for label selector component=kube-apiserver [upgrade/staticpods] Component "kube-apiserver" upgraded successfully! [upgrade/staticpods] Preparing for "kube-controller-manager" upgrade [upgrade/staticpods] Renewing controller-manager.conf certificate [upgrade/staticpods] Moved new manifest to "/etc/kubernetes/manifests/kube-controller-manager.yaml" and backed up old manifest to "/etc/kubernetes/tmp/kubeadm-backup-manifests-2019-10-07-23-43-23/kube-controller-manager.yaml" [upgrade/staticpods] Waiting for the kubelet to restart the component [upgrade/staticpods] This might take a minute or longer depending on the component/version gap (timeout 5m0s) Static pod: kube-controller-manager-mini1 hash: 44f6b9cce90e81a472520a3fb9751d10 Static pod: kube-controller-manager-mini1 hash: e12d193633dcf11f6095d89ee58c45a9 [apiclient] Found 1 Pods for label selector component=kube-controller-manager [upgrade/staticpods] Component "kube-controller-manager" upgraded successfully! [upgrade/staticpods] Preparing for "kube-scheduler" upgrade [upgrade/staticpods] Renewing scheduler.conf certificate [upgrade/staticpods] Moved new manifest to "/etc/kubernetes/manifests/kube-scheduler.yaml" and backed up old manifest to "/etc/kubernetes/tmp/kubeadm-backup-manifests-2019-10-07-23-43-23/kube-scheduler.yaml" [upgrade/staticpods] Waiting for the kubelet to restart the component [upgrade/staticpods] This might take a minute or longer depending on the component/version gap (timeout 5m0s) Static pod: kube-scheduler-mini1 hash: 7d5d3c0a6786e517a8973fa06754cb75 Static pod: kube-scheduler-mini1 hash: bf9014e67294b0df0bc373fd7024ced7 [apiclient] Found 1 Pods for label selector component=kube-scheduler [upgrade/staticpods] Component "kube-scheduler" upgraded successfully! [upload-config] Storing the configuration used in ConfigMap "kubeadm-config" in the "kube-system" Namespace [kubelet] Creating a ConfigMap "kubelet-config-1.16" in namespace kube-system with the configuration for the kubelets in the cluster [kubelet-start] Downloading configuration for the kubelet from the "kubelet-config-1.16" ConfigMap in the kube-system namespace [kubelet-start] Writing kubelet configuration to file "/var/lib/kubelet/config.yaml" [bootstrap-token] configured RBAC rules to allow Node Bootstrap tokens to post CSRs in order for nodes to get long term certificate credentials [bootstrap-token] configured RBAC rules to allow the csrapprover controller automatically approve CSRs from a Node Bootstrap Token [bootstrap-token] configured RBAC rules to allow certificate rotation for all node client certificates in the cluster [addons] Applied essential addon: CoreDNS [addons] Applied essential addon: kube-proxy [upgrade/successful] SUCCESS! Your cluster was upgraded to "v1.16.1". Enjoy! [upgrade/kubelet] Now that your control plane is upgraded, please proceed with upgrading your kubelets if you haven&#39;t already done so. Upgrade calico from v3.8 to v3.9 kubectl apply -f https://docs.projectcalico.org/v3.9/manifests/calico.yaml configmap/calico-config unchanged customresourcedefinition.apiextensions.k8s.io/felixconfigurations.crd.projectcalico.org unchanged customresourcedefinition.apiextensions.k8s.io/ipamblocks.crd.projectcalico.org unchanged customresourcedefinition.apiextensions.k8s.io/blockaffinities.crd.projectcalico.org unchanged customresourcedefinition.apiextensions.k8s.io/ipamhandles.crd.projectcalico.org unchanged customresourcedefinition.apiextensions.k8s.io/ipamconfigs.crd.projectcalico.org unchanged customresourcedefinition.apiextensions.k8s.io/bgppeers.crd.projectcalico.org unchanged customresourcedefinition.apiextensions.k8s.io/bgpconfigurations.crd.projectcalico.org unchanged customresourcedefinition.apiextensions.k8s.io/ippools.crd.projectcalico.org unchanged customresourcedefinition.apiextensions.k8s.io/hostendpoints.crd.projectcalico.org unchanged customresourcedefinition.apiextensions.k8s.io/clusterinformations.crd.projectcalico.org unchanged customresourcedefinition.apiextensions.k8s.io/globalnetworkpolicies.crd.projectcalico.org unchanged customresourcedefinition.apiextensions.k8s.io/globalnetworksets.crd.projectcalico.org unchanged customresourcedefinition.apiextensions.k8s.io/networkpolicies.crd.projectcalico.org unchanged customresourcedefinition.apiextensions.k8s.io/networksets.crd.projectcalico.org unchanged clusterrole.rbac.authorization.k8s.io/calico-kube-controllers unchanged clusterrolebinding.rbac.authorization.k8s.io/calico-kube-controllers unchanged clusterrole.rbac.authorization.k8s.io/calico-node configured clusterrolebinding.rbac.authorization.k8s.io/calico-node unchanged daemonset.apps/calico-node configured serviceaccount/calico-node unchanged deployment.apps/calico-kube-controllers configured serviceaccount/calico-kube-controllers unchanged 앗. 서브넷 변경하는 걸 깜빡'><meta itemprop=name content="Upgrade kubernetes to 1.16.1"><meta itemprop=description content='cychong@mini1:~/work/ghost-with-helm-x$ sudo apt update [sudo] password for cychong: Ign:2 http://dl.google.com/linux/chrome/deb stable InRelease Hit:3 http://archive.ubuntu.com/ubuntu bionic InRelease Hit:4 https://download.docker.com/linux/ubuntu bionic InRelease Hit:5 http://dl.google.com/linux/chrome/deb stable Release Get:6 http://archive.ubuntu.com/ubuntu bionic-updates InRelease [88.7 kB] Hit:1 https://packages.cloud.google.com/apt kubernetes-xenial InRelease Get:8 http://archive.ubuntu.com/ubuntu bionic-backports InRelease [74.6 kB] Get:9 http://archive.ubuntu.com/ubuntu bionic-security InRelease [88.7 kB] Get:10 http://archive.ubuntu.com/ubuntu bionic-updates/main amd64 DEP-11 Metadata [295 kB] Get:11 http://archive.ubuntu.com/ubuntu bionic-updates/main DEP-11 48x48 Icons [73.8 kB] Get:12 http://archive.ubuntu.com/ubuntu bionic-updates/main DEP-11 64x64 Icons [147 kB] Get:13 http://archive.ubuntu.com/ubuntu bionic-updates/universe amd64 DEP-11 Metadata [254 kB] Get:14 http://archive.ubuntu.com/ubuntu bionic-updates/universe DEP-11 48x48 Icons [197 kB] Get:15 http://archive.ubuntu.com/ubuntu bionic-updates/universe DEP-11 64x64 Icons [453 kB] Get:16 http://archive.ubuntu.com/ubuntu bionic-updates/multiverse amd64 DEP-11 Metadata [2468 B] Get:17 http://archive.ubuntu.com/ubuntu bionic-backports/universe amd64 DEP-11 Metadata [7916 B] Get:18 http://archive.ubuntu.com/ubuntu bionic-security/main amd64 Packages [526 kB] Get:19 http://archive.ubuntu.com/ubuntu bionic-security/main Translation-en [176 kB] Get:20 http://archive.ubuntu.com/ubuntu bionic-security/main amd64 DEP-11 Metadata [38.5 kB] Get:21 http://archive.ubuntu.com/ubuntu bionic-security/main DEP-11 48x48 Icons [17.6 kB] Get:22 http://archive.ubuntu.com/ubuntu bionic-security/main DEP-11 64x64 Icons [41.5 kB] Get:23 http://archive.ubuntu.com/ubuntu bionic-security/universe amd64 Packages [611 kB] Get:24 http://archive.ubuntu.com/ubuntu bionic-security/universe Translation-en [203 kB] Get:25 http://archive.ubuntu.com/ubuntu bionic-security/universe amd64 DEP-11 Metadata [42.2 kB] Get:26 http://archive.ubuntu.com/ubuntu bionic-security/universe DEP-11 48x48 Icons [16.4 kB] Get:27 http://archive.ubuntu.com/ubuntu bionic-security/universe DEP-11 64x64 Icons [111 kB] Get:28 http://archive.ubuntu.com/ubuntu bionic-security/multiverse amd64 DEP-11 Metadata [2464 B] Fetched 3467 kB in 27s (128 kB/s) Reading package lists... Done Building dependency tree Reading state information... Done 41 packages can be upgraded. Run &#39;apt list --upgradable&#39; to see them. cychong@mini1:~/work/ghost-with-helm-x$ sudo apt-cache policy kubeadm kubeadm: Installed: 1.15.3-00 Candidate: 1.16.1-00 cychong@mini1:~/work/ghost-with-helm-x$ sudo apt-get install -y kubeadm=1.16.1-00 && sudo apt-mark hold kubeadm Reading package lists... Done Building dependency tree Reading state information... Done The following package was automatically installed and is no longer required: libllvm7 Use &#39;sudo apt autoremove&#39; to remove it. The following packages will be upgraded: kubeadm 1 upgraded, 0 newly installed, 0 to remove and 40 not upgraded. Need to get 8764 kB of archives. After this operation, 4062 kB of additional disk space will be used. Get:1 https://packages.cloud.google.com/apt kubernetes-xenial/main amd64 kubeadm amd64 1.16.1-00 [8764 kB] Fetched 8764 kB in 6s (1489 kB/s) (Reading database ... 237550 files and directories currently installed.) Preparing to unpack .../kubeadm_1.16.1-00_amd64.deb ... Unpacking kubeadm (1.16.1-00) over (1.15.3-00) ... Setting up kubeadm (1.16.1-00) ... kubeadm set on hold. cychong@mini1:~/work/ghost-with-helm-x$ kubeadm version kubeadm version: &amp;version.Info{Major:"1", Minor:"16", GitVersion:"v1.16.1", GitCommit:"d647ddbd755faf07169599a625faf302ffc34458", GitTreeState:"clean", BuildDate:"2019-10-02T16:58:27Z", GoVersion:"go1.12.10", Compiler:"gc", Platform:"linux/amd64"} cychong@mini1:~/work/ghost-with-helm-x$ sudo kubeadm upgrade plan [upgrade/config] Making sure the configuration is correct: [upgrade/config] Reading configuration from the cluster... [upgrade/config] FYI: You can look at this config file with &#39;kubectl -n kube-system get cm kubeadm-config -oyaml&#39; [preflight] Running pre-flight checks. [upgrade] Making sure the cluster is healthy: [upgrade] Fetching available versions to upgrade to [upgrade/versions] Cluster version: v1.15.3 [upgrade/versions] kubeadm version: v1.16.1 [upgrade/versions] Latest stable version: v1.16.1 [upgrade/versions] Latest version in the v1.15 series: v1.15.4 Components that must be upgraded manually after you have upgraded the control plane with &#39;kubeadm upgrade apply&#39;: COMPONENT CURRENT AVAILABLE Kubelet 1 x v1.15.3 v1.15.4 Upgrade to the latest version in the v1.15 series: COMPONENT CURRENT AVAILABLE API Server v1.15.3 v1.15.4 Controller Manager v1.15.3 v1.15.4 Scheduler v1.15.3 v1.15.4 Kube Proxy v1.15.3 v1.15.4 CoreDNS 1.3.1 1.6.2 Etcd 3.3.10 3.3.10 You can now apply the upgrade by executing the following command: kubeadm upgrade apply v1.15.4 _____________________________________________________________________ Components that must be upgraded manually after you have upgraded the control plane with &#39;kubeadm upgrade apply&#39;: COMPONENT CURRENT AVAILABLE Kubelet 1 x v1.15.3 v1.16.1 Upgrade to the latest stable version: COMPONENT CURRENT AVAILABLE API Server v1.15.3 v1.16.1 Controller Manager v1.15.3 v1.16.1 Scheduler v1.15.3 v1.16.1 Kube Proxy v1.15.3 v1.16.1 CoreDNS 1.3.1 1.6.2 Etcd 3.3.10 3.3.15-0 You can now apply the upgrade by executing the following command: kubeadm upgrade apply v1.16.1 _____________________________________________________________________ failed cychong@mini1:~/work/ghost-with-helm-x$ sudo kubeadm upgrade apply v1.16.1 [upgrade/config] Making sure the configuration is correct: [upgrade/config] Reading configuration from the cluster... [upgrade/config] FYI: You can look at this config file with &#39;kubectl -n kube-system get cm kubeadm-config -oyaml&#39; [preflight] Running pre-flight checks. [upgrade] Making sure the cluster is healthy: [upgrade/version] You have chosen to change the cluster version to "v1.16.1" [upgrade/versions] Cluster version: v1.15.3 [upgrade/versions] kubeadm version: v1.16.1 [upgrade/confirm] Are you sure you want to proceed with the upgrade? [y/N]: y [upgrade/prepull] Will prepull images for components [kube-apiserver kube-controller-manager kube-scheduler etcd] [upgrade/prepull] Prepulling image for component etcd. [upgrade/prepull] Prepulling image for component kube-controller-manager. [upgrade/prepull] Prepulling image for component kube-apiserver. [upgrade/prepull] Prepulling image for component kube-scheduler. [apiclient] Found 0 Pods for label selector k8s-app=upgrade-prepull-kube-scheduler [apiclient] Found 0 Pods for label selector k8s-app=upgrade-prepull-kube-apiserver [apiclient] Found 0 Pods for label selector k8s-app=upgrade-prepull-kube-controller-manager [apiclient] Found 0 Pods for label selector k8s-app=upgrade-prepull-etcd [apiclient] Found 1 Pods for label selector k8s-app=upgrade-prepull-kube-scheduler [apiclient] Found 1 Pods for label selector k8s-app=upgrade-prepull-etcd [apiclient] Found 1 Pods for label selector k8s-app=upgrade-prepull-kube-controller-manager [apiclient] Found 1 Pods for label selector k8s-app=upgrade-prepull-kube-apiserver [upgrade/prepull] Failed prepulled the images for the control plane components error: the prepull operation timed out To see the stack trace of this error execute with --v=5 or higher retry cychong@mini1:~$ sudo kubeadm upgrade apply v1.16.1 [sudo] password for cychong: [upgrade/config] Making sure the configuration is correct: [upgrade/config] Reading configuration from the cluster... [upgrade/config] FYI: You can look at this config file with &#39;kubectl -n kube-system get cm kubeadm-config -oyaml&#39; [preflight] Running pre-flight checks. [upgrade] Making sure the cluster is healthy: [upgrade/version] You have chosen to change the cluster version to "v1.16.1" [upgrade/versions] Cluster version: v1.15.3 [upgrade/versions] kubeadm version: v1.16.1 [upgrade/confirm] Are you sure you want to proceed with the upgrade? [y/N]: y [upgrade/prepull] Will prepull images for components [kube-apiserver kube-controller-manager kube-scheduler etcd] [upgrade/prepull] Prepulling image for component etcd. [upgrade/prepull] Prepulling image for component kube-controller-manager. [upgrade/prepull] Prepulling image for component kube-scheduler. [upgrade/prepull] Prepulling image for component kube-apiserver. [apiclient] Found 1 Pods for label selector k8s-app=upgrade-prepull-kube-apiserver [apiclient] Found 1 Pods for label selector k8s-app=upgrade-prepull-etcd [apiclient] Found 1 Pods for label selector k8s-app=upgrade-prepull-kube-controller-manager [apiclient] Found 1 Pods for label selector k8s-app=upgrade-prepull-kube-scheduler [upgrade/prepull] Prepulled image for component kube-apiserver. [upgrade/prepull] Prepulled image for component etcd. [upgrade/prepull] Prepulled image for component kube-controller-manager. [upgrade/prepull] Prepulled image for component kube-scheduler. [upgrade/prepull] Successfully prepulled the images for all the control plane components [upgrade/apply] Upgrading your Static Pod-hosted control plane to version "v1.16.1"... Static pod: kube-apiserver-mini1 hash: 868871559cc75dab75f106d4af342538 Static pod: kube-controller-manager-mini1 hash: 44f6b9cce90e81a472520a3fb9751d10 Static pod: kube-scheduler-mini1 hash: 7d5d3c0a6786e517a8973fa06754cb75 [upgrade/etcd] Upgrading to TLS for etcd Static pod: etcd-mini1 hash: 71542aaa2829652ef14b22098a4b46aa [upgrade/staticpods] Preparing for "etcd" upgrade [upgrade/staticpods] Renewing etcd-server certificate [upgrade/staticpods] Renewing etcd-peer certificate [upgrade/staticpods] Renewing etcd-healthcheck-client certificate [upgrade/staticpods] Moved new manifest to "/etc/kubernetes/manifests/etcd.yaml" and backed up old manifest to "/etc/kubernetes/tmp/kubeadm-backup-manifests-2019-10-07-23-43-23/etcd.yaml" [upgrade/staticpods] Waiting for the kubelet to restart the component [upgrade/staticpods] This might take a minute or longer depending on the component/version gap (timeout 5m0s) Static pod: etcd-mini1 hash: 71542aaa2829652ef14b22098a4b46aa Static pod: etcd-mini1 hash: 71542aaa2829652ef14b22098a4b46aa Static pod: etcd-mini1 hash: 71542aaa2829652ef14b22098a4b46aa Static pod: etcd-mini1 hash: 71542aaa2829652ef14b22098a4b46aa Static pod: etcd-mini1 hash: 71542aaa2829652ef14b22098a4b46aa Static pod: etcd-mini1 hash: 71542aaa2829652ef14b22098a4b46aa Static pod: etcd-mini1 hash: 71542aaa2829652ef14b22098a4b46aa Static pod: etcd-mini1 hash: 71542aaa2829652ef14b22098a4b46aa Static pod: etcd-mini1 hash: d96090bab45a5dababb3c3015960926b [apiclient] Found 1 Pods for label selector component=etcd [upgrade/staticpods] Component "etcd" upgraded successfully! [upgrade/etcd] Waiting for etcd to become available [upgrade/staticpods] Writing new Static Pod manifests to "/etc/kubernetes/tmp/kubeadm-upgraded-manifests306281752" [upgrade/staticpods] Preparing for "kube-apiserver" upgrade [upgrade/staticpods] Renewing apiserver certificate [upgrade/staticpods] Renewing apiserver-kubelet-client certificate [upgrade/staticpods] Renewing front-proxy-client certificate [upgrade/staticpods] Renewing apiserver-etcd-client certificate [upgrade/staticpods] Moved new manifest to "/etc/kubernetes/manifests/kube-apiserver.yaml" and backed up old manifest to "/etc/kubernetes/tmp/kubeadm-backup-manifests-2019-10-07-23-43-23/kube-apiserver.yaml" [upgrade/staticpods] Waiting for the kubelet to restart the component [upgrade/staticpods] This might take a minute or longer depending on the component/version gap (timeout 5m0s) Static pod: kube-apiserver-mini1 hash: 868871559cc75dab75f106d4af342538 Static pod: kube-apiserver-mini1 hash: 01800dd11dfbda441372caf7cbf8aa39 [apiclient] Found 1 Pods for label selector component=kube-apiserver [upgrade/staticpods] Component "kube-apiserver" upgraded successfully! [upgrade/staticpods] Preparing for "kube-controller-manager" upgrade [upgrade/staticpods] Renewing controller-manager.conf certificate [upgrade/staticpods] Moved new manifest to "/etc/kubernetes/manifests/kube-controller-manager.yaml" and backed up old manifest to "/etc/kubernetes/tmp/kubeadm-backup-manifests-2019-10-07-23-43-23/kube-controller-manager.yaml" [upgrade/staticpods] Waiting for the kubelet to restart the component [upgrade/staticpods] This might take a minute or longer depending on the component/version gap (timeout 5m0s) Static pod: kube-controller-manager-mini1 hash: 44f6b9cce90e81a472520a3fb9751d10 Static pod: kube-controller-manager-mini1 hash: e12d193633dcf11f6095d89ee58c45a9 [apiclient] Found 1 Pods for label selector component=kube-controller-manager [upgrade/staticpods] Component "kube-controller-manager" upgraded successfully! [upgrade/staticpods] Preparing for "kube-scheduler" upgrade [upgrade/staticpods] Renewing scheduler.conf certificate [upgrade/staticpods] Moved new manifest to "/etc/kubernetes/manifests/kube-scheduler.yaml" and backed up old manifest to "/etc/kubernetes/tmp/kubeadm-backup-manifests-2019-10-07-23-43-23/kube-scheduler.yaml" [upgrade/staticpods] Waiting for the kubelet to restart the component [upgrade/staticpods] This might take a minute or longer depending on the component/version gap (timeout 5m0s) Static pod: kube-scheduler-mini1 hash: 7d5d3c0a6786e517a8973fa06754cb75 Static pod: kube-scheduler-mini1 hash: bf9014e67294b0df0bc373fd7024ced7 [apiclient] Found 1 Pods for label selector component=kube-scheduler [upgrade/staticpods] Component "kube-scheduler" upgraded successfully! [upload-config] Storing the configuration used in ConfigMap "kubeadm-config" in the "kube-system" Namespace [kubelet] Creating a ConfigMap "kubelet-config-1.16" in namespace kube-system with the configuration for the kubelets in the cluster [kubelet-start] Downloading configuration for the kubelet from the "kubelet-config-1.16" ConfigMap in the kube-system namespace [kubelet-start] Writing kubelet configuration to file "/var/lib/kubelet/config.yaml" [bootstrap-token] configured RBAC rules to allow Node Bootstrap tokens to post CSRs in order for nodes to get long term certificate credentials [bootstrap-token] configured RBAC rules to allow the csrapprover controller automatically approve CSRs from a Node Bootstrap Token [bootstrap-token] configured RBAC rules to allow certificate rotation for all node client certificates in the cluster [addons] Applied essential addon: CoreDNS [addons] Applied essential addon: kube-proxy [upgrade/successful] SUCCESS! Your cluster was upgraded to "v1.16.1". Enjoy! [upgrade/kubelet] Now that your control plane is upgraded, please proceed with upgrading your kubelets if you haven&#39;t already done so. Upgrade calico from v3.8 to v3.9 kubectl apply -f https://docs.projectcalico.org/v3.9/manifests/calico.yaml configmap/calico-config unchanged customresourcedefinition.apiextensions.k8s.io/felixconfigurations.crd.projectcalico.org unchanged customresourcedefinition.apiextensions.k8s.io/ipamblocks.crd.projectcalico.org unchanged customresourcedefinition.apiextensions.k8s.io/blockaffinities.crd.projectcalico.org unchanged customresourcedefinition.apiextensions.k8s.io/ipamhandles.crd.projectcalico.org unchanged customresourcedefinition.apiextensions.k8s.io/ipamconfigs.crd.projectcalico.org unchanged customresourcedefinition.apiextensions.k8s.io/bgppeers.crd.projectcalico.org unchanged customresourcedefinition.apiextensions.k8s.io/bgpconfigurations.crd.projectcalico.org unchanged customresourcedefinition.apiextensions.k8s.io/ippools.crd.projectcalico.org unchanged customresourcedefinition.apiextensions.k8s.io/hostendpoints.crd.projectcalico.org unchanged customresourcedefinition.apiextensions.k8s.io/clusterinformations.crd.projectcalico.org unchanged customresourcedefinition.apiextensions.k8s.io/globalnetworkpolicies.crd.projectcalico.org unchanged customresourcedefinition.apiextensions.k8s.io/globalnetworksets.crd.projectcalico.org unchanged customresourcedefinition.apiextensions.k8s.io/networkpolicies.crd.projectcalico.org unchanged customresourcedefinition.apiextensions.k8s.io/networksets.crd.projectcalico.org unchanged clusterrole.rbac.authorization.k8s.io/calico-kube-controllers unchanged clusterrolebinding.rbac.authorization.k8s.io/calico-kube-controllers unchanged clusterrole.rbac.authorization.k8s.io/calico-node configured clusterrolebinding.rbac.authorization.k8s.io/calico-node unchanged daemonset.apps/calico-node configured serviceaccount/calico-node unchanged deployment.apps/calico-kube-controllers configured serviceaccount/calico-kube-controllers unchanged 앗. 서브넷 변경하는 걸 깜빡'><meta itemprop=datePublished content="2019-10-07T15:37:14+09:00"><meta itemprop=dateModified content="2019-10-07T15:39:18+00:00"><meta itemprop=wordCount content="1863"><meta itemprop=keywords content="Kubernetes"><meta name=referrer content="no-referrer-when-downgrade"><style>:root{--width:720px;--font-main:Verdana, sans-serif;--font-secondary:Verdana, sans-serif;--font-scale:1em;--background-color:#fafafa;--heading-color:#222;--text-color:#444;--link-color:#3273dc;--visited-color:#8b6fcb;--blockquote-color:#222}@media(prefers-color-scheme:dark){:root{--background-color:#fafafa;--heading-color:#222;--text-color:#444;--link-color:#3273dc;--visited-color:#8b6fcb;--blockquote-color:#222}}body{font-family:var(--font-secondary);font-size:var(--font-scale);margin:auto;padding:20px;max-width:var(--width);text-align:left;background-color:var(--background-color);word-wrap:break-word;overflow-wrap:break-word;line-height:1.5;color:var(--text-color)}h1,h2,h3,h4,h5,h6{font-family:var(--font-main);color:var(--heading-color)}a{color:var(--link-color);cursor:pointer;text-decoration:none}a:hover{text-decoration:underline}nav a{margin-right:8px}strong,b{color:var(--heading-color)}button{margin:0;cursor:pointer}time{font-family:monospace;font-style:normal;font-size:15px}main{line-height:1.6}table{width:100%}hr{border:0;border-top:1px dashed}img{max-width:100%}code{font-family:monospace;padding:2px;border-radius:3px}blockquote{border-left:1px solid #999;color:var(--blockquote-color);padding-left:20px;font-style:italic}footer{padding:25px 0;text-align:center}.title:hover{text-decoration:none}.title h1{font-size:1.5em}.inline{width:auto!important}.highlight,.code{border-radius:3px;margin-block-start:1em;margin-block-end:1em;overflow-x:auto}ul.blog-posts{list-style-type:none;padding:unset}ul.blog-posts li{display:flex}ul.blog-posts li span{flex:0 0 130px}ul.blog-posts li a:visited{color:var(--visited-color)}</style></head><body><header><a href=/ class=title><h2>Keep calm and Write something</h2></a><nav><a href=/post/>Post</a>
+<a href=/page/>Page</a>
+<a href=/series/>Series</a>
+<a href=/tags/>Tag</a>
+<a href=/archive/>Archive</a>
+<a href=/search/>Search</a></nav></header><main><content><pre tabindex=0><code>cychong@mini1:~/work/ghost-with-helm-x$ sudo apt update
 [sudo] password for cychong:
 Ign:2 http://dl.google.com/linux/chrome/deb stable InRelease
 Hit:3 http://archive.ubuntu.com/ubuntu bionic InRelease
@@ -312,311 +575,4 @@ c2019-10-07 23:49:14 (123 KB/s) - ‘calico.yaml’ saved [20648/20648]
 </span></span></code></pre></div><h2 id=check-the-status>Check the status</h2><pre tabindex=0><code>cychong@mini1:~$ kubectl get nodes
 NAME    STATUS   ROLES    AGE   VERSION
 mini1   Ready    master   29d   v1.16.1
-</code></pre><p>Reference</p><ul><li><a href=https://kubernetes.io/docs/tasks/administer-cluster/kubeadm/kubeadm-upgrade/>https://kubernetes.io/docs/tasks/administer-cluster/kubeadm/kubeadm-upgrade/</a></li></ul></div><footer class=post__footer><div class="post__tags tags clearfix"><svg class="tags__badge icon icon-tag" width="16" height="16" viewBox="0 0 32 32"><path d="M32 19c0 1-1 2-1 2L21 31s-1 1-2 1-2-1-2-1L2 16c-1-1-1.4-2-1.4-2S0 12.5.0 11V3C0 1.5.8.8.8.8S1.5.0 3 0h8c1.5.0 3 .6 3 .6S15 1 16 2l15 15s1 1 1 2zM7 10a3 3 0 100-6 3 3 0 000 6z"/></svg><ul class=tags__list><li class=tags__item><a class="tags__link btn" href=/tags/kubernetes/ rel=tag>kubernetes</a></li></ul></div></footer></article></main><nav class="pager flex"><div class="pager__item pager__item--prev"><a class=pager__link href=/post/2019/convention-on-impose-core-requirements/ rel=prev><span class=pager__subtitle>«&#8201;Previous</span><p class=pager__title>Convention on impose core requirements</p></a></div><div class="pager__item pager__item--next"><a class=pager__link href=/post/2019/enable-sctp-in-kubernetes/ rel=next><span class=pager__subtitle>Next&#8201;»</span><p class=pager__title>Enable SCTP in kubernetes</p></a></div></nav></div><aside class=sidebar><link href=/_pagefind/pagefind-ui.css rel=stylesheet><script src=/_pagefind/pagefind-ui.js type=text/javascript></script><div class="widget-categories widget"><h4 class=widget__title>Search</h4><div id=search></div><script>window.addEventListener("DOMContentLoaded",e=>{new PagefindUI({element:"#search"})})</script></div><div class="widget-categories widget"><h4 class=widget__title>Category</h4><div class=widget__content><ul class=widget__list><li class=widget__item><a class=widget__link href=/categories/book/>Book</a></li><li class=widget__item><a class=widget__link href=/categories/gadget/>Gadget</a></li><li class=widget__item><a class=widget__link href=/categories/homelab/>Homelab</a></li><li class=widget__item><a class=widget__link href=/categories/life/>Life</a></li><li class=widget__item><a class=widget__link href=/categories/note/>Note</a></li><li class=widget__item><a class=widget__link href=/categories/study/>Study</a></li><li class=widget__item><a class=widget__link href=/categories/til/>Til</a></li></ul></div></div><div class="widget-categories widget"><h4 class=widget__title>Series</h4><div class=widget__content><ul class=widget__list><li class=widget__item><a class=widget__link href=/series/homelab-2024/>HomeLab 2024</a></li><li class=widget__item><a class=widget__link href=/series/how-to-run-dpdk-in-k8s/>How to Run DPDK in K8s</a></li><li class=widget__item><a class=widget__link href=/series/kubernetes-hands-on/>Kubernetes Hands-On</a></li><li class=widget__item><a class=widget__link href=/series/learn-cuda-programming/>Learn CUDA Programming</a></li><li class=widget__item><a class=widget__link href=/series/setup-homelab-server-2023/>Setup Homelab Server 2023</a></li><li class=widget__item><a class=widget__link href=/series/setup-hugo-blog/>Setup Hugo Blog</a></li><li class=widget__item><a class=widget__link href=/series/setup-k8s-cluster/>Setup K8s Cluster</a></li><li class=widget__item><a class=widget__link href=/series/setup-podcast-blog/>Setup Podcast Blog</a></li><li class=widget__item><a class=widget__link href=/series/setup-traefik/>Setup Traefik</a></li><li class=widget__item><a class=widget__link href=/series/setup-hugo-blog/>“Setup-Hugo-Blog”</a></li></ul></div></div><div class="widget-taglist widget"><h4 class=widget__title>Tags</h4><div class=widget__content><a class="widget-taglist__link widget__link btn" href=/tags/2015/ title=2015>2015 (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/5g/ title=5g>5g (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/agile/ title=Agile>Agile (6)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/aic/ title=Aic>Aic (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/algorithm/ title=Algorithm>Algorithm (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/amazon/ title=Amazon>Amazon (2)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/amd/ title=Amd>Amd (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/amdocs/ title=Amdocs>Amdocs (2)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/amsterdam-release/ title="Amsterdam Release">Amsterdam Release (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/andromeda/ title=Andromeda>Andromeda (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/ansible/ title=Ansible>Ansible (7)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/ansible-playbook/ title=Ansible-Playbook>Ansible-Playbook (4)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/anti-work-pattern/ title="Anti-Work Pattern">Anti-Work Pattern (3)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/apple/ title=Apple>Apple (3)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/apple-silicon/ title="Apple Silicon">Apple Silicon (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/apple-watch/ title=Apple-Watch>Apple-Watch (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/arm/ title=Arm>Arm (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/att/ title=ATT>ATT (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/automation/ title=Automation>Automation (3)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/b4/ title=B4>B4 (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/backup/ title=Backup>Backup (2)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/barometer/ title=Barometer>Barometer (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/blog/ title=Blog>Blog (2)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/blogging/ title=Blogging>Blogging (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/book/ title=Book>Book (47)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/brew/ title=Brew>Brew (2)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/brocade/ title=Brocade>Brocade (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/c/ title=C>C (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/calico/ title=Calico>Calico (2)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/car/ title=Car>Car (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/cavium/ title=Cavium>Cavium (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/chair/ title=Chair>Chair (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/cilium/ title=Cilium>Cilium (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/cisco/ title=Cisco>Cisco (7)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/click/ title=Click>Click (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/cncf/ title=Cncf>Cncf (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/cni/ title=Cni>Cni (2)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/cockpit/ title=Cockpit>Cockpit (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/coding-style/ title="Coding Style">Coding Style (2)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/collaboration/ title=Collaboration>Collaboration (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/collectd/ title=Collectd>Collectd (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/configmap/ title=Configmap>Configmap (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/connectx-5/ title=ConnectX-5>ConnectX-5 (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/container/ title=Container>Container (10)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/continuous-deployment/ title="Continuous Deployment">Continuous Deployment (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/cpu/ title=Cpu>Cpu (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/cran/ title=Cran>Cran (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/cron/ title=Cron>Cron (2)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/crond/ title=Crond>Crond (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/cronjob/ title=Cronjob>Cronjob (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/cubb/ title=Cubb>Cubb (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/cuda/ title=CUDA>CUDA (2)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/culture/ title=Culture>Culture (2)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/cuphy/ title=Cuphy>Cuphy (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/cuvnf/ title=Cuvnf>Cuvnf (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/database/ title=Database>Database (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/dev-culture/ title="Dev Culture">Dev Culture (2)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/devnothink/ title=Devnothink>Devnothink (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/devonthink/ title=Devonthink>Devonthink (2)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/docker/ title=Docker>Docker (15)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/docker-compose/ title=Docker-Compose>Docker-Compose (2)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/dpdk/ title=DPDK>DPDK (26)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/dpi/ title=Dpi>Dpi (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/dpkt/ title=Dpkt>Dpkt (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/edge/ title=Edge>Edge (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/elasticsearch/ title=Elasticsearch>Elasticsearch (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/elk/ title=Elk>Elk (3)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/english/ title=English>English (2)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/espresso/ title=Espresso>Espresso (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/fapi/ title=Fapi>Fapi (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/feature-flag-driven-development/ title="Feature Flag Driven Development">Feature Flag Driven Development (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/feedback/ title=Feedback>Feedback (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/ffmpeg/ title=Ffmpeg>Ffmpeg (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/finder/ title=Finder>Finder (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/flask/ title=Flask>Flask (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/fragment/ title=Fragment>Fragment (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/ftp/ title=Ftp>Ftp (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/getting-started/ title="Getting Started">Getting Started (2)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/ghost/ title=Ghost>Ghost (11)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/ghost-theme/ title=Ghost-Theme>Ghost-Theme (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/git/ title=Git>Git (3)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/github/ title=Github>Github (3)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/go/ title=Go>Go (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/golang/ title=Golang>Golang (2)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/google/ title=Google>Google (4)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/google-cloud-platform/ title=Google-Cloud-Platform>Google-Cloud-Platform (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/gpb/ title=Gpb>Gpb (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/gpu/ title=Gpu>Gpu (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/grafana/ title=Grafana>Grafana (2)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/grafana/ title='Grafana"'>Grafana" (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/graviton/ title=Graviton>Graviton (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/grpc/ title=Grpc>Grpc (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/happy-hacking/ title=Happy-Hacking>Happy-Hacking (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/hbr/ title=HBR>HBR (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/helm/ title=Helm>Helm (6)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/homebrew/ title=Homebrew>Homebrew (3)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/homelab/ title=Homelab>Homelab (2)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/homepod/ title=HomePod>HomePod (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/http/ title=Http>Http (2)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/hugepage/ title=Hugepage>Hugepage (4)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/hugo/ title=Hugo>Hugo (16)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/influxdb/ title=Influxdb>Influxdb (2)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/inspiration/ title=Inspiration>Inspiration (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/intel/ title=Intel>Intel (4)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/ios14/ title=IOS14>IOS14 (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/ipad/ title=IPad>IPad (3)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/iphone/ title=IPhone>IPhone (2)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/iphone6/ title=IPhone6>IPhone6 (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/iphonex/ title=IPhoneX>IPhoneX (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/ipsec/ title=IPsec>IPsec (2)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/ipv4/ title=Ipv4>Ipv4 (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/istio/ title=Istio>Istio (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/jetpack/ title=Jetpack>Jetpack (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/job/ title=Job>Job (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/json/ title=Json>Json (2)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/jtbc/ title=Jtbc>Jtbc (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/jupiter/ title=Jupiter>Jupiter (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/k3s/ title=K3s>K3s (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/kafka/ title=Kafka>Kafka (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/kldp/ title=KLDP>KLDP (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/kni/ title=Kni>Kni (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/kubelet/ title=Kubelet>Kubelet (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/kubernetes/ title=Kubernetes>Kubernetes (25)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/kuberntes/ title=Kuberntes>Kuberntes (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/launchd/ title=Launchd>Launchd (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/lb/ title=Lb>Lb (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/life/ title=Life>Life (3)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/lifehack/ title=Lifehack>Lifehack (2)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/linux/ title=Linux>Linux (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/load-balancer/ title="Load Balancer">Load Balancer (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/lte/ title=Lte>Lte (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/m1/ title=M1>M1 (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/mac/ title=Mac>Mac (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/mac-mini-2009/ title="Mac Mini 2009">Mac Mini 2009 (3)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/maglev/ title=Maglev>Maglev (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/manager/ title=Manager>Manager (3)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/markdown/ title=Markdown>Markdown (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/mbuf/ title=Mbuf>Mbuf (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/mec/ title=Mec>Mec (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/mediawiki/ title=Mediawiki>Mediawiki (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/meetup/ title=Meetup>Meetup (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/message-queue/ title="Message Queue">Message Queue (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/metricbeat/ title=Metricbeat>Metricbeat (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/microk8s/ title=Microk8s>Microk8s (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/microservice/ title=Microservice>Microservice (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/mindmap/ title=Mindmap>Mindmap (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/model-driven/ title=Model-Driven>Model-Driven (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/monitoring/ title=Monitoring>Monitoring (2)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/multipass/ title=Multipass>Multipass (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/mysql/ title=Mysql>Mysql (5)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/naim/ title=Naim>Naim (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/nas/ title=Nas>Nas (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/nasa/ title=Nasa>Nasa (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/nec/ title=NEC>NEC (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/nested-chart/ title=Nested-Chart>Nested-Chart (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/netconf/ title=Netconf>Netconf (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/network/ title=Network>Network (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/neuron/ title=Neuron>Neuron (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/nfv/ title=NFV>NFV (9)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/nginmesh/ title=Nginmesh>Nginmesh (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/nginx/ title=Nginx>Nginx (2)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/nhn/ title=NHN>NHN (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/nic/ title=NIC>NIC (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/nokia/ title=Nokia>Nokia (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/note/ title=Note>Note (2)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/nvidia/ title=Nvidia>Nvidia (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/odp/ title=Odp>Odp (3)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/ofp/ title=OFP>OFP (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/onap/ title=Onap>Onap (3)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/onp/ title=ONP>ONP (2)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/openfastpath/ title=OpenFastPath>OpenFastPath (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/opensource/ title=Opensource>Opensource (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/openstack/ title=Openstack>Openstack (2)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/opnfv/ title=Opnfv>Opnfv (3)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/osx/ title=Osx>Osx (3)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/ovdk/ title=OVDK>OVDK (3)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/ovs/ title=OVS>OVS (2)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/p4/ title=P4>P4 (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/pagefind/ title=Pagefind>Pagefind (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/patch/ title=Patch>Patch (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/perl/ title=Perl>Perl (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/photo/ title=Photo>Photo (31)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/photoaa/ title=Photoaa>Photoaa (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/pinpoint/ title=Pinpoint>Pinpoint (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/plist/ title=Plist>Plist (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/pluribus/ title=Pluribus>Pluribus (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/podcast/ title=Podcast>Podcast (8)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/powermate/ title=Powermate>Powermate (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/prediction/ title=Prediction>Prediction (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/programming/ title=Programming>Programming (2)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/prometheus/ title=Prometheus>Prometheus (2)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/protobufs/ title=Protobufs>Protobufs (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/protocol-buffer/ title="Protocol Buffer">Protocol Buffer (2)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/pyftplib/ title=Pyftplib>Pyftplib (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/python/ title=Python>Python (14)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/qat/ title=QAT>QAT (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/quality/ title=Quality>Quality (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/quanta/ title=Quanta>Quanta (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/quicklook/ title=Quicklook>Quicklook (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/r210/ title=R210>R210 (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/readiness/ title=Readiness>Readiness (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/reassembly/ title=Reassembly>Reassembly (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/recovery/ title=Recovery>Recovery (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/resources/ title=Resources>Resources (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/restful/ title=RESTful>RESTful (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/rmda/ title=RMDA>RMDA (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/scapy/ title=Scapy>Scapy (5)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/sci/ title=Sci>Sci (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/scrum/ title=Scrum>Scrum (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/sctp/ title=Sctp>Sctp (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/sdn/ title=SDN>SDN (5)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/secret/ title=Secret>Secret (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/service-agility/ title="Service Agility">Service Agility (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/service-mesh/ title="Service Mesh">Service Mesh (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/setup/ title=Setup>Setup (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/slack/ title=Slack>Slack (4)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/sleeve/ title=Sleeve>Sleeve (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/snmp/ title=Snmp>Snmp (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/soft-skill/ title=Soft-Skill>Soft-Skill (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/sqlite/ title=Sqlite>Sqlite (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/sriov/ title=SRIOV>SRIOV (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/standingdesk/ title=StandingDesk>StandingDesk (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/startup/ title=Startup>Startup (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/storage/ title=Storage>Storage (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/study/ title=Study>Study (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/subchart/ title=Subchart>Subchart (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/sw/ title=SW>SW (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/sw-quality/ title="SW Quality">SW Quality (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/sw-%EA%B0%9C%EB%B0%9C-%EB%AC%B8%ED%99%94/ title="SW 개발 문화">SW 개발 문화 (9)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/swarm/ title=Swarm>Swarm (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/synology/ title=Synology>Synology (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/tag/ title=Tag>Tag (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/tcp/ title=Tcp>Tcp (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/team/ title=Team>Team (2)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/telemetry/ title=Telemetry>Telemetry (3)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/the-pragmatic-programmer/ title="The Pragmatic Programmer">The Pragmatic Programmer (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/theme/ title=Theme>Theme (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/til/ title=Til>Til (8)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/time-machine/ title="Time Machine">Time Machine (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/track-pad/ title=Track-Pad>Track-Pad (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/traefik/ title=Traefik>Traefik (5)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/troubleshooting/ title=Troubleshooting>Troubleshooting (9)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/tutorial/ title=Tutorial>Tutorial (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/ubuntu/ title=Ubuntu>Ubuntu (2)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/vagrant/ title=Vagrant>Vagrant (2)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/vertical-pod-autoscaler/ title=Vertical-Pod-Autoscaler>Vertical-Pod-Autoscaler (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/ves/ title=Ves>Ves (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/video/ title=Video>Video (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/vim/ title=Vim>Vim (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/virtualbox/ title=Virtualbox>Virtualbox (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/virtualenv/ title=Virtualenv>Virtualenv (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/virtualization/ title=Virtualization>Virtualization (2)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/vmware/ title=Vmware>Vmware (2)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/vnf/ title=VNF>VNF (2)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/volvo/ title=Volvo>Volvo (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/vran/ title=Vran>Vran (3)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/vrouter/ title=VRouter>VRouter (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/vswitch/ title=VSwitch>VSwitch (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/web-scrapping/ title=Web-Scrapping>Web-Scrapping (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/webdav/ title=Webdav>Webdav (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/wiki/ title=Wiki>Wiki (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/windows10/ title=Windows10>Windows10 (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/wordpress/ title=Wordpress>Wordpress (11)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/work_rules/ title=Work_rules>Work_rules (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/writing/ title=Writing>Writing (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/xcrun/ title=Xcrun>Xcrun (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/yang/ title=Yang>Yang (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/automation/ title=“Automation”>“Automation” (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/book/ title=“Book”>“Book” (2)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/containerd/ title=“Containerd”>“Containerd” (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/cronjob/ title=“CronJob”>“CronJob” (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/github-action/ title="“GitHub Action”">“GitHub Action” (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/github/ title=“GitHub”>“GitHub” (2)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/go/ title=“Go”>“Go” (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/gpu/ title=“GPU”>“GPU” (2)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/helm/ title=“Helm”>“Helm” (2)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/ios-shortcut/ title=“IOS-Shortcut”>“IOS-Shortcut” (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/kubernetes/ title=“Kubernetes”>“Kubernetes” (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/podcast/ title=“Podcast”>“Podcast” (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/rust/ title=“Rust”>“Rust” (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/timezone/ title=“Timezone”>“Timezone” (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/%EA%B0%9C%EB%B0%9C%EC%9D%B4%EC%95%BC%EA%B8%B0/ title=개발이야기>개발이야기 (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/%EA%B2%BD%EC%9F%81/ title=경쟁>경쟁 (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/%EA%B3%B5%EB%B6%80/ title=공부>공부 (2)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/%EA%B3%B5%EC%9C%A0/ title=공유>공유 (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/%EA%B4%80%EB%A6%AC%EB%8A%A5%EB%A0%A5/ title=관리능력>관리능력 (2)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/%EA%B8%B0%EB%A1%9D/ title=기록>기록 (2)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/%EB%85%BC%EB%AC%B8/ title=논문>논문 (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/%EB%A6%AC%EB%8D%94/ title=리더>리더 (2)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/%EB%A7%A4%EB%84%88%EB%A6%AC%EC%A6%98/ title=매너리즘>매너리즘 (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/%EB%AC%B8%ED%99%94/ title=문화>문화 (2)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/%EC%82%AC%EB%9E%8C%EC%9D%B4-%ED%95%B5%EC%8B%AC/ title="사람이 핵심">사람이 핵심 (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/%EC%83%9D%EA%B0%81/ title=생각>생각 (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/%EC%83%9D%EC%82%B0%EC%84%B1/ title=생산성>생산성 (2)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/%EC%9C%A4%EC%8B%9D%EB%8B%B9/ title=윤식당>윤식당 (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/%EC%9D%B8%EC%9A%A9/ title=인용>인용 (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/%EC%9E%84%EB%B0%B1%EC%A4%80/ title=임백준>임백준 (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/%EC%9E%A1%EC%83%9D%EA%B0%81/ title=잡생각>잡생각 (9)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/%EC%A0%84%EB%9E%8C%ED%9A%8C/ title=전람회>전람회 (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/%EC%A1%B0%EC%A7%81/ title=조직>조직 (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/%EC%A1%B0%EC%A7%81%EA%B4%80%EB%A6%AC/ title=조직관리>조직관리 (4)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/%EC%A1%B0%EC%A7%81%EB%AC%B8%ED%99%94/ title=조직문화>조직문화 (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/%EC%A2%8B%EC%9D%80%EA%B8%80/ title=좋은글>좋은글 (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/%EC%B0%A9%EA%B0%81%ED%95%98%EB%8A%94-ceo/ title="착각하는 CEO">착각하는 CEO (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/%EC%B6%94%EC%96%B5/ title=추억>추억 (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/%EC%BD%94%EB%93%9C%EB%A6%AC%EB%B7%B0/ title=코드리뷰>코드리뷰 (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/%ED%9A%8C%EC%9D%98/ title=회의>회의 (2)</a></div></div></aside></div><footer class=footer><div class="container footer__container flex"><div class=footer__copyright>&copy; 2024 Chaeyong Chong.
-<span class=footer__copyright-credits>Generated with <a href=https://gohugo.io/ rel="nofollow noopener" target=_blank>Hugo</a> and <a href=https://github.com/Vimux/Mainroad/ rel="nofollow noopener" target=_blank>Mainroad</a> theme.</span></div></div></footer></div><script async defer src=/js/menu.js></script></body></html>
+</code></pre><p>Reference</p><ul><li><a href=https://kubernetes.io/docs/tasks/administer-cluster/kubeadm/kubeadm-upgrade/>https://kubernetes.io/docs/tasks/administer-cluster/kubeadm/kubeadm-upgrade/</a></li></ul></content><p><a href=https://cychong47.github.io/tags/kubernetes/>#Kubernetes</a></p></main><footer>Made with <a href=https://github.com/janraasch/hugo-bearblog/>Hugo ʕ•ᴥ•ʔ Bear</a></footer></body></html>

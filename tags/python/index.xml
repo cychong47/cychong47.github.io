@@ -1,34 +1,373 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Python on Keep calm and write something</title><link>https://cychong47.github.io/tags/python/</link><description>Recent content in Python on Keep calm and write something</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Sun, 18 Feb 2024 00:00:00 +0000</lastBuildDate><atom:link href="https://cychong47.github.io/tags/python/index.xml" rel="self" type="application/rss+xml"/><item><title>Add extra data to python log message</title><link>https://cychong47.github.io/post/2024/2024-02-18-prepend-data-to-python-logger/</link><pubDate>Sun, 18 Feb 2024 00:00:00 +0000</pubDate><guid>https://cychong47.github.io/post/2024/2024-02-18-prepend-data-to-python-logger/</guid><description>TL;DR QueueHandler를 사용해서 process-safe logger를 만들고 LoggerAdapter를 활용해서 매 로그 메시지마다 특정 정보가 자동으로 출력. main.py #!/usr/bin/env python3 import logging import logging.handlers import multiprocessing from worker import worker_process from my_logger import logger_process if __name__ == &amp;#34;__main__&amp;#34;: # Configure logging logging.basicConfig(level=logging.DEBUG) # Create a queue for logging log_queue = multiprocessing.Queue() # Create worker processes num_workers = 2 processes = [] for i in range(num_workers): p = multiprocessing.Process(target=worker_process, args=(i, log_queue)) processes.append(p) p.start() # Create a logger process for process-safe loggging p = multiprocessing.</description></item><item><title>2021년 관심있는 언어들</title><link>https://cychong47.github.io/post/2021/2021-08-24-2021-languages-to-learn/</link><pubDate>Tue, 24 Aug 2021 22:54:41 +0900</pubDate><guid>https://cychong47.github.io/post/2021/2021-08-24-2021-languages-to-learn/</guid><description>Go, Rust and Python
-Python은 20년째 하고 있는 것 같은데 어째 2개월 한 사람보다 못하냐.</description></item><item><title>Get the latest jetpack plugin</title><link>https://cychong47.github.io/post/2018/get-the-latest-jetpack-plugin/</link><pubDate>Sun, 16 Dec 2018 06:55:44 +0900</pubDate><guid>https://cychong47.github.io/post/2018/get-the-latest-jetpack-plugin/</guid><description>http://sosa0sa.com:2368/use-jetpack-for-wordpress-5-0/ 의 연장선. Jetpack plugin의 최신 버전을 알아내서 자동으로 해당 바이너리 파일을 다운로드 받아 보자.
-몇 가지 module 을 사용하는데 필요한 module은 https://realpython.com/python-web-scraping-practical-introduction/ 을 참고해서 설치
-$ python3 -m venv venv $ . ./venv/bin/activate $ pip3 install requests BeautifulSoup4 webscrap.py from requests import get from requests.exceptions import RequestException from contextlib import closing from bs4 import BeautifulSoup from urllib.request import * &amp;#39;&amp;#39;&amp;#39; https://realpython.com/python-web-scraping-practical-introduction/ &amp;#39;&amp;#39;&amp;#39; def simple_get(url): &amp;#34;&amp;#34;&amp;#34; Attempts to get the content at `url` by making an HTTP GET request.</description></item><item><title>Grafana, influxDB and python</title><link>https://cychong47.github.io/post/2018/grafana-influxdb-and-python/</link><pubDate>Wed, 06 Jun 2018 04:33:06 +0900</pubDate><guid>https://cychong47.github.io/post/2018/grafana-influxdb-and-python/</guid><description>Time-series data를 python을 이용해서 influxDB에 저장하고, Grafana로 그래프를 보여주는 예제
-https://github.com/cychong47/influxdb_example.git
-Install Grafana and influxDB Install Grafana 직접 호스트에 설치할 수도 있지만, 세상 편하게 만들어준 docker를 이용해서 grafana, influxdb등을 설치하자.
-mbpr15:~ cychong$ docker pull grafana/grafana Using default tag: latest latest: Pulling from grafana/grafana f2aa67a397c4: Pull complete 89573effc7c8: Pull complete b55c103da375: Pull complete Digest: sha256:364bec4a39ecbec744ea4270aae35f6554eb6f2047b3ee08f7b5f1134857c32c Status: Downloaded newer image for grafana/grafana:latest Start grafana
-mbpr15:~ cychong$ docker run -d -p 3000:3000 —name grafana grafana/grafana 148894d7009259b02b04e1a98467f549400be91f9b055f8686557d69b9339e4b Install influxDB influxdb도 docker 명령어 하나로 설치</description></item><item><title>FTP server is gone from High Siera OSX Server</title><link>https://cychong47.github.io/post/2017/ftp-server-is-gone-from-high-siera-osx-server/</link><pubDate>Sat, 07 Oct 2017 00:19:27 +0900</pubDate><guid>https://cychong47.github.io/post/2017/ftp-server-is-gone-from-high-siera-osx-server/</guid><description>It is gone finally&amp;hellip; [macOS Server 5.4 changes in High Sierra you need to know about!])https://www.imore.com/changes-macos-server-54-high-sierra)
-File Transfer Protocol (FTP): A longtime a security risk, for example for sending password information in clear text, FTP support will be removed from macOS server if you upgrade.
-As my xeros printer/scanner suppors only ftp or samba(which is much much slower than the ftp) I have to run my own ftp server in my mac mini.</description></item><item><title>brew install python</title><link>https://cychong47.github.io/post/2017/brew-install-python/</link><pubDate>Sun, 01 Oct 2017 13:44:47 +0900</pubDate><guid>https://cychong47.github.io/post/2017/brew-install-python/</guid><description>Just for the record as some environments are mentioned
-mbpr15:working cychong$ brew install python ==&amp;gt; Installing dependencies for python: readline, sqlite, gdbm, openssl ==&amp;gt; Installing python dependency: readline ==&amp;gt; Downloading https://homebrew.bintray.com/bottles/readline-7.0.3_1.high_sierra.bottle.tar.gz ######################################################################## 100.0% ==&amp;gt; Pouring readline-7.0.3_1.high_sierra.bottle.tar.gz ==&amp;gt; Caveats This formula is keg-only, which means it was not symlinked into /usr/local, because macOS provides the BSD libedit library, which shadows libreadline. In order to prevent conflicts when programs look for libreadline we are defaulting this GNU Readline installation to keg-only.</description></item><item><title>Parsing http header with scary</title><link>https://cychong47.github.io/post/2017/parsing-http-header-with-scary/</link><pubDate>Sun, 01 Oct 2017 09:36:35 +0900</pubDate><guid>https://cychong47.github.io/post/2017/parsing-http-header-with-scary/</guid><description>정규식으로 http 분석 def processHTTP(data): str_method = &amp;quot;&amp;quot; str_uri = &amp;quot;&amp;quot; 정규표현식을 통해 넘어온 데이터에서 METHOD, URI, HTTP 버전 정보등으로 구분함 h = re.search(&amp;quot;(?P&amp;lt;method&amp;gt;(^GET|^POST|^PUT|^DELETE)) (?P&amp;lt;uri&amp;gt;.+) (?P&amp;lt;version&amp;gt;.+)&amp;quot;, data) if not h: return &amp;quot;Error&amp;quot; # 정규표현식에 해당하는 데이터가 없는 경우 Error 를 리턴해줌 # method 로 정의된 부준은 str_method 에 저장 if h.group(&amp;quot;method&amp;quot;): str_method = h.group(&amp;quot;method&amp;quot;) # URI 데이터는 str_uri 에 저장 if h.group(&amp;quot;uri&amp;quot;): str_uri = h.group(&amp;quot;uri&amp;quot;) return str_method,str_uri # method 와 uri 를 리턴해 줌 출처 : http://www.</description></item><item><title>how to build IPsec packet with scapy</title><link>https://cychong47.github.io/post/2016/how-to-use-snapy-for-ipsec/</link><pubDate>Sun, 14 Feb 2016 14:59:42 +0900</pubDate><guid>https://cychong47.github.io/post/2016/how-to-use-snapy-for-ipsec/</guid><description>import modules $ python &amp;gt;&amp;gt;&amp;gt; from scapy.all import * &amp;gt;&amp;gt;&amp;gt; from scapy.layers.ipsec import * build plaintext packet &amp;gt;&amp;gt;&amp;gt; p = IP(src=&amp;#39;1.1.1.1&amp;#39;, dst=&amp;#39;2.2.2.2&amp;#39;) / TCP(sport=45012, dport=80) / Raw(&amp;#39;testdata&amp;#39;) &amp;gt;&amp;gt;&amp;gt; p = IP(str(p)) setup SA &amp;gt;&amp;gt;&amp;gt; sa = SecurityAssociation(ESP, spi=0xdeadbeef, crypt_algo=&amp;#39;AES-CBC&amp;#39;,crypt_key=&amp;#39;sixteenbytes key&amp;#39;) Encrypt w/o IV &amp;gt;&amp;gt;&amp;gt; e = sa.encrypt(p, 5) &amp;gt;&amp;gt;&amp;gt; e &amp;lt;IP version=4L ihl=5L tos=0x0 len=76 id=1 flags= frag=0L ttl=64 proto=esp chksum=0x747a src=1.1.1.1 dst=2.2.2.2 |&amp;lt;ESP spi=0xdeadbeef seq=5 data=&amp;#39;uD\x7fdj19\xe7\xc4\xff8\x10\xcdQ\xf0\xa6\x1e!\x84\xc3&amp;gt;!\x18\xa6\xf6\xb8\x93\xc6it\x9a\xfc\x1c\xee\xe5C\xcd\xf0\x7fD\xca\x8d\xadKh\xa8\xe5x&amp;#39; |&amp;gt;&amp;gt; &amp;gt;&amp;gt;&amp;gt; e.show() ###[ IP ]### version = 4L ihl = 5L tos = 0x0 len = 76 id = 1 flags = frag = 0L ttl = 64 proto = esp chksum = 0x747a src = 1.</description></item><item><title>fragment missing test with scapy</title><link>https://cychong47.github.io/post/2016/fragment-missing-test-with-scapy/</link><pubDate>Sun, 14 Feb 2016 13:57:41 +0900</pubDate><guid>https://cychong47.github.io/post/2016/fragment-missing-test-with-scapy/</guid><description>다음과 같이 scapy를 이용해서 fragment를 쉽게 만들 수 있다.
-from scapy.all import * dip=&amp;#34;10.0.0.1&amp;#34; payload=&amp;#34; &amp;#34;*1000 packet=IP(dst=dip)/UDP(dport=0x1234)/payload frag_list=fragment(packet,fragsize=500) counter=1 for fragment in frag_list: print &amp;#34;Packet no%d&amp;#34; %counter print fragment.show() counter+=1 send(fragment) frag_list에서 counter 변수를 확인해서 전송하지 않으면 간단하게 fragment가 수신되지 않은 경우에 시험할 수 있음.
-필요하면 frag_list의 순서를 뒤집는 것도 가능하고, 각 fragment의 offset값을 조정하거나 패킷 크기를 변경하면 다른 비정상 경우도 쉽게 시험할 수 있다.
-scapy interactive tutorial</description></item><item><title>Introducing Python</title><link>https://cychong47.github.io/post/2016/introducing-python/</link><pubDate>Mon, 08 Feb 2016 13:25:34 +0900</pubDate><guid>https://cychong47.github.io/post/2016/introducing-python/</guid><description>Introducing Python 을 판교어린이도서관에서 짧게 보고 적은 아이템들
-python3 based
-Decorator는 공부가 필요한 내용
-sys.path : module 검색 경로 __init__.py 파일이 있으면 그 디렉토리를 PKG로 간주함
-defaultdic()
-Counters()
-dicionary는 key의 순서를 보장하지 않음. OrderedDict()로 사전을 정의하면 가능 deque = stack + queue pprint()는 print보다 깔끔하게 출력한다고.
-'\uXXX' 유니코드
-%10.4s : 10칸의 공간. 문자열 중 4개만 출력
-struct '&amp;gt;LL' : '&amp;gt;' Big endian, L : uint32_t
-list comprehension : for loop보다 빠름.</description></item><item><title>click - python option 처리 모듈</title><link>https://cychong47.github.io/post/2016/click-python-module/</link><pubDate>Fri, 01 Jan 2016 13:45:58 +0900</pubDate><guid>https://cychong47.github.io/post/2016/click-python-module/</guid><description>http://click.pocoo.org/5/
-C로 프로그램을 짤 때 사용할 표준 포맷도 이렇게 해야겠다.
-$ python hello.py --help Usage: hello.py [OPTIONS] Simple program that greets NAME for a total of COUNT times. Options: --count INTEGER Number of greetings. --name TEXT The person to greet. --help Show this message and exit.</description></item><item><title>Designing a RESTful API with Python and Flask</title><link>https://cychong47.github.io/post/2015/designing-a-restful-api-with-python-and-flask/</link><pubDate>Thu, 24 Dec 2015 14:11:59 +0900</pubDate><guid>https://cychong47.github.io/post/2015/designing-a-restful-api-with-python-and-flask/</guid><description>Designing a RESTful API with Python and Flask
-RESTful API는 URI에 필요한 인자를 다 넘기는 형태라 사용자가 직접 주소를 입력하는 것이 아니라 다른 SW에서 해당 URI를 입력하는 형태로 사용하는 게 자연스러운 거네.</description></item><item><title>virtualenv 사용</title><link>https://cychong47.github.io/post/2015/virtualenv/</link><pubDate>Mon, 21 Dec 2015 14:59:29 +0900</pubDate><guid>https://cychong47.github.io/post/2015/virtualenv/</guid><description>virtualenv 설치
-mini-2:~ cychong$ sudo easy_install pip mini-2:~ cychong$ sudo pip install virtualenv virtualenv로 project directory 생성
-mini-2:work cychong$ mkdir click mini-2:work cychong$ cd click/ mini-2:click cychong$ ls mini-2:click cychong$ virtualenv venv New python executable in venv/bin/python Installing setuptools, pip, wheel...done. mini-2:click cychong$ ls venv virtualenv 환경으로 들어가기
-mini-2:click cychong$ . venv/bin/activate 원하는 패키지 설치
-(venv)mini-2:click cychong$ pip install Click Collecting Click Downloading click-6.2-py2.py3-none-any.whl (70kB) 100% |████████████████████████████████| 73kB 270kB/s Installing collected packages: Click Successfully installed Click-6.</description></item><item><title>(책) Violent Python</title><link>https://cychong47.github.io/post/2014/caeg-violent-python/</link><pubDate>Sat, 27 Sep 2014 16:43:27 +0900</pubDate><guid>https://cychong47.github.io/post/2014/caeg-violent-python/</guid><description>오래만에 재밌는 책을 봤다.
-해커를 위한 책이라고 하지만, 해킹에 관한 기법보다는 network application을 작성하는데 유용한 scapy, dpkt 그리고 정규식에 대한 설명이 유용하다. 마침 요 근래 업무용으로 Python을 이용해서 패킷 만들고, 송/수신하는 유틸리티를 만들고 있어 Impacket 모듈을 많이 사용했는데 그것보다 scapy 가 훨씬 편해 보인다.
-새 책을 사긴 그렇고 중고책을 하나 구할 까 했는데 알라딘에서 중고책 매입가가 4천원 대. 작년 초에 나온 책인데 너무 싸게 매입하는 게 아닌가
-일단 책 보면서 유용하다 싶은 내용을 몇 가지 주제로 나눠 정리했다.</description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Python on Keep calm and Write something</title><link>https://cychong47.github.io/tags/python/</link><description>Recent content in Python on Keep calm and Write something</description><generator>Hugo</generator><language>en-us</language><lastBuildDate>Sun, 18 Feb 2024 00:00:00 +0000</lastBuildDate><atom:link href="https://cychong47.github.io/tags/python/index.xml" rel="self" type="application/rss+xml"/><item><title>Add extra data to python log message</title><link>https://cychong47.github.io/post/2024/2024-02-18-prepend-data-to-python-logger/</link><pubDate>Sun, 18 Feb 2024 00:00:00 +0000</pubDate><guid>https://cychong47.github.io/post/2024/2024-02-18-prepend-data-to-python-logger/</guid><description>&lt;h2 id="tldr"&gt;TL;DR&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;QueueHandler&lt;/code&gt;를 사용해서 process-safe logger를 만들고&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;LoggerAdapter&lt;/code&gt;를 활용해서 매 로그 메시지마다 특정 정보가 자동으로 출력.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id="mainpy"&gt;main.py&lt;/h2&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"&gt;&lt;code class="language-python" data-lang="python"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#75715e"&gt;#!/usr/bin/env python3&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#f92672"&gt;import&lt;/span&gt; logging
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#f92672"&gt;import&lt;/span&gt; logging.handlers
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#f92672"&gt;import&lt;/span&gt; multiprocessing
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#f92672"&gt;from&lt;/span&gt; worker &lt;span style="color:#f92672"&gt;import&lt;/span&gt; worker_process
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#f92672"&gt;from&lt;/span&gt; my_logger &lt;span style="color:#f92672"&gt;import&lt;/span&gt; logger_process
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;if&lt;/span&gt; __name__ &lt;span style="color:#f92672"&gt;==&lt;/span&gt; &lt;span style="color:#e6db74"&gt;&amp;#34;__main__&amp;#34;&lt;/span&gt;:
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#75715e"&gt;# Configure logging&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; logging&lt;span style="color:#f92672"&gt;.&lt;/span&gt;basicConfig(level&lt;span style="color:#f92672"&gt;=&lt;/span&gt;logging&lt;span style="color:#f92672"&gt;.&lt;/span&gt;DEBUG)
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#75715e"&gt;# Create a queue for logging&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; log_queue &lt;span style="color:#f92672"&gt;=&lt;/span&gt; multiprocessing&lt;span style="color:#f92672"&gt;.&lt;/span&gt;Queue()
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#75715e"&gt;# Create worker processes&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; num_workers &lt;span style="color:#f92672"&gt;=&lt;/span&gt; &lt;span style="color:#ae81ff"&gt;2&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; processes &lt;span style="color:#f92672"&gt;=&lt;/span&gt; []
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#66d9ef"&gt;for&lt;/span&gt; i &lt;span style="color:#f92672"&gt;in&lt;/span&gt; range(num_workers):
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; p &lt;span style="color:#f92672"&gt;=&lt;/span&gt; multiprocessing&lt;span style="color:#f92672"&gt;.&lt;/span&gt;Process(target&lt;span style="color:#f92672"&gt;=&lt;/span&gt;worker_process, args&lt;span style="color:#f92672"&gt;=&lt;/span&gt;(i, log_queue))
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; processes&lt;span style="color:#f92672"&gt;.&lt;/span&gt;append(p)
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; p&lt;span style="color:#f92672"&gt;.&lt;/span&gt;start()
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#75715e"&gt;# Create a logger process for process-safe loggging&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; p &lt;span style="color:#f92672"&gt;=&lt;/span&gt; multiprocessing&lt;span style="color:#f92672"&gt;.&lt;/span&gt;Process(target&lt;span style="color:#f92672"&gt;=&lt;/span&gt;logger_process, args&lt;span style="color:#f92672"&gt;=&lt;/span&gt;(log_queue,))
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; processes&lt;span style="color:#f92672"&gt;.&lt;/span&gt;append(p)
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; p&lt;span style="color:#f92672"&gt;.&lt;/span&gt;start()
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#75715e"&gt;# Wait for all processes to finish&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#66d9ef"&gt;try&lt;/span&gt;:
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#66d9ef"&gt;for&lt;/span&gt; p &lt;span style="color:#f92672"&gt;in&lt;/span&gt; processes:
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; p&lt;span style="color:#f92672"&gt;.&lt;/span&gt;join()
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#66d9ef"&gt;except&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;KeyboardInterrupt&lt;/span&gt;:
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; print(&lt;span style="color:#e6db74"&gt;&amp;#34;Uset interrupt. Stop&amp;#34;&lt;/span&gt;)
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id="workerpy"&gt;worker.py&lt;/h2&gt;
+&lt;p&gt;&lt;code&gt;logger&lt;/code&gt;를 직접 사용하는 대신 &lt;code&gt;LoggerAdapter&lt;/code&gt;를 사용해서 각 process의 추가 정보를 함께 출력.&lt;/p&gt;</description></item><item><title>2021년 관심있는 언어들</title><link>https://cychong47.github.io/post/2021/2021-08-24-2021-languages-to-learn/</link><pubDate>Tue, 24 Aug 2021 22:54:41 +0900</pubDate><guid>https://cychong47.github.io/post/2021/2021-08-24-2021-languages-to-learn/</guid><description>&lt;p&gt;Go, Rust and Python&lt;/p&gt;
+&lt;p&gt;Python은 20년째 하고 있는 것 같은데 어째 2개월 한 사람보다 못하냐.&lt;/p&gt;
+&lt;p&gt;&lt;img src="https://cychong47.github.io/images/2021/08/2021-08-24-IMG_0318.jpg" alt=""&gt;&lt;/p&gt;</description></item><item><title>Get the latest jetpack plugin</title><link>https://cychong47.github.io/post/2018/get-the-latest-jetpack-plugin/</link><pubDate>Sun, 16 Dec 2018 06:55:44 +0900</pubDate><guid>https://cychong47.github.io/post/2018/get-the-latest-jetpack-plugin/</guid><description>&lt;p&gt;&lt;a href="http://sosa0sa.com:2368/use-jetpack-for-wordpress-5-0/"&gt;http://sosa0sa.com:2368/use-jetpack-for-wordpress-5-0/&lt;/a&gt; 의 연장선. Jetpack plugin의 최신 버전을 알아내서 자동으로 해당 바이너리 파일을 다운로드 받아 보자.&lt;/p&gt;
+&lt;p&gt;몇 가지 module 을 사용하는데 필요한 module은 &lt;a href="https://realpython.com/python-web-scraping-practical-introduction/"&gt;https://realpython.com/python-web-scraping-practical-introduction/&lt;/a&gt; 을 참고해서 설치&lt;/p&gt;
+&lt;pre tabindex="0"&gt;&lt;code&gt;$ python3 -m venv venv
+$ . ./venv/bin/activate
+$ pip3 install requests BeautifulSoup4
+&lt;/code&gt;&lt;/pre&gt;&lt;h2 id="webscrappy"&gt;webscrap.py&lt;/h2&gt;
+&lt;pre tabindex="0"&gt;&lt;code&gt;from requests import get
+from requests.exceptions import RequestException
+from contextlib import closing
+from bs4 import BeautifulSoup
+from urllib.request import *
+
+&amp;#39;&amp;#39;&amp;#39;
+https://realpython.com/python-web-scraping-practical-introduction/
+&amp;#39;&amp;#39;&amp;#39;
+
+def simple_get(url):
+ &amp;#34;&amp;#34;&amp;#34;
+ Attempts to get the content at `url` by making an HTTP GET request.
+ If the content-type of response is some kind of HTML/XML, return the
+ text content, otherwise return None.
+ &amp;#34;&amp;#34;&amp;#34;
+ try:
+ with closing(get(url, stream=True)) as resp:
+ if is_good_response(resp):
+ return resp.content
+ else:
+ return None
+
+ except RequestException as e:
+ log_error(&amp;#39;Error during requests to {0} : {1}&amp;#39;.format(url, str(e)))
+ return None
+
+
+def is_good_response(resp):
+ &amp;#34;&amp;#34;&amp;#34;
+ Returns True if the response seems to be HTML, False otherwise.
+ &amp;#34;&amp;#34;&amp;#34;
+ content_type = resp.headers[&amp;#39;Content-Type&amp;#39;].lower()
+ return (resp.status_code == 200
+ and content_type is not None
+ and content_type.find(&amp;#39;html&amp;#39;) &amp;gt; -1)
+
+
+def log_error(e):
+ &amp;#34;&amp;#34;&amp;#34;
+ It is always a good idea to log errors.
+ This function just prints them, but you can
+ make it do anything.
+ &amp;#34;&amp;#34;&amp;#34;
+ print(e)
+
+def download_file(base_url, filename):
+	file_url = &amp;#39;%s/%s&amp;#39; %(base_url, filename)
+
+	print(&amp;#34;Download %s&amp;#34; %(file_url))
+ 
+	try:
+		from tqdm import tqdm
+	except:
+		urlretrieve(file_url, filename)
+		return
+
+	# use tqdm to display the progress but too slow
+	file_response = get(file_url, stream=True)
+	with open(filename, &amp;#39;wb&amp;#39;) as handle:
+		for data in tqdm(file_response.iter_content()):
+			handle.write(data)
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Jetpack plugin 페이지에 있는 버전 정보를 이용해서 플러그인 다운로드 하기
+tqdm은 progress를 보여주는 모듈인데 그냥 사용하면 속도가 너무 너무 느리다. 몇 초면 다운 받을 수 있는 파일을 1분에 걸쳐 받는&amp;hellip;&lt;/p&gt;</description></item><item><title>Grafana, influxDB and python</title><link>https://cychong47.github.io/post/2018/grafana-influxdb-and-python/</link><pubDate>Wed, 06 Jun 2018 04:33:06 +0900</pubDate><guid>https://cychong47.github.io/post/2018/grafana-influxdb-and-python/</guid><description>&lt;p&gt;Time-series data를 python을 이용해서 influxDB에 저장하고, Grafana로 그래프를 보여주는 예제&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://github.com/cychong47/influxdb_example.git"&gt;https://github.com/cychong47/influxdb_example.git&lt;/a&gt;&lt;/p&gt;
+&lt;h1 id="install-grafana-and-influxdb"&gt;Install Grafana and influxDB&lt;/h1&gt;
+&lt;h2 id="install-grafana"&gt;Install Grafana&lt;/h2&gt;
+&lt;p&gt;직접 호스트에 설치할 수도 있지만, 세상 편하게 만들어준 docker를 이용해서 grafana, influxdb등을 설치하자.&lt;/p&gt;
+&lt;pre tabindex="0"&gt;&lt;code&gt;mbpr15:~ cychong$ docker pull grafana/grafana 
+Using default tag: latest
+latest: Pulling from grafana/grafana
+f2aa67a397c4: Pull complete 
+89573effc7c8: Pull complete 
+b55c103da375: Pull complete 
+Digest: sha256:364bec4a39ecbec744ea4270aae35f6554eb6f2047b3ee08f7b5f1134857c32c
+Status: Downloaded newer image for grafana/grafana:latest
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Start &lt;code&gt;grafana&lt;/code&gt;&lt;/p&gt;
+&lt;pre tabindex="0"&gt;&lt;code&gt;mbpr15:~ cychong$ docker run -d -p 3000:3000 —name grafana grafana/grafana 
+148894d7009259b02b04e1a98467f549400be91f9b055f8686557d69b9339e4b
+&lt;/code&gt;&lt;/pre&gt;&lt;h2 id="install-influxdb"&gt;Install influxDB&lt;/h2&gt;
+&lt;p&gt;influxdb도 docker 명령어 하나로 설치&lt;/p&gt;</description></item><item><title>FTP server is gone from High Siera OSX Server</title><link>https://cychong47.github.io/post/2017/ftp-server-is-gone-from-high-siera-osx-server/</link><pubDate>Sat, 07 Oct 2017 00:19:27 +0900</pubDate><guid>https://cychong47.github.io/post/2017/ftp-server-is-gone-from-high-siera-osx-server/</guid><description>&lt;p&gt;It is gone finally&amp;hellip;
+[macOS Server 5.4 changes in High Sierra you need to know about!])https://www.imore.com/changes-macos-server-54-high-sierra)&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;File Transfer Protocol (FTP): A longtime a security risk, for example for sending password information in clear text, FTP support will be removed from macOS server if you upgrade.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;As my xeros printer/scanner suppors only ftp or samba(which is much much slower than the ftp) I have to run my own ftp server in my mac mini.&lt;/p&gt;</description></item><item><title>brew install python</title><link>https://cychong47.github.io/post/2017/brew-install-python/</link><pubDate>Sun, 01 Oct 2017 13:44:47 +0900</pubDate><guid>https://cychong47.github.io/post/2017/brew-install-python/</guid><description>&lt;p&gt;Just for the record as some environments are mentioned&lt;/p&gt;
+&lt;pre tabindex="0"&gt;&lt;code&gt;mbpr15:working cychong$ brew install python
+==&amp;gt; Installing dependencies for python: readline, sqlite, gdbm, openssl
+==&amp;gt; Installing python dependency: readline
+==&amp;gt; Downloading https://homebrew.bintray.com/bottles/readline-7.0.3_1.high_sierra.bottle.tar.gz
+######################################################################## 100.0%
+==&amp;gt; Pouring readline-7.0.3_1.high_sierra.bottle.tar.gz
+==&amp;gt; Caveats
+This formula is keg-only, which means it was not symlinked into /usr/local,
+because macOS provides the BSD libedit library, which shadows libreadline.
+In order to prevent conflicts when programs look for libreadline we are
+defaulting this GNU Readline installation to keg-only..
+
+For compilers to find this software you may need to set:
+ LDFLAGS: -L/usr/local/opt/readline/lib
+ CPPFLAGS: -I/usr/local/opt/readline/include
+
+==&amp;gt; Summary
+🍺 /usr/local/Cellar/readline/7.0.3_1: 46 files, 1.5MB
+==&amp;gt; Installing python dependency: sqlite
+==&amp;gt; Downloading https://homebrew.bintray.com/bottles/sqlite-3.20.1.high_sierra.bottle.tar.gz
+######################################################################## 100.0%
+==&amp;gt; Pouring sqlite-3.20.1.high_sierra.bottle.tar.gz
+==&amp;gt; Caveats
+This formula is keg-only, which means it was not symlinked into /usr/local,
+because macOS provides an older sqlite3.
+
+If you need to have this software first in your PATH run:
+ echo &amp;#39;export PATH=&amp;#34;/usr/local/opt/sqlite/bin:$PATH&amp;#34;&amp;#39; &amp;gt;&amp;gt; ~/.bash_profile
+
+For compilers to find this software you may need to set:
+ LDFLAGS: -L/usr/local/opt/sqlite/lib
+ CPPFLAGS: -I/usr/local/opt/sqlite/include
+
+==&amp;gt; Summary
+🍺 /usr/local/Cellar/sqlite/3.20.1: 11 files, 2.9MB
+==&amp;gt; Installing python dependency: gdbm
+==&amp;gt; Downloading https://homebrew.bintray.com/bottles/gdbm-1.13.high_sierra.bottle.tar.gz
+######################################################################## 100.0%
+==&amp;gt; Pouring gdbm-1.13.high_sierra.bottle.tar.gz
+🍺 /usr/local/Cellar/gdbm/1.13: 19 files, 553.9KB
+==&amp;gt; Installing python dependency: openssl
+==&amp;gt; Downloading https://homebrew.bintray.com/bottles/openssl-1.0.2l.high_sierra.bottle.tar.gz
+######################################################################## 100.0%
+==&amp;gt; Pouring openssl-1.0.2l.high_sierra.bottle.tar.gz
+==&amp;gt; Caveats
+A CA file has been bootstrapped using certificates from the SystemRoots
+keychain. To add additional certificates (e.g. the certificates added in
+the System keychain), place .pem files in
+ /usr/local/etc/openssl/certs
+
+and run
+ /usr/local/opt/openssl/bin/c_rehash
+
+This formula is keg-only, which means it was not symlinked into /usr/local,
+because Apple has deprecated use of OpenSSL in favor of its own TLS and crypto libraries.
+
+If you need to have this software first in your PATH run:
+ echo &amp;#39;export PATH=&amp;#34;/usr/local/opt/openssl/bin:$PATH&amp;#34;&amp;#39; &amp;gt;&amp;gt; ~/.bash_profile
+
+For compilers to find this software you may need to set:
+ LDFLAGS: -L/usr/local/opt/openssl/lib
+ CPPFLAGS: -I/usr/local/opt/openssl/include
+
+==&amp;gt; Summary
+🍺 /usr/local/Cellar/openssl/1.0.2l: 1,709 files, 12.3MB
+==&amp;gt; Installing python
+==&amp;gt; Downloading https://homebrew.bintray.com/bottles/python-2.7.14.high_sierra.bottle.tar.gz
+######################################################################## 100.0%
+==&amp;gt; Pouring python-2.7.14.high_sierra.bottle.tar.gz
+==&amp;gt; /usr/local/Cellar/python/2.7.14/bin/python2 -s setup.py --no-user-cfg install --force --verbose --single-v
+==&amp;gt; /usr/local/Cellar/python/2.7.14/bin/python2 -s setup.py --no-user-cfg install --force --verbose --single-v
+==&amp;gt; /usr/local/Cellar/python/2.7.14/bin/python2 -s setup.py --no-user-cfg install --force --verbose --single-v
+==&amp;gt; Caveats
+This formula installs a python2 executable to /usr/local/bin.
+If you wish to have this formula&amp;#39;s python executable in your PATH then add
+the following to ~/.bash_profile:
+ export PATH=&amp;#34;/usr/local/opt/python/libexec/bin:$PATH&amp;#34;
+
+Pip and setuptools have been installed. To update them
+ pip2 install --upgrade pip setuptools
+
+You can install Python packages with
+ pip2 install &amp;lt;package&amp;gt;
+
+They will install into the site-package directory
+ /usr/local/lib/python2.7/site-packages
+
+See: https://docs.brew.sh/Homebrew-and-Python.html
+==&amp;gt; Summary
+🍺 /usr/local/Cellar/python/2.7.14: 3,517 files, 48.4MB
+&lt;/code&gt;&lt;/pre&gt;</description></item><item><title>Parsing http header with scary</title><link>https://cychong47.github.io/post/2017/parsing-http-header-with-scary/</link><pubDate>Sun, 01 Oct 2017 09:36:35 +0900</pubDate><guid>https://cychong47.github.io/post/2017/parsing-http-header-with-scary/</guid><description>&lt;h3 id="정규식으로-http-분석"&gt;정규식으로 http 분석&lt;/h3&gt;
+&lt;pre&gt;&lt;code&gt;def processHTTP(data):
+
+ str_method = &amp;quot;&amp;quot;
+ str_uri = &amp;quot;&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id="정규표현식을-통해-넘어온-데이터에서-method-uri-http-버전-정보등으로-구분함"&gt;정규표현식을 통해 넘어온 데이터에서 METHOD, URI, HTTP 버전 정보등으로 구분함&lt;/h3&gt;
+&lt;pre&gt;&lt;code&gt;h = re.search(&amp;quot;(?P&amp;lt;method&amp;gt;(^GET|^POST|^PUT|^DELETE)) (?P&amp;lt;uri&amp;gt;.+) (?P&amp;lt;version&amp;gt;.+)&amp;quot;, data)
+if not h: return &amp;quot;Error&amp;quot; # 정규표현식에 해당하는 데이터가 없는 경우 Error 를 리턴해줌
+
+# method 로 정의된 부준은 str_method 에 저장
+if h.group(&amp;quot;method&amp;quot;): str_method = h.group(&amp;quot;method&amp;quot;)
+# URI 데이터는 str_uri 에 저장
+if h.group(&amp;quot;uri&amp;quot;): str_uri = h.group(&amp;quot;uri&amp;quot;)
+
+return str_method,str_uri # method 와 uri 를 리턴해 줌
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;출처 : &lt;a href="http://www.packetinside.com/2010/11/scapy-"&gt;http://www.packetinside.com/2010/11/scapy-&lt;/a&gt;로-패킷-핸들링하는-프로그램-만들기-세번째.html?showComment=1423994884595&lt;/p&gt;</description></item><item><title>how to build IPsec packet with scapy</title><link>https://cychong47.github.io/post/2016/how-to-use-snapy-for-ipsec/</link><pubDate>Sun, 14 Feb 2016 14:59:42 +0900</pubDate><guid>https://cychong47.github.io/post/2016/how-to-use-snapy-for-ipsec/</guid><description>&lt;h2 id="import-modules"&gt;import modules&lt;/h2&gt;
+&lt;pre tabindex="0"&gt;&lt;code&gt;$ python
+&amp;gt;&amp;gt;&amp;gt; from scapy.all import *
+&amp;gt;&amp;gt;&amp;gt; from scapy.layers.ipsec import *
+&lt;/code&gt;&lt;/pre&gt;&lt;h2 id="build-plaintext-packet"&gt;build plaintext packet&lt;/h2&gt;
+&lt;pre tabindex="0"&gt;&lt;code&gt;&amp;gt;&amp;gt;&amp;gt; p = IP(src=&amp;#39;1.1.1.1&amp;#39;, dst=&amp;#39;2.2.2.2&amp;#39;) / TCP(sport=45012, dport=80) / Raw(&amp;#39;testdata&amp;#39;) 
+&amp;gt;&amp;gt;&amp;gt; p = IP(str(p))
+&lt;/code&gt;&lt;/pre&gt;&lt;h2 id="setup-sa"&gt;setup SA&lt;/h2&gt;
+&lt;pre tabindex="0"&gt;&lt;code&gt;&amp;gt;&amp;gt;&amp;gt; sa = SecurityAssociation(ESP, spi=0xdeadbeef, crypt_algo=&amp;#39;AES-CBC&amp;#39;,crypt_key=&amp;#39;sixteenbytes key&amp;#39;)
+&lt;/code&gt;&lt;/pre&gt;&lt;h2 id="encrypt-wo-iv"&gt;Encrypt w/o IV&lt;/h2&gt;
+&lt;pre tabindex="0"&gt;&lt;code&gt;&amp;gt;&amp;gt;&amp;gt; e = sa.encrypt(p, 5)
+&amp;gt;&amp;gt;&amp;gt; e
+&amp;lt;IP version=4L ihl=5L tos=0x0 len=76 id=1 flags= frag=0L ttl=64 proto=esp chksum=0x747a src=1.1.1.1 dst=2.2.2.2 |&amp;lt;ESP spi=0xdeadbeef seq=5 data=&amp;#39;uD\x7fdj19\xe7\xc4\xff8\x10\xcdQ\xf0\xa6\x1e!\x84\xc3&amp;gt;!\x18\xa6\xf6\xb8\x93\xc6it\x9a\xfc\x1c\xee\xe5C\xcd\xf0\x7fD\xca\x8d\xadKh\xa8\xe5x&amp;#39; |&amp;gt;&amp;gt;
+&amp;gt;&amp;gt;&amp;gt; e.show()
+###[ IP ]###
+ version = 4L
+ ihl = 5L
+ tos = 0x0
+ len = 76
+ id = 1
+ flags = 
+ frag = 0L
+ ttl = 64
+ proto = esp
+ chksum = 0x747a
+ src = 1.1.1.1
+ dst = 2.2.2.2
+ \options \
+###[ ESP ]###
+ spi = 0xdeadbeef
+ seq = 5
+ data = &amp;#39;uD\x7fdj19\xe7\xc4\xff8\x10\xcdQ\xf0\xa6\x1e!\x84\xc3&amp;gt;!\x18\xa6\xf6\xb8\x93\xc6it\x9a\xfc\x1c\xee\xe5C\xcd\xf0\x7fD\xca\x8d\xadKh\xa8\xe5x&amp;#39;
+&lt;/code&gt;&lt;/pre&gt;&lt;h2 id="encrypt-w-iv"&gt;Encrypt w/ IV&lt;/h2&gt;
+&lt;pre tabindex="0"&gt;&lt;code&gt;&amp;gt;&amp;gt;&amp;gt; e = sa.encrypt(p, 5, &amp;#34;1234567890123456&amp;#34;)
+&amp;gt;&amp;gt;&amp;gt; e
+&amp;lt;IP version=4L ihl=5L tos=0x0 len=76 id=1 flags= frag=0L ttl=64 proto=esp chksum=0x747a src=1.1.1.1 dst=2.2.2.2 |&amp;lt;ESP spi=0xdeadbeef seq=5 data=&amp;#39;1234567890123456\xa4\x0b\xebZ\xa7\xc8\xb6\x95\xfb\x13\x07\xc5TD\xa2\xe7DP\xfcP\xa5y\xc4\x06W\xe8\xf5\xf0\x86\xe1\x0c\xfd&amp;#39; |&amp;gt;&amp;gt;
+&amp;gt;&amp;gt;&amp;gt; e.show()
+###[ IP ]###
+ version = 4L
+ ihl = 5L
+ tos = 0x0
+ len = 76
+ id = 1
+ flags = 
+ frag = 0L
+ ttl = 64
+ proto = esp
+ chksum = 0x747a
+ src = 1.1.1.1
+ dst = 2.2.2.2
+ \options \
+###[ ESP ]###
+ spi = 0xdeadbeef
+ seq = 5
+ data = &amp;#39;1234567890123456\xa4\x0b\xebZ\xa7\xc8\xb6\x95\xfb\x13\x07\xc5TD\xa2\xe7DP\xfcP\xa5y\xc4\x06W\xe8\xf5\xf0\x86\xe1\x0c\xfd&amp;#39;
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;data 의 시작 부분에 IV값 &amp;lsquo;1234567890123456&amp;rsquo;이 있음을 알 수 있다.
+ESP는 SPI(4B), SEQ(4B), IV(16B) , Encrypted Data 형태로 구성된다.&lt;/p&gt;</description></item><item><title>fragment missing test with scapy</title><link>https://cychong47.github.io/post/2016/fragment-missing-test-with-scapy/</link><pubDate>Sun, 14 Feb 2016 13:57:41 +0900</pubDate><guid>https://cychong47.github.io/post/2016/fragment-missing-test-with-scapy/</guid><description>&lt;p&gt;다음과 같이 scapy를 이용해서 fragment를 쉽게 만들 수 있다.&lt;/p&gt;
+&lt;pre tabindex="0"&gt;&lt;code&gt;from scapy.all import *
+
+dip=&amp;#34;10.0.0.1&amp;#34;
+payload=&amp;#34; &amp;#34;*1000
+
+packet=IP(dst=dip)/UDP(dport=0x1234)/payload
+ 
+frag_list=fragment(packet,fragsize=500)
+ 
+counter=1
+for fragment in frag_list:
+ print &amp;#34;Packet no%d&amp;#34; %counter
+ print 
+
+ fragment.show()
+ counter+=1
+ send(fragment)
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;frag_list에서 counter 변수를 확인해서 전송하지 않으면 간단하게 fragment가 수신되지 않은 경우에 시험할 수 있음.&lt;/p&gt;
+&lt;p&gt;필요하면 frag_list의 순서를 뒤집는 것도 가능하고, 각 fragment의 offset값을 조정하거나 패킷 크기를 변경하면 다른 비정상 경우도 쉽게 시험할 수 있다.&lt;/p&gt;
+&lt;p&gt;&lt;a href="http://www.secdev.org/projects/scapy/doc/usage.html#interactive-tutorial"&gt;scapy interactive tutorial&lt;/a&gt;&lt;/p&gt;</description></item><item><title>Introducing Python</title><link>https://cychong47.github.io/post/2016/introducing-python/</link><pubDate>Mon, 08 Feb 2016 13:25:34 +0900</pubDate><guid>https://cychong47.github.io/post/2016/introducing-python/</guid><description>&lt;p&gt;Introducing Python 을 판교어린이도서관에서 짧게 보고 적은 아이템들&lt;/p&gt;
+&lt;p&gt;python3 based&lt;/p&gt;
+&lt;p&gt;Decorator는 공부가 필요한 내용&lt;/p&gt;
+&lt;p&gt;sys.path : module 검색 경로
+&lt;code&gt;__init__.py&lt;/code&gt; 파일이 있으면 그 디렉토리를 PKG로 간주함&lt;br&gt;
+defaultdic()&lt;br&gt;
+Counters()&lt;br&gt;
+dicionary는 key의 순서를 보장하지 않음. OrderedDict()로 사전을 정의하면 가능 &lt;br&gt;
+deque = stack + queue
+pprint()는 print보다 깔끔하게 출력한다고.&lt;br&gt;
+&lt;code&gt;'\uXXX'&lt;/code&gt; 유니코드&lt;br&gt;
+&lt;code&gt;%10.4s&lt;/code&gt; : 10칸의 공간. 문자열 중 4개만 출력&lt;br&gt;
+struct &lt;code&gt;'&amp;gt;LL'&lt;/code&gt; : &lt;code&gt;'&amp;gt;'&lt;/code&gt; Big endian, &lt;code&gt;L&lt;/code&gt; : uint32_t&lt;/p&gt;
+&lt;p&gt;list comprehension : for loop보다 빠름. 어떻게 사용하는 지 구체적으로 좀 더 알아봐야 함.&lt;/p&gt;</description></item><item><title>click - python option 처리 모듈</title><link>https://cychong47.github.io/post/2016/click-python-module/</link><pubDate>Fri, 01 Jan 2016 13:45:58 +0900</pubDate><guid>https://cychong47.github.io/post/2016/click-python-module/</guid><description>&lt;p&gt;&lt;a href="http://click.pocoo.org/5/"&gt;http://click.pocoo.org/5/&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;C로 프로그램을 짤 때 사용할 표준 포맷도 이렇게 해야겠다.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$ python hello.py --help
+Usage: hello.py [OPTIONS]
+
+ Simple program that greets NAME for a total of COUNT times.
+
+Options:
+ --count INTEGER Number of greetings.
+ --name TEXT The person to greet.
+ --help Show this message and exit.
+&lt;/code&gt;&lt;/pre&gt;</description></item><item><title>Designing a RESTful API with Python and Flask</title><link>https://cychong47.github.io/post/2015/designing-a-restful-api-with-python-and-flask/</link><pubDate>Thu, 24 Dec 2015 14:11:59 +0900</pubDate><guid>https://cychong47.github.io/post/2015/designing-a-restful-api-with-python-and-flask/</guid><description>&lt;p&gt;&lt;a href="http://blog.miguelgrinberg.com/post/designing-a-restful-api-with-python-and-flask"&gt;Designing a RESTful API with Python and Flask&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;RESTful API는 URI에 필요한 인자를 다 넘기는 형태라 사용자가 직접 주소를 입력하는 것이 아니라 다른 SW에서 해당 URI를 입력하는 형태로 사용하는 게 자연스러운 거네.&lt;/p&gt;</description></item><item><title>virtualenv 사용</title><link>https://cychong47.github.io/post/2015/virtualenv/</link><pubDate>Mon, 21 Dec 2015 14:59:29 +0900</pubDate><guid>https://cychong47.github.io/post/2015/virtualenv/</guid><description>&lt;p&gt;virtualenv 설치&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;mini-2:~ cychong$ sudo easy_install pip
+mini-2:~ cychong$ sudo pip install virtualenv
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;virtualenv로 project directory 생성&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;mini-2:work cychong$ mkdir click
+mini-2:work cychong$ cd click/
+mini-2:click cychong$ ls
+mini-2:click cychong$ virtualenv venv
+New python executable in venv/bin/python
+Installing setuptools, pip, wheel...done.
+mini-2:click cychong$ ls
+venv
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;virtualenv 환경으로 들어가기&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;mini-2:click cychong$ . venv/bin/activate
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;원하는 패키지 설치&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;(venv)mini-2:click cychong$ pip install Click
+Collecting Click
+ Downloading click-6.2-py2.py3-none-any.whl (70kB)
+ 100% |████████████████████████████████| 73kB 270kB/s
+Installing collected packages: Click
+Successfully installed Click-6.2
+&lt;/code&gt;&lt;/pre&gt;</description></item><item><title>(책) Violent Python</title><link>https://cychong47.github.io/post/2014/caeg-violent-python/</link><pubDate>Sat, 27 Sep 2014 16:43:27 +0900</pubDate><guid>https://cychong47.github.io/post/2014/caeg-violent-python/</guid><description>&lt;p&gt;오래만에 재밌는 책을 봤다.&lt;/p&gt;
+&lt;p&gt;해커를 위한 책이라고 하지만, 해킹에 관한 기법보다는 network application을 작성하는데 유용한 scapy, dpkt 그리고 정규식에 대한 설명이 유용하다.
+마침 요 근래 업무용으로 Python을 이용해서 패킷 만들고, 송/수신하는 유틸리티를 만들고 있어 Impacket 모듈을 많이 사용했는데 그것보다 scapy 가 훨씬 편해 보인다.&lt;/p&gt;
+&lt;p&gt;새 책을 사긴 그렇고 중고책을 하나 구할 까 했는데 알라딘에서 중고책 매입가가 4천원 대. 작년 초에 나온 책인데 너무 싸게 매입하는 게 아닌가&lt;/p&gt;
+&lt;p&gt;일단 책 보면서 유용하다 싶은 내용을 몇 가지 주제로 나눠 정리했다.&lt;/p&gt;</description></item></channel></rss>

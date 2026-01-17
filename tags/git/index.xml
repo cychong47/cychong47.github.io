@@ -1,7 +1,24 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Git on Keep calm and write something</title><link>https://cychong47.github.io/tags/git/</link><description>Recent content in Git on Keep calm and write something</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Sat, 20 Jun 2020 21:54:31 +0900</lastBuildDate><atom:link href="https://cychong47.github.io/tags/git/index.xml" rel="self" type="application/rss+xml"/><item><title>Git Tips</title><link>https://cychong47.github.io/page/git/</link><pubDate>Sat, 20 Jun 2020 21:54:31 +0900</pubDate><guid>https://cychong47.github.io/page/git/</guid><description>Open vim tabs with changed files vim -p `git diff --name-only` vim -p
--p[N] Open N tab pages. When N is omitted, open one tab page for each file. git diff --name-only
---name-only Show only names of changed files.</description></item><item><title>Disable Password for Private Github Repo</title><link>https://cychong47.github.io/post/2020/2020-06-19-disable-password-for-private-github-repo/</link><pubDate>Fri, 19 Jun 2020 06:41:02 +0900</pubDate><guid>https://cychong47.github.io/post/2020/2020-06-19-disable-password-for-private-github-repo/</guid><description>github가 제공하는 private repository를 사용하니 ID와 암호를 매번 물어보길래 찾아 보니 이렇게 해결할 수 있다고.
-source : How do I avoid the specification of the username and password at every git push?
-$ git config credential.helper store $ git push https://github.com/repo.git Username for &amp;#39;https://github.com&amp;#39;: &amp;lt;USERNAME&amp;gt; Password for &amp;#39;https://USERNAME@github.com&amp;#39;: &amp;lt;PASSWORD&amp;gt; To set the timeout for &amp;ldquo;not-asking password&amp;rdquo;
-git config --global credential.helper &amp;#39;cache --timeout 7200&amp;#39;</description></item><item><title>2nd patch submit to DPDK</title><link>https://cychong47.github.io/post/2018/submit-patch-to-dpdk-with-git/</link><pubDate>Sat, 21 Jul 2018 15:02:14 +0900</pubDate><guid>https://cychong47.github.io/post/2018/submit-patch-to-dpdk-with-git/</guid><description>AVX2가 지원되지 않는 머신에서 쓸데없이 ACL library 빌드할 때 AVX2를 이용해서 빌드하려는 문제를 확인했다. 지금까지 아무도 고치지 않은 게 이상하긴 한데 그래도 내가 생각한 수정 방법이 제대로 동작하는 듯 해서 패치를 한번 보내보기로 했다.
-수정사항은 비교적 간단하다. ACL 라이브러리 빌드할 때 AVX2를 이용해서 빌드해야 하는 경우인지를 검사하는 코드가 lib/librte_acl/Makefile에 정의되어 있는데 여기서 항상 -march=core-avx2 옵션을 사용해서 AVX2가 지원되지 않는 머신에서도 AVX2를 사용해서 gcc가 빌드하도록 하는 걸로 보였다. 다른 코드 빌드할 때는 문제가 없는데 유독 ACL library에서만 이런 문제가 나서 보다 보니 아무래도 Makefile이 잘못된 듯 하다.</description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Git on Keep calm and Write something</title><link>https://cychong47.github.io/tags/git/</link><description>Recent content in Git on Keep calm and Write something</description><generator>Hugo</generator><language>en-us</language><lastBuildDate>Sat, 20 Jun 2020 21:54:31 +0900</lastBuildDate><atom:link href="https://cychong47.github.io/tags/git/index.xml" rel="self" type="application/rss+xml"/><item><title>Git Tips</title><link>https://cychong47.github.io/page/git/</link><pubDate>Sat, 20 Jun 2020 21:54:31 +0900</pubDate><guid>https://cychong47.github.io/page/git/</guid><description>&lt;h2 id="open-vim-tabs-with-changed-files"&gt;Open vim tabs with changed files&lt;/h2&gt;
+&lt;pre tabindex="0"&gt;&lt;code&gt;vim -p `git diff --name-only`
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;&lt;code&gt;vim -p&lt;/code&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;pre&gt;&lt;code&gt; -p[N] Open N tab pages. When N is omitted, open one tab page for each file. 
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;&lt;code&gt;git diff --name-only&lt;/code&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;pre&gt;&lt;code&gt; --name-only
+ Show only names of changed files.
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/blockquote&gt;</description></item><item><title>Disable Password for Private Github Repo</title><link>https://cychong47.github.io/post/2020/2020-06-19-disable-password-for-private-github-repo/</link><pubDate>Fri, 19 Jun 2020 06:41:02 +0900</pubDate><guid>https://cychong47.github.io/post/2020/2020-06-19-disable-password-for-private-github-repo/</guid><description>&lt;p&gt;github가 제공하는 private repository를 사용하니 ID와 암호를 매번 물어보길래 찾아 보니 이렇게 해결할 수 있다고.&lt;/p&gt;
+&lt;p&gt;source : &lt;a href="https://stackoverflow.com/questions/8588768/how-do-i-avoid-the-specification-of-the-username-and-password-at-every-git-push"&gt;How do I avoid the specification of the username and password at every git push?&lt;/a&gt;&lt;/p&gt;
+&lt;pre tabindex="0"&gt;&lt;code&gt;$ git config credential.helper store
+$ git push https://github.com/repo.git
+
+Username for &amp;#39;https://github.com&amp;#39;: &amp;lt;USERNAME&amp;gt;
+Password for &amp;#39;https://USERNAME@github.com&amp;#39;: &amp;lt;PASSWORD&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;To set the timeout for &amp;ldquo;not-asking password&amp;rdquo;&lt;/p&gt;
+&lt;pre tabindex="0"&gt;&lt;code&gt;git config --global credential.helper &amp;#39;cache --timeout 7200&amp;#39;
+&lt;/code&gt;&lt;/pre&gt;</description></item><item><title>2nd patch submit to DPDK</title><link>https://cychong47.github.io/post/2018/submit-patch-to-dpdk-with-git/</link><pubDate>Sat, 21 Jul 2018 15:02:14 +0900</pubDate><guid>https://cychong47.github.io/post/2018/submit-patch-to-dpdk-with-git/</guid><description>&lt;p&gt;AVX2가 지원되지 않는 머신에서 쓸데없이 ACL library 빌드할 때 AVX2를 이용해서 빌드하려는 문제를 확인했다. 지금까지 아무도 고치지 않은 게 이상하긴 한데 그래도 내가 생각한 수정 방법이 제대로 동작하는 듯 해서 패치를 한번 보내보기로 했다.&lt;/p&gt;
+&lt;p&gt;수정사항은 비교적 간단하다.
+ACL 라이브러리 빌드할 때 AVX2를 이용해서 빌드해야 하는 경우인지를 검사하는 코드가 &lt;code&gt;lib/librte_acl/Makefile&lt;/code&gt;에 정의되어 있는데 여기서 항상 &lt;code&gt;-march=core-avx2&lt;/code&gt; 옵션을 사용해서 AVX2가 지원되지 않는 머신에서도 AVX2를 사용해서 gcc가 빌드하도록 하는 걸로 보였다. 다른 코드 빌드할 때는 문제가 없는데 유독 ACL library에서만 이런 문제가 나서 보다 보니 아무래도 Makefile이 잘못된 듯 하다.&lt;/p&gt;</description></item></channel></rss>

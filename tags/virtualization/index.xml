@@ -1,4 +1,53 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Virtualization on Keep calm and write something</title><link>https://cychong47.github.io/tags/virtualization/</link><description>Recent content in Virtualization on Keep calm and write something</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Sun, 15 Jul 2018 12:09:18 +0000</lastBuildDate><atom:link href="https://cychong47.github.io/tags/virtualization/index.xml" rel="self" type="application/rss+xml"/><item><title>Astri vRAN</title><link>https://cychong47.github.io/post/2018/astri-vran/</link><pubDate>Sun, 15 Jul 2018 12:03:00 +0900</pubDate><guid>https://cychong47.github.io/post/2018/astri-vran/</guid><description>Toward 5G RAN virtualization by Intel and Astri
-http://astri.oeg
-Flexible architecture Modular PHY processing architectures PDCP Split MAC/PHY Split - HARQ processing in RRU(How???) Lower PHY Split - High FB overhead but smallest packet latency. Good for JT and JR for COMP Good for Massive MIMO and Ultra low-latency communication(Why?) FAPI based MAC/PHY communication L1 adaptation layer for MAC/PHY split (and Lower PHY Split?) MAC/PHY split in one CPU MAC/PHY split in one machine but netrwork based MAC/PHY communication over OVS Virtual Cell A group of physical cells form a Virtual Cell which does not require HO between the physical cells.</description></item><item><title>CISCO Cloud Service Platform 2100</title><link>https://cychong47.github.io/post/2015/cisco-cloud-service-platform-2100/</link><pubDate>Mon, 23 Nov 2015 14:24:35 +0900</pubDate><guid>https://cychong47.github.io/post/2015/cisco-cloud-service-platform-2100/</guid><description>Data sheet (PDF)
-Some Cisco virtual network services that use the DPDK include Cisco Cloud Services Router (CSR) 1000V, Cisco Virtual Mobile Packet Core software, and Cisco IOS® XR 9000v virtual router. Supporte CISCO appliances Cisco Cloud Services Router (CSR) 1000V virtual router Cisco Virtual Adaptive Security Appliance (ASAv) Cisco Prime™ Data Center Network Manager (DCNM) Cisco Virtual Network Analysis Module (vNAM) Cisco Virtual Security Gateway (VSG) for Cisco Nexus® 1000V Switch deployments Cisco Virtual Supervisor Module (VSM) for Cisco Nexus 1000V Switch deployments 1U 2 CPU, each has 8 core Ivy Bridge(E5-2630 v3) REST API It uses REST API and NETCONF protocol for north-bound management and orchestration (MANO) tools.</description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Virtualization on Keep calm and Write something</title><link>https://cychong47.github.io/tags/virtualization/</link><description>Recent content in Virtualization on Keep calm and Write something</description><generator>Hugo</generator><language>en-us</language><lastBuildDate>Sun, 15 Jul 2018 12:09:18 +0000</lastBuildDate><atom:link href="https://cychong47.github.io/tags/virtualization/index.xml" rel="self" type="application/rss+xml"/><item><title>Astri vRAN</title><link>https://cychong47.github.io/post/2018/astri-vran/</link><pubDate>Sun, 15 Jul 2018 12:03:00 +0900</pubDate><guid>https://cychong47.github.io/post/2018/astri-vran/</guid><description>&lt;p&gt;&lt;a href="https://builders.intel.com/docs/networkbuilders/towards_5g_ran_virtualization_enabled_by_intel_and_astri.pdf"&gt;Toward 5G RAN virtualization by Intel and Astri&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href="http://astri.oeg"&gt;http://astri.oeg&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id="flexible-architecture"&gt;Flexible architecture&lt;/h2&gt;
+&lt;h3 id="modular-phy-processing-architectures"&gt;Modular PHY processing architectures&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;PDCP Split&lt;/li&gt;
+&lt;li&gt;MAC/PHY Split - HARQ processing in RRU(How???)&lt;/li&gt;
+&lt;li&gt;Lower PHY Split - High FB overhead but smallest packet latency.
+&lt;ul&gt;
+&lt;li&gt;Good for JT and JR for COMP&lt;/li&gt;
+&lt;li&gt;Good for Massive MIMO and Ultra low-latency communication(Why?)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;FAPI based MAC/PHY communication
+&lt;ul&gt;
+&lt;li&gt;L1 adaptation layer for MAC/PHY split (and Lower PHY Split?)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img src="https://cychong47.github.io/images/2018/07/Screenshot-2018-07-15-20.51.59.png" alt="Screenshot-2018-07-15-20.51.59"&gt;&lt;/p&gt;
+&lt;h3 id="macphy-split-in-one-cpu"&gt;MAC/PHY split in one CPU&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;MAC/PHY split in one machine but netrwork based MAC/PHY communication over OVS
+&lt;img src="https://cychong47.github.io/images/2018/07/Screenshot-2018-07-15-20.56.12.png" alt="Screenshot-2018-07-15-20.56.12"&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id="virtual-cell"&gt;Virtual Cell&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;A group of physical cells form a &lt;code&gt;Virtual Cell&lt;/code&gt; which does not require HO between the physical cells.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id="technical-specification"&gt;Technical Specification&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Commercial L1 reference design
+&lt;img src="https://cychong47.github.io/images/2018/07/Screenshot-2018-07-15-21.02.00.png" alt="Screenshot-2018-07-15-21.02.00"&gt;&lt;/p&gt;</description></item><item><title>CISCO Cloud Service Platform 2100</title><link>https://cychong47.github.io/post/2015/cisco-cloud-service-platform-2100/</link><pubDate>Mon, 23 Nov 2015 14:24:35 +0900</pubDate><guid>https://cychong47.github.io/post/2015/cisco-cloud-service-platform-2100/</guid><description>&lt;p&gt;&lt;a href="http://www.cisco.com/c/en/us/products/collateral/switches/cloud-services-platform-2100/datasheet-c78-735317.html"&gt;Data sheet&lt;/a&gt; (&lt;a href="http://www.cisco.com/c/en/us/products/collateral/switches/cloud-services-platform-2100/datasheet-c78-735317.pdf"&gt;PDF&lt;/a&gt;)&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Some Cisco virtual network services that use the DPDK include Cisco Cloud Services Router (CSR) 1000V, Cisco Virtual Mobile Packet Core software, and Cisco IOS® XR 9000v virtual router.&lt;/li&gt;
+&lt;li&gt;Supporte CISCO appliances
+&lt;ul&gt;
+&lt;li&gt;Cisco Cloud Services Router (CSR) 1000V virtual router&lt;/li&gt;
+&lt;li&gt;Cisco Virtual Adaptive Security Appliance (ASAv)&lt;/li&gt;
+&lt;li&gt;Cisco Prime™ Data Center Network Manager (DCNM)&lt;/li&gt;
+&lt;li&gt;Cisco Virtual Network Analysis Module (vNAM)&lt;/li&gt;
+&lt;li&gt;Cisco Virtual Security Gateway (VSG) for Cisco Nexus® 1000V Switch deployments&lt;/li&gt;
+&lt;li&gt;Cisco Virtual Supervisor Module (VSM) for Cisco Nexus 1000V Switch deployments&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;1U&lt;/li&gt;
+&lt;li&gt;2 CPU, each has 8 core Ivy Bridge(E5-2630 v3)&lt;/li&gt;
+&lt;li&gt;REST API&lt;/li&gt;
+&lt;li&gt;It uses REST API and NETCONF protocol for north-bound management and orchestration (MANO) tools.&lt;/li&gt;
+&lt;li&gt;Network services could be abstracted to a pool of high-availability resources among several hosts.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;a href="http://www.cisco.com/c/dam/en/us/solutions/collateral/service-provider/network-functions-virtualization-nfv/nfv-partnership.pdf"&gt;Cisco Systems and Intel Corporation NFV Partnership&lt;/a&gt;&lt;/p&gt;</description></item></channel></rss>

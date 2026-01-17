@@ -1,327 +1,342 @@
-<!doctype html><html class=no-js lang=en><head><meta charset=UTF-8><meta name=viewport content="width=device-width,initial-scale=1"><meta http-equiv=X-UA-Compatible content="IE=edge"><title>Posts - Keep calm and write something</title>
-<script>(function(e,t){e[t]=e[t].replace("no-js","js")})(document.documentElement,"className")</script><meta name=description content><link rel=dns-prefetch href=//fonts.googleapis.com><link rel=dns-prefetch href=//fonts.gstatic.com><link rel=alternate type=application/rss+xml href=/post/index.xml title="Keep calm and write something"><link rel=stylesheet href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700"><link rel=stylesheet href=/css/style.css><link rel=stylesheet href=/css/custom.css><link rel="shortcut icon" href=/favicon.ico></head><body class=body><div class="container container--outer"><header class=header><div class="container header__container"><div class=logo><a class=logo__link href=/ title="Keep calm and write something" rel=home><div class="logo__item logo__text"><div class=logo__title>Keep calm and write something</div><div class=logo__tagline>Just another blog</div></div></a></div><nav class=menu><button class=menu__btn aria-haspopup=true aria-expanded=false tabindex=0>
-<span class=menu__btn-title tabindex=-1>Menu</span></button><ul class=menu__list><li class=menu__item><a class=menu__link href=/page><span class=menu__text>Page</span></a></li><li class=menu__item><a class=menu__link href=/post><span class=menu__text>Post</span></a></li><li class=menu__item><a class=menu__link href=/series><span class=menu__text>Series</span></a></li></ul></nav></div></header><div class="wrapper flex"><div class=primary><main class="main list" role=main><header class=main__header><h1 class=main__title>Posts</h1></header><article class="list__item post"><header class=list__header><h3 class="list__title post__title"><a href=/post/2024/2024-02-20-cilium-and-hubble-with-prometheus-and-grafana/ rel=bookmark>Monitoring Cilium and Hubble with Prometheus and Grafana</a></h3><div class="list__meta meta"><div class="meta__item-datetime meta__item"><svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class=meta__text datetime=2024-02-20T00:00:00Z>February 20, 2024</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2 1 2h8v11H0V2z"/></svg><span class=meta__text><a class=meta__link href=/categories/homelab/ rel=category>Homelab</a></span></div></div></header><div class="content list__excerpt post__content clearfix">Setup Prometheus and Grafana to scrap Cilium metrics This will create a new namespace cilium-monitoring
-kubectl apply -f https://raw.githubusercontent.com/cilium/cilium/1.15.1/examples/kubernetes/addons/prometheus/monitoring-example.yaml Some warnings&mldr; namespace/cilium-monitoring created serviceaccount/prometheus-k8s created configmap/grafana-config created configmap/grafana-cilium-dashboard created configmap/grafana-cilium-operator-dashboard created configmap/grafana-hubble-dashboard created configmap/grafana-hubble-l7-http-metrics-by-workload created configmap/prometheus created clusterrole.rbac.authorization.k8s.io/prometheus created clusterrolebinding.rbac.authorization.k8s.io/prometheus created service/grafana created service/prometheus created Warning: would violate PodSecurity "restricted:latest": allowPrivilegeEscalation != false (container "grafana-core" must set securityContext.allowPrivilegeEscalation=false), unrestricted capabilities (container "grafana-core" must set securityContext.capabilities.drop=["ALL"]), runAsNonRoot != true (pod or container "grafana-core" must set securityContext.</div></article><article class="list__item post"><header class=list__header><h3 class="list__title post__title"><a href=/post/2024/2024-02-18-prepend-data-to-python-logger/ rel=bookmark>Add extra data to python log message</a></h3><div class="list__meta meta"><div class="meta__item-datetime meta__item"><svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class=meta__text datetime=2024-02-18T00:00:00Z>February 18, 2024</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2 1 2h8v11H0V2z"/></svg><span class=meta__text><a class=meta__link href=/categories/til/ rel=category>Til</a></span></div></div></header><div class="content list__excerpt post__content clearfix">TL;DR QueueHandler를 사용해서 process-safe logger를 만들고 LoggerAdapter를 활용해서 매 로그 메시지마다 특정 정보가 자동으로 출력. main.py #!/usr/bin/env python3 import logging import logging.handlers import multiprocessing from worker import worker_process from my_logger import logger_process if __name__ == "__main__": # Configure logging logging.basicConfig(level=logging.DEBUG) # Create a queue for logging log_queue = multiprocessing.Queue() # Create worker processes num_workers = 2 processes = [] for i in range(num_workers): p = multiprocessing.Process(target=worker_process, args=(i, log_queue)) processes.append(p) p.start() # Create a logger process for process-safe loggging p = multiprocessing.</div></article><article class="list__item post"><header class=list__header><h3 class="list__title post__title"><a href=/post/2023/2023-05-18-add-search-to-hugo/ rel=bookmark>hugo에 검색 기능 추가하기 - pagefind</a></h3><div class="list__meta meta"><div class="meta__item-datetime meta__item"><svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class=meta__text datetime=2023-05-18T00:00:00Z>May 18, 2023</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2 1 2h8v11H0V2z"/></svg><span class=meta__text><a class=meta__link href=/categories/homelab/ rel=category>Homelab</a></span></div></div></header><div class="content list__excerpt post__content clearfix">Why not Agollia algolla 는 site indexing 을 위해 Algollia 서버로 정보를 보내는 듯 함. 대신 hugo에 아주 seamless 하게 연동이 되는데. 좀 아쉽네. (Privacy 건은 좀 더 확인해 봐야겠다)
-Algollia를 잘 결합해서 사용하는 사이트 하나 https://inchan.dev Search를 클릭하면 입력 창의 크기가 자동으로 커져서 결과가 보여지는 창도 적당해서 보기 좋다.
-Install Pagefind 설치는 npx를 이용해서 설치하거나, cargo build하거나. 혹은 github에 올려져 있는 바이너리 다운받아 설치하거나. 이 중에 마지막 방법 선택</div></article><article class="list__item post"><header class=list__header><h3 class="list__title post__title"><a href=/post/2022/2022-12-31-homeserver-3rd-gen/ rel=bookmark>Homelab server 3rd gen.</a></h3><div class="list__meta meta"><div class="meta__item-datetime meta__item"><svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class=meta__text datetime=2022-12-31T00:00:00Z>December 31, 2022</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2 1 2h8v11H0V2z"/></svg><span class=meta__text><a class=meta__link href=/categories/homelab/ rel=category>Homelab</a></span></div></div></header><div class="content list__excerpt post__content clearfix">homelab 서버로 사용할 PC를 당근마켓을 통해 구입. 제품 사양에 비해 저렴하고,, 구입 과정도 매끄러워서 기분좋게 구입한 제품이다.
-오랜만에 AMD CPU를 사용하는 PC를 사용하게 되었네. 조립 PC를 사본 지가 언제인지. 최근 10년 넘게는 맥만 구입해서 궁금하다. 완성품(특히 애플 노트북)에 비해 좋은 점은 원하는 사양으로 변경할 수 있다는 거 일텐데, 그래서 그 장점을 십분 활용하고자, 중고로 얻어온 제품이 이미 16 GiB 메모리가 실장되어 있지만, 32 GiB를 하나 추가로 구입했다. 다른 건 못해도 RAM Flex라도 해 보자.</div></article><article class="list__item post"><header class=list__header><h3 class="list__title post__title"><a href=/post/2022/2022-03-14-one-container-in-each-pod/ rel=bookmark>How to run DPDK in k8s - One container in each pod</a></h3><div class="list__meta meta"><div class="meta__item-datetime meta__item"><svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class=meta__text datetime=2022-03-14T00:00:03+09:00>March 14, 2022</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2 1 2h8v11H0V2z"/></svg><span class=meta__text><a class=meta__link href=/categories/study/ rel=category>Study</a></span></div></div></header><div class="content list__excerpt post__content clearfix">서로 다른 pod의 container에서 실행되는 DPDK process들도 다른 경우와 마찬가지로 DPDK runtime config 파일과 hugepage map 파일만 공유하면 hugepage를 공유할 수 있다.
-이 때 서로 다른 pod가 같은 DPDK runtime config 파일들과, hugepage map 파일을 공유하기 위해 두 개 pod가 함께 사용할 수 있는 hostPath 를 이용한다. hostPath는 pod가 실행되는 node의 파일 시스템을 이용하여 volume을 만든다. 그러므로 서로 다른 pod가 동일 node에서 실행되는 경우에만 pod가 hugepage를 공유할 수 있다.
-DPDK runtime config 두 개 pod에서 hostPath 를 이용하여 DPDK runtime config 파일을 공유를 위한 volume을 만든다.</div></article><article class="list__item post"><header class=list__header><h3 class="list__title post__title"><a href=/post/2022/2022-03-14-two-containers-in-a-pod/ rel=bookmark>How to run DPDK in k8s - Two containers in a pod</a></h3><div class="list__meta meta"><div class="meta__item-datetime meta__item"><svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class=meta__text datetime=2022-03-14T00:00:02+09:00>March 14, 2022</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2 1 2h8v11H0V2z"/></svg><span class=meta__text><a class=meta__link href=/categories/study/ rel=category>Study</a></span></div></div></header><div class="content list__excerpt post__content clearfix">하나의 pod에 2개의 container를 두고, 각각의 container에 primary process, secondary process를 실행하려면 두 개 container에서 실행되는 DPDK process간 runime config 파일과, hugepage map 파일을 공유하는 방법은 다음과 같다.
-하나의 pod에 하나의 container만 두는 경우와 달리 두 개의 container가 /var/run/dpdk 위치를 공유해야 하므로, 각 container가 갖는 기본 파일 시스템이 아니라 명시적으로 pod의 volume을 이용해서 파일을 공유해야 한다.
-이를 위해 pod spec에 다음과 같은 volume spec을 추가한다.
-volume: - name: dpdk-config emptyDir: emptyDir에 명시적으로 지정하지 않은 경우 tmpfs를 사용하므로, 위 volume은 tmpfs를 사용하여 생성된다.</div></article><article class="list__item post"><header class=list__header><h3 class="list__title post__title"><a href=/post/2022/2022-03-14-a-single-container-in-a-pod/ rel=bookmark>How to run DPDK in k8s - A single container in a pod</a></h3><div class="list__meta meta"><div class="meta__item-datetime meta__item"><svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class=meta__text datetime=2022-03-14T00:00:01+09:00>March 14, 2022</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2 1 2h8v11H0V2z"/></svg><span class=meta__text><a class=meta__link href=/categories/study/ rel=category>Study</a></span></div></div></header><div class="content list__excerpt post__content clearfix">How to run DPDK application in Kubernetes environment Kubernetes에서 DPDK application을 실행하기 위해서는 DPDK application이 포함된 container에 runtime config 파일이 저장될 /var/run/dpdk 디렉토리와 hugetlbfs 형태로 hugepage가 존재해야 한다. 이 중 /var/run/dpdk는 container 가 갖는 file system에 생성되는 기본 linux directory인 /var/run 아래 위치하므로, DPDK application이 실행되면서 디렉토리를 생성한다.
-반면, hugetblfs 디렉토리은 kubernetes의 volume 에서 제공하는 emptyDir을 사용하면 Pod와 lifecycle을 함께 하는 hugepage를 만들어 사용할 수 있다.
-Container에서 hugepage를 할당받기 위해서는 다음과 같이 container spec에 요구하는 hugepage 크기를 명시한다.</div></article><article class="list__item post"><header class=list__header><h3 class="list__title post__title"><a href=/post/2022/2022-03-14-hugepage-in-dpdk-basics/ rel=bookmark>Hugepage in DPDK - Basics</a></h3><div class="list__meta meta"><div class="meta__item-datetime meta__item"><svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class=meta__text datetime=2022-03-14T00:00:00+09:00>March 14, 2022</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2 1 2h8v11H0V2z"/></svg><span class=meta__text><a class=meta__link href=/categories/study/ rel=category>Study</a></span></div></div></header><div class="content list__excerpt post__content clearfix">Basic use of hugepage DPDK application이 hugepage를 사용할 때 다음과 같은 2가지 디렉토리를 사용한다.
-DPDK runtime config files /var/run/dpdk 로 고정된 경로를 사용요 DPDK 에서 hugepage를 어떻게 사용하는 지에 대한 meta data를 저장 hugepage map hugepage를 사용하기 위해 hugetlbfs 를 이용할 때 생성하는 hugepage map 파일들이 위치한 곳. DPDK는 이곳에 hugepage의 단위 크기를 갖는 file을 생성하고, mmap()을 사용하여 hugepage를 접근 만일 시스템에 2개 이상의 hugetlbfs가 마운트된 위치가 있는 경우 DPDK process를 실행할 때 --huge-dir 옵션을 사용하여 특정 위치를 사용하도록 할 수 있다.</div></article><article class="list__item post"><header class=list__header><h3 class="list__title post__title"><a href=/post/2022/2022-01-22-2022-january-books/ rel=bookmark>2022년 1월 새 책들</a></h3><div class="list__meta meta"><div class="meta__item-datetime meta__item"><svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class=meta__text datetime=2022-01-22T21:48:56+09:00>January 22, 2022</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2 1 2h8v11H0V2z"/></svg><span class=meta__text><a class=meta__link href=/categories/life/ rel=category>Life</a></span></div></div></header><div class="content list__excerpt post__content clearfix"></div></article><article class="list__item post"><header class=list__header><h3 class="list__title post__title"><a href=/post/2022/2022-01-06-how-to-change-timezone-of-traefik-log/ rel=bookmark>Traefik 로그의 timezone 수정</a></h3><div class="list__meta meta"><div class="meta__item-datetime meta__item"><svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class=meta__text datetime=2022-01-06T00:00:00Z>January 06, 2022</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2 1 2h8v11H0V2z"/></svg><span class=meta__text><a class=meta__link href=/categories/homelab/ rel=category>Homelab</a></span></div></div></header><div class="content list__excerpt post__content clearfix">문제점 Traefik 로그에 time 정보가 제대로 나오게 하려면
-helm chart에 환경 변수에 TZ를 설정해도 로그 시간이 제대로 나오지 않음.
-192.168.0.101 - - [06/Jan/2022:1:18:17 +0000] "GET /ping HTTP/1.1" 200 2 "-" "-" 100 "ping@internal" "-" 0ms env: - name: TZ value: Asia/Seoul kubectl describe 명령으로 확인하면 환경변수가 제대로 설정된 것으로 나옴
-Environment: TZ: Asia/Seoul 해결책 https://doc.traefik.io/traefik/observability/access-logs/#time-zones 위 페이지를 보니 다음과 같이 몇 가지 설정을 해야 한다고.
-Traefik will timestamp each log line in UTC time by default.</div></article></main><div class=pagination><span class="pagination__item pagination__item--current">1/34</span>
-<a class="pagination__item pagination__item--next btn" href=/post/page/2/>»</a></div></div><aside class=sidebar><link href=/_pagefind/pagefind-ui.css rel=stylesheet><script src=/_pagefind/pagefind-ui.js type=text/javascript></script><div class="widget-categories widget"><h4 class=widget__title>Search</h4><div id=search></div><script>window.addEventListener("DOMContentLoaded",e=>{new PagefindUI({element:"#search"})})</script></div><div class="widget-categories widget"><h4 class=widget__title>Category</h4><div class=widget__content><ul class=widget__list><li class=widget__item><a class=widget__link href=/categories/book/>Book</a></li><li class=widget__item><a class=widget__link href=/categories/gadget/>Gadget</a></li><li class=widget__item><a class=widget__link href=/categories/homelab/>Homelab</a></li><li class=widget__item><a class=widget__link href=/categories/life/>Life</a></li><li class=widget__item><a class=widget__link href=/categories/note/>Note</a></li><li class=widget__item><a class=widget__link href=/categories/study/>Study</a></li><li class=widget__item><a class=widget__link href=/categories/til/>Til</a></li></ul></div></div><div class="widget-categories widget"><h4 class=widget__title>Series</h4><div class=widget__content><ul class=widget__list><li class=widget__item><a class=widget__link href=/series/homelab-2024/>HomeLab 2024</a></li><li class=widget__item><a class=widget__link href=/series/how-to-run-dpdk-in-k8s/>How to Run DPDK in K8s</a></li><li class=widget__item><a class=widget__link href=/series/kubernetes-hands-on/>Kubernetes Hands-On</a></li><li class=widget__item><a class=widget__link href=/series/learn-cuda-programming/>Learn CUDA Programming</a></li><li class=widget__item><a class=widget__link href=/series/setup-homelab-server-2023/>Setup Homelab Server 2023</a></li><li class=widget__item><a class=widget__link href=/series/setup-hugo-blog/>Setup Hugo Blog</a></li><li class=widget__item><a class=widget__link href=/series/setup-k8s-cluster/>Setup K8s Cluster</a></li><li class=widget__item><a class=widget__link href=/series/setup-podcast-blog/>Setup Podcast Blog</a></li><li class=widget__item><a class=widget__link href=/series/setup-traefik/>Setup Traefik</a></li><li class=widget__item><a class=widget__link href=/series/setup-hugo-blog/>“Setup-Hugo-Blog”</a></li></ul></div></div><div class="widget-taglist widget"><h4 class=widget__title>Tags</h4><div class=widget__content><a class="widget-taglist__link widget__link btn" href=/tags/2015/ title=2015>2015 (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/5g/ title=5g>5g (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/agile/ title=Agile>Agile (6)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/aic/ title=Aic>Aic (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/algorithm/ title=Algorithm>Algorithm (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/amazon/ title=Amazon>Amazon (2)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/amd/ title=Amd>Amd (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/amdocs/ title=Amdocs>Amdocs (2)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/amsterdam-release/ title="Amsterdam Release">Amsterdam Release (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/andromeda/ title=Andromeda>Andromeda (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/ansible/ title=Ansible>Ansible (7)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/ansible-playbook/ title=Ansible-Playbook>Ansible-Playbook (4)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/anti-work-pattern/ title="Anti-Work Pattern">Anti-Work Pattern (3)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/apple/ title=Apple>Apple (3)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/apple-silicon/ title="Apple Silicon">Apple Silicon (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/apple-watch/ title=Apple-Watch>Apple-Watch (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/arm/ title=Arm>Arm (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/att/ title=ATT>ATT (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/automation/ title=Automation>Automation (3)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/b4/ title=B4>B4 (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/backup/ title=Backup>Backup (2)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/barometer/ title=Barometer>Barometer (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/blog/ title=Blog>Blog (2)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/blogging/ title=Blogging>Blogging (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/book/ title=Book>Book (47)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/brew/ title=Brew>Brew (2)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/brocade/ title=Brocade>Brocade (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/c/ title=C>C (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/calico/ title=Calico>Calico (2)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/car/ title=Car>Car (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/cavium/ title=Cavium>Cavium (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/chair/ title=Chair>Chair (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/cilium/ title=Cilium>Cilium (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/cisco/ title=Cisco>Cisco (7)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/click/ title=Click>Click (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/cncf/ title=Cncf>Cncf (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/cni/ title=Cni>Cni (2)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/cockpit/ title=Cockpit>Cockpit (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/coding-style/ title="Coding Style">Coding Style (2)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/collaboration/ title=Collaboration>Collaboration (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/collectd/ title=Collectd>Collectd (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/configmap/ title=Configmap>Configmap (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/connectx-5/ title=ConnectX-5>ConnectX-5 (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/container/ title=Container>Container (10)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/continuous-deployment/ title="Continuous Deployment">Continuous Deployment (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/cpu/ title=Cpu>Cpu (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/cran/ title=Cran>Cran (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/cron/ title=Cron>Cron (2)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/crond/ title=Crond>Crond (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/cronjob/ title=Cronjob>Cronjob (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/cubb/ title=Cubb>Cubb (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/cuda/ title=CUDA>CUDA (2)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/culture/ title=Culture>Culture (2)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/cuphy/ title=Cuphy>Cuphy (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/cuvnf/ title=Cuvnf>Cuvnf (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/database/ title=Database>Database (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/dev-culture/ title="Dev Culture">Dev Culture (2)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/devnothink/ title=Devnothink>Devnothink (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/devonthink/ title=Devonthink>Devonthink (2)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/docker/ title=Docker>Docker (15)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/docker-compose/ title=Docker-Compose>Docker-Compose (2)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/dpdk/ title=DPDK>DPDK (26)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/dpi/ title=Dpi>Dpi (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/dpkt/ title=Dpkt>Dpkt (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/edge/ title=Edge>Edge (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/elasticsearch/ title=Elasticsearch>Elasticsearch (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/elk/ title=Elk>Elk (3)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/english/ title=English>English (2)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/espresso/ title=Espresso>Espresso (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/fapi/ title=Fapi>Fapi (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/feature-flag-driven-development/ title="Feature Flag Driven Development">Feature Flag Driven Development (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/feedback/ title=Feedback>Feedback (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/ffmpeg/ title=Ffmpeg>Ffmpeg (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/finder/ title=Finder>Finder (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/flask/ title=Flask>Flask (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/fragment/ title=Fragment>Fragment (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/ftp/ title=Ftp>Ftp (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/getting-started/ title="Getting Started">Getting Started (2)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/ghost/ title=Ghost>Ghost (11)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/ghost-theme/ title=Ghost-Theme>Ghost-Theme (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/git/ title=Git>Git (3)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/github/ title=Github>Github (3)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/go/ title=Go>Go (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/golang/ title=Golang>Golang (2)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/google/ title=Google>Google (4)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/google-cloud-platform/ title=Google-Cloud-Platform>Google-Cloud-Platform (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/gpb/ title=Gpb>Gpb (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/gpu/ title=Gpu>Gpu (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/grafana/ title=Grafana>Grafana (2)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/grafana/ title='Grafana"'>Grafana" (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/graviton/ title=Graviton>Graviton (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/grpc/ title=Grpc>Grpc (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/happy-hacking/ title=Happy-Hacking>Happy-Hacking (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/hbr/ title=HBR>HBR (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/helm/ title=Helm>Helm (6)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/homebrew/ title=Homebrew>Homebrew (3)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/homelab/ title=Homelab>Homelab (2)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/homepod/ title=HomePod>HomePod (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/http/ title=Http>Http (2)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/hugepage/ title=Hugepage>Hugepage (4)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/hugo/ title=Hugo>Hugo (16)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/influxdb/ title=Influxdb>Influxdb (2)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/inspiration/ title=Inspiration>Inspiration (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/intel/ title=Intel>Intel (4)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/ios14/ title=IOS14>IOS14 (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/ipad/ title=IPad>IPad (3)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/iphone/ title=IPhone>IPhone (2)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/iphone6/ title=IPhone6>IPhone6 (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/iphonex/ title=IPhoneX>IPhoneX (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/ipsec/ title=IPsec>IPsec (2)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/ipv4/ title=Ipv4>Ipv4 (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/istio/ title=Istio>Istio (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/jetpack/ title=Jetpack>Jetpack (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/job/ title=Job>Job (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/json/ title=Json>Json (2)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/jtbc/ title=Jtbc>Jtbc (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/jupiter/ title=Jupiter>Jupiter (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/k3s/ title=K3s>K3s (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/kafka/ title=Kafka>Kafka (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/kldp/ title=KLDP>KLDP (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/kni/ title=Kni>Kni (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/kubelet/ title=Kubelet>Kubelet (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/kubernetes/ title=Kubernetes>Kubernetes (25)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/kuberntes/ title=Kuberntes>Kuberntes (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/launchd/ title=Launchd>Launchd (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/lb/ title=Lb>Lb (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/life/ title=Life>Life (3)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/lifehack/ title=Lifehack>Lifehack (2)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/linux/ title=Linux>Linux (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/load-balancer/ title="Load Balancer">Load Balancer (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/lte/ title=Lte>Lte (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/m1/ title=M1>M1 (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/mac/ title=Mac>Mac (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/mac-mini-2009/ title="Mac Mini 2009">Mac Mini 2009 (3)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/maglev/ title=Maglev>Maglev (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/manager/ title=Manager>Manager (3)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/markdown/ title=Markdown>Markdown (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/mbuf/ title=Mbuf>Mbuf (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/mec/ title=Mec>Mec (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/mediawiki/ title=Mediawiki>Mediawiki (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/meetup/ title=Meetup>Meetup (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/message-queue/ title="Message Queue">Message Queue (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/metricbeat/ title=Metricbeat>Metricbeat (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/microk8s/ title=Microk8s>Microk8s (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/microservice/ title=Microservice>Microservice (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/mindmap/ title=Mindmap>Mindmap (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/model-driven/ title=Model-Driven>Model-Driven (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/monitoring/ title=Monitoring>Monitoring (2)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/multipass/ title=Multipass>Multipass (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/mysql/ title=Mysql>Mysql (5)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/naim/ title=Naim>Naim (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/nas/ title=Nas>Nas (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/nasa/ title=Nasa>Nasa (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/nec/ title=NEC>NEC (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/nested-chart/ title=Nested-Chart>Nested-Chart (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/netconf/ title=Netconf>Netconf (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/network/ title=Network>Network (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/neuron/ title=Neuron>Neuron (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/nfv/ title=NFV>NFV (9)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/nginmesh/ title=Nginmesh>Nginmesh (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/nginx/ title=Nginx>Nginx (2)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/nhn/ title=NHN>NHN (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/nic/ title=NIC>NIC (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/nokia/ title=Nokia>Nokia (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/note/ title=Note>Note (2)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/nvidia/ title=Nvidia>Nvidia (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/odp/ title=Odp>Odp (3)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/ofp/ title=OFP>OFP (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/onap/ title=Onap>Onap (3)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/onp/ title=ONP>ONP (2)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/openfastpath/ title=OpenFastPath>OpenFastPath (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/opensource/ title=Opensource>Opensource (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/openstack/ title=Openstack>Openstack (2)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/opnfv/ title=Opnfv>Opnfv (3)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/osx/ title=Osx>Osx (3)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/ovdk/ title=OVDK>OVDK (3)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/ovs/ title=OVS>OVS (2)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/p4/ title=P4>P4 (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/pagefind/ title=Pagefind>Pagefind (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/patch/ title=Patch>Patch (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/perl/ title=Perl>Perl (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/photo/ title=Photo>Photo (31)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/photoaa/ title=Photoaa>Photoaa (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/pinpoint/ title=Pinpoint>Pinpoint (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/plist/ title=Plist>Plist (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/pluribus/ title=Pluribus>Pluribus (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/podcast/ title=Podcast>Podcast (8)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/powermate/ title=Powermate>Powermate (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/prediction/ title=Prediction>Prediction (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/programming/ title=Programming>Programming (2)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/prometheus/ title=Prometheus>Prometheus (2)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/protobufs/ title=Protobufs>Protobufs (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/protocol-buffer/ title="Protocol Buffer">Protocol Buffer (2)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/pyftplib/ title=Pyftplib>Pyftplib (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/python/ title=Python>Python (14)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/qat/ title=QAT>QAT (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/quality/ title=Quality>Quality (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/quanta/ title=Quanta>Quanta (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/quicklook/ title=Quicklook>Quicklook (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/r210/ title=R210>R210 (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/readiness/ title=Readiness>Readiness (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/reassembly/ title=Reassembly>Reassembly (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/recovery/ title=Recovery>Recovery (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/resources/ title=Resources>Resources (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/restful/ title=RESTful>RESTful (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/rmda/ title=RMDA>RMDA (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/scapy/ title=Scapy>Scapy (5)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/sci/ title=Sci>Sci (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/scrum/ title=Scrum>Scrum (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/sctp/ title=Sctp>Sctp (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/sdn/ title=SDN>SDN (5)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/secret/ title=Secret>Secret (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/service-agility/ title="Service Agility">Service Agility (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/service-mesh/ title="Service Mesh">Service Mesh (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/setup/ title=Setup>Setup (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/slack/ title=Slack>Slack (4)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/sleeve/ title=Sleeve>Sleeve (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/snmp/ title=Snmp>Snmp (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/soft-skill/ title=Soft-Skill>Soft-Skill (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/sqlite/ title=Sqlite>Sqlite (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/sriov/ title=SRIOV>SRIOV (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/standingdesk/ title=StandingDesk>StandingDesk (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/startup/ title=Startup>Startup (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/storage/ title=Storage>Storage (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/study/ title=Study>Study (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/subchart/ title=Subchart>Subchart (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/sw/ title=SW>SW (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/sw-quality/ title="SW Quality">SW Quality (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/sw-%EA%B0%9C%EB%B0%9C-%EB%AC%B8%ED%99%94/ title="SW 개발 문화">SW 개발 문화 (9)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/swarm/ title=Swarm>Swarm (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/synology/ title=Synology>Synology (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/tag/ title=Tag>Tag (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/tcp/ title=Tcp>Tcp (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/team/ title=Team>Team (2)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/telemetry/ title=Telemetry>Telemetry (3)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/the-pragmatic-programmer/ title="The Pragmatic Programmer">The Pragmatic Programmer (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/theme/ title=Theme>Theme (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/til/ title=Til>Til (8)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/time-machine/ title="Time Machine">Time Machine (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/track-pad/ title=Track-Pad>Track-Pad (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/traefik/ title=Traefik>Traefik (5)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/troubleshooting/ title=Troubleshooting>Troubleshooting (9)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/tutorial/ title=Tutorial>Tutorial (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/ubuntu/ title=Ubuntu>Ubuntu (2)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/vagrant/ title=Vagrant>Vagrant (2)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/vertical-pod-autoscaler/ title=Vertical-Pod-Autoscaler>Vertical-Pod-Autoscaler (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/ves/ title=Ves>Ves (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/video/ title=Video>Video (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/vim/ title=Vim>Vim (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/virtualbox/ title=Virtualbox>Virtualbox (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/virtualenv/ title=Virtualenv>Virtualenv (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/virtualization/ title=Virtualization>Virtualization (2)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/vmware/ title=Vmware>Vmware (2)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/vnf/ title=VNF>VNF (2)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/volvo/ title=Volvo>Volvo (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/vran/ title=Vran>Vran (3)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/vrouter/ title=VRouter>VRouter (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/vswitch/ title=VSwitch>VSwitch (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/web-scrapping/ title=Web-Scrapping>Web-Scrapping (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/webdav/ title=Webdav>Webdav (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/wiki/ title=Wiki>Wiki (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/windows10/ title=Windows10>Windows10 (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/wordpress/ title=Wordpress>Wordpress (11)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/work_rules/ title=Work_rules>Work_rules (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/writing/ title=Writing>Writing (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/xcrun/ title=Xcrun>Xcrun (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/yang/ title=Yang>Yang (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/automation/ title=“Automation”>“Automation” (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/book/ title=“Book”>“Book” (2)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/containerd/ title=“Containerd”>“Containerd” (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/cronjob/ title=“CronJob”>“CronJob” (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/github-action/ title="“GitHub Action”">“GitHub Action” (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/github/ title=“GitHub”>“GitHub” (2)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/go/ title=“Go”>“Go” (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/gpu/ title=“GPU”>“GPU” (2)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/helm/ title=“Helm”>“Helm” (2)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/ios-shortcut/ title=“IOS-Shortcut”>“IOS-Shortcut” (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/kubernetes/ title=“Kubernetes”>“Kubernetes” (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/podcast/ title=“Podcast”>“Podcast” (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/rust/ title=“Rust”>“Rust” (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/timezone/ title=“Timezone”>“Timezone” (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/%EA%B0%9C%EB%B0%9C%EC%9D%B4%EC%95%BC%EA%B8%B0/ title=개발이야기>개발이야기 (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/%EA%B2%BD%EC%9F%81/ title=경쟁>경쟁 (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/%EA%B3%B5%EB%B6%80/ title=공부>공부 (2)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/%EA%B3%B5%EC%9C%A0/ title=공유>공유 (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/%EA%B4%80%EB%A6%AC%EB%8A%A5%EB%A0%A5/ title=관리능력>관리능력 (2)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/%EA%B8%B0%EB%A1%9D/ title=기록>기록 (2)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/%EB%85%BC%EB%AC%B8/ title=논문>논문 (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/%EB%A6%AC%EB%8D%94/ title=리더>리더 (2)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/%EB%A7%A4%EB%84%88%EB%A6%AC%EC%A6%98/ title=매너리즘>매너리즘 (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/%EB%AC%B8%ED%99%94/ title=문화>문화 (2)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/%EC%82%AC%EB%9E%8C%EC%9D%B4-%ED%95%B5%EC%8B%AC/ title="사람이 핵심">사람이 핵심 (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/%EC%83%9D%EA%B0%81/ title=생각>생각 (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/%EC%83%9D%EC%82%B0%EC%84%B1/ title=생산성>생산성 (2)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/%EC%9C%A4%EC%8B%9D%EB%8B%B9/ title=윤식당>윤식당 (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/%EC%9D%B8%EC%9A%A9/ title=인용>인용 (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/%EC%9E%84%EB%B0%B1%EC%A4%80/ title=임백준>임백준 (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/%EC%9E%A1%EC%83%9D%EA%B0%81/ title=잡생각>잡생각 (9)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/%EC%A0%84%EB%9E%8C%ED%9A%8C/ title=전람회>전람회 (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/%EC%A1%B0%EC%A7%81/ title=조직>조직 (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/%EC%A1%B0%EC%A7%81%EA%B4%80%EB%A6%AC/ title=조직관리>조직관리 (4)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/%EC%A1%B0%EC%A7%81%EB%AC%B8%ED%99%94/ title=조직문화>조직문화 (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/%EC%A2%8B%EC%9D%80%EA%B8%80/ title=좋은글>좋은글 (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/%EC%B0%A9%EA%B0%81%ED%95%98%EB%8A%94-ceo/ title="착각하는 CEO">착각하는 CEO (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/%EC%B6%94%EC%96%B5/ title=추억>추억 (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/%EC%BD%94%EB%93%9C%EB%A6%AC%EB%B7%B0/ title=코드리뷰>코드리뷰 (1)</a>
-<a class="widget-taglist__link widget__link btn" href=/tags/%ED%9A%8C%EC%9D%98/ title=회의>회의 (2)</a></div></div></aside></div><footer class=footer><div class="container footer__container flex"><div class=footer__copyright>&copy; 2024 Chaeyong Chong.
-<span class=footer__copyright-credits>Generated with <a href=https://gohugo.io/ rel="nofollow noopener" target=_blank>Hugo</a> and <a href=https://github.com/Vimux/Mainroad/ rel="nofollow noopener" target=_blank>Mainroad</a> theme.</span></div></div></footer></div><script async defer src=/js/menu.js></script></body></html>
+<!doctype html><html lang=en-us><head><meta http-equiv=X-Clacks-Overhead content="GNU Terry Pratchett"><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><title>Posts | Keep calm and Write something</title><meta name=title content="Posts"><meta name=description content="TBD"><meta name=keywords content='book,gadget,homelab,life,note,study,til,homelab 2024,how to run dpdk in k8s,kubernetes hands-on,learn cuda programming,setup homelab server 2023,setup hugo blog,setup k8s cluster,setup podcast blog,setup traefik,“setup-hugo-blog”,2015,5g,agile,aic,algorithm,amazon,amd,amdocs,amsterdam release,andromeda,ansible,ansible-playbook,anti-work pattern,apple,apple silicon,apple-watch,arm,att,automation,b4,backup,barometer,blog,blogging,book,brew,brocade,c,calico,car,cavium,chair,cilium,cisco,click,cncf,cni,cockpit,coding style,collaboration,collectd,configmap,connectx-5,container,continuous deployment,cpu,cran,cron,crond,cronjob,cubb,cuda,culture,cuphy,cuvnf,database,dev culture,devnothink,devonthink,docker,docker-compose,dpdk,dpi,dpkt,edge,elasticsearch,elk,english,espresso,fapi,feature flag driven development,feedback,ffmpeg,finder,flask,fragment,ftp,getting started,ghost,ghost-theme,git,github,go,golang,google,google-cloud-platform,gpb,gpu,grafana,grafana",graviton,grpc,happy-hacking,hbr,helm,homebrew,homelab,homepod,http,hugepage,hugo,influxdb,inspiration,intel,ios14,ipad,iphone,iphone6,iphonex,ipsec,ipv4,istio,jetpack,job,json,jtbc,jupiter,k3s,kafka,kldp,kni,kubelet,kubernetes,kuberntes,launchd,lb,life,lifehack,linux,load balancer,lte,m1,mac,mac mini 2009,maglev,manager,markdown,mbuf,mec,mediawiki,meetup,message queue,metricbeat,microk8s,microservice,mindmap,model-driven,monitoring,multipass,mysql,naim,nas,nasa,nec,nested-chart,netconf,network,neuron,nfv,nginmesh,nginx,nhn,nic,nokia,note,nvidia,odp,ofp,onap,onp,openfastpath,opensource,openstack,opnfv,osx,ovdk,ovs,p4,pagefind,patch,perl,photo,photoaa,pinpoint,plist,pluribus,podcast,powermate,prediction,programming,prometheus,protobufs,protocol buffer,pyftplib,python,qat,quality,quanta,quicklook,r210,readiness,reassembly,recovery,resources,restful,rmda,scapy,sci,scrum,sctp,sdn,secret,service agility,service mesh,setup,slack,sleeve,snmp,soft-skill,sqlite,sriov,standingdesk,startup,storage,study,subchart,sw,sw quality,sw 개발 문화,swarm,synology,tag,tcp,team,telemetry,the pragmatic programmer,theme,til,time machine,track-pad,traefik,troubleshooting,tutorial,ubuntu,vagrant,vertical-pod-autoscaler,ves,video,vim,virtualbox,virtualenv,virtualization,vmware,vnf,volvo,vran,vrouter,vswitch,web-scrapping,webdav,wiki,windows10,wordpress,work_rules,writing,xcrun,yang,“automation”,“book”,“containerd”,“cronjob”,“github action”,“github”,“go”,“gpu”,“helm”,“ios-shortcut”,“kubernetes”,“podcast”,“rust”,“timezone”,개발이야기,경쟁,공부,공유,관리능력,기록,논문,리더,매너리즘,문화,사람이 핵심,생각,생산성,윤식당,인용,임백준,잡생각,전람회,조직,조직관리,조직문화,좋은글,착각하는 ceo,추억,코드리뷰,회의,'><meta property="og:url" content="https://cychong47.github.io/post/"><meta property="og:site_name" content="Keep calm and Write something"><meta property="og:title" content="Posts"><meta property="og:description" content="TBD"><meta property="og:locale" content="en_us"><meta property="og:type" content="website"><meta name=twitter:card content="summary"><meta name=twitter:title content="Posts"><meta name=twitter:description content="TBD"><meta itemprop=name content="Posts"><meta itemprop=description content="TBD"><meta itemprop=datePublished content="2024-02-20T00:00:00+00:00"><meta itemprop=dateModified content="2024-02-20T00:00:00+00:00"><meta name=referrer content="no-referrer-when-downgrade"><link rel=alternate type=application/rss+xml href=https://cychong47.github.io/post/index.xml title="Keep calm and Write something"><style>:root{--width:720px;--font-main:Verdana, sans-serif;--font-secondary:Verdana, sans-serif;--font-scale:1em;--background-color:#fafafa;--heading-color:#222;--text-color:#444;--link-color:#3273dc;--visited-color:#8b6fcb;--blockquote-color:#222}@media(prefers-color-scheme:dark){:root{--background-color:#fafafa;--heading-color:#222;--text-color:#444;--link-color:#3273dc;--visited-color:#8b6fcb;--blockquote-color:#222}}body{font-family:var(--font-secondary);font-size:var(--font-scale);margin:auto;padding:20px;max-width:var(--width);text-align:left;background-color:var(--background-color);word-wrap:break-word;overflow-wrap:break-word;line-height:1.5;color:var(--text-color)}h1,h2,h3,h4,h5,h6{font-family:var(--font-main);color:var(--heading-color)}a{color:var(--link-color);cursor:pointer;text-decoration:none}a:hover{text-decoration:underline}nav a{margin-right:8px}strong,b{color:var(--heading-color)}button{margin:0;cursor:pointer}time{font-family:monospace;font-style:normal;font-size:15px}main{line-height:1.6}table{width:100%}hr{border:0;border-top:1px dashed}img{max-width:100%}code{font-family:monospace;padding:2px;border-radius:3px}blockquote{border-left:1px solid #999;color:var(--blockquote-color);padding-left:20px;font-style:italic}footer{padding:25px 0;text-align:center}.title:hover{text-decoration:none}.title h1{font-size:1.5em}.inline{width:auto!important}.highlight,.code{border-radius:3px;margin-block-start:1em;margin-block-end:1em;overflow-x:auto}ul.blog-posts{list-style-type:none;padding:unset}ul.blog-posts li{display:flex}ul.blog-posts li span{flex:0 0 130px}ul.blog-posts li a:visited{color:var(--visited-color)}</style></head><body><header><a href=/ class=title><h2>Keep calm and Write something</h2></a><nav><a href=/post/>Post</a>
+<a href=/page/>Page</a>
+<a href=/series/>Series</a>
+<a href=/tags/>Tag</a>
+<a href=/archive/>Archive</a>
+<a href=/search/>Search</a></nav></header><main><content><h1 class=page-title style=font-size:1.25rem>Posts</h1><ul class=blog-posts><li><span><i><time datetime=2024-02-20>20 Feb, 2024
+</time></i></span><a href=https://cychong47.github.io/post/2024/2024-02-20-cilium-and-hubble-with-prometheus-and-grafana/>Monitoring Cilium and Hubble with Prometheus and Grafana</a></li><li><span><i><time datetime=2024-02-18>18 Feb, 2024
+</time></i></span><a href=https://cychong47.github.io/post/2024/2024-02-18-prepend-data-to-python-logger/>Add extra data to python log message</a></li><li><span><i><time datetime=2023-05-18>18 May, 2023
+</time></i></span><a href=https://cychong47.github.io/post/2023/2023-05-18-add-search-to-hugo/>hugo에 검색 기능 추가하기 - pagefind</a></li><li><span><i><time datetime=2022-12-31>31 Dec, 2022
+</time></i></span><a href=https://cychong47.github.io/post/2022/2022-12-31-homeserver-3rd-gen/>Homelab server 3rd gen.</a></li><li><span><i><time datetime=2022-03-14>14 Mar, 2022
+</time></i></span><a href=https://cychong47.github.io/post/2022/2022-03-14-one-container-in-each-pod/>How to run DPDK in k8s - One container in each pod</a></li><li><span><i><time datetime=2022-03-14>14 Mar, 2022
+</time></i></span><a href=https://cychong47.github.io/post/2022/2022-03-14-two-containers-in-a-pod/>How to run DPDK in k8s - Two containers in a pod</a></li><li><span><i><time datetime=2022-03-14>14 Mar, 2022
+</time></i></span><a href=https://cychong47.github.io/post/2022/2022-03-14-a-single-container-in-a-pod/>How to run DPDK in k8s - A single container in a pod</a></li><li><span><i><time datetime=2022-03-14>14 Mar, 2022
+</time></i></span><a href=https://cychong47.github.io/post/2022/2022-03-14-hugepage-in-dpdk-basics/>Hugepage in DPDK - Basics</a></li><li><span><i><time datetime=2022-01-22>22 Jan, 2022
+</time></i></span><a href=https://cychong47.github.io/post/2022/2022-01-22-2022-january-books/>2022년 1월 새 책들</a></li><li><span><i><time datetime=2022-01-06>06 Jan, 2022
+</time></i></span><a href=https://cychong47.github.io/post/2022/2022-01-06-how-to-change-timezone-of-traefik-log/>Traefik 로그의 timezone 수정</a></li><li><span><i><time datetime=2021-12-13>13 Dec, 2021
+</time></i></span><a href=https://cychong47.github.io/post/2021/2021-12-13-books-for-november-2021/>2021년 11월 책 들</a></li><li><span><i><time datetime=2021-11-24>24 Nov, 2021
+</time></i></span><a href=https://cychong47.github.io/post/2021/2021-11-24-merge-blog-post-and-image-repos/>Blog의 text와 image를 합쳤다</a></li><li><span><i><time datetime=2021-09-27>27 Sep, 2021
+</time></i></span><a href=https://cychong47.github.io/post/2021/2021-09-27-company-without-future/>미래가 없는 조직</a></li><li><span><i><time datetime=2021-09-25>25 Sep, 2021
+</time></i></span><a href=https://cychong47.github.io/post/2021/2021-09-25-foundation-onair-in-appletvplus/>소설 Foundation이 드디어 영상으로</a></li><li><span><i><time datetime=2021-09-24>24 Sep, 2021
+</time></i></span><a href=https://cychong47.github.io/post/2021/2021-09-24-power-consumption-of-mini3/>HP mini PC의 소모전력</a></li><li><span><i><time datetime=2021-09-09>09 Sep, 2021
+</time></i></span><a href=https://cychong47.github.io/post/2021/2021-09-09-new-books-in-this-month/>8월 구매 도서들</a></li><li><span><i><time datetime=2021-08-31>31 Aug, 2021
+</time></i></span><a href=https://cychong47.github.io/post/2021/2021-08-31-upgrade-devonthink3-pro/>Devonthink 3 Pro로 업그레이드 - 의리</a></li><li><span><i><time datetime=2021-08-31>31 Aug, 2021
+</time></i></span><a href=https://cychong47.github.io/post/2021/2021-08-31-note-taking-tips/>Note-taking Tips from twitter</a></li><li><span><i><time datetime=2021-08-24>24 Aug, 2021
+</time></i></span><a href=https://cychong47.github.io/post/2021/2021-08-24-2021-languages-to-learn/>2021년 관심있는 언어들</a></li><li><span><i><time datetime=2021-08-17>17 Aug, 2021
+</time></i></span><a href=https://cychong47.github.io/post/2021/2021-08-17-remove-meta-data-from-image/>iOS shortcut - 사진 meta 정보 삭제</a></li><li><span><i><time datetime=2021-05-16>16 May, 2021
+</time></i></span><a href=https://cychong47.github.io/post/2021/2021-01-01-i-did-not-expect-this/>책 - 이렇게 될 줄 몰랐습니다</a></li><li><span><i><time datetime=2021-05-13>13 May, 2021
+</time></i></span><a href=https://cychong47.github.io/post/2021/2021-05-13-i-know-but-it-is-not-that-easy/>알지만 쉽지 않은 일</a></li><li><span><i><time datetime=2021-05-08>08 May, 2021
+</time></i></span><a href=https://cychong47.github.io/post/2021/2021-05-08-access-control-with-traefik-middleware/>Traefik middleware를 이용한 접근 제한</a></li><li><span><i><time datetime=2021-04-24>24 Apr, 2021
+</time></i></span><a href=https://cychong47.github.io/post/2021/2021-04-24-upgrade-icloud-storage-option/>iCloud 2TB 서비스로 업그레이드</a></li><li><span><i><time datetime=2021-04-13>13 Apr, 2021
+</time></i></span><a href=https://cychong47.github.io/post/2021/2021-04-13-install-kubernetes-on-mini3/>Install kubernetes on mini3</a></li><li><span><i><time datetime=2021-04-03>03 Apr, 2021
+</time></i></span><a href=https://cychong47.github.io/post/2021/2021-03-31-change-nodeport-to-clusterip/>Replace NodePort with ClsuterIP - Thx to Traefik</a></li><li><span><i><time datetime=2021-03-31>31 Mar, 2021
+</time></i></span><a href=https://cychong47.github.io/post/2021/2021-03-31-setup-ingress-with-traefik/>Setup Ingress with Traefik</a></li><li><span><i><time datetime=2021-03-30>30 Mar, 2021
+</time></i></span><a href=https://cychong47.github.io/post/2021/2021-03-30-install-traefik-with-helm/>Helm으로 Traefik 설치하기</a></li><li><span><i><time datetime=2021-03-13>13 Mar, 2021
+</time></i></span><a href=https://cychong47.github.io/post/2021/2021-03-13-i-should-have-this-one/>I should have this one</a></li><li><span><i><time datetime=2021-03-10>10 Mar, 2021
+</time></i></span><a href=https://cychong47.github.io/post/2021/2021-03-10-the-ride-of-a-lifetime/>디즈니만이 하는 것(The ride of a lifetime)</a></li><li><span><i><time datetime=2021-03-07>07 Mar, 2021
+</time></i></span><a href=https://cychong47.github.io/post/2021/2021-03-07-how-can-they-trust-employees/>How can they trust employees</a></li><li><span><i><time datetime=2021-03-07>07 Mar, 2021
+</time></i></span><a href=https://cychong47.github.io/post/2021/2021-03-07-i-love-akmu/>I love AKMU</a></li><li><span><i><time datetime=2021-03-06>06 Mar, 2021
+</time></i></span><a href=https://cychong47.github.io/post/2021/2021-03-06-stool-under-the-desk/>책상 아래 stool</a></li><li><span><i><time datetime=2021-03-04>04 Mar, 2021
+</time></i></span><a href=https://cychong47.github.io/post/2021/2021-03-04-install-cockpit/>Install cockpit - linux server manager</a></li><li><span><i><time datetime=2021-03-03>03 Mar, 2021
+</time></i></span><a href=https://cychong47.github.io/post/2021/2021-03-03-change-the-server-ip-address-of-k3s/>Change the server IP address of k3s</a></li><li><span><i><time datetime=2021-03-01>01 Mar, 2021
+</time></i></span><a href=https://cychong47.github.io/post/2021/2021-03-01-memory/>Memory</a></li><li><span><i><time datetime=2021-02-18>18 Feb, 2021
+</time></i></span><a href=https://cychong47.github.io/post/2021/2021-02-18-dttg-web-archive-results/>DTTG web archive results</a></li><li><span><i><time datetime=2021-02-12>12 Feb, 2021
+</time></i></span><a href=https://cychong47.github.io/post/2021/2021-02-12-change-devonthink-sync/>Devonthink - iCloud CloudKit sync</a></li><li><span><i><time datetime=2021-02-11>11 Feb, 2021
+</time></i></span><a href=https://cychong47.github.io/post/2021/2021-02-11-devonthink-to-go-3-/>Devonthink To Go 3</a></li><li><span><i><time datetime=2021-02-11>11 Feb, 2021
+</time></i></span><a href=https://cychong47.github.io/post/2021/2021-02-11-what-if-jobs-does-not-listen-voice-of-employee/>What if Jobs does not listen voice of employee</a></li><li><span><i><time datetime=2021-02-09>09 Feb, 2021
+</time></i></span><a href=https://cychong47.github.io/post/2021/2021-02-09-moon-in-the-sky/>Moon in the sky</a></li><li><span><i><time datetime=2021-02-06>06 Feb, 2021
+</time></i></span><a href=https://cychong47.github.io/post/2021/2021-02-06-true-for-the-motivation/>True for the Motivation</a></li><li><span><i><time datetime=2021-02-06>06 Feb, 2021
+</time></i></span><a href=https://cychong47.github.io/post/2021/2021-02-06-100-tips-for-a-better-life/>100 Tips for a better life</a></li><li><span><i><time datetime=2021-02-05>05 Feb, 2021
+</time></i></span><a href=https://cychong47.github.io/post/2021/2021-02-05-goodlinks-supports-export-finally/>goodlinks supports export finally</a></li><li><span><i><time datetime=2021-02-04>04 Feb, 2021
+</time></i></span><a href=https://cychong47.github.io/post/2021/2021-02-04-esr-magsafe-car-charger/>ESR magsafe car charger</a></li><li><span><i><time datetime=2021-02-03>03 Feb, 2021
+</time></i></span><a href=https://cychong47.github.io/post/2021/2021-02-03-something-is-broken/>Something is broken</a></li><li><span><i><time datetime=2021-01-26>26 Jan, 2021
+</time></i></span><a href=https://cychong47.github.io/post/2021/2021-01-26-welcome-iphone-12-pro-max/>Welcome iPhone 12 Pro Max</a></li><li><span><i><time datetime=2021-01-02>02 Jan, 2021
+</time></i></span><a href=https://cychong47.github.io/post/2021/2021-01-02-farewell-mac-mini-2011/>Farewell Mac-mini 2011</a></li><li><span><i><time datetime=2020-12-27>27 Dec, 2020
+</time></i></span><a href=https://cychong47.github.io/post/2020/2020-12-27-go-go-ms-for-arm/>ARM processor를 기다리며</a></li><li><span><i><time datetime=2020-12-25>25 Dec, 2020
+</time></i></span><a href=https://cychong47.github.io/post/2020/2020-12-25-kldp-t-shirts/>KLDP T-shirts</a></li><li><span><i><time datetime=2020-12-21>21 Dec, 2020
+</time></i></span><a href=https://cychong47.github.io/post/2020/2020-12-21-cloud-of-one-fine-day/>Cloud of one fine day</a></li><li><span><i><time datetime=2020-11-15>15 Nov, 2020
+</time></i></span><a href=https://cychong47.github.io/post/2020/2020-11-13-apple-m1-soc/>Apple Silicon - M1 Soc</a></li><li><span><i><time datetime=2020-11-07>07 Nov, 2020
+</time></i></span><a href=https://cychong47.github.io/post/2020/2020-11-07-emergency-in-volvo/>냉각수 부족 경고가 뜨면</a></li><li><span><i><time datetime=2020-11-02>02 Nov, 2020
+</time></i></span><a href=https://cychong47.github.io/post/2020/2020-11-02-chapter-2.-cuda-memory-management/>Chapter 2. CUDA Memory Management</a></li><li><span><i><time datetime=2020-11-02>02 Nov, 2020
+</time></i></span><a href=https://cychong47.github.io/post/2020/2020-11-02-chapter-1-introduction-to-cuda-programming/>Chapter 1. Introduction to CUDA Programming</a></li><li><span><i><time datetime=2020-10-22>22 Oct, 2020
+</time></i></span><a href=https://cychong47.github.io/post/2020/2020-10-22-how-to-get-cpu-utilization-data-with-python/>How to get CPU utilization data with python</a></li><li><span><i><time datetime=2020-10-19>19 Oct, 2020
+</time></i></span><a href=https://cychong47.github.io/post/2020/2020-10-19-use-the-secret-and-configmaps/>Use the Secret and ConfigMaps</a></li><li><span><i><time datetime=2020-10-19>19 Oct, 2020
+</time></i></span><a href=https://cychong47.github.io/post/2020/2020-10-19-how-to-fix-no-timezone-support-of-cronjob/>How to make cronjob to support timezone</a></li><li><span><i><time datetime=2020-10-19>19 Oct, 2020
+</time></i></span><a href=https://cychong47.github.io/post/2020/2020-10-19-new-homelab-rack/>New homelab rack</a></li><li><span><i><time datetime=2020-10-17>17 Oct, 2020
+</time></i></span><a href=https://cychong47.github.io/post/2020/2020-10-17-too-cute-to-me/>Too cute to me</a></li><li><span><i><time datetime=2020-10-09>09 Oct, 2020
+</time></i></span><a href=https://cychong47.github.io/post/2020/2020-10-09-cronjob-in-kubernetes/>주기적으로 실행되는 앱은 CronJob으로</a></li><li><span><i><time datetime=2020-10-09>09 Oct, 2020
+</time></i></span><a href=https://cychong47.github.io/post/2020/2020-10-09-job-instead-of-deployment/>일회성 앱은 Deployment가 아닌 Job으로</a></li><li><span><i><time datetime=2020-10-04>04 Oct, 2020
+</time></i></span><a href=https://cychong47.github.io/post/2020/2020-10-04-install-influxdb-grafana-with-helm/>Install Influxdb and Grafana With Helm</a></li><li><span><i><time datetime=2020-09-23>23 Sep, 2020
+</time></i></span><a href=https://cychong47.github.io/post/2020/2020-09-23-homepod-with-stereo/>HomePod with stereo</a></li><li><span><i><time datetime=2020-09-19>19 Sep, 2020
+</time></i></span><a href=https://cychong47.github.io/post/2020/2020-09-19-github-arctic-valut/>Dust for Github Arctic Program</a></li><li><span><i><time datetime=2020-09-15>15 Sep, 2020
+</time></i></span><a href=https://cychong47.github.io/post/2020/2020-08-25-ipad-lost-celluar-suddenly/>Ipad-lost-celluar-suddenly</a></li><li><span><i><time datetime=2020-09-15>15 Sep, 2020
+</time></i></span><a href=https://cychong47.github.io/post/2020/2020-09-13-purchase-an-apple-gift-card-with-10-percent-discount/>Apple gift card 10% 할인 구입</a></li><li><span><i><time datetime=2020-09-12>12 Sep, 2020
+</time></i></span><a href=https://cychong47.github.io/post/2020/2020-09-12-image-is-not-jpg-but-heic/>블로그에 몇 몇 사진이 안 보이는 문제 해결</a></li><li><span><i><time datetime=2020-09-10>10 Sep, 2020
+</time></i></span><a href=https://cychong47.github.io/post/2020/2020-09-10-helmize-slackbot/>Helmize Slackbot</a></li><li><span><i><time datetime=2020-09-08>08 Sep, 2020
+</time></i></span><a href=https://cychong47.github.io/post/2020/2020-09-08-remove-docker-images-referenced-multiple-repos/>Remove docker images referenced in multiple repos</a></li><li><span><i><time datetime=2020-09-07>07 Sep, 2020
+</time></i></span><a href=https://cychong47.github.io/post/2020/2020-09-07-add-new-helm-chart/>Add new Helm Chart</a></li><li><span><i><time datetime=2020-09-04>04 Sep, 2020
+</time></i></span><a href=https://cychong47.github.io/post/2020/2020-09-04-install-botkube/>Botkube to monitor K8s cluster in Slack</a></li><li><span><i><time datetime=2020-09-03>03 Sep, 2020
+</time></i></span><a href=https://cychong47.github.io/post/2020/2020-09-03-slackbot-get-the-song-list/>Slackbot get the song list</a></li><li><span><i><time datetime=2020-08-31>31 Aug, 2020
+</time></i></span><a href=https://cychong47.github.io/post/2020/2020-08-31-rss-feed-url-for-podcast/>RSS feed URL for podcast</a></li><li><span><i><time datetime=2020-08-31>31 Aug, 2020
+</time></i></span><a href=https://cychong47.github.io/post/2020/2020-08-31-cannot-wait-for-ios14-gm/>Cannot wait for iOS14 GM</a></li><li><span><i><time datetime=2020-08-27>27 Aug, 2020
+</time></i></span><a href=https://cychong47.github.io/post/2020/2020-08-27-windy-day-in-watch-face/>Windy day in watch face</a></li><li><span><i><time datetime=2020-08-19>19 Aug, 2020
+</time></i></span><a href=https://cychong47.github.io/post/2020/2020-08-19-automate-blog-posting-with-github-action/>Automate Blog Posting with GitHub Action</a></li><li><span><i><time datetime=2020-08-19>19 Aug, 2020
+</time></i></span><a href=https://cychong47.github.io/post/2020/2020-08-19-being-the-first-is-not-enough/>Being the First is not enough</a></li><li><span><i><time datetime=2020-08-19>19 Aug, 2020
+</time></i></span><a href=https://cychong47.github.io/post/2020/2020-08-19-setup-github-based-helm-repo/>Setup GitHub based Helm repo</a></li><li><span><i><time datetime=2020-08-17>17 Aug, 2020
+</time></i></span><a href=https://cychong47.github.io/post/2020/2020-08-17-any-pattern/>Any pattern?</a></li><li><span><i><time datetime=2020-08-16>16 Aug, 2020
+</time></i></span><a href=https://cychong47.github.io/post/2020/2020-08-16-exihibition/>전람회</a></li><li><span><i><time datetime=2020-08-11>11 Aug, 2020
+</time></i></span><a href=https://cychong47.github.io/post/2020/2020-08-11-publish-hugo-post-from-ipad/>Publish hugo post from iPad</a></li><li><span><i><time datetime=2020-08-11>11 Aug, 2020
+</time></i></span><a href=https://cychong47.github.io/post/2020/2020-08-11-limit-of-free-tier/>Limitation of free tier</a></li><li><span><i><time datetime=2020-08-10>10 Aug, 2020
+</time></i></span><a href=https://cychong47.github.io/post/2020/2020-08-10-easy-rollback-sw-release/>쉽게 rollback할 수 있는 SW</a></li><li><span><i><time datetime=2020-08-10>10 Aug, 2020
+</time></i></span><a href=https://cychong47.github.io/post/2020/2020-08-10-blame-based-development/>비난하지 않는 문화</a></li><li><span><i><time datetime=2020-08-08>08 Aug, 2020
+</time></i></span><a href=https://cychong47.github.io/post/2020/2020-08-08-hammok-under-the-standing-desk/>스탠딩 데스크 아래 해먹이라니</a></li><li><span><i><time datetime=2020-08-08>08 Aug, 2020
+</time></i></span><a href=https://cychong47.github.io/post/2020/2020-08-08-iphone6-home-scree/>iPhone6 home screen</a></li><li><span><i><time datetime=2020-08-04>04 Aug, 2020
+</time></i></span><a href=https://cychong47.github.io/post/2020/2020-08-04-iphonex-panic-log/>Too many panic logs from iPhoneX</a></li><li><span><i><time datetime=2020-08-03>03 Aug, 2020
+</time></i></span><a href=https://cychong47.github.io/post/2020/2020-08-03-long-time-apps/>Long time apps</a></li><li><span><i><time datetime=2020-08-01>01 Aug, 2020
+</time></i></span><a href=https://cychong47.github.io/post/2020/2020-05-07-upgrade-kubernetes-1-18-2/>Upgrade Kubernetes 1 18 2</a></li><li><span><i><time datetime=2020-08-01>01 Aug, 2020
+</time></i></span><a href=https://cychong47.github.io/post/2020/2020-08-01-old-chair-wheel/>의자 아래 정체 모를 플라스틱</a></li><li><span><i><time datetime=2020-07-31>31 Jul, 2020
+</time></i></span><a href=https://cychong47.github.io/post/2020/2020-07-31-vertical-pod-autoscaler/>K8s Vertical Pod Autoscaler</a></li><li><span><i><time datetime=2020-07-24>24 Jul, 2020
+</time></i></span><a href=https://cychong47.github.io/post/2020/2020-07-24-apple-subscriptions/>Apple subscriptions update</a></li><li><span><i><time datetime=2020-07-24>24 Jul, 2020
+</time></i></span><a href=https://cychong47.github.io/post/2020/2020-07-24-rss-is-not-updated/>Troubleshooting - rss.xml is not updated</a></li><li><span><i><time datetime=2020-07-09>09 Jul, 2020
+</time></i></span><a href=https://cychong47.github.io/post/2020/2020-07-09-ipad-is-not-an-ipad/>매직키보드 단 iPad는 iPad가 아니다</a></li><li><span><i><time datetime=2020-07-02>02 Jul, 2020
+</time></i></span><a href=https://cychong47.github.io/post/2020/2020-07-02-deploy-nginx-with-helm/>Deploy nginx with helm</a></li><li><span><i><time datetime=2020-06-28>28 Jun, 2020
+</time></i></span><a href=https://cychong47.github.io/post/2020/2020-06-28-podcast-another-issue/>2020 06 28 Podcast Another Issue</a></li><li><span><i><time datetime=2020-06-27>27 Jun, 2020
+</time></i></span><a href=https://cychong47.github.io/post/2020/2020-06-27-how-to-support-video/>How to embed video in hugo</a></li><li><span><i><time datetime=2020-06-26>26 Jun, 2020
+</time></i></span><a href=https://cychong47.github.io/post/2020/2020-06-26-no-podcast-update/>No Podcast Update?</a></li><li><span><i><time datetime=2020-06-24>24 Jun, 2020
+</time></i></span><a href=https://cychong47.github.io/post/2020/2020-06-07-new-input-device-trio/>New Input Device Trio</a></li><li><span><i><time datetime=2020-06-22>22 Jun, 2020
+</time></i></span><a href=https://cychong47.github.io/post/2020/2020-06-22-docker-ps-with-name/>Find container with its name</a></li><li><span><i><time datetime=2020-06-20>20 Jun, 2020
+</time></i></span><a href=https://cychong47.github.io/post/2020/2020-06-20-setup-podcast-blog-5/>Setup podcast blog - 자동화</a></li><li><span><i><time datetime=2020-06-19>19 Jun, 2020
+</time></i></span><a href=https://cychong47.github.io/post/2020/2020-06-19-disable-password-for-private-github-repo/>Disable Password for Private Github Repo</a></li><li><span><i><time datetime=2020-06-18>18 Jun, 2020
+</time></i></span><a href=https://cychong47.github.io/post/2020/2020-06-18-setup-podcast-blog-2/>Setup podcast blog - recording 동작 확인</a></li><li><span><i><time datetime=2020-06-16>16 Jun, 2020
+</time></i></span><a href=https://cychong47.github.io/post/2020/2020-06-16-setup-podcast-blog-3/>Setup podcast blog - post 작성</a></li><li><span><i><time datetime=2020-06-16>16 Jun, 2020
+</time></i></span><a href=https://cychong47.github.io/post/2020/2020-06-16-setup-podcast-blog-1/>Setup podcast blog - Setup Hugo</a></li><li><span><i><time datetime=2020-06-14>14 Jun, 2020
+</time></i></span><a href=https://cychong47.github.io/post/2020/2020-06-14-grain-of-salt/>Grain of Salt</a></li><li><span><i><time datetime=2020-06-14>14 Jun, 2020
+</time></i></span><a href=https://cychong47.github.io/post/2020/2020-06-14-record-cbs-with-cron/>Record CBS radio in every day</a></li><li><span><i><time datetime=2020-06-13>13 Jun, 2020
+</time></i></span><a href=https://cychong47.github.io/post/2020/2020-06-13-add-menu-to-hugo/>Hugo에 Main menu 추가하기</a></li><li><span><i><time datetime=2020-06-13>13 Jun, 2020
+</time></i></span><a href=https://cychong47.github.io/post/2020/2020-06-13-setup-podcast-blog-0/>Setup podcast blog - beginning</a></li><li><span><i><time datetime=2020-06-07>07 Jun, 2020
+</time></i></span><a href=https://cychong47.github.io/post/2020/2020-06-07-migrate-ghost-to-hugo/>Migrate Ghost to Hugo</a></li><li><span><i><time datetime=2020-05-31>31 May, 2020
+</time></i></span><a href=https://cychong47.github.io/post/2020/hugo-seutp-with-git/>Migrate wordpress to hugo</a></li><li><span><i><time datetime=2020-05-20>20 May, 2020
+</time></i></span><a href=https://cychong47.github.io/post/2020/nvidia-vran-solution/>NVIDIA vRAN Solution</a></li><li><span><i><time datetime=2020-05-08>08 May, 2020
+</time></i></span><a href=https://cychong47.github.io/post/2020/recover-broken-users-table/>WordPress 로그인 불가 문제 해결</a></li><li><span><i><time datetime=2020-05-08>08 May, 2020
+</time></i></span><a href=https://cychong47.github.io/post/2020/if-i-have-authority-5-years-later/>내게 권한이 있다면 - 그 이후</a></li><li><span><i><time datetime=2020-05-07>07 May, 2020
+</time></i></span><a href=https://cychong47.github.io/post/2020/new-things-in-last-4-years/>새로운 경험 들</a></li><li><span><i><time datetime=2020-03-03>03 Mar, 2020
+</time></i></span><a href=https://cychong47.github.io/post/2020/2020-03-03-backup-ghost-database-periodically/>Backup Ghost Database Periodically</a></li><li><span><i><time datetime=2020-01-30>30 Jan, 2020
+</time></i></span><a href=https://cychong47.github.io/post/2020/new-things-in-last-4-years/>Upgrade kubenetes to 1.17.2-0</a></li><li><span><i><time datetime=2019-12-15>15 Dec, 2019
+</time></i></span><a href=https://cychong47.github.io/post/2019/book-so-real/>(책) 리얼하다</a></li><li><span><i><time datetime=2019-12-10>10 Dec, 2019
+</time></i></span><a href=https://cychong47.github.io/post/2019/change-ghost-theme-fizzy/>Ghost theme 변경 - Fizzy</a></li><li><span><i><time datetime=2019-11-18>18 Nov, 2019
+</time></i></span><a href=https://cychong47.github.io/post/2019/mac-mini-2009-upgrade/>Mac mini 2009 upgrade</a></li><li><span><i><time datetime=2019-11-17>17 Nov, 2019
+</time></i></span><a href=https://cychong47.github.io/post/2019/samuryeog/>사무력</a></li><li><span><i><time datetime=2019-11-05>05 Nov, 2019
+</time></i></span><a href=https://cychong47.github.io/post/2019/upgrade-ghost-to-v3-0/>Upgrade ghost to v3.0</a></li><li><span><i><time datetime=2019-11-05>05 Nov, 2019
+</time></i></span><a href=https://cychong47.github.io/post/2019/what-if-helm-command-refuses/>What if helm command refuse to execute</a></li><li><span><i><time datetime=2019-11-05>05 Nov, 2019
+</time></i></span><a href=https://cychong47.github.io/post/2019/what-if-kubelet-is-not-started/>kubelet이 실행되지 않을때</a></li><li><span><i><time datetime=2019-10-07>07 Oct, 2019
+</time></i></span><a href=https://cychong47.github.io/post/2019/enable-sctp-in-kubernetes/>Enable SCTP in kubernetes</a></li><li><span><i><time datetime=2019-10-07>07 Oct, 2019
+</time></i></span><a href=https://cychong47.github.io/post/2019/upgrade-kubernetes/>Upgrade kubernetes to 1.16.1</a></li><li><span><i><time datetime=2019-09-29>29 Sep, 2019
+</time></i></span><a href=https://cychong47.github.io/post/2019/convention-on-impose-core-requirements/>Convention on impose core requirements</a></li><li><span><i><time datetime=2019-09-28>28 Sep, 2019
+</time></i></span><a href=https://cychong47.github.io/post/2019/install-vm-with-multipass/>Install VM with multipass on OS X</a></li><li><span><i><time datetime=2019-09-23>23 Sep, 2019
+</time></i></span><a href=https://cychong47.github.io/post/2019/setup-kubernetes-with-a-single-host/>Setup kubernetes in a single host</a></li><li><span><i><time datetime=2019-09-22>22 Sep, 2019
+</time></i></span><a href=https://cychong47.github.io/post/2019/ghost-season-5-helm/>Ghost Season 5 - Helm</a></li><li><span><i><time datetime=2019-08-26>26 Aug, 2019
+</time></i></span><a href=https://cychong47.github.io/post/2019/wifi-5ghz-bluetooth-coexistence/>Wifi 2.5GHz bluetooth coexist</a></li><li><span><i><time datetime=2019-08-18>18 Aug, 2019
+</time></i></span><a href=https://cychong47.github.io/post/2019/calico-cni-1/>Calico CNI (draft)</a></li><li><span><i><time datetime=2019-07-18>18 Jul, 2019
+</time></i></span><a href=https://cychong47.github.io/post/2019/boundary-clock/>Boundary Clock</a></li><li><span><i><time datetime=2019-05-20>20 May, 2019
+</time></i></span><a href=https://cychong47.github.io/post/2019/setup-ghost-in-microk8s-2/>Setup Ghost in microk8s</a></li><li><span><i><time datetime=2019-05-19>19 May, 2019
+</time></i></span><a href=https://cychong47.github.io/post/2019/ghost-deployment-season-4/>ghost deployment season 4</a></li><li><span><i><time datetime=2019-05-16>16 May, 2019
+</time></i></span><a href=https://cychong47.github.io/post/2019/kubernetes-networks/>Kubernetes Networks</a></li><li><span><i><time datetime=2019-05-16>16 May, 2019
+</time></i></span><a href=https://cychong47.github.io/post/2019/amazon-daily-work/>(펌글) 아마존 3년 출근기</a></li><li><span><i><time datetime=2019-02-10>10 Feb, 2019
+</time></i></span><a href=https://cychong47.github.io/post/2019/install-ubuntu-18-04-1-in-mac-mini-2009/>Install Ubuntu 18.04.1 in Mac mini 2009</a></li><li><span><i><time datetime=2019-01-07>07 Jan, 2019
+</time></i></span><a href=https://cychong47.github.io/post/2019/dpdk-18-11/>DPDK 18.11</a></li><li><span><i><time datetime=2018-12-25>25 Dec, 2018
+</time></i></span><a href=https://cychong47.github.io/post/2018/grow-together/>함께 자라기</a></li><li><span><i><time datetime=2018-12-16>16 Dec, 2018
+</time></i></span><a href=https://cychong47.github.io/post/2018/get-the-latest-jetpack-plugin/>Get the latest jetpack plugin</a></li><li><span><i><time datetime=2018-12-10>10 Dec, 2018
+</time></i></span><a href=https://cychong47.github.io/post/2018/use-jetpack-for-wordpress-5-0/>Use jetpack for wordpress 5.0</a></li><li><span><i><time datetime=2018-11-23>23 Nov, 2018
+</time></i></span><a href=https://cychong47.github.io/post/2018/how-nasa-uses-a-wiki-to-reduce-email/>How NASA uses a wiki to reduce email</a></li><li><span><i><time datetime=2018-10-18>18 Oct, 2018
+</time></i></span><a href=https://cychong47.github.io/post/2018/caeg-the-nature-of-software-development/>(책) The nature of Software Development</a></li><li><span><i><time datetime=2018-10-18>18 Oct, 2018
+</time></i></span><a href=https://cychong47.github.io/post/2018/untitled-3/>없어졌으면 하는 말</a></li><li><span><i><time datetime=2018-09-23>23 Sep, 2018
+</time></i></span><a href=https://cychong47.github.io/post/2018/silicon-valley-illustrated/>(책) 실리콘밸리를 그리다</a></li><li><span><i><time datetime=2018-09-05>05 Sep, 2018
+</time></i></span><a href=https://cychong47.github.io/post/2018/recovery-failed-wordpress-container/>Recover WordPress container</a></li><li><span><i><time datetime=2018-09-04>04 Sep, 2018
+</time></i></span><a href=https://cychong47.github.io/post/2018/smarter-faster-better/>(책) 1등의 습관 Smarter, Faster, Better</a></li><li><span><i><time datetime=2018-08-25>25 Aug, 2018
+</time></i></span><a href=https://cychong47.github.io/post/2018/the-secret-of-highly-successful-groups/>(책) 최고의 팀은 무엇이 다른가</a></li><li><span><i><time datetime=2018-08-25>25 Aug, 2018
+</time></i></span><a href=https://cychong47.github.io/post/2018/remote/>(책) 리모트</a></li><li><span><i><time datetime=2018-08-16>16 Aug, 2018
+</time></i></span><a href=https://cychong47.github.io/post/2018/why-danish-bought-a-chair-with-the-first-time-salary/>(책) 덴마크 사람들은 왜 첫 월급을 받으면</a></li><li><span><i><time datetime=2018-08-05>05 Aug, 2018
+</time></i></span><a href=https://cychong47.github.io/post/2018/coupang-the-reason-of-innovation/>(책) 쿠팡 우리가 혁신하는 이유</a></li><li><span><i><time datetime=2018-07-29>29 Jul, 2018
+</time></i></span><a href=https://cychong47.github.io/post/2018/i-am-going-to-be/>(책) 나는 이렇게 될것이다.</a></li><li><span><i><time datetime=2018-07-29>29 Jul, 2018
+</time></i></span><a href=https://cychong47.github.io/post/2018/peopleware/>(책) 피플웨어</a></li><li><span><i><time datetime=2018-07-29>29 Jul, 2018
+</time></i></span><a href=https://cychong47.github.io/post/2018/the-future-of-my-children/>(책) 내 아이가 만날 미래</a></li><li><span><i><time datetime=2018-07-29>29 Jul, 2018
+</time></i></span><a href=https://cychong47.github.io/post/2018/the-work-system/>(책) 시스템의 힘</a></li><li><span><i><time datetime=2018-07-29>29 Jul, 2018
+</time></i></span><a href=https://cychong47.github.io/post/2018/just-now-dream-love-be-happy/>(책) 지금 꿈꾸라, 사랑하라, 행복하라</a></li><li><span><i><time datetime=2018-07-29>29 Jul, 2018
+</time></i></span><a href=https://cychong47.github.io/post/2018/power-of-habit/>(책) 습관의 힘</a></li><li><span><i><time datetime=2018-07-29>29 Jul, 2018
+</time></i></span><a href=https://cychong47.github.io/post/2018/i-want-to-live-in-a-different-korea/>(책) 나는 다른 대한민국에서 살고 싶다</a></li><li><span><i><time datetime=2018-07-29>29 Jul, 2018
+</time></i></span><a href=https://cychong47.github.io/post/2018/purple-people/>(책) 퍼플피플</a></li><li><span><i><time datetime=2018-07-29>29 Jul, 2018
+</time></i></span><a href=https://cychong47.github.io/post/2018/hon-chang-tong/>(책) 혼창통</a></li><li><span><i><time datetime=2018-07-29>29 Jul, 2018
+</time></i></span><a href=https://cychong47.github.io/post/2018/your-time/>(책) 당신의 시간</a></li><li><span><i><time datetime=2018-07-29>29 Jul, 2018
+</time></i></span><a href=https://cychong47.github.io/post/2018/slack/>(책) Slack</a></li><li><span><i><time datetime=2018-07-29>29 Jul, 2018
+</time></i></span><a href=https://cychong47.github.io/post/2018/five-traps-team-can-fall-into/>(책) 팀이 빠지기 쉬운 5가지 함정</a></li><li><span><i><time datetime=2018-07-29>29 Jul, 2018
+</time></i></span><a href=https://cychong47.github.io/post/2018/drive/>(책) 드라이브 - 다니엘 핑크</a></li><li><span><i><time datetime=2018-07-21>21 Jul, 2018
+</time></i></span><a href=https://cychong47.github.io/post/2018/submit-patch-to-dpdk-with-git/>2nd patch submit to DPDK</a></li><li><span><i><time datetime=2018-07-15>15 Jul, 2018
+</time></i></span><a href=https://cychong47.github.io/post/2018/developer-culture/>(책) 대살개문</a></li><li><span><i><time datetime=2018-07-15>15 Jul, 2018
+</time></i></span><a href=https://cychong47.github.io/post/2018/astri-vran/>Astri vRAN</a></li><li><span><i><time datetime=2018-07-07>07 Jul, 2018
+</time></i></span><a href=https://cychong47.github.io/post/2018/advice_from_tokyo_professor/>(책) 도쿄대 교수가 제자들에게 주는 쓴소리</a></li><li><span><i><time datetime=2018-07-01>01 Jul, 2018
+</time></i></span><a href=https://cychong47.github.io/post/2018/did-you-write-in-every-morning/>(책) 매일 아침 써봤니?</a></li><li><span><i><time datetime=2018-06-20>20 Jun, 2018
+</time></i></span><a href=https://cychong47.github.io/post/2018/mindmap/>생각 정리의 기술</a></li><li><span><i><time datetime=2018-06-14>14 Jun, 2018
+</time></i></span><a href=https://cychong47.github.io/post/2018/update-ansible-playbook-for-wordpress/>Update ansible-playbook for wordpress</a></li><li><span><i><time datetime=2018-06-14>14 Jun, 2018
+</time></i></span><a href=https://cychong47.github.io/post/2018/wordpress-admin-login-fail/>wordpress admin 계정 복구</a></li><li><span><i><time datetime=2018-06-06>06 Jun, 2018
+</time></i></span><a href=https://cychong47.github.io/post/2018/grafana-influxdb-and-python/>Grafana, influxDB and python</a></li><li><span><i><time datetime=2018-05-31>31 May, 2018
+</time></i></span><a href=https://cychong47.github.io/post/2018/install_elasticstack_and_metricbeat/>Elastic stack and Metricbeat</a></li><li><span><i><time datetime=2018-01-30>30 Jan, 2018
+</time></i></span><a href=https://cychong47.github.io/post/2018/2018-01-home-network/>2018.01 home network</a></li><li><span><i><time datetime=2017-12-30>30 Dec, 2017
+</time></i></span><a href=https://cychong47.github.io/post/2017/ansible-homebrew/>Ansible - Install homebrew</a></li><li><span><i><time datetime=2017-12-30>30 Dec, 2017
+</time></i></span><a href=https://cychong47.github.io/post/2017/recreate-ghost-container/>Ansible - recreate ghost container</a></li><li><span><i><time datetime=2017-12-29>29 Dec, 2017
+</time></i></span><a href=https://cychong47.github.io/post/2017/ansible-playbook/>Ansible - basics of ansible-playbook</a></li><li><span><i><time datetime=2017-12-27>27 Dec, 2017
+</time></i></span><a href=https://cychong47.github.io/post/2017/ansible-exercise-1/>Ansible - ad-hoc or basic</a></li><li><span><i><time datetime=2017-12-19>19 Dec, 2017
+</time></i></span><a href=https://cychong47.github.io/post/2017/install-wordpress-with-docker/>Install Wordpress with docker</a></li><li><span><i><time datetime=2017-12-14>14 Dec, 2017
+</time></i></span><a href=https://cychong47.github.io/post/2017/clienbbs/>clienBBS</a></li><li><span><i><time datetime=2017-12-12>12 Dec, 2017
+</time></i></span><a href=https://cychong47.github.io/post/2017/mac-mini-e-windows-10-seolci/>mac mini 에 windows 10 설치</a></li><li><span><i><time datetime=2017-11-21>21 Nov, 2017
+</time></i></span><a href=https://cychong47.github.io/post/2017/vagrant-2/>Vagrant</a></li><li><span><i><time datetime=2017-11-21>21 Nov, 2017
+</time></i></span><a href=https://cychong47.github.io/post/2017/amdocs-preps-carrier-grade-version-of-onap/>Amdocs Preps 'Carrier-Grade' Version of ONAP</a></li><li><span><i><time datetime=2017-11-14>14 Nov, 2017
+</time></i></span><a href=https://cychong47.github.io/post/2017/onap-takes-flak-as-telcos-prep-for-release-1-light-reading/>ONAP Takes Flak as Telcos Prep for Release 1 | Light Reading</a></li><li><span><i><time datetime=2017-10-29>29 Oct, 2017
+</time></i></span><a href=https://cychong47.github.io/post/2017/lead-or-step-aside/>Lead Follow or Get Out of the Way</a></li><li><span><i><time datetime=2017-10-28>28 Oct, 2017
+</time></i></span><a href=https://cychong47.github.io/post/2017/what-is-good-manager/>관리자는 '관리'업무를 하는 동료이다.</a></li><li><span><i><time datetime=2017-10-09>09 Oct, 2017
+</time></i></span><a href=https://cychong47.github.io/post/2017/record-cbs-fm-cinema-music/>Record CBS Music Radio in every day</a></li><li><span><i><time datetime=2017-10-09>09 Oct, 2017
+</time></i></span><a href=https://cychong47.github.io/post/2017/sajin-baegeob-2017-beojeon/>사진 백업 2017 버전</a></li><li><span><i><time datetime=2017-10-08>08 Oct, 2017
+</time></i></span><a href=https://cychong47.github.io/post/2017/untitled-2/>Error in using homebrew module in ansible</a></li><li><span><i><time datetime=2017-10-07>07 Oct, 2017
+</time></i></span><a href=https://cychong47.github.io/post/2017/ftp-server-is-gone-from-high-siera-osx-server/>FTP server is gone from High Siera OSX Server</a></li><li><span><i><time datetime=2017-10-06>06 Oct, 2017
+</time></i></span><a href=https://cychong47.github.io/post/2017/wp-video-plugin/>WP video plugin</a></li><li><span><i><time datetime=2017-10-04>04 Oct, 2017
+</time></i></span><a href=https://cychong47.github.io/post/2017/ansible/>Play with Ansible</a></li><li><span><i><time datetime=2017-10-03>03 Oct, 2017
+</time></i></span><a href=https://cychong47.github.io/post/2017/series-4-10-lessons-from-telemetry/>(Series</a></li><li><span><i><time datetime=2017-10-03>03 Oct, 2017
+</time></i></span><a href=https://cychong47.github.io/post/2017/cisco-ios-xr-and-signalfx-demo/>(Series</a></li><li><span><i><time datetime=2017-10-01>01 Oct, 2017
+</time></i></span><a href=https://cychong47.github.io/post/2017/streaming-telemetry-with-google-protocol-buffers/>(Series</a></li><li><span><i><time datetime=2017-10-01>01 Oct, 2017
+</time></i></span><a href=https://cychong47.github.io/post/2017/cisco-yang-data-model/>CISCO Yang data model</a></li><li><span><i><time datetime=2017-10-01>01 Oct, 2017
+</time></i></span><a href=https://cychong47.github.io/post/2017/model-driven-telemetry/>(Series</a></li><li><span><i><time datetime=2017-10-01>01 Oct, 2017
+</time></i></span><a href=https://cychong47.github.io/post/2017/brew-install-python/>brew install python</a></li><li><span><i><time datetime=2017-10-01>01 Oct, 2017
+</time></i></span><a href=https://cychong47.github.io/post/2017/parsing-http-header-with-scary/>Parsing http header with scary</a></li><li><span><i><time datetime=2017-10-01>01 Oct, 2017
+</time></i></span><a href=https://cychong47.github.io/post/2017/googles-load-balancer/>Google's Load Balancer</a></li><li><span><i><time datetime=2017-10-01>01 Oct, 2017
+</time></i></span><a href=https://cychong47.github.io/post/2017/opnfv-asia-meeting/>OPNFV Asia Meeting</a></li><li><span><i><time datetime=2017-09-25>25 Sep, 2017
+</time></i></span><a href=https://cychong47.github.io/post/2017/ves-to-opnfv/>Integrating VES to OPNFV</a></li><li><span><i><time datetime=2017-09-25>25 Sep, 2017
+</time></i></span><a href=https://cychong47.github.io/post/2017/opnfv-barometer/>OPNFV Barometer and VES</a></li><li><span><i><time datetime=2017-09-21>21 Sep, 2017
+</time></i></span><a href=https://cychong47.github.io/post/2017/summary-at-t-container-strategy/>(Summary) AT&amp;T Container Strategy</a></li><li><span><i><time datetime=2017-09-20>20 Sep, 2017
+</time></i></span><a href=https://cychong47.github.io/post/2017/new-amdocs-brings-an-nfv-software-package-based-on-onap/>(News) Amdocs Brings an NFV Software Package Based on ONAP</a></li><li><span><i><time datetime=2017-09-18>18 Sep, 2017
+</time></i></span><a href=https://cychong47.github.io/post/2017/prometheus/>Prometheus</a></li><li><span><i><time datetime=2017-09-15>15 Sep, 2017
+</time></i></span><a href=https://cychong47.github.io/post/2017/ngnix-for-service-mesh/>NGNIX for service mesh</a></li><li><span><i><time datetime=2017-09-03>03 Sep, 2017
+</time></i></span><a href=https://cychong47.github.io/post/2017/wordpress-with-docker-compose-failing/>Wordpress with docker-compose</a></li><li><span><i><time datetime=2017-09-03>03 Sep, 2017
+</time></i></span><a href=https://cychong47.github.io/post/2017/ghost-container-with-docker-compose/>ghost container with docker-compose</a></li><li><span><i><time datetime=2017-09-03>03 Sep, 2017
+</time></i></span><a href=https://cychong47.github.io/post/2017/try-to-restore-wordpress-docker/>Try to restore Wordpress container</a></li><li><span><i><time datetime=2017-08-22>22 Aug, 2017
+</time></i></span><a href=https://cychong47.github.io/post/2017/tesla-pyeomhae-daehan-nayi-saenggag/>Tesla 폄하에 대한 나의 생각</a></li><li><span><i><time datetime=2017-07-26>26 Jul, 2017
+</time></i></span><a href=https://cychong47.github.io/post/2017/useful-quicklooks/>Useful quicklooks</a></li><li><span><i><time datetime=2017-06-08>08 Jun, 2017
+</time></i></span><a href=https://cychong47.github.io/post/2017/naver-labs-12-commandments/>Naver Labs 12 commandments</a></li><li><span><i><time datetime=2017-05-04>04 May, 2017
+</time></i></span><a href=https://cychong47.github.io/post/2017/how-to-ship-production-grade-go/>(요약) How to ship production-grade Go</a></li><li><span><i><time datetime=2017-04-16>16 Apr, 2017
+</time></i></span><a href=https://cychong47.github.io/post/2017/slack-do-not-disturb/>Slack이 기능 중 하나 - 방해금지</a></li><li><span><i><time datetime=2017-04-16>16 Apr, 2017
+</time></i></span><a href=https://cychong47.github.io/post/2017/younkitchen-agile/>윤식당에서 배우는 agile</a></li><li><span><i><time datetime=2017-04-12>12 Apr, 2017
+</time></i></span><a href=https://cychong47.github.io/post/2017/slack-ghost/>Slack + Ghost</a></li><li><span><i><time datetime=2017-04-12>12 Apr, 2017
+</time></i></span><a href=https://cychong47.github.io/post/2017/feature-flag-driven-development/>Feature Flag Driven Development</a></li><li><span><i><time datetime=2017-04-12>12 Apr, 2017
+</time></i></span><a href=https://cychong47.github.io/post/2017/espresso-googles-peering-edge-architecture/>Espresso - Google's peering edge architecture</a></li><li><span><i><time datetime=2017-04-09>09 Apr, 2017
+</time></i></span><a href=https://cychong47.github.io/post/2017/why-message-queue-used-for-microservice/>Why message queue used for microservice?</a></li><li><span><i><time datetime=2017-04-09>09 Apr, 2017
+</time></i></span><a href=https://cychong47.github.io/post/2017/p4/>P4</a></li><li><span><i><time datetime=2017-04-06>06 Apr, 2017
+</time></i></span><a href=https://cychong47.github.io/post/2017/table-or-dish/>Table or dish</a></li><li><span><i><time datetime=2017-04-04>04 Apr, 2017
+</time></i></span><a href=https://cychong47.github.io/post/2017/move-to-docker/>Move to docker</a></li><li><span><i><time datetime=2016-06-10>10 Jun, 2016
+</time></i></span><a href=https://cychong47.github.io/post/2016/how-to-read-2/>(책) 어떻게 읽을 것인가 - 2</a></li><li><span><i><time datetime=2016-06-10>10 Jun, 2016
+</time></i></span><a href=https://cychong47.github.io/post/2016/how-to-read/>(책) 어떻게 읽을 것인가</a></li><li><span><i><time datetime=2016-05-12>12 May, 2016
+</time></i></span><a href=https://cychong47.github.io/post/2016/fossilization/>fossilization</a></li><li><span><i><time datetime=2016-05-11>11 May, 2016
+</time></i></span><a href=https://cychong47.github.io/post/2016/too-early-confident/>상식과 다른 결과를 보면</a></li><li><span><i><time datetime=2016-05-11>11 May, 2016
+</time></i></span><a href=https://cychong47.github.io/post/2016/no-need-to-rush/>빨리 해봐야 소용없다</a></li><li><span><i><time datetime=2016-05-09>09 May, 2016
+</time></i></span><a href=https://cychong47.github.io/post/2016/display-post-by-default-ghost/>Ghost 본문 다 보이기</a></li><li><span><i><time datetime=2016-05-01>01 May, 2016
+</time></i></span><a href=https://cychong47.github.io/post/2016/frag-reassembly-test/>Frag & Reassembly Test</a></li><li><span><i><time datetime=2016-04-19>19 Apr, 2016
+</time></i></span><a href=https://cychong47.github.io/post/2016/soft-skill/>(책) 소프트 스킬</a></li><li><span><i><time datetime=2016-03-24>24 Mar, 2016
+</time></i></span><a href=https://cychong47.github.io/post/2016/dpdk-ipv4-reassembly/>DPDK IPv4 reassembly</a></li><li><span><i><time datetime=2016-03-14>14 Mar, 2016
+</time></i></span><a href=https://cychong47.github.io/post/2016/becoming-a-better-programmer/>(책) Becoming a better Programmer</a></li><li><span><i><time datetime=2016-03-06>06 Mar, 2016
+</time></i></span><a href=https://cychong47.github.io/post/2016/header-length-in-mbuf/>DPDK new mbuf 사용 주의사항</a></li><li><span><i><time datetime=2016-03-06>06 Mar, 2016
+</time></i></span><a href=https://cychong47.github.io/post/2016/how_kni_free_mbuf/>KNI가 buffer를 free 하는 방법</a></li><li><span><i><time datetime=2016-03-03>03 Mar, 2016
+</time></i></span><a href=https://cychong47.github.io/post/2016/scapy-suppress-scapy-warning-message/>(Scapy) Suppress Scapy warning message</a></li><li><span><i><time datetime=2016-02-14>14 Feb, 2016
+</time></i></span><a href=https://cychong47.github.io/post/2016/how-to-use-snapy-for-ipsec/>how to build IPsec packet with scapy</a></li><li><span><i><time datetime=2016-02-14>14 Feb, 2016
+</time></i></span><a href=https://cychong47.github.io/post/2016/fragment-missing-test-with-scapy/>fragment missing test with scapy</a></li><li><span><i><time datetime=2016-02-14>14 Feb, 2016
+</time></i></span><a href=https://cychong47.github.io/post/2016/vagrant/>Vagrant</a></li><li><span><i><time datetime=2016-02-13>13 Feb, 2016
+</time></i></span><a href=https://cychong47.github.io/post/2016/fd-io-tree/>fd.io</a></li><li><span><i><time datetime=2016-02-13>13 Feb, 2016
+</time></i></span><a href=https://cychong47.github.io/post/2016/fd-io/>fd.io</a></li><li><span><i><time datetime=2016-02-10>10 Feb, 2016
+</time></i></span><a href=https://cychong47.github.io/post/2016/why_have_to_keep_studying/>왜 공부해야 하는가에 대한 간단하지만 명확한 답</a></li><li><span><i><time datetime=2016-02-09>09 Feb, 2016
+</time></i></span><a href=https://cychong47.github.io/post/2016/dpdk_nic_init/>DPDK NIC 초기화</a></li><li><span><i><time datetime=2016-02-08>08 Feb, 2016
+</time></i></span><a href=https://cychong47.github.io/post/2016/introducing-python/>Introducing Python</a></li><li><span><i><time datetime=2016-02-07>07 Feb, 2016
+</time></i></span><a href=https://cychong47.github.io/post/2016/sriov-and-dpdk/>SR-IOV and DPDK</a></li><li><span><i><time datetime=2016-01-24>24 Jan, 2016
+</time></i></span><a href=https://cychong47.github.io/post/2016/dpdk-2-2-crypto-dev-api/>DPDK 2.2 crypto dev API</a></li><li><span><i><time datetime=2016-01-24>24 Jan, 2016
+</time></i></span><a href=https://cychong47.github.io/post/2016/dpdk_based_apps/>DPDK based applications</a></li><li><span><i><time datetime=2016-01-04>04 Jan, 2016
+</time></i></span><a href=https://cychong47.github.io/post/2016/two-years-back/>2년전에 느꼈던 답답함이 여전하네</a></li><li><span><i><time datetime=2016-01-04>04 Jan, 2016
+</time></i></span><a href=https://cychong47.github.io/post/2016/google-work-rules/>(책) 구글의 아침은 자유가 시작된다.</a></li><li><span><i><time datetime=2016-01-02>02 Jan, 2016
+</time></i></span><a href=https://cychong47.github.io/post/2016/googlegeist_vs_sci/>Googlegeist vs. SCI</a></li><li><span><i><time datetime=2016-01-01>01 Jan, 2016
+</time></i></span><a href=https://cychong47.github.io/post/2016/anti-agile/>(글) 왜 “애자일”, 특히 스크럼이 끔찍한가.</a></li><li><span><i><time datetime=2016-01-01>01 Jan, 2016
+</time></i></span><a href=https://cychong47.github.io/post/2016/click-python-module/>click - python option 처리 모듈</a></li><li><span><i><time datetime=2016-01-01>01 Jan, 2016
+</time></i></span><a href=https://cychong47.github.io/post/2016/build_dpdk_qat/>DPDK QAT example 빌드하기</a></li><li><span><i><time datetime=2015-12-24>24 Dec, 2015
+</time></i></span><a href=https://cychong47.github.io/post/2015/designing-a-restful-api-with-python-and-flask/>Designing a RESTful API with Python and Flask</a></li><li><span><i><time datetime=2015-12-21>21 Dec, 2015
+</time></i></span><a href=https://cychong47.github.io/post/2015/virtualenv/>virtualenv 사용</a></li><li><span><i><time datetime=2015-12-13>13 Dec, 2015
+</time></i></span><a href=https://cychong47.github.io/post/2015/culture/>Culture should be setup first</a></li><li><span><i><time datetime=2015-12-11>11 Dec, 2015
+</time></i></span><a href=https://cychong47.github.io/post/2015/openfastpath/>OpenFastPath</a></li><li><span><i><time datetime=2015-12-11>11 Dec, 2015
+</time></i></span><a href=https://cychong47.github.io/post/2015/hugepage/>Hugepage</a></li><li><span><i><time datetime=2015-12-11>11 Dec, 2015
+</time></i></span><a href=https://cychong47.github.io/post/2015/single-tasking/>Single tasking</a></li><li><span><i><time datetime=2015-12-10>10 Dec, 2015
+</time></i></span><a href=https://cychong47.github.io/post/2015/19-hard-things-you-need-to-do-to-be-successful/>19 hard things you need to do to be successful</a></li><li><span><i><time datetime=2015-12-07>07 Dec, 2015
+</time></i></span><a href=https://cychong47.github.io/post/2015/errors_from_more_code/>Code 량이 늘면 버그도 함께 들어나기 마련</a></li><li><span><i><time datetime=2015-12-07>07 Dec, 2015
+</time></i></span><a href=https://cychong47.github.io/post/2015/nhn_sw_quality_control/>(책) NHN은 이렇게 한다. 소프트웨어 품질 관리</a></li><li><span><i><time datetime=2015-12-05>05 Dec, 2015
+</time></i></span><a href=https://cychong47.github.io/post/2015/what_happens_if_performance_rating_is_omitted/>역량 평가를 없앤 회사에서 일어난 일</a></li><li><span><i><time datetime=2015-11-25>25 Nov, 2015
+</time></i></span><a href=https://cychong47.github.io/post/2015/openstacki-pythoneuro-mandeuleojyeossdani/>OpenStack이 Python으로 만들어졌다니</a></li><li><span><i><time datetime=2015-11-23>23 Nov, 2015
+</time></i></span><a href=https://cychong47.github.io/post/2015/cisco-cloud-services-router-1000v/>Cisco Cloud Services Router 1000V</a></li><li><span><i><time datetime=2015-11-23>23 Nov, 2015
+</time></i></span><a href=https://cychong47.github.io/post/2015/cisco-cloud-service-platform-2100/>CISCO Cloud Service Platform 2100</a></li><li><span><i><time datetime=2015-11-22>22 Nov, 2015
+</time></i></span><a href=https://cychong47.github.io/post/2015/what_is_the_target_product/>제대로 만들려면 제품의 성격부터 정의해야</a></li><li><span><i><time datetime=2015-11-19>19 Nov, 2015
+</time></i></span><a href=https://cychong47.github.io/post/2015/why_blame_personals/>개인의 잘못으로만 돌리는 이유</a></li><li><span><i><time datetime=2015-11-18>18 Nov, 2015
+</time></i></span><a href=https://cychong47.github.io/post/2015/what_for_the_developer/>개발자를 위해 한 일이 뭐가 있지?</a></li><li><span><i><time datetime=2015-11-18>18 Nov, 2015
+</time></i></span><a href=https://cychong47.github.io/post/2015/gyujereul-pulgi-eoryeoun-iyuneun/>규제를 풀기 어려운 이유는</a></li><li><span><i><time datetime=2015-11-17>17 Nov, 2015
+</time></i></span><a href=https://cychong47.github.io/post/2015/dpdk-ip-reassembly-example/>DPDK IP reassembly example</a></li><li><span><i><time datetime=2015-11-06>06 Nov, 2015
+</time></i></span><a href=https://cychong47.github.io/post/2015/do_you_know_agile/>또 하나의 코미디</a></li><li><span><i><time datetime=2015-11-01>01 Nov, 2015
+</time></i></span><a href=https://cychong47.github.io/post/2015/software-developeryi-saengsanseongeul-ceugjeonghal-su-isseulgga/>Software developer의 생산성을 측정할 수 있을까?</a></li><li><span><i><time datetime=2015-11-01>01 Nov, 2015
+</time></i></span><a href=https://cychong47.github.io/post/2015/bunyabyeol-nohau-gongyuga-pilyohande/>분야별 노하우 공유가 필요한데</a></li><li><span><i><time datetime=2015-10-20>20 Oct, 2015
+</time></i></span><a href=https://cychong47.github.io/post/2015/running-dpdk-on-vmware-fusion/>Running DPDK on VMware Fusion</a></li><li><span><i><time datetime=2015-10-12>12 Oct, 2015
+</time></i></span><a href=https://cychong47.github.io/post/2015/trex-dpdk-based-traffic-generator/>TRex - DPDK based traffic generator</a></li><li><span><i><time datetime=2015-09-30>30 Sep, 2015
+</time></i></span><a href=https://cychong47.github.io/post/2015/what-makes-a-good-engineering-culture/>What makes a good engineering culture?</a></li><li><span><i><time datetime=2015-09-20>20 Sep, 2015
+</time></i></span><a href=https://cychong47.github.io/post/2015/buseogan-hyeobryeogi-an-doeni-daecaegeuro/>부서간 협력이 안 되니 대책으로</a></li><li><span><i><time datetime=2015-09-19>19 Sep, 2015
+</time></i></span><a href=https://cychong47.github.io/post/2015/leading-lights-2015-finalists-most-innovative-nfv-product-strategy-vendor/>Leading Lights 2015 Finalists - Most Innovative NFV Product Strategy (Vendor)</a></li><li><span><i><time datetime=2015-09-13>13 Sep, 2015
+</time></i></span><a href=https://cychong47.github.io/post/2015/sw_quality/>SW 품질 강화 노력</a></li><li><span><i><time datetime=2015-09-12>12 Sep, 2015
+</time></i></span><a href=https://cychong47.github.io/post/2015/competetion_is_like_drug/>경쟁을 통한 성과 추구는 마약과 같다</a></li><li><span><i><time datetime=2015-09-07>07 Sep, 2015
+</time></i></span><a href=https://cychong47.github.io/post/2015/caeg-gugeuleun-bigdeiteoreul-eoddeohge-hwalyonghaessneunga/>(책) 구글은 빅데이터를 어떻게 활용했는가</a></li><li><span><i><time datetime=2015-07-28>28 Jul, 2015
+</time></i></span><a href=https://cychong47.github.io/post/2015/peom-seupoka-seongjang-baegyeong-rimoteuwa-beulrogeu-munhwa-deogbunijyo/>(펌) 스포카, "성장 배경? '리모트'와 '블로그 문화' 덕분이죠"</a></li><li><span><i><time datetime=2015-07-27>27 Jul, 2015
+</time></i></span><a href=https://cychong47.github.io/post/2015/the-power-of-ten-rules-for-developing-safety-critical-code/>The Power of Ten-Rules for Developing Safety Critical Code</a></li><li><span><i><time datetime=2015-07-04>04 Jul, 2015
+</time></i></span><a href=https://cychong47.github.io/post/2015/caeg-big-seumol/>(책) 빅 스몰</a></li><li><span><i><time datetime=2015-07-04>04 Jul, 2015
+</time></i></span><a href=https://cychong47.github.io/post/2015/gwanrija-deuldo-gongbu-jom-habsida/>관리자 들도 공부 좀 합시다</a></li><li><span><i><time datetime=2015-06-24>24 Jun, 2015
+</time></i></span><a href=https://cychong47.github.io/post/2015/yeolsimhi-bigyohan-gyeolroni-gojag-geugeonga/>열심히 비교한 결론이 고작 그건가?</a></li><li><span><i><time datetime=2015-06-21>21 Jun, 2015
+</time></i></span><a href=https://cychong47.github.io/post/2015/divide-conquer/>Divide & Conquer</a></li><li><span><i><time datetime=2015-06-18>18 Jun, 2015
+</time></i></span><a href=https://cychong47.github.io/post/2015/magamhyogwareul-norineun-geonga/>의도된 마감효과?</a></li><li><span><i><time datetime=2015-05-28>28 May, 2015
+</time></i></span><a href=https://cychong47.github.io/post/2015/cagga/>착각과 자만</a></li><li><span><i><time datetime=2015-05-25>25 May, 2015
+</time></i></span><a href=https://cychong47.github.io/post/2015/coding-styleyi-jungyoseong/>Coding Style의 중요성</a></li><li><span><i><time datetime=2015-05-21>21 May, 2015
+</time></i></span><a href=https://cychong47.github.io/post/2015/dpdk-coding-style/>DPDK Coding style</a></li><li><span><i><time datetime=2015-05-20>20 May, 2015
+</time></i></span><a href=https://cychong47.github.io/post/2015/docker-for-dummies-jeongri/>Docker for dummies 정리</a></li><li><span><i><time datetime=2015-05-18>18 May, 2015
+</time></i></span><a href=https://cychong47.github.io/post/2015/caeg-jugeora-ilman-haneun-sarameun-jeoldae-moreuneun-seumateuhan-seonggongdeul/>(책) 죽어라 일만 하는 사람은 절대 모르는 스마트한 성공들</a></li><li><span><i><time datetime=2015-05-12>12 May, 2015
+</time></i></span><a href=https://cychong47.github.io/post/2015/dan/>(책) 단</a></li><li><span><i><time datetime=2015-01-08>08 Jan, 2015
+</time></i></span><a href=https://cychong47.github.io/post/2015/wp-designing-for-service-agility/>Designing for Service Agility</a></li><li><span><i><time datetime=2014-12-09>09 Dec, 2014
+</time></i></span><a href=https://cychong47.github.io/post/2014/intel-embedded-tech-forum-2014/>Intel Embedded Tech Forum 2014</a></li><li><span><i><time datetime=2014-11-27>27 Nov, 2014
+</time></i></span><a href=https://cychong47.github.io/post/2014/r-i-p-ovdk/>R.I.P OVDK</a></li><li><span><i><time datetime=2014-11-19>19 Nov, 2014
+</time></i></span><a href=https://cychong47.github.io/post/2014/odp/>ODP</a></li><li><span><i><time datetime=2014-11-19>19 Nov, 2014
+</time></i></span><a href=https://cychong47.github.io/post/2014/dpdk-summit-2014-videos/>DPDK Summit 2014 Videos</a></li><li><span><i><time datetime=2014-11-17>17 Nov, 2014
+</time></i></span><a href=https://cychong47.github.io/post/2014/peom-busilhan-gongyumunhwareul-jibaehaneun-gaebaljayi-simri/>(펌) 부실한 공유문화를 지배하는 개발자의 심리</a></li><li><span><i><time datetime=2014-11-09>09 Nov, 2014
+</time></i></span><a href=https://cychong47.github.io/post/2014/cuckoo-switch/>Cuckoo Switch</a></li><li><span><i><time datetime=2014-10-19>19 Oct, 2014
+</time></i></span><a href=https://cychong47.github.io/post/2014/caeg-baji-beosgo-ilhamyeon-andoenayo/>(책) 바지 벗고 일하면 안되나요?</a></li><li><span><i><time datetime=2014-10-14>14 Oct, 2014
+</time></i></span><a href=https://cychong47.github.io/post/2014/naege-gweonhani-issdamyeon/>내게 권한이 있다면</a></li><li><span><i><time datetime=2014-10-07>07 Oct, 2014
+</time></i></span><a href=https://cychong47.github.io/post/2014/nayeongseog-pd/>나영석 PD</a></li><li><span><i><time datetime=2014-09-28>28 Sep, 2014
+</time></i></span><a href=https://cychong47.github.io/post/2014/intel-sdnnfv-forum-korea-2014/>Intel SDN/NFV Forum Korea 2014</a></li><li><span><i><time datetime=2014-09-27>27 Sep, 2014
+</time></i></span><a href=https://cychong47.github.io/post/2014/caeg-violent-python/>(책) Violent Python</a></li><li><span><i><time datetime=2014-09-27>27 Sep, 2014
+</time></i></span><a href=https://cychong47.github.io/post/2014/0gwa-1ro-sesangeul-bagguneun-gugeul-geu-modeun-iyagiin-the-flex/>(책) 0과 1로 세상을 바꾸는 구글 그 모든 이야기(In the Flex)</a></li><li><span><i><time datetime=2014-09-24>24 Sep, 2014
+</time></i></span><a href=https://cychong47.github.io/post/2014/caeg-hon-cang-tong/>(책) 혼. 창. 통.</a></li><li><span><i><time datetime=2014-09-23>23 Sep, 2014
+</time></i></span><a href=https://cychong47.github.io/post/2014/dpdk-on-virtualbox/>DPDK on VirtualBox</a></li><li><span><i><time datetime=2014-09-21>21 Sep, 2014
+</time></i></span><a href=https://cychong47.github.io/post/2014/caeg-deo-inteobyu/>(책) 더 인터뷰</a></li><li><span><i><time datetime=2014-09-11>11 Sep, 2014
+</time></i></span><a href=https://cychong47.github.io/post/2014/caeg-wae-gongbuhaneunga/>(책) 왜 공부하는가</a></li><li><span><i><time datetime=2014-09-10>10 Sep, 2014
+</time></i></span><a href=https://cychong47.github.io/post/2014/peom-meorisog-jeongribeob-10gaji/>(펌) 머리속 정리법 10가지</a></li><li><span><i><time datetime=2014-09-10>10 Sep, 2014
+</time></i></span><a href=https://cychong47.github.io/post/2014/time-machine-backup/>Time Machine backup</a></li><li><span><i><time datetime=2014-09-09>09 Sep, 2014
+</time></i></span><a href=https://cychong47.github.io/post/2014/caeg-bigdeiteo-seungriyi-gwahag/>(책) 빅데이터 승리의 과학</a></li><li><span><i><time datetime=2014-09-08>08 Sep, 2014
+</time></i></span><a href=https://cychong47.github.io/post/2014/cobojeogin-silsureul-banboghandago-gubaghajiman/>초보적인 실수를 반복한다고 구박하지만</a></li><li><span><i><time datetime=2014-09-08>08 Sep, 2014
+</time></i></span><a href=https://cychong47.github.io/post/2014/the-pragmatic-programmer/>The Pragmatic Programmer</a></li><li><span><i><time datetime=2014-09-06>06 Sep, 2014
+</time></i></span><a href=https://cychong47.github.io/post/2014/synology-webdav-devonthink/>Synology + Webdav + Devonthink</a></li><li><span><i><time datetime=2014-09-03>03 Sep, 2014
+</time></i></span><a href=https://cychong47.github.io/post/2014/peom-salmyi-mogjeog/>(펌) 삶의 목적</a></li><li><span><i><time datetime=2014-08-31>31 Aug, 2014
+</time></i></span><a href=https://cychong47.github.io/post/2014/caeg-gugeuleun-skyreul-moreunda/>(책) 구글은 SKY를 모른다</a></li><li><span><i><time datetime=2014-08-24>24 Aug, 2014
+</time></i></span><a href=https://cychong47.github.io/post/2014/peom-20-life-lessons-everyone-can-master-by-the-age-40/>(펌) 20 Life Lessons Everyone Can Master By The Age 40</a></li><li><span><i><time datetime=2014-08-24>24 Aug, 2014
+</time></i></span><a href=https://cychong47.github.io/post/2014/peom-eoddeohge-hamyeon-deo-naeun-sopeuteuweeoreul-mandeul-su-isseulgga/>(펌) 어떻게 하면 더 나은 소프트웨어를 만들 수 있을까?</a></li><li><span><i><time datetime=2014-08-21>21 Aug, 2014
+</time></i></span><a href=https://cychong47.github.io/post/2014/sdn-expert-group-semina-play-with-dpdk/>SDN expert group 세미나 - Play with DPDK</a></li><li><span><i><time datetime=2014-08-20>20 Aug, 2014
+</time></i></span><a href=https://cychong47.github.io/post/2014/carari-honja-saenggaghal-sigan-gajyeora/>차라리 혼자 생각할 시간 가져라</a></li><li><span><i><time datetime=2014-08-17>17 Aug, 2014
+</time></i></span><a href=https://cychong47.github.io/post/2014/nuga-miraereul-gajil-geosinga/>(책) 누가 미래를 가질 것인가?</a></li><li><span><i><time datetime=2014-08-16>16 Aug, 2014
+</time></i></span><a href=https://cychong47.github.io/post/2014/jonggyoyi-cabyeoldoen-sarang/>종교의 차별된 사랑</a></li><li><span><i><time datetime=2014-08-15>15 Aug, 2014
+</time></i></span><a href=https://cychong47.github.io/post/2014/seupin-is/>(책) 스핀 잇</a></li><li><span><i><time datetime=2014-08-15>15 Aug, 2014
+</time></i></span><a href=https://cychong47.github.io/post/2014/sdnyi-jinjeonghan-gaci/>SDN의 진정한 가치</a></li><li><span><i><time datetime=2014-08-14>14 Aug, 2014
+</time></i></span><a href=https://cychong47.github.io/post/2014/hwaweiyi-widaehan-neugdaemunhwa/>(책) 화웨이의 위대한 늑대문화</a></li><li><span><i><time datetime=2014-08-12>12 Aug, 2014
+</time></i></span><a href=https://cychong47.github.io/post/2014/dpi-traffic-analysis-in-networks-based-on-nfv-and-sdn/>DPI & Traffic analysis in networks based on NFV and SDN</a></li><li><span><i><time datetime=2014-05-24>24 May, 2014
+</time></i></span><a href=https://cychong47.github.io/post/2014/opendataplane/>OpenDataPlane</a></li><li><span><i><time datetime=2014-05-10>10 May, 2014
+</time></i></span><a href=https://cychong47.github.io/post/2014/welcome-to-ghost-2/>Welcome to Ghost</a></li><li><span><i><time datetime=0001-01-01>01 Jan, 0001
+</time></i></span><a href=https://cychong47.github.io/post/2020/2020-07-01-setup-nginx-with-bitnami-chart/></a></li></ul></content></main><footer>Made with <a href=https://github.com/janraasch/hugo-bearblog/>Hugo ʕ•ᴥ•ʔ Bear</a></footer></body></html>

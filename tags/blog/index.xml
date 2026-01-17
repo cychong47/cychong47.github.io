@@ -1,7 +1,47 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Blog on Keep calm and write something</title><link>https://cychong47.github.io/tags/blog/</link><description>Recent content in Blog on Keep calm and write something</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Tue, 11 Aug 2020 14:16:01 +0900</lastBuildDate><atom:link href="https://cychong47.github.io/tags/blog/index.xml" rel="self" type="application/rss+xml"/><item><title>Publish hugo post from iPad</title><link>https://cychong47.github.io/post/2020/2020-08-11-publish-hugo-post-from-ipad/</link><pubDate>Tue, 11 Aug 2020 14:16:01 +0900</pubDate><guid>https://cychong47.github.io/post/2020/2020-08-11-publish-hugo-post-from-ipad/</guid><description>iPhone 이나 iPad에서 사진을 골라 사진과 markdown 파일을 만들어 Working Copy를 통해 git repo에 업로드하는 Shortcut을 마련했다.
-Shortcut의 원본은 이 블로그(Posting to Hugo from iOS에서 얻었다.
-Front formatter만 일부 수정하면 그대로 사용할 수 있을 정도로 내가 기대하는 workflow가 구현이 되어 있었다. 실은 문법도 잘 모르면서 괜히 손을 댔다 제대로 동작 안하게 했다 다시 고치느라 시간만 보냈다는.
-이 Shortcut이 하는 일은 위 블로그에도 자세하게 설명되어 있지만(친절한 분&amp;hellip;)
-넘겨 받은 사진을 가로 1280 픽셀 크기로 조정 블로그 타이틀 입력 사진명을 오늘 날짜-블로그 타이틀로 만든 slug.</description></item><item><title>Recover WordPress container</title><link>https://cychong47.github.io/post/2018/recovery-failed-wordpress-container/</link><pubDate>Wed, 05 Sep 2018 14:10:39 +0900</pubDate><guid>https://cychong47.github.io/post/2018/recovery-failed-wordpress-container/</guid><description>One day The Wordpress container does not work at all. docker ps로 확인하면 1분 주기로 restart를 반복하고 있다. 경험상 이건 wordpress 앱이 초기화 과정에서 문제가 있는 거라는 걸로 짐작된다. 로그를 확인해 보니 아래와 같은 에러만 출력.
-뭐가 문제일까 멀쩡히 잘 돌던 녀석들인데.
-mini2:html cychong$ docker logs -f f12c3b3a57ef ... Warning: mysqli::__construct(): Unexpected server respose while doing caching_sha2 auth: 109 in Standard input code on line 22 MySQL Connection Error: (2006) MySQL server has gone away Warning: mysqli::__construct(): MySQL server has gone away in Standard input code on line 22 Warning: mysqli::__construct(): (HY000/2006): MySQL server has gone away in Standard input code on line 22 Warning: mysqli::__construct(): Unexpected server respose while doing caching_sha2 auth: 109 in Standard input code on line 22 Warning: mysqli::__construct(): MySQL server has gone away in Standard input code on line 22 Warning: mysqli::__construct(): (HY000/2006): MySQL server has gone away in Standard input code on line 22 MySQL Connection Error: (2006) MySQL server has gone away Warning: mysqli::__construct(): Unexpected server respose while doing caching_sha2 auth: 109 in Standard input code on line 22 MySQL Connection Error: (2006) MySQL server has gone away Warning: mysqli::__construct(): MySQL server has gone away in Standard input code on line 22 Warning: mysqli::__construct(): (HY000/2006): MySQL server has gone away in Standard input code on line 22 Let’s debug 하지만 뭔가 달라진 게 있으니 갑자기 문제가 발생했겠지.</description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Blog on Keep calm and Write something</title><link>https://cychong47.github.io/tags/blog/</link><description>Recent content in Blog on Keep calm and Write something</description><generator>Hugo</generator><language>en-us</language><lastBuildDate>Tue, 11 Aug 2020 14:16:01 +0900</lastBuildDate><atom:link href="https://cychong47.github.io/tags/blog/index.xml" rel="self" type="application/rss+xml"/><item><title>Publish hugo post from iPad</title><link>https://cychong47.github.io/post/2020/2020-08-11-publish-hugo-post-from-ipad/</link><pubDate>Tue, 11 Aug 2020 14:16:01 +0900</pubDate><guid>https://cychong47.github.io/post/2020/2020-08-11-publish-hugo-post-from-ipad/</guid><description>&lt;p&gt;iPhone 이나 iPad에서 사진을 골라 사진과 markdown 파일을 만들어 Working Copy를 통해 git repo에 업로드하는 Shortcut을 마련했다.&lt;br&gt;
+Shortcut의 원본은 이 블로그(&lt;a href="https://marcus.nordaaker.com/post/posting-to-hugo-from-ios/"&gt;Posting to Hugo from iOS&lt;/a&gt;에서 얻었다.&lt;br&gt;
+Front formatter만 일부 수정하면 그대로 사용할 수 있을 정도로 내가 기대하는 workflow가 구현이 되어 있었다. 실은 문법도 잘 모르면서 괜히 손을 댔다 제대로 동작 안하게 했다 다시 고치느라 시간만 보냈다는.&lt;/p&gt;
+&lt;p&gt;이 Shortcut이 하는 일은 위 블로그에도 자세하게 설명되어 있지만(친절한 분&amp;hellip;)&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;넘겨 받은 사진을 가로 1280 픽셀 크기로 조정&lt;/li&gt;
+&lt;li&gt;블로그 타이틀 입력&lt;/li&gt;
+&lt;li&gt;사진명을 &lt;code&gt;오늘 날짜-블로그 타이틀로 만든 slug.jpg&lt;/code&gt; 로 변경해서 working copy를 이용해서 hugo의 &lt;code&gt;static&lt;/code&gt; 디렉터리에 commit&lt;/li&gt;
+&lt;li&gt;사진을 링크하는 markdown을 같은 형식 &lt;code&gt;오늘 날짜-블로그 타이틀로 만든 slug.md&lt;/code&gt;을 &lt;code&gt;content&lt;/code&gt; 디렉터리에 commit&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;git push&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;이 과정을 거치면 아래와 같이 git repo에 jpg 파일 하나와 md 파일 하나가 만들어진다.&lt;br&gt;
+&lt;figure&gt;&lt;img src="https://cychong47.github.io/images/2020/08/2020-08-11-publish-hugo-post-from-ipad.jpg"
+ alt="Publish hugo post from iPad" width="1280"&gt;
+&lt;/figure&gt;
+&lt;/p&gt;</description></item><item><title>Recover WordPress container</title><link>https://cychong47.github.io/post/2018/recovery-failed-wordpress-container/</link><pubDate>Wed, 05 Sep 2018 14:10:39 +0900</pubDate><guid>https://cychong47.github.io/post/2018/recovery-failed-wordpress-container/</guid><description>&lt;h2 id="one-day"&gt;One day&lt;/h2&gt;
+&lt;p&gt;The Wordpress container does not work at all. &lt;code&gt;docker ps&lt;/code&gt;로 확인하면 1분 주기로 restart를 반복하고 있다. 경험상 이건 wordpress 앱이 초기화 과정에서 문제가 있는 거라는 걸로 짐작된다. 로그를 확인해 보니 아래와 같은 에러만 출력.&lt;/p&gt;
+&lt;p&gt;뭐가 문제일까 멀쩡히 잘 돌던 녀석들인데.&lt;/p&gt;
+&lt;pre tabindex="0"&gt;&lt;code&gt;mini2:html cychong$ docker logs -f f12c3b3a57ef
+...
+
+Warning: mysqli::__construct(): Unexpected server respose while doing caching_sha2 auth: 109 in Standard input code on line 22
+
+MySQL Connection Error: (2006) MySQL server has gone away
+
+Warning: mysqli::__construct(): MySQL server has gone away in Standard input code on line 22
+
+Warning: mysqli::__construct(): (HY000/2006): MySQL server has gone away in Standard input code on line 22
+
+Warning: mysqli::__construct(): Unexpected server respose while doing caching_sha2 auth: 109 in Standard input code on line 22
+
+Warning: mysqli::__construct(): MySQL server has gone away in Standard input code on line 22
+
+Warning: mysqli::__construct(): (HY000/2006): MySQL server has gone away in Standard input code on line 22
+
+MySQL Connection Error: (2006) MySQL server has gone away
+
+Warning: mysqli::__construct(): Unexpected server respose while doing caching_sha2 auth: 109 in Standard input code on line 22
+
+MySQL Connection Error: (2006) MySQL server has gone away
+
+Warning: mysqli::__construct(): MySQL server has gone away in Standard input code on line 22
+
+Warning: mysqli::__construct(): (HY000/2006): MySQL server has gone away in Standard input code on line 22
+&lt;/code&gt;&lt;/pre&gt;&lt;h2 id="lets-debug"&gt;Let’s debug&lt;/h2&gt;
+&lt;blockquote&gt;
+&lt;p&gt;하지만 뭔가 달라진 게 있으니 갑자기 문제가 발생했겠지.&lt;/p&gt;</description></item></channel></rss>

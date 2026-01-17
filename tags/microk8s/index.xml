@@ -1,4 +1,111 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Microk8s on Keep calm and write something</title><link>https://cychong47.github.io/tags/microk8s/</link><description>Recent content in Microk8s on Keep calm and write something</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Mon, 07 Oct 2019 15:47:44 +0000</lastBuildDate><atom:link href="https://cychong47.github.io/tags/microk8s/index.xml" rel="self" type="application/rss+xml"/><item><title>Setup Ghost in microk8s</title><link>https://cychong47.github.io/post/2019/setup-ghost-in-microk8s-2/</link><pubDate>Mon, 20 May 2019 16:00:56 +0900</pubDate><guid>https://cychong47.github.io/post/2019/setup-ghost-in-microk8s-2/</guid><description>Install microk8s MicroK8s - Fast, Light, Upstream Developer Kubernetes
-설치는 위 링크에 있는 공식 홈페이지에 있는 대로 snap 명령어 하나로 간단하게 설치할 수 있다.
-cychong@mini1:~$ sudo snap install microk8s --classic 2019-05-18T09:43:53+09:00 INFO Waiting for restart... microk8s v1.14.1 from Canonical✓ installed 설치된 microk8s의 정보를 확인하려면 snap info microk8s
-cychong@mini1:~$ sudo snap info microk8s name: microk8s summary: Kubernetes for workstations and appliances publisher: Canonical✓ contact: &amp;lt;https://github.com/ubuntu/microk8s&amp;gt; license: unset description: | MicroK8s is a small, fast, secure, single node Kubernetes that installs on just about any Linux box.</description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Microk8s on Keep calm and Write something</title><link>https://cychong47.github.io/tags/microk8s/</link><description>Recent content in Microk8s on Keep calm and Write something</description><generator>Hugo</generator><language>en-us</language><lastBuildDate>Mon, 07 Oct 2019 15:47:44 +0000</lastBuildDate><atom:link href="https://cychong47.github.io/tags/microk8s/index.xml" rel="self" type="application/rss+xml"/><item><title>Setup Ghost in microk8s</title><link>https://cychong47.github.io/post/2019/setup-ghost-in-microk8s-2/</link><pubDate>Mon, 20 May 2019 16:00:56 +0900</pubDate><guid>https://cychong47.github.io/post/2019/setup-ghost-in-microk8s-2/</guid><description>&lt;h1 id="install-microk8s"&gt;Install microk8s&lt;/h1&gt;
+&lt;p&gt;&lt;a href="https://microk8s.io/"&gt;MicroK8s - Fast, Light, Upstream Developer Kubernetes&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;설치는 위 링크에 있는 공식 홈페이지에 있는 대로 &lt;code&gt;snap&lt;/code&gt; 명령어 하나로 간단하게 설치할 수 있다.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;cychong@mini1:~$ sudo snap install microk8s --classic
+2019-05-18T09:43:53+09:00 INFO Waiting for restart...
+microk8s v1.14.1 from Canonical✓ installed
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;설치된 &lt;code&gt;microk8s&lt;/code&gt;의 정보를 확인하려면 &lt;code&gt;snap info microk8s&lt;/code&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;cychong@mini1:~$ sudo snap info microk8s
+name: microk8s
+summary: Kubernetes for workstations and appliances
+publisher: Canonical✓
+contact: &amp;lt;https://github.com/ubuntu/microk8s&amp;gt;
+license: unset
+description: |
+ MicroK8s is a small, fast, secure, single node Kubernetes that installs on just about any Linux
+ box. Use it for offline development, prototyping, testing, or use it on a VM as a small, cheap,
+ reliable k8s for CI/CD. It's also a great k8s for appliances - develop your IoT apps for k8s and
+ deploy them to MicroK8s on your boxes.
+commands:
+ - microk8s.config
+ - microk8s.ctr
+ - microk8s.disable
+ - microk8s.enable
+ - microk8s.inspect
+ - microk8s.istioctl
+ - microk8s.kubectl
+ - microk8s.reset
+ - microk8s.start
+ - microk8s.status
+ - microk8s.stop
+services:
+ microk8s.daemon-apiserver: simple, enabled, active
+ microk8s.daemon-apiserver-kicker: simple, enabled, active
+ microk8s.daemon-containerd: simple, enabled, active
+ microk8s.daemon-controller-manager: simple, enabled, active
+ microk8s.daemon-etcd: simple, enabled, active
+ microk8s.daemon-kubelet: simple, enabled, active
+ microk8s.daemon-proxy: simple, enabled, active
+ microk8s.daemon-scheduler: simple, enabled, active
+snap-id: EaXqgt1lyCaxKaQCU349mlodBkDCXRcg
+tracking: stable
+refresh-date: today at 09:44 KST
+channels:
+ stable: v1.14.1 2019-04-18 (522) 214MB classic
+ candidate: v1.14.1 2019-04-15 (522) 214MB classic
+ beta: v1.14.1 2019-04-15 (522) 214MB classic
+ edge: v1.14.2 2019-05-17 (604) 217MB classic
+ 1.15/stable: –
+ 1.15/candidate: –
+ 1.15/beta: –
+ 1.15/edge: v1.15.0-alpha.3 2019-05-08 (578) 215MB classic
+ 1.14/stable: v1.14.1 2019-04-18 (521) 214MB classic
+ 1.14/candidate: v1.14.1 2019-04-15 (521) 214MB classic
+ 1.14/beta: v1.14.1 2019-04-15 (521) 214MB classic
+ 1.14/edge: v1.14.2 2019-05-17 (603) 217MB classic
+ 1.13/stable: v1.13.5 2019-04-22 (526) 237MB classic
+ 1.13/candidate: v1.13.6 2019-05-09 (581) 237MB classic
+ 1.13/beta: v1.13.6 2019-05-09 (581) 237MB classic
+ 1.13/edge: v1.13.6 2019-05-08 (581) 237MB classic
+ 1.12/stable: v1.12.8 2019-05-02 (547) 259MB classic
+ 1.12/candidate: v1.12.8 2019-05-01 (547) 259MB classic
+ 1.12/beta: v1.12.8 2019-05-01 (547) 259MB classic
+ 1.12/edge: v1.12.8 2019-04-24 (547) 259MB classic
+ 1.11/stable: v1.11.10 2019-05-10 (557) 258MB classic
+ 1.11/candidate: v1.11.10 2019-05-02 (557) 258MB classic
+ 1.11/beta: v1.11.10 2019-05-02 (557) 258MB classic
+ 1.11/edge: v1.11.10 2019-05-01 (557) 258MB classic
+ 1.10/stable: v1.10.13 2019-04-22 (546) 222MB classic
+ 1.10/candidate: v1.10.13 2019-04-22 (546) 222MB classic
+ 1.10/beta: v1.10.13 2019-04-22 (546) 222MB classic
+ 1.10/edge: v1.10.13 2019-04-22 (546) 222MB classic
+installed: v1.14.1 (522) 214MB classic
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id="enable-servicesmicrok8s"&gt;Enable services(microk8s)&lt;/h2&gt;
+&lt;pre&gt;&lt;code&gt;cychong@mini1:~$ sudo microk8s.enable dashboard registry dns
+Enabling dashboard
+secret/kubernetes-dashboard-certs created
+serviceaccount/kubernetes-dashboard created
+deployment.apps/kubernetes-dashboard created
+service/kubernetes-dashboard created
+service/monitoring-grafana created
+service/monitoring-influxdb created
+service/heapster created
+deployment.extensions/monitoring-influxdb-grafana-v4 created
+serviceaccount/heapster created
+configmap/heapster-config created
+configmap/eventer-config created
+deployment.extensions/heapster-v1.5.2 created
+dashboard enabled
+Enabling the private registry
+Enabling default storage class
+deployment.extensions/hostpath-provisioner created
+storageclass.storage.k8s.io/microk8s-hostpath created
+Storage will be available soon
+Applying registry manifest
+namespace/container-registry created
+persistentvolumeclaim/registry-claim created
+deployment.extensions/registry created
+service/registry created
+The registry is enabled
+Enabling DNS
+Applying manifest
+service/kube-dns created
+serviceaccount/kube-dns created
+configmap/kube-dns created
+deployment.extensions/kube-dns created
+Restarting kubelet
+DNS is enabled
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;서비스 상태는 &lt;code&gt;microk8s.status&lt;/code&gt;로 확인 가능&lt;/p&gt;</description></item></channel></rss>

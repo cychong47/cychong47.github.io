@@ -1,4 +1,40 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Nginx on Keep calm and write something</title><link>https://cychong47.github.io/tags/nginx/</link><description>Recent content in Nginx on Keep calm and write something</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Mon, 01 Jun 2020 15:08:13 +0000</lastBuildDate><atom:link href="https://cychong47.github.io/tags/nginx/index.xml" rel="self" type="application/rss+xml"/><item><title>Migrate wordpress to hugo</title><link>https://cychong47.github.io/post/2020/hugo-seutp-with-git/</link><pubDate>Sun, 31 May 2020 14:56:52 +0900</pubDate><guid>https://cychong47.github.io/post/2020/hugo-seutp-with-git/</guid><description>Wordpress 에서 hugo로 이사한 후 첫번째 시도. Hugo theme은 harbor를 사용하고, site 호스팅 방법은 nginx docker를 사용. (이상하게 nginx를 helm으로 띄우는 게 간단하지 않네)
-Clone repogistry for raw blog data cychong15:migration_to_hugo cychong$ git clone https://github.com/cychong47/sosa0sa.git Cloning into &amp;#39;sosa0sa&amp;#39;... warning: You appear to have cloned an empty repository. Setup hugo inside of the git repository cychong15:migration_to_hugo cychong$ hugo new site sosa0sa Error: /Users/cychong/workspace/migration_to_hugo/sosa0sa already exists and is not empty. See --force. cychong15:migration_to_hugo cychong$ hugo new site sosa0sa --force Congratulations!</description></item><item><title>NGNIX for service mesh</title><link>https://cychong47.github.io/post/2017/ngnix-for-service-mesh/</link><pubDate>Fri, 15 Sep 2017 14:39:11 +0900</pubDate><guid>https://cychong47.github.io/post/2017/ngnix-for-service-mesh/</guid><description>NGINX Releases Microservices Platform, OpenShift Ingress Controller, and Service Mesh Preview
-NGNIX also join for service mesh bandwagon?
-NGNIX Application Platform NGINX Plus, the commercial variant of the popular open source NGINX web server. NGINX Web Application Firewall (WAF) NGINX Unit, a new open source application server that can run PHP, Python and Go NGINX Controller, a centralised control plane for monitoring and management of NGINX Plus Additional release a Kubernetes Ingress Controller solution for load balancing on the Red Hat OpenShift Container Platform an implementation of NGINX as a service proxy for the Istio service mesh control plane.</description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Nginx on Keep calm and Write something</title><link>https://cychong47.github.io/tags/nginx/</link><description>Recent content in Nginx on Keep calm and Write something</description><generator>Hugo</generator><language>en-us</language><lastBuildDate>Mon, 01 Jun 2020 15:08:13 +0000</lastBuildDate><atom:link href="https://cychong47.github.io/tags/nginx/index.xml" rel="self" type="application/rss+xml"/><item><title>Migrate wordpress to hugo</title><link>https://cychong47.github.io/post/2020/hugo-seutp-with-git/</link><pubDate>Sun, 31 May 2020 14:56:52 +0900</pubDate><guid>https://cychong47.github.io/post/2020/hugo-seutp-with-git/</guid><description>&lt;p&gt;Wordpress 에서 hugo로 이사한 후 첫번째 시도.
+Hugo theme은 harbor를 사용하고, site 호스팅 방법은 nginx docker를 사용.
+(이상하게 nginx를 helm으로 띄우는 게 간단하지 않네)&lt;/p&gt;
+&lt;h3 id="clone-repogistry-for-raw-blog-data"&gt;Clone repogistry for raw blog data&lt;/h3&gt;
+&lt;pre tabindex="0"&gt;&lt;code&gt;cychong15:migration_to_hugo cychong$ git clone https://github.com/cychong47/sosa0sa.git
+Cloning into &amp;#39;sosa0sa&amp;#39;...
+warning: You appear to have cloned an empty repository.
+&lt;/code&gt;&lt;/pre&gt;&lt;h3 id="setup-hugo-inside-of-the-git-repository"&gt;Setup hugo inside of the git repository&lt;/h3&gt;
+&lt;pre tabindex="0"&gt;&lt;code&gt;cychong15:migration_to_hugo cychong$ hugo new site sosa0sa
+Error: /Users/cychong/workspace/migration_to_hugo/sosa0sa already exists and is not empty. See --force.
+
+cychong15:migration_to_hugo cychong$ hugo new site sosa0sa --force
+Congratulations! Your new Hugo site is created in /Users/cychong/workspace/migration_to_hugo/sosa0sa.
+
+Just a few more steps and you&amp;#39;re ready to go:
+
+1. Download a theme into the same-named folder.
+ Choose a theme from https://themes.gohugo.io/ or
+ create your own with the &amp;#34;hugo new theme &amp;lt;THEMENAME&amp;gt;&amp;#34; command.
+2. Perhaps you want to add some content. You can add single files
+ with &amp;#34;hugo new &amp;lt;SECTIONNAME&amp;gt;/&amp;lt;FILENAME&amp;gt;.&amp;lt;FORMAT&amp;gt;&amp;#34;.
+3. Start the built-in live server via &amp;#34;hugo server&amp;#34;.
+
+Visit https://gohugo.io/ for quickstart guide and full documentation.
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Maybe not good to &lt;strong&gt;enforce&lt;/strong&gt; to do something.&lt;/p&gt;</description></item><item><title>NGNIX for service mesh</title><link>https://cychong47.github.io/post/2017/ngnix-for-service-mesh/</link><pubDate>Fri, 15 Sep 2017 14:39:11 +0900</pubDate><guid>https://cychong47.github.io/post/2017/ngnix-for-service-mesh/</guid><description>&lt;p&gt;&lt;a href="https://www.infoq.com/news/2017/09/nginx-platform-service-mesh?utm_source=facebook&amp;amp;utm_medium=link&amp;amp;utm_campaign=calendar"&gt;NGINX Releases Microservices Platform, OpenShift Ingress Controller, and Service Mesh Preview&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;NGNIX also join for service mesh bandwagon?&lt;/p&gt;
+&lt;h3 id="ngnix-application-platform"&gt;NGNIX Application Platform&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;NGINX Plus, the commercial variant of the popular open source NGINX web server.&lt;/li&gt;
+&lt;li&gt;NGINX Web Application Firewall (WAF)&lt;/li&gt;
+&lt;li&gt;NGINX Unit, a new open source application server that can run PHP, Python and Go&lt;/li&gt;
+&lt;li&gt;NGINX Controller, a centralised control plane for monitoring and management of NGINX Plus&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id="additional-release"&gt;Additional release&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;a Kubernetes Ingress Controller solution for load balancing on the Red Hat OpenShift Container Platform&lt;/li&gt;
+&lt;li&gt;an implementation of NGINX as a service proxy for the Istio service mesh control plane.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;blockquote&gt;
+&lt;p&gt;NGINX has also released nginmesh, an open source preview version of NGINX as a service proxy for Layer 7 load balancing and proxying within the Istio service mesh platform. It aims to provide key capabilities and integration with Istio when deployed as a sidecar container, and will facilitate communication between services in a &amp;ldquo;standard, reliable, and secure manner&amp;rdquo;. Additionally, NGINX will collaborate as part of the Istio community by joining the Istio networking special interest group.&lt;/p&gt;</description></item></channel></rss>

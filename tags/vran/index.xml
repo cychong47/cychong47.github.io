@@ -1,10 +1,50 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Vran on Keep calm and write something</title><link>https://cychong47.github.io/tags/vran/</link><description>Recent content in Vran on Keep calm and write something</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Wed, 20 May 2020 15:04:06 +0000</lastBuildDate><atom:link href="https://cychong47.github.io/tags/vran/index.xml" rel="self" type="application/rss+xml"/><item><title>NVIDIA vRAN Solution</title><link>https://cychong47.github.io/post/2020/nvidia-vran-solution/</link><pubDate>Wed, 20 May 2020 15:01:44 +0900</pubDate><guid>https://cychong47.github.io/post/2020/nvidia-vran-solution/</guid><description>https://devblogs.nvidia.com/building-accelerated-5g-cloudran-at-the-edge/
-Mellanox ConnectX-6 Dx SmartNIC exceeds stringent industry-standard timing specifications for eCPRI-based RANs by ensuring clock accuracy of 16ns or less
-5T for 5G enables packet-based, ethernet RANs to provide precise time-stamping of packets for delivering highly accurate time references to 5G fronthaul and backhaul networks.
-5T-for-5G, or time-triggered transmission technology for telco
-https://news.developer.nvidia.com/new-real-time-smartnic-technology-5t-for-5g/
-Real-time transmission hardware acceleration: 5T-for-5G simplifies time synchronization and data transmission across servers, GPUs, radios, and baseband units in wireless network rollouts, making 5G rollouts easier and more efficient.</description></item><item><title>Astri vRAN</title><link>https://cychong47.github.io/post/2018/astri-vran/</link><pubDate>Sun, 15 Jul 2018 12:03:00 +0900</pubDate><guid>https://cychong47.github.io/post/2018/astri-vran/</guid><description>Toward 5G RAN virtualization by Intel and Astri
-http://astri.oeg
-Flexible architecture Modular PHY processing architectures PDCP Split MAC/PHY Split - HARQ processing in RRU(How???) Lower PHY Split - High FB overhead but smallest packet latency. Good for JT and JR for COMP Good for Massive MIMO and Ultra low-latency communication(Why?) FAPI based MAC/PHY communication L1 adaptation layer for MAC/PHY split (and Lower PHY Split?) MAC/PHY split in one CPU MAC/PHY split in one machine but netrwork based MAC/PHY communication over OVS Virtual Cell A group of physical cells form a Virtual Cell which does not require HO between the physical cells.</description></item><item><title>Amdocs Preps 'Carrier-Grade' Version of ONAP</title><link>https://cychong47.github.io/post/2017/amdocs-preps-carrier-grade-version-of-onap/</link><pubDate>Tue, 21 Nov 2017 14:51:25 +0900</pubDate><guid>https://cychong47.github.io/post/2017/amdocs-preps-carrier-grade-version-of-onap/</guid><description>From Amdocs Preps &amp;lsquo;Carrier-Grade&amp;rsquo; Version of ONAP | Light Reading(http://www.lightreading.com/mobile/mec-(mobile-edge-computing)/amdocs-preps-carrier-grade-version-of-onap/d/d-id/738315)
-&amp;ldquo;We&amp;rsquo;re just about to make a big carrier [and] enterprise grade release of ONAP,&amp;rdquo; Angela Logothetis, VP and CTO of Amdocs Open Network, told Light Reading
-Logothetis says that Amdocs is working with Intel Corp. (Nasdaq: INTC) on edge computing proofs-of-concept. This involves understanding what content and data needs to cached and where exactly that should happen on the network.</description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Vran on Keep calm and Write something</title><link>https://cychong47.github.io/tags/vran/</link><description>Recent content in Vran on Keep calm and Write something</description><generator>Hugo</generator><language>en-us</language><lastBuildDate>Wed, 20 May 2020 15:04:06 +0000</lastBuildDate><atom:link href="https://cychong47.github.io/tags/vran/index.xml" rel="self" type="application/rss+xml"/><item><title>NVIDIA vRAN Solution</title><link>https://cychong47.github.io/post/2020/nvidia-vran-solution/</link><pubDate>Wed, 20 May 2020 15:01:44 +0900</pubDate><guid>https://cychong47.github.io/post/2020/nvidia-vran-solution/</guid><description>&lt;p&gt;&lt;a href="https://devblogs.nvidia.com/building-accelerated-5g-cloudran-at-the-edge/"&gt;https://devblogs.nvidia.com/building-accelerated-5g-cloudran-at-the-edge/&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id="mellanox-connectx-6-dx-smartnic"&gt;Mellanox ConnectX-6 Dx SmartNIC&lt;/h2&gt;
+&lt;p&gt;exceeds stringent industry-standard timing specifications for eCPRI-based RANs by ensuring clock accuracy of 16ns or less&lt;/p&gt;
+&lt;p&gt;5T for 5G enables packet-based, ethernet RANs to provide precise time-stamping of packets for delivering highly accurate time references to 5G fronthaul and backhaul networks.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;5T-for-5G, or time-triggered transmission technology for telco&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;&lt;a href="https://news.developer.nvidia.com/new-real-time-smartnic-technology-5t-for-5g/"&gt;https://news.developer.nvidia.com/new-real-time-smartnic-technology-5t-for-5g/&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src="https://news.developer.nvidia.com/wp-content/uploads/2020/05/pasted-image-0-17-624x271.png" alt="img"&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Real-time transmission hardware acceleration&lt;/strong&gt;: 5T-for-5G simplifies time synchronization and data transmission across servers, GPUs, radios, and baseband units in wireless network rollouts, making 5G rollouts easier and more efficient.&lt;/p&gt;</description></item><item><title>Astri vRAN</title><link>https://cychong47.github.io/post/2018/astri-vran/</link><pubDate>Sun, 15 Jul 2018 12:03:00 +0900</pubDate><guid>https://cychong47.github.io/post/2018/astri-vran/</guid><description>&lt;p&gt;&lt;a href="https://builders.intel.com/docs/networkbuilders/towards_5g_ran_virtualization_enabled_by_intel_and_astri.pdf"&gt;Toward 5G RAN virtualization by Intel and Astri&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href="http://astri.oeg"&gt;http://astri.oeg&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id="flexible-architecture"&gt;Flexible architecture&lt;/h2&gt;
+&lt;h3 id="modular-phy-processing-architectures"&gt;Modular PHY processing architectures&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;PDCP Split&lt;/li&gt;
+&lt;li&gt;MAC/PHY Split - HARQ processing in RRU(How???)&lt;/li&gt;
+&lt;li&gt;Lower PHY Split - High FB overhead but smallest packet latency.
+&lt;ul&gt;
+&lt;li&gt;Good for JT and JR for COMP&lt;/li&gt;
+&lt;li&gt;Good for Massive MIMO and Ultra low-latency communication(Why?)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;FAPI based MAC/PHY communication
+&lt;ul&gt;
+&lt;li&gt;L1 adaptation layer for MAC/PHY split (and Lower PHY Split?)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img src="https://cychong47.github.io/images/2018/07/Screenshot-2018-07-15-20.51.59.png" alt="Screenshot-2018-07-15-20.51.59"&gt;&lt;/p&gt;
+&lt;h3 id="macphy-split-in-one-cpu"&gt;MAC/PHY split in one CPU&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;MAC/PHY split in one machine but netrwork based MAC/PHY communication over OVS
+&lt;img src="https://cychong47.github.io/images/2018/07/Screenshot-2018-07-15-20.56.12.png" alt="Screenshot-2018-07-15-20.56.12"&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id="virtual-cell"&gt;Virtual Cell&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;A group of physical cells form a &lt;code&gt;Virtual Cell&lt;/code&gt; which does not require HO between the physical cells.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id="technical-specification"&gt;Technical Specification&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Commercial L1 reference design
+&lt;img src="https://cychong47.github.io/images/2018/07/Screenshot-2018-07-15-21.02.00.png" alt="Screenshot-2018-07-15-21.02.00"&gt;&lt;/p&gt;</description></item><item><title>Amdocs Preps 'Carrier-Grade' Version of ONAP</title><link>https://cychong47.github.io/post/2017/amdocs-preps-carrier-grade-version-of-onap/</link><pubDate>Tue, 21 Nov 2017 14:51:25 +0900</pubDate><guid>https://cychong47.github.io/post/2017/amdocs-preps-carrier-grade-version-of-onap/</guid><description>&lt;p&gt;From Amdocs Preps &amp;lsquo;Carrier-Grade&amp;rsquo; Version of ONAP | Light Reading(&lt;a href="http://www.lightreading.com/mobile/mec-(mobile-edge-computing)/amdocs-preps-carrier-grade-version-of-onap/d/d-id/738315"&gt;http://www.lightreading.com/mobile/mec-(mobile-edge-computing)/amdocs-preps-carrier-grade-version-of-onap/d/d-id/738315&lt;/a&gt;)&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&amp;ldquo;We&amp;rsquo;re just about to make a big carrier [and] enterprise grade release of ONAP,&amp;rdquo; Angela Logothetis, VP and CTO of Amdocs Open Network, told Light Reading&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Logothetis says that Amdocs is working with Intel Corp. (Nasdaq: INTC) on edge computing proofs-of-concept. This involves understanding what content and data needs to cached and where exactly that should happen on the network.&lt;/p&gt;</description></item></channel></rss>

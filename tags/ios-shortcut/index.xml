@@ -1,4 +1,45 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>“IOS-Shortcut” on Keep calm and write something</title><link>https://cychong47.github.io/tags/ios-shortcut/</link><description>Recent content in “IOS-Shortcut” on Keep calm and write something</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Wed, 19 Aug 2020 23:01:58 +0900</lastBuildDate><atom:link href="https://cychong47.github.io/tags/ios-shortcut/index.xml" rel="self" type="application/rss+xml"/><item><title>Automate Blog Posting with GitHub Action</title><link>https://cychong47.github.io/post/2020/2020-08-19-automate-blog-posting-with-github-action/</link><pubDate>Wed, 19 Aug 2020 23:01:58 +0900</pubDate><guid>https://cychong47.github.io/post/2020/2020-08-19-automate-blog-posting-with-github-action/</guid><description>https://ruddra.com/hugo-deploy-static-page-using-github-actions/ 에 있는 내용대로 git repository의 .github/workflows 아래 main.yml 몇 가지만 수정했더니 잘 동작하는 듯.
-이미 Hugo용 github repo를 가지고 있으므로 내가 추가로 해야 할일은
-GitHub 계정에서 Access Token 만들어서 Git repository에 Secret로 추가 GitHub Action 파일 작성 - .github/workflows/main.yml 일단 이거면 끝.
-.github/workflows/main.yml name: CI on: push jobs: deploy: runs-on: ubuntu-latest steps: - name: Git checkout uses: actions/checkout@v2 - name: Update theme # (Optional)If you have the theme added as submodule, you can pull it and use the most updated version run: git submodule update --init --recursive - name: Setup hugo uses: peaceiris/actions-hugo@v2 with: hugo-version: &amp;#34;0.</description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>“IOS-Shortcut” on Keep calm and Write something</title><link>https://cychong47.github.io/tags/ios-shortcut/</link><description>Recent content in “IOS-Shortcut” on Keep calm and Write something</description><generator>Hugo</generator><language>en-us</language><lastBuildDate>Wed, 19 Aug 2020 23:01:58 +0900</lastBuildDate><atom:link href="https://cychong47.github.io/tags/ios-shortcut/index.xml" rel="self" type="application/rss+xml"/><item><title>Automate Blog Posting with GitHub Action</title><link>https://cychong47.github.io/post/2020/2020-08-19-automate-blog-posting-with-github-action/</link><pubDate>Wed, 19 Aug 2020 23:01:58 +0900</pubDate><guid>https://cychong47.github.io/post/2020/2020-08-19-automate-blog-posting-with-github-action/</guid><description>&lt;p&gt;&lt;a href="https://ruddra.com/hugo-deploy-static-page-using-github-actions/"&gt;https://ruddra.com/hugo-deploy-static-page-using-github-actions/&lt;/a&gt; 에 있는 내용대로 git repository의 &lt;code&gt;.github/workflows&lt;/code&gt; 아래 &lt;code&gt;main.yml&lt;/code&gt; 몇 가지만 수정했더니 잘 동작하는 듯.&lt;/p&gt;
+&lt;p&gt;이미 Hugo용 github repo를 가지고 있으므로 내가 추가로 해야 할일은&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;GitHub 계정에서 Access Token 만들어서 Git repository에 &lt;code&gt;Secret&lt;/code&gt;로 추가&lt;/li&gt;
+&lt;li&gt;GitHub Action 파일 작성 - &lt;code&gt;.github/workflows/main.yml&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;일단 이거면 끝.&lt;/p&gt;
+&lt;h2 id="githubworkflowsmainyml"&gt;&lt;code&gt;.github/workflows/main.yml&lt;/code&gt;&lt;/h2&gt;
+&lt;pre tabindex="0"&gt;&lt;code&gt;name: CI
+on: push
+jobs:
+ deploy:
+ runs-on: ubuntu-latest
+ steps:
+ - name: Git checkout
+ uses: actions/checkout@v2
+
+ - name: Update theme
+ # (Optional)If you have the theme added as submodule, you can pull it and use the most updated version
+ run: git submodule update --init --recursive
+
+ - name: Setup hugo
+ uses: peaceiris/actions-hugo@v2
+ with:
+ hugo-version: &amp;#34;0.74.2&amp;#34;
+
+ - name: Clean public directory
+ run: rm -rf public
+ - name: Build
+ # remove --minify tag if you do not need it
+ # docs: https://gohugo.io/hugo-pipes/minification/
+ run: hugo --minify
+
+ - name: Deploy
+ uses: peaceiris/actions-gh-pages@v3
+ with:
+ personal_token: ${{ secrets.TOKEN }}
+ external_repository: cychong47/cychong47.github.io
+ publish_dir: ./public
+ # keep_files: true
+ user_name: Chaeyong Chong
+ user_email: cychonggmail.com
+ publish_branch: master
+ cname: cychong47.github.io
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;수정한 부분은 Hugo 버전, &lt;code&gt;Deploy&lt;/code&gt; 의 &lt;code&gt;external_repository&lt;/code&gt;, &lt;code&gt;user_name&lt;/code&gt;, &lt;code&gt;user_email&lt;/code&gt;, &lt;code&gt;cname&lt;/code&gt; 정도 뿐.&lt;/p&gt;</description></item></channel></rss>

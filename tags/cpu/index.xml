@@ -1,3 +1,15 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Cpu on Keep calm and write something</title><link>https://cychong47.github.io/tags/cpu/</link><description>Recent content in Cpu on Keep calm and write something</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Mon, 07 Oct 2019 15:46:03 +0000</lastBuildDate><atom:link href="https://cychong47.github.io/tags/cpu/index.xml" rel="self" type="application/rss+xml"/><item><title>Convention on impose core requirements</title><link>https://cychong47.github.io/post/2019/convention-on-impose-core-requirements/</link><pubDate>Sun, 29 Sep 2019 14:35:21 +0900</pubDate><guid>https://cychong47.github.io/post/2019/convention-on-impose-core-requirements/</guid><description>하나의 Helm chart를 이용하여 여러 개의 pod를 설치 하는 nested chart 인 경우 각각의 pod에 대한 CPU requirement는 각 subchart의 values.yaml에 resources 항목에 기술하면 된다.
-아래는 ONAP중 closed loop control에서 Data collection을 담당하는 DCAE의 SW들을 kubernets에 배포하기 위해 만들어진 차트들이다. 다음과 같이 8개의 chart들로 구성되어 있고,
-$ tree -d oom/kubernetes/dcaegen2/charts/ -L 1 oom/kubernetes/dcaegen2/charts/ ├── dcae-bootstrap ├── dcae-cloudify-manager ├── dcae-config-binding-service ├── dcae-deployment-handler ├── dcae-healthcheck ├── dcae-policy-handler ├── dcae-redis └── dcae-servicechange-handler 8 directories 각각의 subchart는 각자의 values.</description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Cpu on Keep calm and Write something</title><link>https://cychong47.github.io/tags/cpu/</link><description>Recent content in Cpu on Keep calm and Write something</description><generator>Hugo</generator><language>en-us</language><lastBuildDate>Mon, 07 Oct 2019 15:46:03 +0000</lastBuildDate><atom:link href="https://cychong47.github.io/tags/cpu/index.xml" rel="self" type="application/rss+xml"/><item><title>Convention on impose core requirements</title><link>https://cychong47.github.io/post/2019/convention-on-impose-core-requirements/</link><pubDate>Sun, 29 Sep 2019 14:35:21 +0900</pubDate><guid>https://cychong47.github.io/post/2019/convention-on-impose-core-requirements/</guid><description>&lt;p&gt;하나의 Helm chart를 이용하여 여러 개의 pod를 설치 하는 nested chart 인 경우 각각의 pod에 대한 CPU requirement는 각 subchart의 values.yaml에 resources 항목에 기술하면 된다.&lt;/p&gt;
+&lt;p&gt;아래는 ONAP중 closed loop control에서 Data collection을 담당하는 &lt;a href="https://wiki.onap.org/pages/viewpage.action?pageId=1015831"&gt;DCAE&lt;/a&gt;의 SW들을 kubernets에 배포하기 위해 만들어진 차트들이다. 다음과 같이 8개의 chart들로 구성되어 있고,&lt;/p&gt;
+&lt;pre tabindex="0"&gt;&lt;code&gt;$ tree -d oom/kubernetes/dcaegen2/charts/ -L 1
+oom/kubernetes/dcaegen2/charts/
+├── dcae-bootstrap
+├── dcae-cloudify-manager
+├── dcae-config-binding-service
+├── dcae-deployment-handler
+├── dcae-healthcheck
+├── dcae-policy-handler
+├── dcae-redis
+└── dcae-servicechange-handler
+
+8 directories
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;각각의 subchart는 각자의 values.yaml 파일을 가지고 있다.&lt;/p&gt;</description></item></channel></rss>

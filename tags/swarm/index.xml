@@ -1,4 +1,35 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Swarm on Keep calm and write something</title><link>https://cychong47.github.io/tags/swarm/</link><description>Recent content in Swarm on Keep calm and write something</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Sun, 01 Apr 2018 02:38:51 +0000</lastBuildDate><atom:link href="https://cychong47.github.io/tags/swarm/index.xml" rel="self" type="application/rss+xml"/><item><title>Try to restore Wordpress container</title><link>https://cychong47.github.io/post/2017/try-to-restore-wordpress-docker/</link><pubDate>Sun, 03 Sep 2017 00:36:25 +0900</pubDate><guid>https://cychong47.github.io/post/2017/try-to-restore-wordpress-docker/</guid><description>docker 버전이 업데이트되고, 몇 가지 변경사항이 있은 후 ghost, wordpress/mysql 조합의 container들이 접속이 되질 않는다. 한참을 두고 보다 ghost는 새 버전(1.x)이 나온 걸 계기로 새로 설치를 했는데(당연히 이전 설치에서 데이터를 container 내부가 아니라 local machine에 두도록 해서 데이터는 그대로 보존) wordpress는 그러질 못했다.
-이것 역시 참다참다 못해 https://docs.docker.com/compose/wordpress/#define-the-project 에 나와있는 docker swarm을 이용해서 복구해 보려고 삽을 들었다.
-위 페이지에 있는 대로 설정 파일을 만들고
-version: &amp;#39;3&amp;#39; services: db: image: mysql:5.7 volumes: - /Users/cychong/Dropbox/Apps/wordpress/:/var/lib/mysql restart: always environment: MYSQL_ROOT_PASSWORD: xxx MYSQL_DATABASE: xxx MYSQL_USER: xxx MYSQL_PASSWORD: xxx wordpress: depends_on: - db image: wordpress:latest volumes: - /Users/cychong/Documents/wordpress/:/var/www/html - /Users/cychong/Documents/wordpress/php_uploads.</description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Swarm on Keep calm and Write something</title><link>https://cychong47.github.io/tags/swarm/</link><description>Recent content in Swarm on Keep calm and Write something</description><generator>Hugo</generator><language>en-us</language><lastBuildDate>Sun, 01 Apr 2018 02:38:51 +0000</lastBuildDate><atom:link href="https://cychong47.github.io/tags/swarm/index.xml" rel="self" type="application/rss+xml"/><item><title>Try to restore Wordpress container</title><link>https://cychong47.github.io/post/2017/try-to-restore-wordpress-docker/</link><pubDate>Sun, 03 Sep 2017 00:36:25 +0900</pubDate><guid>https://cychong47.github.io/post/2017/try-to-restore-wordpress-docker/</guid><description>&lt;p&gt;docker 버전이 업데이트되고, 몇 가지 변경사항이 있은 후 ghost, wordpress/mysql 조합의 container들이 접속이 되질 않는다.
+한참을 두고 보다 ghost는 새 버전(1.x)이 나온 걸 계기로 새로 설치를 했는데(당연히 이전 설치에서 데이터를 container 내부가 아니라 local machine에 두도록 해서 데이터는 그대로 보존) wordpress는 그러질 못했다.&lt;/p&gt;
+&lt;p&gt;이것 역시 참다참다 못해 &lt;a href="https://docs.docker.com/compose/wordpress/#define-the-project"&gt;https://docs.docker.com/compose/wordpress/#define-the-project&lt;/a&gt; 에 나와있는 docker swarm을 이용해서 복구해 보려고 삽을 들었다.&lt;/p&gt;
+&lt;p&gt;위 페이지에 있는 대로 설정 파일을 만들고&lt;/p&gt;
+&lt;pre tabindex="0"&gt;&lt;code&gt;version: &amp;#39;3&amp;#39;
+
+services:
+ db:
+ image: mysql:5.7
+ volumes:
+ - /Users/cychong/Dropbox/Apps/wordpress/:/var/lib/mysql
+ restart: always
+ environment:
+ MYSQL_ROOT_PASSWORD: xxx
+ MYSQL_DATABASE: xxx
+ MYSQL_USER: xxx
+ MYSQL_PASSWORD: xxx
+
+ wordpress:
+ depends_on:
+ - db
+ image: wordpress:latest
+ volumes:
+ - /Users/cychong/Documents/wordpress/:/var/www/html
+ - /Users/cychong/Documents/wordpress/php_uploads.ini:/usr/local/etc/php/conf.d/uploads.ini
+ ports:
+ - &amp;#34;8000:80&amp;#34;
+ restart: always
+ environment:
+ WORDPRESS_DB_HOST: db:3306
+ WORDPRESS_DB_USER: xxx
+ WORDPRESS_DB_PASSWORD: xxx
+volumes:
+ db_data:
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;문서에 있는 대로 docker compose 명령을 실행했는데&lt;/p&gt;</description></item></channel></rss>

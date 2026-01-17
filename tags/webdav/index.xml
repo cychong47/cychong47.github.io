@@ -1,5 +1,12 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Webdav on Keep calm and write something</title><link>https://cychong47.github.io/tags/webdav/</link><description>Recent content in Webdav on Keep calm and write something</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Sun, 01 Apr 2018 02:38:40 +0000</lastBuildDate><atom:link href="https://cychong47.github.io/tags/webdav/index.xml" rel="self" type="application/rss+xml"/><item><title>Synology + Webdav + Devonthink</title><link>https://cychong47.github.io/post/2014/synology-webdav-devonthink/</link><pubDate>Sat, 06 Sep 2014 15:39:33 +0900</pubDate><guid>https://cychong47.github.io/post/2014/synology-webdav-devonthink/</guid><description>우선 Synology NAS에서 webdav를 켜는 건 기본이고
-Devonthink의 Sync tab에서 타입을 webdav로 하면 아래와 같은 입력 창이 나오는데 여기에 서버 주소 등 필요한 정보를 적으면 된다. 이때 path는 user name으로 로그인했을 때 기준으로 하면 됨. 즉 Full path를 적으면 되는데 처음 입력할 때는 /home/Documents/Devonthink로 입력했는데 나중에 다시 보면 저렇게 바뀌어 있다.
-이제 두 대의 맥을 이렇게 운영하련다.
-동기화 관련 참고자료
-Dropbox를 사용할 때 동시에 여러 Mac에서 동기화된 DB를 열지 않도록 하는 applescript Devonthink DB가 깨졌을 때 복구하는 방법 웹페이지 일부만 스크랩하는 방법</description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Webdav on Keep calm and Write something</title><link>https://cychong47.github.io/tags/webdav/</link><description>Recent content in Webdav on Keep calm and Write something</description><generator>Hugo</generator><language>en-us</language><lastBuildDate>Sun, 01 Apr 2018 02:38:40 +0000</lastBuildDate><atom:link href="https://cychong47.github.io/tags/webdav/index.xml" rel="self" type="application/rss+xml"/><item><title>Synology + Webdav + Devonthink</title><link>https://cychong47.github.io/post/2014/synology-webdav-devonthink/</link><pubDate>Sat, 06 Sep 2014 15:39:33 +0900</pubDate><guid>https://cychong47.github.io/post/2014/synology-webdav-devonthink/</guid><description>&lt;p&gt;우선 Synology NAS에서 webdav를 켜는 건 기본이고&lt;br&gt;
+&lt;img src="https://cychong47.github.io/images/2014/Sep/Synology_webdav.png" alt=""&gt;&lt;/p&gt;
+&lt;p&gt;Devonthink의 Sync tab에서 타입을 webdav로 하면 아래와 같은 입력 창이 나오는데 여기에 서버 주소 등 필요한 정보를 적으면 된다. 이때 path는 user name으로 로그인했을 때 기준으로 하면 됨. 즉 Full path를 적으면 되는데 처음 입력할 때는 &lt;code&gt;/home/Documents/Devonthink&lt;/code&gt;로 입력했는데 나중에 다시 보면 저렇게 바뀌어 있다.&lt;br&gt;
+&lt;img src="https://cychong47.github.io/images/2014/Sep/Devonthink_webdav.png" alt=""&gt;&lt;/p&gt;
+&lt;p&gt;이제 두 대의 맥을 이렇게 운영하련다.&lt;br&gt;
+&lt;img src="https://cychong47.github.io/images/2014/Sep/Devonthink-sync.png" alt=""&gt;&lt;/p&gt;
+&lt;p&gt;동기화 관련 참고자료&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="http://jmjeong.com/use-devonthink-at-home-and-work/"&gt;Dropbox를 사용할 때 동시에 여러 Mac에서 동기화된 DB를 열지 않도록 하는 applescript&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="http://binnyon.tistory.com/78"&gt;Devonthink DB가 깨졌을 때 복구하는 방법&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="http://namsieon.com/1473"&gt;웹페이지 일부만 스크랩하는 방법&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;</description></item></channel></rss>

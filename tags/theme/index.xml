@@ -1,5 +1,13 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Theme on Keep calm and write something</title><link>https://cychong47.github.io/tags/theme/</link><description>Recent content in Theme on Keep calm and write something</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Sun, 01 Apr 2018 02:38:51 +0000</lastBuildDate><atom:link href="https://cychong47.github.io/tags/theme/index.xml" rel="self" type="application/rss+xml"/><item><title>Ghost 본문 다 보이기</title><link>https://cychong47.github.io/post/2016/display-post-by-default-ghost/</link><pubDate>Mon, 09 May 2016 15:23:57 +0900</pubDate><guid>https://cychong47.github.io/post/2016/display-post-by-default-ghost/</guid><description>theme을 수정해서 ghost blog 화면에서 글 본문이 다 나오도록 할 수 있다.
-대신 theme마다 조금씩 적용 방법이 다른데 기본적으로 변경해야 할 내용은 동일
-casper theme casper는 index.hbs 파일에서 loop.hbs라는 별도 파일을 통해 본문을 보이게 하고 있다.
-index.hbs
-21 {{! The main content area on the homepage }} 22 &amp;lt;main id=&amp;#34;content&amp;#34; class=&amp;#34;content&amp;#34; role=&amp;#34;main&amp;#34;&amp;gt; 23 24 {{! The tag below includes the post loop - partials/loop.hbs }} 25 {{&amp;gt; &amp;#34;loop&amp;#34;}} 26 27 &amp;lt;/main&amp;gt; 위 코드에서 가리키는 partials/loop.</description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Theme on Keep calm and Write something</title><link>https://cychong47.github.io/tags/theme/</link><description>Recent content in Theme on Keep calm and Write something</description><generator>Hugo</generator><language>en-us</language><lastBuildDate>Sun, 01 Apr 2018 02:38:51 +0000</lastBuildDate><atom:link href="https://cychong47.github.io/tags/theme/index.xml" rel="self" type="application/rss+xml"/><item><title>Ghost 본문 다 보이기</title><link>https://cychong47.github.io/post/2016/display-post-by-default-ghost/</link><pubDate>Mon, 09 May 2016 15:23:57 +0900</pubDate><guid>https://cychong47.github.io/post/2016/display-post-by-default-ghost/</guid><description>&lt;p&gt;theme을 수정해서 ghost blog 화면에서 글 본문이 다 나오도록 할 수 있다.&lt;/p&gt;
+&lt;p&gt;대신 theme마다 조금씩 적용 방법이 다른데 기본적으로 변경해야 할 내용은 동일&lt;/p&gt;
+&lt;h1 id="casper-theme"&gt;casper theme&lt;/h1&gt;
+&lt;p&gt;casper는 &lt;code&gt;index.hbs&lt;/code&gt; 파일에서 &lt;code&gt;loop.hbs&lt;/code&gt;라는 별도 파일을 통해 본문을 보이게 하고 있다.&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;index.hbs&lt;/code&gt;&lt;/p&gt;
+&lt;pre tabindex="0"&gt;&lt;code&gt; 21 {{! The main content area on the homepage }}
+ 22 &amp;lt;main id=&amp;#34;content&amp;#34; class=&amp;#34;content&amp;#34; role=&amp;#34;main&amp;#34;&amp;gt;
+ 23
+ 24 {{! The tag below includes the post loop - partials/loop.hbs }}
+ 25 {{&amp;gt; &amp;#34;loop&amp;#34;}}
+ 26
+ 27 &amp;lt;/main&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;위 코드에서 가리키는 partials/loop.hbs 코드에서 exceprt인 부분을 찾아서 다음과 같이 변경한다. 아래에서 13라인부터 15라인이 원본으로 각 post의 일부만 보이게 하고, 더 읽으려면 &lt;code&gt;&amp;gt;&amp;gt;&lt;/code&gt;등을 클릭하게 한다. 이 부분을 막고 post 전체를 표시하는 17라인에서 19라인까지의 내용을 추가한다.&lt;/p&gt;</description></item></channel></rss>

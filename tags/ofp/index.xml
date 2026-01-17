@@ -1,5 +1,15 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>OFP on Keep calm and write something</title><link>https://cychong47.github.io/tags/ofp/</link><description>Recent content in OFP on Keep calm and write something</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Sun, 01 Apr 2018 02:38:40 +0000</lastBuildDate><atom:link href="https://cychong47.github.io/tags/ofp/index.xml" rel="self" type="application/rss+xml"/><item><title>OpenFastPath</title><link>https://cychong47.github.io/post/2015/openfastpath/</link><pubDate>Fri, 11 Dec 2015 14:40:23 +0900</pubDate><guid>https://cychong47.github.io/post/2015/openfastpath/</guid><description>Another Open source project.
-User-land protocol stack. Incorporate with ODP
-To use with DPDK, ODP and ODP-DPDK should be used.
-From the FAQ
-Q: Does the OFP IP stack mimic Linux stack config inside the fastpath, meaning does it intercept Linux ipconfig/ip commands and automatically create similar entities inside the fastpath stack? A: Yes. Uses Netlink to sync with ifconfig commands and also with routes. Q: Does the OFP IP stack have full IPv4/IPv6 fragmentation/re-assembly support?</description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>OFP on Keep calm and Write something</title><link>https://cychong47.github.io/tags/ofp/</link><description>Recent content in OFP on Keep calm and Write something</description><generator>Hugo</generator><language>en-us</language><lastBuildDate>Sun, 01 Apr 2018 02:38:40 +0000</lastBuildDate><atom:link href="https://cychong47.github.io/tags/ofp/index.xml" rel="self" type="application/rss+xml"/><item><title>OpenFastPath</title><link>https://cychong47.github.io/post/2015/openfastpath/</link><pubDate>Fri, 11 Dec 2015 14:40:23 +0900</pubDate><guid>https://cychong47.github.io/post/2015/openfastpath/</guid><description>&lt;p&gt;Another Open source project.&lt;/p&gt;
+&lt;p&gt;User-land protocol stack.
+Incorporate with ODP&lt;br&gt;
+To use with DPDK, ODP and ODP-DPDK should be used.&lt;/p&gt;
+&lt;p&gt;From the &lt;a href="http://www.openfastpath.org/index.php/faq/"&gt;FAQ&lt;/a&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;Q: Does the OFP IP stack mimic Linux stack config inside the fastpath, meaning does it intercept Linux ipconfig/ip commands and automatically create similar entities inside the fastpath stack?
+
+A: Yes. Uses Netlink to sync with ifconfig commands and also with routes.
+Q: Does the OFP IP stack have full IPv4/IPv6 fragmentation/re-assembly support?
+A: IPv4 only. Fragmentation and reassembly on IPv4. 
+
+Q: Does the OFP IP stack have a replacement/equivalent of DPDK KNI (Kernel Network Interface) to allow forwarding packets between Linux/Fastpath?
+
+A: OFP uses a generic solution called TAP, not intended for performance. Fastpath can relay packets to Linux(slowpath). The use case to relay packets from Linux to Fastpath is not implemented. Linux will send packets straight to NIC/wire.
+&lt;/code&gt;&lt;/pre&gt;</description></item></channel></rss>

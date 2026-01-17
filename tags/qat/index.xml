@@ -1,5 +1,23 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>QAT on Keep calm and write something</title><link>https://cychong47.github.io/tags/qat/</link><description>Recent content in QAT on Keep calm and write something</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Sun, 01 Apr 2018 02:38:40 +0000</lastBuildDate><atom:link href="https://cychong47.github.io/tags/qat/index.xml" rel="self" type="application/rss+xml"/><item><title>DPDK QAT example 빌드하기</title><link>https://cychong47.github.io/post/2016/build_dpdk_qat/</link><pubDate>Fri, 01 Jan 2016 10:57:39 +0900</pubDate><guid>https://cychong47.github.io/post/2016/build_dpdk_qat/</guid><description>Download dpdk-2.2.0.tar.gz Refer http://dpdk.org/download
-wget http://dpdk.org/browse/dpdk/snapshot/dpdk-2.2.0.tar.gz Download qat_mux Refer https://01.org/packet-processing/intel®-quickassist-technology-drivers-and-patches
-wget https://01.org/sites/default/files/page/qatmux.l.2.5.0-80.tgz Getting Started Guide 문서도 받아 둔다.
-wget https://01.org/sites/default/files/page/330750-004_qat_gsg.pdf Configure DPDK export RTE_SDK=/home/cychong/work/dpdk-2.2.0 export RTE_TARGET=x86_64-native-linuxapp-gcc make config T=$RTE_TARGET O=$RTE_TARGET make Configure QAT Ubuntu (14.04) 기준으로 몇 개 패키지를 설치해야 QAT를 빌드할 수 있는데 나름 기본적인 패키지들이라 그냥 설치해 놓으면 좋을 듯.
-sudo apt-get install zlib1g-dev sudo apt-get install libssl-dev 적당한 위치에 풀면 되는데 ~/work/qat에 압축을 푼 경우를 기준으로 정리</description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>QAT on Keep calm and Write something</title><link>https://cychong47.github.io/tags/qat/</link><description>Recent content in QAT on Keep calm and Write something</description><generator>Hugo</generator><language>en-us</language><lastBuildDate>Sun, 01 Apr 2018 02:38:40 +0000</lastBuildDate><atom:link href="https://cychong47.github.io/tags/qat/index.xml" rel="self" type="application/rss+xml"/><item><title>DPDK QAT example 빌드하기</title><link>https://cychong47.github.io/post/2016/build_dpdk_qat/</link><pubDate>Fri, 01 Jan 2016 10:57:39 +0900</pubDate><guid>https://cychong47.github.io/post/2016/build_dpdk_qat/</guid><description>&lt;h3 id="download-dpdk-220targz"&gt;Download dpdk-2.2.0.tar.gz&lt;/h3&gt;
+&lt;p&gt;Refer &lt;a href="http://dpdk.org/download"&gt;http://dpdk.org/download&lt;/a&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;wget http://dpdk.org/browse/dpdk/snapshot/dpdk-2.2.0.tar.gz
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id="download-qat_mux"&gt;Download qat_mux&lt;/h3&gt;
+&lt;p&gt;Refer &lt;a href="https://01.org/packet-processing/intel"&gt;https://01.org/packet-processing/intel&lt;/a&gt;®-quickassist-technology-drivers-and-patches&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;wget https://01.org/sites/default/files/page/qatmux.l.2.5.0-80.tgz 
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Getting Started Guide 문서도 받아 둔다.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;wget https://01.org/sites/default/files/page/330750-004_qat_gsg.pdf 
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id="configure-dpdk"&gt;Configure DPDK&lt;/h3&gt;
+&lt;pre&gt;&lt;code&gt;export RTE_SDK=/home/cychong/work/dpdk-2.2.0 
+export RTE_TARGET=x86_64-native-linuxapp-gcc
+make config T=$RTE_TARGET O=$RTE_TARGET
+make 
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id="configure-qat"&gt;Configure QAT&lt;/h3&gt;
+&lt;p&gt;Ubuntu (14.04) 기준으로 몇 개 패키지를 설치해야 QAT를 빌드할 수 있는데 나름 기본적인 패키지들이라 그냥 설치해 놓으면 좋을 듯.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;sudo apt-get install zlib1g-dev
+sudo apt-get install libssl-dev
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;적당한 위치에 풀면 되는데 &lt;code&gt;~/work/qat&lt;/code&gt;에 압축을 푼 경우를 기준으로 정리&lt;/p&gt;</description></item></channel></rss>

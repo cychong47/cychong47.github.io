@@ -1,3 +1,73 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Homebrew on Keep calm and write something</title><link>https://cychong47.github.io/tags/homebrew/</link><description>Recent content in Homebrew on Keep calm and write something</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Sat, 21 Jul 2018 15:10:14 +0000</lastBuildDate><atom:link href="https://cychong47.github.io/tags/homebrew/index.xml" rel="self" type="application/rss+xml"/><item><title>2nd patch submit to DPDK</title><link>https://cychong47.github.io/post/2018/submit-patch-to-dpdk-with-git/</link><pubDate>Sat, 21 Jul 2018 15:02:14 +0900</pubDate><guid>https://cychong47.github.io/post/2018/submit-patch-to-dpdk-with-git/</guid><description>AVX2가 지원되지 않는 머신에서 쓸데없이 ACL library 빌드할 때 AVX2를 이용해서 빌드하려는 문제를 확인했다. 지금까지 아무도 고치지 않은 게 이상하긴 한데 그래도 내가 생각한 수정 방법이 제대로 동작하는 듯 해서 패치를 한번 보내보기로 했다.
-수정사항은 비교적 간단하다. ACL 라이브러리 빌드할 때 AVX2를 이용해서 빌드해야 하는 경우인지를 검사하는 코드가 lib/librte_acl/Makefile에 정의되어 있는데 여기서 항상 -march=core-avx2 옵션을 사용해서 AVX2가 지원되지 않는 머신에서도 AVX2를 사용해서 gcc가 빌드하도록 하는 걸로 보였다. 다른 코드 빌드할 때는 문제가 없는데 유독 ACL library에서만 이런 문제가 나서 보다 보니 아무래도 Makefile이 잘못된 듯 하다.</description></item><item><title>Ansible - Install homebrew</title><link>https://cychong47.github.io/post/2017/ansible-homebrew/</link><pubDate>Sat, 30 Dec 2017 02:34:39 +0900</pubDate><guid>https://cychong47.github.io/post/2017/ansible-homebrew/</guid><description>update homebrew mbpr15:mp3 cychong$ ansible all -m homebrew -a update_homebrew=yes localhost | SUCCESS =&amp;gt; { &amp;#34;changed&amp;#34;: true, &amp;#34;msg&amp;#34;: &amp;#34;Homebrew updated successfully.&amp;#34; } mini2 | SUCCESS =&amp;gt; { &amp;#34;changed&amp;#34;: true, &amp;#34;msg&amp;#34;: &amp;#34;Homebrew updated successfully.&amp;#34; } upgrade all packages mbpr15:mp3 cychong$ ansible all -m homebrew -a update_homebrew=yes -a upgrade_all=yes localhost | SUCCESS =&amp;gt; { &amp;#34;changed&amp;#34;: true, &amp;#34;msg&amp;#34;: &amp;#34;Homebrew upgraded.&amp;#34; } mini2 | SUCCESS =&amp;gt; { &amp;#34;changed&amp;#34;: true, &amp;#34;msg&amp;#34;: &amp;#34;Homebrew upgraded.&amp;#34; } install a package mbpr15:mp3 cychong$ ansible all -m homebrew -a name=neovim -a state=present mbpr15:~ cychong$ cat install_brew_neovim.</description></item><item><title>Error in using homebrew module in ansible</title><link>https://cychong47.github.io/post/2017/untitled-2/</link><pubDate>Sun, 08 Oct 2017 17:25:43 +0900</pubDate><guid>https://cychong47.github.io/post/2017/untitled-2/</guid><description>When I call the homebrew modules for three hosts including the localhost, one host reports error.
-mbpr15:~ cychong$ ansible-playbook install_brew_ack.yaml --verbose No config file found; using defaults PLAY [all] ************************************************************************************************** TASK [Gathering Facts] ************************************************************************************** ok: [localhost] ok: [mini2] ok: [mini1] TASK [install ack in homebrew] ****************************************************************************** ok: [localhost] =&amp;gt; {&amp;#34;changed&amp;#34;: false, &amp;#34;failed&amp;#34;: false, &amp;#34;msg&amp;#34;: &amp;#34;Package already installed: ack&amp;#34;} ok: [mini1] =&amp;gt; {&amp;#34;changed&amp;#34;: false, &amp;#34;failed&amp;#34;: false, &amp;#34;msg&amp;#34;: &amp;#34;Package already installed: ack&amp;#34;} fatal: [mini2]: FAILED!</description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Homebrew on Keep calm and Write something</title><link>https://cychong47.github.io/tags/homebrew/</link><description>Recent content in Homebrew on Keep calm and Write something</description><generator>Hugo</generator><language>en-us</language><lastBuildDate>Sat, 21 Jul 2018 15:10:14 +0000</lastBuildDate><atom:link href="https://cychong47.github.io/tags/homebrew/index.xml" rel="self" type="application/rss+xml"/><item><title>2nd patch submit to DPDK</title><link>https://cychong47.github.io/post/2018/submit-patch-to-dpdk-with-git/</link><pubDate>Sat, 21 Jul 2018 15:02:14 +0900</pubDate><guid>https://cychong47.github.io/post/2018/submit-patch-to-dpdk-with-git/</guid><description>&lt;p&gt;AVX2가 지원되지 않는 머신에서 쓸데없이 ACL library 빌드할 때 AVX2를 이용해서 빌드하려는 문제를 확인했다. 지금까지 아무도 고치지 않은 게 이상하긴 한데 그래도 내가 생각한 수정 방법이 제대로 동작하는 듯 해서 패치를 한번 보내보기로 했다.&lt;/p&gt;
+&lt;p&gt;수정사항은 비교적 간단하다.
+ACL 라이브러리 빌드할 때 AVX2를 이용해서 빌드해야 하는 경우인지를 검사하는 코드가 &lt;code&gt;lib/librte_acl/Makefile&lt;/code&gt;에 정의되어 있는데 여기서 항상 &lt;code&gt;-march=core-avx2&lt;/code&gt; 옵션을 사용해서 AVX2가 지원되지 않는 머신에서도 AVX2를 사용해서 gcc가 빌드하도록 하는 걸로 보였다. 다른 코드 빌드할 때는 문제가 없는데 유독 ACL library에서만 이런 문제가 나서 보다 보니 아무래도 Makefile이 잘못된 듯 하다.&lt;/p&gt;</description></item><item><title>Ansible - Install homebrew</title><link>https://cychong47.github.io/post/2017/ansible-homebrew/</link><pubDate>Sat, 30 Dec 2017 02:34:39 +0900</pubDate><guid>https://cychong47.github.io/post/2017/ansible-homebrew/</guid><description>&lt;h2 id="update-homebrew"&gt;update homebrew&lt;/h2&gt;
+&lt;pre tabindex="0"&gt;&lt;code&gt;mbpr15:mp3 cychong$ ansible all -m homebrew -a update_homebrew=yes
+localhost | SUCCESS =&amp;gt; {
+ &amp;#34;changed&amp;#34;: true,
+ &amp;#34;msg&amp;#34;: &amp;#34;Homebrew updated successfully.&amp;#34;
+}
+mini2 | SUCCESS =&amp;gt; {
+ &amp;#34;changed&amp;#34;: true,
+ &amp;#34;msg&amp;#34;: &amp;#34;Homebrew updated successfully.&amp;#34;
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;h2 id="upgrade-all-packages"&gt;upgrade all packages&lt;/h2&gt;
+&lt;pre tabindex="0"&gt;&lt;code&gt;mbpr15:mp3 cychong$ ansible all -m homebrew -a update_homebrew=yes -a upgrade_all=yes
+localhost | SUCCESS =&amp;gt; {
+ &amp;#34;changed&amp;#34;: true,
+ &amp;#34;msg&amp;#34;: &amp;#34;Homebrew upgraded.&amp;#34;
+}
+mini2 | SUCCESS =&amp;gt; {
+ &amp;#34;changed&amp;#34;: true,
+ &amp;#34;msg&amp;#34;: &amp;#34;Homebrew upgraded.&amp;#34;
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;h2 id="install-a-package"&gt;install a package&lt;/h2&gt;
+&lt;pre tabindex="0"&gt;&lt;code&gt;mbpr15:mp3 cychong$ ansible all -m homebrew -a name=neovim -a state=present
+&lt;/code&gt;&lt;/pre&gt;&lt;pre tabindex="0"&gt;&lt;code&gt;mbpr15:~ cychong$ cat install_brew_neovim.yaml 
+---
+- hosts: all
+ tasks:
+ - name : install neovim in homebrew
+ homebrew: 
+ name: neovim
+ state: present
+
+mbpr15:~ cychong$ ansible-playbook install_brew_neovim.yaml 
+
+PLAY [all] *****************************************************************************************************************************************************************
+
+TASK [Gathering Facts] *****************************************************************************************************************************************************
+ok: [localhost]
+ok: [mini2]
+
+TASK [install neovim in homebrew] ******************************************************************************************************************************************
+changed: [localhost]
+changed: [mini2]
+
+PLAY RECAP *****************************************************************************************************************************************************************
+localhost : ok=2 changed=1 unreachable=0 failed=0 
+mini2 : ok=2 changed=1 unreachable=0 failed=0 
+
+mbpr15:~ cychong$ which nvim
+/usr/local/bin/nvim
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;삭제는 &lt;code&gt;state&lt;/code&gt;만 &lt;code&gt;absent&lt;/code&gt;로 변경하면 된다.&lt;/p&gt;</description></item><item><title>Error in using homebrew module in ansible</title><link>https://cychong47.github.io/post/2017/untitled-2/</link><pubDate>Sun, 08 Oct 2017 17:25:43 +0900</pubDate><guid>https://cychong47.github.io/post/2017/untitled-2/</guid><description>&lt;p&gt;When I call the homebrew modules for three hosts including the localhost, one host reports error.&lt;/p&gt;
+&lt;pre tabindex="0"&gt;&lt;code&gt;mbpr15:~ cychong$ ansible-playbook install_brew_ack.yaml --verbose
+No config file found; using defaults
+
+PLAY [all] **************************************************************************************************
+
+TASK [Gathering Facts] **************************************************************************************
+ok: [localhost]
+ok: [mini2]
+ok: [mini1]
+
+TASK [install ack in homebrew] ******************************************************************************
+ok: [localhost] =&amp;gt; {&amp;#34;changed&amp;#34;: false, &amp;#34;failed&amp;#34;: false, &amp;#34;msg&amp;#34;: &amp;#34;Package already installed: ack&amp;#34;}
+ok: [mini1] =&amp;gt; {&amp;#34;changed&amp;#34;: false, &amp;#34;failed&amp;#34;: false, &amp;#34;msg&amp;#34;: &amp;#34;Package already installed: ack&amp;#34;}
+fatal: [mini2]: FAILED! =&amp;gt; {&amp;#34;changed&amp;#34;: false, &amp;#34;failed&amp;#34;: true, &amp;#34;msg&amp;#34;: &amp;#34;Warning: git 2.14.2 is already installed\nError: Git must be installed and in your PATH!\nxcrun: error: invalid active developer path (/Library/Developer/CommandLineTools), missing xcrun at: /Library/Developer/CommandLineTools/usr/bin/xcrun\nError: ack cannot be built with any available compilers.\nInstall GNU&amp;#39;s GCC\n brew install gcc&amp;#34;}
+	to retry, use: --limit @/Users/cychong/install_brew_ack.retry
+
+PLAY RECAP **************************************************************************************************
+localhost : ok=2 changed=0 unreachable=0 failed=0 
+mini1 : ok=2 changed=0 unreachable=0 failed=0 
+mini2 : ok=1 changed=0 unreachable=0 failed=1 
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;This requires xcrun is not installed. (The following command will have a pop-up window to install command line tool).&lt;/p&gt;</description></item></channel></rss>

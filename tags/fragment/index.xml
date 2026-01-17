@@ -1,4 +1,21 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Fragment on Keep calm and write something</title><link>https://cychong47.github.io/tags/fragment/</link><description>Recent content in Fragment on Keep calm and write something</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Sun, 01 Apr 2018 02:38:40 +0000</lastBuildDate><atom:link href="https://cychong47.github.io/tags/fragment/index.xml" rel="self" type="application/rss+xml"/><item><title>fragment missing test with scapy</title><link>https://cychong47.github.io/post/2016/fragment-missing-test-with-scapy/</link><pubDate>Sun, 14 Feb 2016 13:57:41 +0900</pubDate><guid>https://cychong47.github.io/post/2016/fragment-missing-test-with-scapy/</guid><description>다음과 같이 scapy를 이용해서 fragment를 쉽게 만들 수 있다.
-from scapy.all import * dip=&amp;#34;10.0.0.1&amp;#34; payload=&amp;#34; &amp;#34;*1000 packet=IP(dst=dip)/UDP(dport=0x1234)/payload frag_list=fragment(packet,fragsize=500) counter=1 for fragment in frag_list: print &amp;#34;Packet no%d&amp;#34; %counter print fragment.show() counter+=1 send(fragment) frag_list에서 counter 변수를 확인해서 전송하지 않으면 간단하게 fragment가 수신되지 않은 경우에 시험할 수 있음.
-필요하면 frag_list의 순서를 뒤집는 것도 가능하고, 각 fragment의 offset값을 조정하거나 패킷 크기를 변경하면 다른 비정상 경우도 쉽게 시험할 수 있다.
-scapy interactive tutorial</description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Fragment on Keep calm and Write something</title><link>https://cychong47.github.io/tags/fragment/</link><description>Recent content in Fragment on Keep calm and Write something</description><generator>Hugo</generator><language>en-us</language><lastBuildDate>Sun, 01 Apr 2018 02:38:40 +0000</lastBuildDate><atom:link href="https://cychong47.github.io/tags/fragment/index.xml" rel="self" type="application/rss+xml"/><item><title>fragment missing test with scapy</title><link>https://cychong47.github.io/post/2016/fragment-missing-test-with-scapy/</link><pubDate>Sun, 14 Feb 2016 13:57:41 +0900</pubDate><guid>https://cychong47.github.io/post/2016/fragment-missing-test-with-scapy/</guid><description>&lt;p&gt;다음과 같이 scapy를 이용해서 fragment를 쉽게 만들 수 있다.&lt;/p&gt;
+&lt;pre tabindex="0"&gt;&lt;code&gt;from scapy.all import *
+
+dip=&amp;#34;10.0.0.1&amp;#34;
+payload=&amp;#34; &amp;#34;*1000
+
+packet=IP(dst=dip)/UDP(dport=0x1234)/payload
+ 
+frag_list=fragment(packet,fragsize=500)
+ 
+counter=1
+for fragment in frag_list:
+ print &amp;#34;Packet no%d&amp;#34; %counter
+ print 
+
+ fragment.show()
+ counter+=1
+ send(fragment)
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;frag_list에서 counter 변수를 확인해서 전송하지 않으면 간단하게 fragment가 수신되지 않은 경우에 시험할 수 있음.&lt;/p&gt;
+&lt;p&gt;필요하면 frag_list의 순서를 뒤집는 것도 가능하고, 각 fragment의 offset값을 조정하거나 패킷 크기를 변경하면 다른 비정상 경우도 쉽게 시험할 수 있다.&lt;/p&gt;
+&lt;p&gt;&lt;a href="http://www.secdev.org/projects/scapy/doc/usage.html#interactive-tutorial"&gt;scapy interactive tutorial&lt;/a&gt;&lt;/p&gt;</description></item></channel></rss>

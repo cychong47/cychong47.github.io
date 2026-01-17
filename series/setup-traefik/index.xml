@@ -1,10 +1,46 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Setup Traefik on Keep calm and write something</title><link>https://cychong47.github.io/series/setup-traefik/</link><description>Recent content in Setup Traefik on Keep calm and write something</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Sat, 08 May 2021 23:16:00 +0900</lastBuildDate><atom:link href="https://cychong47.github.io/series/setup-traefik/index.xml" rel="self" type="application/rss+xml"/><item><title>Traefik middleware를 이용한 접근 제한</title><link>https://cychong47.github.io/post/2021/2021-05-08-access-control-with-traefik-middleware/</link><pubDate>Sat, 08 May 2021 23:16:00 +0900</pubDate><guid>https://cychong47.github.io/post/2021/2021-05-08-access-control-with-traefik-middleware/</guid><description>특정 서비스를 외부에 공개하고 싶지 않고, 내부 망에서만 접근하게 하려면 Traefik의 middleware가 제공하는 ipWhilteList 기능을 활용할 수 있다.
-(이름은 요즘 추세에 맞게 ipAllowList 정도로 변경되어야 할 것 같은데..)
-전체적인 동작은 IpWhitelist - Traefik 페이지에 있는 그림으로 간단하게 요약이 가능할 듯. 사이트에 접근하려는 client가 미리 정의된 list에 있는 경우에만 접근을 허용한다는.
-middleware 정의 접근을 허용할 client들의 CIDR을 정의한다. 특정 subnet을 정의하거나, 특정 host를 정의할 수 있다. 당연히 복수 정의도 가능하고.
-아래 예는 192.</description></item><item><title>Replace NodePort with ClsuterIP - Thx to Traefik</title><link>https://cychong47.github.io/post/2021/2021-03-31-change-nodeport-to-clusterip/</link><pubDate>Sat, 03 Apr 2021 22:00:00 +0900</pubDate><guid>https://cychong47.github.io/post/2021/2021-03-31-change-nodeport-to-clusterip/</guid><description>Traefik을 이용한 Ingress/Ingress Controller를 이용해서 nginx 기반 Pod를 cluster 외부에서 접속할 수 있도록 설정했는데 곰곰히 생각해 보니 그렇다면 nginx service에 굳이 NodePort를 사용해야 하나 라는 생각이 들었다. 이제 외부로부터의 요청은 든든한 Traefik이 처리해 줄 테니 직접 각 pod가 서비스를 NodePort를 이용해서 외부에 오픈할 필요가 없어 보였다.
-이를 위해 기존에 사용하던 nginx의 value 파일을 다음과 같이 수정했다. NodePort를 위해 필요했던 정보들이 사라지고, 수신하고 싶은 Port만 지정하면 되니설정 파일이 무척 깔끔해졌다.
-service: # type: NodePort # targetPort: 80 # container app.</description></item><item><title>Setup Ingress with Traefik</title><link>https://cychong47.github.io/post/2021/2021-03-31-setup-ingress-with-traefik/</link><pubDate>Wed, 31 Mar 2021 23:00:00 +0900</pubDate><guid>https://cychong47.github.io/post/2021/2021-03-31-setup-ingress-with-traefik/</guid><description>Ingress Controller 를 설치(Helm으로 Traefik 설치하기)했으니 이제 Ingress를 설정해서 실제 cluster 외부로부터의 http/https 메시지를 nginx pod에 전달되게 해 본다.
-Ingress Ingress는 Cluster 외부에서 접근하는 http/https request에 대한 라우팅을 제어하는 기능을 제공한다. Ingress | Kubernetes
-ingress.yaml 파일을 다음과 같이 작성한다. . 아래는 두 가지 rule을 설정하고 있는데 host가 ‘mini1’이고, URL path가 /ost면 podcast-nginx라는 서비스로 전달하게 하는 것과 host는 상관없이 path가 /ost면 역시 같은 podcast-nginx로 보내는 것이다.
-kind: Ingress apiVersion: extensions/v1beta1 metadata: name: &amp;#34;test&amp;#34; namespace: default spec: rules: - host: mini1 http: paths: - path: /ost backend: serviceName: podcast-nginx servicePort: 8099 - http: paths: - path: /ost backend: serviceName: podcast-nginx servicePort: 8099 Kubectl 명령을 이용해 적용해 본다.</description></item><item><title>Helm으로 Traefik 설치하기</title><link>https://cychong47.github.io/post/2021/2021-03-30-install-traefik-with-helm/</link><pubDate>Tue, 30 Mar 2021 09:00:00 +0900</pubDate><guid>https://cychong47.github.io/post/2021/2021-03-30-install-traefik-with-helm/</guid><description>지금 집에 있는 서버(mac mini 2009)에서 nginx를 이용해서 블로그를 호스팅하는데 port를 구분해서 외부에 노출하고 있다. 외부에서의 &amp;gt;접근을 위해 NodePort를 사용하고, 각 nginx instance는 서로 다른 port를 이용하고 있는데 port번호가 아니라 URL 경로를 이용해서 서로 다른 서비스를 이용할 수 있는 reverse proxy 기능을 사용하면 좀 더 깔끔할 듯 하다. Kubernetes에서는 ingress와 ingress controller를 이용해서 이 reverse proxy를 구현할 수 있다고 한다. Kubernetes에서는 ingress는 기본적으로 제공하는 object 지만, ingress controller는 제공하고 있지 않아, 별도로 설치해야 한다.</description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Setup Traefik on Keep calm and Write something</title><link>https://cychong47.github.io/series/setup-traefik/</link><description>Recent content in Setup Traefik on Keep calm and Write something</description><generator>Hugo</generator><language>en-us</language><lastBuildDate>Sat, 08 May 2021 23:16:00 +0900</lastBuildDate><atom:link href="https://cychong47.github.io/series/setup-traefik/index.xml" rel="self" type="application/rss+xml"/><item><title>Traefik middleware를 이용한 접근 제한</title><link>https://cychong47.github.io/post/2021/2021-05-08-access-control-with-traefik-middleware/</link><pubDate>Sat, 08 May 2021 23:16:00 +0900</pubDate><guid>https://cychong47.github.io/post/2021/2021-05-08-access-control-with-traefik-middleware/</guid><description>&lt;p&gt;특정 서비스를 외부에 공개하고 싶지 않고, 내부 망에서만 접근하게 하려면 Traefik의 middleware가 제공하는 &lt;code&gt;ipWhilteList&lt;/code&gt; 기능을 활용할 수 있다.&lt;/p&gt;
+&lt;p&gt;(이름은 요즘 추세에 맞게 &lt;code&gt;ipAllowList&lt;/code&gt; 정도로 변경되어야 할 것 같은데..)&lt;/p&gt;
+&lt;p&gt;전체적인 동작은 &lt;a href="https://doc.traefik.io/traefik/middlewares/ipwhitelist/"&gt;IpWhitelist - Traefik&lt;/a&gt; 페이지에 있는 그림으로 간단하게 요약이 가능할 듯. 사이트에 접근하려는 client가 미리 정의된 list에 있는 경우에만 접근을 허용한다는.&lt;/p&gt;
+&lt;p&gt;&lt;img src="https://doc.traefik.io/traefik/assets/img/middleware/ipwhitelist.png" alt=""&gt;&lt;/p&gt;
+&lt;h2 id="middleware-정의"&gt;middleware 정의&lt;/h2&gt;
+&lt;p&gt;접근을 허용할 client들의 CIDR을 정의한다. 특정 subnet을 정의하거나, 특정 host를 정의할 수 있다. 당연히 복수 정의도 가능하고.&lt;/p&gt;
+&lt;p&gt;아래 예는 &lt;code&gt;192.168.0.0/16&lt;/code&gt; 에서의 접근만 허용하는 설정이다.&lt;/p&gt;</description></item><item><title>Replace NodePort with ClsuterIP - Thx to Traefik</title><link>https://cychong47.github.io/post/2021/2021-03-31-change-nodeport-to-clusterip/</link><pubDate>Sat, 03 Apr 2021 22:00:00 +0900</pubDate><guid>https://cychong47.github.io/post/2021/2021-03-31-change-nodeport-to-clusterip/</guid><description>&lt;p&gt;Traefik을 이용한 Ingress/Ingress Controller를 이용해서 nginx 기반 Pod를 cluster 외부에서 접속할 수 있도록 설정했는데 곰곰히 생각해 보니 그렇다면 nginx service에 굳이 &lt;code&gt;NodePort&lt;/code&gt;를 사용해야 하나 라는 생각이 들었다. 이제 외부로부터의 요청은 든든한 Traefik이 처리해 줄 테니 직접 각 pod가 서비스를 NodePort를 이용해서 외부에 오픈할 필요가 없어 보였다.&lt;/p&gt;
+&lt;p&gt;이를 위해 기존에 사용하던 nginx의 value 파일을 다음과 같이 수정했다. NodePort를 위해 필요했던 정보들이 사라지고, 수신하고 싶은 Port만 지정하면 되니설정 파일이 무척 깔끔해졌다.&lt;/p&gt;
+&lt;pre tabindex="0"&gt;&lt;code&gt;service:
+ # type: NodePort
+ # targetPort: 80 # container app. itself
+ # port: 8099 # pod
+ # nodePort: 8099 # cluster-wise
+ # externalTrafficPolicy: Local
+ # externalIPs: [192.168.0.100]
+ type: ClusterIP
+ port: 80
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;변경된 value 파일을 이용해서 다시 deploy.&lt;/p&gt;</description></item><item><title>Setup Ingress with Traefik</title><link>https://cychong47.github.io/post/2021/2021-03-31-setup-ingress-with-traefik/</link><pubDate>Wed, 31 Mar 2021 23:00:00 +0900</pubDate><guid>https://cychong47.github.io/post/2021/2021-03-31-setup-ingress-with-traefik/</guid><description>&lt;p&gt;Ingress Controller 를 설치(&lt;a href="https://cychong47.github.io/post/2021/2021-03-30-install-traefik-with-helm/"&gt;Helm으로 Traefik 설치하기&lt;/a&gt;)했으니 이제 Ingress를 설정해서 실제 cluster 외부로부터의 http/https 메시지를 nginx pod에 전달되게 해 본다.&lt;/p&gt;
+&lt;h1 id="ingress"&gt;Ingress&lt;/h1&gt;
+&lt;p&gt;Ingress는 Cluster 외부에서 접근하는 http/https request에 대한 라우팅을 제어하는 기능을 제공한다.
+&lt;a href="https://kubernetes.io/docs/concepts/services-networking/ingress/"&gt;Ingress | Kubernetes&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;ingress.yaml 파일을 다음과 같이 작성한다. . 아래는 두 가지 rule을 설정하고 있는데 host가 ‘mini1’이고, URL path가 &lt;code&gt;/ost&lt;/code&gt;면 podcast-nginx라는 서비스로 전달하게 하는 것과 host는 상관없이 path가 &lt;code&gt;/ost&lt;/code&gt;면 역시 같은 podcast-nginx로 보내는 것이다.&lt;/p&gt;
+&lt;pre tabindex="0"&gt;&lt;code&gt;kind: Ingress
+apiVersion: extensions/v1beta1
+metadata:
+ name: &amp;#34;test&amp;#34;
+ namespace: default
+
+spec:
+ rules:
+ - host: mini1
+ http:
+ paths:
+ - path: /ost
+ backend:
+ serviceName: podcast-nginx
+ servicePort: 8099
+ - http:
+ paths:
+ - path: /ost
+ backend:
+ serviceName: podcast-nginx
+ servicePort: 8099
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Kubectl 명령을 이용해 적용해 본다.&lt;/p&gt;</description></item><item><title>Helm으로 Traefik 설치하기</title><link>https://cychong47.github.io/post/2021/2021-03-30-install-traefik-with-helm/</link><pubDate>Tue, 30 Mar 2021 09:00:00 +0900</pubDate><guid>https://cychong47.github.io/post/2021/2021-03-30-install-traefik-with-helm/</guid><description>&lt;p&gt;지금 집에 있는 서버(mac mini 2009)에서 nginx를 이용해서 블로그를 호스팅하는데 port를 구분해서 외부에 노출하고 있다. 외부에서의 &amp;gt;접근을 위해 NodePort를 사용하고, 각 nginx instance는 서로 다른 port를 이용하고 있는데 port번호가 아니라 URL 경로를 이용해서 서로
+다른 서비스를 이용할 수 있는 reverse proxy 기능을 사용하면 좀 더 깔끔할 듯 하다.
+Kubernetes에서는 ingress와 ingress controller를 이용해서 이 reverse proxy를 구현할 수 있다고 한다. Kubernetes에서는 ingress는 기본적으로 제공하는 object 지만, ingress controller는 제공하고 있지 않아, 별도로 설치해야 한다.&lt;/p&gt;</description></item></channel></rss>

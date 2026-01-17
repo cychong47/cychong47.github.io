@@ -1,1 +1,155 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>“GPU” on Keep calm and write something</title><link>https://cychong47.github.io/tags/gpu/</link><description>Recent content in “GPU” on Keep calm and write something</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Mon, 02 Nov 2020 08:56:16 +0900</lastBuildDate><atom:link href="https://cychong47.github.io/tags/gpu/index.xml" rel="self" type="application/rss+xml"/><item><title>Chapter 2. CUDA Memory Management</title><link>https://cychong47.github.io/post/2020/2020-11-02-chapter-2.-cuda-memory-management/</link><pubDate>Mon, 02 Nov 2020 08:56:16 +0900</pubDate><guid>https://cychong47.github.io/post/2020/2020-11-02-chapter-2.-cuda-memory-management/</guid><description>2. CUDA Memory Management Most of the application’s performance will be bottlecked by memory-related constraints GPU RAM BW : 900GB/s (DDR3 ?) NV Visual Profiler Global memory is a staging area where all of the date gets copied from CPU memory. Global Memory(device memory) is visible to all of the threads in the kernel and also visible to CPu. Coalesced vs. uncoalesced global memory access coalesced global memory access : Sequential memory access is adjacent Warp Warp is a unit of thread scheduling/execution in SMs.</description></item><item><title>Chapter 1. Introduction to CUDA Programming</title><link>https://cychong47.github.io/post/2020/2020-11-02-chapter-1-introduction-to-cuda-programming/</link><pubDate>Mon, 02 Nov 2020 08:55:34 +0900</pubDate><guid>https://cychong47.github.io/post/2020/2020-11-02-chapter-1-introduction-to-cuda-programming/</guid><description>1. Introduction to CUDA Programming CPU Architecture is optimized for low latency accessing while GPU architecture is optimized for data parallel throughput compution CPU hides latency of data by frequently stroring used data in caches and utilize the temporal locality In CUDA, the execution unit is a warp not a thread. Context switching is happens between the warps and not threads. GPU has lots of registers, all the thread context switching information is already present in the registers.</description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>“GPU” on Keep calm and Write something</title><link>https://cychong47.github.io/tags/gpu/</link><description>Recent content in “GPU” on Keep calm and Write something</description><generator>Hugo</generator><language>en-us</language><lastBuildDate>Mon, 02 Nov 2020 08:56:16 +0900</lastBuildDate><atom:link href="https://cychong47.github.io/tags/gpu/index.xml" rel="self" type="application/rss+xml"/><item><title>Chapter 2. CUDA Memory Management</title><link>https://cychong47.github.io/post/2020/2020-11-02-chapter-2.-cuda-memory-management/</link><pubDate>Mon, 02 Nov 2020 08:56:16 +0900</pubDate><guid>https://cychong47.github.io/post/2020/2020-11-02-chapter-2.-cuda-memory-management/</guid><description>&lt;h1 id="2-cuda-memory-management"&gt;2. CUDA Memory Management&lt;/h1&gt;
+&lt;ul&gt;
+&lt;li&gt;Most of the application’s performance will be bottlecked by memory-related constraints&lt;/li&gt;
+&lt;li&gt;GPU RAM BW : 900GB/s (DDR3 ?)&lt;/li&gt;
+&lt;li&gt;NV Visual Profiler&lt;/li&gt;
+&lt;li&gt;Global memory is a &lt;strong&gt;staging area&lt;/strong&gt; where all of the date gets copied from CPU memory.&lt;/li&gt;
+&lt;li&gt;Global Memory(device memory) is visible to all of the threads in the kernel and also visible to CPu.&lt;/li&gt;
+&lt;li&gt;Coalesced vs. uncoalesced global memory access
+&lt;ul&gt;
+&lt;li&gt;coalesced global memory access : Sequential memory access is adjacent&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id="warp"&gt;Warp&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Warp is a unit of thread scheduling/execution in SMs. Once a block has been assigned to an SM, it is divided into a 32-threads unit known as a &lt;strong&gt;warp&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;Among all of the available warps, the ones with operands that are ready for the next instruction become &lt;strong&gt;eligible&lt;/strong&gt; for execution.&lt;/li&gt;
+&lt;li&gt;All of the threads in a warp execute the same instruction when selected.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id="aos-vs-soa"&gt;AOS vs. SOA&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;AOS : Array of Structure. &lt;code&gt;A[0].a, A[1].a, ...&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;SOA : Structure of Array. Each member of structure is array &lt;code&gt;S.a[0], S[1], ...&lt;/code&gt;
+&lt;ul&gt;
+&lt;li&gt;Suitable for SIMT - same operation for the same member with different array index. In this case, the threads of the same block access adjacent memory spaces in turn increase the spatial locality.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;As a GPU is latency-hiding architecture, it becomes important to saturate the memory bandwidth.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id="shared-memory"&gt;Shared Memory&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;User-Managed Cache&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;Shared memory is only visible to the threads &lt;strong&gt;in the same block&lt;/strong&gt;.
+&lt;ul&gt;
+&lt;li&gt;All of the threads in a block see the same version of shared memory.&lt;/li&gt;
+&lt;li&gt;Threads in other SM can not see this shared memory&lt;/li&gt;
+&lt;li&gt;Another block has its own shared memory&lt;/li&gt;
+&lt;li&gt;Even in the same SM, different block has different share memory.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Key usage of shared memory comes from that threads within a block can share memory access
+&lt;ul&gt;
+&lt;li&gt;Shared variable can be located in the shared memory to be accessed multiple times.&lt;/li&gt;
+&lt;li&gt;CDUA 9.0 provides inter-thread communication between ones in the different SMs&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Bank
+&lt;ul&gt;
+&lt;li&gt;Shared memory is organized into banks to achieve higher bandwidth.&lt;/li&gt;
+&lt;li&gt;Each bank can serve one address per cycle.&lt;/li&gt;
+&lt;li&gt;Volta GPU has 32 banks each 4 bytes wide. 128 Bytes at one cycle&lt;/li&gt;
+&lt;li&gt;Bank Conflict
+&lt;ul&gt;
+&lt;li&gt;If multiple threads access the same Bank, the access to the shared memory is serialized. This should be avoid if possible.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id="read-only-cache"&gt;Read-only Cache&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Referred to as &lt;strong&gt;texture cache&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;const __restrict__&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;Ideally used when the entire warp to read the same address/data&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id="registers"&gt;Registers&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Scope : a single thread. Each thread has its own registers&lt;/li&gt;
+&lt;li&gt;Local variables are stored in the registers
+&lt;ul&gt;
+&lt;li&gt;Too many local variable can cause performance issue as the data should be reside in L1 or L2 cache or device memory&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;register spills&lt;/strong&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id="pinned-memory"&gt;Pinned-memory&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Recommendations to reduce host/device memory copy
+&lt;ul&gt;
+&lt;li&gt;Minimize amount of data to be transferred&lt;/li&gt;
+&lt;li&gt;Use the &lt;strong&gt;pinned memory&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;Batch small transfers into one large transfer&lt;/li&gt;
+&lt;li&gt;Asynchronous data transfer&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;malloc&lt;/code&gt; allocates pageable memory
+&lt;ul&gt;
+&lt;li&gt;Device including GPU can not access the pageable memory.&lt;/li&gt;
+&lt;li&gt;When the device access the pageable memory, the driver allocate temporary pinned memory and copy the data from the pageable memory and do DMA&lt;/li&gt;
+&lt;li&gt;This introduce additional latency&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;cudaMallocHost&lt;/code&gt; allocates pinned memory from the system memory.
+&lt;ul&gt;
+&lt;li&gt;Too much use of pinned memory impact on the system performance as non-pageable memory is also used by the system(OS)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id="unified-memory"&gt;Unified Memory&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Provide a single memory space accessible from CPU and GPU - easy programming and porting the CPU application to GPU&lt;/li&gt;
+&lt;li&gt;Allow over-subscription&lt;/li&gt;
+&lt;li&gt;A single pointer is used by the CPU and GPU while non-unified memory case, each has to have its own pointer as host memory and device memory are different.&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;cudaMallocManaged&lt;/code&gt; does not allocate the physical memory when it is called but it allocate when the data is touch for the first time. This requires &lt;code&gt;page migration&lt;/code&gt; and introduce additional time.
+&lt;ul&gt;
+&lt;li&gt;Workaround 1 : define an initialization kernel on the GPU which &lt;strong&gt;touch&lt;/strong&gt; the unified memory space on behalf of the workload kernel.&lt;/li&gt;
+&lt;li&gt;Workaround 2: Prefetch&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id="initialization-kernel"&gt;Initialization kernel&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;왜 page fault 횟수가 줄어드는 지 잘 이해가 안되네&amp;hellip;. 그리고 여러 thread가 동시에 접근하는 건 page fault 회수가 1번인가?? 예제가 잘 이해가 안됨&amp;hellip;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id="prefetch"&gt;Prefetch&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;cudaMemPrefetchAsync&lt;/code&gt;&lt;/p&gt;</description></item><item><title>Chapter 1. Introduction to CUDA Programming</title><link>https://cychong47.github.io/post/2020/2020-11-02-chapter-1-introduction-to-cuda-programming/</link><pubDate>Mon, 02 Nov 2020 08:55:34 +0900</pubDate><guid>https://cychong47.github.io/post/2020/2020-11-02-chapter-1-introduction-to-cuda-programming/</guid><description>&lt;h1 id="1-introduction-to-cuda-programming"&gt;1. Introduction to CUDA Programming&lt;/h1&gt;
+&lt;ul&gt;
+&lt;li&gt;CPU Architecture is optimized for low latency accessing while GPU architecture is optimized for data parallel throughput compution&lt;/li&gt;
+&lt;li&gt;CPU hides latency of data by frequently stroring used data in caches and utilize the temporal locality&lt;/li&gt;
+&lt;li&gt;In CUDA, the execution unit is a warp not a thread. Context switching is happens between the warps and not threads.&lt;/li&gt;
+&lt;li&gt;GPU has lots of registers, all the thread context switching information is already present in the registers.(No context switching overhead unlike the CPU)&lt;/li&gt;
+&lt;li&gt;Host code vs. Device code.&lt;/li&gt;
+&lt;li&gt;Host memory vs. Device memory&lt;/li&gt;
+&lt;li&gt;The return type of device function is always &lt;code&gt;void&lt;/code&gt;.&lt;/li&gt;
+&lt;li&gt;Data-parallel portions of an algorithm are executed on the device are kernels.&lt;/li&gt;
+&lt;li&gt;All the kernels in CUDA are asynchronous in nature. Host need to wait for the device to finish. &lt;code&gt;cudaDeviceSynchronize&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;Software X runs on/as HW Y
+&lt;ul&gt;
+&lt;li&gt;CUDA thread &amp;lt;-&amp;gt; CUDA core/SIMD code&lt;/li&gt;
+&lt;li&gt;CUDA block &amp;lt;-&amp;gt; SM&lt;/li&gt;
+&lt;li&gt;Grid/kenrel &amp;lt;-&amp;gt; GPU device&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;One block runs on a single SM. All the threads within one block can only execute on cores in one SM.&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;&amp;lt;&amp;lt; BlockDim, ThreadDim &amp;gt;&amp;gt;&lt;/code&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;blockIdx&lt;/code&gt;, &lt;code&gt;threadIdx&lt;/code&gt; : Index&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;blockDim&lt;/code&gt;, &lt;code&gt;threadDim&lt;/code&gt; : Dimension (==Size)&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;blockDim&lt;/code&gt; is the number of &lt;strong&gt;threads per block&lt;/strong&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Threads have mechanism to communicate and synchronize efficiently.
+&lt;ul&gt;
+&lt;li&gt;The CUDA programming model allows this communication for threads whiten the same block&lt;/li&gt;
+&lt;li&gt;The therads communicate with each other &lt;strong&gt;in the same block&lt;/strong&gt; using a special memory &lt;strong&gt;shared memory&lt;/strong&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Threads belonging to different block cannot communicate/synchronize with each other during the execution of the kernel.&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;cudaError_t e&lt;/code&gt;. &lt;code&gt;cudaGetLastError&lt;/code&gt;. Even for the multiple error, only the last one is returned. &lt;code&gt;a&amp;lt;&amp;lt;&amp;lt; , &amp;gt;&amp;gt;&amp;gt;; cudaDeviceSynchronize(); e = cudaGetLastError();&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id="backlink"&gt;Backlink&lt;/h2&gt;
+&lt;p&gt;[[Learn CUDA Programming]]&lt;/p&gt;</description></item></channel></rss>

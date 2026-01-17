@@ -1,7 +1,40 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Opnfv on Keep calm and write something</title><link>https://cychong47.github.io/tags/opnfv/</link><description>Recent content in Opnfv on Keep calm and write something</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Sun, 01 Apr 2018 02:38:51 +0000</lastBuildDate><atom:link href="https://cychong47.github.io/tags/opnfv/index.xml" rel="self" type="application/rss+xml"/><item><title>OPNFV Asia Meeting</title><link>https://cychong47.github.io/post/2017/opnfv-asia-meeting/</link><pubDate>Sun, 01 Oct 2017 08:28:34 +0900</pubDate><guid>https://cychong47.github.io/post/2017/opnfv-asia-meeting/</guid><description>ZTE Pharos Lab Pharos : OPNFV를 시험하는 worldwide lab 외부에서 접속하는 것이 필요하므로 ssh를 열어줄 수는 없어서 openVPN을 제공하고, 망을 분리하는 등의 이슈 해결을 위해 노력한 듯
-https://www.opnfv.org/developers/pharos Pharos는 시험 환경을 구축해서 community에 공개해서 사용할 수 있는 환경을 제공하는 듯 Provide developers with substantial resources for early testing within realistic NFV environments via an open, consistent, repeatable test domain
-Why donate Pharos environment NFV 환경에 사용할 HW를 직접 제조하는 업체들에게는 제품 호환성에 대한 시험을 유도할 수 있는 장점을 가짐.</description></item><item><title>Integrating VES to OPNFV</title><link>https://cychong47.github.io/post/2017/ves-to-opnfv/</link><pubDate>Mon, 25 Sep 2017 15:44:11 +0900</pubDate><guid>https://cychong47.github.io/post/2017/ves-to-opnfv/</guid><description>VES project VNF Event Stream Project
-Demo vHello VES Demo in OpenStack Barcelona 2016 VES ONAP demo from OPNFV Summit 2017 From VF Event Streaming (VES) Project Proposal Alok Gupta 13 Jun, 2016 OPNFV VES.pptx VNF Event Stream Prpoposal OPNFV projects that potentially benefit from the VES project
-Fault Management ([Doctor] (https://wiki.opnfv.org/display/doctor)) *** Virtualized Infrastructure Deployment Policies (Copper) High Availability for OPNFV (Availability) Data Collection for Failure Prediction (Prediction) *** Audit (Inspector) Fault localization (RCA, Pinpoint ) *** Service Function Chaining (sfc) Moon Security Management OpenStack projects that potentially benefit from the VES project</description></item><item><title>OPNFV Barometer and VES</title><link>https://cychong47.github.io/post/2017/opnfv-barometer/</link><pubDate>Mon, 25 Sep 2017 15:05:40 +0900</pubDate><guid>https://cychong47.github.io/post/2017/opnfv-barometer/</guid><description>Summary The VES can be supported with the help of Kafka broker with the collectd in OPNFV Barometer project which is aim to collect telemetrics from the NFVI.
-Barometer Project The purpose of this project is providing metrics can be used to decide quality of NFVI. For this, the followings are reported
-NIC statistics Resources such as CPU, Memory, load, cache, themals, fan speeds, voltages and machine check exceptions. This means the output of this project will be used in the host itself as well as inside of VM.</description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Opnfv on Keep calm and Write something</title><link>https://cychong47.github.io/tags/opnfv/</link><description>Recent content in Opnfv on Keep calm and Write something</description><generator>Hugo</generator><language>en-us</language><lastBuildDate>Sun, 01 Apr 2018 02:38:51 +0000</lastBuildDate><atom:link href="https://cychong47.github.io/tags/opnfv/index.xml" rel="self" type="application/rss+xml"/><item><title>OPNFV Asia Meeting</title><link>https://cychong47.github.io/post/2017/opnfv-asia-meeting/</link><pubDate>Sun, 01 Oct 2017 08:28:34 +0900</pubDate><guid>https://cychong47.github.io/post/2017/opnfv-asia-meeting/</guid><description>&lt;h2 id="zte-pharos-lab"&gt;ZTE Pharos Lab&lt;/h2&gt;
+&lt;p&gt;Pharos : OPNFV를 시험하는 worldwide lab
+외부에서 접속하는 것이 필요하므로 ssh를 열어줄 수는 없어서 openVPN을 제공하고, 망을 분리하는 등의 이슈 해결을 위해 노력한 듯&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://www.opnfv.org/developers/pharos"&gt;https://www.opnfv.org/developers/pharos&lt;/a&gt;
+Pharos는 시험 환경을 구축해서 community에 공개해서 사용할 수 있는 환경을 제공하는 듯
+Provide developers with substantial resources for early testing within realistic NFV environments via an open, consistent, repeatable test domain&lt;/p&gt;
+&lt;h3 id="why-donate-pharos-environment"&gt;Why donate Pharos environment&lt;/h3&gt;
+&lt;p&gt;NFV 환경에 사용할 HW를 직접 제조하는 업체들에게는 제품 호환성에 대한 시험을 유도할 수 있는 장점을 가짐.&lt;/p&gt;</description></item><item><title>Integrating VES to OPNFV</title><link>https://cychong47.github.io/post/2017/ves-to-opnfv/</link><pubDate>Mon, 25 Sep 2017 15:44:11 +0900</pubDate><guid>https://cychong47.github.io/post/2017/ves-to-opnfv/</guid><description>&lt;h1 id="ves-project"&gt;VES project&lt;/h1&gt;
+&lt;p&gt;&lt;a href="https://wiki.opnfv.org/display/ves/VES+Home"&gt;VNF Event Stream Project&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id="demo"&gt;Demo&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="https://wiki.opnfv.org/display/ves/vHello_VES+Demo"&gt;vHello VES Demo in OpenStack Barcelona 2016&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://www.youtube.com/watch?v=Zoxcj4mwUwU"&gt;VES ONAP demo from OPNFV Summit 2017&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id="from-vf-event-streaming-ves-project-proposal"&gt;From VF Event Streaming (VES) Project Proposal&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Alok Gupta 13 Jun, 2016&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://wiki.opnfv.org/download/attachments/6819329/OPNVF%20VES.pptx?version=4&amp;amp;modificationDate=1466395653000&amp;amp;api=v2"&gt;OPNFV VES.pptx&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://wiki.opnfv.org/display/PROJ/VNF+Event+Stream"&gt;VNF Event Stream&lt;/a&gt; Prpoposal&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;OPNFV projects that potentially benefit from the VES project&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Fault Management ([Doctor] (&lt;a href="https://wiki.opnfv.org/display/doctor"&gt;https://wiki.opnfv.org/display/doctor&lt;/a&gt;)) ***&lt;/li&gt;
+&lt;li&gt;Virtualized Infrastructure Deployment Policies (&lt;a href="https://wiki.opnfv.org/display/copper"&gt;Copper&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;High Availability for OPNFV (&lt;a href="https://wiki.opnfv.org/display/availability"&gt;Availability&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;Data Collection for Failure Prediction (&lt;a href="https://wiki.opnfv.org/display/prediction"&gt;Prediction&lt;/a&gt;) ***&lt;/li&gt;
+&lt;li&gt;Audit (&lt;a href="https://wiki.opnfv.org/display/inspector"&gt;Inspector&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;Fault localization (RCA, &lt;a href="https://wiki.opnfv.org/display/pinpoint/"&gt;Pinpoint&lt;/a&gt; ) ***&lt;/li&gt;
+&lt;li&gt;Service Function Chaining (sfc)&lt;/li&gt;
+&lt;li&gt;Moon Security Management &lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;OpenStack projects that potentially benefit from the VES project&lt;/p&gt;</description></item><item><title>OPNFV Barometer and VES</title><link>https://cychong47.github.io/post/2017/opnfv-barometer/</link><pubDate>Mon, 25 Sep 2017 15:05:40 +0900</pubDate><guid>https://cychong47.github.io/post/2017/opnfv-barometer/</guid><description>&lt;h1 id="summary"&gt;Summary&lt;/h1&gt;
+&lt;p&gt;The VES can be supported with the help of Kafka broker with the collectd in OPNFV Barometer project which is aim to collect telemetrics from the NFVI.&lt;/p&gt;
+&lt;h1 id="barometer-project"&gt;Barometer Project&lt;/h1&gt;
+&lt;p&gt;&lt;a href="https://wiki.opnfv.org/display/fastpath/Barometer+Home"&gt;The purpose of this project&lt;/a&gt; is providing metrics can be used to decide quality of NFVI. For this, the followings are reported&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;NIC statistics&lt;/li&gt;
+&lt;li&gt;Resources such as CPU, Memory, load, cache, themals, fan speeds, voltages and machine check exceptions.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;This means the output of this project will be used in the host itself as well as inside of VM.&lt;/p&gt;</description></item></channel></rss>

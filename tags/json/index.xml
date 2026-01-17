@@ -1,3 +1,21 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Json on Keep calm and write something</title><link>https://cychong47.github.io/tags/json/</link><description>Recent content in Json on Keep calm and write something</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Sun, 01 Apr 2018 02:38:51 +0000</lastBuildDate><atom:link href="https://cychong47.github.io/tags/json/index.xml" rel="self" type="application/rss+xml"/><item><title>(Series</title><link>https://cychong47.github.io/post/2017/cisco-ios-xr-and-signalfx-demo/</link><pubDate>Tue, 03 Oct 2017 13:47:55 +0900</pubDate><guid>https://cychong47.github.io/post/2017/cisco-ios-xr-and-signalfx-demo/</guid><description>출처 : sdxcentral, Feb 5, 2016
-tools presented in the video reference video ppt</description></item><item><title>(Series</title><link>https://cychong47.github.io/post/2017/model-driven-telemetry/</link><pubDate>Sun, 01 Oct 2017 14:06:46 +0900</pubDate><guid>https://cychong47.github.io/post/2017/model-driven-telemetry/</guid><description>Why You Should Care About Model-Driven Telemetry from CISCO blog
-Summary Periodic polling -&amp;gt; Pushing(Streaming) Model based data with YANG Use standard encoding such as JSON, Google Protocol Buffers Easy to manipulate, connect to analytic solutions 1-min poll is too slow For the last 25 years, network operators have heavily relied on SNMP polling and CLI screen-scraping to extract operational data from the network. But the new and automated demands of today’s networks have pushed these mechanisms to the breaking point.</description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Json on Keep calm and Write something</title><link>https://cychong47.github.io/tags/json/</link><description>Recent content in Json on Keep calm and Write something</description><generator>Hugo</generator><language>en-us</language><lastBuildDate>Sun, 01 Apr 2018 02:38:51 +0000</lastBuildDate><atom:link href="https://cychong47.github.io/tags/json/index.xml" rel="self" type="application/rss+xml"/><item><title>(Series</title><link>https://cychong47.github.io/post/2017/cisco-ios-xr-and-signalfx-demo/</link><pubDate>Tue, 03 Oct 2017 13:47:55 +0900</pubDate><guid>https://cychong47.github.io/post/2017/cisco-ios-xr-and-signalfx-demo/</guid><description>&lt;p&gt;출처 : &lt;a href="https://www.sdxcentral.com/resources/sdn-demofriday/cisco-ios-xr-signalfx-demo-monitoring-your-modern-network/"&gt;sdxcentral, Feb 5, 2016&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src="https://cychong47.github.io/images/2017/10/Screenshot-2017-10-03-22.24.45.png" alt="Screenshot-2017-10-03-22.24.45"&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src="https://cychong47.github.io/images/2017/10/Screenshot-2017-10-03-22.24.34.png" alt="Screenshot-2017-10-03-22.24.34"&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src="https://cychong47.github.io/images/2017/10/Screenshot-2017-10-03-22.24.18.png" alt="Screenshot-2017-10-03-22.24.18"&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src="https://cychong47.github.io/images/2017/10/Screenshot-2017-10-03-22.38.49.png" alt="Screenshot-2017-10-03-22.38.49"&gt;&lt;/p&gt;
+&lt;h2 id="tools-presented-in-the-video"&gt;tools presented in the video&lt;/h2&gt;
+&lt;h2 id="reference"&gt;reference&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="https://player.vimeo.com/video/154632747"&gt;video&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://www.sdxcentral.com/wp-content/uploads/2016/02/cisco-signalfx-sdn-nfv-iosxr6-demo-slides.pdf"&gt;ppt&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;</description></item><item><title>(Series</title><link>https://cychong47.github.io/post/2017/model-driven-telemetry/</link><pubDate>Sun, 01 Oct 2017 14:06:46 +0900</pubDate><guid>https://cychong47.github.io/post/2017/model-driven-telemetry/</guid><description>&lt;p&gt;&lt;a href="http://blogs.cisco.com/sp/why-you-should-care-about-model-driven-telemetry"&gt;Why You Should Care About Model-Driven Telemetry&lt;/a&gt; from CISCO blog&lt;/p&gt;
+&lt;h2 id="summary"&gt;Summary&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Periodic polling -&amp;gt; Pushing(Streaming)&lt;/li&gt;
+&lt;li&gt;Model based data with YANG&lt;/li&gt;
+&lt;li&gt;Use standard encoding such as JSON, Google Protocol Buffers&lt;/li&gt;
+&lt;li&gt;Easy to manipulate, connect to analytic solutions&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id="1-min-poll-is-too-slow"&gt;1-min poll is too slow&lt;/h2&gt;
+&lt;blockquote&gt;
+&lt;p&gt;For the last 25 years, network operators have heavily relied on SNMP polling and CLI screen-scraping to extract operational data from the network. But the new and automated demands of today’s networks have pushed these mechanisms to the breaking point.&lt;/p&gt;</description></item></channel></rss>

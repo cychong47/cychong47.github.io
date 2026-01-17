@@ -1,4 +1,33 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>OVS on Keep calm and write something</title><link>https://cychong47.github.io/tags/ovs/</link><description>Recent content in OVS on Keep calm and write something</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Sun, 01 Apr 2018 02:38:51 +0000</lastBuildDate><atom:link href="https://cychong47.github.io/tags/ovs/index.xml" rel="self" type="application/rss+xml"/><item><title>R.I.P OVDK</title><link>https://cychong47.github.io/post/2014/r-i-p-ovdk/</link><pubDate>Thu, 27 Nov 2014 14:47:38 +0900</pubDate><guid>https://cychong47.github.io/post/2014/r-i-p-ovdk/</guid><description>며칠 밖에 보지 않았지만, 그래도 내용을 분석해 보려고 했던 OVDK인데, 오늘 기사를 보니 Intel에서 공식적으로 OVDK의 개발 중단을 발표했단다.
-Intel Dead-Ends Its Fork of Open vSwitch
-Data path(Fast path)를 커널 모듈에서 처리하는 OVS를 fork해서 DPDK를 이용해서 user space에 Fast Path를 만들려고 했는데 그러다 보니 역시 계속해서 발전하는 OVS의 기능을 수용하기 부담스러웠나 보다. 더군다나 OVS에서도 experimental feature이긴 하지만 DPDK를 이용하는 코드도 있다고 하니.
-내년 초에 나올 다음 버전 OVS에 공식 기능으로 들어가길 기대한다고.</description></item><item><title>SDN expert group 세미나 - Play with DPDK</title><link>https://cychong47.github.io/post/2014/sdn-expert-group-semina-play-with-dpdk/</link><pubDate>Thu, 21 Aug 2014 12:11:18 +0900</pubDate><guid>https://cychong47.github.io/post/2014/sdn-expert-group-semina-play-with-dpdk/</guid><description>세미나 내용 Controller &amp;ndash;(OpenFlow)&amp;ndash; ovs-switchd &amp;ndash;(netlink)&amp;ndash; Datapath Datapath is in the kernel space OVDK move the kernel based OVS to user space. ovs-switched talk to OVDK with UDP 기존 OVDK는 port별 task handler(각각 별도의 core에서 동작) 그 결과 많은 core 필요 WR 이야기처럼 VM간 혹은 VM과 외부와의 통신을 담당하는 OVS용으로 많은 core를 사용하면 실제로 VM이 사용할 수 있는 core 개수가 줄어들어 문제 virtIO 사용시 VM에서 동작하는 application이 kernel stack의 필요한 경우 결국 OVDK와 VM내 커널 space간 copy가 필요함 최신 버전에서는 VM에서도 KNI based virtIO를 이용하도록 개선함.</description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>OVS on Keep calm and Write something</title><link>https://cychong47.github.io/tags/ovs/</link><description>Recent content in OVS on Keep calm and Write something</description><generator>Hugo</generator><language>en-us</language><lastBuildDate>Sun, 01 Apr 2018 02:38:51 +0000</lastBuildDate><atom:link href="https://cychong47.github.io/tags/ovs/index.xml" rel="self" type="application/rss+xml"/><item><title>R.I.P OVDK</title><link>https://cychong47.github.io/post/2014/r-i-p-ovdk/</link><pubDate>Thu, 27 Nov 2014 14:47:38 +0900</pubDate><guid>https://cychong47.github.io/post/2014/r-i-p-ovdk/</guid><description>&lt;p&gt;며칠 밖에 보지 않았지만, 그래도 내용을 분석해 보려고 했던 OVDK인데, 오늘 기사를 보니 Intel에서 공식적으로 OVDK의 개발 중단을 발표했단다.&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://www.sdncentral.com/news/intel-dead-ends-fork-open-vswitch/2014/11/"&gt;Intel Dead-Ends Its Fork of Open vSwitch&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Data path(Fast path)를 커널 모듈에서 처리하는 OVS를 fork해서 DPDK를 이용해서 user space에 Fast Path를 만들려고 했는데 그러다 보니 역시 계속해서 발전하는 OVS의 기능을 수용하기 부담스러웠나 보다. 더군다나 OVS에서도 experimental feature이긴 하지만 DPDK를 이용하는 코드도 있다고 하니.&lt;/p&gt;
+&lt;p&gt;내년 초에 나올 다음 버전 OVS에 공식 기능으로 들어가길 기대한다고.&lt;/p&gt;</description></item><item><title>SDN expert group 세미나 - Play with DPDK</title><link>https://cychong47.github.io/post/2014/sdn-expert-group-semina-play-with-dpdk/</link><pubDate>Thu, 21 Aug 2014 12:11:18 +0900</pubDate><guid>https://cychong47.github.io/post/2014/sdn-expert-group-semina-play-with-dpdk/</guid><description>&lt;h1 id="세미나-내용"&gt;세미나 내용&lt;/h1&gt;
+&lt;ul&gt;
+&lt;li&gt;Controller &amp;ndash;(OpenFlow)&amp;ndash; ovs-switchd &amp;ndash;(netlink)&amp;ndash; Datapath&lt;/li&gt;
+&lt;li&gt;Datapath is in the kernel space&lt;/li&gt;
+&lt;li&gt;OVDK move the kernel based OVS to user space.
+&lt;ul&gt;
+&lt;li&gt;ovs-switched talk to OVDK with UDP&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;기존 OVDK는 port별 task handler(각각 별도의 core에서 동작)
+&lt;ul&gt;
+&lt;li&gt;그 결과 많은 core 필요&lt;/li&gt;
+&lt;li&gt;WR 이야기처럼 VM간 혹은 VM과 외부와의 통신을 담당하는 OVS용으로 많은 core를 사용하면 실제로 VM이 사용할 수 있는 core 개수가 줄어들어 문제&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;virtIO 사용시 VM에서 동작하는 application이 kernel stack의 필요한 경우 결국 OVDK와 VM내 커널 space간 copy가 필요함
+&lt;ul&gt;
+&lt;li&gt;최신 버전에서는 VM에서도 KNI based virtIO를 이용하도록 개선함. 확인 필요&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Rainbow platform
+&lt;ul&gt;
+&lt;li&gt;DPDK의 log library를 이용해서 외부 log server로 실시간으로 메시지 보냄. sFlow나 netFlow는 실시간이 아니라고. 음..&lt;/li&gt;
+&lt;li&gt;log library에 대한 확인 필요. 쓸만하면 log library를 별도로 만들지 말고 이걸 사용하는 것도 좋을 듯.&lt;/li&gt;
+&lt;li&gt;log server는 NoSQL을 이용한 분석 서버라고&lt;/li&gt;
+&lt;li&gt;분석 서버에서 실시간 분석해서 의심되는 패킷을 받으면 OVS들에 명령을 내려 별도 DPI 서버로 경유하도록 해서 쉽게 Service Chaining 을 구현할 수 있다.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;DPDK를 접한 지는 오래 되었지만 초반에 한번 플랫폼이 정리된 후 크게 개선하지 못했다. 딱히 요구사항이 없어서 나름 안정된 걸 건드릴 이유를 찾지 못한 것이 표면적인 이유지만, 실은 기능 혹은 성능 개선을 해서 얻는 실질적인 장점이 별로 없어서.&lt;/p&gt;</description></item></channel></rss>

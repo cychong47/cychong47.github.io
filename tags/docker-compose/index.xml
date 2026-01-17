@@ -1,6 +1,42 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Docker-Compose on Keep calm and write something</title><link>https://cychong47.github.io/tags/docker-compose/</link><description>Recent content in Docker-Compose on Keep calm and write something</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Sun, 19 May 2019 13:02:57 +0000</lastBuildDate><atom:link href="https://cychong47.github.io/tags/docker-compose/index.xml" rel="self" type="application/rss+xml"/><item><title>Wordpress with docker-compose</title><link>https://cychong47.github.io/post/2017/wordpress-with-docker-compose-failing/</link><pubDate>Sun, 03 Sep 2017 15:00:57 +0900</pubDate><guid>https://cychong47.github.io/post/2017/wordpress-with-docker-compose-failing/</guid><description>Under construction!!
-Error https://docs.docker.com/compose/wordpress/#define-the-project 에 있는 에제대로 docker-compose.yaml 파일을 만든 후 도전~~
-근데 실패
-cychong:~/work/my_wordpress cychong$ docker-compose up -d Pulling db (mysql:5.7)... Traceback (most recent call last): File &amp;#34;docker-compose&amp;#34;, line 3, in &amp;lt;module&amp;gt; File &amp;#34;compose/cli/main.py&amp;#34;, line 68, in main File &amp;#34;compose/cli/main.py&amp;#34;, line 118, in perform_command File &amp;#34;compose/cli/main.py&amp;#34;, line 928, in up File &amp;#34;compose/project.py&amp;#34;, line 427, in up File &amp;#34;compose/service.py&amp;#34;, line 311, in ensure_image_exists File &amp;#34;compose/service.py&amp;#34;, line 1016, in pull File &amp;#34;site-packages/docker/api/image.</description></item><item><title>ghost container with docker-compose</title><link>https://cychong47.github.io/post/2017/ghost-container-with-docker-compose/</link><pubDate>Sun, 03 Sep 2017 01:26:28 +0900</pubDate><guid>https://cychong47.github.io/post/2017/ghost-container-with-docker-compose/</guid><description>얼마전에 구성한 ghost container는 ghost가 1.x로 업데이트가 되면서 설정 정보의 위치가 변경되었는데 그걸 미처 몰라 블로그 주소가 기본값인 localhost로 설정되는 문제가 있었다. 기존 ghost container에 접근해서 확인해 보니 `/var/lib/ghost/config.production.json&amp;rsquo; 파일에 주소가 설정되어 있는 걸 보고 이 파일도 따로 지정해 주도록 변경했다. 그러면서 docker-compose를 한번 써 보기로
-일단 기존 ghost를 정리하고
-cychong:~ cychong$ docker stop ghost ghost cychong:~ cychong$ docker rm ghost ghost cychong:~ cychong$ docker rmi ghost Untagged: ghost:latest Untagged: ghost@sha256:a1f70641d35755395eb16827de4e67861e01bffe18bac8e54ab5c68cd170a2ea Deleted: sha256:e6ba3dd3c2491c6086d570fa9769a9f60d7c004129ff9ae7ff9fa0bad16a993b Deleted: sha256:c1ee9d43624bb4a1922c15d7a9175a80d1952cb71464d6d9d900fe21948227af Deleted: sha256:f8f95cdbafce4ecd226cdd690e6f909203a0f83d3507c53a71d4e59826ea881b Deleted: sha256:935d8847555992b702173b83b0d210f2728a24b5287467396dc8d5c68907691f Deleted: sha256:f4766b72a49d4cd2e897da0efcec94c33a0d24a95cb8426a790e1c45e6e39fae Deleted: sha256:0c0dbaebe17c6f585eb596e705ed5acba668097698a7780844c12597bb99b34a Deleted: sha256:c807796bea7a34c0b73eae853b728f2bbcd7a4fecc19d049455b322120f95ce7 Deleted: sha256:15f9f4e44e22d3287b6caf9555110383d3ff2e88ee9cc03823b1ba5a01b75eac Deleted: sha256:77809f11069f2abfb571cba07ee3d696ec32823df0f5d0587042ffdb27a80add Deleted: sha256:5d6bba18f7b25c9b93d3cc0d93a4cff54eb88b0ba22ed867633a21fc3ded5f57 하는 김에 최신 버전의 ghost받아오고</description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Docker-Compose on Keep calm and Write something</title><link>https://cychong47.github.io/tags/docker-compose/</link><description>Recent content in Docker-Compose on Keep calm and Write something</description><generator>Hugo</generator><language>en-us</language><lastBuildDate>Sun, 19 May 2019 13:02:57 +0000</lastBuildDate><atom:link href="https://cychong47.github.io/tags/docker-compose/index.xml" rel="self" type="application/rss+xml"/><item><title>Wordpress with docker-compose</title><link>https://cychong47.github.io/post/2017/wordpress-with-docker-compose-failing/</link><pubDate>Sun, 03 Sep 2017 15:00:57 +0900</pubDate><guid>https://cychong47.github.io/post/2017/wordpress-with-docker-compose-failing/</guid><description>&lt;p&gt;Under construction!!&lt;/p&gt;
+&lt;h3 id="error"&gt;Error&lt;/h3&gt;
+&lt;p&gt;&lt;a href="https://docs.docker.com/compose/wordpress/#define-the-project"&gt;https://docs.docker.com/compose/wordpress/#define-the-project&lt;/a&gt; 에 있는 에제대로 docker-compose.yaml 파일을 만든 후 도전~~&lt;/p&gt;
+&lt;p&gt;근데 실패&lt;/p&gt;
+&lt;pre tabindex="0"&gt;&lt;code&gt;cychong:~/work/my_wordpress cychong$ docker-compose up -d
+Pulling db (mysql:5.7)...
+Traceback (most recent call last):
+ File &amp;#34;docker-compose&amp;#34;, line 3, in &amp;lt;module&amp;gt;
+ File &amp;#34;compose/cli/main.py&amp;#34;, line 68, in main
+ File &amp;#34;compose/cli/main.py&amp;#34;, line 118, in perform_command
+ File &amp;#34;compose/cli/main.py&amp;#34;, line 928, in up
+ File &amp;#34;compose/project.py&amp;#34;, line 427, in up
+ File &amp;#34;compose/service.py&amp;#34;, line 311, in ensure_image_exists
+ File &amp;#34;compose/service.py&amp;#34;, line 1016, in pull
+ File &amp;#34;site-packages/docker/api/image.py&amp;#34;, line 358, in pull
+ File &amp;#34;site-packages/docker/auth.py&amp;#34;, line 50, in get_config_header
+ File &amp;#34;site-packages/docker/auth.py&amp;#34;, line 97, in resolve_authconfig
+ File &amp;#34;site-packages/docker/auth.py&amp;#34;, line 142, in _resolve_authconfig_credstore
+docker.errors.DockerException: Credentials store error: StoreError(&amp;#39;Credentials store docker-credential-osxkeychain exited with &amp;#34;User interaction is not allowed.&amp;#34;.&amp;#39;,)
+Failed to execute script docker-compose
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;저 에러가 뭘까 하고 Googling을 해 보니 &lt;code&gt;&amp;quot;Credentials store docker-credential-osxkeychain exited with &amp;quot;User interaction is not allowed&amp;quot;&lt;/code&gt; 이런 해결책이 나왔다.&lt;/p&gt;</description></item><item><title>ghost container with docker-compose</title><link>https://cychong47.github.io/post/2017/ghost-container-with-docker-compose/</link><pubDate>Sun, 03 Sep 2017 01:26:28 +0900</pubDate><guid>https://cychong47.github.io/post/2017/ghost-container-with-docker-compose/</guid><description>&lt;p&gt;얼마전에 구성한 ghost container는 ghost가 1.x로 업데이트가 되면서 설정 정보의 위치가 변경되었는데 그걸 미처 몰라 블로그 주소가 기본값인 localhost로 설정되는 문제가 있었다.
+기존 ghost container에 접근해서 확인해 보니 `/var/lib/ghost/config.production.json&amp;rsquo; 파일에 주소가 설정되어 있는 걸 보고 이 파일도 따로 지정해 주도록 변경했다.
+그러면서 docker-compose를 한번 써 보기로&lt;/p&gt;
+&lt;p&gt;일단 기존 ghost를 정리하고&lt;/p&gt;
+&lt;pre tabindex="0"&gt;&lt;code&gt;cychong:~ cychong$ docker stop ghost
+ghost
+cychong:~ cychong$ docker rm ghost
+ghost
+cychong:~ cychong$ docker rmi ghost
+Untagged: ghost:latest
+Untagged: ghost@sha256:a1f70641d35755395eb16827de4e67861e01bffe18bac8e54ab5c68cd170a2ea
+Deleted: sha256:e6ba3dd3c2491c6086d570fa9769a9f60d7c004129ff9ae7ff9fa0bad16a993b
+Deleted: sha256:c1ee9d43624bb4a1922c15d7a9175a80d1952cb71464d6d9d900fe21948227af
+Deleted: sha256:f8f95cdbafce4ecd226cdd690e6f909203a0f83d3507c53a71d4e59826ea881b
+Deleted: sha256:935d8847555992b702173b83b0d210f2728a24b5287467396dc8d5c68907691f
+Deleted: sha256:f4766b72a49d4cd2e897da0efcec94c33a0d24a95cb8426a790e1c45e6e39fae
+Deleted: sha256:0c0dbaebe17c6f585eb596e705ed5acba668097698a7780844c12597bb99b34a
+Deleted: sha256:c807796bea7a34c0b73eae853b728f2bbcd7a4fecc19d049455b322120f95ce7
+Deleted: sha256:15f9f4e44e22d3287b6caf9555110383d3ff2e88ee9cc03823b1ba5a01b75eac
+Deleted: sha256:77809f11069f2abfb571cba07ee3d696ec32823df0f5d0587042ffdb27a80add
+Deleted: sha256:5d6bba18f7b25c9b93d3cc0d93a4cff54eb88b0ba22ed867633a21fc3ded5f57
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;하는 김에 최신 버전의 ghost받아오고&lt;/p&gt;</description></item></channel></rss>

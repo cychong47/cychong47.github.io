@@ -1,13 +1,74 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Cisco on Keep calm and write something</title><link>https://cychong47.github.io/tags/cisco/</link><description>Recent content in Cisco on Keep calm and write something</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Sun, 01 Apr 2018 02:38:51 +0000</lastBuildDate><atom:link href="https://cychong47.github.io/tags/cisco/index.xml" rel="self" type="application/rss+xml"/><item><title>(Series</title><link>https://cychong47.github.io/post/2017/cisco-ios-xr-and-signalfx-demo/</link><pubDate>Tue, 03 Oct 2017 13:47:55 +0900</pubDate><guid>https://cychong47.github.io/post/2017/cisco-ios-xr-and-signalfx-demo/</guid><description>출처 : sdxcentral, Feb 5, 2016
-tools presented in the video reference video ppt</description></item><item><title>(Series</title><link>https://cychong47.github.io/post/2017/streaming-telemetry-with-google-protocol-buffers/</link><pubDate>Sun, 01 Oct 2017 21:38:04 +0900</pubDate><guid>https://cychong47.github.io/post/2017/streaming-telemetry-with-google-protocol-buffers/</guid><description>출처 : https://blogs.cisco.com/sp/streaming-telemetry-with-google-protocol-buffers
-Summary JSON, &amp;ldquo;compact&amp;rdquo; GPB and &amp;ldquo;Key-Value&amp;rdquo; GPB
-&amp;ldquo;Compact&amp;rdquo; GPB data on wire can be decoded without the decoder ring while &amp;ldquo;Key-Value&amp;rdquo; GPB data is Self-Describing. Compact GPB can be used with UDP(default) and TCP(optionally) &amp;ldquo;Key-value&amp;rdquo; GPB is only for TCP 833 bytes of compact GPB while more than 4000 bytes for Key-value GPB Compressed JSON(?)</description></item><item><title>CISCO Yang data model</title><link>https://cychong47.github.io/post/2017/cisco-yang-data-model/</link><pubDate>Sun, 01 Oct 2017 21:33:27 +0900</pubDate><guid>https://cychong47.github.io/post/2017/cisco-yang-data-model/</guid><description>Seems that configuration and operation data are defined in a different yang file though it is not clear they are module or submodule
-The models are in the .yang format. A model with: -oper in the model name indicates an operational model. For example, Cisco-IOS-XR-cdp-oper.yang is an operational model for Cisco Discovery Protocol (CDP). -cfg indicates a configuration model. For example, Cisco-IOS-XR-cdp-cfg.yang is a configuration model for CDP. -act indicates a NETCONF actions model.</description></item><item><title>(Series</title><link>https://cychong47.github.io/post/2017/model-driven-telemetry/</link><pubDate>Sun, 01 Oct 2017 14:06:46 +0900</pubDate><guid>https://cychong47.github.io/post/2017/model-driven-telemetry/</guid><description>Why You Should Care About Model-Driven Telemetry from CISCO blog
-Summary Periodic polling -&amp;gt; Pushing(Streaming) Model based data with YANG Use standard encoding such as JSON, Google Protocol Buffers Easy to manipulate, connect to analytic solutions 1-min poll is too slow For the last 25 years, network operators have heavily relied on SNMP polling and CLI screen-scraping to extract operational data from the network. But the new and automated demands of today’s networks have pushed these mechanisms to the breaking point.</description></item><item><title>fd.io</title><link>https://cychong47.github.io/post/2016/fd-io/</link><pubDate>Sat, 13 Feb 2016 01:29:43 +0900</pubDate><guid>https://cychong47.github.io/post/2016/fd-io/</guid><description>2016년 2월 11일 공개된 CISCO 주도의 프로젝트. 무려 2002년부터 개발한 것으로 현재 버전은 3번째 revision이라고 한다.
-간만에 dpdk.org mailing list에 들어갔다 가장 최근에 올라온 글 제목이 눈에 띄었다.
-[dpdk-dev] [dpdk-announce] new project using DPDK - FD.io Vincent JARDIN
-&amp;ldquo;new project&amp;rdquo;?
-그래서 내용을 봤더니 이게 다 였다는
-A new project using DPDK is available, http://FD.io said FiDo You can clone it from: http://gerrit.fd.io/ Best regards, Vincent 그래도 첫 번째 링크를 따라가 보니 화려하다.</description></item><item><title>Cisco Cloud Services Router 1000V</title><link>https://cychong47.github.io/post/2015/cisco-cloud-services-router-1000v/</link><pubDate>Mon, 23 Nov 2015 14:50:31 +0900</pubDate><guid>https://cychong47.github.io/post/2015/cisco-cloud-services-router-1000v/</guid><description>http://www.cisco.com/c/en/us/products/collateral/routers/cloud-services-router-1000v-series/datasheet-c78-733443.html
-How many vCPUs are required for processing.</description></item><item><title>CISCO Cloud Service Platform 2100</title><link>https://cychong47.github.io/post/2015/cisco-cloud-service-platform-2100/</link><pubDate>Mon, 23 Nov 2015 14:24:35 +0900</pubDate><guid>https://cychong47.github.io/post/2015/cisco-cloud-service-platform-2100/</guid><description>Data sheet (PDF)
-Some Cisco virtual network services that use the DPDK include Cisco Cloud Services Router (CSR) 1000V, Cisco Virtual Mobile Packet Core software, and Cisco IOS® XR 9000v virtual router. Supporte CISCO appliances Cisco Cloud Services Router (CSR) 1000V virtual router Cisco Virtual Adaptive Security Appliance (ASAv) Cisco Prime™ Data Center Network Manager (DCNM) Cisco Virtual Network Analysis Module (vNAM) Cisco Virtual Security Gateway (VSG) for Cisco Nexus® 1000V Switch deployments Cisco Virtual Supervisor Module (VSM) for Cisco Nexus 1000V Switch deployments 1U 2 CPU, each has 8 core Ivy Bridge(E5-2630 v3) REST API It uses REST API and NETCONF protocol for north-bound management and orchestration (MANO) tools.</description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Cisco on Keep calm and Write something</title><link>https://cychong47.github.io/tags/cisco/</link><description>Recent content in Cisco on Keep calm and Write something</description><generator>Hugo</generator><language>en-us</language><lastBuildDate>Sun, 01 Apr 2018 02:38:51 +0000</lastBuildDate><atom:link href="https://cychong47.github.io/tags/cisco/index.xml" rel="self" type="application/rss+xml"/><item><title>(Series</title><link>https://cychong47.github.io/post/2017/cisco-ios-xr-and-signalfx-demo/</link><pubDate>Tue, 03 Oct 2017 13:47:55 +0900</pubDate><guid>https://cychong47.github.io/post/2017/cisco-ios-xr-and-signalfx-demo/</guid><description>&lt;p&gt;출처 : &lt;a href="https://www.sdxcentral.com/resources/sdn-demofriday/cisco-ios-xr-signalfx-demo-monitoring-your-modern-network/"&gt;sdxcentral, Feb 5, 2016&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src="https://cychong47.github.io/images/2017/10/Screenshot-2017-10-03-22.24.45.png" alt="Screenshot-2017-10-03-22.24.45"&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src="https://cychong47.github.io/images/2017/10/Screenshot-2017-10-03-22.24.34.png" alt="Screenshot-2017-10-03-22.24.34"&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src="https://cychong47.github.io/images/2017/10/Screenshot-2017-10-03-22.24.18.png" alt="Screenshot-2017-10-03-22.24.18"&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src="https://cychong47.github.io/images/2017/10/Screenshot-2017-10-03-22.38.49.png" alt="Screenshot-2017-10-03-22.38.49"&gt;&lt;/p&gt;
+&lt;h2 id="tools-presented-in-the-video"&gt;tools presented in the video&lt;/h2&gt;
+&lt;h2 id="reference"&gt;reference&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="https://player.vimeo.com/video/154632747"&gt;video&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://www.sdxcentral.com/wp-content/uploads/2016/02/cisco-signalfx-sdn-nfv-iosxr6-demo-slides.pdf"&gt;ppt&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;</description></item><item><title>(Series</title><link>https://cychong47.github.io/post/2017/streaming-telemetry-with-google-protocol-buffers/</link><pubDate>Sun, 01 Oct 2017 21:38:04 +0900</pubDate><guid>https://cychong47.github.io/post/2017/streaming-telemetry-with-google-protocol-buffers/</guid><description>&lt;p&gt;출처 : &lt;a href="https://blogs.cisco.com/sp/streaming-telemetry-with-google-protocol-buffers"&gt;https://blogs.cisco.com/sp/streaming-telemetry-with-google-protocol-buffers&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id="summary"&gt;Summary&lt;/h2&gt;
+&lt;p&gt;JSON, &amp;ldquo;compact&amp;rdquo; GPB and &amp;ldquo;Key-Value&amp;rdquo; GPB&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&amp;ldquo;Compact&amp;rdquo; GPB data on wire can be decoded without the &lt;code&gt;decoder ring&lt;/code&gt; while &amp;ldquo;Key-Value&amp;rdquo; GPB data is Self-Describing.&lt;/li&gt;
+&lt;li&gt;Compact GPB can be used with UDP(default) and TCP(optionally)&lt;/li&gt;
+&lt;li&gt;&amp;ldquo;Key-value&amp;rdquo; GPB is only for TCP&lt;/li&gt;
+&lt;li&gt;833 bytes of compact GPB while more than 4000 bytes for Key-value GPB&lt;/li&gt;
+&lt;li&gt;Compressed JSON(?)&lt;/li&gt;
+&lt;/ul&gt;</description></item><item><title>CISCO Yang data model</title><link>https://cychong47.github.io/post/2017/cisco-yang-data-model/</link><pubDate>Sun, 01 Oct 2017 21:33:27 +0900</pubDate><guid>https://cychong47.github.io/post/2017/cisco-yang-data-model/</guid><description>&lt;p&gt;Seems that configuration and operation data are defined in a different yang file though it is not clear they are module or submodule&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;The models are in the .yang format. A model with:
+-oper in the model name indicates an operational model. For example, Cisco-IOS-XR-cdp-oper.yang is an operational model for Cisco Discovery Protocol (CDP).
+-cfg indicates a configuration model. For example, Cisco-IOS-XR-cdp-cfg.yang is a configuration model for CDP.
+-act indicates a NETCONF actions model. For example, Cisco-IOS-XR-ipv4-ospf-act.yang is an action model for OSPF.&lt;/p&gt;</description></item><item><title>(Series</title><link>https://cychong47.github.io/post/2017/model-driven-telemetry/</link><pubDate>Sun, 01 Oct 2017 14:06:46 +0900</pubDate><guid>https://cychong47.github.io/post/2017/model-driven-telemetry/</guid><description>&lt;p&gt;&lt;a href="http://blogs.cisco.com/sp/why-you-should-care-about-model-driven-telemetry"&gt;Why You Should Care About Model-Driven Telemetry&lt;/a&gt; from CISCO blog&lt;/p&gt;
+&lt;h2 id="summary"&gt;Summary&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Periodic polling -&amp;gt; Pushing(Streaming)&lt;/li&gt;
+&lt;li&gt;Model based data with YANG&lt;/li&gt;
+&lt;li&gt;Use standard encoding such as JSON, Google Protocol Buffers&lt;/li&gt;
+&lt;li&gt;Easy to manipulate, connect to analytic solutions&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id="1-min-poll-is-too-slow"&gt;1-min poll is too slow&lt;/h2&gt;
+&lt;blockquote&gt;
+&lt;p&gt;For the last 25 years, network operators have heavily relied on SNMP polling and CLI screen-scraping to extract operational data from the network. But the new and automated demands of today’s networks have pushed these mechanisms to the breaking point.&lt;/p&gt;</description></item><item><title>fd.io</title><link>https://cychong47.github.io/post/2016/fd-io/</link><pubDate>Sat, 13 Feb 2016 01:29:43 +0900</pubDate><guid>https://cychong47.github.io/post/2016/fd-io/</guid><description>&lt;p&gt;2016년 2월 11일 공개된 CISCO 주도의 프로젝트.
+무려 2002년부터 개발한 것으로 현재 버전은 3번째 revision이라고 한다.&lt;br&gt;
+간만에 dpdk.org mailing list에 들어갔다 가장 최근에 올라온 글 제목이 눈에 띄었다.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;[dpdk-dev] [dpdk-announce] new project using DPDK - FD.io Vincent JARDIN&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;&amp;ldquo;new project&amp;rdquo;?&lt;/p&gt;
+&lt;p&gt;그래서 내용을 봤더니 이게 다 였다는&lt;/p&gt;
+&lt;pre tabindex="0"&gt;&lt;code&gt;A new project using DPDK is available,
+ http://FD.io
+said
+ FiDo
+
+You can clone it from:
+ http://gerrit.fd.io/
+
+Best regards,
+ Vincent
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;그래도 첫 번째 링크를 따라가 보니 화려하다. CISCO, Ericsson, Intel이 platinum member네. 어딜가나 있는 여러 회사 이름도 보이고. Cavium도 있네. ODP를 밀고 있는데 잘 안되나? 물론 내용을 보면 조금 다르긴 하지만.&lt;br&gt;
+거기에 6wind도 있다. 역시 직접적인 경쟁회사라고 볼 수도 있을 텐데. E, H사가 보이는데 N사는 아직 없다. OFP에 집중하려는 걸까&lt;/p&gt;</description></item><item><title>Cisco Cloud Services Router 1000V</title><link>https://cychong47.github.io/post/2015/cisco-cloud-services-router-1000v/</link><pubDate>Mon, 23 Nov 2015 14:50:31 +0900</pubDate><guid>https://cychong47.github.io/post/2015/cisco-cloud-services-router-1000v/</guid><description>&lt;p&gt;&lt;a href="http://www.cisco.com/c/en/us/products/collateral/routers/cloud-services-router-1000v-series/datasheet-c78-733443.html"&gt;http://www.cisco.com/c/en/us/products/collateral/routers/cloud-services-router-1000v-series/datasheet-c78-733443.html&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;How many vCPUs are required for processing.&lt;/p&gt;</description></item><item><title>CISCO Cloud Service Platform 2100</title><link>https://cychong47.github.io/post/2015/cisco-cloud-service-platform-2100/</link><pubDate>Mon, 23 Nov 2015 14:24:35 +0900</pubDate><guid>https://cychong47.github.io/post/2015/cisco-cloud-service-platform-2100/</guid><description>&lt;p&gt;&lt;a href="http://www.cisco.com/c/en/us/products/collateral/switches/cloud-services-platform-2100/datasheet-c78-735317.html"&gt;Data sheet&lt;/a&gt; (&lt;a href="http://www.cisco.com/c/en/us/products/collateral/switches/cloud-services-platform-2100/datasheet-c78-735317.pdf"&gt;PDF&lt;/a&gt;)&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Some Cisco virtual network services that use the DPDK include Cisco Cloud Services Router (CSR) 1000V, Cisco Virtual Mobile Packet Core software, and Cisco IOS® XR 9000v virtual router.&lt;/li&gt;
+&lt;li&gt;Supporte CISCO appliances
+&lt;ul&gt;
+&lt;li&gt;Cisco Cloud Services Router (CSR) 1000V virtual router&lt;/li&gt;
+&lt;li&gt;Cisco Virtual Adaptive Security Appliance (ASAv)&lt;/li&gt;
+&lt;li&gt;Cisco Prime™ Data Center Network Manager (DCNM)&lt;/li&gt;
+&lt;li&gt;Cisco Virtual Network Analysis Module (vNAM)&lt;/li&gt;
+&lt;li&gt;Cisco Virtual Security Gateway (VSG) for Cisco Nexus® 1000V Switch deployments&lt;/li&gt;
+&lt;li&gt;Cisco Virtual Supervisor Module (VSM) for Cisco Nexus 1000V Switch deployments&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;1U&lt;/li&gt;
+&lt;li&gt;2 CPU, each has 8 core Ivy Bridge(E5-2630 v3)&lt;/li&gt;
+&lt;li&gt;REST API&lt;/li&gt;
+&lt;li&gt;It uses REST API and NETCONF protocol for north-bound management and orchestration (MANO) tools.&lt;/li&gt;
+&lt;li&gt;Network services could be abstracted to a pool of high-availability resources among several hosts.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;a href="http://www.cisco.com/c/dam/en/us/solutions/collateral/service-provider/network-functions-virtualization-nfv/nfv-partnership.pdf"&gt;Cisco Systems and Intel Corporation NFV Partnership&lt;/a&gt;&lt;/p&gt;</description></item></channel></rss>

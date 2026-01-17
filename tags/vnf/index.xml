@@ -1,10 +1,27 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>VNF on Keep calm and write something</title><link>https://cychong47.github.io/tags/vnf/</link><description>Recent content in VNF on Keep calm and write something</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Sun, 01 Apr 2018 02:38:51 +0000</lastBuildDate><atom:link href="https://cychong47.github.io/tags/vnf/index.xml" rel="self" type="application/rss+xml"/><item><title>(News) Amdocs Brings an NFV Software Package Based on ONAP</title><link>https://cychong47.github.io/post/2017/new-amdocs-brings-an-nfv-software-package-based-on-onap/</link><pubDate>Wed, 20 Sep 2017 15:30:44 +0900</pubDate><guid>https://cychong47.github.io/post/2017/new-amdocs-brings-an-nfv-software-package-based-on-onap/</guid><description>September 12, 2017
-https://www.sdxcentral.com/articles/news/amdocs-brings-nfv-software-package-based-onap/2017/09/
-Amdocs announced its new NFV Powered by ONAP portfolio – a portfolio featuring modular capabilities that accelerate service design, virtualization and operating capabilities on demand.
-Service providers using technologies developed in ONAP and its ecosystem of capabilities can provide enterprises the ability to design their own networks as part of a richer set of service features.
-from : https://www.amdocs.com/media-room/amdocs-nfv-powered-onap-worlds-first-software-and-services-portfolio-carriers-based-open
-Amdoc? Amdocs was initially involved with AT&amp;amp;T’s home-grown ECOMP platform as an integrator.</description></item><item><title>SR-IOV and DPDK</title><link>https://cychong47.github.io/post/2016/sriov-and-dpdk/</link><pubDate>Sun, 07 Feb 2016 23:40:26 +0900</pubDate><guid>https://cychong47.github.io/post/2016/sriov-and-dpdk/</guid><description>SR-IOV and DPDK
-Accelerating the NFV Data Plane : SR-IOV and DPDK… in my own words 를 읽고 요약
-Before HW assisted Virtualisation SR-IOV 전까지는 VMM이 패킷 송수신에 매번 개입해야 했음.
-1st interrupt from NIC to VMM 2nd interrupt from VMM to VM Intel VMDq Only one interrupt from NIC to VM as each VM has its own Rx queue.
-SR-IOV SR-IOV : Standard IO memory Memory Management Unit from Intel(VT-d) and AMD(IOV) Virtual Function - Limited, lightweight, PCIe resource and a dedicated Tx/Rx packet queue Interrupt 부담이 없다고 하는데 왜?</description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>VNF on Keep calm and Write something</title><link>https://cychong47.github.io/tags/vnf/</link><description>Recent content in VNF on Keep calm and Write something</description><generator>Hugo</generator><language>en-us</language><lastBuildDate>Sun, 01 Apr 2018 02:38:51 +0000</lastBuildDate><atom:link href="https://cychong47.github.io/tags/vnf/index.xml" rel="self" type="application/rss+xml"/><item><title>(News) Amdocs Brings an NFV Software Package Based on ONAP</title><link>https://cychong47.github.io/post/2017/new-amdocs-brings-an-nfv-software-package-based-on-onap/</link><pubDate>Wed, 20 Sep 2017 15:30:44 +0900</pubDate><guid>https://cychong47.github.io/post/2017/new-amdocs-brings-an-nfv-software-package-based-on-onap/</guid><description>&lt;p&gt;September 12, 2017&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://www.sdxcentral.com/articles/news/amdocs-brings-nfv-software-package-based-onap/2017/09/"&gt;https://www.sdxcentral.com/articles/news/amdocs-brings-nfv-software-package-based-onap/2017/09/&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Amdocs announced its new &lt;strong&gt;NFV Powered by ONAP portfolio&lt;/strong&gt; &lt;strong&gt;–&lt;/strong&gt; a portfolio featuring modular capabilities that accelerate service design, virtualization and operating capabilities on demand.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Service providers using technologies developed in ONAP and its ecosystem of capabilities can provide enterprises the ability to design their own networks as part of a richer set of service features.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;from : &lt;a href="https://www.amdocs.com/media-room/amdocs-nfv-powered-onap-worlds-first-software-and-services-portfolio-carriers-based-open"&gt;https://www.amdocs.com/media-room/amdocs-nfv-powered-onap-worlds-first-software-and-services-portfolio-carriers-based-open&lt;/a&gt;&lt;/p&gt;
+&lt;h4 id="amdoc"&gt;Amdoc?&lt;/h4&gt;
+&lt;p&gt;&lt;a href="https://www.sdxcentral.com/articles/news/amdocs-will-integrator-att-ecomp-platform/2016/07/"&gt;Amdocs was initially involved&lt;/a&gt; with AT&amp;amp;T’s home-grown ECOMP platform as an integrator.(2016/07)&lt;/p&gt;</description></item><item><title>SR-IOV and DPDK</title><link>https://cychong47.github.io/post/2016/sriov-and-dpdk/</link><pubDate>Sun, 07 Feb 2016 23:40:26 +0900</pubDate><guid>https://cychong47.github.io/post/2016/sriov-and-dpdk/</guid><description>&lt;p&gt;SR-IOV and DPDK&lt;/p&gt;
+&lt;p&gt;&lt;a href="http://www.metaswitch.com/the-switch/accelerating-the-nfv-data-plane"&gt;Accelerating the NFV Data Plane : SR-IOV and DPDK… in my own words&lt;/a&gt; 를 읽고 요약&lt;/p&gt;
+&lt;h2 id="before-hw-assisted-virtualisation"&gt;Before HW assisted Virtualisation&lt;/h2&gt;
+&lt;p&gt;SR-IOV 전까지는 VMM이 패킷 송수신에 매번 개입해야 했음.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;1st interrupt from NIC to VMM&lt;/li&gt;
+&lt;li&gt;2nd interrupt from VMM to VM&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id="intel-vmdq"&gt;Intel VMDq&lt;/h2&gt;
+&lt;p&gt;Only one interrupt from NIC to VM as each VM has its own Rx queue.&lt;/p&gt;
+&lt;h2 id="sr-iov"&gt;SR-IOV&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;SR-IOV : Standard IO memory Memory Management Unit from Intel(VT-d) and AMD(IOV)&lt;/li&gt;
+&lt;li&gt;Virtual Function - Limited, lightweight, PCIe resource and a dedicated Tx/Rx packet queue&lt;/li&gt;
+&lt;li&gt;Interrupt 부담이 없다고 하는데 왜??? 마지막 결론에서는 SR-IOV를 사용하면 interrupt를 두 개 다 없앨 수 있다고 하는데 이 부분은 잘 이해가 안된다.
+HW 기반&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id="sr-iov-and-vswitch"&gt;SR-IOV and vSwitch&lt;/h2&gt;
+&lt;p&gt;SR-IOV는 VMM의 부담을 덜어주는 장점을 가지고 있지만, 반대로 vSwitch가 제공할 수 있는 네트웍 기능들 - portability, flexibility, QoS, complex traffic steering 등을 이용할 수 없게 되었다는. 문제는 이런 기능들이 NFV환경에서 필요하고(할 거고). vSwitch의 기능을 사용할 수 없으면 service chaining 같은 건 고민할 것도 없고, 위 기능들을 모두 각 VNF에서 구현해야 하는데. 물론 기존 PNF가 그랬던 것 처럼 못할 것도 없지만, 한 곳에 모아놓은 VNF사이에 구현해야 하는 공통 기능이면 가능하면 NFVI에서 구현할 수 있으면 좋겠지&lt;/p&gt;</description></item></channel></rss>

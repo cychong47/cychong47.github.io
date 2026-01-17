@@ -1,13 +1,235 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Ansible on Keep calm and write something</title><link>https://cychong47.github.io/tags/ansible/</link><description>Recent content in Ansible on Keep calm and write something</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Thu, 14 Jun 2018 15:21:32 +0000</lastBuildDate><atom:link href="https://cychong47.github.io/tags/ansible/index.xml" rel="self" type="application/rss+xml"/><item><title>Update ansible-playbook for wordpress</title><link>https://cychong47.github.io/post/2018/update-ansible-playbook-for-wordpress/</link><pubDate>Thu, 14 Jun 2018 15:13:52 +0900</pubDate><guid>https://cychong47.github.io/post/2018/update-ansible-playbook-for-wordpress/</guid><description>이상하게 wordpress 버전이 올라가면 docker용 wordpress 버전도 함께 올라갈 텐데 아무리 최신 docker image를 받아 container를 만들어도 wordpress admin 계정에 들어가면 wordpress를 업데이트 해야 한다고 한다. docket store(http://store.docker.com)에 가면 분명히 wordpress 최신 버전으로 패키징되어 있는 데&amp;hellip;
-혹시나 하고 ansible-playbook을 보니 /var/www/html에 마운트되는 위치에 이전 버전의 wordpress 파일들이 존재하고 있었다.
-volumes: - &amp;#34;/Users/cychong/Documents/wordpress/html:/var/www/html&amp;#34; - &amp;#34;/Users/cychong/Documents/wordpress/uploads:/var/www/html/wp-content/uploads&amp;#34; - &amp;#34;/Users/cychong/Documents/wordpress/conf/php_uploads.ini:/usr/local/etc/php/conf.d/uploads.ini&amp;#34; 바로 첫번째 줄이 문제를 유발하고 있는 곳&amp;hellip; 내가 왜 굳이 저렇게 했을까 생각해 보니 저 디렉토리에 바로 wp-content가 있고, 그 아래 themes와 plugins가 있다.</description></item><item><title>Ansible - Install homebrew</title><link>https://cychong47.github.io/post/2017/ansible-homebrew/</link><pubDate>Sat, 30 Dec 2017 02:34:39 +0900</pubDate><guid>https://cychong47.github.io/post/2017/ansible-homebrew/</guid><description>update homebrew mbpr15:mp3 cychong$ ansible all -m homebrew -a update_homebrew=yes localhost | SUCCESS =&amp;gt; { &amp;#34;changed&amp;#34;: true, &amp;#34;msg&amp;#34;: &amp;#34;Homebrew updated successfully.&amp;#34; } mini2 | SUCCESS =&amp;gt; { &amp;#34;changed&amp;#34;: true, &amp;#34;msg&amp;#34;: &amp;#34;Homebrew updated successfully.&amp;#34; } upgrade all packages mbpr15:mp3 cychong$ ansible all -m homebrew -a update_homebrew=yes -a upgrade_all=yes localhost | SUCCESS =&amp;gt; { &amp;#34;changed&amp;#34;: true, &amp;#34;msg&amp;#34;: &amp;#34;Homebrew upgraded.&amp;#34; } mini2 | SUCCESS =&amp;gt; { &amp;#34;changed&amp;#34;: true, &amp;#34;msg&amp;#34;: &amp;#34;Homebrew upgraded.&amp;#34; } install a package mbpr15:mp3 cychong$ ansible all -m homebrew -a name=neovim -a state=present mbpr15:~ cychong$ cat install_brew_neovim.</description></item><item><title>Ansible - recreate ghost container</title><link>https://cychong47.github.io/post/2017/recreate-ghost-container/</link><pubDate>Sat, 30 Dec 2017 02:31:41 +0900</pubDate><guid>https://cychong47.github.io/post/2017/recreate-ghost-container/</guid><description>YAML file state:absent 는 현재 존재하는 container를 중지시키고, 삭제한다. 단순히 stop만 시키려면 state:stopped로 지정하면 된다.
-pull: yes 옵션을 사용하면 항상 최신 image를 pull한다고 한다.
-recreate Use with present and started states to force the re-creation of an existing container.
-mbpr15:ansible cychong$ cat recreate_container_ghost.yaml --- - hosts: mini2 tasks: - name: Stop and remove contianer docker_container: name: ghost state: absent - name: Create ghost Container docker_container: name: ghost image: ghost # always pull the latest image pull: yes state: started recreate: yes volumes: - &amp;#34;/Users/cychong/Dropbox/Apps/ghost/content/:/var/lib/ghost/content&amp;#34; - &amp;#34;/Users/cychong/Dropbox/Apps/ghost/config.</description></item><item><title>Ansible - basics of ansible-playbook</title><link>https://cychong47.github.io/post/2017/ansible-playbook/</link><pubDate>Fri, 29 Dec 2017 13:43:14 +0900</pubDate><guid>https://cychong47.github.io/post/2017/ansible-playbook/</guid><description>play The goal of a play is to map a group of hosts to some well defined roles, represented by things ansible calls tasks. At a basic level, a task is nothing more than a call to an ansible module
-play는 명령을 수행할 대상과 수행할 명령을 모두 포함하고 있다.
-playbook playbook은 하나 혹은 이상의 play들의 집합으로 정의한다.
-Conventional template of playbook --- - hosts: XXX optoins.... tasks: -name: YYY MODULE_NAME : MODULE_ARGS -name : ZZZ MODULE_NAME: MODULE_ARGS .</description></item><item><title>Ansible - ad-hoc or basic</title><link>https://cychong47.github.io/post/2017/ansible-exercise-1/</link><pubDate>Wed, 27 Dec 2017 14:32:51 +0900</pubDate><guid>https://cychong47.github.io/post/2017/ansible-exercise-1/</guid><description>Create inventory(Ansible hosts) file mbpr15:Homebrew cychong$ cat /etc/ansible/hosts mini1 ansible_host=x.y.z.a ansible_ssh_user=cychong ansible_ssh_port=22 mini2 ansible_host=x.y.z.b ansible_ssh_user=cychong ansible_ssh_port=22 localhost ansible_connection=local ping ping 명령도 ansible이 제공하는 ping module을 이용하므로 -m 옵션을 사용한다.
-mbpr15:Homebrew cychong$ ansible all -m ping -k SSH password: localhost | SUCCESS =&amp;gt; { &amp;#34;changed&amp;#34;: false, &amp;#34;ping&amp;#34;: &amp;#34;pong&amp;#34; } mini2 | SUCCESS =&amp;gt; { &amp;#34;changed&amp;#34;: false, &amp;#34;ping&amp;#34;: &amp;#34;pong&amp;#34; } mini1 | UNREACHABLE! =&amp;gt; { &amp;#34;changed&amp;#34;: false, &amp;#34;msg&amp;#34;: &amp;#34;timed out&amp;#34;, &amp;#34;unreachable&amp;#34;: true } ssh의 로그인 ID는 /etc/ansible/hosts에 기술하거나 명령어 옵션 —user=cychong으로 지정할 수 있다.</description></item><item><title>Error in using homebrew module in ansible</title><link>https://cychong47.github.io/post/2017/untitled-2/</link><pubDate>Sun, 08 Oct 2017 17:25:43 +0900</pubDate><guid>https://cychong47.github.io/post/2017/untitled-2/</guid><description>When I call the homebrew modules for three hosts including the localhost, one host reports error.
-mbpr15:~ cychong$ ansible-playbook install_brew_ack.yaml --verbose No config file found; using defaults PLAY [all] ************************************************************************************************** TASK [Gathering Facts] ************************************************************************************** ok: [localhost] ok: [mini2] ok: [mini1] TASK [install ack in homebrew] ****************************************************************************** ok: [localhost] =&amp;gt; {&amp;#34;changed&amp;#34;: false, &amp;#34;failed&amp;#34;: false, &amp;#34;msg&amp;#34;: &amp;#34;Package already installed: ack&amp;#34;} ok: [mini1] =&amp;gt; {&amp;#34;changed&amp;#34;: false, &amp;#34;failed&amp;#34;: false, &amp;#34;msg&amp;#34;: &amp;#34;Package already installed: ack&amp;#34;} fatal: [mini2]: FAILED!</description></item><item><title>Play with Ansible</title><link>https://cychong47.github.io/post/2017/ansible/</link><pubDate>Wed, 04 Oct 2017 00:22:48 +0900</pubDate><guid>https://cychong47.github.io/post/2017/ansible/</guid><description>Configuration ansible client A ansible target B, C In client Ansible targets(B,C) should be listed in the following file. If required additional parameters can be specified such as login account, ssh port and etc
-# /etc/ansible/hosts 192.168.1.100 ansible_ssh_user=cychong ansible_ssh_port=22 192.168.1.200 ansible_ssh_user=cychong ansible_ssh_port=22 In ansible targets A should be found on the following file
-# grep A .ssh/authorized_keys Test run from A # ansible all -m ping 192.168.1.200 | SUCCESS =&amp;gt; { &amp;#34;changed&amp;#34;: false, &amp;#34;failed&amp;#34;: false, &amp;#34;ping&amp;#34;: &amp;#34;pong&amp;#34; } 192.</description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Ansible on Keep calm and Write something</title><link>https://cychong47.github.io/tags/ansible/</link><description>Recent content in Ansible on Keep calm and Write something</description><generator>Hugo</generator><language>en-us</language><lastBuildDate>Thu, 14 Jun 2018 15:21:32 +0000</lastBuildDate><atom:link href="https://cychong47.github.io/tags/ansible/index.xml" rel="self" type="application/rss+xml"/><item><title>Update ansible-playbook for wordpress</title><link>https://cychong47.github.io/post/2018/update-ansible-playbook-for-wordpress/</link><pubDate>Thu, 14 Jun 2018 15:13:52 +0900</pubDate><guid>https://cychong47.github.io/post/2018/update-ansible-playbook-for-wordpress/</guid><description>&lt;p&gt;이상하게 wordpress 버전이 올라가면 docker용 wordpress 버전도 함께 올라갈 텐데 아무리 최신 docker image를 받아 container를 만들어도 wordpress admin 계정에 들어가면 wordpress를 업데이트 해야 한다고 한다.
+docket store(&lt;a href="http://store.docker.com"&gt;http://store.docker.com&lt;/a&gt;)에 가면 분명히 wordpress 최신 버전으로 패키징되어 있는 데&amp;hellip;&lt;/p&gt;
+&lt;p&gt;혹시나 하고 ansible-playbook을 보니 &lt;code&gt;/var/www/html&lt;/code&gt;에 마운트되는 위치에 이전 버전의 wordpress 파일들이 존재하고 있었다.&lt;/p&gt;
+&lt;pre tabindex="0"&gt;&lt;code&gt; volumes:
+ - &amp;#34;/Users/cychong/Documents/wordpress/html:/var/www/html&amp;#34;
+ - &amp;#34;/Users/cychong/Documents/wordpress/uploads:/var/www/html/wp-content/uploads&amp;#34;
+ - &amp;#34;/Users/cychong/Documents/wordpress/conf/php_uploads.ini:/usr/local/etc/php/conf.d/uploads.ini&amp;#34;
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;바로 첫번째 줄이 문제를 유발하고 있는 곳&amp;hellip;
+내가 왜 굳이 저렇게 했을까 생각해 보니 저 디렉토리에 바로 &lt;code&gt;wp-content&lt;/code&gt;가 있고, 그 아래 &lt;code&gt;themes&lt;/code&gt;와 &lt;code&gt;plugins&lt;/code&gt;가 있다. 처음 docker로 wordpress를 띄울 때 이미 설치한 theme이나 plugin이 wordpress docker 버전이 올라가서 새로 container를 만들 때마다 다시 설치해야 하는 번거로움을 피하려고 저렇게 한 듯 하다. 지금 생각하면 참 바보같은&amp;hellip;&lt;/p&gt;</description></item><item><title>Ansible - Install homebrew</title><link>https://cychong47.github.io/post/2017/ansible-homebrew/</link><pubDate>Sat, 30 Dec 2017 02:34:39 +0900</pubDate><guid>https://cychong47.github.io/post/2017/ansible-homebrew/</guid><description>&lt;h2 id="update-homebrew"&gt;update homebrew&lt;/h2&gt;
+&lt;pre tabindex="0"&gt;&lt;code&gt;mbpr15:mp3 cychong$ ansible all -m homebrew -a update_homebrew=yes
+localhost | SUCCESS =&amp;gt; {
+ &amp;#34;changed&amp;#34;: true,
+ &amp;#34;msg&amp;#34;: &amp;#34;Homebrew updated successfully.&amp;#34;
+}
+mini2 | SUCCESS =&amp;gt; {
+ &amp;#34;changed&amp;#34;: true,
+ &amp;#34;msg&amp;#34;: &amp;#34;Homebrew updated successfully.&amp;#34;
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;h2 id="upgrade-all-packages"&gt;upgrade all packages&lt;/h2&gt;
+&lt;pre tabindex="0"&gt;&lt;code&gt;mbpr15:mp3 cychong$ ansible all -m homebrew -a update_homebrew=yes -a upgrade_all=yes
+localhost | SUCCESS =&amp;gt; {
+ &amp;#34;changed&amp;#34;: true,
+ &amp;#34;msg&amp;#34;: &amp;#34;Homebrew upgraded.&amp;#34;
+}
+mini2 | SUCCESS =&amp;gt; {
+ &amp;#34;changed&amp;#34;: true,
+ &amp;#34;msg&amp;#34;: &amp;#34;Homebrew upgraded.&amp;#34;
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;h2 id="install-a-package"&gt;install a package&lt;/h2&gt;
+&lt;pre tabindex="0"&gt;&lt;code&gt;mbpr15:mp3 cychong$ ansible all -m homebrew -a name=neovim -a state=present
+&lt;/code&gt;&lt;/pre&gt;&lt;pre tabindex="0"&gt;&lt;code&gt;mbpr15:~ cychong$ cat install_brew_neovim.yaml 
+---
+- hosts: all
+ tasks:
+ - name : install neovim in homebrew
+ homebrew: 
+ name: neovim
+ state: present
+
+mbpr15:~ cychong$ ansible-playbook install_brew_neovim.yaml 
+
+PLAY [all] *****************************************************************************************************************************************************************
+
+TASK [Gathering Facts] *****************************************************************************************************************************************************
+ok: [localhost]
+ok: [mini2]
+
+TASK [install neovim in homebrew] ******************************************************************************************************************************************
+changed: [localhost]
+changed: [mini2]
+
+PLAY RECAP *****************************************************************************************************************************************************************
+localhost : ok=2 changed=1 unreachable=0 failed=0 
+mini2 : ok=2 changed=1 unreachable=0 failed=0 
+
+mbpr15:~ cychong$ which nvim
+/usr/local/bin/nvim
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;삭제는 &lt;code&gt;state&lt;/code&gt;만 &lt;code&gt;absent&lt;/code&gt;로 변경하면 된다.&lt;/p&gt;</description></item><item><title>Ansible - recreate ghost container</title><link>https://cychong47.github.io/post/2017/recreate-ghost-container/</link><pubDate>Sat, 30 Dec 2017 02:31:41 +0900</pubDate><guid>https://cychong47.github.io/post/2017/recreate-ghost-container/</guid><description>&lt;h2 id="yaml-file"&gt;YAML file&lt;/h2&gt;
+&lt;p&gt;&lt;code&gt;state:absent&lt;/code&gt; 는 현재 존재하는 container를 중지시키고, 삭제한다.
+단순히 stop만 시키려면 &lt;code&gt;state:stopped&lt;/code&gt;로 지정하면 된다.&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;pull: yes&lt;/code&gt; 옵션을 사용하면 항상 최신 image를 pull한다고 한다.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;recreate
+Use with present and started states to force the re-creation of an existing container.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;pre tabindex="0"&gt;&lt;code&gt;mbpr15:ansible cychong$ cat recreate_container_ghost.yaml 
+---
+- hosts: mini2
+ tasks:
+
+ - name: Stop and remove contianer
+ docker_container:
+ name: ghost
+ state: absent
+
+ - name: Create ghost Container
+ docker_container:
+ name: ghost
+ image: ghost
+ # always pull the latest image
+ pull: yes
+ state: started
+ recreate: yes
+ volumes:
+ - &amp;#34;/Users/cychong/Dropbox/Apps/ghost/content/:/var/lib/ghost/content&amp;#34; 
+ - &amp;#34;/Users/cychong/Dropbox/Apps/ghost/config.production.json:/var/lib/ghost/config.production.json&amp;#34;
+ ports:
+ - &amp;#34;2368:2368&amp;#34;
+ env:
+ NODE_ENV: production
+&lt;/code&gt;&lt;/pre&gt;&lt;pre tabindex="0"&gt;&lt;code&gt;mbpr15:ansible cychong$ ansible-playbook recreate_container_ghost.yaml 
+
+PLAY [mini2] ***************************************************************************************************************************************************************
+
+TASK [Gathering Facts] *****************************************************************************************************************************************************
+ok: [mini2]
+
+TASK [Stop and remove contianer] *******************************************************************************************************************************************
+changed: [mini2]
+
+TASK [Create ghost Container] **********************************************************************************************************************************************
+changed: [mini2]
+
+PLAY RECAP *****************************************************************************************************************************************************************
+mini2 : ok=3 changed=2 unreachable=0 failed=0 
+&lt;/code&gt;&lt;/pre&gt;</description></item><item><title>Ansible - basics of ansible-playbook</title><link>https://cychong47.github.io/post/2017/ansible-playbook/</link><pubDate>Fri, 29 Dec 2017 13:43:14 +0900</pubDate><guid>https://cychong47.github.io/post/2017/ansible-playbook/</guid><description>&lt;h2 id="play"&gt;&lt;code&gt;play&lt;/code&gt;&lt;/h2&gt;
+&lt;blockquote&gt;
+&lt;p&gt;The goal of a play is to map a group of hosts to some well defined roles, represented by things ansible calls tasks. At a basic level, a task is nothing more than a call to an ansible module&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;play는 명령을 수행할 대상과 수행할 명령을 모두 포함하고 있다.&lt;/p&gt;
+&lt;h2 id="playbook"&gt;&lt;code&gt;playbook&lt;/code&gt;&lt;/h2&gt;
+&lt;p&gt;playbook은 하나 혹은 이상의 play들의 집합으로 정의한다.&lt;/p&gt;
+&lt;h3 id="conventional-template-of-playbook"&gt;Conventional template of playbook&lt;/h3&gt;
+&lt;pre tabindex="0"&gt;&lt;code&gt;---
+- hosts: XXX
+ optoins....
+ 
+ tasks:
+ -name: YYY
+ MODULE_NAME : MODULE_ARGS
+ -name : ZZZ
+ MODULE_NAME: MODULE_ARGS
+ ...
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;하나의 play는 “하나 혹은 이상의 목적지 그룹에 대해 수행되는 task들의 매핑”으로 정의된다. 즉 하나의 &lt;code&gt;hosts&lt;/code&gt; 와 해당 hosts에서 수행할 &lt;code&gt;tasks&lt;/code&gt;들 간의 매핑을 하나의 play로 정의한다.
+&lt;code&gt;hosts&lt;/code&gt; 에는 접속 및 로그인에 관련된 옵션 들이 추가될 수 있다.&lt;/p&gt;</description></item><item><title>Ansible - ad-hoc or basic</title><link>https://cychong47.github.io/post/2017/ansible-exercise-1/</link><pubDate>Wed, 27 Dec 2017 14:32:51 +0900</pubDate><guid>https://cychong47.github.io/post/2017/ansible-exercise-1/</guid><description>&lt;h2 id="create-inventoryansible-hosts-file"&gt;Create inventory(Ansible hosts) file&lt;/h2&gt;
+&lt;pre tabindex="0"&gt;&lt;code&gt;mbpr15:Homebrew cychong$ cat /etc/ansible/hosts
+mini1 ansible_host=x.y.z.a ansible_ssh_user=cychong ansible_ssh_port=22
+mini2 ansible_host=x.y.z.b ansible_ssh_user=cychong ansible_ssh_port=22
+localhost ansible_connection=local
+&lt;/code&gt;&lt;/pre&gt;&lt;h2 id="ping"&gt;ping&lt;/h2&gt;
+&lt;p&gt;ping 명령도 ansible이 제공하는 &lt;code&gt;ping&lt;/code&gt; module을 이용하므로 &lt;code&gt;-m&lt;/code&gt; 옵션을 사용한다.&lt;/p&gt;
+&lt;pre tabindex="0"&gt;&lt;code&gt;mbpr15:Homebrew cychong$ ansible all -m ping -k
+SSH password: 
+localhost | SUCCESS =&amp;gt; {
+ &amp;#34;changed&amp;#34;: false,
+ &amp;#34;ping&amp;#34;: &amp;#34;pong&amp;#34;
+}
+mini2 | SUCCESS =&amp;gt; {
+ &amp;#34;changed&amp;#34;: false,
+ &amp;#34;ping&amp;#34;: &amp;#34;pong&amp;#34;
+}
+mini1 | UNREACHABLE! =&amp;gt; {
+ &amp;#34;changed&amp;#34;: false,
+ &amp;#34;msg&amp;#34;: &amp;#34;timed out&amp;#34;,
+ &amp;#34;unreachable&amp;#34;: true
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;ssh의 로그인 ID는 /etc/ansible/hosts에 기술하거나 명령어 옵션 &lt;code&gt;—user=cychong&lt;/code&gt;으로 지정할 수 있다.&lt;/p&gt;</description></item><item><title>Error in using homebrew module in ansible</title><link>https://cychong47.github.io/post/2017/untitled-2/</link><pubDate>Sun, 08 Oct 2017 17:25:43 +0900</pubDate><guid>https://cychong47.github.io/post/2017/untitled-2/</guid><description>&lt;p&gt;When I call the homebrew modules for three hosts including the localhost, one host reports error.&lt;/p&gt;
+&lt;pre tabindex="0"&gt;&lt;code&gt;mbpr15:~ cychong$ ansible-playbook install_brew_ack.yaml --verbose
+No config file found; using defaults
+
+PLAY [all] **************************************************************************************************
+
+TASK [Gathering Facts] **************************************************************************************
+ok: [localhost]
+ok: [mini2]
+ok: [mini1]
+
+TASK [install ack in homebrew] ******************************************************************************
+ok: [localhost] =&amp;gt; {&amp;#34;changed&amp;#34;: false, &amp;#34;failed&amp;#34;: false, &amp;#34;msg&amp;#34;: &amp;#34;Package already installed: ack&amp;#34;}
+ok: [mini1] =&amp;gt; {&amp;#34;changed&amp;#34;: false, &amp;#34;failed&amp;#34;: false, &amp;#34;msg&amp;#34;: &amp;#34;Package already installed: ack&amp;#34;}
+fatal: [mini2]: FAILED! =&amp;gt; {&amp;#34;changed&amp;#34;: false, &amp;#34;failed&amp;#34;: true, &amp;#34;msg&amp;#34;: &amp;#34;Warning: git 2.14.2 is already installed\nError: Git must be installed and in your PATH!\nxcrun: error: invalid active developer path (/Library/Developer/CommandLineTools), missing xcrun at: /Library/Developer/CommandLineTools/usr/bin/xcrun\nError: ack cannot be built with any available compilers.\nInstall GNU&amp;#39;s GCC\n brew install gcc&amp;#34;}
+	to retry, use: --limit @/Users/cychong/install_brew_ack.retry
+
+PLAY RECAP **************************************************************************************************
+localhost : ok=2 changed=0 unreachable=0 failed=0 
+mini1 : ok=2 changed=0 unreachable=0 failed=0 
+mini2 : ok=1 changed=0 unreachable=0 failed=1 
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;This requires xcrun is not installed. (The following command will have a pop-up window to install command line tool).&lt;/p&gt;</description></item><item><title>Play with Ansible</title><link>https://cychong47.github.io/post/2017/ansible/</link><pubDate>Wed, 04 Oct 2017 00:22:48 +0900</pubDate><guid>https://cychong47.github.io/post/2017/ansible/</guid><description>&lt;h1 id="configuration"&gt;Configuration&lt;/h1&gt;
+&lt;ul&gt;
+&lt;li&gt;ansible client A&lt;/li&gt;
+&lt;li&gt;ansible target B, C&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id="in-client"&gt;In client&lt;/h2&gt;
+&lt;p&gt;Ansible targets(B,C) should be listed in the following file. If required additional parameters can be specified such as login account, ssh port and etc&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;# /etc/ansible/hosts
+&lt;/code&gt;&lt;/pre&gt;
+&lt;pre tabindex="0"&gt;&lt;code&gt;192.168.1.100 ansible_ssh_user=cychong ansible_ssh_port=22
+192.168.1.200 ansible_ssh_user=cychong ansible_ssh_port=22
+&lt;/code&gt;&lt;/pre&gt;&lt;h2 id="in-ansible-targets"&gt;In ansible targets&lt;/h2&gt;
+&lt;p&gt;A should be found on the following file&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;# grep A .ssh/authorized_keys
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id="test-run-from-a"&gt;Test run from A&lt;/h2&gt;
+&lt;pre tabindex="0"&gt;&lt;code&gt;# ansible all -m ping
+192.168.1.200 | SUCCESS =&amp;gt; {
+ &amp;#34;changed&amp;#34;: false, 
+ &amp;#34;failed&amp;#34;: false, 
+ &amp;#34;ping&amp;#34;: &amp;#34;pong&amp;#34;
+}
+192.168.1.100 | SUCCESS =&amp;gt; {
+ &amp;#34;changed&amp;#34;: false, 
+ &amp;#34;failed&amp;#34;: false, 
+ &amp;#34;ping&amp;#34;: &amp;#34;pong&amp;#34;
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;h2 id="test-run-from-a-2"&gt;Test run from A #2&lt;/h2&gt;
+&lt;pre tabindex="0"&gt;&lt;code&gt;mbpr15:~ cychong$ ansible all -a &amp;#34;/usr/bin/du -hs Downloads&amp;#34;
+192.168.1.100 | SUCCESS | rc=0 &amp;gt;&amp;gt;
+ 20G	Downloads
+
+192.168.1.200 | SUCCESS | rc=0 &amp;gt;&amp;gt;
+ 11G	Downloads
+&lt;/code&gt;&lt;/pre&gt;&lt;h2 id="test-run-from-a-3"&gt;Test run from A #3&lt;/h2&gt;
+&lt;pre tabindex="0"&gt;&lt;code&gt;mbpr15:~ cychong$ ansible all -a &amp;#34;/bin/df -h .&amp;#34;
+192.168.1.200 | SUCCESS | rc=0 &amp;gt;&amp;gt;
+Filesystem Size Used Avail Capacity iused ifree %iused Mounted on
+/dev/disk2s1 119Gi 103Gi 12Gi 90% 1178609 9223372036853597198 0% /
+
+192.168.1.100 | SUCCESS | rc=0 &amp;gt;&amp;gt;
+Filesystem Size Used Avail Capacity iused ifree %iused Mounted on
+/dev/disk0s2 115Gi 58Gi 57Gi 51% 15210230 14862623 51% /
+&lt;/code&gt;&lt;/pre&gt;&lt;h1 id="how-ansible-works"&gt;How ansible works&lt;/h1&gt;
+&lt;ul&gt;
+&lt;li&gt;Playbooks contain plays&lt;/li&gt;
+&lt;li&gt;Play contain taks&lt;/li&gt;
+&lt;li&gt;Task call modules&lt;/li&gt;
+&lt;li&gt;Taks run sequentially&lt;/li&gt;
+&lt;li&gt;Handlers are triggered by task, and run once at the end of play&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id="playbooks"&gt;Playbooks&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;YAML files describes the desired state of something&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id="modules"&gt;Modules&lt;/h2&gt;
+&lt;h3 id="list-up-all-modules"&gt;list up all modules&lt;/h3&gt;
+&lt;pre tabindex="0"&gt;&lt;code&gt;$ ansible-doc -l 
+&lt;/code&gt;&lt;/pre&gt;&lt;h3 id="show-man-page-of-a-specific-module"&gt;Show man-page of a specific module&lt;/h3&gt;
+&lt;pre tabindex="0"&gt;&lt;code&gt;$ ansible-doc MODULE_NAME
+$ ansible-doc homebrew 
+&lt;/code&gt;&lt;/pre&gt;&lt;h2 id="inventories"&gt;Inventories&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Statc lines of servers&lt;/li&gt;
+&lt;li&gt;ranges&lt;/li&gt;
+&lt;li&gt;dynamic list of servers : AWS, Azure, GCP&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;code&gt;/etc/ansible/hosts&lt;/code&gt;&lt;/p&gt;</description></item></channel></rss>

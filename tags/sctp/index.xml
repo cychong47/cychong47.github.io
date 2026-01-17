@@ -1,3 +1,20 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Sctp on Keep calm and write something</title><link>https://cychong47.github.io/tags/sctp/</link><description>Recent content in Sctp on Keep calm and write something</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Mon, 07 Oct 2019 15:43:15 +0000</lastBuildDate><atom:link href="https://cychong47.github.io/tags/sctp/index.xml" rel="self" type="application/rss+xml"/><item><title>Enable SCTP in kubernetes</title><link>https://cychong47.github.io/post/2019/enable-sctp-in-kubernetes/</link><pubDate>Mon, 07 Oct 2019 15:39:35 +0900</pubDate><guid>https://cychong47.github.io/post/2019/enable-sctp-in-kubernetes/</guid><description>Check if SCTP is supported by creating SCTP service https://blog.aweimeow.tw/enable-sctp-in-kubernetes-cluster/
-cychong@mini1:~/work/sctp$ cat service.yaml apiVersion: v1 kind: Service metadata: name: sctp spec: selector: app: sctp ports: - protocol: SCTP port: 9999 targetPort: 30001 cychong@mini1:~/work/sctp$ kubectl create -f service.yaml The Service &amp;#34;sctp&amp;#34; is invalid: spec.ports[0].protocol: Unsupported value: &amp;#34;SCTP&amp;#34;: supported values: &amp;#34;TCP&amp;#34;, &amp;#34;UDP&amp;#34; Enable SCTP in running kubernetes cluster https://stackoverflow.com/questions/55909512/how-to-configure-already-running-cluster-in-kubernetes
-Basically you must pass this flag to kube-apiserver. How you can do that depends on how you set up the cluster.</description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Sctp on Keep calm and Write something</title><link>https://cychong47.github.io/tags/sctp/</link><description>Recent content in Sctp on Keep calm and Write something</description><generator>Hugo</generator><language>en-us</language><lastBuildDate>Mon, 07 Oct 2019 15:43:15 +0000</lastBuildDate><atom:link href="https://cychong47.github.io/tags/sctp/index.xml" rel="self" type="application/rss+xml"/><item><title>Enable SCTP in kubernetes</title><link>https://cychong47.github.io/post/2019/enable-sctp-in-kubernetes/</link><pubDate>Mon, 07 Oct 2019 15:39:35 +0900</pubDate><guid>https://cychong47.github.io/post/2019/enable-sctp-in-kubernetes/</guid><description>&lt;h2 id="check-if-sctp-is-supported-by-creating-sctp-service"&gt;Check if SCTP is supported by creating SCTP service&lt;/h2&gt;
+&lt;p&gt;&lt;a href="https://blog.aweimeow.tw/enable-sctp-in-kubernetes-cluster/"&gt;https://blog.aweimeow.tw/enable-sctp-in-kubernetes-cluster/&lt;/a&gt;&lt;/p&gt;
+&lt;pre tabindex="0"&gt;&lt;code&gt;cychong@mini1:~/work/sctp$ cat service.yaml
+apiVersion: v1
+kind: Service
+metadata:
+ name: sctp
+spec:
+ selector:
+ app: sctp
+ ports:
+ - protocol: SCTP
+ port: 9999
+ targetPort: 30001
+&lt;/code&gt;&lt;/pre&gt;&lt;pre tabindex="0"&gt;&lt;code&gt;cychong@mini1:~/work/sctp$ kubectl create -f service.yaml
+The Service &amp;#34;sctp&amp;#34; is invalid: spec.ports[0].protocol: Unsupported value: &amp;#34;SCTP&amp;#34;: supported values: &amp;#34;TCP&amp;#34;, &amp;#34;UDP&amp;#34;
+&lt;/code&gt;&lt;/pre&gt;&lt;h2 id="enable-sctp-in-running-kubernetes-cluster"&gt;Enable SCTP in running kubernetes cluster&lt;/h2&gt;
+&lt;p&gt;&lt;a href="https://stackoverflow.com/questions/55909512/how-to-configure-already-running-cluster-in-kubernetes"&gt;https://stackoverflow.com/questions/55909512/how-to-configure-already-running-cluster-in-kubernetes&lt;/a&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Basically you must pass this flag to kube-apiserver. How you can do that depends on how you set up the cluster. If you used kubeadm or kubespray then you should edit file &lt;code&gt;/etc/kubernetes/manifests/kube-apiserver.yaml&lt;/code&gt; and add this flag somewhere under &amp;ldquo;command&amp;rdquo; field (somewhere between other flags). After that kube-apiserver pod should be restarted automatically. If not - you can kill it by hand.&lt;/p&gt;</description></item></channel></rss>

@@ -1,2 +1,60 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Ipv4 on Keep calm and write something</title><link>https://cychong47.github.io/tags/ipv4/</link><description>Recent content in Ipv4 on Keep calm and write something</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Sun, 01 Apr 2018 02:38:51 +0000</lastBuildDate><atom:link href="https://cychong47.github.io/tags/ipv4/index.xml" rel="self" type="application/rss+xml"/><item><title>DPDK IPv4 reassembly</title><link>https://cychong47.github.io/post/2016/dpdk-ipv4-reassembly/</link><pubDate>Thu, 24 Mar 2016 15:03:55 +0900</pubDate><guid>https://cychong47.github.io/post/2016/dpdk-ipv4-reassembly/</guid><description>rte_ipv4_frag_reassemble_packet()
-ip_frag_find() 기존에 존재하는 flow면 해당 flow를 저장한 entry 정보를(ip_frag_pkt *pkg) 신규 flow인 경우 해당 신규 flow를 저장할 신규 혹은 재사용된 entry를 return함 추가할 수 있는 통계 신규 flow? 기존 flow에 정상 추가 기존 flow에 비정상 추가(기존 flow가 timeouted) 이도 저도 아닌 상황(할당 실패) LRU entry free tbl-&amp;gt;max_entries tbl-&amp;gt;use_entries return 기존 존재하는 flow, 신규 할당한 flow entry 혹은 NULL 만일 NULL을 return하면 현재 수신한 mbuf를 death row에 추가한다. 불쌍한&amp;hellip; ip_frag_lookup() if matched entry is exist return flow entry return &amp;amp;stale if time-outed entry is exist if new entry return NULL return free for new empty entry return &amp;amp;stale if time-outed entry is exist ip_frag_key_cmp() return 0 if key matched if ip_frag_lookup() returns NULL if stale entry is not NULL, remove it with ip_frag_tbl_del() and save to free for reuse even if free is not NULL, check if tbl-&amp;gt;use_entries does not exceed tbl-&amp;gt;max_entries.</description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Ipv4 on Keep calm and Write something</title><link>https://cychong47.github.io/tags/ipv4/</link><description>Recent content in Ipv4 on Keep calm and Write something</description><generator>Hugo</generator><language>en-us</language><lastBuildDate>Sun, 01 Apr 2018 02:38:51 +0000</lastBuildDate><atom:link href="https://cychong47.github.io/tags/ipv4/index.xml" rel="self" type="application/rss+xml"/><item><title>DPDK IPv4 reassembly</title><link>https://cychong47.github.io/post/2016/dpdk-ipv4-reassembly/</link><pubDate>Thu, 24 Mar 2016 15:03:55 +0900</pubDate><guid>https://cychong47.github.io/post/2016/dpdk-ipv4-reassembly/</guid><description>&lt;p&gt;&lt;code&gt;rte_ipv4_frag_reassemble_packet()&lt;/code&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;ip_frag_find()&lt;/code&gt;
+&lt;ul&gt;
+&lt;li&gt;기존에 존재하는 flow면 해당 flow를 저장한 entry 정보를(&lt;code&gt;ip_frag_pkt *pkg&lt;/code&gt;)&lt;/li&gt;
+&lt;li&gt;신규 flow인 경우 해당 신규 flow를 저장할 신규 혹은 재사용된 entry를 return함&lt;/li&gt;
+&lt;li&gt;추가할 수 있는 통계
+&lt;ul&gt;
+&lt;li&gt;신규 flow?&lt;/li&gt;
+&lt;li&gt;기존 flow에 정상 추가&lt;/li&gt;
+&lt;li&gt;기존 flow에 비정상 추가(기존 flow가 timeouted)&lt;/li&gt;
+&lt;li&gt;이도 저도 아닌 상황(할당 실패)&lt;/li&gt;
+&lt;li&gt;LRU entry free&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;tbl-&amp;gt;max_entries&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;tbl-&amp;gt;use_entries&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;return
+&lt;ul&gt;
+&lt;li&gt;기존 존재하는 flow, 신규 할당한 flow entry 혹은 NULL&lt;/li&gt;
+&lt;li&gt;만일 NULL을 return하면 현재 수신한 mbuf를 death row에 추가한다. 불쌍한&amp;hellip;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;ip_frag_lookup()&lt;/code&gt;
+&lt;ul&gt;
+&lt;li&gt;if matched entry is exist
+&lt;ul&gt;
+&lt;li&gt;return flow entry&lt;/li&gt;
+&lt;li&gt;return &lt;code&gt;&amp;amp;stale&lt;/code&gt; if time-outed entry is exist&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;if new entry
+&lt;ul&gt;
+&lt;li&gt;return NULL&lt;/li&gt;
+&lt;li&gt;return free for new empty entry&lt;/li&gt;
+&lt;li&gt;return &lt;code&gt;&amp;amp;stale&lt;/code&gt; if time-outed entry is exist&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;ip_frag_key_cmp()&lt;/code&gt; return 0 if key matched&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;if &lt;code&gt;ip_frag_lookup()&lt;/code&gt; returns NULL
+&lt;ul&gt;
+&lt;li&gt;if stale entry is not NULL, remove it with &lt;code&gt;ip_frag_tbl_del()&lt;/code&gt; and save to free for reuse&lt;/li&gt;
+&lt;li&gt;even if free is not NULL, check if &lt;code&gt;tbl-&amp;gt;use_entries&lt;/code&gt; does not exceed &lt;code&gt;tbl-&amp;gt;max_entries&lt;/code&gt;. If so, check if the LRU entry is timeouted, then free the LRU entry. Otherwise, fail to add new entry to the tbl&lt;/li&gt;
+&lt;li&gt;tbl에서 할당하는 것고 &lt;code&gt;max_entries&lt;/code&gt;, &lt;code&gt;use_entries&lt;/code&gt;간의 차이점은??&lt;/li&gt;
+&lt;li&gt;If free is not NULL, add new flow to this free entry&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;if &lt;code&gt;ip_frag_lookup()&lt;/code&gt; returns non-NULL
+&lt;ul&gt;
+&lt;li&gt;if timeouted, reuse it for the received flow&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;tbl-&amp;gt;use_entries—; del_num++&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;ip_frag_process()&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;rte_ip_frag_free_death_row()&lt;/code&gt; 주기적으로 호출해줘야 함&lt;/li&gt;
+&lt;/ul&gt;</description></item></channel></rss>

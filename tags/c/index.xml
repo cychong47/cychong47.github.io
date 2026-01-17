@@ -1,3 +1,11 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>C on Keep calm and write something</title><link>https://cychong47.github.io/tags/c/</link><description>Recent content in C on Keep calm and write something</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Sun, 01 Apr 2018 02:38:40 +0000</lastBuildDate><atom:link href="https://cychong47.github.io/tags/c/index.xml" rel="self" type="application/rss+xml"/><item><title>DPDK Coding style</title><link>https://cychong47.github.io/post/2015/dpdk-coding-style/</link><pubDate>Thu, 21 May 2015 14:51:37 +0900</pubDate><guid>https://cychong47.github.io/post/2015/dpdk-coding-style/</guid><description>출처 : DPDK mailing list
-Coding Style Description This document specifies the preferred style for source files in the DPDK source tree. It is based on the Linux Kernel coding guidelines and the FreeBSD 7.2 Kernel Developer&amp;rsquo;s Manual (see man style(9)), but was heavily modified for the needs of the DPDK.
-General Guidelines The rules and guidelines given in this document cannot cover every situation, so the following general guidelines should be used as a fallback:</description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>C on Keep calm and Write something</title><link>https://cychong47.github.io/tags/c/</link><description>Recent content in C on Keep calm and Write something</description><generator>Hugo</generator><language>en-us</language><lastBuildDate>Sun, 01 Apr 2018 02:38:40 +0000</lastBuildDate><atom:link href="https://cychong47.github.io/tags/c/index.xml" rel="self" type="application/rss+xml"/><item><title>DPDK Coding style</title><link>https://cychong47.github.io/post/2015/dpdk-coding-style/</link><pubDate>Thu, 21 May 2015 14:51:37 +0900</pubDate><guid>https://cychong47.github.io/post/2015/dpdk-coding-style/</guid><description>&lt;p&gt;출처 : &lt;a href="http://dpdk.org/ml/archives/dev/2015-May/017666.html"&gt;DPDK mailing list&lt;/a&gt;&lt;/p&gt;
+&lt;h1 id="coding-style"&gt;Coding Style&lt;/h1&gt;
+&lt;h2 id="description"&gt;Description&lt;/h2&gt;
+&lt;p&gt;This document specifies the preferred style for source files in the DPDK
+source tree. It is based on the Linux Kernel coding guidelines and the
+FreeBSD 7.2 Kernel Developer&amp;rsquo;s Manual (see man style(9)), but was
+heavily modified for the needs of the DPDK.&lt;/p&gt;
+&lt;h2 id="general-guidelines"&gt;General Guidelines&lt;/h2&gt;
+&lt;p&gt;The rules and guidelines given in this document cannot cover every
+situation, so the following general guidelines should be used as a
+fallback:&lt;/p&gt;</description></item></channel></rss>

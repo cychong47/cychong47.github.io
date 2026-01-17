@@ -1,3 +1,113 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Brew on Keep calm and write something</title><link>https://cychong47.github.io/tags/brew/</link><description>Recent content in Brew on Keep calm and write something</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Sun, 01 Apr 2018 02:38:51 +0000</lastBuildDate><atom:link href="https://cychong47.github.io/tags/brew/index.xml" rel="self" type="application/rss+xml"/><item><title>Error in using homebrew module in ansible</title><link>https://cychong47.github.io/post/2017/untitled-2/</link><pubDate>Sun, 08 Oct 2017 17:25:43 +0900</pubDate><guid>https://cychong47.github.io/post/2017/untitled-2/</guid><description>When I call the homebrew modules for three hosts including the localhost, one host reports error.
-mbpr15:~ cychong$ ansible-playbook install_brew_ack.yaml --verbose No config file found; using defaults PLAY [all] ************************************************************************************************** TASK [Gathering Facts] ************************************************************************************** ok: [localhost] ok: [mini2] ok: [mini1] TASK [install ack in homebrew] ****************************************************************************** ok: [localhost] =&amp;gt; {&amp;#34;changed&amp;#34;: false, &amp;#34;failed&amp;#34;: false, &amp;#34;msg&amp;#34;: &amp;#34;Package already installed: ack&amp;#34;} ok: [mini1] =&amp;gt; {&amp;#34;changed&amp;#34;: false, &amp;#34;failed&amp;#34;: false, &amp;#34;msg&amp;#34;: &amp;#34;Package already installed: ack&amp;#34;} fatal: [mini2]: FAILED!</description></item><item><title>brew install python</title><link>https://cychong47.github.io/post/2017/brew-install-python/</link><pubDate>Sun, 01 Oct 2017 13:44:47 +0900</pubDate><guid>https://cychong47.github.io/post/2017/brew-install-python/</guid><description>Just for the record as some environments are mentioned
-mbpr15:working cychong$ brew install python ==&amp;gt; Installing dependencies for python: readline, sqlite, gdbm, openssl ==&amp;gt; Installing python dependency: readline ==&amp;gt; Downloading https://homebrew.bintray.com/bottles/readline-7.0.3_1.high_sierra.bottle.tar.gz ######################################################################## 100.0% ==&amp;gt; Pouring readline-7.0.3_1.high_sierra.bottle.tar.gz ==&amp;gt; Caveats This formula is keg-only, which means it was not symlinked into /usr/local, because macOS provides the BSD libedit library, which shadows libreadline. In order to prevent conflicts when programs look for libreadline we are defaulting this GNU Readline installation to keg-only.</description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Brew on Keep calm and Write something</title><link>https://cychong47.github.io/tags/brew/</link><description>Recent content in Brew on Keep calm and Write something</description><generator>Hugo</generator><language>en-us</language><lastBuildDate>Sun, 01 Apr 2018 02:38:51 +0000</lastBuildDate><atom:link href="https://cychong47.github.io/tags/brew/index.xml" rel="self" type="application/rss+xml"/><item><title>Error in using homebrew module in ansible</title><link>https://cychong47.github.io/post/2017/untitled-2/</link><pubDate>Sun, 08 Oct 2017 17:25:43 +0900</pubDate><guid>https://cychong47.github.io/post/2017/untitled-2/</guid><description>&lt;p&gt;When I call the homebrew modules for three hosts including the localhost, one host reports error.&lt;/p&gt;
+&lt;pre tabindex="0"&gt;&lt;code&gt;mbpr15:~ cychong$ ansible-playbook install_brew_ack.yaml --verbose
+No config file found; using defaults
+
+PLAY [all] **************************************************************************************************
+
+TASK [Gathering Facts] **************************************************************************************
+ok: [localhost]
+ok: [mini2]
+ok: [mini1]
+
+TASK [install ack in homebrew] ******************************************************************************
+ok: [localhost] =&amp;gt; {&amp;#34;changed&amp;#34;: false, &amp;#34;failed&amp;#34;: false, &amp;#34;msg&amp;#34;: &amp;#34;Package already installed: ack&amp;#34;}
+ok: [mini1] =&amp;gt; {&amp;#34;changed&amp;#34;: false, &amp;#34;failed&amp;#34;: false, &amp;#34;msg&amp;#34;: &amp;#34;Package already installed: ack&amp;#34;}
+fatal: [mini2]: FAILED! =&amp;gt; {&amp;#34;changed&amp;#34;: false, &amp;#34;failed&amp;#34;: true, &amp;#34;msg&amp;#34;: &amp;#34;Warning: git 2.14.2 is already installed\nError: Git must be installed and in your PATH!\nxcrun: error: invalid active developer path (/Library/Developer/CommandLineTools), missing xcrun at: /Library/Developer/CommandLineTools/usr/bin/xcrun\nError: ack cannot be built with any available compilers.\nInstall GNU&amp;#39;s GCC\n brew install gcc&amp;#34;}
+	to retry, use: --limit @/Users/cychong/install_brew_ack.retry
+
+PLAY RECAP **************************************************************************************************
+localhost : ok=2 changed=0 unreachable=0 failed=0 
+mini1 : ok=2 changed=0 unreachable=0 failed=0 
+mini2 : ok=1 changed=0 unreachable=0 failed=1 
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;This requires xcrun is not installed. (The following command will have a pop-up window to install command line tool).&lt;/p&gt;</description></item><item><title>brew install python</title><link>https://cychong47.github.io/post/2017/brew-install-python/</link><pubDate>Sun, 01 Oct 2017 13:44:47 +0900</pubDate><guid>https://cychong47.github.io/post/2017/brew-install-python/</guid><description>&lt;p&gt;Just for the record as some environments are mentioned&lt;/p&gt;
+&lt;pre tabindex="0"&gt;&lt;code&gt;mbpr15:working cychong$ brew install python
+==&amp;gt; Installing dependencies for python: readline, sqlite, gdbm, openssl
+==&amp;gt; Installing python dependency: readline
+==&amp;gt; Downloading https://homebrew.bintray.com/bottles/readline-7.0.3_1.high_sierra.bottle.tar.gz
+######################################################################## 100.0%
+==&amp;gt; Pouring readline-7.0.3_1.high_sierra.bottle.tar.gz
+==&amp;gt; Caveats
+This formula is keg-only, which means it was not symlinked into /usr/local,
+because macOS provides the BSD libedit library, which shadows libreadline.
+In order to prevent conflicts when programs look for libreadline we are
+defaulting this GNU Readline installation to keg-only..
+
+For compilers to find this software you may need to set:
+ LDFLAGS: -L/usr/local/opt/readline/lib
+ CPPFLAGS: -I/usr/local/opt/readline/include
+
+==&amp;gt; Summary
+🍺 /usr/local/Cellar/readline/7.0.3_1: 46 files, 1.5MB
+==&amp;gt; Installing python dependency: sqlite
+==&amp;gt; Downloading https://homebrew.bintray.com/bottles/sqlite-3.20.1.high_sierra.bottle.tar.gz
+######################################################################## 100.0%
+==&amp;gt; Pouring sqlite-3.20.1.high_sierra.bottle.tar.gz
+==&amp;gt; Caveats
+This formula is keg-only, which means it was not symlinked into /usr/local,
+because macOS provides an older sqlite3.
+
+If you need to have this software first in your PATH run:
+ echo &amp;#39;export PATH=&amp;#34;/usr/local/opt/sqlite/bin:$PATH&amp;#34;&amp;#39; &amp;gt;&amp;gt; ~/.bash_profile
+
+For compilers to find this software you may need to set:
+ LDFLAGS: -L/usr/local/opt/sqlite/lib
+ CPPFLAGS: -I/usr/local/opt/sqlite/include
+
+==&amp;gt; Summary
+🍺 /usr/local/Cellar/sqlite/3.20.1: 11 files, 2.9MB
+==&amp;gt; Installing python dependency: gdbm
+==&amp;gt; Downloading https://homebrew.bintray.com/bottles/gdbm-1.13.high_sierra.bottle.tar.gz
+######################################################################## 100.0%
+==&amp;gt; Pouring gdbm-1.13.high_sierra.bottle.tar.gz
+🍺 /usr/local/Cellar/gdbm/1.13: 19 files, 553.9KB
+==&amp;gt; Installing python dependency: openssl
+==&amp;gt; Downloading https://homebrew.bintray.com/bottles/openssl-1.0.2l.high_sierra.bottle.tar.gz
+######################################################################## 100.0%
+==&amp;gt; Pouring openssl-1.0.2l.high_sierra.bottle.tar.gz
+==&amp;gt; Caveats
+A CA file has been bootstrapped using certificates from the SystemRoots
+keychain. To add additional certificates (e.g. the certificates added in
+the System keychain), place .pem files in
+ /usr/local/etc/openssl/certs
+
+and run
+ /usr/local/opt/openssl/bin/c_rehash
+
+This formula is keg-only, which means it was not symlinked into /usr/local,
+because Apple has deprecated use of OpenSSL in favor of its own TLS and crypto libraries.
+
+If you need to have this software first in your PATH run:
+ echo &amp;#39;export PATH=&amp;#34;/usr/local/opt/openssl/bin:$PATH&amp;#34;&amp;#39; &amp;gt;&amp;gt; ~/.bash_profile
+
+For compilers to find this software you may need to set:
+ LDFLAGS: -L/usr/local/opt/openssl/lib
+ CPPFLAGS: -I/usr/local/opt/openssl/include
+
+==&amp;gt; Summary
+🍺 /usr/local/Cellar/openssl/1.0.2l: 1,709 files, 12.3MB
+==&amp;gt; Installing python
+==&amp;gt; Downloading https://homebrew.bintray.com/bottles/python-2.7.14.high_sierra.bottle.tar.gz
+######################################################################## 100.0%
+==&amp;gt; Pouring python-2.7.14.high_sierra.bottle.tar.gz
+==&amp;gt; /usr/local/Cellar/python/2.7.14/bin/python2 -s setup.py --no-user-cfg install --force --verbose --single-v
+==&amp;gt; /usr/local/Cellar/python/2.7.14/bin/python2 -s setup.py --no-user-cfg install --force --verbose --single-v
+==&amp;gt; /usr/local/Cellar/python/2.7.14/bin/python2 -s setup.py --no-user-cfg install --force --verbose --single-v
+==&amp;gt; Caveats
+This formula installs a python2 executable to /usr/local/bin.
+If you wish to have this formula&amp;#39;s python executable in your PATH then add
+the following to ~/.bash_profile:
+ export PATH=&amp;#34;/usr/local/opt/python/libexec/bin:$PATH&amp;#34;
+
+Pip and setuptools have been installed. To update them
+ pip2 install --upgrade pip setuptools
+
+You can install Python packages with
+ pip2 install &amp;lt;package&amp;gt;
+
+They will install into the site-package directory
+ /usr/local/lib/python2.7/site-packages
+
+See: https://docs.brew.sh/Homebrew-and-Python.html
+==&amp;gt; Summary
+🍺 /usr/local/Cellar/python/2.7.14: 3,517 files, 48.4MB
+&lt;/code&gt;&lt;/pre&gt;</description></item></channel></rss>

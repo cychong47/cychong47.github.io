@@ -1,5 +1,14 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>ATT on Keep calm and write something</title><link>https://cychong47.github.io/tags/att/</link><description>Recent content in ATT on Keep calm and write something</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Sun, 01 Apr 2018 02:38:51 +0000</lastBuildDate><atom:link href="https://cychong47.github.io/tags/att/index.xml" rel="self" type="application/rss+xml"/><item><title>(Summary) AT&amp;T Container Strategy</title><link>https://cychong47.github.io/post/2017/summary-at-t-container-strategy/</link><pubDate>Thu, 21 Sep 2017 15:21:45 +0900</pubDate><guid>https://cychong47.github.io/post/2017/summary-at-t-container-strategy/</guid><description>From https://www.youtube.com/watch?v=rYRiH3HZFN4&amp;amp;t=3s
-Presented in OpenStack Summit 2017 Boston
-Container will be used for workload processing after 2019 VNF is differ from Enterprise IT worklaod(4:19)
-VNF is not a simple VM Maintain a state Complex network configuration Sophisticated Storage Connectivity HA is important 2018-2019 vendor and open source project especially openstack should do something to meet the requirements.
-Even it takes some time for container to replace VM for workload perspective, running the Openstack service as a container is possible today.</description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>ATT on Keep calm and Write something</title><link>https://cychong47.github.io/tags/att/</link><description>Recent content in ATT on Keep calm and Write something</description><generator>Hugo</generator><language>en-us</language><lastBuildDate>Sun, 01 Apr 2018 02:38:51 +0000</lastBuildDate><atom:link href="https://cychong47.github.io/tags/att/index.xml" rel="self" type="application/rss+xml"/><item><title>(Summary) AT&amp;T Container Strategy</title><link>https://cychong47.github.io/post/2017/summary-at-t-container-strategy/</link><pubDate>Thu, 21 Sep 2017 15:21:45 +0900</pubDate><guid>https://cychong47.github.io/post/2017/summary-at-t-container-strategy/</guid><description>&lt;p&gt;From &lt;a href="https://www.youtube.com/watch?v=rYRiH3HZFN4&amp;amp;t=3s"&gt;https://www.youtube.com/watch?v=rYRiH3HZFN4&amp;amp;t=3s&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Presented in OpenStack Summit 2017 Boston&lt;/p&gt;
+&lt;h2 id="container-will-be-used-for-workload-processing-after-2019"&gt;Container will be used for workload processing after 2019&lt;/h2&gt;
+&lt;p&gt;&lt;img src="https://cychong47.github.io/images/2017/09/Openstack-Summit-2017---ATT-Container-Strategy-03-1.png" alt="Openstack-Summit-2017&amp;mdash;ATT-Container-Strategy-03-1"&gt;&lt;/p&gt;
+&lt;p&gt;VNF is differ from Enterprise IT worklaod(4:19)&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;VNF is not a simple VM&lt;/li&gt;
+&lt;li&gt;Maintain a state&lt;/li&gt;
+&lt;li&gt;Complex network configuration&lt;/li&gt;
+&lt;li&gt;Sophisticated Storage Connectivity&lt;/li&gt;
+&lt;li&gt;HA is important&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;2018-2019 vendor and open source project especially openstack should do something to meet the requirements.&lt;/p&gt;
+&lt;p&gt;Even it takes some time for container to replace VM for workload perspective, running the Openstack service as a container is possible today.&lt;/p&gt;</description></item></channel></rss>

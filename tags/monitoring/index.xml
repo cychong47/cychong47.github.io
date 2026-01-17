@@ -1,5 +1,116 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Monitoring on Keep calm and write something</title><link>https://cychong47.github.io/tags/monitoring/</link><description>Recent content in Monitoring on Keep calm and write something</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Sun, 09 Sep 2018 02:04:46 +0000</lastBuildDate><atom:link href="https://cychong47.github.io/tags/monitoring/index.xml" rel="self" type="application/rss+xml"/><item><title>Grafana, influxDB and python</title><link>https://cychong47.github.io/post/2018/grafana-influxdb-and-python/</link><pubDate>Wed, 06 Jun 2018 04:33:06 +0900</pubDate><guid>https://cychong47.github.io/post/2018/grafana-influxdb-and-python/</guid><description>Time-series data를 python을 이용해서 influxDB에 저장하고, Grafana로 그래프를 보여주는 예제
-https://github.com/cychong47/influxdb_example.git
-Install Grafana and influxDB Install Grafana 직접 호스트에 설치할 수도 있지만, 세상 편하게 만들어준 docker를 이용해서 grafana, influxdb등을 설치하자.
-mbpr15:~ cychong$ docker pull grafana/grafana Using default tag: latest latest: Pulling from grafana/grafana f2aa67a397c4: Pull complete 89573effc7c8: Pull complete b55c103da375: Pull complete Digest: sha256:364bec4a39ecbec744ea4270aae35f6554eb6f2047b3ee08f7b5f1134857c32c Status: Downloaded newer image for grafana/grafana:latest Start grafana
-mbpr15:~ cychong$ docker run -d -p 3000:3000 —name grafana grafana/grafana 148894d7009259b02b04e1a98467f549400be91f9b055f8686557d69b9339e4b Install influxDB influxdb도 docker 명령어 하나로 설치</description></item><item><title>Elastic stack and Metricbeat</title><link>https://cychong47.github.io/post/2018/install_elasticstack_and_metricbeat/</link><pubDate>Thu, 31 May 2018 21:58:51 +0900</pubDate><guid>https://cychong47.github.io/post/2018/install_elasticstack_and_metricbeat/</guid><description>Install Elastic Stack(ELK stack) with docker mbpr15:elk-wireshark cychong$ git clonehttps://github.com/deviantony/docker-elk.git git: &amp;#39;clonehttps://github.com/deviantony/docker-elk.git&amp;#39; is not a git command. See &amp;#39;git --help&amp;#39;. mbpr15:elk-wireshark cychong$ git clone https://github.com/deviantony/docker-elk.git Cloning into &amp;#39;docker-elk&amp;#39;... remote: Counting objects: 1235, done. remote: Total 1235 (delta 0), reused 0 (delta 0), pack-reused 1235 Receiving objects: 100% (1235/1235), 259.29 KiB | 77.00 KiB/s, done. Resolving deltas: 100% (470/470), done. mbpr15:elk-wireshark cychong$ cd elk mbpr15:elk-wireshark cychong$ cd docker-elk/ mbpr15:docker-elk cychong$ ls LICENSE	elasticsearch	logstash README.</description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Monitoring on Keep calm and Write something</title><link>https://cychong47.github.io/tags/monitoring/</link><description>Recent content in Monitoring on Keep calm and Write something</description><generator>Hugo</generator><language>en-us</language><lastBuildDate>Sun, 09 Sep 2018 02:04:46 +0000</lastBuildDate><atom:link href="https://cychong47.github.io/tags/monitoring/index.xml" rel="self" type="application/rss+xml"/><item><title>Grafana, influxDB and python</title><link>https://cychong47.github.io/post/2018/grafana-influxdb-and-python/</link><pubDate>Wed, 06 Jun 2018 04:33:06 +0900</pubDate><guid>https://cychong47.github.io/post/2018/grafana-influxdb-and-python/</guid><description>&lt;p&gt;Time-series data를 python을 이용해서 influxDB에 저장하고, Grafana로 그래프를 보여주는 예제&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://github.com/cychong47/influxdb_example.git"&gt;https://github.com/cychong47/influxdb_example.git&lt;/a&gt;&lt;/p&gt;
+&lt;h1 id="install-grafana-and-influxdb"&gt;Install Grafana and influxDB&lt;/h1&gt;
+&lt;h2 id="install-grafana"&gt;Install Grafana&lt;/h2&gt;
+&lt;p&gt;직접 호스트에 설치할 수도 있지만, 세상 편하게 만들어준 docker를 이용해서 grafana, influxdb등을 설치하자.&lt;/p&gt;
+&lt;pre tabindex="0"&gt;&lt;code&gt;mbpr15:~ cychong$ docker pull grafana/grafana 
+Using default tag: latest
+latest: Pulling from grafana/grafana
+f2aa67a397c4: Pull complete 
+89573effc7c8: Pull complete 
+b55c103da375: Pull complete 
+Digest: sha256:364bec4a39ecbec744ea4270aae35f6554eb6f2047b3ee08f7b5f1134857c32c
+Status: Downloaded newer image for grafana/grafana:latest
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Start &lt;code&gt;grafana&lt;/code&gt;&lt;/p&gt;
+&lt;pre tabindex="0"&gt;&lt;code&gt;mbpr15:~ cychong$ docker run -d -p 3000:3000 —name grafana grafana/grafana 
+148894d7009259b02b04e1a98467f549400be91f9b055f8686557d69b9339e4b
+&lt;/code&gt;&lt;/pre&gt;&lt;h2 id="install-influxdb"&gt;Install influxDB&lt;/h2&gt;
+&lt;p&gt;influxdb도 docker 명령어 하나로 설치&lt;/p&gt;</description></item><item><title>Elastic stack and Metricbeat</title><link>https://cychong47.github.io/post/2018/install_elasticstack_and_metricbeat/</link><pubDate>Thu, 31 May 2018 21:58:51 +0900</pubDate><guid>https://cychong47.github.io/post/2018/install_elasticstack_and_metricbeat/</guid><description>&lt;h2 id="install-elastic-stackelk-stack-with-docker"&gt;Install Elastic Stack(ELK stack) with docker&lt;/h2&gt;
+&lt;pre tabindex="0"&gt;&lt;code&gt;mbpr15:elk-wireshark cychong$ git clonehttps://github.com/deviantony/docker-elk.git
+git: &amp;#39;clonehttps://github.com/deviantony/docker-elk.git&amp;#39; is not a git command. See &amp;#39;git --help&amp;#39;.
+mbpr15:elk-wireshark cychong$ git clone https://github.com/deviantony/docker-elk.git
+Cloning into &amp;#39;docker-elk&amp;#39;...
+remote: Counting objects: 1235, done.
+remote: Total 1235 (delta 0), reused 0 (delta 0), pack-reused 1235
+Receiving objects: 100% (1235/1235), 259.29 KiB | 77.00 KiB/s, done.
+Resolving deltas: 100% (470/470), done.
+mbpr15:elk-wireshark cychong$ cd elk
+mbpr15:elk-wireshark cychong$ cd docker-elk/
+mbpr15:docker-elk cychong$ ls
+LICENSE			elasticsearch		logstash
+README.md		extensions
+docker-compose.yml	kibana
+&lt;/code&gt;&lt;/pre&gt;&lt;h2 id="install-elk-with-docker-compose"&gt;Install ELK with docker-compose&lt;/h2&gt;
+&lt;pre tabindex="0"&gt;&lt;code&gt;mbpr15:docker-elk cychong$ docker-compose up -d
+Creating network &amp;#34;docker-elk_elk&amp;#34; with driver &amp;#34;bridge&amp;#34;
+Building elasticsearch
+Step 1/1 : FROM docker.elastic.co/elasticsearch/elasticsearch-oss:6.2.4
+6.2.4: Pulling from elasticsearch/elasticsearch-oss
+469cfcc7a4b3: Pull complete
+8e27facfa9e0: Pull complete
+cdd15392adc7: Pull complete
+19ff08a29664: Pull complete
+ddc4fd93fdcc: Pull complete
+b723bede0878: Pull complete
+Digest: sha256:2d9c774c536bd1f64abc4993ebc96a2344404d780cbeb81a8b3b4c3807550e57
+Status: Downloaded newer image for docker.elastic.co/elasticsearch/elasticsearch-oss:6.2.4
+ ---&amp;gt; 3822ba554fe9
+Successfully built 3822ba554fe9
+Successfully tagged docker-elk_elasticsearch:latest
+WARNING: Image for service elasticsearch was built because it did not already exist. To rebuild this image you must use `docker-compose build` or `docker-compose up --build`.
+Building logstash
+Step 1/1 : FROM docker.elastic.co/logstash/logstash-oss:6.2.4
+6.2.4: Pulling from logstash/logstash-oss
+469cfcc7a4b3: Already exists
+b4cfa2eb1616: Pull complete
+ec994fa6fa7f: Pull complete
+ccf455902ac6: Pull complete
+6d54f3767ae5: Pull complete
+af0dd1a720da: Pull complete
+457dbabd3f63: Pull complete
+f2c481bd6da1: Pull complete
+d04342e2b9a1: Pull complete
+e8bca7e9b0d9: Pull complete
+d0096563f301: Pull complete
+Digest: sha256:28668a65f6b6a4f1e2abef7aa3fd3b9c8476a16aa5bebc1a9acf0f7de5b80eef
+Status: Downloaded newer image for docker.elastic.co/logstash/logstash-oss:6.2.4
+ ---&amp;gt; 0bade66b6bee
+Successfully built 0bade66b6bee
+Successfully tagged docker-elk_logstash:latest
+WARNING: Image for service logstash was built because it did not already exist. To rebuild this image you must use `docker-compose build` or `docker-compose up --build`.
+Building kibana
+Step 1/1 : FROM docker.elastic.co/kibana/kibana-oss:6.2.4
+6.2.4: Pulling from kibana/kibana-oss
+469cfcc7a4b3: Already exists
+78e4c5fdc069: Pull complete
+d9ecdaefa1b8: Pull complete
+c8e48c8f74d7: Pull complete
+1606c56cdbff: Pull complete
+4e23ce1503d4: Pull complete
+d36b703b3f90: Pull complete
+da5da7625f92: Pull complete
+Digest: sha256:1d1f9bac326bf276010df82a2b4593619f48a5207619e8817c8b20d5a1bb3547
+Status: Downloaded newer image for docker.elastic.co/kibana/kibana-oss:6.2.4
+ ---&amp;gt; 32510971af4e
+Successfully built 32510971af4e
+Successfully tagged docker-elk_kibana:latest
+WARNING: Image for service kibana was built because it did not already exist. To rebuild this image you must use `docker-compose build` or `docker-compose up --build`.
+Creating docker-elk_elasticsearch_1 ... done
+Creating docker-elk_kibana_1 ... done
+Creating docker-elk_logstash_1 ... done
+&lt;/code&gt;&lt;/pre&gt;&lt;pre tabindex="0"&gt;&lt;code&gt;mbpr15:docker-elk cychong$ docker ps
+CONTAINER ID IMAGE COMMAND CREATED STATUS PORTS NAMES
+4fc052e81fae docker-elk_logstash “/usr/local/bin/dock…” 9 minutes ago Up 9 minutes 5044/tcp, 0.0.0.0:5000-&amp;gt;5000/tcp, 9600/tcp docker-elk_logstash_1
+46f049297c7b docker-elk_kibana “/bin/bash /usr/loca…” 9 minutes ago Up 9 minutes 0.0.0.0:5601-&amp;gt;5601/tcp docker-elk_kibana_1
+8ff911ebab03 docker-elk_elasticsearch “/usr/local/bin/dock…” 9 minutes ago Up 9 minutes 0.0.0.0:9200-&amp;gt;9200/tcp, 0.0.0.0:9300-&amp;gt;9300/tcp docker-elk_elasticsearch_1
+&lt;/code&gt;&lt;/pre&gt;&lt;pre tabindex="0"&gt;&lt;code&gt;mbpr15:docker-elk cychong$ curl http://localhost:9200
+{
+ “name” : “npNAiWg”,
+ “cluster_name” : “docker-cluster”,
+ “cluster_uuid” : “7nY4KVvNS4epY4Z80NCUZw”,
+ “version” : {
+ “number” : “6.2.4”,
+ “build_hash” : “ccec39f”,
+ “build_date” : “2018-04-12T20:37:28.497551Z”,
+ “build_snapshot” : false,
+ “lucene_version” : “7.2.1”,
+ “minimum_wire_compatibility_version” : “5.6.0”,
+ “minimum_index_compatibility_version” : “5.0.0”
+ },
+ “tagline” : “You Know, for Search”
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;h2 id="open-httplocalhost5601-with-browser"&gt;Open http://localhost:5601 with browser&lt;/h2&gt;
+&lt;h2 id="install-metricbeats-with-docker---check-the-latest-version-from-elasticco"&gt;install metricbeats with docker - check the latest version from elastic.co&lt;/h2&gt;
+&lt;pre tabindex="0"&gt;&lt;code&gt;docker pull docker.elastic.co/beats/metricbeat:6.2.4
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;metricbeat 는 시스템 통계 정보를 수집해서 elasticsearch로 보내는 역할을 함.
+다양한 모듈들이 &lt;code&gt;modules.d&lt;/code&gt; 디렉토리 아래 위치하고, metricbeats.yml은 수집한 정보를 보낼 위치를 변경하는 정도면 기본적인 동작을 확인할 수 있음.&lt;/p&gt;</description></item></channel></rss>

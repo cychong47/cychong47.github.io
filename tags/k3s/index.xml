@@ -1,5 +1,38 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>K3s on Keep calm and write something</title><link>https://cychong47.github.io/tags/k3s/</link><description>Recent content in K3s on Keep calm and write something</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Wed, 03 Mar 2021 13:17:28 +0900</lastBuildDate><atom:link href="https://cychong47.github.io/tags/k3s/index.xml" rel="self" type="application/rss+xml"/><item><title>Change the server IP address of k3s</title><link>https://cychong47.github.io/post/2021/2021-03-03-change-the-server-ip-address-of-k3s/</link><pubDate>Wed, 03 Mar 2021 13:17:28 +0900</pubDate><guid>https://cychong47.github.io/post/2021/2021-03-03-change-the-server-ip-address-of-k3s/</guid><description>How to change IP address of k3s By default, as k3s operates in the local host, it is not possible to connect from other host.
-To get the server Ip address,
-$ kubectl config view --raw |grep server server: https://127.0.0.1:6443 The listening server IP address can be specified by giving parameter in running the k3s binary.
-K3s configuration is on /etc/systemd/system/k3s.service
-$ cat /etc/systemd/system/k3s.service [Unit] Description=Lightweight Kubernetes Documentation=https://k3s.io Wants=network-online.target After=network-online.target [Install] WantedBy=multi-user.</description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>K3s on Keep calm and Write something</title><link>https://cychong47.github.io/tags/k3s/</link><description>Recent content in K3s on Keep calm and Write something</description><generator>Hugo</generator><language>en-us</language><lastBuildDate>Wed, 03 Mar 2021 13:17:28 +0900</lastBuildDate><atom:link href="https://cychong47.github.io/tags/k3s/index.xml" rel="self" type="application/rss+xml"/><item><title>Change the server IP address of k3s</title><link>https://cychong47.github.io/post/2021/2021-03-03-change-the-server-ip-address-of-k3s/</link><pubDate>Wed, 03 Mar 2021 13:17:28 +0900</pubDate><guid>https://cychong47.github.io/post/2021/2021-03-03-change-the-server-ip-address-of-k3s/</guid><description>&lt;h1 id="how-to-change-ip-address-of-k3s"&gt;How to change IP address of k3s&lt;/h1&gt;
+&lt;p&gt;By default, as k3s operates in the local host, it is not possible to connect from other host.&lt;/p&gt;
+&lt;p&gt;To get the server Ip address,&lt;/p&gt;
+&lt;pre tabindex="0"&gt;&lt;code&gt;$ kubectl config view --raw |grep server
+ server: https://127.0.0.1:6443
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;The listening server IP address can be specified by giving parameter in running the k3s binary.&lt;/p&gt;
+&lt;p&gt;K3s configuration is on &lt;code&gt;/etc/systemd/system/k3s.service&lt;/code&gt;&lt;/p&gt;
+&lt;pre tabindex="0"&gt;&lt;code&gt;$ cat /etc/systemd/system/k3s.service
+[Unit]
+Description=Lightweight Kubernetes
+Documentation=https://k3s.io
+Wants=network-online.target
+After=network-online.target
+
+[Install]
+WantedBy=multi-user.target
+
+[Service]
+Type=notify
+EnvironmentFile=/etc/systemd/system/k3s.service.env
+KillMode=process
+Delegate=yes
+# Having non-zero Limit*s causes performance problems due to accounting overhead
+# in the kernel. We recommend using cgroups to do container-local accounting.
+LimitNOFILE=1048576
+LimitNPROC=infinity
+LimitCORE=infinity
+TasksMax=infinity
+TimeoutStartSec=0
+Restart=always
+RestartSec=5s
+ExecStartPre=-/sbin/modprobe br_netfilter
+ExecStartPre=-/sbin/modprobe overlay
+ExecStart=/usr/local/bin/k3s \
+ server \
+	&amp;#39;--write-kubeconfig-mode&amp;#39; \
+	&amp;#39;644&amp;#39; \
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Append server IP address of &lt;code&gt;ExecStart&lt;/code&gt; option&lt;/p&gt;</description></item></channel></rss>

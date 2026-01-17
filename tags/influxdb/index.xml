@@ -1,6 +1,114 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Influxdb on Keep calm and write something</title><link>https://cychong47.github.io/tags/influxdb/</link><description>Recent content in Influxdb on Keep calm and write something</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Sun, 04 Oct 2020 23:36:26 +0900</lastBuildDate><atom:link href="https://cychong47.github.io/tags/influxdb/index.xml" rel="self" type="application/rss+xml"/><item><title>Install Influxdb and Grafana With Helm</title><link>https://cychong47.github.io/post/2020/2020-10-04-install-influxdb-grafana-with-helm/</link><pubDate>Sun, 04 Oct 2020 23:36:26 +0900</pubDate><guid>https://cychong47.github.io/post/2020/2020-10-04-install-influxdb-grafana-with-helm/</guid><description>Install InfluxDB with helm GitHub - influxdata/helm-charts: Official Helm Chart Repository for InfluxData Applications 가 helm chart를 이용한 설치법을 제공하는 공식 페이지.
-helm repo add influxdata https://helm.influxdata.com/ $ helm repo list WARNING: Kubernetes configuration file is group-readable. This is insecure. Location: /home/cychong/.kube/config WARNING: Kubernetes configuration file is world-readable. This is insecure. Location: /home/cychong/.kube/config NAME URL myhelmrepo https://cychong47.github.io/helm-chart/ infracloudio	https://infracloudio.github.io/charts influxdata https://helm.influxdata.com/ $ helm search repo influxdata NAME CHART VERSION	APP VERSION	DESCRIPTION influxdata/chronograf 1.</description></item><item><title>Grafana, influxDB and python</title><link>https://cychong47.github.io/post/2018/grafana-influxdb-and-python/</link><pubDate>Wed, 06 Jun 2018 04:33:06 +0900</pubDate><guid>https://cychong47.github.io/post/2018/grafana-influxdb-and-python/</guid><description>Time-series data를 python을 이용해서 influxDB에 저장하고, Grafana로 그래프를 보여주는 예제
-https://github.com/cychong47/influxdb_example.git
-Install Grafana and influxDB Install Grafana 직접 호스트에 설치할 수도 있지만, 세상 편하게 만들어준 docker를 이용해서 grafana, influxdb등을 설치하자.
-mbpr15:~ cychong$ docker pull grafana/grafana Using default tag: latest latest: Pulling from grafana/grafana f2aa67a397c4: Pull complete 89573effc7c8: Pull complete b55c103da375: Pull complete Digest: sha256:364bec4a39ecbec744ea4270aae35f6554eb6f2047b3ee08f7b5f1134857c32c Status: Downloaded newer image for grafana/grafana:latest Start grafana
-mbpr15:~ cychong$ docker run -d -p 3000:3000 —name grafana grafana/grafana 148894d7009259b02b04e1a98467f549400be91f9b055f8686557d69b9339e4b Install influxDB influxdb도 docker 명령어 하나로 설치</description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Influxdb on Keep calm and Write something</title><link>https://cychong47.github.io/tags/influxdb/</link><description>Recent content in Influxdb on Keep calm and Write something</description><generator>Hugo</generator><language>en-us</language><lastBuildDate>Sun, 04 Oct 2020 23:36:26 +0900</lastBuildDate><atom:link href="https://cychong47.github.io/tags/influxdb/index.xml" rel="self" type="application/rss+xml"/><item><title>Install Influxdb and Grafana With Helm</title><link>https://cychong47.github.io/post/2020/2020-10-04-install-influxdb-grafana-with-helm/</link><pubDate>Sun, 04 Oct 2020 23:36:26 +0900</pubDate><guid>https://cychong47.github.io/post/2020/2020-10-04-install-influxdb-grafana-with-helm/</guid><description>&lt;h2 id="install-influxdb-with-helm"&gt;Install InfluxDB with helm&lt;/h2&gt;
+&lt;p&gt;&lt;a href="https://github.com/influxdata/helm-charts"&gt;GitHub - influxdata/helm-charts: Official Helm Chart Repository for InfluxData Applications&lt;/a&gt; 가 helm chart를 이용한 설치법을 제공하는 공식 페이지.&lt;/p&gt;
+&lt;pre tabindex="0"&gt;&lt;code&gt;helm repo add influxdata https://helm.influxdata.com/
+&lt;/code&gt;&lt;/pre&gt;&lt;pre tabindex="0"&gt;&lt;code&gt;$ helm repo list
+WARNING: Kubernetes configuration file is group-readable. This is insecure. Location: /home/cychong/.kube/config
+WARNING: Kubernetes configuration file is world-readable. This is insecure. Location: /home/cychong/.kube/config
+NAME 	URL
+myhelmrepo 	https://cychong47.github.io/helm-chart/
+infracloudio	https://infracloudio.github.io/charts
+influxdata 	https://helm.influxdata.com/
+&lt;/code&gt;&lt;/pre&gt;&lt;pre tabindex="0"&gt;&lt;code&gt;$ helm search repo influxdata
+NAME 	CHART VERSION	APP VERSION	DESCRIPTION
+influxdata/chronograf 	1.1.17 	1.8.0 	Open-source web application written in Go and R...
+influxdata/influxdb 	4.8.5 	1.8.0 	Scalable datastore for metrics, events, and rea...
+influxdata/influxdb-enterprise	0.1.10 	1.8.0 	Run InfluxDB Enterprise on Kubernetes
+influxdata/influxdb2 	1.0.7 	2.0.0-beta 	A Helm chart for InfluxDB v2
+influxdata/kapacitor 	1.3.1 	1.5.4 	InfluxDB&amp;#39;s native data processing engine. It ca...
+influxdata/telegraf 	1.7.25 	1.14 	Telegraf is an agent written in Go for collecti...
+influxdata/telegraf-ds 	1.0.16 	1.14 	Telegraf is an agent written in Go for collecti...
+influxdata/telegraf-operator 	1.1.3 	v1.1.0 	A Helm chart for Kubernetes to deploy telegraf-...
+&lt;/code&gt;&lt;/pre&gt;&lt;pre tabindex="0"&gt;&lt;code&gt;$ helm upgrade --install -f influxdb-value.yaml influxdb influxdata/influxdb
+Release &amp;#34;influxdb&amp;#34; does not exist. Installing it now.
+NAME: influxdb
+LAST DEPLOYED: Sat Oct 3 10:22:32 2020
+NAMESPACE: default
+STATUS: deployed
+REVISION: 1
+TEST SUITE: None
+NOTES:
+InfluxDB can be accessed via port 8086 on the following DNS name from within your cluster:
+
+ http://influxdb.default:8086
+
+You can connect to the remote instance with the influx CLI. To forward the API port to localhost:8086, run the following:
+
+ kubectl port-forward --namespace default $(kubectl get pods --namespace default -l app=influxdb -o jsonpath=&amp;#39;{ .items[0].metadata.name }&amp;#39;) 8086:8086
+
+You can also connect to the influx CLI from inside the container. To open a shell session in the InfluxDB pod, run the following:
+
+ kubectl exec -i -t --namespace default $(kubectl get pods --namespace default -l app=influxdb -o jsonpath=&amp;#39;{.items[0].metadata.name}&amp;#39;) /bin/sh
+
+To view the logs for the InfluxDB pod, run the following:
+
+ kubectl logs -f --namespace default $(kubectl get pods --namespace default -l app=influxdb -o jsonpath=&amp;#39;{ .items[0].metadata.name }&amp;#39;)
+&lt;/code&gt;&lt;/pre&gt;&lt;pre tabindex="0"&gt;&lt;code&gt;$ kubectl get pods
+NAME READY STATUS RESTARTS AGE
+influxdb-0 1/1 Running 0 87s
+podcast-nginx-659bcb6485-ps7qq 1/1 Running 0 86m
+sosa0sa-nginx-87fc9949c-wb4jp 1/1 Running 0 95m
+
+$ kubectl get svc
+NAME TYPE CLUSTER-IP EXTERNAL-IP PORT(S) AGE
+influxdb ClusterIP 10.110.66.138 &amp;lt;none&amp;gt; 8086/TCP,8088/TCP 92s
+kubernetes ClusterIP 10.96.0.1 &amp;lt;none&amp;gt; 443/TCP 390d
+podcast-nginx NodePort 10.108.15.141 192.168.1.100 8099:30912/TCP 86m
+sosa0sa-nginx NodePort 10.100.21.119 192.168.1.100 80:31806/TCP 95m
+&lt;/code&gt;&lt;/pre&gt;&lt;h3 id="influxdb-container에-접속해서-cli확인"&gt;InfluxDB container에 접속해서 CLI확인&lt;/h3&gt;
+&lt;pre tabindex="0"&gt;&lt;code&gt;kubectl exec [POD] [COMMAND] is DEPRECATED and will be removed in a future version. Use kubectl kubectl exec [POD] -- [COMMAND] instead.
+bash-4.4# influx
+Connected to http://localhost:8086 version 1.8.0
+InfluxDB shell version: 1.8.0
+&amp;gt; show databases
+name: databases
+name
+----
+_internal
+&lt;/code&gt;&lt;/pre&gt;&lt;pre tabindex="0"&gt;&lt;code&gt;$ helm install -f pocket-stat-value.yaml pocket-stat helm-chart/charts/pocket-stat/
+NAME: pocket-stat
+LAST DEPLOYED: Sun Oct 4 20:40:11 2020
+NAMESPACE: default
+STATUS: deployed
+REVISION: 1
+NOTES:
+1. Get the application URL by running these commands:
+ export NODE_PORT=$(kubectl get --namespace default -o jsonpath=&amp;#34;{.spec.ports[0].nodePort}&amp;#34; services pocket-stat)
+ export NODE_IP=$(kubectl get nodes --namespace default -o jsonpath=&amp;#34;{.items[0].status.addresses[0].address}&amp;#34;)
+ echo http://$NODE_IP:$NODE_PORT
+&lt;/code&gt;&lt;/pre&gt;&lt;h2 id="pocket-stat-container를-이용해서-임시-데이터-입력"&gt;&lt;code&gt;pocket-stat&lt;/code&gt; container를 이용해서 임시 데이터 입력&lt;/h2&gt;
+&lt;pre tabindex="0"&gt;&lt;code&gt;$ helm install -f pocket-stat-value.yaml pocket-stat ./helm-chart/charts/pocket-stat
+NAME: pocket-stat
+LAST DEPLOYED: Sun Oct 4 22:46:26 2020
+NAMESPACE: default
+STATUS: deployed
+REVISION: 1
+NOTES:
+1. Get the application URL by running these commands:
+ export NODE_PORT=$(kubectl get --namespace default -o jsonpath=&amp;#34;{.spec.ports[0].nodePort}&amp;#34; services pocket-stat)
+ export NODE_IP=$(kubectl get nodes --namespace default -o jsonpath=&amp;#34;{.items[0].status.addresses[0].address}&amp;#34;)
+ echo http://$NODE_IP:$NODE_PORT
+
+$ kubectl get pods
+NAME READY STATUS RESTARTS AGE
+influxdb-0 1/1 Running 0 36h
+pocket-stat-5b86fbc8f7-xpf9j 1/1 Running 0 20s
+podcast-nginx-659bcb6485-ps7qq 1/1 Running 0 37h
+sosa0sa-nginx-87fc9949c-wb4jp 1/1 Running 0 37h
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;&lt;code&gt;pocket-stat&lt;/code&gt; example app은 5초 주기로 임의의 데이터를 influxdb에 저장하는 동작 수행&lt;/p&gt;</description></item><item><title>Grafana, influxDB and python</title><link>https://cychong47.github.io/post/2018/grafana-influxdb-and-python/</link><pubDate>Wed, 06 Jun 2018 04:33:06 +0900</pubDate><guid>https://cychong47.github.io/post/2018/grafana-influxdb-and-python/</guid><description>&lt;p&gt;Time-series data를 python을 이용해서 influxDB에 저장하고, Grafana로 그래프를 보여주는 예제&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://github.com/cychong47/influxdb_example.git"&gt;https://github.com/cychong47/influxdb_example.git&lt;/a&gt;&lt;/p&gt;
+&lt;h1 id="install-grafana-and-influxdb"&gt;Install Grafana and influxDB&lt;/h1&gt;
+&lt;h2 id="install-grafana"&gt;Install Grafana&lt;/h2&gt;
+&lt;p&gt;직접 호스트에 설치할 수도 있지만, 세상 편하게 만들어준 docker를 이용해서 grafana, influxdb등을 설치하자.&lt;/p&gt;
+&lt;pre tabindex="0"&gt;&lt;code&gt;mbpr15:~ cychong$ docker pull grafana/grafana 
+Using default tag: latest
+latest: Pulling from grafana/grafana
+f2aa67a397c4: Pull complete 
+89573effc7c8: Pull complete 
+b55c103da375: Pull complete 
+Digest: sha256:364bec4a39ecbec744ea4270aae35f6554eb6f2047b3ee08f7b5f1134857c32c
+Status: Downloaded newer image for grafana/grafana:latest
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Start &lt;code&gt;grafana&lt;/code&gt;&lt;/p&gt;
+&lt;pre tabindex="0"&gt;&lt;code&gt;mbpr15:~ cychong$ docker run -d -p 3000:3000 —name grafana grafana/grafana 
+148894d7009259b02b04e1a98467f549400be91f9b055f8686557d69b9339e4b
+&lt;/code&gt;&lt;/pre&gt;&lt;h2 id="install-influxdb"&gt;Install influxDB&lt;/h2&gt;
+&lt;p&gt;influxdb도 docker 명령어 하나로 설치&lt;/p&gt;</description></item></channel></rss>

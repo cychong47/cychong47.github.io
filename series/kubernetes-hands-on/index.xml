@@ -1,8 +1,530 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Kubernetes Hands-On on Keep calm and write something</title><link>https://cychong47.github.io/series/kubernetes-hands-on/</link><description>Recent content in Kubernetes Hands-On on Keep calm and write something</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Mon, 19 Oct 2020 14:21:03 +0900</lastBuildDate><atom:link href="https://cychong47.github.io/series/kubernetes-hands-on/index.xml" rel="self" type="application/rss+xml"/><item><title>Use the Secret and ConfigMaps</title><link>https://cychong47.github.io/post/2020/2020-10-19-use-the-secret-and-configmaps/</link><pubDate>Mon, 19 Oct 2020 14:21:03 +0900</pubDate><guid>https://cychong47.github.io/post/2020/2020-10-19-use-the-secret-and-configmaps/</guid><description>Use the Secret and ConfigMaps $ cat my-secret.yaml apiVersion: v1 kind: Secret metadata: name: mysecret type: Opaque stringData: WSO2_CLOUD_ORG_KEY: &amp;#34;mycompany&amp;#34; WSO2_CLOUD_EMAIL: &amp;#34;sample-email@wso2.com&amp;#34; WSO2_CLOUD_PASSWORD: &amp;#34;password&amp;#34; $ kubectl apply -f my-secret.yaml secret/mysecret created From Using Kubernetes Secrets as Environment Variables
-spec: containers: - env: - name: WSO2_CLOUD_ORG_KEY valueFrom: secretKeyRef: name: mysecret key: WSO2_CLOUD_ORG_KEY ... apiVersion: v1 kind: Secret metadata: name: my-tokens type: Opaque stringData: pinboard_key: &amp;#34;FIXME&amp;#34; pocket_consumer_key: &amp;#34;FIXME&amp;#34; pocket_access_token: &amp;#34;FIXME&amp;#34; slack_api_token: &amp;#34;FIXME&amp;#34; slack_events_token: &amp;#34;FIXME&amp;#34; slack_verification_token: &amp;#34;FIXME&amp;#34; slack_signing_secret: &amp;#34;FIXME&amp;#34; telegram_token: &amp;#34;FIXME&amp;#34; telegram_api_id: &amp;#34;FIXME&amp;#34; telegram_api_hash: &amp;#34;FIXME&amp;#34; $ kubectl apply -f my-tokens.</description></item><item><title>How to make cronjob to support timezone</title><link>https://cychong47.github.io/post/2020/2020-10-19-how-to-fix-no-timezone-support-of-cronjob/</link><pubDate>Mon, 19 Oct 2020 14:16:45 +0900</pubDate><guid>https://cychong47.github.io/post/2020/2020-10-19-how-to-fix-no-timezone-support-of-cronjob/</guid><description>Problem CronJob이 지정된 시간에 잘 동작했는 지 확인해 본 결과 이상한 점을 발견했다.
-오후 2시 32분에 CronJob 의 동작을 확인했는데 이전에 실행된 시간이 4시간 32분 전이라고, 즉 새벽 1시가 아니라 오전 10시에 실행이 되었다는 나오는 것이다.
-$ date Sat Oct 10 14:32:36 KST 2020 $ kubectl get cronjob NAME SCHEDULE SUSPEND ACTIVE LAST SCHEDULE AGE pocket-stat 0 1 * * * False 0 4h32m 14h 혹시 10시를 1시로 잘못 설정했나 하고 kubectl describe cronjob 명령으로 확인해 봤지만 schedule 정보는 정상적으로 설정되어 있었다는.</description></item><item><title>주기적으로 실행되는 앱은 CronJob으로</title><link>https://cychong47.github.io/post/2020/2020-10-09-cronjob-in-kubernetes/</link><pubDate>Fri, 09 Oct 2020 02:00:00 +0900</pubDate><guid>https://cychong47.github.io/post/2020/2020-10-09-cronjob-in-kubernetes/</guid><description>만일 job을 일정 주기 혹은 특정 시간에 실행시키려면 CronJob resource를 만들어 사용하면 된다.
-Job과 CronJob간의 관계는? CronJob에 대한 설명에 따르면 CronJob정의에 기술한 특정 시간이 되면 CronJob이 Job을 실행한다고. 그리고 그 Job이 Pod를 실행한다.
-그럼 Job을 위한 resource 정의와 CronJob을 위한 resource 정의를 각각 정의해야 하나? 그렇지는 않은 듯. CronJob의 정의 파일을 보면 JobTemplate 항목이 Job에서 볼 수 있는 Template과 유사한 container spec 등을 가지고 있다. 물론 CronJob 에서만 유효한 schedule spec 등을 추가로 가지고 있긴 하지만.</description></item><item><title>일회성 앱은 Deployment가 아닌 Job으로</title><link>https://cychong47.github.io/post/2020/2020-10-09-job-instead-of-deployment/</link><pubDate>Fri, 09 Oct 2020 01:00:00 +0900</pubDate><guid>https://cychong47.github.io/post/2020/2020-10-09-job-instead-of-deployment/</guid><description>한 번 실행되면 데몬 처럼 계속해서 동작하는 앱이 아니라 필요한 일을 수행하고 종료되는 앱도 있다. 실행된 시점에 필요한 일을 수행하고 종료하는 형태로 예를 들면 특정 위치에 있는 파일을 처리하고 종료한다거나, 실행된 시점에 외부 서비스에서 필요한 정보를 가져와 어딘가 저장하는 등의 일을 하는. 이런 종류의 앱을 kubernetes에서 Deployment로 배포한 경우 해당 앱은 자신이 해야 할 일을 정상적으로 수행하고 종료되지만, kubernetes scheduler 입장에서는 해당 container가 (의도하지 않게) 종료된 것으로 판단하여 다시 복구하는 절차를 수행한다.</description></item><item><title>Helmize Slackbot</title><link>https://cychong47.github.io/post/2020/2020-09-10-helmize-slackbot/</link><pubDate>Thu, 10 Sep 2020 23:38:18 +0900</pubDate><guid>https://cychong47.github.io/post/2020/2020-09-10-helmize-slackbot/</guid><description>docker로 실행할 대는 환경 변수 파일에 필요한 token정보 등을 적어서 넘겼는데
-docker run -d -p 3010:3010 --env-file=slackbot.env my-slackbot helm으로 할 때는 configmap을 사용하거나, value의 env를 사용하거나 등등.
-$ helm repo update Hang tight while we grab the latest from your chart repositories... ...Successfully got an update from the &amp;#34;infracloudio&amp;#34; chart repository ...Successfully got an update from the &amp;#34;myhelmrepo&amp;#34; chart repository Update Complete. ⎈Happy Helming!⎈ $ helm search repo slackbot NAME CHART VERSION	APP VERSION	DESCRIPTION myhelmrepo/slackbot	0.</description></item><item><title>Upgrade kubenetes to 1.17.2-0</title><link>https://cychong47.github.io/post/2020/new-things-in-last-4-years/</link><pubDate>Thu, 30 Jan 2020 00:00:00 +0900</pubDate><guid>https://cychong47.github.io/post/2020/new-things-in-last-4-years/</guid><description>preparation cychong@mini1:~$ sudo apt update [sudo] password for cychong: Ign:1 http://dl.google.com/linux/chrome/deb stable InRelease Get:2 http://dl.google.com/linux/chrome/deb stable Release [943 B] Get:3 http://dl.google.com/linux/chrome/deb stable Release.gpg [819 B] ... Get the lastest version cychong@mini1:~$ sudo apt-cache policy kubeadm kubeadm: Installed: 1.16.1-00 Candidate: 1.17.2-00 Version table: 1.17.2-00 500 500 http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages 1.17.1-00 500 500 http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages 1.17.0-00 500 500 http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages ... cychong@mini1:~$ apt-cache madison kubeadm kubeadm | 1.</description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Kubernetes Hands-On on Keep calm and Write something</title><link>https://cychong47.github.io/series/kubernetes-hands-on/</link><description>Recent content in Kubernetes Hands-On on Keep calm and Write something</description><generator>Hugo</generator><language>en-us</language><lastBuildDate>Mon, 19 Oct 2020 14:21:03 +0900</lastBuildDate><atom:link href="https://cychong47.github.io/series/kubernetes-hands-on/index.xml" rel="self" type="application/rss+xml"/><item><title>Use the Secret and ConfigMaps</title><link>https://cychong47.github.io/post/2020/2020-10-19-use-the-secret-and-configmaps/</link><pubDate>Mon, 19 Oct 2020 14:21:03 +0900</pubDate><guid>https://cychong47.github.io/post/2020/2020-10-19-use-the-secret-and-configmaps/</guid><description>&lt;h1 id="use-the-secret-and-configmaps"&gt;Use the Secret and ConfigMaps&lt;/h1&gt;
+&lt;pre tabindex="0"&gt;&lt;code&gt;$ cat my-secret.yaml
+apiVersion: v1
+kind: Secret
+metadata:
+ name: mysecret
+type: Opaque
+stringData:
+ WSO2_CLOUD_ORG_KEY: &amp;#34;mycompany&amp;#34;
+ WSO2_CLOUD_EMAIL: &amp;#34;sample-email@wso2.com&amp;#34;
+ WSO2_CLOUD_PASSWORD: &amp;#34;password&amp;#34;
+
+$ kubectl apply -f my-secret.yaml
+secret/mysecret created
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;From &lt;a href="https://medium.com/faun/using-kubernetes-secrets-as-environment-variables-5ea3ef7581ef"&gt;Using Kubernetes Secrets as Environment Variables&lt;/a&gt;&lt;/p&gt;
+&lt;pre tabindex="0"&gt;&lt;code&gt; spec: 
+ containers: 
+ - 
+ env: 
+ - 
+ name: WSO2_CLOUD_ORG_KEY
+ valueFrom:
+ secretKeyRef:
+ name: mysecret
+ key: WSO2_CLOUD_ORG_KEY
+ ...
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;&lt;img src="Use%20the%20Secret%20and%20ConfigMaps/bear_sketch@2x.png" alt=""&gt;&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"&gt;&lt;code class="language-yaml" data-lang="yaml"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#f92672"&gt;apiVersion&lt;/span&gt;: &lt;span style="color:#ae81ff"&gt;v1&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#f92672"&gt;kind&lt;/span&gt;: &lt;span style="color:#ae81ff"&gt;Secret&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#f92672"&gt;metadata&lt;/span&gt;:
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#f92672"&gt;name&lt;/span&gt;: &lt;span style="color:#ae81ff"&gt;my-tokens&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#f92672"&gt;type&lt;/span&gt;: &lt;span style="color:#ae81ff"&gt;Opaque&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#f92672"&gt;stringData&lt;/span&gt;:
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#f92672"&gt;pinboard_key&lt;/span&gt;: &lt;span style="color:#e6db74"&gt;&amp;#34;FIXME&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#f92672"&gt;pocket_consumer_key&lt;/span&gt;: &lt;span style="color:#e6db74"&gt;&amp;#34;FIXME&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#f92672"&gt;pocket_access_token&lt;/span&gt;: &lt;span style="color:#e6db74"&gt;&amp;#34;FIXME&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#f92672"&gt;slack_api_token&lt;/span&gt;: &lt;span style="color:#e6db74"&gt;&amp;#34;FIXME&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#f92672"&gt;slack_events_token&lt;/span&gt;: &lt;span style="color:#e6db74"&gt;&amp;#34;FIXME&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#f92672"&gt;slack_verification_token&lt;/span&gt;: &lt;span style="color:#e6db74"&gt;&amp;#34;FIXME&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#f92672"&gt;slack_signing_secret&lt;/span&gt;: &lt;span style="color:#e6db74"&gt;&amp;#34;FIXME&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#f92672"&gt;telegram_token&lt;/span&gt;: &lt;span style="color:#e6db74"&gt;&amp;#34;FIXME&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#f92672"&gt;telegram_api_id&lt;/span&gt;: &lt;span style="color:#e6db74"&gt;&amp;#34;FIXME&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#f92672"&gt;telegram_api_hash&lt;/span&gt;: &lt;span style="color:#e6db74"&gt;&amp;#34;FIXME&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;pre tabindex="0"&gt;&lt;code&gt;$ kubectl apply -f my-tokens.yaml 
+secret/my-tokens created
+
+$ kubectl get secrets
+NAME TYPE DATA AGE
+default-token-57nq8 kubernetes.io/service-account-token 3 395d
+grafana Opaque 3 2d23h
+grafana-test-token-88vrz kubernetes.io/service-account-token 3 2d23h
+grafana-token-zc79r kubernetes.io/service-account-token 3 2d23h
+influxdb-token-bjb5d kubernetes.io/service-account-token 3 4d12h
+my-secret kubernetes.io/dockerconfigjson 1 269d
+my-tokens Opaque 7 4s
+sh.helm.release.v1.grafana.v1 helm.sh/release.v1 1 2d23h
+sh.helm.release.v1.influxdb.v1 helm.sh/release.v1 1 4d12h
+sh.helm.release.v1.podcast.v1 helm.sh/release.v1 1 4d13h
+sh.helm.release.v1.sosa0sa.v1 helm.sh/release.v1 1 4d13h
+
+$ kubectl get secrets my-tokens
+NAME TYPE DATA AGE
+my-tokens Opaque 7 7s
+
+$ kubectl describe secret my-tokens
+Name: my-tokens
+Namespace: default
+Labels: &amp;lt;none&amp;gt;
+Annotations:
+Type: Opaque
+
+Data
+====
+pinboard_key: 30 bytes
+slack_signing_secret: 32 bytes
+telegram_api_id: 7 bytes
+verification_token: 24 bytes
+pocket_access_token: 30 bytes
+pocket_consumer_key: 30 bytes
+slack_api_token: 56 bytes
+slack_events_token: 32 bytes
+telegram_api_hash: 32 bytes
+telegram_token: 46 bytes
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;#fun-for-life #kubernetes #TIL #publish&lt;/p&gt;</description></item><item><title>How to make cronjob to support timezone</title><link>https://cychong47.github.io/post/2020/2020-10-19-how-to-fix-no-timezone-support-of-cronjob/</link><pubDate>Mon, 19 Oct 2020 14:16:45 +0900</pubDate><guid>https://cychong47.github.io/post/2020/2020-10-19-how-to-fix-no-timezone-support-of-cronjob/</guid><description>&lt;h2 id="problem"&gt;Problem&lt;/h2&gt;
+&lt;p&gt;&lt;code&gt;CronJob&lt;/code&gt;이 지정된 시간에 잘 동작했는 지 확인해 본 결과 이상한 점을 발견했다.&lt;/p&gt;
+&lt;p&gt;오후 2시 32분에 &lt;code&gt;CronJob&lt;/code&gt; 의 동작을 확인했는데 이전에 실행된 시간이 4시간 32분 전이라고, 즉 새벽 1시가 아니라 오전 10시에 실행이 되었다는 나오는 것이다.&lt;/p&gt;
+&lt;pre tabindex="0"&gt;&lt;code&gt;$ date
+Sat Oct 10 14:32:36 KST 2020
+
+$ kubectl get cronjob
+NAME SCHEDULE SUSPEND ACTIVE LAST SCHEDULE AGE
+pocket-stat 0 1 * * * False 0 4h32m 14h
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;혹시 10시를 1시로 잘못 설정했나 하고 &lt;code&gt;kubectl describe cronjob&lt;/code&gt; 명령으로 확인해 봤지만 &lt;code&gt;schedule&lt;/code&gt; 정보는 정상적으로 설정되어 있었다는.&lt;/p&gt;</description></item><item><title>주기적으로 실행되는 앱은 CronJob으로</title><link>https://cychong47.github.io/post/2020/2020-10-09-cronjob-in-kubernetes/</link><pubDate>Fri, 09 Oct 2020 02:00:00 +0900</pubDate><guid>https://cychong47.github.io/post/2020/2020-10-09-cronjob-in-kubernetes/</guid><description>&lt;p&gt;만일 &lt;code&gt;job&lt;/code&gt;을 일정 주기 혹은 특정 시간에 실행시키려면 &lt;code&gt;CronJob&lt;/code&gt; resource를 만들어 사용하면 된다.&lt;/p&gt;
+&lt;h2 id="job과-cronjob간의-관계는"&gt;&lt;code&gt;Job&lt;/code&gt;과 &lt;code&gt;CronJob&lt;/code&gt;간의 관계는?&lt;/h2&gt;
+&lt;p&gt;&lt;code&gt;CronJob&lt;/code&gt;에 대한 설명에 따르면 &lt;code&gt;CronJob&lt;/code&gt;정의에 기술한 특정 시간이 되면 &lt;code&gt;CronJob&lt;/code&gt;이 &lt;code&gt;Job&lt;/code&gt;을 실행한다고. 그리고 그 &lt;code&gt;Job&lt;/code&gt;이 &lt;code&gt;Pod&lt;/code&gt;를 실행한다.&lt;/p&gt;
+&lt;p&gt;그럼 &lt;code&gt;Job&lt;/code&gt;을 위한 resource 정의와 &lt;code&gt;CronJob&lt;/code&gt;을 위한 resource 정의를 각각 정의해야 하나?
+그렇지는 않은 듯. &lt;code&gt;CronJob&lt;/code&gt;의 정의 파일을 보면 &lt;code&gt;JobTemplate&lt;/code&gt; 항목이 &lt;code&gt;Job&lt;/code&gt;에서 볼 수 있는 &lt;code&gt;Template&lt;/code&gt;과 유사한 container spec 등을 가지고 있다. 물론 &lt;code&gt;CronJob&lt;/code&gt; 에서만 유효한 &lt;code&gt;schedule&lt;/code&gt; spec 등을 추가로 가지고 있긴 하지만.&lt;/p&gt;</description></item><item><title>일회성 앱은 Deployment가 아닌 Job으로</title><link>https://cychong47.github.io/post/2020/2020-10-09-job-instead-of-deployment/</link><pubDate>Fri, 09 Oct 2020 01:00:00 +0900</pubDate><guid>https://cychong47.github.io/post/2020/2020-10-09-job-instead-of-deployment/</guid><description>&lt;p&gt;한 번 실행되면 데몬 처럼 계속해서 동작하는 앱이 아니라 필요한 일을 수행하고 종료되는 앱도 있다. 실행된 시점에 필요한 일을 수행하고 종료하는 형태로 예를 들면 특정 위치에 있는 파일을 처리하고 종료한다거나, 실행된 시점에 외부 서비스에서 필요한 정보를 가져와 어딘가 저장하는 등의 일을 하는. 이런 종류의 앱을 kubernetes에서 &lt;code&gt;Deployment&lt;/code&gt;로 배포한 경우 해당 앱은 자신이 해야 할 일을 정상적으로 수행하고 종료되지만, kubernetes scheduler 입장에서는 해당 container가 (의도하지 않게) 종료된 것으로 판단하여 다시 복구하는 절차를 수행한다. 이는 &lt;code&gt;Deployment&lt;/code&gt;로 배포된 container는 scheduler를 통해 배포된 것처럼 scheduler를 통해 제거되지 않으면 비정상이라고 판단하기 때문이다.&lt;/p&gt;</description></item><item><title>Helmize Slackbot</title><link>https://cychong47.github.io/post/2020/2020-09-10-helmize-slackbot/</link><pubDate>Thu, 10 Sep 2020 23:38:18 +0900</pubDate><guid>https://cychong47.github.io/post/2020/2020-09-10-helmize-slackbot/</guid><description>&lt;p&gt;docker로 실행할 대는 환경 변수 파일에 필요한 token정보 등을 적어서 넘겼는데&lt;/p&gt;
+&lt;pre tabindex="0"&gt;&lt;code&gt;docker run -d -p 3010:3010 --env-file=slackbot.env my-slackbot
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;helm으로 할 때는 configmap을 사용하거나, value의 &lt;code&gt;env&lt;/code&gt;를 사용하거나 등등.&lt;/p&gt;
+&lt;pre tabindex="0"&gt;&lt;code&gt;$ helm repo update
+Hang tight while we grab the latest from your chart repositories...
+...Successfully got an update from the &amp;#34;infracloudio&amp;#34; chart repository
+...Successfully got an update from the &amp;#34;myhelmrepo&amp;#34; chart repository
+Update Complete. ⎈Happy Helming!⎈
+
+$ helm search repo slackbot
+NAME 	CHART VERSION	APP VERSION	DESCRIPTION 
+myhelmrepo/slackbot	0.1.0 	1.16.0 	A Helm chart for Kubernetes
+&lt;/code&gt;&lt;/pre&gt;&lt;pre tabindex="0"&gt;&lt;code&gt;$ helm install -f ../../slackbot-value.yaml --version 0.1.0 slackbot myhelmrepo/slackbot
+NAME: slackbot
+LAST DEPLOYED: Thu Sep 10 09:47:26 2020
+NAMESPACE: default
+STATUS: deployed
+REVISION: 1
+NOTES:
+1. Get the application URL by running these commands:
+ export NODE_PORT=$(kubectl get --namespace default -o jsonpath=&amp;#34;{.spec.ports[0].nodePort}&amp;#34; services slackbot)
+ export NODE_IP=$(kubectl get nodes --namespace default -o jsonpath=&amp;#34;{.items[0].status.addresses[0].address}&amp;#34;)
+ echo http://$NODE_IP:$NODE_PORT
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;&lt;code&gt;slackbot-value.yaml&lt;/code&gt;파일의 환경 변수에 필요한 token 정보들을 기술&lt;/p&gt;</description></item><item><title>Upgrade kubenetes to 1.17.2-0</title><link>https://cychong47.github.io/post/2020/new-things-in-last-4-years/</link><pubDate>Thu, 30 Jan 2020 00:00:00 +0900</pubDate><guid>https://cychong47.github.io/post/2020/new-things-in-last-4-years/</guid><description>&lt;h1 id="preparation"&gt;preparation&lt;/h1&gt;
+&lt;pre tabindex="0"&gt;&lt;code&gt;cychong@mini1:~$ sudo apt update
+[sudo] password for cychong:
+Ign:1 http://dl.google.com/linux/chrome/deb stable InRelease
+Get:2 http://dl.google.com/linux/chrome/deb stable Release [943 B]
+Get:3 http://dl.google.com/linux/chrome/deb stable Release.gpg [819 B]
+...
+&lt;/code&gt;&lt;/pre&gt;&lt;h1 id="get-the-lastest-version"&gt;Get the lastest version&lt;/h1&gt;
+&lt;pre tabindex="0"&gt;&lt;code&gt;cychong@mini1:~$ sudo apt-cache policy kubeadm
+kubeadm:
+ Installed: 1.16.1-00
+ Candidate: 1.17.2-00
+ Version table:
+ 1.17.2-00 500
+ 500 http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages
+ 1.17.1-00 500
+ 500 http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages
+ 1.17.0-00 500
+ 500 http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages
+...
+&lt;/code&gt;&lt;/pre&gt;&lt;pre tabindex="0"&gt;&lt;code&gt;cychong@mini1:~$ apt-cache madison kubeadm
+ kubeadm | 1.17.2-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages
+ kubeadm | 1.17.1-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages
+ kubeadm | 1.17.0-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages
+ kubeadm | 1.16.6-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages
+ kubeadm | 1.16.5-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages
+ kubeadm | 1.16.4-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages
+ kubeadm | 1.16.3-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages
+ kubeadm | 1.16.2-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages
+ kubeadm | 1.16.1-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages
+ kubeadm | 1.16.0-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages
+ kubeadm | 1.15.9-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages
+ kubeadm | 1.15.8-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages
+ kubeadm | 1.15.7-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages
+ kubeadm | 1.15.6-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages
+ kubeadm | 1.15.5-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages
+ kubeadm | 1.15.4-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages
+ kubeadm | 1.15.3-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages
+ kubeadm | 1.15.2-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages
+ kubeadm | 1.15.1-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages
+ kubeadm | 1.15.0-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages
+ kubeadm | 1.14.10-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages
+ kubeadm | 1.14.9-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages
+ kubeadm | 1.14.8-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages
+ kubeadm | 1.14.7-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages
+ kubeadm | 1.14.6-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages
+ kubeadm | 1.14.5-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages
+ kubeadm | 1.14.4-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages
+ kubeadm | 1.14.3-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages
+ kubeadm | 1.14.2-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages
+ kubeadm | 1.14.1-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages
+ kubeadm | 1.14.0-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages
+ kubeadm | 1.13.12-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages
+ kubeadm | 1.13.11-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages
+ kubeadm | 1.13.10-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages
+ kubeadm | 1.13.9-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages
+ kubeadm | 1.13.8-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages
+ kubeadm | 1.13.7-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages
+ kubeadm | 1.13.6-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages
+ kubeadm | 1.13.5-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages
+ kubeadm | 1.13.4-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages
+ kubeadm | 1.13.3-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages
+ kubeadm | 1.13.2-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages
+ kubeadm | 1.13.1-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages
+ kubeadm | 1.13.0-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages
+ kubeadm | 1.12.10-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages
+ kubeadm | 1.12.9-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages
+ kubeadm | 1.12.8-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages
+ kubeadm | 1.12.7-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages
+ kubeadm | 1.12.6-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages
+ kubeadm | 1.12.5-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages
+ kubeadm | 1.12.4-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages
+ kubeadm | 1.12.3-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages
+ kubeadm | 1.12.2-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages
+ kubeadm | 1.12.1-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages
+ kubeadm | 1.12.0-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages
+ kubeadm | 1.11.10-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages
+ kubeadm | 1.11.9-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages
+ kubeadm | 1.11.8-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages
+ kubeadm | 1.11.7-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages
+ kubeadm | 1.11.6-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages
+ kubeadm | 1.11.5-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages
+ kubeadm | 1.11.4-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages
+ kubeadm | 1.11.3-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages
+ kubeadm | 1.11.2-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages
+ kubeadm | 1.11.1-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages
+ kubeadm | 1.11.0-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages
+ kubeadm | 1.10.13-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages
+ kubeadm | 1.10.12-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages
+ kubeadm | 1.10.11-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages
+ kubeadm | 1.10.10-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages
+ kubeadm | 1.10.9-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages
+ kubeadm | 1.10.8-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages
+ kubeadm | 1.10.7-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages
+ kubeadm | 1.10.6-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages
+ kubeadm | 1.10.5-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages
+ kubeadm | 1.10.4-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages
+ kubeadm | 1.10.3-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages
+ kubeadm | 1.10.2-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages
+ kubeadm | 1.10.1-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages
+ kubeadm | 1.10.0-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages
+ kubeadm | 1.9.11-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages
+ kubeadm | 1.9.10-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages
+ kubeadm | 1.9.9-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages
+ kubeadm | 1.9.8-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages
+ kubeadm | 1.9.7-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages
+ kubeadm | 1.9.6-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages
+ kubeadm | 1.9.5-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages
+ kubeadm | 1.9.4-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages
+ kubeadm | 1.9.3-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages
+ kubeadm | 1.9.2-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages
+ kubeadm | 1.9.1-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages
+ kubeadm | 1.9.0-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages
+ kubeadm | 1.8.15-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages
+ kubeadm | 1.8.14-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages
+ kubeadm | 1.8.13-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages
+ kubeadm | 1.8.12-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages
+ kubeadm | 1.8.11-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages
+ kubeadm | 1.8.10-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages
+ kubeadm | 1.8.9-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages
+ kubeadm | 1.8.8-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages
+ kubeadm | 1.8.7-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages
+ kubeadm | 1.8.6-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages
+ kubeadm | 1.8.5-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages
+ kubeadm | 1.8.4-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages
+ kubeadm | 1.8.3-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages
+ kubeadm | 1.8.2-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages
+ kubeadm | 1.8.1-01 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages
+ kubeadm | 1.8.0-01 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages
+ kubeadm | 1.8.0-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages
+ kubeadm | 1.7.16-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages
+ kubeadm | 1.7.15-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages
+ kubeadm | 1.7.14-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages
+ kubeadm | 1.7.11-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages
+ kubeadm | 1.7.10-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages
+ kubeadm | 1.7.9-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages
+ kubeadm | 1.7.8-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages
+ kubeadm | 1.7.7-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages
+ kubeadm | 1.7.6-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages
+ kubeadm | 1.7.5-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages
+ kubeadm | 1.7.4-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages
+ kubeadm | 1.7.3-01 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages
+ kubeadm | 1.7.2-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages
+ kubeadm | 1.7.1-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages
+ kubeadm | 1.7.0-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages
+ kubeadm | 1.6.13-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages
+ kubeadm | 1.6.12-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages
+ kubeadm | 1.6.11-01 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages
+ kubeadm | 1.6.10-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages
+ kubeadm | 1.6.9-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages
+ kubeadm | 1.6.8-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages
+ kubeadm | 1.6.7-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages
+ kubeadm | 1.6.6-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages
+ kubeadm | 1.6.5-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages
+ kubeadm | 1.6.4-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages
+ kubeadm | 1.6.3-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages
+ kubeadm | 1.6.2-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages
+ kubeadm | 1.6.1-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages
+ kubeadm | 1.5.7-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages
+cychong@mini1:~$ sudo apt-mark unhold kubeadm &amp;amp;&amp;amp; sudo apt-get install -y kubeadm=1.17.2-00 &amp;amp;&amp;amp; sudo apt-mark hold kubeadm
+Canceled hold on kubeadm.
+Reading package lists... Done
+Building dependency tree 
+Reading state information... Done
+The following packages will be upgraded:
+ kubeadm
+1 upgraded, 0 newly installed, 0 to remove and 46 not upgraded.
+Need to get 8061 kB of archives.
+After this operation, 4907 kB disk space will be freed.
+Get:1 https://packages.cloud.google.com/apt kubernetes-xenial/main amd64 kubeadm amd64 1.17.2-00 [8061 kB]
+Fetched 8061 kB in 3s (3164 kB/s) 
+(Reading database ... 248932 files and directories currently installed.)
+Preparing to unpack .../kubeadm_1.17.2-00_amd64.deb ...
+Unpacking kubeadm (1.17.2-00) over (1.16.1-00) ...
+Setting up kubeadm (1.17.2-00) ...
+kubeadm set on hold.
+cychong@mini1:~$ sudo apt-get update &amp;amp;&amp;amp; apt-get install -y --allow-change-held-packages kubeadm=1.17.2-00
+Ign:2 http://dl.google.com/linux/chrome/deb stable InRelease 
+Hit:3 https://download.docker.com/linux/ubuntu bionic InRelease 
+Hit:4 http://dl.google.com/linux/chrome/deb stable Release 
+Hit:5 http://archive.ubuntu.com/ubuntu bionic InRelease 
+Hit:7 http://archive.ubuntu.com/ubuntu bionic-updates InRelease 
+Hit:8 http://ppa.launchpad.net/x2go/stable/ubuntu bionic InRelease 
+Hit:9 http://archive.ubuntu.com/ubuntu bionic-backports InRelease 
+Hit:1 https://packages.cloud.google.com/apt kubernetes-xenial InRelease 
+Hit:10 http://archive.ubuntu.com/ubuntu bionic-security InRelease 
+Reading package lists... Done 
+E: Could not open lock file /var/lib/dpkg/lock-frontend - open (13: Permission denied)
+E: Unable to acquire the dpkg frontend lock (/var/lib/dpkg/lock-frontend), are you root?
+cychong@mini1:~$ sudo apt-get install -y --allow-change-held-packages kubeadm=1.17.2-00
+Reading package lists... Done
+Building dependency tree 
+Reading state information... Done
+kubeadm is already the newest version (1.17.2-00).
+0 upgraded, 0 newly installed, 0 to remove and 46 not upgraded.
+cychong@mini1:~$ kubeadm version
+kubeadm version: &amp;amp;version.Info{Major:&amp;#34;1&amp;#34;, Minor:&amp;#34;17&amp;#34;, GitVersion:&amp;#34;v1.17.2&amp;#34;, GitCommit:&amp;#34;59603c6e503c87169aea6106f57b9f242f64df89&amp;#34;, GitTreeState:&amp;#34;clean&amp;#34;, BuildDate:&amp;#34;2020-01-18T23:27:49Z&amp;#34;, GoVersion:&amp;#34;go1.13.5&amp;#34;, Compiler:&amp;#34;gc&amp;#34;, Platform:&amp;#34;linux/amd64&amp;#34;}
+cychong@mini1:~$ sudo kubeadm upgrade plan
+[upgrade/config] Making sure the configuration is correct:
+[upgrade/config] Reading configuration from the cluster...
+[upgrade/config] FYI: You can look at this config file with &amp;#39;kubectl -n kube-system get cm kubeadm-config -oyaml&amp;#39;
+[preflight] Running pre-flight checks.
+[upgrade] Making sure the cluster is healthy:
+[upgrade] Fetching available versions to upgrade to
+[upgrade/versions] Cluster version: v1.16.1
+[upgrade/versions] kubeadm version: v1.17.2
+[upgrade/versions] Latest stable version: v1.17.2
+[upgrade/versions] Latest version in the v1.16 series: v1.16.6
+
+Components that must be upgraded manually after you have upgraded the control plane with &amp;#39;kubeadm upgrade apply&amp;#39;:
+COMPONENT CURRENT AVAILABLE
+Kubelet 1 x v1.16.1 v1.16.6
+
+Upgrade to the latest version in the v1.16 series:
+
+COMPONENT CURRENT AVAILABLE
+API Server v1.16.1 v1.16.6
+Controller Manager v1.16.1 v1.16.6
+Scheduler v1.16.1 v1.16.6
+Kube Proxy v1.16.1 v1.16.6
+CoreDNS 1.6.2 1.6.5
+Etcd 3.3.15 3.3.17-0
+
+You can now apply the upgrade by executing the following command:
+
+	kubeadm upgrade apply v1.16.6
+
+_____________________________________________________________________
+
+Components that must be upgraded manually after you have upgraded the control plane with &amp;#39;kubeadm upgrade apply&amp;#39;:
+COMPONENT CURRENT AVAILABLE
+Kubelet 1 x v1.16.1 v1.17.2
+
+Upgrade to the latest stable version:
+
+COMPONENT CURRENT AVAILABLE
+API Server v1.16.1 v1.17.2
+Controller Manager v1.16.1 v1.17.2
+Scheduler v1.16.1 v1.17.2
+Kube Proxy v1.16.1 v1.17.2
+CoreDNS 1.6.2 1.6.5
+Etcd 3.3.15 3.4.3-0
+
+You can now apply the upgrade by executing the following command:
+
+	kubeadm upgrade apply v1.17.2
+
+_____________________________________________________________________
+
+cychong@mini1:~$ sudo kubeadm upgrade apply v1.17.2
+[upgrade/config] Making sure the configuration is correct:
+[upgrade/config] Reading configuration from the cluster...
+[upgrade/config] FYI: You can look at this config file with &amp;#39;kubectl -n kube-system get cm kubeadm-config -oyaml&amp;#39;
+[preflight] Running pre-flight checks.
+[upgrade] Making sure the cluster is healthy:
+[upgrade/version] You have chosen to change the cluster version to &amp;#34;v1.17.2&amp;#34;
+[upgrade/versions] Cluster version: v1.16.1
+[upgrade/versions] kubeadm version: v1.17.2
+[upgrade/confirm] Are you sure you want to proceed with the upgrade? [y/N]: y
+[upgrade/prepull] Will prepull images for components [kube-apiserver kube-controller-manager kube-scheduler etcd]
+[upgrade/prepull] Prepulling image for component etcd.
+[upgrade/prepull] Prepulling image for component kube-apiserver.
+[upgrade/prepull] Prepulling image for component kube-controller-manager.
+[upgrade/prepull] Prepulling image for component kube-scheduler.
+[apiclient] Found 1 Pods for label selector k8s-app=upgrade-prepull-kube-controller-manager
+[apiclient] Found 0 Pods for label selector k8s-app=upgrade-prepull-kube-scheduler
+[apiclient] Found 1 Pods for label selector k8s-app=upgrade-prepull-kube-apiserver
+[apiclient] Found 0 Pods for label selector k8s-app=upgrade-prepull-etcd
+[apiclient] Found 1 Pods for label selector k8s-app=upgrade-prepull-kube-scheduler
+[apiclient] Found 1 Pods for label selector k8s-app=upgrade-prepull-etcd
+[upgrade/prepull] Prepulled image for component kube-controller-manager.
+[upgrade/prepull] Prepulled image for component kube-apiserver.
+[upgrade/prepull] Prepulled image for component kube-scheduler.
+[upgrade/prepull] Prepulled image for component etcd.
+[upgrade/prepull] Successfully prepulled the images for all the control plane components
+[upgrade/apply] Upgrading your Static Pod-hosted control plane to version &amp;#34;v1.17.2&amp;#34;...
+Static pod: kube-apiserver-mini1 hash: 66d5b6802b69fcb461e22c159ef72783
+Static pod: kube-controller-manager-mini1 hash: 98ded181cb6da00c408078fe0832bddf
+Static pod: kube-scheduler-mini1 hash: e05eb744bc3406614b4a55dd00e7af9f
+[upgrade/etcd] Upgrading to TLS for etcd
+Static pod: etcd-mini1 hash: 9e59bd8449d154ddd6acfbbb3a74181f
+[upgrade/staticpods] Preparing for &amp;#34;etcd&amp;#34; upgrade
+[upgrade/staticpods] Renewing etcd-server certificate
+[upgrade/staticpods] Renewing etcd-peer certificate
+[upgrade/staticpods] Renewing etcd-healthcheck-client certificate
+[upgrade/staticpods] Moved new manifest to &amp;#34;/etc/kubernetes/manifests/etcd.yaml&amp;#34; and backed up old manifest to &amp;#34;/etc/kubernetes/tmp/kubeadm-backup-manifests-2020-01-30-22-21-26/etcd.yaml&amp;#34;
+[upgrade/staticpods] Waiting for the kubelet to restart the component
+[upgrade/staticpods] This might take a minute or longer depending on the component/version gap (timeout 5m0s)
+Static pod: etcd-mini1 hash: 9e59bd8449d154ddd6acfbbb3a74181f
+Static pod: etcd-mini1 hash: 9b305733637de70ef82ca5b0b18c65e1
+[apiclient] Found 1 Pods for label selector component=etcd
+[upgrade/staticpods] Component &amp;#34;etcd&amp;#34; upgraded successfully!
+[upgrade/etcd] Waiting for etcd to become available
+[upgrade/staticpods] Writing new Static Pod manifests to &amp;#34;/etc/kubernetes/tmp/kubeadm-upgraded-manifests216455436&amp;#34;
+W0130 22:22:01.351368 10213 manifests.go:214] the default kube-apiserver authorization-mode is &amp;#34;Node,RBAC&amp;#34;; using &amp;#34;Node,RBAC&amp;#34;
+[upgrade/staticpods] Preparing for &amp;#34;kube-apiserver&amp;#34; upgrade
+[upgrade/staticpods] Renewing apiserver certificate
+[upgrade/staticpods] Renewing apiserver-kubelet-client certificate
+[upgrade/staticpods] Renewing front-proxy-client certificate
+[upgrade/staticpods] Renewing apiserver-etcd-client certificate
+[upgrade/staticpods] Moved new manifest to &amp;#34;/etc/kubernetes/manifests/kube-apiserver.yaml&amp;#34; and backed up old manifest to &amp;#34;/etc/kubernetes/tmp/kubeadm-backup-manifests-2020-01-30-22-21-26/kube-apiserver.yaml&amp;#34;
+[upgrade/staticpods] Waiting for the kubelet to restart the component
+[upgrade/staticpods] This might take a minute or longer depending on the component/version gap (timeout 5m0s)
+Static pod: kube-apiserver-mini1 hash: 66d5b6802b69fcb461e22c159ef72783
+Static pod: kube-apiserver-mini1 hash: 4d9a965c0a14a45ea3d7db1e023096d4
+[apiclient] Found 1 Pods for label selector component=kube-apiserver
+[upgrade/staticpods] Component &amp;#34;kube-apiserver&amp;#34; upgraded successfully!
+[upgrade/staticpods] Preparing for &amp;#34;kube-controller-manager&amp;#34; upgrade
+[upgrade/staticpods] Renewing controller-manager.conf certificate
+[upgrade/staticpods] Moved new manifest to &amp;#34;/etc/kubernetes/manifests/kube-controller-manager.yaml&amp;#34; and backed up old manifest to &amp;#34;/etc/kubernetes/tmp/kubeadm-backup-manifests-2020-01-30-22-21-26/kube-controller-manager.yaml&amp;#34;
+[upgrade/staticpods] Waiting for the kubelet to restart the component
+[upgrade/staticpods] This might take a minute or longer depending on the component/version gap (timeout 5m0s)
+Static pod: kube-controller-manager-mini1 hash: 98ded181cb6da00c408078fe0832bddf
+Static pod: kube-controller-manager-mini1 hash: 98ded181cb6da00c408078fe0832bddf
+Static pod: kube-controller-manager-mini1 hash: 85a33dac6d806801ba5efe4a4544194c
+[apiclient] Found 1 Pods for label selector component=kube-controller-manager
+[upgrade/staticpods] Component &amp;#34;kube-controller-manager&amp;#34; upgraded successfully!
+[upgrade/staticpods] Preparing for &amp;#34;kube-scheduler&amp;#34; upgrade
+[upgrade/staticpods] Renewing scheduler.conf certificate
+[upgrade/staticpods] Moved new manifest to &amp;#34;/etc/kubernetes/manifests/kube-scheduler.yaml&amp;#34; and backed up old manifest to &amp;#34;/etc/kubernetes/tmp/kubeadm-backup-manifests-2020-01-30-22-21-26/kube-scheduler.yaml&amp;#34;
+[upgrade/staticpods] Waiting for the kubelet to restart the component
+[upgrade/staticpods] This might take a minute or longer depending on the component/version gap (timeout 5m0s)
+Static pod: kube-scheduler-mini1 hash: e05eb744bc3406614b4a55dd00e7af9f
+Static pod: kube-scheduler-mini1 hash: 9c994ea62a2d8d6f1bb7498f10aa6fcf
+[apiclient] Found 1 Pods for label selector component=kube-scheduler
+[upgrade/staticpods] Component &amp;#34;kube-scheduler&amp;#34; upgraded successfully!
+[upload-config] Storing the configuration used in ConfigMap &amp;#34;kubeadm-config&amp;#34; in the &amp;#34;kube-system&amp;#34; Namespace
+[kubelet] Creating a ConfigMap &amp;#34;kubelet-config-1.17&amp;#34; in namespace kube-system with the configuration for the kubelets in the cluster
+[kubelet-start] Downloading configuration for the kubelet from the &amp;#34;kubelet-config-1.17&amp;#34; ConfigMap in the kube-system namespace
+[kubelet-start] Writing kubelet configuration to file &amp;#34;/var/lib/kubelet/config.yaml&amp;#34;
+[bootstrap-token] configured RBAC rules to allow Node Bootstrap tokens to post CSRs in order for nodes to get long term certificate credentials
+[bootstrap-token] configured RBAC rules to allow the csrapprover controller automatically approve CSRs from a Node Bootstrap Token
+[bootstrap-token] configured RBAC rules to allow certificate rotation for all node client certificates in the cluster
+[addons]: Migrating CoreDNS Corefile
+[addons] Applied essential addon: CoreDNS
+[addons] Applied essential addon: kube-proxy
+
+[upgrade/successful] SUCCESS! Your cluster was upgraded to &amp;#34;v1.17.2&amp;#34;. Enjoy!
+
+[upgrade/kubelet] Now that your control plane is upgraded, please proceed with upgrading your kubelets if you haven&amp;#39;t already done so.
+&lt;/code&gt;&lt;/pre&gt;&lt;h1 id="calico"&gt;calico&lt;/h1&gt;
+&lt;pre tabindex="0"&gt;&lt;code&gt;cychong@mini1:~$ wget https://docs.projectcalico.org/manifests/calico.yaml
+--2020-01-30 22:34:28-- https://docs.projectcalico.org/manifests/calico.yaml
+Resolving docs.projectcalico.org (docs.projectcalico.org)... 206.189.89.118, 2400:6180:0:d1::57a:6001
+Connecting to docs.projectcalico.org (docs.projectcalico.org)|206.189.89.118|:443... connected.
+HTTP request sent, awaiting response... 200 OK
+Length: 20935 (20K) [application/x-yaml]
+Saving to: ‘calico.yaml.2’
+
+calico.yaml.2 100%[===========================================================================================================================================&amp;gt;] 20.44K --.-KB/s in 0.07s 
+
+2020-01-30 22:34:29 (275 KB/s) - ‘calico.yaml.2’ saved [20935/20935]
+&lt;/code&gt;&lt;/pre&gt;&lt;pre tabindex="0"&gt;&lt;code&gt;618 - name: CALICO_IPV4POOL_CIDR
+619 value: &amp;#34;10.201.0.0/24&amp;#34;
+&lt;/code&gt;&lt;/pre&gt;&lt;pre tabindex="0"&gt;&lt;code&gt;cychong@mini1:~$ kubectl apply -f calico.yaml
+configmap/calico-config unchanged
+customresourcedefinition.apiextensions.k8s.io/felixconfigurations.crd.projectcalico.org unchanged
+customresourcedefinition.apiextensions.k8s.io/ipamblocks.crd.projectcalico.org unchanged
+customresourcedefinition.apiextensions.k8s.io/blockaffinities.crd.projectcalico.org unchanged
+customresourcedefinition.apiextensions.k8s.io/ipamhandles.crd.projectcalico.org unchanged
+customresourcedefinition.apiextensions.k8s.io/ipamconfigs.crd.projectcalico.org unchanged
+customresourcedefinition.apiextensions.k8s.io/bgppeers.crd.projectcalico.org unchanged
+customresourcedefinition.apiextensions.k8s.io/bgpconfigurations.crd.projectcalico.org unchanged
+customresourcedefinition.apiextensions.k8s.io/ippools.crd.projectcalico.org unchanged
+customresourcedefinition.apiextensions.k8s.io/hostendpoints.crd.projectcalico.org unchanged
+customresourcedefinition.apiextensions.k8s.io/clusterinformations.crd.projectcalico.org unchanged
+customresourcedefinition.apiextensions.k8s.io/globalnetworkpolicies.crd.projectcalico.org unchanged
+customresourcedefinition.apiextensions.k8s.io/globalnetworksets.crd.projectcalico.org unchanged
+customresourcedefinition.apiextensions.k8s.io/networkpolicies.crd.projectcalico.org unchanged
+customresourcedefinition.apiextensions.k8s.io/networksets.crd.projectcalico.org unchanged
+clusterrole.rbac.authorization.k8s.io/calico-kube-controllers unchanged
+clusterrolebinding.rbac.authorization.k8s.io/calico-kube-controllers unchanged
+clusterrole.rbac.authorization.k8s.io/calico-node configured
+clusterrolebinding.rbac.authorization.k8s.io/calico-node unchanged
+daemonset.apps/calico-node configured
+serviceaccount/calico-node unchanged
+deployment.apps/calico-kube-controllers configured
+serviceaccount/calico-kube-controllers unchanged
+&lt;/code&gt;&lt;/pre&gt;&lt;h1 id="kubelet-and-kubectl"&gt;kubelet and kubectl&lt;/h1&gt;
+&lt;pre tabindex="0"&gt;&lt;code&gt;cychong@mini1:~$ sudo apt-mark unhold kubelet kubectl &amp;amp;&amp;amp; sudo apt-get install -y kubelet=1.17.2-00 kubectl=1.17.2-00 &amp;amp;&amp;amp; sudo apt-mark hold kubelet kubectl
+kubelet was already not hold.
+kubectl was already not hold.
+Reading package lists... Done
+Building dependency tree 
+Reading state information... Done
+The following packages will be upgraded:
+ kubectl kubelet
+2 upgraded, 0 newly installed, 0 to remove and 44 not upgraded.
+Need to get 27.9 MB of archives.
+After this operation, 14.8 MB disk space will be freed.
+Get:1 https://packages.cloud.google.com/apt kubernetes-xenial/main amd64 kubectl amd64 1.17.2-00 [8738 kB]
+Get:2 https://packages.cloud.google.com/apt kubernetes-xenial/main amd64 kubelet amd64 1.17.2-00 [19.2 MB]
+Fetched 27.9 MB in 6s (4994 kB/s) 
+(Reading database ... 248932 files and directories currently installed.)
+Preparing to unpack .../kubectl_1.17.2-00_amd64.deb ...
+Unpacking kubectl (1.17.2-00) over (1.16.1-00) ...
+Preparing to unpack .../kubelet_1.17.2-00_amd64.deb ...
+Unpacking kubelet (1.17.2-00) over (1.16.1-00) ...
+Setting up kubelet (1.17.2-00) ...
+Setting up kubectl (1.17.2-00) ...
+kubelet set on hold.
+kubectl set on hold.
+&lt;/code&gt;&lt;/pre&gt;&lt;h1 id="wrap-up"&gt;wrap-up&lt;/h1&gt;
+&lt;pre tabindex="0"&gt;&lt;code&gt;cychong@mini1:~$ sudo systemctl restart kubelet
+cychong@mini1:~$ kubectl get nodes
+NAME STATUS ROLES AGE VERSION
+mini1 Ready master 144d v1.17.2
+&lt;/code&gt;&lt;/pre&gt;&lt;h1 id="reference"&gt;reference&lt;/h1&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="https://kubernetes.io/docs/tasks/administer-cluster/kubeadm/kubeadm-upgrade/"&gt;https://kubernetes.io/docs/tasks/administer-cluster/kubeadm/kubeadm-upgrade/&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;</description></item></channel></rss>

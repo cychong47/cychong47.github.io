@@ -1,2 +1,21 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Storage on Keep calm and write something</title><link>https://cychong47.github.io/tags/storage/</link><description>Recent content in Storage on Keep calm and write something</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Sun, 01 Apr 2018 02:38:51 +0000</lastBuildDate><atom:link href="https://cychong47.github.io/tags/storage/index.xml" rel="self" type="application/rss+xml"/><item><title>사진 백업 2017 버전</title><link>https://cychong47.github.io/post/2017/sajin-baegeob-2017-beojeon/</link><pubDate>Mon, 09 Oct 2017 15:41:52 +0900</pubDate><guid>https://cychong47.github.io/post/2017/sajin-baegeob-2017-beojeon/</guid><description>최적화(?) 중.
-Lightroom으로 사진 관리 Apple Photos 앱이 아닌 Adobe Lightroom으로 사진 관리. 사진 파일은 DB에 포함시키지 않고, meta data만 DB에 저장하도록 import 방식을 사용. mbpr15:Lightroom cychong$ pwd /Users/cychong/Pictures/Lightroom mbpr15:Lightroom cychong$ ls -al total 55288 drwxr-xr-x 7 cychong staff 224 Oct 9 23:36 . drwx------+ 5 cychong staff 160 Oct 8 10:55 .. -rw-r--r--@ 1 cychong staff 6148 Oct 9 22:47 .DS_Store drwxr-xr-x 20 cychong staff 640 Oct 9 23:43 Lightroom Catalog Previews.</description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Storage on Keep calm and Write something</title><link>https://cychong47.github.io/tags/storage/</link><description>Recent content in Storage on Keep calm and Write something</description><generator>Hugo</generator><language>en-us</language><lastBuildDate>Sun, 01 Apr 2018 02:38:51 +0000</lastBuildDate><atom:link href="https://cychong47.github.io/tags/storage/index.xml" rel="self" type="application/rss+xml"/><item><title>사진 백업 2017 버전</title><link>https://cychong47.github.io/post/2017/sajin-baegeob-2017-beojeon/</link><pubDate>Mon, 09 Oct 2017 15:41:52 +0900</pubDate><guid>https://cychong47.github.io/post/2017/sajin-baegeob-2017-beojeon/</guid><description>&lt;p&gt;최적화(?) 중.&lt;/p&gt;
+&lt;h2 id="lightroom으로-사진-관리"&gt;Lightroom으로 사진 관리&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Apple Photos 앱이 아닌 Adobe Lightroom으로 사진 관리.&lt;/li&gt;
+&lt;li&gt;사진 파일은 DB에 포함시키지 않고, meta data만 DB에 저장하도록 import 방식을 사용.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre tabindex="0"&gt;&lt;code&gt;mbpr15:Lightroom cychong$ pwd
+/Users/cychong/Pictures/Lightroom
+mbpr15:Lightroom cychong$ ls -al
+total 55288
+drwxr-xr-x 7 cychong staff 224 Oct 9 23:36 .
+drwx------+ 5 cychong staff 160 Oct 8 10:55 ..
+-rw-r--r--@ 1 cychong staff 6148 Oct 9 22:47 .DS_Store
+drwxr-xr-x 20 cychong staff 640 Oct 9 23:43 Lightroom Catalog Previews.lrdata
+-rw-r--r--@ 1 cychong staff 26193920 Oct 9 23:41 Lightroom Catalog.lrcat
+-rw-r--r-- 1 cychong staff 1687256 Oct 9 23:41 Lightroom Catalog.lrcat-journal
+-rw-r--r-- 1 cychong staff 55 Oct 9 18:58 Lightroom Catalog.lrcat.lock
+&lt;/code&gt;&lt;/pre&gt;&lt;h2 id="1차-작업-공간은-500g-ssd"&gt;1차 작업 공간은 500G SSD&lt;/h2&gt;
+&lt;h2 id="백업"&gt;백업&lt;/h2&gt;
+&lt;h3 id="1차-백업---mac-mini-2011-1tb-내장-하드에-백업"&gt;1차 백업 - Mac mini 2011 1TB 내장 하드에 백업&lt;/h3&gt;
+&lt;p&gt;일단은 ditto app으로 일괄 복사.(incremental backup solution 찾아 적용 필요)&lt;/p&gt;</description></item></channel></rss>

@@ -1,3 +1,13 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Vim on Keep calm and write something</title><link>https://cychong47.github.io/tags/vim/</link><description>Recent content in Vim on Keep calm and write something</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Sat, 20 Jun 2020 21:54:31 +0900</lastBuildDate><atom:link href="https://cychong47.github.io/tags/vim/index.xml" rel="self" type="application/rss+xml"/><item><title>Git Tips</title><link>https://cychong47.github.io/page/git/</link><pubDate>Sat, 20 Jun 2020 21:54:31 +0900</pubDate><guid>https://cychong47.github.io/page/git/</guid><description>Open vim tabs with changed files vim -p `git diff --name-only` vim -p
--p[N] Open N tab pages. When N is omitted, open one tab page for each file. git diff --name-only
---name-only Show only names of changed files.</description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Vim on Keep calm and Write something</title><link>https://cychong47.github.io/tags/vim/</link><description>Recent content in Vim on Keep calm and Write something</description><generator>Hugo</generator><language>en-us</language><lastBuildDate>Sat, 20 Jun 2020 21:54:31 +0900</lastBuildDate><atom:link href="https://cychong47.github.io/tags/vim/index.xml" rel="self" type="application/rss+xml"/><item><title>Git Tips</title><link>https://cychong47.github.io/page/git/</link><pubDate>Sat, 20 Jun 2020 21:54:31 +0900</pubDate><guid>https://cychong47.github.io/page/git/</guid><description>&lt;h2 id="open-vim-tabs-with-changed-files"&gt;Open vim tabs with changed files&lt;/h2&gt;
+&lt;pre tabindex="0"&gt;&lt;code&gt;vim -p `git diff --name-only`
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;&lt;code&gt;vim -p&lt;/code&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;pre&gt;&lt;code&gt; -p[N] Open N tab pages. When N is omitted, open one tab page for each file. 
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;&lt;code&gt;git diff --name-only&lt;/code&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;pre&gt;&lt;code&gt; --name-only
+ Show only names of changed files.
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/blockquote&gt;</description></item></channel></rss>

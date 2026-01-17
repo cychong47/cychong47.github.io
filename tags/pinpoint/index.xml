@@ -1,3 +1,25 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Pinpoint on Keep calm and write something</title><link>https://cychong47.github.io/tags/pinpoint/</link><description>Recent content in Pinpoint on Keep calm and write something</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Sun, 01 Apr 2018 02:38:51 +0000</lastBuildDate><atom:link href="https://cychong47.github.io/tags/pinpoint/index.xml" rel="self" type="application/rss+xml"/><item><title>Integrating VES to OPNFV</title><link>https://cychong47.github.io/post/2017/ves-to-opnfv/</link><pubDate>Mon, 25 Sep 2017 15:44:11 +0900</pubDate><guid>https://cychong47.github.io/post/2017/ves-to-opnfv/</guid><description>VES project VNF Event Stream Project
-Demo vHello VES Demo in OpenStack Barcelona 2016 VES ONAP demo from OPNFV Summit 2017 From VF Event Streaming (VES) Project Proposal Alok Gupta 13 Jun, 2016 OPNFV VES.pptx VNF Event Stream Prpoposal OPNFV projects that potentially benefit from the VES project
-Fault Management ([Doctor] (https://wiki.opnfv.org/display/doctor)) *** Virtualized Infrastructure Deployment Policies (Copper) High Availability for OPNFV (Availability) Data Collection for Failure Prediction (Prediction) *** Audit (Inspector) Fault localization (RCA, Pinpoint ) *** Service Function Chaining (sfc) Moon Security Management OpenStack projects that potentially benefit from the VES project</description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Pinpoint on Keep calm and Write something</title><link>https://cychong47.github.io/tags/pinpoint/</link><description>Recent content in Pinpoint on Keep calm and Write something</description><generator>Hugo</generator><language>en-us</language><lastBuildDate>Sun, 01 Apr 2018 02:38:51 +0000</lastBuildDate><atom:link href="https://cychong47.github.io/tags/pinpoint/index.xml" rel="self" type="application/rss+xml"/><item><title>Integrating VES to OPNFV</title><link>https://cychong47.github.io/post/2017/ves-to-opnfv/</link><pubDate>Mon, 25 Sep 2017 15:44:11 +0900</pubDate><guid>https://cychong47.github.io/post/2017/ves-to-opnfv/</guid><description>&lt;h1 id="ves-project"&gt;VES project&lt;/h1&gt;
+&lt;p&gt;&lt;a href="https://wiki.opnfv.org/display/ves/VES+Home"&gt;VNF Event Stream Project&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id="demo"&gt;Demo&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="https://wiki.opnfv.org/display/ves/vHello_VES+Demo"&gt;vHello VES Demo in OpenStack Barcelona 2016&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://www.youtube.com/watch?v=Zoxcj4mwUwU"&gt;VES ONAP demo from OPNFV Summit 2017&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id="from-vf-event-streaming-ves-project-proposal"&gt;From VF Event Streaming (VES) Project Proposal&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Alok Gupta 13 Jun, 2016&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://wiki.opnfv.org/download/attachments/6819329/OPNVF%20VES.pptx?version=4&amp;amp;modificationDate=1466395653000&amp;amp;api=v2"&gt;OPNFV VES.pptx&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://wiki.opnfv.org/display/PROJ/VNF+Event+Stream"&gt;VNF Event Stream&lt;/a&gt; Prpoposal&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;OPNFV projects that potentially benefit from the VES project&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Fault Management ([Doctor] (&lt;a href="https://wiki.opnfv.org/display/doctor"&gt;https://wiki.opnfv.org/display/doctor&lt;/a&gt;)) ***&lt;/li&gt;
+&lt;li&gt;Virtualized Infrastructure Deployment Policies (&lt;a href="https://wiki.opnfv.org/display/copper"&gt;Copper&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;High Availability for OPNFV (&lt;a href="https://wiki.opnfv.org/display/availability"&gt;Availability&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;Data Collection for Failure Prediction (&lt;a href="https://wiki.opnfv.org/display/prediction"&gt;Prediction&lt;/a&gt;) ***&lt;/li&gt;
+&lt;li&gt;Audit (&lt;a href="https://wiki.opnfv.org/display/inspector"&gt;Inspector&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;Fault localization (RCA, &lt;a href="https://wiki.opnfv.org/display/pinpoint/"&gt;Pinpoint&lt;/a&gt; ) ***&lt;/li&gt;
+&lt;li&gt;Service Function Chaining (sfc)&lt;/li&gt;
+&lt;li&gt;Moon Security Management &lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;OpenStack projects that potentially benefit from the VES project&lt;/p&gt;</description></item></channel></rss>

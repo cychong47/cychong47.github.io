@@ -1,5 +1,25 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Virtualenv on Keep calm and write something</title><link>https://cychong47.github.io/tags/virtualenv/</link><description>Recent content in Virtualenv on Keep calm and write something</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Sun, 01 Apr 2018 02:38:40 +0000</lastBuildDate><atom:link href="https://cychong47.github.io/tags/virtualenv/index.xml" rel="self" type="application/rss+xml"/><item><title>virtualenv 사용</title><link>https://cychong47.github.io/post/2015/virtualenv/</link><pubDate>Mon, 21 Dec 2015 14:59:29 +0900</pubDate><guid>https://cychong47.github.io/post/2015/virtualenv/</guid><description>virtualenv 설치
-mini-2:~ cychong$ sudo easy_install pip mini-2:~ cychong$ sudo pip install virtualenv virtualenv로 project directory 생성
-mini-2:work cychong$ mkdir click mini-2:work cychong$ cd click/ mini-2:click cychong$ ls mini-2:click cychong$ virtualenv venv New python executable in venv/bin/python Installing setuptools, pip, wheel...done. mini-2:click cychong$ ls venv virtualenv 환경으로 들어가기
-mini-2:click cychong$ . venv/bin/activate 원하는 패키지 설치
-(venv)mini-2:click cychong$ pip install Click Collecting Click Downloading click-6.2-py2.py3-none-any.whl (70kB) 100% |████████████████████████████████| 73kB 270kB/s Installing collected packages: Click Successfully installed Click-6.</description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Virtualenv on Keep calm and Write something</title><link>https://cychong47.github.io/tags/virtualenv/</link><description>Recent content in Virtualenv on Keep calm and Write something</description><generator>Hugo</generator><language>en-us</language><lastBuildDate>Sun, 01 Apr 2018 02:38:40 +0000</lastBuildDate><atom:link href="https://cychong47.github.io/tags/virtualenv/index.xml" rel="self" type="application/rss+xml"/><item><title>virtualenv 사용</title><link>https://cychong47.github.io/post/2015/virtualenv/</link><pubDate>Mon, 21 Dec 2015 14:59:29 +0900</pubDate><guid>https://cychong47.github.io/post/2015/virtualenv/</guid><description>&lt;p&gt;virtualenv 설치&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;mini-2:~ cychong$ sudo easy_install pip
+mini-2:~ cychong$ sudo pip install virtualenv
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;virtualenv로 project directory 생성&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;mini-2:work cychong$ mkdir click
+mini-2:work cychong$ cd click/
+mini-2:click cychong$ ls
+mini-2:click cychong$ virtualenv venv
+New python executable in venv/bin/python
+Installing setuptools, pip, wheel...done.
+mini-2:click cychong$ ls
+venv
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;virtualenv 환경으로 들어가기&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;mini-2:click cychong$ . venv/bin/activate
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;원하는 패키지 설치&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;(venv)mini-2:click cychong$ pip install Click
+Collecting Click
+ Downloading click-6.2-py2.py3-none-any.whl (70kB)
+ 100% |████████████████████████████████| 73kB 270kB/s
+Installing collected packages: Click
+Successfully installed Click-6.2
+&lt;/code&gt;&lt;/pre&gt;</description></item></channel></rss>

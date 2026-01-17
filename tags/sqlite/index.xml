@@ -1,2 +1,29 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Sqlite on Keep calm and write something</title><link>https://cychong47.github.io/tags/sqlite/</link><description>Recent content in Sqlite on Keep calm and write something</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Wed, 06 Nov 2019 14:25:40 +0000</lastBuildDate><atom:link href="https://cychong47.github.io/tags/sqlite/index.xml" rel="self" type="application/rss+xml"/><item><title>Upgrade ghost to v3.0</title><link>https://cychong47.github.io/post/2019/upgrade-ghost-to-v3-0/</link><pubDate>Tue, 05 Nov 2019 14:58:16 +0900</pubDate><guid>https://cychong47.github.io/post/2019/upgrade-ghost-to-v3-0/</guid><description>부제 1. pod가 동작하지 않을때 원인 찾기 부제 2. helm upgrade 명령을 이용하여 업데이트 하기 부제 3. sqlite를 이용해서 ghost.db 직접 수정하기 values.yaml에 명시되어 있는 ghost docker image의 버전 정보를 2.31.0에서 3.0.2 최신 버전으로 업데이트 후 아래 명령어로 업데이트
-$ helm upgrade --debug my-ghost ghost-with-helm [debug] Created tunnel using local port: &amp;#39;45263&amp;#39; [debug] SERVER: &amp;#34;127.0.0.1:45263&amp;#34; REVISION: 6 RELEASED: Tue Nov 5 22:25:19 2019 CHART: ghost-0.1.0 USER-SUPPLIED VALUES: {} COMPUTED VALUES: affinity: {} env: node_env: production url: http://sosa0sa.</description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Sqlite on Keep calm and Write something</title><link>https://cychong47.github.io/tags/sqlite/</link><description>Recent content in Sqlite on Keep calm and Write something</description><generator>Hugo</generator><language>en-us</language><lastBuildDate>Wed, 06 Nov 2019 14:25:40 +0000</lastBuildDate><atom:link href="https://cychong47.github.io/tags/sqlite/index.xml" rel="self" type="application/rss+xml"/><item><title>Upgrade ghost to v3.0</title><link>https://cychong47.github.io/post/2019/upgrade-ghost-to-v3-0/</link><pubDate>Tue, 05 Nov 2019 14:58:16 +0900</pubDate><guid>https://cychong47.github.io/post/2019/upgrade-ghost-to-v3-0/</guid><description>&lt;ul&gt;
+&lt;li&gt;부제 1. pod가 동작하지 않을때 원인 찾기&lt;/li&gt;
+&lt;li&gt;부제 2. helm upgrade 명령을 이용하여 업데이트 하기&lt;/li&gt;
+&lt;li&gt;부제 3. sqlite를 이용해서 ghost.db 직접 수정하기&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;values.yaml에 명시되어 있는 ghost docker image의 버전 정보를 2.31.0에서 3.0.2 최신 버전으로 업데이트 후 아래 명령어로 업데이트&lt;/p&gt;
+&lt;pre tabindex="0"&gt;&lt;code&gt;$ helm upgrade --debug my-ghost ghost-with-helm
+[debug] Created tunnel using local port: &amp;#39;45263&amp;#39;
+
+[debug] SERVER: &amp;#34;127.0.0.1:45263&amp;#34;
+
+REVISION: 6
+RELEASED: Tue Nov 5 22:25:19 2019
+CHART: ghost-0.1.0
+USER-SUPPLIED VALUES:
+{}
+
+COMPUTED VALUES:
+affinity: {}
+env:
+ node_env: production
+ url: http://sosa0sa.com:2368
+fullnameOverride: &amp;#34;&amp;#34;
+image:
+ pullPolicy: Always
+ registry: docekr.io
+ repository: ghost
+ tag: 3.0.2
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Helm upgrade는 완료되었지만 ghost 블로그가 접속이 되지 않는다. 상태를 확인해 보니&lt;/p&gt;</description></item></channel></rss>

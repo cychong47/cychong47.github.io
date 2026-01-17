@@ -1,3 +1,12 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Click on Keep calm and write something</title><link>https://cychong47.github.io/tags/click/</link><description>Recent content in Click on Keep calm and write something</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Sun, 01 Apr 2018 02:38:40 +0000</lastBuildDate><atom:link href="https://cychong47.github.io/tags/click/index.xml" rel="self" type="application/rss+xml"/><item><title>click - python option 처리 모듈</title><link>https://cychong47.github.io/post/2016/click-python-module/</link><pubDate>Fri, 01 Jan 2016 13:45:58 +0900</pubDate><guid>https://cychong47.github.io/post/2016/click-python-module/</guid><description>http://click.pocoo.org/5/
-C로 프로그램을 짤 때 사용할 표준 포맷도 이렇게 해야겠다.
-$ python hello.py --help Usage: hello.py [OPTIONS] Simple program that greets NAME for a total of COUNT times. Options: --count INTEGER Number of greetings. --name TEXT The person to greet. --help Show this message and exit.</description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Click on Keep calm and Write something</title><link>https://cychong47.github.io/tags/click/</link><description>Recent content in Click on Keep calm and Write something</description><generator>Hugo</generator><language>en-us</language><lastBuildDate>Sun, 01 Apr 2018 02:38:40 +0000</lastBuildDate><atom:link href="https://cychong47.github.io/tags/click/index.xml" rel="self" type="application/rss+xml"/><item><title>click - python option 처리 모듈</title><link>https://cychong47.github.io/post/2016/click-python-module/</link><pubDate>Fri, 01 Jan 2016 13:45:58 +0900</pubDate><guid>https://cychong47.github.io/post/2016/click-python-module/</guid><description>&lt;p&gt;&lt;a href="http://click.pocoo.org/5/"&gt;http://click.pocoo.org/5/&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;C로 프로그램을 짤 때 사용할 표준 포맷도 이렇게 해야겠다.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$ python hello.py --help
+Usage: hello.py [OPTIONS]
+
+ Simple program that greets NAME for a total of COUNT times.
+
+Options:
+ --count INTEGER Number of greetings.
+ --name TEXT The person to greet.
+ --help Show this message and exit.
+&lt;/code&gt;&lt;/pre&gt;</description></item></channel></rss>

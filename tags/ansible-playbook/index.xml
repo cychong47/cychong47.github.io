@@ -1,9 +1,125 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Ansible-Playbook on Keep calm and write something</title><link>https://cychong47.github.io/tags/ansible-playbook/</link><description>Recent content in Ansible-Playbook on Keep calm and write something</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Thu, 14 Jun 2018 15:21:32 +0000</lastBuildDate><atom:link href="https://cychong47.github.io/tags/ansible-playbook/index.xml" rel="self" type="application/rss+xml"/><item><title>Update ansible-playbook for wordpress</title><link>https://cychong47.github.io/post/2018/update-ansible-playbook-for-wordpress/</link><pubDate>Thu, 14 Jun 2018 15:13:52 +0900</pubDate><guid>https://cychong47.github.io/post/2018/update-ansible-playbook-for-wordpress/</guid><description>이상하게 wordpress 버전이 올라가면 docker용 wordpress 버전도 함께 올라갈 텐데 아무리 최신 docker image를 받아 container를 만들어도 wordpress admin 계정에 들어가면 wordpress를 업데이트 해야 한다고 한다. docket store(http://store.docker.com)에 가면 분명히 wordpress 최신 버전으로 패키징되어 있는 데&amp;hellip;
-혹시나 하고 ansible-playbook을 보니 /var/www/html에 마운트되는 위치에 이전 버전의 wordpress 파일들이 존재하고 있었다.
-volumes: - &amp;#34;/Users/cychong/Documents/wordpress/html:/var/www/html&amp;#34; - &amp;#34;/Users/cychong/Documents/wordpress/uploads:/var/www/html/wp-content/uploads&amp;#34; - &amp;#34;/Users/cychong/Documents/wordpress/conf/php_uploads.ini:/usr/local/etc/php/conf.d/uploads.ini&amp;#34; 바로 첫번째 줄이 문제를 유발하고 있는 곳&amp;hellip; 내가 왜 굳이 저렇게 했을까 생각해 보니 저 디렉토리에 바로 wp-content가 있고, 그 아래 themes와 plugins가 있다.</description></item><item><title>Ansible - Install homebrew</title><link>https://cychong47.github.io/post/2017/ansible-homebrew/</link><pubDate>Sat, 30 Dec 2017 02:34:39 +0900</pubDate><guid>https://cychong47.github.io/post/2017/ansible-homebrew/</guid><description>update homebrew mbpr15:mp3 cychong$ ansible all -m homebrew -a update_homebrew=yes localhost | SUCCESS =&amp;gt; { &amp;#34;changed&amp;#34;: true, &amp;#34;msg&amp;#34;: &amp;#34;Homebrew updated successfully.&amp;#34; } mini2 | SUCCESS =&amp;gt; { &amp;#34;changed&amp;#34;: true, &amp;#34;msg&amp;#34;: &amp;#34;Homebrew updated successfully.&amp;#34; } upgrade all packages mbpr15:mp3 cychong$ ansible all -m homebrew -a update_homebrew=yes -a upgrade_all=yes localhost | SUCCESS =&amp;gt; { &amp;#34;changed&amp;#34;: true, &amp;#34;msg&amp;#34;: &amp;#34;Homebrew upgraded.&amp;#34; } mini2 | SUCCESS =&amp;gt; { &amp;#34;changed&amp;#34;: true, &amp;#34;msg&amp;#34;: &amp;#34;Homebrew upgraded.&amp;#34; } install a package mbpr15:mp3 cychong$ ansible all -m homebrew -a name=neovim -a state=present mbpr15:~ cychong$ cat install_brew_neovim.</description></item><item><title>Ansible - recreate ghost container</title><link>https://cychong47.github.io/post/2017/recreate-ghost-container/</link><pubDate>Sat, 30 Dec 2017 02:31:41 +0900</pubDate><guid>https://cychong47.github.io/post/2017/recreate-ghost-container/</guid><description>YAML file state:absent 는 현재 존재하는 container를 중지시키고, 삭제한다. 단순히 stop만 시키려면 state:stopped로 지정하면 된다.
-pull: yes 옵션을 사용하면 항상 최신 image를 pull한다고 한다.
-recreate Use with present and started states to force the re-creation of an existing container.
-mbpr15:ansible cychong$ cat recreate_container_ghost.yaml --- - hosts: mini2 tasks: - name: Stop and remove contianer docker_container: name: ghost state: absent - name: Create ghost Container docker_container: name: ghost image: ghost # always pull the latest image pull: yes state: started recreate: yes volumes: - &amp;#34;/Users/cychong/Dropbox/Apps/ghost/content/:/var/lib/ghost/content&amp;#34; - &amp;#34;/Users/cychong/Dropbox/Apps/ghost/config.</description></item><item><title>Ansible - basics of ansible-playbook</title><link>https://cychong47.github.io/post/2017/ansible-playbook/</link><pubDate>Fri, 29 Dec 2017 13:43:14 +0900</pubDate><guid>https://cychong47.github.io/post/2017/ansible-playbook/</guid><description>play The goal of a play is to map a group of hosts to some well defined roles, represented by things ansible calls tasks. At a basic level, a task is nothing more than a call to an ansible module
-play는 명령을 수행할 대상과 수행할 명령을 모두 포함하고 있다.
-playbook playbook은 하나 혹은 이상의 play들의 집합으로 정의한다.
-Conventional template of playbook --- - hosts: XXX optoins.... tasks: -name: YYY MODULE_NAME : MODULE_ARGS -name : ZZZ MODULE_NAME: MODULE_ARGS .</description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Ansible-Playbook on Keep calm and Write something</title><link>https://cychong47.github.io/tags/ansible-playbook/</link><description>Recent content in Ansible-Playbook on Keep calm and Write something</description><generator>Hugo</generator><language>en-us</language><lastBuildDate>Thu, 14 Jun 2018 15:21:32 +0000</lastBuildDate><atom:link href="https://cychong47.github.io/tags/ansible-playbook/index.xml" rel="self" type="application/rss+xml"/><item><title>Update ansible-playbook for wordpress</title><link>https://cychong47.github.io/post/2018/update-ansible-playbook-for-wordpress/</link><pubDate>Thu, 14 Jun 2018 15:13:52 +0900</pubDate><guid>https://cychong47.github.io/post/2018/update-ansible-playbook-for-wordpress/</guid><description>&lt;p&gt;이상하게 wordpress 버전이 올라가면 docker용 wordpress 버전도 함께 올라갈 텐데 아무리 최신 docker image를 받아 container를 만들어도 wordpress admin 계정에 들어가면 wordpress를 업데이트 해야 한다고 한다.
+docket store(&lt;a href="http://store.docker.com"&gt;http://store.docker.com&lt;/a&gt;)에 가면 분명히 wordpress 최신 버전으로 패키징되어 있는 데&amp;hellip;&lt;/p&gt;
+&lt;p&gt;혹시나 하고 ansible-playbook을 보니 &lt;code&gt;/var/www/html&lt;/code&gt;에 마운트되는 위치에 이전 버전의 wordpress 파일들이 존재하고 있었다.&lt;/p&gt;
+&lt;pre tabindex="0"&gt;&lt;code&gt; volumes:
+ - &amp;#34;/Users/cychong/Documents/wordpress/html:/var/www/html&amp;#34;
+ - &amp;#34;/Users/cychong/Documents/wordpress/uploads:/var/www/html/wp-content/uploads&amp;#34;
+ - &amp;#34;/Users/cychong/Documents/wordpress/conf/php_uploads.ini:/usr/local/etc/php/conf.d/uploads.ini&amp;#34;
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;바로 첫번째 줄이 문제를 유발하고 있는 곳&amp;hellip;
+내가 왜 굳이 저렇게 했을까 생각해 보니 저 디렉토리에 바로 &lt;code&gt;wp-content&lt;/code&gt;가 있고, 그 아래 &lt;code&gt;themes&lt;/code&gt;와 &lt;code&gt;plugins&lt;/code&gt;가 있다. 처음 docker로 wordpress를 띄울 때 이미 설치한 theme이나 plugin이 wordpress docker 버전이 올라가서 새로 container를 만들 때마다 다시 설치해야 하는 번거로움을 피하려고 저렇게 한 듯 하다. 지금 생각하면 참 바보같은&amp;hellip;&lt;/p&gt;</description></item><item><title>Ansible - Install homebrew</title><link>https://cychong47.github.io/post/2017/ansible-homebrew/</link><pubDate>Sat, 30 Dec 2017 02:34:39 +0900</pubDate><guid>https://cychong47.github.io/post/2017/ansible-homebrew/</guid><description>&lt;h2 id="update-homebrew"&gt;update homebrew&lt;/h2&gt;
+&lt;pre tabindex="0"&gt;&lt;code&gt;mbpr15:mp3 cychong$ ansible all -m homebrew -a update_homebrew=yes
+localhost | SUCCESS =&amp;gt; {
+ &amp;#34;changed&amp;#34;: true,
+ &amp;#34;msg&amp;#34;: &amp;#34;Homebrew updated successfully.&amp;#34;
+}
+mini2 | SUCCESS =&amp;gt; {
+ &amp;#34;changed&amp;#34;: true,
+ &amp;#34;msg&amp;#34;: &amp;#34;Homebrew updated successfully.&amp;#34;
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;h2 id="upgrade-all-packages"&gt;upgrade all packages&lt;/h2&gt;
+&lt;pre tabindex="0"&gt;&lt;code&gt;mbpr15:mp3 cychong$ ansible all -m homebrew -a update_homebrew=yes -a upgrade_all=yes
+localhost | SUCCESS =&amp;gt; {
+ &amp;#34;changed&amp;#34;: true,
+ &amp;#34;msg&amp;#34;: &amp;#34;Homebrew upgraded.&amp;#34;
+}
+mini2 | SUCCESS =&amp;gt; {
+ &amp;#34;changed&amp;#34;: true,
+ &amp;#34;msg&amp;#34;: &amp;#34;Homebrew upgraded.&amp;#34;
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;h2 id="install-a-package"&gt;install a package&lt;/h2&gt;
+&lt;pre tabindex="0"&gt;&lt;code&gt;mbpr15:mp3 cychong$ ansible all -m homebrew -a name=neovim -a state=present
+&lt;/code&gt;&lt;/pre&gt;&lt;pre tabindex="0"&gt;&lt;code&gt;mbpr15:~ cychong$ cat install_brew_neovim.yaml 
+---
+- hosts: all
+ tasks:
+ - name : install neovim in homebrew
+ homebrew: 
+ name: neovim
+ state: present
+
+mbpr15:~ cychong$ ansible-playbook install_brew_neovim.yaml 
+
+PLAY [all] *****************************************************************************************************************************************************************
+
+TASK [Gathering Facts] *****************************************************************************************************************************************************
+ok: [localhost]
+ok: [mini2]
+
+TASK [install neovim in homebrew] ******************************************************************************************************************************************
+changed: [localhost]
+changed: [mini2]
+
+PLAY RECAP *****************************************************************************************************************************************************************
+localhost : ok=2 changed=1 unreachable=0 failed=0 
+mini2 : ok=2 changed=1 unreachable=0 failed=0 
+
+mbpr15:~ cychong$ which nvim
+/usr/local/bin/nvim
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;삭제는 &lt;code&gt;state&lt;/code&gt;만 &lt;code&gt;absent&lt;/code&gt;로 변경하면 된다.&lt;/p&gt;</description></item><item><title>Ansible - recreate ghost container</title><link>https://cychong47.github.io/post/2017/recreate-ghost-container/</link><pubDate>Sat, 30 Dec 2017 02:31:41 +0900</pubDate><guid>https://cychong47.github.io/post/2017/recreate-ghost-container/</guid><description>&lt;h2 id="yaml-file"&gt;YAML file&lt;/h2&gt;
+&lt;p&gt;&lt;code&gt;state:absent&lt;/code&gt; 는 현재 존재하는 container를 중지시키고, 삭제한다.
+단순히 stop만 시키려면 &lt;code&gt;state:stopped&lt;/code&gt;로 지정하면 된다.&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;pull: yes&lt;/code&gt; 옵션을 사용하면 항상 최신 image를 pull한다고 한다.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;recreate
+Use with present and started states to force the re-creation of an existing container.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;pre tabindex="0"&gt;&lt;code&gt;mbpr15:ansible cychong$ cat recreate_container_ghost.yaml 
+---
+- hosts: mini2
+ tasks:
+
+ - name: Stop and remove contianer
+ docker_container:
+ name: ghost
+ state: absent
+
+ - name: Create ghost Container
+ docker_container:
+ name: ghost
+ image: ghost
+ # always pull the latest image
+ pull: yes
+ state: started
+ recreate: yes
+ volumes:
+ - &amp;#34;/Users/cychong/Dropbox/Apps/ghost/content/:/var/lib/ghost/content&amp;#34; 
+ - &amp;#34;/Users/cychong/Dropbox/Apps/ghost/config.production.json:/var/lib/ghost/config.production.json&amp;#34;
+ ports:
+ - &amp;#34;2368:2368&amp;#34;
+ env:
+ NODE_ENV: production
+&lt;/code&gt;&lt;/pre&gt;&lt;pre tabindex="0"&gt;&lt;code&gt;mbpr15:ansible cychong$ ansible-playbook recreate_container_ghost.yaml 
+
+PLAY [mini2] ***************************************************************************************************************************************************************
+
+TASK [Gathering Facts] *****************************************************************************************************************************************************
+ok: [mini2]
+
+TASK [Stop and remove contianer] *******************************************************************************************************************************************
+changed: [mini2]
+
+TASK [Create ghost Container] **********************************************************************************************************************************************
+changed: [mini2]
+
+PLAY RECAP *****************************************************************************************************************************************************************
+mini2 : ok=3 changed=2 unreachable=0 failed=0 
+&lt;/code&gt;&lt;/pre&gt;</description></item><item><title>Ansible - basics of ansible-playbook</title><link>https://cychong47.github.io/post/2017/ansible-playbook/</link><pubDate>Fri, 29 Dec 2017 13:43:14 +0900</pubDate><guid>https://cychong47.github.io/post/2017/ansible-playbook/</guid><description>&lt;h2 id="play"&gt;&lt;code&gt;play&lt;/code&gt;&lt;/h2&gt;
+&lt;blockquote&gt;
+&lt;p&gt;The goal of a play is to map a group of hosts to some well defined roles, represented by things ansible calls tasks. At a basic level, a task is nothing more than a call to an ansible module&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;play는 명령을 수행할 대상과 수행할 명령을 모두 포함하고 있다.&lt;/p&gt;
+&lt;h2 id="playbook"&gt;&lt;code&gt;playbook&lt;/code&gt;&lt;/h2&gt;
+&lt;p&gt;playbook은 하나 혹은 이상의 play들의 집합으로 정의한다.&lt;/p&gt;
+&lt;h3 id="conventional-template-of-playbook"&gt;Conventional template of playbook&lt;/h3&gt;
+&lt;pre tabindex="0"&gt;&lt;code&gt;---
+- hosts: XXX
+ optoins....
+ 
+ tasks:
+ -name: YYY
+ MODULE_NAME : MODULE_ARGS
+ -name : ZZZ
+ MODULE_NAME: MODULE_ARGS
+ ...
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;하나의 play는 “하나 혹은 이상의 목적지 그룹에 대해 수행되는 task들의 매핑”으로 정의된다. 즉 하나의 &lt;code&gt;hosts&lt;/code&gt; 와 해당 hosts에서 수행할 &lt;code&gt;tasks&lt;/code&gt;들 간의 매핑을 하나의 play로 정의한다.
+&lt;code&gt;hosts&lt;/code&gt; 에는 접속 및 로그인에 관련된 옵션 들이 추가될 수 있다.&lt;/p&gt;</description></item></channel></rss>

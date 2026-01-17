@@ -1,102 +1,1097 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Book on Keep calm and write something</title><link>https://cychong47.github.io/categories/book/</link><description>Recent content in Book on Keep calm and write something</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Mon, 02 Nov 2020 08:56:16 +0900</lastBuildDate><atom:link href="https://cychong47.github.io/categories/book/index.xml" rel="self" type="application/rss+xml"/><item><title>Chapter 2. CUDA Memory Management</title><link>https://cychong47.github.io/post/2020/2020-11-02-chapter-2.-cuda-memory-management/</link><pubDate>Mon, 02 Nov 2020 08:56:16 +0900</pubDate><guid>https://cychong47.github.io/post/2020/2020-11-02-chapter-2.-cuda-memory-management/</guid><description>2. CUDA Memory Management Most of the application’s performance will be bottlecked by memory-related constraints GPU RAM BW : 900GB/s (DDR3 ?) NV Visual Profiler Global memory is a staging area where all of the date gets copied from CPU memory. Global Memory(device memory) is visible to all of the threads in the kernel and also visible to CPu. Coalesced vs. uncoalesced global memory access coalesced global memory access : Sequential memory access is adjacent Warp Warp is a unit of thread scheduling/execution in SMs.</description></item><item><title>Chapter 1. Introduction to CUDA Programming</title><link>https://cychong47.github.io/post/2020/2020-11-02-chapter-1-introduction-to-cuda-programming/</link><pubDate>Mon, 02 Nov 2020 08:55:34 +0900</pubDate><guid>https://cychong47.github.io/post/2020/2020-11-02-chapter-1-introduction-to-cuda-programming/</guid><description>1. Introduction to CUDA Programming CPU Architecture is optimized for low latency accessing while GPU architecture is optimized for data parallel throughput compution CPU hides latency of data by frequently stroring used data in caches and utilize the temporal locality In CUDA, the execution unit is a warp not a thread. Context switching is happens between the warps and not threads. GPU has lots of registers, all the thread context switching information is already present in the registers.</description></item><item><title>(책) 리얼하다</title><link>https://cychong47.github.io/post/2019/book-so-real/</link><pubDate>Sun, 15 Dec 2019 06:46:24 +0900</pubDate><guid>https://cychong47.github.io/post/2019/book-so-real/</guid><description>리얼하다 조승연
-Lunch or Happy Hour 뭔가 약속을 잡아야 할 때 점심 시간 혹은 저녁 업무 종료 후 저녁 식사 시간 전(Happy Hour, 5-7pm) 때 약속을 주로 잡는다고. 그래야 별도 개인 시간 낭비를 안하고, 저녁의 경우 필요하면 저녁 약속 을 핑계로 이야기를 끊을 수 있어서 주로 이렇게 한다고 한다.
-이메일로 할 수 있는 걸 전화로 하지 않고, 전화로 할 수 있는 걸 만나서 하지 않는다. 뉴욕의 사업자는 대부분 이민자 출신이라 길거리에서 생존을 배워와서 &amp;lsquo;실행해서 결과를 도출해 보기 전까지는 무엇도 알 수 없다&amp;rsquo;고 생각.</description></item><item><title>사무력</title><link>https://cychong47.github.io/post/2019/samuryeog/</link><pubDate>Sun, 17 Nov 2019 11:12:41 +0900</pubDate><guid>https://cychong47.github.io/post/2019/samuryeog/</guid><description>중요한 일은
-생각을 기반으로 함. 기계적으로 대응 불가 소통이 따름. 조직의 일은 혼자 할 수 없으므로 결정이 수반되야 함. 길이 하나가 아닌 까닭 실행이 따름. 결정만으로 결과가 오는 것이 아님 52시간법은 일하는 시간에 제약이 가해지는 것이다. 충분한 시간을 투자해서 결과를 얻어내던 방식에서 달라져야 한다.
-직장 생활에서 반드시 익혀야 할 기술은 &amp;lsquo;생각을 정리하여 말이나 글로 표현하는 기술&amp;rsquo;
-일 때문에 일을 하는 것이 아니라 성과를 위해 일을 하는 것이다.
-WBS(Work Breakdown Structure)</description></item><item><title>함께 자라기</title><link>https://cychong47.github.io/post/2018/grow-together/</link><pubDate>Tue, 25 Dec 2018 13:54:06 +0900</pubDate><guid>https://cychong47.github.io/post/2018/grow-together/</guid><description>p12 학교 학습 vs. 야생 학습 야생 학습은 대부분 자료에 한정이 없다.
-야생 학습은 대부분 명확한 평가가 없다.
-야생 학습은 대부분 정답이 없다.
-야생 학습은 대부분 목표가 불분명하고 바뀌기도 한다.
-학습의 본질은 야생 학습에 더 가깝다고 생각. 현실 세계에서는 야생 학습이 더 많이 필요하다고 봅니다.
-p23 구조화된 인터뷰(특별히 구조화된 행동중심적 인터뷰를 권함)와 실제 작업을 해보도록 하는 작업 샘플 테스트, 그리고 가능하다면 실제 업무를 주고 시험적으로 짧은 기간 동안 일을 해보게 하는 것 등을 권합니다.</description></item><item><title>(책) The nature of Software Development</title><link>https://cychong47.github.io/post/2018/caeg-the-nature-of-software-development/</link><pubDate>Thu, 18 Oct 2018 14:53:53 +0900</pubDate><guid>https://cychong47.github.io/post/2018/caeg-the-nature-of-software-development/</guid><description>제품 책임자는 해결해야 할 문제가 무엇인지 제시합니다. 그리고 팀은 주어진 문제를 어떻게 해결할 지 결정하죠. 진정한 자율성이 있다면 팀의 일을 중복으로 확인할 필요가 없습니다. 그들이 결정하고 그들이 만들고 조직 모두가 결과를 확인합니다. 모두가 배우는 것이죠 개발팀은 1-2주에 해당하는 개발 주기를 거칠 때마다 제품 책임자와 함께 무엇을 완료해야 하는지 상의해야 합니다. 잘 작동하는 상태로 배포할 수 있는 피처들이 얼마나 되는지 구분합니다.
-이렇게 팀이 일을 끝낸 이후 &amp;ldquo;작동하는 소프트웨어를 보여주세요&amp;quot;라고 요구하면 됩니다.</description></item><item><title>(책) 실리콘밸리를 그리다</title><link>https://cychong47.github.io/post/2018/silicon-valley-illustrated/</link><pubDate>Sun, 23 Sep 2018 06:34:35 +0900</pubDate><guid>https://cychong47.github.io/post/2018/silicon-valley-illustrated/</guid><description>P40 업무 지시 -&amp;gt; 일을 맡아달라고 부탁
-P44 제조업에서는 정보 공유의 중요성이 높지 않다. 설계 -&amp;gt; 생산 분리 SW에서는 설계가 모든 상세 내역을 알 수 없고, 지속적인 변경 사항에 따른 변화를 모두 확인할 수 없다. 실리콘밸리에는 기획자라는 역할이 없다. 각자가 자신의 역할을 책임진다. 엔지니어 문화에서는 끊임없이 진화를 가정하고 시작한다. 아웃소싱은 설계 변경을 빠른 시간 내 반영하기 어려워 많이 사용하지 않는다.
-우리나라 기업 문화는 기술집약 제조업에 적합하다. Speed - Quality - Feature triangle</description></item><item><title>(책) 1등의 습관 Smarter, Faster, Better</title><link>https://cychong47.github.io/post/2018/smarter-faster-better/</link><pubDate>Tue, 04 Sep 2018 14:26:37 +0900</pubDate><guid>https://cychong47.github.io/post/2018/smarter-faster-better/</guid><description>Motivation P39
-자신이나 다른 사람에게 동기를 부여하고 싶은 사람이라면 반드시 알아두어야 할 교훈이다. 결정권을 행사할 수 있는 일을 찾아내면 행동하려는 의지를 쉽게 불어일으킬 수 있기 때문이다.
-직접 결정할 수 있다는 생각이 우리를 흥분시킨다.
-Teams P71
-구글 인력 자원국의 기본적인 목표는 구글 직원들이 직장에서의 삶을 조금이라도 더 행복하고 생산적으로 꾸려 가도록 유도하는 것이었다
-P72
-산소 프로젝트 -&amp;gt; 훌륭한 관리자란?
-훌륭한 코치이고, 권한을 위임하고, 시시콜콜한 문제를 따지지 않으며, 부하 직원의 성공과 행복에 관심을 드러내고, 결과를 중시하고, 정보를 경청하고 공유하며, 경력 개발을 지원하고, 분명한 비전과 전략을 직원들에게 제시하며, 해당 비즈니스에 대한 중요한 핵심 능력을 지니고 있다.</description></item><item><title>(책) 최고의 팀은 무엇이 다른가</title><link>https://cychong47.github.io/post/2018/the-secret-of-highly-successful-groups/</link><pubDate>Sat, 25 Aug 2018 10:08:40 +0900</pubDate><guid>https://cychong47.github.io/post/2018/the-secret-of-highly-successful-groups/</guid><description>팀원이 안전하다고 느끼는가?
-구글 * 지위에 연연하지 않음. * 누가 책임질 지 고민하지 않음 * 어려운 문제를 풀기 위해 모든 집단을 토론시킴 미사일리어 * 미국의 미사일기지 근무 군인들의 만족도가 크게 떨어짐 * 우리가 이어져 있나? * 우리에게 미래가 있나? * 우리는 안전한가? 피드백 * 기대치가 높다 * 당신이면 기대를 충분히 달성할 수 있을 있을 거라고 믿는다 경청하라. 또 경청하라 * 높은 자리에 오를수록 먼저 약점을 드러내라 * 불편한 목소리도 포용 * 구체적인 미래상 제시 * 공치사는 과장될수록 좋다 * 서로 부딪칠 수 있는 공간을 마련하라 * 각자의 목소리를 내게 하라.</description></item><item><title>(책) 리모트</title><link>https://cychong47.github.io/post/2018/remote/</link><pubDate>Sat, 25 Aug 2018 09:30:07 +0900</pubDate><guid>https://cychong47.github.io/post/2018/remote/</guid><description>p15
-사람들에게 제대로 집중해서 일을 하고자 할 때 어디로 갈거냐고 물었을 때 “사무실”이라고 답하는 사람은 별로 없다.혹은 “다른 직원들이 출근하기 전 아침 일찍” 또는 “다른 직원들이 퇴근하고 난 후의 사무실” 또는 “주말에 아무도 없는 사무실”
-p18
-출퇴근 시간 1.5시간/하루 * 5일 * 4 * 11 month = 330 시간.400시간은 베이스캠프를 개발자들이 프로그래밍하는데 걸린 시간
-p22
-엄청난 기술이 필요한 것은 아니다. 하지만 과거의 유산을 내려놓고 미래로 가는 배에 올라 탈 굳은 의지를 갖추어야만 한다.</description></item><item><title>(책) 덴마크 사람들은 왜 첫 월급을 받으면</title><link>https://cychong47.github.io/post/2018/why-danish-bought-a-chair-with-the-first-time-salary/</link><pubDate>Thu, 16 Aug 2018 14:46:20 +0900</pubDate><guid>https://cychong47.github.io/post/2018/why-danish-bought-a-chair-with-the-first-time-salary/</guid><description>기대와는 많이 달랐던 책&amp;hellip;
-인생은 바꿔 말하면 ‘시간’입니다. 그 시간을 보내는 ‘공간’이야말로 그 사람의 행복으로 이어집니다.</description></item><item><title>(책) 쿠팡 우리가 혁신하는 이유</title><link>https://cychong47.github.io/post/2018/coupang-the-reason-of-innovation/</link><pubDate>Sun, 05 Aug 2018 11:09:34 +0900</pubDate><guid>https://cychong47.github.io/post/2018/coupang-the-reason-of-innovation/</guid><description>31
-PO의 역할 A,B, C의 우선 순위를 결정하는 수동적인 역할 더 창의적으로 생각해보면 전혀 다른 D라는 일을 텅해 A,B, C의 문제를 한꺼번에 해결 할 수도. 사고의 폭이 넓으면 PO가 할 일은 무한정 많아지기도 한다.
-관리자와 같은 입장인 듯. 2018년 8월 내가 갖는 고민, 상황에 딱 드러맞는 말.
-240
-쿠팡 대표 이사, 김범석
-&amp;ldquo;제발 위에서 시키니까 한다는 소리 좀 하지 마세요. 그거 제가 제일 싫어하는 말이예요&amp;rdquo;
-&amp;ldquo;무엇이 옳고 합리적인지&amp;quot;를 묻는 것은 다양성을 존중하는 수평적인 조직문화의 토대가 될 수 있다.</description></item><item><title>(책) 나는 이렇게 될것이다.</title><link>https://cychong47.github.io/post/2018/i-am-going-to-be/</link><pubDate>Sun, 29 Jul 2018 21:36:14 +0900</pubDate><guid>https://cychong47.github.io/post/2018/i-am-going-to-be/</guid><description>p17 술과 구라를 즐기되 항상 혀를 조심하라. 어느 장소에서나 어느 주제에 대해서나 할 말을 다하는 자는 불행한 자이니 말하고 싶을 때마다 세 번을 더 깊이 들어라 특히 나이가 들어서는 혀를 잘 묶어두어야 한다. 고약한 늙은이 옆에는 사람이 없으니 외로움이 끝없으리라 배워서 알고 싶은 것을 다 쓰지 못하고 가는 것은 서운한 일이나
-친구는 들어주는 사람 곁에 모이는 것이니 하나를 말하고 둘을 들어라.
-p27 여러분이 놓치고 있는 것이 있습니다. 바로 이 하얀 종이 말입니다.</description></item><item><title>(책) 피플웨어</title><link>https://cychong47.github.io/post/2018/peopleware/</link><pubDate>Sun, 29 Jul 2018 21:35:10 +0900</pubDate><guid>https://cychong47.github.io/post/2018/peopleware/</guid><description>p21 사람들이 업무의 인간적인 측면보다 기술적인 측면에 주로 매달리는 가장 큰 이유는 기술적인 부분이 더욱 중요하기 때문이 아니라 거기에 매달리는 것이 훨씬 더 쉽기 때문이다.
-p24 실수를 허용하지 않는 분위기는 직원들에게 방어적인 태도를 양산할 뿐이다. 즉 직원들로 하여금 실패할 것 같은 일은 아예 시도조차 하지 않게 만드는 것이다. 개발 프로세스를 체계화하려고 하거나 엄격한 방법론을 강요하면서, 팀원들이 확실한 성공을 보장할 수 없는 것들에 대해 중요한 결정들을 내리지 못하게 한다면 그들은 점점 더 소극적이고 방어적인 태도를 취한다.</description></item><item><title>(책) 내 아이가 만날 미래</title><link>https://cychong47.github.io/post/2018/the-future-of-my-children/</link><pubDate>Sun, 29 Jul 2018 21:33:47 +0900</pubDate><guid>https://cychong47.github.io/post/2018/the-future-of-my-children/</guid><description>30 생산성의 증가가 오히려 일자리를 필요없게 만든다. 사람의 노동력을 대체할 것들이 등장하기 때문이다.
-31 지나친 생산성은 고용의 안정성을 해지며, 높아진 생산성만큼 사회와 경제가 성장하지 않으면 안 된든다는 압력으로 작용한다.
-33 거대한 생산성과 효율성을 바탕으로 하는 소비자 중심의 과소비 사회가 종말을 맞이하려고 한다. 과소비를 통해 외형이 성장하고, 이를 맞추기 위한 생산성의 독려와 일자리를 유지했던 성장의 순환 사이클이 그 동력을 잃고 있다.
-52 지식노동자의 주된 역할은 정보를 다루고, 찾아내며, 컴퓨터가 계산한 내용을 바탕으로 새로운 지식을 만들어 내고 분석하는 일이라 할 수 있다.</description></item><item><title>(책) 시스템의 힘</title><link>https://cychong47.github.io/post/2018/the-work-system/</link><pubDate>Sun, 29 Jul 2018 21:32:37 +0900</pubDate><guid>https://cychong47.github.io/post/2018/the-work-system/</guid><description>42 우리는 통제할 수 있는 것에 초점을 맞추되, 통제할 수 없는 것에는 마음을 편히 먹어야 한다.
-44 이제는 불평도 하지 않고, 남을 탓하지도 않을거야. 내 앞에 놓인 세상을 거부할 게 아니라, 있는 그대로의 세상에 뛰어들어서 내가 통제할 수 있는 것부터 시작할 거야. 무슨 일을 할 수 있을 지 찾아봐야겠어.
-50 자신의 지금 위치가 어디이든, 영향력의 원이 얼마나 크든 그 원의 밖이 아닌 안에서 변화를 일으키려 노력하라. 어차피 손을 쓸 수도 없는 큰 그림을 분석하고 해부하는데 소중한 에너지를 쓰지 말라.</description></item><item><title>(책) 지금 꿈꾸라, 사랑하라, 행복하라</title><link>https://cychong47.github.io/post/2018/just-now-dream-love-be-happy/</link><pubDate>Sun, 29 Jul 2018 21:31:08 +0900</pubDate><guid>https://cychong47.github.io/post/2018/just-now-dream-love-be-happy/</guid><description>꿈을 노트하라 꿈을 날짜와 함께 적어 놓으면 그것은 목표가 되고 목표를 잘게 나누면 그것은 계획인 되며, 그 계획을 실행에 옮기면 꿈을 이루게 되는 것이다.
-p46 우리는 무거운 짐을 지고 살아간다. ‘등이 휠 것 같은 삶의 무게여’라는 가사도 있다. 내가 책임져야 할 가족과 도움을 필요로 한 친구들, 나에게 주어진 과중한 업무와 기대. 이 거추장스러운 짐들이 사실은 ‘내 인생의 날개’일 수도 있다.
-p68 다른 사람과 한 약속을 지키는 것도 중요하지만 자기 자신과 한 약속을 지키는 것이 더 중요하다 세상과 타협하는 것도 위험하지만 자기 자신과 타협하는 것이 가장 위험하다</description></item><item><title>(책) 습관의 힘</title><link>https://cychong47.github.io/post/2018/power-of-habit/</link><pubDate>Sun, 29 Jul 2018 21:29:36 +0900</pubDate><guid>https://cychong47.github.io/post/2018/power-of-habit/</guid><description>신호 - 보상 - 반복행동 - 열망
-습관에 숨겨진 &amp;ldquo;열망&amp;quot;을 찾아야 한다. 담배를 습관적으로 피우는 사람도 담배를 피우는 이유가 니코틴 부족이 아니라 잠깐 동안의 여유를 주기 때문일 수 있다. 이때는 이 &amp;ldquo;여유&amp;quot;라는 열망을 담배가 아닌 산책 등으로 바꾸면 습관을 바꿀 수 있다. 이때 그 열망에 대한 &amp;ldquo;신호&amp;quot;와 &amp;ldquo;보상&amp;quot;을 알아야 한다. 그래서 담배가 주는 것과 유사한 담배껌, 팔굽혀 펴기, 스트레칭등의 새로운 반복행동을 선택하면 담배를 끊을 확률이 높아진다.
-믿음
-하느님이 아니더라도, 내 상황이 더 좋아질 거라는 믿음이 필요하다.</description></item><item><title>(책) 나는 다른 대한민국에서 살고 싶다</title><link>https://cychong47.github.io/post/2018/i-want-to-live-in-a-different-korea/</link><pubDate>Sun, 29 Jul 2018 21:28:01 +0900</pubDate><guid>https://cychong47.github.io/post/2018/i-want-to-live-in-a-different-korea/</guid><description>p215 우리 사회가 뭔가 단단히 헷갈리고 있다. 정치, 경제, 사회 전반에서 국가의 강력한 통졔를 바란다면 헌법부터 뜯어고쳐야 할 것이다. 일단 자유민주주의의 &amp;lsquo;자유&amp;rsquo;와 &amp;lsquo;민주&amp;rsquo;는 빼야 할 것 같으니까. 대만민국의 국가적 정체성부터 다시 생각해봐야 할 일이다. 공산주의가 싫어 자유주의를 주장하는 거라면 작은 정부를 지향해야 옳다. 그리고 그 작은 정부가 왜 시장에 대한 규제 철폐만 주장하고, 사상, 언론, 표현, 결사 등의 영역에서는 작은 소리만 있어도 사회가 불안정하고 무질서해진다며 통제하려고 하는 지 합리적인 이유를 내 놓아야 한다.</description></item><item><title>(책) 퍼플피플</title><link>https://cychong47.github.io/post/2018/purple-people/</link><pubDate>Sun, 29 Jul 2018 13:53:11 +0900</pubDate><guid>https://cychong47.github.io/post/2018/purple-people/</guid><description>p39 자신이 정말 좋아하는 일을 만날 수만 있다면, 인생의 절반은 성공한 것이다. 끔찍이 좋아하는 일이라면 남들이 말려도 다시 덤벼들어야 한다.
-지금 내가 쌓고 있는 스펙이 과연 10년, 20년 후에도 계속 하고 싶은 일에 도움이 될까? 다시 한번 생각해 보라.
-p47 부디 이 땅의 청춘들이 자신을 괴롭게 하는 스펙 쌓기에 매달리지 않기를 바란다. 고통의 순간이 가면 즐거움의 시간이 오리라는 보장을 누가 해줄 것인가? 지금 나를 가장 즐겁게 하는 일, 뜨겁게 나를 느낄 수 있는 일에 열정을 쏟아부어야 진정한 퍼플피플로 성장할 수 있다.</description></item><item><title>(책) 혼창통</title><link>https://cychong47.github.io/post/2018/hon-chang-tong/</link><pubDate>Sun, 29 Jul 2018 13:47:57 +0900</pubDate><guid>https://cychong47.github.io/post/2018/hon-chang-tong/</guid><description>8p
-혼 : 가슴 벅차게 하는 비전이 사람을 움직인다. 창 : 끊임없이 &amp;ldquo;왜&amp;quot;라고 물어라, 그러면 열린다. 통 : 만나라, 또 만나라. 들어라 잘 들어라. 16p
-IBM, P&amp;amp;G, Cisco, CEMEX 이 기없들의 공통점은 무엇일까? 그렇다 공룡처럼 몸집이 큰 기업들이다. 공룡인데도 민첩하다. 한가지 공통점은 회사 전체가 보다 큰 가치, 가슴을 울렁이게 하는 원대한 비전을 공유한다는 사실이다. 하버드경영대학원의 로자베스모스 캔터 교수(Rosabeth Moss Kanter) &amp;ldquo;모든 직원이 보다 큰 가치를 공유하게 되면 일선에서 어떤 문제가 부딛쳐도, 혹은 본사로부터 아무리 떨어진 곳에서 일하더라도 자발적으로 문제의 해결을 주도하게 된다&amp;rdquo;</description></item><item><title>(책) 당신의 시간</title><link>https://cychong47.github.io/post/2018/your-time/</link><pubDate>Sun, 29 Jul 2018 13:44:37 +0900</pubDate><guid>https://cychong47.github.io/post/2018/your-time/</guid><description>p52 &amp;ldquo;당신의 삶입니다. 당신의 사람을 이야기하라는데 가족을 위해 사는 게 전부라. 생활비만 제대로 해결된다면 가족에게 당신은 없어도 되는 존재라는 말이군요. 그런 현금 지급기와 같은 삶을 원한다면 더 이야기하는 것도 &amp;lsquo;시간낭비&amp;rsquo;군요&amp;rdquo;
-p89 파울로 코엘료의 &amp;lt;순례자&amp;gt;에서는 꿈들을 죽일 때 나타나는 첫 번째 징후가 &amp;lsquo;시간이 없다&amp;rsquo;라고 말하는 것이라고 했습니다.
-p97 가장 먼저 해야 할 일은 진지하게 고민하며 한발 내딛는 일입니다. 어디로든 상관없습니다. 자신을 둘러싸고 있는 경계를 벗어나기만 하면 새로운 사람들과 새로운 경험이 당신을 기다리고 있을 겁니다.</description></item><item><title>(책) Slack</title><link>https://cychong47.github.io/post/2018/slack/</link><pubDate>Sun, 29 Jul 2018 13:42:11 +0900</pubDate><guid>https://cychong47.github.io/post/2018/slack/</guid><description>p32 너무 효율적인 사람은 너무나도 바쁘기 때문에, 무언가 새로운 일이 일어나는 경우 그 일에 즉시 대응할 수가 없게 된다.
-p37 사실 효율성을 높이는 일은 매우 어렵다. 효율성 개선에는 엄청난 노력과 진정한 독창성이 필요하기 때문이다. 조직은 항상 스스로를 더욱 효율적으로 만들기 위해 끊임없이 노력해 왔기 때문에 조직을 더 효율적으로 만들기란 결코 쉬운 일이 아니다.
-p38 짧은 시간안에 조직의 개선을 보여주어야 하는 효율성 전문가에게 유욯나 지름길은 무엇일까? 가장 자주 채택되는 지름길은 바로 각각의 직원을 모두 완전한 대체물이라고 가정하는 것이다.</description></item><item><title>(책) 팀이 빠지기 쉬운 5가지 함정</title><link>https://cychong47.github.io/post/2018/five-traps-team-can-fall-into/</link><pubDate>Sun, 29 Jul 2018 13:11:31 +0900</pubDate><guid>https://cychong47.github.io/post/2018/five-traps-team-can-fall-into/</guid><description>p65 효율적인 팀들은 한결같이 매우 구체적으로 논쟁을 벌였습니다. 팀원들간의 신뢰도가 매우 높은 팀에서도 흔히 논쟁이 벌어지더군요.
-p114 전반전이 끝나고 라커룸으로 들어가는 농구코치를 상상해 봅시다. 그는 팀의 센터포워드를 자기 방으로 불러서 전반전에 대해 일대일로 대화합니다. 그러곤 포인트가드, 슈팅가드, 스몰포워드, 파워포워드를 차례로 불러서 똑같은 행동을 반복합니다. 선수들 중 누구도 코치가 다른 선수들에게 무슨 얘기를 했는 지 알 수 없는 상태에서 후반전이 시작됩니다. 후반전에서 그들은 더 이상 팀이 아닙니다. 그건 단지 개인들을 한데 모아놓은 것에 불과하죠.</description></item><item><title>(책) 드라이브 - 다니엘 핑크</title><link>https://cychong47.github.io/post/2018/drive/</link><pubDate>Sun, 29 Jul 2018 12:45:25 +0900</pubDate><guid>https://cychong47.github.io/post/2018/drive/</guid><description>p64 해결점까지 분명한 길이 있는 경우의 보상은 앞만 바라보며 더 빨리 나아가게 해주기 때문에 도움이 되지만, 양초 문제처럼 도전적인 상황에서 &amp;lsquo;만약-그러면&amp;rsquo;의 조건적 동기유인제는 효력을 발휘하지 못한다. 보상은 사람들의 시야를 좁히며, 기존 물건의 새로운 쓰임새를 볼 수 있는 포괄적인 시야를 흐리게 한다.
-p65 다른 사람을 위해 작업할 때면 항상 그런 것은 아니지만 많은 경우에 작업이 즐거움보다는 일에 가까워진다. 반면 나 자신을 위해 작업할 때는 창조한다는 순전한 즐거움을 느끼면서 밤을 새는지도 모르고 일하기도 한다.</description></item><item><title>(책) 대살개문</title><link>https://cychong47.github.io/post/2018/developer-culture/</link><pubDate>Sun, 15 Jul 2018 13:41:48 +0900</pubDate><guid>https://cychong47.github.io/post/2018/developer-culture/</guid><description>임백준. 2016.5
-96) dead code로 인한 사고 신규 기능을 위해 현재 지금은 disable로 설정된 변수를 재활용. 코드 변경을 깜빡하고 설정만 변경하여 잠자고 있던 예전 코드가 동작(예측 불가능한 동작) 사용하지 않는 코드는 소스 코드에서 삭제할 것. If 문으로 회피하는 것은 상당히 나쁘고 위험한 습관 소프트웨어의 전개 과정이 정확한 설명을 담고 있는 문서에 기반해야 함 효율성을 명목으로 코드의 간명함과 안정성을 해치는 행동은 피할 것 100) 오바마 케어 112) Detail 디테일이 살아 있고 빠르고 안정감 있게 동작하는 코드를 작성하는 것은 &amp;lsquo;능력&amp;rsquo;이 문제인 경우가 많지만 &amp;lsquo;태도&amp;rsquo;의 문제이기도 디테일과 사소함을 혼동하지 말 것 점 하나에 따라서 코드 전체의 의미가 달라질 수 있는 프로그래밍의 세계에서 디테일은 덤이 아니라 생명 121) 지식이 아니라 메타지식 전문성 보다는 부족한 정보를 토대로 최선의 판단을 내리는 적응력이 중요.</description></item><item><title>(책) 도쿄대 교수가 제자들에게 주는 쓴소리</title><link>https://cychong47.github.io/post/2018/advice_from_tokyo_professor/</link><pubDate>Sat, 07 Jul 2018 15:00:28 +0900</pubDate><guid>https://cychong47.github.io/post/2018/advice_from_tokyo_professor/</guid><description>다양한 분야에 대한 조언 p20 목표가 명확하겨 정답이 있는 일을 하는 경주마에서 길 잃은 양으로
-p22 지식을 더 많이 아는 것이 아닌 아는 지식으로 뭘 할 지 Learn by doing. 결과가 아닌 과정. 직접 해 본 사람 vs. 배워서 아는 사람 p34 끈기와 뚝심 별게 아닌게 아니다 끝까지 해내는 힘 John Williams - 매일 작곡. 영감-&amp;gt;작곡이 아니라 작곡을 하다보면 영감을 얻게 됨 p41 영어 강의 준비 -&amp;gt; 영어 발음을 보완하기 보다 강의 준비를 철저하게 함.</description></item><item><title>(책) 매일 아침 써봤니?</title><link>https://cychong47.github.io/post/2018/did-you-write-in-every-morning/</link><pubDate>Sun, 01 Jul 2018 12:03:47 +0900</pubDate><guid>https://cychong47.github.io/post/2018/did-you-write-in-every-morning/</guid><description>세바시 였던가, 공개 강의 동영상을 통해 처음 알게 된 김민식 PD. 예전에 인기있었던 시트콤, ‘논스톱’을 만든 PD인데 MBC 파업과 관련되어 힘든 시간을 보내다 “영어책 한 권 외워봤니?”라는 독특한 제목의 영어 책으로 대중에 알려졌다. 그와 동시에 대입부터 시작해서 방송국 파업 때문에 경영진에 찍혀 고생하는 기간에 블로그를 통해 재기(?)에 성공한 특이한 이력을 가지고 있는데 시트콤 PD 답게 재밌는 입담을 통해 자신의 힘들었던 과거를 통해 의미있는 이야기를 많이 해줬던 걸로기억한다. 매일 아침 써봤니? 는 제목 그대로 저자가 하고 있다는 매일 아침 글쓰기를 통해 변화된 인생에 대해 이야기해주고 있다.</description></item><item><title>(책) 어떻게 읽을 것인가 - 2</title><link>https://cychong47.github.io/post/2016/how-to-read-2/</link><pubDate>Fri, 10 Jun 2016 14:43:55 +0900</pubDate><guid>https://cychong47.github.io/post/2016/how-to-read-2/</guid><description>만독 책을 느리게(집중해서) 읽기 아이에게 책 읽어주기 부모가 읽어야 아이도 읽는다 1단계. 책 선정 초등학생이면 어휘가 풍부한 국내 소설 오래 살아남은 책. 고전 문학 2단계. 반복해서 읽기 3단계. 파생독서 하기 저자의 다른 책 저자가 참고한 책 비슷한 주제의 책 4단계. 챕터별 요약하기 5단계. 챕터별로 생각 적어보기 책을 읽으면 추가 자료와, 자신의 생각을 곁들여 정리 6단계. 장문 쓰기 다독 고정형/성장형 생각 특히 힘든 시기에 영향을 줌 갑자기 어려워지는 중학교 시절 두뇌도 근육과 같다.</description></item><item><title>(책) 어떻게 읽을 것인가</title><link>https://cychong47.github.io/post/2016/how-to-read/</link><pubDate>Fri, 10 Jun 2016 14:00:20 +0900</pubDate><guid>https://cychong47.github.io/post/2016/how-to-read/</guid><description>고정형 - 지능은 변하지 않는다
-성장형 - 지능은 좋아질 수 있다
-생각을 바꾼다는 것이 쉬운 일은 아니지만 인식의 변화가 주는 효과는 크다
-중학교에서는 고정형 아이들의 성적이 급속히 떨어지고 지속적으로 하양곡선을 그림. 중학생이 되면 초등학교 과정과 질적으로 더 어려운 학과 공부에 직면하므로 실패와 좌절을 할 가능성이 더 많은데 고정형 학생들은 실패와 좌절에 더 큰 영향을 받기 때문
-힘든 상황에서 더 큰 영향을 준다.
-두뇌는 근육과 같이 운동을 통해 근육을 키우듯 두뇌 능력을 키울 수 있다.</description></item><item><title>(책) 소프트 스킬</title><link>https://cychong47.github.io/post/2016/soft-skill/</link><pubDate>Tue, 19 Apr 2016 10:25:08 +0900</pubDate><guid>https://cychong47.github.io/post/2016/soft-skill/</guid><description>2 다른 이들과 달리 멋지게 시작하라
-자신의 경력을 사업으로 봐야 한다. 자신의 정체성이나 경력은 조직에서 주어진 역할과 별개로 존재한다고 생각 팔수 있는 제품이나 서비스가 필요 그 가치가 정확히 뭔지, 그 가치가 다른 개발자가 제공하는 가치와 어떻게 다른지 설명할 수 있어야 한다 3 목표를 설정하고 미래에 대비하라
-목표를 설정. 목표를 정확히 이해 명확한 목표가 없으면 아무리 열심히 살아도 의미가 없다. 목표 없이 인생을 낭비하지 말라 큰 목표를 정하고 밟아갈 작은 목표를 설정 큰 목표는 방향을 제시할 정도만 되도 된다.</description></item><item><title>(책) Becoming a better Programmer</title><link>https://cychong47.github.io/post/2016/becoming-a-better-programmer/</link><pubDate>Mon, 14 Mar 2016 14:50:15 +0900</pubDate><guid>https://cychong47.github.io/post/2016/becoming-a-better-programmer/</guid><description>코드에 신경쓰기 어떤 코드든 간에 수정한 후에는 이전 보다 나아져야 한다 기능이 추가된 것은 &amp;lsquo;나아진&amp;rsquo; 것이 아니다. 기능이 추가되고, 코드 수가 늘어나도 여전히 좋은 구조를 유지하는 것이 &amp;lsquo;나아진&amp;rsquo; 것이다. 정돈된 코드 유지하기 좋은 코드는 명백하며 일관성이 있다. 보기 좋은 코드는 의도를 드러낸다(예술) 코드를 읽을 사람은 지금 당장의 나 외에 몇 달 후의 나, 다른 동료 그리고 미래의 유지 보수 프로그래머다. 그들이 혼란을 덜 겪도록 코드를 작성해야 한다. 실은 다른 사람을 위해 코딩한다는 것을 인정해야 하고, 잊으면 안된다.</description></item><item><title>(책) 구글의 아침은 자유가 시작된다.</title><link>https://cychong47.github.io/post/2016/google-work-rules/</link><pubDate>Mon, 04 Jan 2016 14:03:21 +0900</pubDate><guid>https://cychong47.github.io/post/2016/google-work-rules/</guid><description>일단 읽다가 중단. 다른 걸 먼저 봐야 할 것 같다. 공감하는 내용이 많지만 이 책을 본다고 내가 어쩔 수 있는 내용이 별로 없어서&amp;hellip;.
-p78
-이렇게 투명하게 공개함으로써 얻을 수 있는 이득은 회사의 모든 직원이 현재 무슨 일이 어떻게 진행되고 있는 지 알게 된다는 것이다. 어쩌면 별것 아닌 것처럼 들릴 수도 있지만 전혀 그렇지 않다. 덩치가 큰 조직에서는 흔히 여러 하부 조직들이 쓸데없는 일을 하면서 자원을 낭비한다. 그러나 정보가 공유될 때 전 직원은 다른 부서나 팀의 목표가 제각기 다르다는 사실을 충분히 이해하고 내부의 소모적인 경쟁을 피한다.</description></item><item><title>(책) NHN은 이렇게 한다. 소프트웨어 품질 관리</title><link>https://cychong47.github.io/post/2015/nhn_sw_quality_control/</link><pubDate>Mon, 07 Dec 2015 13:40:56 +0900</pubDate><guid>https://cychong47.github.io/post/2015/nhn_sw_quality_control/</guid><description>누군가의 말을 빌리자면 품질 관리의 바이블(?)이라고 하는.
-내용면에서는 특별한 건 없지만, 그래도 국내에서는 SW를 잘한다고 하는 사람들이 많이 가는 회사이고, 누구못지 않게 SW 문화가 좋을 거라고 생각하는 회사라 어떤 고민을 하고 어떻게 SW 품질을 위해 노력하는 지 알 수 있게 해주는 유일한 책이다.
-외국의 많은 회사처럼 사내에 노하우 등을 많이 공유하는 좋은 모습을 보이고 있고, 실제 제공되는 서비스의 독점성이나 중립적이지 못한 언론 관련 내용은 맘에 들지 않지만 그래도 개발자 입장에서는 이렇게 현실적인 내용을 공유해주는게 감사할 따름</description></item><item><title>(책) 구글은 빅데이터를 어떻게 활용했는가</title><link>https://cychong47.github.io/post/2015/caeg-gugeuleun-bigdeiteoreul-eoddeohge-hwalyonghaessneunga/</link><pubDate>Mon, 07 Sep 2015 14:51:35 +0900</pubDate><guid>https://cychong47.github.io/post/2015/caeg-gugeuleun-bigdeiteoreul-eoddeohge-hwalyonghaessneunga/</guid><description>일단 책 제목부터 구박.
-&amp;ldquo;People Analytics: How social technology will transform business and what it tells us about the future of work&amp;quot;인데 이게 왜 저런 한글 제목이 된건지. 책 내용을 보면 짐작은 가지만, 책 제목만 봐서는 구글이 빅데이터를 이용해서 어떤 서비스를 만들어냈는지 라고 해석할 수 있지 않을까? 실제로는 구글등의 회사에서 빅데이터를 이용해 직원들 관리에 어떻게 활용했는지에 대한 내용이다. 그리고 실제 구글 이야기는 많이 나오지도 않는다.
-하지만 책 내용에는 저자가 강조하는 몇 가지 핵심 내용이 있다.</description></item><item><title>(책) 빅 스몰</title><link>https://cychong47.github.io/post/2015/caeg-big-seumol/</link><pubDate>Sat, 04 Jul 2015 15:21:38 +0900</pubDate><guid>https://cychong47.github.io/post/2015/caeg-big-seumol/</guid><description>p81 전문가라서 승진했더니 전문적인 일에서는 점점 더 멀어지고, 해보지 않은 일을 끊임없이 떠안기는 게 현대 기업의 문화다. 이 과정에서 효율이 떨어지기라도 한다면 기업은 &amp;lsquo;너는 쓸모없다&amp;rsquo;며 직원을 내친다.
-중요한 것은 일을 제대로 해내는 능력을 갖춘 사람이다. 누구나 똑같은 말을 한다. 하지만 대기업은 최고의 능력을 갖춘 사람을 구하지 않는다. 조직 논리에 순적응할 수 있는 사람을 찾을 뿐이다. 따라서 결과적으로 대기업은 최고가 될 수 없다.
-그래서 Steve Jobs가 Apple은 여전히 작은 venture들의 모임이라고 한 건가?</description></item><item><title>(책) 죽어라 일만 하는 사람은 절대 모르는 스마트한 성공들</title><link>https://cychong47.github.io/post/2015/caeg-jugeora-ilman-haneun-sarameun-jeoldae-moreuneun-seumateuhan-seonggongdeul/</link><pubDate>Mon, 18 May 2015 14:30:24 +0900</pubDate><guid>https://cychong47.github.io/post/2015/caeg-jugeora-ilman-haneun-sarameun-jeoldae-moreuneun-seumateuhan-seonggongdeul/</guid><description>p13 나는 사업을 하면서 수시로 수확체감의 법칙을 실감한다. 어떤 사업이든 일정 수준에 도달하면 노동이나 자본 등 생산 요소를 늘려도 결과물은 비례해서 증가하지 않는다.
-일과 성공 역시 마찬가지다. 들인 시관과 성과는 정비례하지 않는다. 6시간 일한다고 목표를 달성하지 못하는 것도 아니고 12시간 일한다고 두 배의 성과를 얻는 것도 아니다. 그런데도 여전히 많은 사람들이 50시간이 아니라 70시간을 일할 때 더 많은 일을 해낸다고 믿는다.
-p15 우리가 12시간씩 일하며 인생은 원래 고달픈 거라고 스스로를 위로하는 동안 누군가는 획기적인 아이디어로 3시간 일하고 9시간 동안 여유를 즐긴다.</description></item><item><title>(책) 단</title><link>https://cychong47.github.io/post/2015/dan/</link><pubDate>Tue, 12 May 2015 12:40:15 +0900</pubDate><guid>https://cychong47.github.io/post/2015/dan/</guid><description>&amp;lsquo;&amp;lsquo;단의 공식&amp;rsquo;&amp;rsquo; 버려라 : 중요한 것을 위해 덜 중요한 것을 버리는 것. &amp;lsquo;더 많이&amp;rsquo;를 버리고 핵심에 집중 세워라 : 왜 일해야 하는 지 사명을 세우고, 내가 누구인지 정체성을 세우고, 어디로 가야 할 지 길을 세워야 한다. 지켜라 : 단순함의 핵심은 지속 가능에 달려 잇다. p14 GE의 제프리 이멜트(Jeffrey Immelt) 회장은 2013년 10월 BBC와의 인터뷰에서 이렇게 설명했다. &amp;quot; 조직이 커지면서 중요하지 않은 일을 너무 많이 하고 있다. 단순화는 직원들이 중요하지 않은 일에 맞서 정말 중요한 일을 함께 하도록 돕는 도구다.</description></item><item><title>(책) 바지 벗고 일하면 안되나요?</title><link>https://cychong47.github.io/post/2014/caeg-baji-beosgo-ilhamyeon-andoenayo/</link><pubDate>Sun, 19 Oct 2014 03:55:01 +0900</pubDate><guid>https://cychong47.github.io/post/2014/caeg-baji-beosgo-ilhamyeon-andoenayo/</guid><description>원제 : The year without pants
-p42 방송에서 IDEO가 &amp;ldquo;Deep Dive&amp;quot;라는 아이디어 개발 기법을 써서 닷새 만에 쇼핑카트를 개선하는 과정을 보여주었다. 곧이어 수 많은 기업이 Deep Dive 기법을 어설프게 따라 했지만, 놀랍게도 결과는 그들의 기대에 못 미쳤다. IDEO의 회의 단계와 규칙을 그대로 따라 하고 아무리 노력한들 한 가지가 빠진 상태에서는 방송에서 본 것과 같은 결과가 나올 리 없었다. 문제의 누락된 요소이자 가장 중요한 요소는 바로 거기에 참여한 사람들이었다 나이트라인을 시청한 다른 기업들의 경우 IDEO처럼 디자인에 재능이 뛰어난 직원들이 근무하는 환경이 아니었다.</description></item><item><title>(책) Violent Python</title><link>https://cychong47.github.io/post/2014/caeg-violent-python/</link><pubDate>Sat, 27 Sep 2014 16:43:27 +0900</pubDate><guid>https://cychong47.github.io/post/2014/caeg-violent-python/</guid><description>오래만에 재밌는 책을 봤다.
-해커를 위한 책이라고 하지만, 해킹에 관한 기법보다는 network application을 작성하는데 유용한 scapy, dpkt 그리고 정규식에 대한 설명이 유용하다. 마침 요 근래 업무용으로 Python을 이용해서 패킷 만들고, 송/수신하는 유틸리티를 만들고 있어 Impacket 모듈을 많이 사용했는데 그것보다 scapy 가 훨씬 편해 보인다.
-새 책을 사긴 그렇고 중고책을 하나 구할 까 했는데 알라딘에서 중고책 매입가가 4천원 대. 작년 초에 나온 책인데 너무 싸게 매입하는 게 아닌가
-일단 책 보면서 유용하다 싶은 내용을 몇 가지 주제로 나눠 정리했다.</description></item><item><title>(책) 0과 1로 세상을 바꾸는 구글 그 모든 이야기(In the Flex)</title><link>https://cychong47.github.io/post/2014/0gwa-1ro-sesangeul-bagguneun-gugeul-geu-modeun-iyagiin-the-flex/</link><pubDate>Sat, 27 Sep 2014 13:33:25 +0900</pubDate><guid>https://cychong47.github.io/post/2014/0gwa-1ro-sesangeul-bagguneun-gugeul-geu-modeun-iyagiin-the-flex/</guid><description>p230 OKR(Objectives and Key Results) 는 원래 인텔의 앤디 그로브(Andy Grove)가 고안한 경영기법이다. &amp;hellip; 무었을 하고 싶어하는지만 정하는 것이 아니라, 측정 가능하게 업무(핵심결과)를 나눠야 한다는 내용이었다.
-OKR은 구글문화의 핵심이 되었다. 모든 직원이 나름의 OKR을 분기별로, 연도별로 세워서 승인을 받아야 한다. 그 뿐만이 아니라 팀 수준, 부서 수준, 심지어 회사 수준의 OKR도 구축했다(회사 수준의 OKR은 중요한 구상이나 시래를 만회하려 할 때 구축했다) 1년에 네 차례씩 구글 직원 모두 멈춰 서서 부서별 회의를 갖고 OKR 진전상황을 확인한다.</description></item><item><title>(책) 혼. 창. 통.</title><link>https://cychong47.github.io/post/2014/caeg-hon-cang-tong/</link><pubDate>Wed, 24 Sep 2014 14:26:24 +0900</pubDate><guid>https://cychong47.github.io/post/2014/caeg-hon-cang-tong/</guid><description>혼창통by 이지훈
-8p 혼 : 가슴 벅차게 하는 비전이 사람을 움직인다.
-창 : 끊임없이 &amp;ldquo;왜&amp;quot;라고 물어라, 그러면 열린다. 통 : 만나라, 또 만나라. 들어라 잘 들어라.
-16p IBM, P&amp;amp;G, Cisco, CEMEX 이 기없들의 공통점은 무엇일까? 그렇다 공룡처럼 몸집이 큰 기업들이다. 공룡인데도 민첩하다. 한가지 공통점은 회사 전체가 보다 큰 가치, 가슴을 울렁이게 하는 원대한 비전을 공유한다는 사실이다. 하버드경영대학원의 로자베스모스 캔터 교수(Rosabeth Moss Kanter) &amp;ldquo;모든 직원이 보다 큰 가치를 공유하게 되면 일선에서 어떤 문제가 부딛쳐도, 혹은 본사로부터 아무리 떨어진 곳에서 일하더라도 자발적으로 문제의 해결을 주도하게 된다&amp;rdquo;</description></item><item><title>(책) 더 인터뷰</title><link>https://cychong47.github.io/post/2014/caeg-deo-inteobyu/</link><pubDate>Sun, 21 Sep 2014 12:21:48 +0900</pubDate><guid>https://cychong47.github.io/post/2014/caeg-deo-inteobyu/</guid><description>p24 만약 직원이 자신이 하려는 도전에 따르는 책임을 받아들이려고 한다면, 많은 조직이 책임을 더 부여하려고 할 것이다.
-p32 Rolf Dobelli 스마트한 생각들, 스마트한 선택들 &amp;lsquo;확증 편향&amp;rsquo;. 사람은 자신이 확실하는 일에 대해 옳다고 증명해주는 증거들만 철석같이 믿지요.
-&amp;lsquo;사회적 검증&amp;rsquo;도 대단히 안 좋고 위험한 행동 오류.
-권력이나 권위 있는 사람들의 말을 무조건 믿는 &amp;lsquo;권위자 편향&amp;rsquo; 또한 위험. 전 세계적으로 경제학자 수는 100만 명이 넘지만 단 1명도 2008년 금융 위기를 정확히 예측하지 못했다. 당장 눈앞에 펼쳐진 자료들을 과신하는 &amp;lsquo;가용성 편형&amp;rsquo;</description></item><item><title>(책) 왜 공부하는가</title><link>https://cychong47.github.io/post/2014/caeg-wae-gongbuhaneunga/</link><pubDate>Thu, 11 Sep 2014 15:40:52 +0900</pubDate><guid>https://cychong47.github.io/post/2014/caeg-wae-gongbuhaneunga/</guid><description>김진애
-p32 뒤를 돌아보면, &amp;ldquo;1년 동안 공부만 할 거야!&amp;ldquo;하고 결단하고 그 결단을 독하게 지켰던 체험을 통해 얻은 가장 큰 자산은 &amp;lsquo;독해야 할 때 독해질 수 있다;는 자신감이다. 이 자신감은 내 일생 내내 큰 자산이 되었다. &amp;lsquo;필요하다면 유혹을 끊어낼 수 있다. 잔가지들에 연연해하지 않을 수 있다. 내 온 자신을 던질 수 있다. 몰입할 수 있다&amp;rsquo;는 믿음은 중요하다. 한번 독해지기를 경험해보면 언제나 독해질 수 있는 것이다.
-p77 무시당하는 느낌이 없어졌다. 조롱당하는 느낌, 모욕당하는 느낌도 없어졌다.</description></item><item><title>(책) 빅데이터 승리의 과학</title><link>https://cychong47.github.io/post/2014/caeg-bigdeiteo-seungriyi-gwahag/</link><pubDate>Tue, 09 Sep 2014 03:41:02 +0900</pubDate><guid>https://cychong47.github.io/post/2014/caeg-bigdeiteo-seungriyi-gwahag/</guid><description>(책) 빅데이터 승리의 과학
-Technology 팀 오바마 2012년 선거 당시 2008년 당시의 SNS를 활용하는 수준을 넘어서 통합적인 선거 지원을 위해 빅데이터 기술 활용. 선거 특성에 맞는 AWS 를 이용해서 인프라를 구축하고, R 언어를 활용. 하둡은 실시간성이 부족하여 제한적으로 사용. 디지털 팀의 CDS(Chief Digital Strategist)는 31살 Joe Rosparse, CTO는 하퍼 리드(33)등을 고용.
-벤처기업 엔지니어 출신. 혁신을 좋아하고, 기존 틀과 문화에 얽매이지 않고 오직 해결책에만 관심을 둠. 리드는 50명에 이르는 Technology 팀 멤버를 구성.</description></item><item><title>(책) 구글은 SKY를 모른다</title><link>https://cychong47.github.io/post/2014/caeg-gugeuleun-skyreul-moreunda/</link><pubDate>Sun, 31 Aug 2014 13:29:59 +0900</pubDate><guid>https://cychong47.github.io/post/2014/caeg-gugeuleun-skyreul-moreunda/</guid><description>나는 매주 금요일 오후가 되면 구글이라는 회사의 위력을 다시금 실감한다. 알려진 대로 구글은 매주 금요일마다 전 직원이 모이는 TGIF라는 행사가 있다.
-정말 지금도 이걸 하고 있다니 놀랍기만 하다. 회사 규모가 커져서 못할 줄 알았는데.
-과연 우리 회사의 임원들은 같은 시간에 뭘 하고 있을까? 구글보다 비즈니스의 폭이 넓어서 더 많은 회의가 필요해서?
-이들 두 창업자의 가장 큰 관심사는 구글 비즈니스가 아니라, 구글러들의 행복과 문화를 어떻게 하면 좀 더 발전시켜나갈 것인가에 있다.</description></item><item><title>(책) 누가 미래를 가질 것인가?</title><link>https://cychong47.github.io/post/2014/nuga-miraereul-gajil-geosinga/</link><pubDate>Sun, 17 Aug 2014 14:29:31 +0900</pubDate><guid>https://cychong47.github.io/post/2014/nuga-miraereul-gajil-geosinga/</guid><description>p19
-&amp;lsquo;인생은 해석&amp;rsquo;이라는 말이 있다. 인생을 살면서 많은 사건을 겪게 되는데, 그 사건들을 어떻게 해석하느냐에 따라 삶의 방향이 달라진다는 뜻이다. 마찬가지로 우리가 살고 있는 시대를 명확하게 바라보고 해석할 필요가 있다. 그에 다라 우리가 삶을 사는 방식과 이 사회가 문제에 대처해나가는 방향은 완전히 달라진다.
-해석에 따라 어떻게 나에게 의미를 갖는 지가 달라진다.
-p109
-문제는 목표과 자세다. 성공의 지름길만 걸어가는 왕도는 없다. 오히려 외도를 하면서도, 전혀 다른 커뮤니티에 참여하면서 기회를 포착하기도 한다. 도전을 통해 얻은 시행착오오 처절한 조절도 커리어에는 오히려 큰 도움이 된다.</description></item><item><title>(책) 스핀 잇</title><link>https://cychong47.github.io/post/2014/seupin-is/</link><pubDate>Fri, 15 Aug 2014 14:58:34 +0900</pubDate><guid>https://cychong47.github.io/post/2014/seupin-is/</guid><description>p76 이 아이디어를 MIT 경영대학원 교수인 Glen Urban에게 가져갔을 때 그는 &amp;ldquo;이 아이디어는 당신이 생각하는 것보다 훨씬 스케일이 크다. 두 배의 속도로 움직이고, 두 배 크게 생각해야 한다&amp;quot;고 조언했다.
-&amp;ldquo;이 아이디어는 당신이 생각하는 것보다 훨씬 스케일이 크다. 그러므로 도전하지 말아라&amp;rdquo; 라고 말할 줄 알았는데&amp;hellip;
-p85 자포스 CEO 토니. 회사를 판매한 경우 그 돈을 가지고 할 수 있는 일을 나열해 봤더니 대부분의 것들이 회사를 팔지 않고도 할 수 있는 일이 대부분이었다고. 시간이 부족할 뿐.</description></item><item><title>(책) 화웨이의 위대한 늑대문화</title><link>https://cychong47.github.io/post/2014/hwaweiyi-widaehan-neugdaemunhwa/</link><pubDate>Thu, 14 Aug 2014 14:41:23 +0900</pubDate><guid>https://cychong47.github.io/post/2014/hwaweiyi-widaehan-neugdaemunhwa/</guid><description>화웨이가 어떻게 지금과 같이 세계 2위의 통신업체가 될 수 있었는지 CEO인 런정페이를 중심으로 그 비결을 설명한 책.
-늙지 않는 조직을 만들기 위해 끊임없이 노력하고 일괄 사퇴 후 재취업과 같은 극단적인 선택도 마다하지 않은 화웨이. 시스코가 괜히 건드려 무료 홍보해주고(마치 애플이 삼성을 고소해 홍보해 줬다는 것과 유사) 모토롤라가 CEO가 바뀌지 않았으면 화웨이의 시스템 사업을 인수해서 지금의 화웨이가 없었을 텐데. 만일 모토로라가 화웨이의 사업을 인수했다 해도 모토로라의 시스템 사업은 망했을 거라고 생각. 화웨이는 런정페이가 없으면, 혹은 그가 만들어 놓은 문화와 시스템이 동작하지 않으면 다른 회사와 다름이 없으므로.</description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Book on Keep calm and Write something</title><link>https://cychong47.github.io/categories/book/</link><description>Recent content in Book on Keep calm and Write something</description><generator>Hugo</generator><language>en-us</language><lastBuildDate>Mon, 02 Nov 2020 08:56:16 +0900</lastBuildDate><atom:link href="https://cychong47.github.io/categories/book/index.xml" rel="self" type="application/rss+xml"/><item><title>Chapter 2. CUDA Memory Management</title><link>https://cychong47.github.io/post/2020/2020-11-02-chapter-2.-cuda-memory-management/</link><pubDate>Mon, 02 Nov 2020 08:56:16 +0900</pubDate><guid>https://cychong47.github.io/post/2020/2020-11-02-chapter-2.-cuda-memory-management/</guid><description>&lt;h1 id="2-cuda-memory-management"&gt;2. CUDA Memory Management&lt;/h1&gt;
+&lt;ul&gt;
+&lt;li&gt;Most of the application’s performance will be bottlecked by memory-related constraints&lt;/li&gt;
+&lt;li&gt;GPU RAM BW : 900GB/s (DDR3 ?)&lt;/li&gt;
+&lt;li&gt;NV Visual Profiler&lt;/li&gt;
+&lt;li&gt;Global memory is a &lt;strong&gt;staging area&lt;/strong&gt; where all of the date gets copied from CPU memory.&lt;/li&gt;
+&lt;li&gt;Global Memory(device memory) is visible to all of the threads in the kernel and also visible to CPu.&lt;/li&gt;
+&lt;li&gt;Coalesced vs. uncoalesced global memory access
+&lt;ul&gt;
+&lt;li&gt;coalesced global memory access : Sequential memory access is adjacent&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id="warp"&gt;Warp&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Warp is a unit of thread scheduling/execution in SMs. Once a block has been assigned to an SM, it is divided into a 32-threads unit known as a &lt;strong&gt;warp&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;Among all of the available warps, the ones with operands that are ready for the next instruction become &lt;strong&gt;eligible&lt;/strong&gt; for execution.&lt;/li&gt;
+&lt;li&gt;All of the threads in a warp execute the same instruction when selected.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id="aos-vs-soa"&gt;AOS vs. SOA&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;AOS : Array of Structure. &lt;code&gt;A[0].a, A[1].a, ...&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;SOA : Structure of Array. Each member of structure is array &lt;code&gt;S.a[0], S[1], ...&lt;/code&gt;
+&lt;ul&gt;
+&lt;li&gt;Suitable for SIMT - same operation for the same member with different array index. In this case, the threads of the same block access adjacent memory spaces in turn increase the spatial locality.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;As a GPU is latency-hiding architecture, it becomes important to saturate the memory bandwidth.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id="shared-memory"&gt;Shared Memory&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;User-Managed Cache&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;Shared memory is only visible to the threads &lt;strong&gt;in the same block&lt;/strong&gt;.
+&lt;ul&gt;
+&lt;li&gt;All of the threads in a block see the same version of shared memory.&lt;/li&gt;
+&lt;li&gt;Threads in other SM can not see this shared memory&lt;/li&gt;
+&lt;li&gt;Another block has its own shared memory&lt;/li&gt;
+&lt;li&gt;Even in the same SM, different block has different share memory.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Key usage of shared memory comes from that threads within a block can share memory access
+&lt;ul&gt;
+&lt;li&gt;Shared variable can be located in the shared memory to be accessed multiple times.&lt;/li&gt;
+&lt;li&gt;CDUA 9.0 provides inter-thread communication between ones in the different SMs&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Bank
+&lt;ul&gt;
+&lt;li&gt;Shared memory is organized into banks to achieve higher bandwidth.&lt;/li&gt;
+&lt;li&gt;Each bank can serve one address per cycle.&lt;/li&gt;
+&lt;li&gt;Volta GPU has 32 banks each 4 bytes wide. 128 Bytes at one cycle&lt;/li&gt;
+&lt;li&gt;Bank Conflict
+&lt;ul&gt;
+&lt;li&gt;If multiple threads access the same Bank, the access to the shared memory is serialized. This should be avoid if possible.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id="read-only-cache"&gt;Read-only Cache&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Referred to as &lt;strong&gt;texture cache&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;const __restrict__&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;Ideally used when the entire warp to read the same address/data&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id="registers"&gt;Registers&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Scope : a single thread. Each thread has its own registers&lt;/li&gt;
+&lt;li&gt;Local variables are stored in the registers
+&lt;ul&gt;
+&lt;li&gt;Too many local variable can cause performance issue as the data should be reside in L1 or L2 cache or device memory&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;register spills&lt;/strong&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id="pinned-memory"&gt;Pinned-memory&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Recommendations to reduce host/device memory copy
+&lt;ul&gt;
+&lt;li&gt;Minimize amount of data to be transferred&lt;/li&gt;
+&lt;li&gt;Use the &lt;strong&gt;pinned memory&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;Batch small transfers into one large transfer&lt;/li&gt;
+&lt;li&gt;Asynchronous data transfer&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;malloc&lt;/code&gt; allocates pageable memory
+&lt;ul&gt;
+&lt;li&gt;Device including GPU can not access the pageable memory.&lt;/li&gt;
+&lt;li&gt;When the device access the pageable memory, the driver allocate temporary pinned memory and copy the data from the pageable memory and do DMA&lt;/li&gt;
+&lt;li&gt;This introduce additional latency&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;cudaMallocHost&lt;/code&gt; allocates pinned memory from the system memory.
+&lt;ul&gt;
+&lt;li&gt;Too much use of pinned memory impact on the system performance as non-pageable memory is also used by the system(OS)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id="unified-memory"&gt;Unified Memory&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Provide a single memory space accessible from CPU and GPU - easy programming and porting the CPU application to GPU&lt;/li&gt;
+&lt;li&gt;Allow over-subscription&lt;/li&gt;
+&lt;li&gt;A single pointer is used by the CPU and GPU while non-unified memory case, each has to have its own pointer as host memory and device memory are different.&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;cudaMallocManaged&lt;/code&gt; does not allocate the physical memory when it is called but it allocate when the data is touch for the first time. This requires &lt;code&gt;page migration&lt;/code&gt; and introduce additional time.
+&lt;ul&gt;
+&lt;li&gt;Workaround 1 : define an initialization kernel on the GPU which &lt;strong&gt;touch&lt;/strong&gt; the unified memory space on behalf of the workload kernel.&lt;/li&gt;
+&lt;li&gt;Workaround 2: Prefetch&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id="initialization-kernel"&gt;Initialization kernel&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;왜 page fault 횟수가 줄어드는 지 잘 이해가 안되네&amp;hellip;. 그리고 여러 thread가 동시에 접근하는 건 page fault 회수가 1번인가?? 예제가 잘 이해가 안됨&amp;hellip;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id="prefetch"&gt;Prefetch&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;cudaMemPrefetchAsync&lt;/code&gt;&lt;/p&gt;</description></item><item><title>Chapter 1. Introduction to CUDA Programming</title><link>https://cychong47.github.io/post/2020/2020-11-02-chapter-1-introduction-to-cuda-programming/</link><pubDate>Mon, 02 Nov 2020 08:55:34 +0900</pubDate><guid>https://cychong47.github.io/post/2020/2020-11-02-chapter-1-introduction-to-cuda-programming/</guid><description>&lt;h1 id="1-introduction-to-cuda-programming"&gt;1. Introduction to CUDA Programming&lt;/h1&gt;
+&lt;ul&gt;
+&lt;li&gt;CPU Architecture is optimized for low latency accessing while GPU architecture is optimized for data parallel throughput compution&lt;/li&gt;
+&lt;li&gt;CPU hides latency of data by frequently stroring used data in caches and utilize the temporal locality&lt;/li&gt;
+&lt;li&gt;In CUDA, the execution unit is a warp not a thread. Context switching is happens between the warps and not threads.&lt;/li&gt;
+&lt;li&gt;GPU has lots of registers, all the thread context switching information is already present in the registers.(No context switching overhead unlike the CPU)&lt;/li&gt;
+&lt;li&gt;Host code vs. Device code.&lt;/li&gt;
+&lt;li&gt;Host memory vs. Device memory&lt;/li&gt;
+&lt;li&gt;The return type of device function is always &lt;code&gt;void&lt;/code&gt;.&lt;/li&gt;
+&lt;li&gt;Data-parallel portions of an algorithm are executed on the device are kernels.&lt;/li&gt;
+&lt;li&gt;All the kernels in CUDA are asynchronous in nature. Host need to wait for the device to finish. &lt;code&gt;cudaDeviceSynchronize&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;Software X runs on/as HW Y
+&lt;ul&gt;
+&lt;li&gt;CUDA thread &amp;lt;-&amp;gt; CUDA core/SIMD code&lt;/li&gt;
+&lt;li&gt;CUDA block &amp;lt;-&amp;gt; SM&lt;/li&gt;
+&lt;li&gt;Grid/kenrel &amp;lt;-&amp;gt; GPU device&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;One block runs on a single SM. All the threads within one block can only execute on cores in one SM.&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;&amp;lt;&amp;lt; BlockDim, ThreadDim &amp;gt;&amp;gt;&lt;/code&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;blockIdx&lt;/code&gt;, &lt;code&gt;threadIdx&lt;/code&gt; : Index&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;blockDim&lt;/code&gt;, &lt;code&gt;threadDim&lt;/code&gt; : Dimension (==Size)&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;blockDim&lt;/code&gt; is the number of &lt;strong&gt;threads per block&lt;/strong&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Threads have mechanism to communicate and synchronize efficiently.
+&lt;ul&gt;
+&lt;li&gt;The CUDA programming model allows this communication for threads whiten the same block&lt;/li&gt;
+&lt;li&gt;The therads communicate with each other &lt;strong&gt;in the same block&lt;/strong&gt; using a special memory &lt;strong&gt;shared memory&lt;/strong&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Threads belonging to different block cannot communicate/synchronize with each other during the execution of the kernel.&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;cudaError_t e&lt;/code&gt;. &lt;code&gt;cudaGetLastError&lt;/code&gt;. Even for the multiple error, only the last one is returned. &lt;code&gt;a&amp;lt;&amp;lt;&amp;lt; , &amp;gt;&amp;gt;&amp;gt;; cudaDeviceSynchronize(); e = cudaGetLastError();&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id="backlink"&gt;Backlink&lt;/h2&gt;
+&lt;p&gt;[[Learn CUDA Programming]]&lt;/p&gt;</description></item><item><title>(책) 리얼하다</title><link>https://cychong47.github.io/post/2019/book-so-real/</link><pubDate>Sun, 15 Dec 2019 06:46:24 +0900</pubDate><guid>https://cychong47.github.io/post/2019/book-so-real/</guid><description>&lt;h1 id="리얼하다"&gt;리얼하다&lt;/h1&gt;
+&lt;p&gt;조승연&lt;/p&gt;
+&lt;h3 id="lunch-or-happy-hour"&gt;Lunch or Happy Hour&lt;/h3&gt;
+&lt;p&gt;뭔가 약속을 잡아야 할 때 점심 시간 혹은 저녁 업무 종료 후 저녁 식사 시간 전(Happy Hour, 5-7pm) 때 약속을 주로 잡는다고. 그래야 별도 개인 시간 낭비를 안하고, 저녁의 경우 필요하면 저녁 약속
+을 핑계로 이야기를 끊을 수 있어서 주로 이렇게 한다고 한다.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;이메일로 할 수 있는 걸 전화로 하지 않고,&lt;/li&gt;
+&lt;li&gt;전화로 할 수 있는 걸 만나서 하지 않는다.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;뉴욕의 사업자는 대부분 이민자 출신이라 길거리에서 생존을 배워와서 &amp;lsquo;실행해서 결과를 도출해 보기 전까지는 무엇도 알 수 없다&amp;rsquo;고 생각.&lt;/p&gt;</description></item><item><title>사무력</title><link>https://cychong47.github.io/post/2019/samuryeog/</link><pubDate>Sun, 17 Nov 2019 11:12:41 +0900</pubDate><guid>https://cychong47.github.io/post/2019/samuryeog/</guid><description>&lt;p&gt;&lt;strong&gt;중요한 일&lt;/strong&gt;은&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;생각을 기반으로 함. 기계적으로 대응 불가&lt;/li&gt;
+&lt;li&gt;소통이 따름. 조직의 일은 혼자 할 수 없으므로&lt;/li&gt;
+&lt;li&gt;결정이 수반되야 함. 길이 하나가 아닌 까닭&lt;/li&gt;
+&lt;li&gt;실행이 따름. 결정만으로 결과가 오는 것이 아님&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;52시간법은 &lt;strong&gt;일하는 시간에 제약&lt;/strong&gt;이 가해지는 것이다. 충분한 시간을 투자해서 결과를 얻어내던 방식에서 달라져야 한다.&lt;/p&gt;
+&lt;p&gt;직장 생활에서 반드시 익혀야 할 기술은 &amp;lsquo;생각을 정리하여 말이나 글로 표현하는 기술&amp;rsquo;&lt;/p&gt;
+&lt;p&gt;일 때문에 일을 하는 것이 아니라 성과를 위해 일을 하는 것이다.&lt;/p&gt;
+&lt;p&gt;WBS(Work Breakdown Structure)&lt;/p&gt;</description></item><item><title>함께 자라기</title><link>https://cychong47.github.io/post/2018/grow-together/</link><pubDate>Tue, 25 Dec 2018 13:54:06 +0900</pubDate><guid>https://cychong47.github.io/post/2018/grow-together/</guid><description>&lt;h2 id="p12-학교-학습-vs-야생-학습"&gt;p12 &lt;code&gt;학교 학습&lt;/code&gt; vs. &lt;code&gt;야생 학습&lt;/code&gt;&lt;/h2&gt;
+&lt;blockquote&gt;
+&lt;p&gt;야생 학습은 대부분 자료에 한정이 없다.&lt;br&gt;
+야생 학습은 대부분 명확한 평가가 없다.&lt;br&gt;
+야생 학습은 대부분 정답이 없다.&lt;br&gt;
+야생 학습은 대부분 목표가 불분명하고 바뀌기도 한다.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;학습의 본질은 야생 학습에 더 가깝다고 생각. 현실 세계에서는 야생 학습이 더 많이 필요하다고 봅니다.&lt;/p&gt;
+&lt;h2 id="p23"&gt;p23&lt;/h2&gt;
+&lt;blockquote&gt;
+&lt;p&gt;구조화된 인터뷰(특별히 구조화된 행동중심적 인터뷰를 권함)와 실제 작업을 해보도록 하는 작업 샘플 테스트, 그리고 가능하다면 실제 업무를 주고 시험적으로 짧은 기간 동안 일을 해보게 하는 것 등을 권합니다.&lt;/p&gt;</description></item><item><title>(책) The nature of Software Development</title><link>https://cychong47.github.io/post/2018/caeg-the-nature-of-software-development/</link><pubDate>Thu, 18 Oct 2018 14:53:53 +0900</pubDate><guid>https://cychong47.github.io/post/2018/caeg-the-nature-of-software-development/</guid><description>&lt;blockquote&gt;
+&lt;p&gt;제품 책임자는 해결해야 할 문제가 무엇인지 제시합니다. 그리고 팀은 주어진 문제를 어떻게 해결할 지 결정하죠. 진정한 자율성이 있다면 팀의 일을 중복으로 확인할 필요가 없습니다. 그들이 결정하고 그들이 만들고 조직 모두가 결과를 확인합니다. 모두가 배우는 것이죠
+개발팀은 1-2주에 해당하는 개발 주기를 거칠 때마다 제품 책임자와 함께 무엇을 완료해야 하는지 상의해야 합니다. 잘 작동하는 상태로 배포할 수 있는 피처들이 얼마나 되는지 구분합니다.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;p&gt;이렇게 팀이 일을 끝낸 이후 &amp;ldquo;작동하는 소프트웨어를 보여주세요&amp;quot;라고 요구하면 됩니다.&lt;/p&gt;</description></item><item><title>(책) 실리콘밸리를 그리다</title><link>https://cychong47.github.io/post/2018/silicon-valley-illustrated/</link><pubDate>Sun, 23 Sep 2018 06:34:35 +0900</pubDate><guid>https://cychong47.github.io/post/2018/silicon-valley-illustrated/</guid><description>&lt;p&gt;P40
+업무 지시 -&amp;gt; 일을 맡아달라고 부탁&lt;/p&gt;
+&lt;p&gt;P44
+제조업에서는 정보 공유의 중요성이 높지 않다. 설계 -&amp;gt; 생산 분리
+SW에서는 설계가 모든 상세 내역을 알 수 없고, 지속적인 변경 사항에 따른 변화를 모두 확인할 수 없다.
+실리콘밸리에는 기획자라는 역할이 없다. 각자가 자신의 역할을 책임진다.
+엔지니어 문화에서는 끊임없이 진화를 가정하고 시작한다.
+아웃소싱은 설계 변경을 빠른 시간 내 반영하기 어려워 많이 사용하지 않는다.&lt;br&gt;
+우리나라 기업 문화는 &lt;code&gt;기술집약 제조업&lt;/code&gt;에 적합하다.
+&lt;code&gt;Speed&lt;/code&gt; - &lt;code&gt;Quality&lt;/code&gt; - &lt;code&gt;Feature&lt;/code&gt; triangle&lt;/p&gt;</description></item><item><title>(책) 1등의 습관 Smarter, Faster, Better</title><link>https://cychong47.github.io/post/2018/smarter-faster-better/</link><pubDate>Tue, 04 Sep 2018 14:26:37 +0900</pubDate><guid>https://cychong47.github.io/post/2018/smarter-faster-better/</guid><description>&lt;h2 id="motivation"&gt;Motivation&lt;/h2&gt;
+&lt;p&gt;P39&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;자신이나 다른 사람에게 동기를 부여하고 싶은 사람이라면 반드시 알아두어야 할 교훈이다. 결정권을 행사할 수 있는 일을 찾아내면 행동하려는 의지를 쉽게 불어일으킬 수 있기 때문이다.&lt;/p&gt;
+&lt;p&gt;직접 결정할 수 있다는 생각이 우리를 흥분시킨다.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2 id="teams"&gt;Teams&lt;/h2&gt;
+&lt;p&gt;P71&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;구글 인력 자원국의 기본적인 목표는 &lt;em&gt;구글 직원들이 직장에서의 삶을 조금이라도 더 행복하고 생산적으로 꾸려 가도록 유도하는 것이었다&lt;/em&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;P72&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;산소 프로젝트 -&amp;gt; 훌륭한 관리자란?&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;훌륭한 코치이고,&lt;/li&gt;
+&lt;li&gt;권한을 위임하고,&lt;/li&gt;
+&lt;li&gt;시시콜콜한 문제를 따지지 않으며,&lt;/li&gt;
+&lt;li&gt;부하 직원의 성공과 행복에 관심을 드러내고,&lt;/li&gt;
+&lt;li&gt;결과를 중시하고,&lt;/li&gt;
+&lt;li&gt;정보를 경청하고 공유하며,&lt;/li&gt;
+&lt;li&gt;경력 개발을 지원하고,&lt;/li&gt;
+&lt;li&gt;분명한 비전과 전략을 직원들에게 제시하며,&lt;/li&gt;
+&lt;li&gt;해당 비즈니스에 대한 중요한 핵심 능력을 지니고 있다.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;P75&lt;/p&gt;</description></item><item><title>(책) 최고의 팀은 무엇이 다른가</title><link>https://cychong47.github.io/post/2018/the-secret-of-highly-successful-groups/</link><pubDate>Sat, 25 Aug 2018 10:08:40 +0900</pubDate><guid>https://cychong47.github.io/post/2018/the-secret-of-highly-successful-groups/</guid><description>&lt;p&gt;팀원이 &lt;code&gt;안전&lt;/code&gt;하다고 느끼는가?&lt;/p&gt;
+&lt;h2 id="구글"&gt;구글&lt;/h2&gt;
+&lt;pre&gt;&lt;code&gt;* 지위에 연연하지 않음.
+* 누가 책임질 지 고민하지 않음
+* 어려운 문제를 풀기 위해 모든 집단을 토론시킴
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id="미사일리어"&gt;미사일리어&lt;/h2&gt;
+&lt;pre&gt;&lt;code&gt;* 미국의 미사일기지 근무 군인들의 만족도가 크게 떨어짐
+* 우리가 이어져 있나?
+* 우리에게 미래가 있나?
+* 우리는 안전한가?
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id="피드백"&gt;피드백&lt;/h2&gt;
+&lt;pre&gt;&lt;code&gt;* 기대치가 높다
+* 당신이면 기대를 충분히 달성할 수 있을 있을 거라고 믿는다
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id="경청하라-또-경청하라"&gt;경청하라. 또 경청하라&lt;/h2&gt;
+&lt;pre&gt;&lt;code&gt;* 높은 자리에 오를수록 먼저 약점을 드러내라
+* 불편한 목소리도 포용
+* 구체적인 미래상 제시
+* 공치사는 과장될수록 좋다
+* 서로 부딪칠 수 있는 공간을 마련하라
+* 각자의 목소리를 내게 하라. Toyota(Action Code), Pixar(Details), google, It’s your ship(해군 함장)
+	* 벤폴트호를 타면 제일 좋은 점은?
+	* 제일 마음에 들지 않는 점은?
+	* If you’re captain, what do you change?
+* 하찮은 일일수록 솔선수범
+* 샌드위치식 feedback은 피할 것
+	* 칭찬 - 질책 - 칭찬 X
+	* 칭찬과 질책을 분리
+* 유쾌한 분위기를 만들것
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id="ideo"&gt;IDEO&lt;/h2&gt;
+&lt;pre&gt;&lt;code&gt;* 나를 제일 들뜨게 하는 것은?
+* 별로 들뜨게 하지 않는 이유는?
+* 이 프로젝트에서 개선하고 싶은 것은?
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id="google-laszlo-bock"&gt;Google Laszlo Bock&lt;/h2&gt;
+&lt;pre&gt;&lt;code&gt;* Work rules
+* 지금 하는 일 중에 계속 하고 싶은 일은?
+* 좀 더 자주 하면 좋겠다고 생각하는 일은?
+* 내가 어떻게 해야 직원들이 효율적으로 일할 수 있을까?
+&lt;/code&gt;&lt;/pre&gt;
+&lt;ul&gt;
+&lt;li&gt;협동을 부추기는 계기&lt;/li&gt;
+&lt;li&gt;배드 뉴스는 개인적으로 전달&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;#book&lt;/p&gt;</description></item><item><title>(책) 리모트</title><link>https://cychong47.github.io/post/2018/remote/</link><pubDate>Sat, 25 Aug 2018 09:30:07 +0900</pubDate><guid>https://cychong47.github.io/post/2018/remote/</guid><description>&lt;p&gt;p15&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;사람들에게 제대로 집중해서 일을 하고자 할 때 어디로 갈거냐고 물었을 때 “사무실”이라고 답하는 사람은 별로 없다.혹은 “다른 직원들이 출근하기 전 아침 일찍” 또는 “다른 직원들이 퇴근하고 난 후의 사무실” 또는 “주말에 아무도 없는 사무실”&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;p18&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;출퇴근 시간 1.5시간/하루 * 5일 * 4 * 11 month = 330 시간.400시간은 베이스캠프를 개발자들이 프로그래밍하는데 걸린 시간&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;p22&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;엄청난 기술이 필요한 것은 아니다. 하지만 과거의 유산을 내려놓고 미래로 가는 배에 올라 탈 굳은 의지를 갖추어야만 한다.&lt;/p&gt;</description></item><item><title>(책) 덴마크 사람들은 왜 첫 월급을 받으면</title><link>https://cychong47.github.io/post/2018/why-danish-bought-a-chair-with-the-first-time-salary/</link><pubDate>Thu, 16 Aug 2018 14:46:20 +0900</pubDate><guid>https://cychong47.github.io/post/2018/why-danish-bought-a-chair-with-the-first-time-salary/</guid><description>&lt;p&gt;기대와는 많이 달랐던 책&amp;hellip;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;인생은 바꿔 말하면 ‘시간’입니다. 그 시간을 보내는 ‘공간’이야말로 그 사람의 행복으로 이어집니다.&lt;/p&gt;
+&lt;/blockquote&gt;</description></item><item><title>(책) 쿠팡 우리가 혁신하는 이유</title><link>https://cychong47.github.io/post/2018/coupang-the-reason-of-innovation/</link><pubDate>Sun, 05 Aug 2018 11:09:34 +0900</pubDate><guid>https://cychong47.github.io/post/2018/coupang-the-reason-of-innovation/</guid><description>&lt;p&gt;31&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;PO의 역할
+A,B, C의 우선 순위를 결정하는 수동적인 역할
+더 창의적으로 생각해보면 전혀 다른 D라는 일을 텅해 A,B, C의 문제를 한꺼번에 해결 할 수도.
+사고의 폭이 넓으면 PO가 할 일은 무한정 많아지기도 한다.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;관리자와 같은 입장인 듯. 2018년 8월 내가 갖는 고민, 상황에 딱 드러맞는 말.&lt;/p&gt;
+&lt;p&gt;240&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;쿠팡 대표 이사, 김범석&lt;br&gt;
+&amp;ldquo;제발 위에서 시키니까 한다는 소리 좀 하지 마세요. 그거 제가 제일 싫어하는 말이예요&amp;rdquo;&lt;/p&gt;
+&lt;p&gt;&amp;ldquo;무엇이 옳고 합리적인지&amp;quot;를 묻는 것은 다양성을 존중하는 수평적인 조직문화의 토대가 될 수 있다.
+좀 더 타당한 논리와 근거를 갖춘 의견을 우선시하는 분위기가 갖춰진다면 사람들이 자유롭게 자신의 주장을 펼치기가 더 쉬워질 것이다.&lt;/p&gt;</description></item><item><title>(책) 나는 이렇게 될것이다.</title><link>https://cychong47.github.io/post/2018/i-am-going-to-be/</link><pubDate>Sun, 29 Jul 2018 21:36:14 +0900</pubDate><guid>https://cychong47.github.io/post/2018/i-am-going-to-be/</guid><description>&lt;h3 id="p17"&gt;p17&lt;/h3&gt;
+&lt;p&gt;술과 구라를 즐기되 항상 혀를 조심하라.
+어느 장소에서나 어느 주제에 대해서나 할 말을 다하는 자는
+불행한 자이니 말하고 싶을 때마다 세 번을 더 깊이 들어라
+특히 나이가 들어서는 혀를 잘 묶어두어야 한다.
+고약한 늙은이 옆에는 사람이 없으니 외로움이 끝없으리라
+배워서 알고 싶은 것을 다 쓰지 못하고 가는 것은 서운한 일이나&lt;br&gt;
+친구는 들어주는 사람 곁에 모이는 것이니
+하나를 말하고 둘을 들어라.&lt;/p&gt;
+&lt;h3 id="p27"&gt;p27&lt;/h3&gt;
+&lt;p&gt;여러분이 놓치고 있는 것이 있습니다. 바로 이 하얀 종이 말입니다. 인생에서, 비즈니스에서, 가정에서 개인적인 일에서나 공적인 일에서 우리는 바로 이 검은 점 하나와 같은 작은 실수와 실패 때문에 온통 마음이 심란해집니다. 그러나 중요한 것은 아무것도 그려져 있지 않은 이 하얀 여백입닏. 이곳이 바로 우리가 꿈을 그려 넣을 자리입니다.&lt;/p&gt;</description></item><item><title>(책) 피플웨어</title><link>https://cychong47.github.io/post/2018/peopleware/</link><pubDate>Sun, 29 Jul 2018 21:35:10 +0900</pubDate><guid>https://cychong47.github.io/post/2018/peopleware/</guid><description>&lt;h2 id="p21"&gt;p21&lt;/h2&gt;
+&lt;p&gt;사람들이 업무의 인간적인 측면보다 기술적인 측면에 주로 매달리는 가장 큰 이유는 기술적인 부분이 더욱 중요하기 때문이 아니라 거기에 매달리는 것이 훨씬 더 쉽기 때문이다.&lt;/p&gt;
+&lt;h2 id="p24"&gt;p24&lt;/h2&gt;
+&lt;p&gt;실수를 허용하지 않는 분위기는 직원들에게 방어적인 태도를 양산할 뿐이다. 즉 직원들로 하여금 실패할 것 같은 일은 아예 시도조차 하지 않게 만드는 것이다. 개발 프로세스를 체계화하려고 하거나 엄격한 방법론을 강요하면서, 팀원들이 확실한 성공을 보장할 수 없는 것들에 대해 중요한 결정들을 내리지 못하게 한다면 그들은 점점 더 소극적이고 방어적인 태도를 취한다. 실수를 허용하지 않는 분위기로 인해 평균적인 기술 수준은 약간 향상될지도 모르지만, 팀은 위기에 처하게 될 것이다.&lt;/p&gt;</description></item><item><title>(책) 내 아이가 만날 미래</title><link>https://cychong47.github.io/post/2018/the-future-of-my-children/</link><pubDate>Sun, 29 Jul 2018 21:33:47 +0900</pubDate><guid>https://cychong47.github.io/post/2018/the-future-of-my-children/</guid><description>&lt;h2 id="30"&gt;30&lt;/h2&gt;
+&lt;p&gt;생산성의 증가가 오히려 일자리를 필요없게 만든다. 사람의 노동력을 대체할 것들이 등장하기 때문이다.&lt;/p&gt;
+&lt;h2 id="31"&gt;31&lt;/h2&gt;
+&lt;p&gt;지나친 생산성은 고용의 안정성을 해지며, 높아진 생산성만큼 사회와 경제가 성장하지 않으면 안 된든다는 압력으로 작용한다.&lt;/p&gt;
+&lt;h2 id="33"&gt;33&lt;/h2&gt;
+&lt;p&gt;거대한 생산성과 효율성을 바탕으로 하는 소비자 중심의 과소비 사회가 종말을 맞이하려고 한다. 과소비를 통해 외형이 성장하고, 이를 맞추기 위한 생산성의 독려와 일자리를 유지했던 성장의 순환 사이클이 그 동력을 잃고 있다.&lt;/p&gt;
+&lt;h2 id="52"&gt;52&lt;/h2&gt;
+&lt;p&gt;지식노동자의 주된 역할은 정보를 다루고, 찾아내며, 컴퓨터가 계산한 내용을 바탕으로 새로운 지식을 만들어 내고 분석하는 일이라 할 수 있다. 그러나 이러한 것들이 새로운 기술에 의해 대체가 가능해지는 미래에는 결국 판단과 비판적인 사고, 공감 등 기계로 대체하기 어려운 더욱더 새로운 기술이 필요하게 된다.
+지식노동자가 비지니스를 어떻게 관리하고 운영하는지 알았다면, 인사이트 노동자나는 비지니스가 어떻게 그리고 왜 필요한 지에 대한 근본적인 의문에 답할 수 있어야 한다.&lt;/p&gt;</description></item><item><title>(책) 시스템의 힘</title><link>https://cychong47.github.io/post/2018/the-work-system/</link><pubDate>Sun, 29 Jul 2018 21:32:37 +0900</pubDate><guid>https://cychong47.github.io/post/2018/the-work-system/</guid><description>&lt;h2 id="42"&gt;42&lt;/h2&gt;
+&lt;p&gt;우리는 통제할 수 있는 것에 초점을 맞추되, 통제할 수 없는 것에는 마음을 편히 먹어야 한다.&lt;/p&gt;
+&lt;h2 id="44"&gt;44&lt;/h2&gt;
+&lt;p&gt;이제는 불평도 하지 않고, 남을 탓하지도 않을거야. 내 앞에 놓인 세상을 거부할 게 아니라, 있는 그대로의 세상에 뛰어들어서 내가 통제할 수 있는 것부터 시작할 거야. 무슨 일을 할 수 있을 지 찾아봐야겠어.&lt;/p&gt;
+&lt;h2 id="50"&gt;50&lt;/h2&gt;
+&lt;p&gt;자신의 지금 위치가 어디이든, 영향력의 원이 얼마나 크든 그 원의 밖이 아닌 안에서 변화를 일으키려 노력하라. 어차피 손을 쓸 수도 없는 큰 그림을 분석하고 해부하는데 소중한 에너지를 쓰지 말라. 대신 그 시간과 에너지를 손을 쓸 수 있는 것, 즉 영향력의 원 안에 있는 것에 써라. 그러다 보면 영향력의 원이 알아서 커질 것이다.&lt;/p&gt;</description></item><item><title>(책) 지금 꿈꾸라, 사랑하라, 행복하라</title><link>https://cychong47.github.io/post/2018/just-now-dream-love-be-happy/</link><pubDate>Sun, 29 Jul 2018 21:31:08 +0900</pubDate><guid>https://cychong47.github.io/post/2018/just-now-dream-love-be-happy/</guid><description>&lt;p&gt;꿈을 노트하라
+꿈을 날짜와 함께 적어 놓으면 그것은 목표가 되고
+목표를 잘게 나누면 그것은 계획인 되며,
+그 계획을 실행에 옮기면 꿈을 이루게 되는 것이다.&lt;/p&gt;
+&lt;p&gt;p46
+우리는 무거운 짐을 지고 살아간다. ‘등이 휠 것 같은 삶의 무게여’라는 가사도 있다. 내가 책임져야 할 가족과 도움을 필요로 한 친구들, 나에게 주어진 과중한 업무와 기대. 이 거추장스러운 짐들이 사실은 ‘내 인생의 날개’일 수도 있다.&lt;/p&gt;
+&lt;p&gt;p68
+다른 사람과 한 약속을 지키는 것도 중요하지만
+자기 자신과 한 약속을 지키는 것이 더 중요하다
+세상과 타협하는 것도 위험하지만
+자기 자신과 타협하는 것이 가장 위험하다&lt;/p&gt;</description></item><item><title>(책) 습관의 힘</title><link>https://cychong47.github.io/post/2018/power-of-habit/</link><pubDate>Sun, 29 Jul 2018 21:29:36 +0900</pubDate><guid>https://cychong47.github.io/post/2018/power-of-habit/</guid><description>&lt;p&gt;신호 - 보상 - 반복행동 - 열망&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;습관에 숨겨진 &amp;ldquo;열망&amp;quot;을 찾아야 한다. 담배를 습관적으로 피우는 사람도 담배를 피우는 이유가 니코틴 부족이 아니라 잠깐 동안의 여유를 주기 때문일 수 있다. 이때는 이 &amp;ldquo;여유&amp;quot;라는 열망을 담배가 아닌 산책 등으로 바꾸면 습관을 바꿀 수 있다.
+이때 그 열망에 대한 &amp;ldquo;신호&amp;quot;와 &amp;ldquo;보상&amp;quot;을 알아야 한다. 그래서 담배가 주는 것과 유사한 담배껌, 팔굽혀 펴기, 스트레칭등의 새로운 반복행동을 선택하면 담배를 끊을 확률이 높아진다.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;믿음&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;하느님이 아니더라도, 내 상황이 더 좋아질 거라는 믿음이 필요하다.
+습관을 근절할 수는 없어도 바꿀 수는 있다. 또 &amp;lsquo;동일한 신호와 동일한 보상을 유지하면서 새로운 반복 행동을 더하라&amp;rsquo;는 습관 변화의 황금률을 사용하면 습관을 쉽게 바꿀 수 있는 것도 사실이다. 여기에 습관을 항구적으로 바꾸기 위해서는 변할 수 있다는 믿음이 필요하다.&lt;/p&gt;</description></item><item><title>(책) 나는 다른 대한민국에서 살고 싶다</title><link>https://cychong47.github.io/post/2018/i-want-to-live-in-a-different-korea/</link><pubDate>Sun, 29 Jul 2018 21:28:01 +0900</pubDate><guid>https://cychong47.github.io/post/2018/i-want-to-live-in-a-different-korea/</guid><description>&lt;p&gt;p215
+우리 사회가 뭔가 단단히 헷갈리고 있다. 정치, 경제, 사회 전반에서 국가의 강력한 통졔를 바란다면 헌법부터 뜯어고쳐야 할 것이다. 일단 자유민주주의의 &amp;lsquo;자유&amp;rsquo;와 &amp;lsquo;민주&amp;rsquo;는 빼야 할 것 같으니까. 대만민국의 국가적 정체성부터 다시 생각해봐야 할 일이다. 공산주의가 싫어 자유주의를 주장하는 거라면 작은 정부를 지향해야 옳다. 그리고 그 작은 정부가 왜 시장에 대한 규제 철폐만 주장하고, 사상, 언론, 표현, 결사 등의 영역에서는 작은 소리만 있어도 사회가 불안정하고 무질서해진다며 통제하려고 하는 지 합리적인 이유를 내 놓아야 한다.
+큰 정부에 대한 막연한 환상에서 일단 벗어나, 국가와 시민의 기본적인 관계에 대해서부터 다시 고민해 볼 일이다.&lt;/p&gt;</description></item><item><title>(책) 퍼플피플</title><link>https://cychong47.github.io/post/2018/purple-people/</link><pubDate>Sun, 29 Jul 2018 13:53:11 +0900</pubDate><guid>https://cychong47.github.io/post/2018/purple-people/</guid><description>&lt;p&gt;p39
+자신이 정말 좋아하는 일을 만날 수만 있다면, 인생의 절반은 성공한 것이다. 끔찍이 좋아하는 일이라면 남들이 말려도 다시 덤벼들어야 한다.&lt;/p&gt;
+&lt;p&gt;지금 내가 쌓고 있는 스펙이 과연 10년, 20년 후에도 계속 하고 싶은 일에 도움이 될까? 다시 한번 생각해 보라.&lt;/p&gt;
+&lt;p&gt;p47
+부디 이 땅의 청춘들이 자신을 괴롭게 하는 스펙 쌓기에 매달리지 않기를 바란다.
+고통의 순간이 가면 즐거움의 시간이 오리라는 보장을 누가 해줄 것인가?
+지금 나를 가장 즐겁게 하는 일, 뜨겁게 나를 느낄 수 있는 일에 열정을 쏟아부어야 진정한 퍼플피플로 성장할 수 있다.&lt;/p&gt;</description></item><item><title>(책) 혼창통</title><link>https://cychong47.github.io/post/2018/hon-chang-tong/</link><pubDate>Sun, 29 Jul 2018 13:47:57 +0900</pubDate><guid>https://cychong47.github.io/post/2018/hon-chang-tong/</guid><description>&lt;p&gt;8p&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;혼 : 가슴 벅차게 하는 비전이 사람을 움직인다.&lt;/li&gt;
+&lt;li&gt;창 : 끊임없이 &amp;ldquo;왜&amp;quot;라고 물어라, 그러면 열린다.&lt;/li&gt;
+&lt;li&gt;통 : 만나라, 또 만나라. 들어라 잘 들어라.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;16p&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;IBM, P&amp;amp;G, Cisco, CEMEX 이 기없들의 공통점은 무엇일까? 그렇다 공룡처럼 몸집이 큰 기업들이다. 공룡인데도 민첩하다. 한가지 공통점은 회사 전체가 보다 큰 가치, 가슴을 울렁이게 하는 원대한 비전을 공유한다는 사실이다. 하버드경영대학원의 로자베스모스 캔터 교수(Rosabeth Moss Kanter) &amp;ldquo;모든 직원이 보다 큰 가치를 공유하게 되면 일선에서 어떤 문제가 부딛쳐도, 혹은 본사로부터 아무리 떨어진 곳에서 일하더라도 자발적으로 문제의 해결을 주도하게 된다&amp;rdquo;&lt;/p&gt;</description></item><item><title>(책) 당신의 시간</title><link>https://cychong47.github.io/post/2018/your-time/</link><pubDate>Sun, 29 Jul 2018 13:44:37 +0900</pubDate><guid>https://cychong47.github.io/post/2018/your-time/</guid><description>&lt;p&gt;p52
+&amp;ldquo;당신의 삶입니다. 당신의 사람을 이야기하라는데 가족을 위해 사는 게 전부라. 생활비만 제대로 해결된다면 가족에게 당신은 없어도 되는 존재라는 말이군요. 그런 현금 지급기와 같은 삶을 원한다면 더 이야기하는 것도 &amp;lsquo;시간낭비&amp;rsquo;군요&amp;rdquo;&lt;/p&gt;
+&lt;p&gt;p89
+파울로 코엘료의 &amp;lt;순례자&amp;gt;에서는 꿈들을 죽일 때 나타나는 첫 번째 징후가 &amp;lsquo;시간이 없다&amp;rsquo;라고 말하는 것이라고 했습니다.&lt;/p&gt;
+&lt;p&gt;p97
+가장 먼저 해야 할 일은 진지하게 고민하며 한발 내딛는 일입니다. 어디로든 상관없습니다. 자신을 둘러싸고 있는 경계를 벗어나기만 하면 새로운 사람들과 새로운 경험이 당신을 기다리고 있을 겁니다. 그렇게 보내는 시간, 시간을 쪼개는 게 아니라, 스스로를 탐구하고 찾기 위해 가치있게 쓰는 시간.&lt;/p&gt;</description></item><item><title>(책) Slack</title><link>https://cychong47.github.io/post/2018/slack/</link><pubDate>Sun, 29 Jul 2018 13:42:11 +0900</pubDate><guid>https://cychong47.github.io/post/2018/slack/</guid><description>&lt;p&gt;p32
+너무 효율적인 사람은 너무나도 바쁘기 때문에, 무언가 새로운 일이 일어나는 경우 그 일에 즉시 대응할 수가 없게 된다.&lt;/p&gt;
+&lt;p&gt;p37
+사실 효율성을 높이는 일은 매우 어렵다. 효율성 개선에는 엄청난 노력과 진정한 독창성이 필요하기 때문이다. 조직은 항상 스스로를 더욱 효율적으로 만들기 위해 끊임없이 노력해 왔기 때문에 조직을 더 효율적으로 만들기란 결코 쉬운 일이 아니다.&lt;/p&gt;
+&lt;p&gt;p38
+짧은 시간안에 조직의 개선을 보여주어야 하는 효율성 전문가에게 유욯나 지름길은 무엇일까? 가장 자주 채택되는 지름길은 바로 각각의 직원을 모두 완전한 대체물이라고 가정하는 것이다.&lt;/p&gt;</description></item><item><title>(책) 팀이 빠지기 쉬운 5가지 함정</title><link>https://cychong47.github.io/post/2018/five-traps-team-can-fall-into/</link><pubDate>Sun, 29 Jul 2018 13:11:31 +0900</pubDate><guid>https://cychong47.github.io/post/2018/five-traps-team-can-fall-into/</guid><description>&lt;p&gt;p65
+효율적인 팀들은 한결같이 매우 구체적으로 논쟁을 벌였습니다. 팀원들간의 신뢰도가 매우 높은 팀에서도 흔히 논쟁이 벌어지더군요.&lt;/p&gt;
+&lt;p&gt;p114
+전반전이 끝나고 라커룸으로 들어가는 농구코치를 상상해 봅시다. 그는 팀의 센터포워드를 자기 방으로 불러서 전반전에 대해 일대일로 대화합니다. 그러곤 포인트가드, 슈팅가드, 스몰포워드, 파워포워드를 차례로 불러서 똑같은 행동을 반복합니다. 선수들 중 누구도 코치가 다른 선수들에게 무슨 얘기를 했는 지 알 수 없는 상태에서 후반전이 시작됩니다. 후반전에서 그들은 더 이상 팀이 아닙니다. 그건 단지 개인들을 한데 모아놓은 것에 불과하죠.&lt;/p&gt;</description></item><item><title>(책) 드라이브 - 다니엘 핑크</title><link>https://cychong47.github.io/post/2018/drive/</link><pubDate>Sun, 29 Jul 2018 12:45:25 +0900</pubDate><guid>https://cychong47.github.io/post/2018/drive/</guid><description>&lt;p&gt;p64
+해결점까지 분명한 길이 있는 경우의 보상은 앞만 바라보며 더 빨리 나아가게 해주기 때문에 도움이 되지만, 양초 문제처럼 도전적인 상황에서 &amp;lsquo;만약-그러면&amp;rsquo;의 조건적 동기유인제는 효력을 발휘하지 못한다. 보상은 사람들의 시야를 좁히며, 기존 물건의 새로운 쓰임새를 볼 수 있는 포괄적인 시야를 흐리게 한다.&lt;/p&gt;
+&lt;p&gt;p65
+다른 사람을 위해 작업할 때면 항상 그런 것은 아니지만 많은 경우에 작업이 즐거움보다는 일에 가까워진다. 반면 나 자신을 위해 작업할 때는 창조한다는 순전한 즐거움을 느끼면서 밤을 새는지도 모르고 일하기도 한다. 의뢰받은 작업의 경우는 스스로를 억제하고 고객의 요구를 따르기 위해 정신을 바짝 차려야 한다.&lt;/p&gt;</description></item><item><title>(책) 대살개문</title><link>https://cychong47.github.io/post/2018/developer-culture/</link><pubDate>Sun, 15 Jul 2018 13:41:48 +0900</pubDate><guid>https://cychong47.github.io/post/2018/developer-culture/</guid><description>&lt;p&gt;임백준. 2016.5&lt;/p&gt;
+&lt;h2 id="96-dead-code로-인한-사고"&gt;96) dead code로 인한 사고&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;신규 기능을 위해 현재 지금은 disable로 설정된 변수를 재활용. 코드 변경을 깜빡하고 설정만 변경하여 잠자고 있던 예전 코드가 동작(예측 불가능한 동작)&lt;/li&gt;
+&lt;li&gt;사용하지 않는 코드는 소스 코드에서 삭제할 것. If 문으로 회피하는 것은 상당히 나쁘고 위험한 습관&lt;/li&gt;
+&lt;li&gt;소프트웨어의 전개 과정이 정확한 설명을 담고 있는 문서에 기반해야 함&lt;/li&gt;
+&lt;li&gt;효율성을 명목으로 코드의 간명함과 안정성을 해치는 행동은 피할 것&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id="100-오바마-케어"&gt;100) 오바마 케어&lt;/h2&gt;
+&lt;h2 id="112-detail"&gt;112) Detail&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;디테일이 살아 있고 빠르고 안정감 있게 동작하는 코드를 작성하는 것은 &amp;lsquo;능력&amp;rsquo;이 문제인 경우가 많지만 &amp;lsquo;태도&amp;rsquo;의 문제이기도&lt;/li&gt;
+&lt;li&gt;디테일과 사소함을 혼동하지 말 것&lt;/li&gt;
+&lt;li&gt;점 하나에 따라서 코드 전체의 의미가 달라질 수 있는 프로그래밍의 세계에서 디테일은 덤이 아니라 생명&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id="121-지식이-아니라-메타지식"&gt;121) 지식이 아니라 메타지식&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;전문성 보다는 부족한 정보를 토대로 최선의 판단을 내리는 적응력이 중요.&lt;/li&gt;
+&lt;li&gt;새로운 지식을 빨리 흡수해서 자기 것으로 만드는 능력이 더 중요.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id="131-나이는-짐인가-훈장인가"&gt;131) 나이는 짐인가 훈장인가&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;노력하지 않는 사람에게 나이는 짐이고, 노력하는 사람에게 나이는 훈장이다.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id="167-actor-model"&gt;167) Actor model&lt;/h2&gt;
+&lt;h2 id="208-ms-api-bot"&gt;208) MS API, Bot&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;MS같은 회사가 인공지능을 개발하고 API를 통해 기능을 제공할 테니 여러분은 그런 플랫폼 위에서 앱을 개발하라. &lt;code&gt;Bot&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id="212-팀-내-가장-실력이-낮은-사람이-되라"&gt;212) 팀 내 가장 실력이 낮은 사람이 되라&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;배울 것이 없는 팀에서 오래 머물지 말라&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id="216-내가-아는-언어의-한계"&gt;216) 내가 아는 언어의 한계&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;비드겐슈타인 &lt;code&gt;내가 아는 언어의 한계가 곧 내가 사는 세상의 한계&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="http://code.org"&gt;http://code.org&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id="263-less"&gt;263) LESS&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Learn - 배우믄 즐겁고 재밌는 놀이. 그게 아니면 노동&lt;/li&gt;
+&lt;li&gt;Enjoy&lt;/li&gt;
+&lt;li&gt;Solve - 문제를 해결하지 못하면 개발자가 아니다.&lt;/li&gt;
+&lt;li&gt;Share - 즐김을 위한 수단&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id="269-무지의-인지가-공부의-시작"&gt;269) 무지의 인지가 공부의 시작&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;더 많이 알수록 자기가 모르는 것이 얼마나 많은지 알게 되는 것이 개발자의 숙명&lt;/li&gt;
+&lt;li&gt;그 많은 내용을 다 알고 있는 사람이 존재하지 않는다는 사실을 깨달을 것. 자기가 알아야 한다고 생각하는 것의 1%라도 제대로 알고 있는 사람도 별로 없다. &lt;code&gt;이런저런 것을 알아야 할 것 같은데 나는 언제 그걸 공부하지&lt;/code&gt;라고 생각한 사람은 이미 대부분의 사람보다 많은 것을 알고 있는 사람이라는 뜻(하지만 실제 행동하지 않으면 소용없음)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id="287-비동기성"&gt;287) 비동기성&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;Erik Meijer&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;지금까지의 SW는 동시성과 블로킹을 기반으로 동작하는데 익숙&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;async&lt;/code&gt;, &lt;code&gt;await&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;agile&lt;/code&gt;은 관리자가 개발자를 통제하기 위한 수단에 불과하다&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id="280-10가지-철학"&gt;280) 10가지 철학&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;개발자가 회사에 기여하는 정도와 개발자가 실제로 받는 급여 사이에는 커다른 차이가&lt;/li&gt;
+&lt;li&gt;개발자와 개발자의 작업 숙 동일하지 않다. &lt;code&gt;Egoless&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;운에 기대지 말라. 매일 노력하라.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;계획보다는 행동이다&lt;/strong&gt; &lt;code&gt;bias for action&lt;/code&gt; (Amazon), &lt;code&gt;Move fast and break things&lt;/code&gt; (Facebook) 말하지 말고 행동하라. 사람들이 나의 말을 듣지 않는 이유는 말 그 자체는 행동이 아니기 때문이다&lt;/li&gt;
+&lt;li&gt;&amp;lsquo;최악&amp;rsquo;은 제한되어 있다. 도전하라. 한국의 현실은&amp;hellip;&lt;/li&gt;
+&lt;li&gt;&lt;a href="http://softwareengineeringdaily.com/2016/02/12/10-philosophies-for-developers"&gt;10 Philosophies for Engineers&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="http://traffic.libsyn.com/sedaily/10_philosophies.mp3"&gt;http://traffic.libsyn.com/sedaily/10_philosophies.mp3&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id="301-no-stackoverflow-in-korean"&gt;301) No &lt;code&gt;Stackoverflow&lt;/code&gt; in Korean&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;자신감 결여. 수동적으로 &lt;code&gt;닥치고 듣기만 하는&lt;/code&gt; 교육 방식에 길들여져 있어 질문하는 것이 불안하고 불편&lt;/li&gt;
+&lt;li&gt;여유 없음. 매일 야근인데 한가하게 질문에 답이나 달고 있을 시간이 있을리가&lt;/li&gt;
+&lt;li&gt;경쟁&lt;/li&gt;
+&lt;li&gt;하나의 특정한 기술로 평생을 살려는 사람은 시대착오적이다.&lt;/li&gt;
+&lt;/ul&gt;</description></item><item><title>(책) 도쿄대 교수가 제자들에게 주는 쓴소리</title><link>https://cychong47.github.io/post/2018/advice_from_tokyo_professor/</link><pubDate>Sat, 07 Jul 2018 15:00:28 +0900</pubDate><guid>https://cychong47.github.io/post/2018/advice_from_tokyo_professor/</guid><description>&lt;ul&gt;
+&lt;li&gt;다양한 분야에 대한 조언&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id="p20"&gt;p20&lt;/h2&gt;
+&lt;p&gt;목표가 명확하겨 정답이 있는 일을 하는 경주마에서 길 잃은 양으로&lt;/p&gt;
+&lt;h2 id="p22"&gt;p22&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;지식을 더 많이 아는 것이 아닌 아는 지식으로 뭘 할 지&lt;/li&gt;
+&lt;li&gt;Learn by doing.
+&lt;ul&gt;
+&lt;li&gt;결과가 아닌 과정. 직접 해 본 사람 vs. 배워서 아는 사람&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id="p34"&gt;p34&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;끈기와 뚝심
+&lt;ul&gt;
+&lt;li&gt;별게 아닌게 아니다&lt;/li&gt;
+&lt;li&gt;끝까지 해내는 힘&lt;/li&gt;
+&lt;li&gt;John Williams - 매일 작곡. 영감-&amp;gt;작곡이 아니라 작곡을 하다보면 영감을 얻게 됨&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id="p41"&gt;p41&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;영어 강의 준비 -&amp;gt; 영어 발음을 보완하기 보다 강의 준비를 철저하게 함.&lt;/li&gt;
+&lt;li&gt;강점을 강조함. 강의 핵심은 영어가 아니다.&lt;/li&gt;
+&lt;li&gt;가장 잘하는 일 -&amp;gt; 장점을 강화해야 함 -&amp;gt; 나의 강점은 무엇인가?&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id="p47"&gt;p47&lt;/h2&gt;
+&lt;p&gt;기회는 공평하지 않다.
+랑랑 pianist&lt;/p&gt;</description></item><item><title>(책) 매일 아침 써봤니?</title><link>https://cychong47.github.io/post/2018/did-you-write-in-every-morning/</link><pubDate>Sun, 01 Jul 2018 12:03:47 +0900</pubDate><guid>https://cychong47.github.io/post/2018/did-you-write-in-every-morning/</guid><description>&lt;p&gt;세바시 였던가, 공개 강의 동영상을 통해 처음 알게 된 김민식 PD.
+예전에 인기있었던 시트콤, ‘논스톱’을 만든 PD인데 MBC 파업과 관련되어 힘든 시간을 보내다 “영어책 한 권 외워봤니?”라는 독특한 제목의 영어 책으로 대중에 알려졌다. 그와 동시에 대입부터 시작해서 방송국 파업 때문에 경영진에 찍혀 고생하는 기간에 블로그를 통해 재기(?)에 성공한 특이한 이력을 가지고 있는데 시트콤 PD 답게 재밌는 입담을 통해 자신의 힘들었던 과거를 통해 의미있는 이야기를 많이 해줬던 걸로기억한다.
+매일 아침 써봤니? 는 제목 그대로 저자가 하고 있다는 매일 아침 글쓰기를 통해 변화된 인생에 대해 이야기해주고 있다.&lt;/p&gt;</description></item><item><title>(책) 어떻게 읽을 것인가 - 2</title><link>https://cychong47.github.io/post/2016/how-to-read-2/</link><pubDate>Fri, 10 Jun 2016 14:43:55 +0900</pubDate><guid>https://cychong47.github.io/post/2016/how-to-read-2/</guid><description>&lt;h2 id="만독"&gt;만독&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;책을 느리게(집중해서) 읽기&lt;/li&gt;
+&lt;li&gt;아이에게 책 읽어주기
+&lt;ul&gt;
+&lt;li&gt;부모가 읽어야 아이도 읽는다&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;1단계. 책 선정
+&lt;ul&gt;
+&lt;li&gt;초등학생이면 어휘가 풍부한 국내 소설&lt;/li&gt;
+&lt;li&gt;오래 살아남은 책. 고전 문학&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;2단계. 반복해서 읽기&lt;/li&gt;
+&lt;li&gt;3단계. 파생독서 하기
+&lt;ul&gt;
+&lt;li&gt;저자의 다른 책&lt;/li&gt;
+&lt;li&gt;저자가 참고한 책&lt;/li&gt;
+&lt;li&gt;비슷한 주제의 책&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;4단계. 챕터별 요약하기&lt;/li&gt;
+&lt;li&gt;5단계. 챕터별로 생각 적어보기
+&lt;ul&gt;
+&lt;li&gt;책을 읽으면 추가 자료와, 자신의 생각을 곁들여 정리&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;6단계. 장문 쓰기&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id="다독"&gt;다독&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;고정형/성장형 생각
+&lt;ul&gt;
+&lt;li&gt;특히 힘든 시기에 영향을 줌&lt;/li&gt;
+&lt;li&gt;갑자기 어려워지는 중학교 시절&lt;/li&gt;
+&lt;li&gt;두뇌도 근육과 같다. 능력을 키울 수 있다.&lt;/li&gt;
+&lt;li&gt;당신이 할 수 있다고 생각하든, 할 수 없다고 생각하든 생각하는 대로 될 것이다.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;나도 책을 많이 읽을 수 있다!&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id="남독"&gt;남독&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;다양하게 읽기&lt;/li&gt;
+&lt;li&gt;수용적/비판적/창의적 사고
+&lt;ul&gt;
+&lt;li&gt;수렴적 vs. 발산성 지능&lt;/li&gt;
+&lt;li&gt;수렴적 - 성실&lt;/li&gt;
+&lt;li&gt;발산성 - 창의. 변칙&lt;/li&gt;
+&lt;li&gt;위기때는 발산성 지능이 필요&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id="관독"&gt;관독&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;‘Seeing is believing”?
+&lt;ul&gt;
+&lt;li&gt;시각은 뇌를 속인다&lt;/li&gt;
+&lt;li&gt;‘본 것’이 아니라 ‘봤다고 생각’한 것&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;저자의 관점을 이해하기&lt;/li&gt;
+&lt;li&gt;특정 관점을 가지고 책을 보기&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id="재독"&gt;재독&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;좋은 부모
+&lt;ul&gt;
+&lt;li&gt;안정적인 기지 마련&lt;/li&gt;
+&lt;li&gt;기지를 거점삼아 세상을 마음껏 탐구하도록 격려&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id="필독"&gt;필독&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;쓰면서 읽기
+&lt;ul&gt;
+&lt;li&gt;메모 남기기&lt;/li&gt;
+&lt;li&gt;다시 읽을 때 나의 관점을 기억&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;망각
+&lt;ul&gt;
+&lt;li&gt;10분 호 망각 시작, 한 시간 뒤 50%, 하루 뒤 70%, 한달 뒤 80% 망각&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;글은 제기하고자 하는 주제의 근거를 제시하고 타당성 입증
+&lt;ul&gt;
+&lt;li&gt;좋은 자료가 성패를 가른다&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;짧게 써야 읽힌다&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img src="https://cychong47.github.io/images/2016/06/how-to-read.png" alt=""&gt;&lt;/p&gt;</description></item><item><title>(책) 어떻게 읽을 것인가</title><link>https://cychong47.github.io/post/2016/how-to-read/</link><pubDate>Fri, 10 Jun 2016 14:00:20 +0900</pubDate><guid>https://cychong47.github.io/post/2016/how-to-read/</guid><description>&lt;blockquote&gt;
+&lt;p&gt;고정형 - 지능은 변하지 않는다&lt;br&gt;
+성장형 - 지능은 좋아질 수 있다&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;생각을 바꾼다는 것이 쉬운 일은 아니지만 인식의 변화가 주는 효과는 크다&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;중학교에서는 고정형 아이들의 성적이 급속히 떨어지고 지속적으로 하양곡선을 그림. 중학생이 되면 초등학교 과정과 질적으로 더 어려운 학과 공부에 직면하므로 실패와 좌절을 할 가능성이 더 많은데 고정형 학생들은 실패와 좌절에 더 큰 영향을 받기 때문&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;힘든 상황에서 더 큰 영향을 준다.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;두뇌는 근육과 같이 운동을 통해 근육을 키우듯 두뇌 능력을 키울 수 있다. 필요한 건 시간과 노력이다.&lt;/p&gt;</description></item><item><title>(책) 소프트 스킬</title><link>https://cychong47.github.io/post/2016/soft-skill/</link><pubDate>Tue, 19 Apr 2016 10:25:08 +0900</pubDate><guid>https://cychong47.github.io/post/2016/soft-skill/</guid><description>&lt;p&gt;2 다른 이들과 달리 멋지게 시작하라&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;자신의 경력을 사업으로 봐야 한다.&lt;/li&gt;
+&lt;li&gt;자신의 정체성이나 경력은 조직에서 주어진 역할과 별개로 존재한다고 생각&lt;/li&gt;
+&lt;li&gt;팔수 있는 제품이나 서비스가 필요&lt;/li&gt;
+&lt;li&gt;그 가치가 정확히 뭔지, 그 가치가 다른 개발자가 제공하는 가치와 어떻게 다른지 설명할 수 있어야 한다&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;3 목표를 설정하고 미래에 대비하라&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;목표를 설정. 목표를 정확히 이해
+&lt;ul&gt;
+&lt;li&gt;명확한 목표가 없으면 아무리 열심히 살아도 의미가 없다. 목표 없이 인생을 낭비하지 말라&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;큰 목표를 정하고 밟아갈 작은 목표를 설정
+&lt;ul&gt;
+&lt;li&gt;큰 목표는 방향을 제시할 정도만 되도 된다.&lt;/li&gt;
+&lt;li&gt;최종적으로이루고 싶은 꿈은?&lt;/li&gt;
+&lt;li&gt;큰 목표에 이르는 길목에 작은 목표들. 큰 목표에서 현재 상태까지 거꾸로 생각&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;매월, 혹은 매일 일정 분량을 읽고 학습하겠다는 더 작은 목표를 세운다&lt;/li&gt;
+&lt;li&gt;자신이 세운 목표를 주기적으로 살펴보고 필요할 때마다 조금씩 업데이트&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;4 소프트 스킬은 생각보다 중요하다&lt;/p&gt;</description></item><item><title>(책) Becoming a better Programmer</title><link>https://cychong47.github.io/post/2016/becoming-a-better-programmer/</link><pubDate>Mon, 14 Mar 2016 14:50:15 +0900</pubDate><guid>https://cychong47.github.io/post/2016/becoming-a-better-programmer/</guid><description>&lt;ol&gt;
+&lt;li&gt;코드에 신경쓰기
+&lt;ul&gt;
+&lt;li&gt;어떤 코드든 간에 수정한 후에는 이전 보다 나아져야 한다&lt;/li&gt;
+&lt;li&gt;기능이 추가된 것은 &amp;lsquo;나아진&amp;rsquo; 것이 아니다. 기능이 추가되고, 코드 수가 늘어나도 여전히 좋은 구조를 유지하는 것이 &amp;lsquo;나아진&amp;rsquo; 것이다.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;정돈된 코드 유지하기
+&lt;ul&gt;
+&lt;li&gt;좋은 코드는 명백하며 일관성이 있다. 보기 좋은 코드는 의도를 드러낸다(예술)&lt;/li&gt;
+&lt;li&gt;코드를 읽을 사람은 지금 당장의 나 외에 몇 달 후의 나, 다른 동료 그리고 미래의 유지 보수 프로그래머다. 그들이 혼란을 덜 겪도록 코드를 작성해야 한다.&lt;/li&gt;
+&lt;li&gt;실은 다른 사람을 위해 코딩한다는 것을 인정해야 하고, 잊으면 안된다.&lt;/li&gt;
+&lt;li&gt;코딩 스타일 가이드를 정리한다. 코딩 스타일의 목적은 일관성이다.&lt;/li&gt;
+&lt;li&gt;불필요하게 반복되는 단어를 피한다. DataObject(?)&lt;/li&gt;
+&lt;li&gt;간결함보다 중요한 것은 명확함이다.&lt;/li&gt;
+&lt;li&gt;코드를 &amp;lsquo;정리정돈&amp;rsquo;해야 할 경우에는 기능 변경과 모양 변경을 동시에 진행하지 말라&lt;/li&gt;
+&lt;li&gt;프로젝트의 공통 관습이 존재한다면 따른다.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;코드 작게 쓰기
+&lt;ul&gt;
+&lt;li&gt;소프트웨어를 개선하는 최고의 방법 가운데 하나는 바로 코드를 제거하는 것이다.&lt;/li&gt;
+&lt;li&gt;매일 같이 코드를 더 좋게 만들라. 중복 코드는 발견 즉시 제거한다.&lt;/li&gt;
+&lt;li&gt;더 많은 양의 코드가 더 좋은 SW를 의미하지는 않는다. 필요하지 않다면 코딩하지 말라. 적게 쓰고 그 대신 더 재미난 것을 찾으라.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;코드 줄여 개선하기
+&lt;ul&gt;
+&lt;li&gt;C의 전처리기는 사용되지 않는 코드를 만들어 내는 역효과를 낼 수 있다.&lt;/li&gt;
+&lt;li&gt;함수의 return 값이 사용되지 않으면 void로 변경한다.&lt;/li&gt;
+&lt;li&gt;가능하면 죽은 코드를 제거한다.&lt;/li&gt;
+&lt;li&gt;죽은 코드를 발견했음에도 아무런 조치를 취하지 않는 것이야말로 실패의 징조다.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;코드베이스의 망령
+&lt;ul&gt;
+&lt;li&gt;프로그래머로서 자질은 작성한 코드가 아닐 그것을 대하는 태도와 작성하는 방식에 의해 결정된다.&lt;/li&gt;
+&lt;li&gt;예전에 작성한 코드가 최신 라이브러리에 의해 대체할 수 있을 경우도 있다.&lt;/li&gt;
+&lt;li&gt;기존의 코드를 돌아보는 것은 자신을 위한 코드 리뷰이자, 가치있는 행동이다.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;경로 탐색하기
+&lt;ul&gt;
+&lt;li&gt;코드를 작성하는 것이 읽는 것보다 쉽다.(하지만 숨겨진 의도를 파악하지 못하고 새로 작성하면 새로운 문제를 일으킨다. 실은 예전에 발생했던 문제를 부활시키는…)&lt;/li&gt;
+&lt;li&gt;코드 분석을 통해 알아낸 것이 있으면 프로젝트의 최상위 위치에 README파일을 만든다. 의도, 주의사항, 의존성, 빌드 방법 등&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;똥통에서 뒹굴기
+&lt;ul&gt;
+&lt;li&gt;goto 문이 남발되면 알고리즘 구조를 읽기 어렵다.&lt;/li&gt;
+&lt;li&gt;외부에 노출하는 API는 깔끔하고 합리적인가?&lt;/li&gt;
+&lt;li&gt;자료형을 잘 고르고, 변수 명이 적절한가?&lt;/li&gt;
+&lt;li&gt;코드의 레이아웃을 정돈하여 일관성 있게 작성했는가?
+&lt;ul&gt;
+&lt;li&gt;코드의 외관이 코드의 근본적인 품질을 보장하지는 않지만, 일관성 없고 지저분한 코드가 대개 구조도 부적절하고, 다루기 어려웠다(저자의 경험상)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;특정 기능을 구현하는 코드 부분이 어디에 있는 지 쉽게 찾을 수 있는가?&lt;/li&gt;
+&lt;li&gt;보이스카웃 규칙을 따른다. 어떤 코드를 건드리건 이전보다 나아지도록 한다.&lt;/li&gt;
+&lt;li&gt;거대한 함수는 더 작으면서도 적절히 명명된 작은 함수들로 나눈다.
+&lt;ul&gt;
+&lt;li&gt;성능 최적화 측면에서 함수 호출이 갖는 penalty는 어떻게 할 것인지?&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;주기적으로 코드 일부라도 확인하고 그때마다 조금씩 나아지게 만든다.&lt;/li&gt;
+&lt;li&gt;수정으로 인해 기존 기능에 문제가 생기지 않음을 보장할 수 있는 모든 수단을 사용한다.&lt;/li&gt;
+&lt;li&gt;똥떵어리 수정을 별 의미없는 작업이라 치부하기보다는 더 나은 품질을 실현할 기회로 삼으라&lt;/li&gt;
+&lt;li&gt;수정하면서 자신의 태도도 확인하라. 어쩌면 당신은 원 저자보다 자신이 더 잘 알고 있다고 생각할 수도 있다. 과연 언제나 그럴까?&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;오류 무시하지 않기
+&lt;ul&gt;
+&lt;li&gt;반환 코드는 주로 정수 값으로 0은 성공, 그 외의 수는 오류를 의미&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;예상하지 못한 것을 예상하기
+&lt;ul&gt;
+&lt;li&gt;에러 코드는 절대로 무시하지 말라&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;버그 사냥하기
+&lt;ul&gt;
+&lt;li&gt;버그를 피할 수 있는 가장 좋은 충고는 믿기 힘들 정도로 &amp;lsquo;영리한(종종 복잡한 것과 동일시 되는)&amp;rsquo; 코드를 만들리 말라는 것이다.&lt;/li&gt;
+&lt;li&gt;Martin Fowler, 미련한 프로그래머는 컴퓨터가 이해할 수 있는 코드를 만들고, 좋은 프로그래머는 사람이 이해할 수 있는 코드를 만든다.&lt;/li&gt;
+&lt;li&gt;단위 테스트에 시간을 투자&lt;/li&gt;
+&lt;li&gt;특정 코드가 test coverage에 포함되지 않으면 제대로 작동한다고 신뢰할 수 없다.&lt;/li&gt;
+&lt;li&gt;문제를 다른 사람에게 설명해 보라. Rubber Duck strategy&lt;/li&gt;
+&lt;li&gt;버그를 찾고 해결하려 할 때 마구잡이로 달려들어서는 안된다.&lt;/li&gt;
+&lt;li&gt;코드의 어느 부분에 더 많은 문제가 있는 지 메모해둔다. 핫스팟을 찾으면 집중적인 개선 노력을 기울일 수 잇다.&lt;/li&gt;
+&lt;li&gt;아이젠버그. &amp;lsquo;관찰자&amp;rsquo;가 있으면 양상이 달라질 수 있다는 &amp;lsquo;관리자 효과&amp;rsquo;라는 용어를 만든 Werner Heisenberg&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;테스트하기
+&lt;ul&gt;
+&lt;li&gt;위대한 소프트웨어를 제대로 만들려면 피드백을 받아야 한다. 가능하면 자주, 그리고 빨리&lt;/li&gt;
+&lt;li&gt;좋은 테스트 전략은 피드백 절차를 간소화하는 것&lt;/li&gt;
+&lt;li&gt;피드백 과정이 짧을 수록 설계 변경을 더 빠르게 반복할 수 있고, 코드에 대해 더 강하게 확신할 수 있다.&lt;/li&gt;
+&lt;li&gt;더 열심히 일하려 하기보다 더 영리하게 일하라&lt;/li&gt;
+&lt;li&gt;코드에 대한 확신은 곧 테스트 코드의 품질이 결정한다.&lt;/li&gt;
+&lt;li&gt;실패 경우를 유닛 테스트로 만들어 재발을 방지한다.&lt;/li&gt;
+&lt;li&gt;성능이 주요 요구사항이면, 코드의 성능을 모니터링하는 테스트도 수행한다.&lt;/li&gt;
+&lt;li&gt;나쁜 테스트는 짐이 된다. 자산이라기보다 채무다&lt;/li&gt;
+&lt;li&gt;나쁜 테스트는 코드에 약간만 수정을 가해도 처리하기 어렵고, 조밀하며 이해하기 힘들다&lt;/li&gt;
+&lt;li&gt;좋은 테스트의 조건&lt;/li&gt;
+&lt;li&gt;나쁜 테스트란&lt;/li&gt;
+&lt;li&gt;테스트 코드도 유지 보수한다.&lt;/li&gt;
+&lt;li&gt;프로그램 테스트를 통해 버그의 존재를 확인할 수는 있지만, 버그가 없음을 확신할 수는 없다.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;복잡도 다루기
+&lt;ul&gt;
+&lt;li&gt;Blob(Binary Large Object)은 정확한 역할과 책임을 확실히 가져야 한다.&lt;/li&gt;
+&lt;li&gt;우리의 뇌는 문제를 계층으로 나누고 추상화하여 추론하는데 최적화되어 있다.&lt;/li&gt;
+&lt;li&gt;사용하지 않은 helper method는 제거한다.&lt;/li&gt;
+&lt;li&gt;순환 의존 관계는 가장 복잡한 관계다.&lt;/li&gt;
+&lt;li&gt;프로그래머들에게 리팩토링할 시간도 허락하지 않은 채, 시스템을 확장하고 확장하며 또 확장한다. 버려야할 prototype을 출시 시스템으로 둔갑시킨다.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;두 개의 시스템에 대한 이야기
+&lt;ul&gt;
+&lt;li&gt;대도시 이야기 vs. 디자인 타운&lt;/li&gt;
+&lt;li&gt;소프트웨어는 건강하지 못한 회사 구조와 개발 절차로 인해 잘못 설계될 수 있다.&lt;/li&gt;
+&lt;li&gt;이해 불가. 소프트웨어 설계의 품질을 유지 보수하라. 나쁜 설계는 더 나쁜 설계를 불러온다.&lt;/li&gt;
+&lt;li&gt;응집도의 부족. 각각의 컴포넌트는 필요하지 않은 다양한 기능을 포함하고 있다.
+&lt;ul&gt;
+&lt;li&gt;개발팀의 작업자들 간의 관계가 얼마나 건강한지는 소프트웨어 설계의 품질에 직접적 영향을 끼친다. 부적절한 관계와 자만심은 잘못된 소프트웨어를 만든다.&lt;/li&gt;
+&lt;li&gt;훌륭한 소프트웨어 디자인은 모듈 간의 상호 작동에서 필요한 것들만 허용한다.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;불필요한 결합. 좋은 설계는 상호 연결 구조나 컴포넌트 간 연결의 분량을 검토한다. 시스템의 개별 부분은 단독으로 작동할 수 있어야 한다. 밀착 결합은 테스트하기 어렵게 만든다.
+&lt;ul&gt;
+&lt;li&gt;코드 문제. 공통된 규칙이나 공통 라이브러리 사용, 공통된 관례에 대한 무신경&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;새로운 기능을 붙이기가 너무 어렵다 보니 사람들은 점점 더 자주 실수했고,&lt;/li&gt;
+&lt;li&gt;디자인 타운은 초기 설계를 작동하기에 알맞은 수준으로 결정. 최상위 수준의 디렉토리 구조, 명명 규칙, 일반적 코딩 관례에 덧붙인 코드 작성 방법, 유닛 테스트 프레임워크 선택과 기반 구조가 되는 내부 구조들.&lt;/li&gt;
+&lt;li&gt;시스템 구조에 대한 명확한 비전.&lt;/li&gt;
+&lt;li&gt;일관성. 모든 수준에서의 모든 결정을 전체 설계의 관점에서 수행&lt;/li&gt;
+&lt;li&gt;구조 확장. 그 어떤 것도 변하지 않은 것은 없다. 소프트웨어의 구조는 불변이 아니다. 필요하다면 변경하라. 변경 가능하게 만들려면 구조를 간결하게 유지해야 한다.&lt;/li&gt;
+&lt;li&gt;기술 부채에 대한 인정과 후속 개선 작업&lt;/li&gt;
+&lt;li&gt;훌륭한 자동화 테스트는 최소한의 위험만으로 근본적인 구조 변경을 수행할 수 있게 한다.&lt;/li&gt;
+&lt;li&gt;팀이 분열되어 있다면, 코드도 어색하게 엮인다.&lt;/li&gt;
+&lt;li&gt;코드 작성에 앞서 계획적으로 설계한다. 더도 말고 덜도 말고 알맞게 설계.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;소프트웨어 개발이란
+&lt;ul&gt;
+&lt;li&gt;훌륭한 프로그래머의 주요 특징 중 하나는 작성한 소프트웨어와 그 작성법에 대해 진심으로 주의를 기울이는 것이다.&lt;/li&gt;
+&lt;li&gt;좋은 소프트웨어는 정확하고, 입증되고, 측정되고, 실험되며, 검증되어야 한다 -&amp;gt; 좋은 테스트&lt;/li&gt;
+&lt;li&gt;자신이 작성한 소프트웨어는 언제나 완전히 정확하고 완벽하게 정밀한가? 이를 증명하는 방법은 무엇인가? 어떻게 하면 현재와 미래에 명시화 할 수 있는가?&lt;/li&gt;
+&lt;li&gt;일련의 규칙과 특정 팀 문화를 기반으로 개발을 진행&lt;/li&gt;
+&lt;li&gt;효율적인 프로그래머가 되려면 집안일을 두려워해서는 안 된다. 제품의 최신 버전에 대해 멋진 설계를 하는 것은 대단한 일이지만, 제품을 출시하고 지저분한 코드에서 오류를 찾아 수정하는 지루한 작업을 해야 할 때도 종종 있다.&lt;/li&gt;
+&lt;li&gt;문제의 수정 방법을 찾으면 적절한 시점에 파괴적이지 않은 방식으로 수정해야 하낟. 청소부로서 다른 사람에게 즐겁지 않은 작업을 넘겨버리지 말고 책임을 져야 한다.&lt;/li&gt;
+&lt;li&gt;죽은 코드를 제거하고, 망가진 코드를 수정한다. 적절하지 않은 코드를 리팩토링하고 재구성하며, 코드를 줄이고 깔끔하게 만든다. 코드가 황폐한 상태에 빠지지 않도록 하기 위함이다.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;규칙 가지고 놀기
+&lt;ul&gt;
+&lt;li&gt;때때로 못난 프로그래머들에게는 더 많은 규칙이 필요하다.&lt;/li&gt;
+&lt;li&gt;규칙은 새로운 팀원에게 줄 수 있을 만큼의 단순해야 한다. 단순히 방법론과 절차에 대한 것이 아닌 팀에서 좋은 플레이어가 되는 방법과 같은 코딩 문화를 설명하는 규칙이어야 한다.&lt;/li&gt;
+&lt;li&gt;좋은 코드를 작성하기 위한 세개의 규칙이란
+&lt;ul&gt;
+&lt;li&gt;간결하게 하라&lt;/li&gt;
+&lt;li&gt;머리를 쓰라&lt;/li&gt;
+&lt;li&gt;변하지 않는 것은 없다.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;간결하게 하기
+&lt;ul&gt;
+&lt;li&gt;간결한 코드는 설계하는 데 많은 노력이 필요하다. 다만 간결한 코드가 곧 과도하게 단순한 코드를 의미하지는 않는다.&lt;/li&gt;
+&lt;li&gt;잘못되고 단세포적인 &amp;lsquo;단순함&amp;rsquo;이 아니라 가장 간결한 코드를 작성하기 위해 노력해야&lt;/li&gt;
+&lt;li&gt;간결한 설계는 빠르고 명확하게 묘사할 수 있고, 쉽게 이해할 수 있다&lt;/li&gt;
+&lt;li&gt;&amp;lsquo;간결한&amp;rsquo; 인터페이스 설계에서는 동적으로 할당한 객체를 받아 사용 후 사용자가 그 객체를 직접 삭제할 필요가 없다.&lt;/li&gt;
+&lt;li&gt;간결한 코드는 읽기 쉽고 이해하기 쉽다. 따라서 작업하기에도 쉽다.&lt;/li&gt;
+&lt;li&gt;명백한 방식으로 납득할 만한 코드를 작성하면, 코딩 스타일도 그렇게 된다. 그러면 유지 보수하는 프로그래머들이 고마워할 것이다.&lt;/li&gt;
+&lt;li&gt;오류를 수정하면서 간결함을 유지해야 한다. 증상 부위가 아닌 근본 원인에 대해 버그 수정을 적용하라&lt;/li&gt;
+&lt;li&gt;설계/구현을 위해 세운 가설이 있다면 코드에 명시한다.&lt;/li&gt;
+&lt;li&gt;유용할 것이라고 생각되는 대량의 코드를 작성하지 말라. 사용되지 않는 코드는 그저 잠일 뿐이다. 요구사항을 충족시키는 데 필요한 만큼의 코드만 작성하라. 코드를 적게 작성할 수로고 더 적은 버그가 만들어질 것이다.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;머리 쓰기
+&lt;ul&gt;
+&lt;li&gt;일을 멈추고 생각하라. 바보 같은 코드를 작성하지 말라.&lt;/li&gt;
+&lt;li&gt;일단 작업을 멈추고 정신을 차린 뒤 대안이 있는 지 확인해보라.&lt;/li&gt;
+&lt;li&gt;가차없는 수정이 필요한 누더기 코드를 발견했을 때는 거기에 또 다른 누더기 코드를 덧씌우지 말라.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;변하지 않는 것은 없다.
+&lt;ul&gt;
+&lt;li&gt;항상 시간이 해결해 준다고들 하지만, 실제로는 당신 스스로 변하게 만들어야 한다.&lt;/li&gt;
+&lt;li&gt;프로그래머는 두려움을 느끼고 코드를 깨뜨리지 않도록 하려다 보니, 코드를 단단히 얼어붙게 만든다. 이것이 바로 소프트웨어 사후 경직이다.&lt;/li&gt;
+&lt;li&gt;본래의 개발자가 프로젝트를 떠나고 오래된 중요한 코드를 완벽하게 이해하는 사람이 남지 않았을 때, 해당 코드가 사후 경직되는 경우가 종종 있다.&lt;/li&gt;
+&lt;li&gt;코드가 구속력을 가지면, 더 이상 소프트웨어를 개발한다고 볼 수 없으며 코드에 맞서 싸우는 형태가 된다.&lt;/li&gt;
+&lt;li&gt;코딩 시 두려움을 가지고 피하기만 한다면, 코더의 인생은 쉽게 만들어줄 지 몰라도, 설계는 썩어간다.&lt;/li&gt;
+&lt;li&gt;코드 성장에 도움이 되는 태도
+&lt;ul&gt;
+&lt;li&gt;수정하기 두려운 코드를 발견한다면 반드시 수정해야 한다.&lt;/li&gt;
+&lt;li&gt;리팩토링 또한 권장한다.&lt;/li&gt;
+&lt;li&gt;누구도 코드의 어떤 영역을 소유하고 있지 않다.&lt;/li&gt;
+&lt;li&gt;좋은 프로그래머는 변화를 기대한다. 변화야말로 소프트웨어 개발의 전부다.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;모양과 의도를 드러내고, 간결함과 명확함, 일관성을 표방하는 코드.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;코드 재사용 사례
+&lt;ul&gt;
+&lt;li&gt;코드가 하나의 프로젝트가 아닌 더 많은 용도로 사용될 지 의심스러운 상황에서 처음부터 다양하게 사용할 수 있도록 처리하는 것은 가치가 없는 일이다.&lt;/li&gt;
+&lt;li&gt;당장의 요구사항을 만족할 수 있는 가장 간단한 코드를 만드는 데에만 집중한다.&lt;/li&gt;
+&lt;li&gt;가능한 가장 적은 양의 소프트웨어를 만듦으로써, 버그를 양산하거나 향후 수년간 지원해야 하는 불필요한 API를 만들 위험을 줄일 수 있다.&lt;/li&gt;
+&lt;li&gt;한 곳이 아닌 여러 곳에서 사용되어야 한다면 공통 라이브러리 혹은 공통 코드 파일을 만든다.&lt;/li&gt;
+&lt;li&gt;가능하다면 기존에 존재하는 코드를 재사용한다.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;효과적인 버전 관리
+&lt;ul&gt;
+&lt;li&gt;최상위 디렉토리에 도움이 되는 README 문서를 포함한다.&lt;/li&gt;
+&lt;li&gt;자주 조금씩 변경 사항을 체크인한다.&lt;/li&gt;
+&lt;li&gt;한 번에 두 가지 이상의 변경 사항을 다루는 체크인을 해서는 안 된다.&lt;/li&gt;
+&lt;li&gt;커밋 메시지는 코드와 같은 성격을 갖는다. 명확/간결/DRY. 변경한 파일을 나열할 필요는 없다.&lt;/li&gt;
+&lt;li&gt;개선하려면 변화해야 한다. 완벽하려면 자주 변화해야 한다.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;골기퍼 있다고 골 안 들어가랴
+&lt;ul&gt;
+&lt;li&gt;QA와 개발을 별도의 단계이자 행위로 보고 다른 팀으로 나누어버리면, 경쟁심은 커지고 단절감은 심해진다. 신뢰감이 없어진다. 그러나 비개발 출신의 관리자는 부서간의 관계를 신뢰하지 못하고 별개의 부서로 만든다&lt;/li&gt;
+&lt;li&gt;품질 보장 업무는 개발자들과 테스터들이 긴밀히 연계될 때 비로소 효과적으로 수행될 수 있다.&lt;/li&gt;
+&lt;li&gt;팀 간의 의사소통이 건전하지 않으면 코드도 건전해지지 않는다.&lt;/li&gt;
+&lt;li&gt;개발자는 반드시 QA와 좋은 관계를 유지해야 하며, 우정과 동지애를 가져야 한다.&lt;/li&gt;
+&lt;li&gt;정확하고 신뢰할 만한 오류 보고서를 만든 뒤 구조화되고 규칙을 따르는 방식, 예를 들면 좋은 오류 추적 체계를 사용해 전달하는 것은 테스터의 의무이다.&lt;/li&gt;
+&lt;li&gt;오류 보고서를 개인적으로 받아들이지 말라. 개인적 모욕이 아니다!!&lt;/li&gt;
+&lt;li&gt;다툼이 있는 곳에는 언제나 관계를 해치는 결과와 더 긴밀히 만드는 결과로 구분 짓는 하나의 요소가 존재한다. 바로 &amp;lsquo;태도&amp;rsquo;이다.&lt;/li&gt;
+&lt;li&gt;폭포수 모델에 따라 테스트에 도달하기 전에 90%수준에 도달했다면, 프로젝트를 마감하기 위해 또 다른 90%수준의 노력이 필요함을 깨닫게 될 것이다.&lt;/li&gt;
+&lt;li&gt;QA는 같은 팀의 일부임을 기억하라. 그들은 경쟁 집단이 아니다.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;동결된 코드의 신기한 사례
+&lt;ul&gt;
+&lt;li&gt;코드 동결은 코드가 완전해졌다고 판단되는 시점으로 모든 기능이 구현되었을 뿐 아니라, 어처구니 없는 버그가 없는 때를 의미한다.&lt;/li&gt;
+&lt;li&gt;&amp;lsquo;코드 동결&amp;rsquo;은 변경을 완전히 막는다기보다는 개발 작업에 대해 새로운 규칙을 적용한다는 의미 가깝다. 변경 사항이 아무리 가치 있다 해도 신중한 합의 후에 이루어져야 한다.&lt;/li&gt;
+&lt;li&gt;코드 동결 기간에는 기술적 부채가 발생할 수도 있다. 부채의 발생을 감시하고, 배포 이후에 곧바로 빚을 갚을 준비를 하라.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;제발 저를 배포해주세요&lt;/li&gt;
+&lt;li&gt;배움을 사랑하며 살기
+&lt;ul&gt;
+&lt;li&gt;프로그래머에게는 배움, 즉 기량과 능력의 향상이 지속적으로 요구된다.&lt;/li&gt;
+&lt;li&gt;배움을 즐기는 것을 배우라&lt;/li&gt;
+&lt;li&gt;배울 때 재미있을 만한 것을 조사하는데 우선 시간을 들이라.&lt;/li&gt;
+&lt;li&gt;새로운 기술/기법/문제 영역에 대해 배우라.&lt;/li&gt;
+&lt;li&gt;사람들과 함께 일하는 것을 배우라. 사회학이나 경영학 책을 공부해보라. 소프트웨어 팀의 리더가 되는 것에 대해 읽어보라.&lt;/li&gt;
+&lt;li&gt;어떻게 배워야 할 지 배우라.&lt;/li&gt;
+&lt;li&gt;완전히 다른 것을 배우라. 새로운 외국어나 악기, 다른 과학 분야 미술 혹은 철학을 배우라.&lt;/li&gt;
+&lt;li&gt;나중에 버릴지언정 지금 배우고 있는 것을 기록하라&lt;/li&gt;
+&lt;li&gt;Knowledge Portfolio. 현재 업무 지식을 투자 포트폴리오로 간주해보라. 수집한 정보를 어떻게 관리해야 하고, 현재의 포트폴리오를 유지하기 위해 어떤 방식으로 신중하게 투자해야 하며, 포트폴리오를 강화하기 위해 새로운 투자를 어떻게 이끌어낼지를 밝혀낼 수 있다.&lt;/li&gt;
+&lt;li&gt;아인슈타인. 간단하게 설명할 수 없다면, 충분히 잘 이해하지 못했다는 증거이다.&lt;/li&gt;
+&lt;li&gt;배움에 있어 핵심적인 기술은 행동하는 것이다.&lt;/li&gt;
+&lt;li&gt;추상적으로만 알고 있던 것들을 구체적이고 실천적으로 알 수 있도록 하라. 뛰어들어 실행해보라.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;테스트 기반 개발자
+&lt;ul&gt;
+&lt;li&gt;아무런 생각 없이 &amp;lsquo;성급하게 반응하는&amp;rsquo; 식의 접근 방법은 카우보이 코더에게나 찾아볼 수 있는 증상이다.&lt;/li&gt;
+&lt;li&gt;오랜 경력을 가진 코드라고 해도 누구나 전문적인 기술자가 되지 않는다. 관련 업계에서 보낸 시간만으로는 판단할 수 없다.&lt;/li&gt;
+&lt;li&gt;승진했다고 해서 당신이 처음 개발을 시작했을 때보다 더 좋은 프로그래머라는 의미는 아니다.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;도전 즐기기
+&lt;ul&gt;
+&lt;li&gt;코딩 연습, 코딩 문제, 개인적인 프로젝트, 새로운 직업을 찾아본다.&lt;/li&gt;
+&lt;li&gt;작업 중인 진행 상황을 볼 수 있도록 하라. 무엇을 성취했는 지 확인할 수 있도록 소스 로그를 리뷰하라.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;부진 피하기
+&lt;ul&gt;
+&lt;li&gt;자신의 능력 이상을 해낸 마지막 시점은 언제였는가?&lt;/li&gt;
+&lt;li&gt;안전지대는 유해한 영역이다. 편한 삶이란 곧 학습하지 않고, 진행하지 않으며, 더 이상의 발전이 없는 것을 의미한다. 안전지대에 있는 것은 정체되었다는 뜻이다. 안전지대는 퇴보로 가는 지름길이다.&lt;/li&gt;
+&lt;li&gt;타성에 젖어버리기란 쉬운 일이다.&lt;/li&gt;
+&lt;li&gt;스스로를 불편한 상황에 두어야 하고 많은 노력을 쏟아 부어야 한다. 위험하고 어려운 일이며 자신을 난처하게 만들 수도 있다.&lt;/li&gt;
+&lt;li&gt;의식적으로 자신의 기술에 투자하려 해야 한다. 그런 결정을 지속해야 한다. 힘든 일이라 생각하지 말라. 도전 안에서 즐거움을 느끼라.&lt;/li&gt;
+&lt;li&gt;다른 도구/프로그래밍 언어/OS/편집기를 사용해 본다.&lt;/li&gt;
+&lt;li&gt;키보드 단축키를 알아본다.&lt;/li&gt;
+&lt;li&gt;개인적인 프로젝트를 시작한다.&lt;/li&gt;
+&lt;li&gt;프로젝트의 새로운 부분을 담당하라.&lt;/li&gt;
+&lt;li&gt;한 가지 직업/역할에 너무 오래 머물거나 아무런 도전거리도 없는 같은 일만 반복하는 것은 위험하다. 자신만의 작은 코딩 제국의 왕이 되는 것이다. 참으로 안락한 상황이다.&lt;/li&gt;
+&lt;li&gt;좋은 프로그래머는 코드에 대한 접근 방식에서든 자신의 경력에 대한 접근 방식에서든 과감하다.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;윤리적인 프로그래머
+&lt;ul&gt;
+&lt;li&gt;기술 부채를 추후 탐금하기 위해 작업 목록에 새로운 업무에 추가한다.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;언어에 대한 사랑
+&lt;ul&gt;
+&lt;li&gt;좋은 프로그래머들은 다양한 언어와 방법론을 알고 있는 만큼 문제 해결의 범위가 넓다.&lt;/li&gt;
+&lt;li&gt;언어 고유의 방식과 관습에 돌입해야 한다.&lt;/li&gt;
+&lt;li&gt;의사소통은 말하는 것만큼이나 듣는 것도 중요하다.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;프로그래머의 자세&lt;/li&gt;
+&lt;li&gt;&amp;lsquo;더 열심히&amp;rsquo;보다는 &amp;lsquo;더 현명하게&amp;rsquo;
+&lt;ul&gt;
+&lt;li&gt;기술적 통찰력만이 아닌 문제를 풀고 전투를 선택하는 방법에서 찾아볼 수 있다.&lt;/li&gt;
+&lt;li&gt;좋은 프로그래머는 일을 빠르게 끝낸다. 어떻게 하면 문제를 잘 해결할 수 있는 지 아는 것이다.&lt;/li&gt;
+&lt;li&gt;현명하게 재사용한다. 직접 만들기보다는 이미 있는 코드를 사용하고, 더 중요한 일에 시간을 투자하라.&lt;/li&gt;
+&lt;li&gt;다른 사람이 거들어줄 수 있거나 훨씬 빨리 완료할 수 있다면, 그의 작업 목록에 올려주는편이 훨신 나을 것이다.&lt;/li&gt;
+&lt;li&gt;모든 것을 테스트하지 않고 취약할 것으로 예상되는 지점들에 집중하라. 테스트의 전장을 잘 선택하라.&lt;/li&gt;
+&lt;li&gt;최선책을 골라내기 위해 심사숙고하느라 많은 시간을 소모하지 말라.&lt;/li&gt;
+&lt;li&gt;우선 순위 설정에 엄격하라. 중요하지 않은 사소한 것에 몰두하지 말라.&lt;/li&gt;
+&lt;li&gt;새로운 업무가 할당될 때는 지금 당장 필요한 일인지부터 확인한다. 초기부터 지나치게 많은 코드를 작성하는 행동은 위험하다.&lt;/li&gt;
+&lt;li&gt;하나를 끝내고 다른 것을 하라.&lt;/li&gt;
+&lt;li&gt;코드와 설계를 가능한 한 작고 간결하게 유지하라.&lt;/li&gt;
+&lt;li&gt;미래의 요구사항이 무엇일지 지금 정확히 예견할 수는 없다. 지금 당장은 나중에 코드를 고치기 쉽도록 하는 정도에서 만족하는 것이 더 쉽고 똑똑한 일이다. 언젠가 발생할 가능성이 있는 기능을 미리 만들어주는 것은 더 어렵고 어리석다.&lt;/li&gt;
+&lt;li&gt;어려운 일을 미뤄두지 말라. 코드 통합 등이 그 예이다. 많은 사람들이 고통을 줄이기 위해 일을 미뤄두고 있다.&lt;/li&gt;
+&lt;li&gt;반복 작업은 손수하는 것보다는 도구를 작성하고 해당 도구를 한 번만 실행하는 편이 더 빠를 수 있다.&lt;/li&gt;
+&lt;li&gt;건전한 프로젝트는 연속한 야근을 요구하지 않는다.&lt;/li&gt;
+&lt;li&gt;항상 업무 흐름을 가속화해줄 새로운 도구를 찾으라. 다만 새로운 도구를 찾는 일에 노예가 되지는 말자.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;끝나야 끝나는 것
+&lt;ul&gt;
+&lt;li&gt;&amp;lsquo;완료 상태란 어떤 것인지, 그리고 &amp;lsquo;완료&amp;rsquo; 상태에 얼마나 가까운 지를 현실적으로 파악하는 것이다.&lt;/li&gt;
+&lt;li&gt;엄청난 업무를 할당받았다면, 일을 시작하기 전에 더 작고 이해할 만한 부분으로 일을 나누도록 하라.&lt;/li&gt;
+&lt;li&gt;&amp;lsquo;완료&amp;rsquo; 상태를 정의해야 한다.&lt;/li&gt;
+&lt;li&gt;&amp;lsquo;완료 상태&amp;rsquo;는 명확하고 구체적어야 한다. 구현해야 할 기능, 추가 혹은 확장해야 할 모든 API, 수정해야 할 특저 오류를 목록화한다. 모든 주요 관련자들이 성공 기준을 확인하도록 하라. 작동함을 증명하기 위해 코드로 작성된 테스트를 사용하라.&lt;/li&gt;
+&lt;li&gt;필요 이상으로 많은 작업을 수행하지 말라. &amp;lsquo;완료&amp;rsquo; 상태까지만 작업하라. 그런 뒤에는 중지하라.&lt;/li&gt;
+&lt;li&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;교훈 얻기
+&lt;ul&gt;
+&lt;li&gt;다른 프로그래머에게 의무감을 가지라. 그들과 주기적으로 작업 경과를 확인하라.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;사람의 힘&lt;/li&gt;
+&lt;li&gt;생각이 중요하다.
+&lt;ul&gt;
+&lt;li&gt;작업의 품질을 보증하기 위해 다른 프로그래머들에 대한 의무감을 가지면, 코드 품질을 환상적으로 높일 수 있다.&lt;/li&gt;
+&lt;li&gt;다른 사람이 코드를 읽고 품평하리라는 것을 알고 나면 좋은 코드를 짜고 싶은 마음이 더 커진다.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;말하기
+&lt;ul&gt;
+&lt;li&gt;코드는 다른 사람과의 의사소통이다. 명백하고 애매호호함이 없어야만 다른 사람들이 코드를 유지 보수할 수 있다.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;선언문
+&lt;ul&gt;
+&lt;li&gt;코드에 신경 쓰라&lt;/li&gt;
+&lt;li&gt;팀의 힘을 키우라&lt;/li&gt;
+&lt;li&gt;간결함을 유지하라&lt;/li&gt;
+&lt;li&gt;머리를 쓰라&lt;/li&gt;
+&lt;li&gt;그 무엇도 고정된 것은 없다.&lt;/li&gt;
+&lt;li&gt;꾸준히 배우라&lt;/li&gt;
+&lt;li&gt;(주체가 자신이든 팀이든 코드든 간에) 나아질 방향을 꾸준히 모색하라&lt;/li&gt;
+&lt;li&gt;언제나 가치를 전달하려 애쓰라. 길게 볼 수 있도록 해보라.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;코드 찬가
+&lt;ul&gt;
+&lt;li&gt;Rober C. Martin 보이스카웃 규칙&lt;/li&gt;
+&lt;li&gt;리더 자신이 문제의 일부라면?&lt;/li&gt;
+&lt;li&gt;보통 소프트웨어 개발과 관련해 까다로운 부분은 기술적인 측면에 있지 않다. 결국 사람의 문제다.&lt;/li&gt;
+&lt;li&gt;나쁜 습관에 빠져들지 않도록 하라.&lt;/li&gt;
+&lt;li&gt;보통 소프트웨어 개발과 관련핸 까다로운 부분은 기술적인 측면에 있지 않다. 결국 사람의 문제다.&lt;/li&gt;
+&lt;li&gt;나쁜 습관에 빠져들지 않도록 하라.&lt;/li&gt;
+&lt;li&gt;코드에 신경 쓰지 않는 코더에게 둘러싸여 있다면, 자신만이라도 건전한 태도를 유지하라.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;태도가 핵심이다.
+&lt;ul&gt;
+&lt;li&gt;좋은 프로그래머와 나쁜 프로그래머를 구분하는 요소는 바로 태도다.&lt;/li&gt;
+&lt;li&gt;태도는 기술적인 부분을 넘어선다.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ol&gt;</description></item><item><title>(책) 구글의 아침은 자유가 시작된다.</title><link>https://cychong47.github.io/post/2016/google-work-rules/</link><pubDate>Mon, 04 Jan 2016 14:03:21 +0900</pubDate><guid>https://cychong47.github.io/post/2016/google-work-rules/</guid><description>&lt;p&gt;일단 읽다가 중단. 다른 걸 먼저 봐야 할 것 같다. 공감하는 내용이 많지만 이 책을 본다고 내가 어쩔 수 있는 내용이 별로 없어서&amp;hellip;.&lt;/p&gt;
+&lt;p&gt;p78&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;이렇게 투명하게 공개함으로써 얻을 수 있는 이득은 회사의 모든 직원이 현재 무슨 일이 어떻게 진행되고 있는 지 알게 된다는 것이다. 어쩌면 별것 아닌 것처럼 들릴 수도 있지만 전혀 그렇지 않다. 덩치가 큰 조직에서는 흔히 여러 하부 조직들이 쓸데없는 일을 하면서 자원을 낭비한다. 그러나 정보가 공유될 때 전 직원은 다른 부서나 팀의 목표가 제각기 다르다는 사실을 충분히 이해하고 내부의 소모적인 경쟁을 피한다.&lt;/p&gt;</description></item><item><title>(책) NHN은 이렇게 한다. 소프트웨어 품질 관리</title><link>https://cychong47.github.io/post/2015/nhn_sw_quality_control/</link><pubDate>Mon, 07 Dec 2015 13:40:56 +0900</pubDate><guid>https://cychong47.github.io/post/2015/nhn_sw_quality_control/</guid><description>&lt;p&gt;누군가의 말을 빌리자면 품질 관리의 바이블(?)이라고 하는.&lt;br&gt;
+내용면에서는 특별한 건 없지만, 그래도 국내에서는 SW를 잘한다고 하는 사람들이 많이 가는 회사이고, 누구못지 않게 SW 문화가 좋을 거라고 생각하는 회사라 어떤 고민을 하고 어떻게 SW 품질을 위해 노력하는 지 알 수 있게 해주는 유일한 책이다.&lt;/p&gt;
+&lt;p&gt;외국의 많은 회사처럼 사내에 노하우 등을 많이 공유하는 좋은 모습을 보이고 있고, 실제 제공되는 서비스의 독점성이나 중립적이지 못한 언론 관련 내용은 맘에 들지 않지만 그래도 개발자 입장에서는 이렇게 현실적인 내용을 공유해주는게 감사할 따름&lt;/p&gt;</description></item><item><title>(책) 구글은 빅데이터를 어떻게 활용했는가</title><link>https://cychong47.github.io/post/2015/caeg-gugeuleun-bigdeiteoreul-eoddeohge-hwalyonghaessneunga/</link><pubDate>Mon, 07 Sep 2015 14:51:35 +0900</pubDate><guid>https://cychong47.github.io/post/2015/caeg-gugeuleun-bigdeiteoreul-eoddeohge-hwalyonghaessneunga/</guid><description>&lt;p&gt;일단 책 제목부터 구박.&lt;/p&gt;
+&lt;p&gt;&amp;ldquo;People Analytics: How social technology will transform business and what it tells us about the future of work&amp;quot;인데 이게 왜 저런 한글 제목이 된건지. 책 내용을 보면 짐작은 가지만, 책 제목만 봐서는 구글이 빅데이터를 이용해서 어떤 서비스를 만들어냈는지 라고 해석할 수 있지 않을까? 실제로는 구글등의 회사에서 빅데이터를 이용해 직원들 관리에 어떻게 활용했는지에 대한 내용이다. 그리고 실제 구글 이야기는 많이 나오지도 않는다.&lt;/p&gt;
+&lt;p&gt;하지만 책 내용에는 저자가 강조하는 몇 가지 핵심 내용이 있다. 그리고 그 내용에 나도 동의한다. 그것도 쌍수를 듣고. 그리고 지금 우리 회사에서 가장 문제가 되는 취약점이 이게 아닌가 싶다. 더불어 지금의 위기를 해결해 나가는데 이런 점을 해결하면 위기 극복에 분명 큰 도움이 될 거라고 생각한다.&lt;/p&gt;</description></item><item><title>(책) 빅 스몰</title><link>https://cychong47.github.io/post/2015/caeg-big-seumol/</link><pubDate>Sat, 04 Jul 2015 15:21:38 +0900</pubDate><guid>https://cychong47.github.io/post/2015/caeg-big-seumol/</guid><description>&lt;h3 id="p81"&gt;p81&lt;/h3&gt;
+&lt;blockquote&gt;
+&lt;p&gt;전문가라서 승진했더니 전문적인 일에서는 점점 더 멀어지고, 해보지 않은 일을 끊임없이 떠안기는 게 현대 기업의 문화다. 이 과정에서 효율이 떨어지기라도 한다면 기업은 &amp;lsquo;너는 쓸모없다&amp;rsquo;며 직원을 내친다.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;p&gt;중요한 것은 일을 제대로 해내는 능력을 갖춘 사람이다. 누구나 똑같은 말을 한다. 하지만 대기업은 최고의 능력을 갖춘 사람을 구하지 않는다. 조직 논리에 순적응할 수 있는 사람을 찾을 뿐이다. 따라서 결과적으로 대기업은 최고가 될 수 없다.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;그래서 Steve Jobs가 Apple은 여전히 작은 venture들의 모임이라고 한 건가? 그러게 되길 원하고&lt;/p&gt;</description></item><item><title>(책) 죽어라 일만 하는 사람은 절대 모르는 스마트한 성공들</title><link>https://cychong47.github.io/post/2015/caeg-jugeora-ilman-haneun-sarameun-jeoldae-moreuneun-seumateuhan-seonggongdeul/</link><pubDate>Mon, 18 May 2015 14:30:24 +0900</pubDate><guid>https://cychong47.github.io/post/2015/caeg-jugeora-ilman-haneun-sarameun-jeoldae-moreuneun-seumateuhan-seonggongdeul/</guid><description>&lt;h2 id="p13"&gt;p13&lt;/h2&gt;
+&lt;blockquote&gt;
+&lt;p&gt;나는 사업을 하면서 수시로 수확체감의 법칙을 실감한다. 어떤 사업이든 일정 수준에 도달하면 노동이나 자본 등 생산 요소를 늘려도 결과물은 비례해서 증가하지 않는다.&lt;br&gt;
+일과 성공 역시 마찬가지다. 들인 시관과 성과는 정비례하지 않는다. 6시간 일한다고 목표를 달성하지 못하는 것도 아니고 12시간 일한다고 두 배의 성과를 얻는 것도 아니다. 그런데도 여전히 많은 사람들이 50시간이 아니라 70시간을 일할 때 더 많은 일을 해낸다고 믿는다.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2 id="p15"&gt;p15&lt;/h2&gt;
+&lt;blockquote&gt;
+&lt;p&gt;우리가 12시간씩 일하며 인생은 원래 고달픈 거라고 스스로를 위로하는 동안 누군가는 획기적인 아이디어로 3시간 일하고 9시간 동안 여유를 즐긴다.&lt;br&gt;
+인간은 주당 30시간에서 60시간 정도 일할 때 &amp;lsquo;최대의 행복감&amp;rsquo;을 느낀다고 한다. 일하는 시간이 적으면 자신의 존재 가치를 증명하고 자아실현을 할 충분한 기회를 갖지 못하고, 일하는 시간이 너무 길면 체력이 떨어지면서 삶에 대한 의욕도 사라진다. 잘 살기 위해 일을 하는 것인데 일하는데 모든 에너지를 다 써서 정작 좋아하는 것을 즐기지 못하게 되는 것이다.&lt;/p&gt;</description></item><item><title>(책) 단</title><link>https://cychong47.github.io/post/2015/dan/</link><pubDate>Tue, 12 May 2015 12:40:15 +0900</pubDate><guid>https://cychong47.github.io/post/2015/dan/</guid><description>&lt;h2 id="단의-공식"&gt;&amp;lsquo;&amp;lsquo;단의 공식&amp;rsquo;&amp;rsquo;&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;버려라 : 중요한 것을 위해 덜 중요한 것을 버리는 것. &amp;lsquo;더 많이&amp;rsquo;를 버리고 핵심에 집중&lt;/li&gt;
+&lt;li&gt;세워라 : 왜 일해야 하는 지 사명을 세우고, 내가 누구인지 정체성을 세우고, 어디로 가야 할 지 길을 세워야 한다.&lt;/li&gt;
+&lt;li&gt;지켜라 : 단순함의 핵심은 지속 가능에 달려 잇다.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id="p14"&gt;p14&lt;/h3&gt;
+&lt;blockquote&gt;
+&lt;p&gt;GE의 제프리 이멜트(Jeffrey Immelt) 회장은 2013년 10월 BBC와의 인터뷰에서 이렇게 설명했다.
+&amp;quot; 조직이 커지면서 중요하지 않은 일을 너무 많이 하고 있다. 단순화는 직원들이 중요하지 않은 일에 맞서 정말 중요한 일을 함께 하도록 돕는 도구다. 조직을 더 날렵하게 만들고, 관료주의를 없애고, 시장에 완전히 집중하는 것을 뜻한다&amp;quot;&lt;/p&gt;</description></item><item><title>(책) 바지 벗고 일하면 안되나요?</title><link>https://cychong47.github.io/post/2014/caeg-baji-beosgo-ilhamyeon-andoenayo/</link><pubDate>Sun, 19 Oct 2014 03:55:01 +0900</pubDate><guid>https://cychong47.github.io/post/2014/caeg-baji-beosgo-ilhamyeon-andoenayo/</guid><description>&lt;p&gt;원제 : The year without pants&lt;/p&gt;
+&lt;h3 id="p42"&gt;p42&lt;/h3&gt;
+&lt;blockquote&gt;
+&lt;p&gt;방송에서 IDEO가 &amp;ldquo;Deep Dive&amp;quot;라는 아이디어 개발 기법을 써서 닷새 만에 쇼핑카트를 개선하는 과정을 보여주었다. 곧이어 수 많은 기업이 Deep Dive 기법을 어설프게 따라 했지만, 놀랍게도 결과는 그들의 기대에 못 미쳤다. IDEO의 회의 단계와 규칙을 그대로 따라 하고 아무리 노력한들 한 가지가 빠진 상태에서는 방송에서 본 것과 같은 결과가 나올 리 없었다. &lt;strong&gt;문제의 누락된 요소이자 가장 중요한 요소는 바로 거기에 참여한 사람들이었다&lt;/strong&gt; 나이트라인을 시청한 다른 기업들의 경우 IDEO처럼 디자인에 재능이 뛰어난 직원들이 근무하는 환경이 아니었다. 화면에서는 드러나지 않았지만, 이런 재능보다도 더 중요한 것은 IDEO 직원들이 공유하는 가치관과 태도였다.
+이렇게 겉모양만 흉내 내는 것을 인류학 용어로는 &amp;lsquo;화물 숭배 Cargo cult&amp;rsquo;라고 하는데 원주민들이 유용한 화물을 실어다 주던 비행기가 다시 오기를 기원하면서 활주로를 꾸며놓고 의식을 거행하는 것을 가리킨다.&lt;/p&gt;</description></item><item><title>(책) Violent Python</title><link>https://cychong47.github.io/post/2014/caeg-violent-python/</link><pubDate>Sat, 27 Sep 2014 16:43:27 +0900</pubDate><guid>https://cychong47.github.io/post/2014/caeg-violent-python/</guid><description>&lt;p&gt;오래만에 재밌는 책을 봤다.&lt;/p&gt;
+&lt;p&gt;해커를 위한 책이라고 하지만, 해킹에 관한 기법보다는 network application을 작성하는데 유용한 scapy, dpkt 그리고 정규식에 대한 설명이 유용하다.
+마침 요 근래 업무용으로 Python을 이용해서 패킷 만들고, 송/수신하는 유틸리티를 만들고 있어 Impacket 모듈을 많이 사용했는데 그것보다 scapy 가 훨씬 편해 보인다.&lt;/p&gt;
+&lt;p&gt;새 책을 사긴 그렇고 중고책을 하나 구할 까 했는데 알라딘에서 중고책 매입가가 4천원 대. 작년 초에 나온 책인데 너무 싸게 매입하는 게 아닌가&lt;/p&gt;
+&lt;p&gt;일단 책 보면서 유용하다 싶은 내용을 몇 가지 주제로 나눠 정리했다.&lt;/p&gt;</description></item><item><title>(책) 0과 1로 세상을 바꾸는 구글 그 모든 이야기(In the Flex)</title><link>https://cychong47.github.io/post/2014/0gwa-1ro-sesangeul-bagguneun-gugeul-geu-modeun-iyagiin-the-flex/</link><pubDate>Sat, 27 Sep 2014 13:33:25 +0900</pubDate><guid>https://cychong47.github.io/post/2014/0gwa-1ro-sesangeul-bagguneun-gugeul-geu-modeun-iyagiin-the-flex/</guid><description>&lt;h3 id="p230"&gt;p230&lt;/h3&gt;
+&lt;blockquote&gt;
+&lt;p&gt;OKR(Objectives and Key Results) 는 원래 인텔의 앤디 그로브(Andy Grove)가 고안한 경영기법이다.
+&amp;hellip;
+무었을 하고 싶어하는지만 정하는 것이 아니라, 측정 가능하게 업무(핵심결과)를 나눠야 한다는 내용이었다.&lt;br&gt;
+OKR은 구글문화의 핵심이 되었다. 모든 직원이 나름의 OKR을 분기별로, 연도별로 세워서 승인을 받아야 한다. 그 뿐만이 아니라 팀 수준, 부서 수준, 심지어 회사 수준의 OKR도 구축했다(회사 수준의 OKR은 중요한 구상이나 시래를 만회하려 할 때 구축했다) 1년에 네 차례씩 구글 직원 모두 멈춰 서서 부서별 회의를 갖고 OKR 진전상황을 확인한다.&lt;br&gt;
+이러한 제도를 구글이 관료제화 되어가는 신호가 아닐까 생각하는 사람도 있을 것이다. 실제 업무를 못하게 될 정도로 잡일 프로젝트를 도입한 것이 아닌가 궁금할지도 모른다. 하지만 구글 직원들은 그렇게 생각하지 않는다. 그들은 OKR을 하나의 데이터로 여긴다. 성과를 측정하는 수단으로 계량화가 가능한 방식이기 때문이다. OKR은 측정이 가능하다는 점, 거기에 핵심이었다. &amp;lsquo;지메일을 성공시키겠다&amp;rsquo;가 아니라
+&amp;lsquo;지메일을 9월에 발족하여 11월까지 사용자 수를 100만 명으로 늘리겠다&amp;rsquo;라고 계획하는 것이다. 마리아 메이어는 이렇게 말한다. &amp;ldquo;수치가 없으면 핵심결과가 아니죠&amp;rdquo; OKR은 야망을 구체화시킨다. 도어는
+위험을 받아들일 수 있도록 허용해 주기도 합니다.&amp;quot; OKR은 목표를 도달하지 못한다는 것보다 초과 달성했을 경우에 더 문제가 된다. 미리 목표를 편안하게 설정해서 편안하게 업무를 했다는 뜻이 되기 때문이다. 구글은 목표치를 초과달성한 직원을 도전적이지 않다고 여긴다.&lt;/p&gt;</description></item><item><title>(책) 혼. 창. 통.</title><link>https://cychong47.github.io/post/2014/caeg-hon-cang-tong/</link><pubDate>Wed, 24 Sep 2014 14:26:24 +0900</pubDate><guid>https://cychong47.github.io/post/2014/caeg-hon-cang-tong/</guid><description>&lt;p&gt;혼창통by 이지훈&lt;/p&gt;
+&lt;h3 id="8p"&gt;8p&lt;/h3&gt;
+&lt;blockquote&gt;
+&lt;p&gt;혼 : 가슴 벅차게 하는 비전이 사람을 움직인다.&lt;br&gt;
+창 : 끊임없이 &amp;ldquo;왜&amp;quot;라고 물어라, 그러면 열린다.
+통 : 만나라, 또 만나라. 들어라 잘 들어라.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h3 id="16p"&gt;16p&lt;/h3&gt;
+&lt;blockquote&gt;
+&lt;p&gt;IBM, P&amp;amp;G, Cisco, CEMEX 이 기없들의 공통점은 무엇일까? 그렇다 공룡처럼 몸집이 큰 기업들이다. 공룡인데도 민첩하다. 한가지 공통점은 회사 전체가 보다 큰 가치, 가슴을 울렁이게 하는 원대한 비전을 공유한다는 사실이다. 하버드경영대학원의 로자베스모스 캔터 교수(Rosabeth Moss Kanter) &amp;ldquo;모든 직원이 보다 큰 가치를 공유하게 되면 일선에서 어떤 문제가 부딛쳐도, 혹은 본사로부터 아무리 떨어진 곳에서 일하더라도 자발적으로 문제의 해결을 주도하게 된다&amp;rdquo;&lt;/p&gt;</description></item><item><title>(책) 더 인터뷰</title><link>https://cychong47.github.io/post/2014/caeg-deo-inteobyu/</link><pubDate>Sun, 21 Sep 2014 12:21:48 +0900</pubDate><guid>https://cychong47.github.io/post/2014/caeg-deo-inteobyu/</guid><description>&lt;h3 id="p24"&gt;p24&lt;/h3&gt;
+&lt;blockquote&gt;
+&lt;p&gt;만약 직원이 자신이 하려는 도전에 따르는 책임을 받아들이려고 한다면, 많은 조직이 책임을 더 부여하려고 할 것이다.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h3 id="p32-rolf-dobelli-스마트한-생각들-스마트한-선택들"&gt;p32 Rolf Dobelli 스마트한 생각들, 스마트한 선택들&lt;/h3&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&amp;lsquo;확증 편향&amp;rsquo;. 사람은 자신이 확실하는 일에 대해 옳다고 증명해주는 증거들만 철석같이 믿지요.&lt;br&gt;
+&amp;lsquo;사회적 검증&amp;rsquo;도 대단히 안 좋고 위험한 행동 오류.&lt;br&gt;
+권력이나 권위 있는 사람들의 말을 무조건 믿는 &amp;lsquo;권위자 편향&amp;rsquo; 또한 위험. 전 세계적으로 경제학자 수는 100만 명이 넘지만 단 1명도 2008년 금융 위기를 정확히 예측하지 못했다. &lt;br&gt;
+당장 눈앞에 펼쳐진 자료들을 과신하는 &amp;lsquo;가용성 편형&amp;rsquo;&lt;/p&gt;</description></item><item><title>(책) 왜 공부하는가</title><link>https://cychong47.github.io/post/2014/caeg-wae-gongbuhaneunga/</link><pubDate>Thu, 11 Sep 2014 15:40:52 +0900</pubDate><guid>https://cychong47.github.io/post/2014/caeg-wae-gongbuhaneunga/</guid><description>&lt;p&gt;김진애&lt;/p&gt;
+&lt;h1 id="p32"&gt;p32&lt;/h1&gt;
+&lt;blockquote&gt;
+&lt;p&gt;뒤를 돌아보면, &amp;ldquo;1년 동안 공부만 할 거야!&amp;ldquo;하고 결단하고 그 결단을 독하게 지켰던 체험을 통해 얻은 가장 큰 자산은 &amp;lsquo;독해야 할 때 독해질 수 있다;는 자신감이다. 이 자신감은 내 일생 내내 큰 자산이 되었다. &amp;lsquo;필요하다면 유혹을 끊어낼 수 있다. 잔가지들에 연연해하지 않을 수 있다. 내 온 자신을 던질 수 있다. 몰입할 수 있다&amp;rsquo;는 믿음은 중요하다. 한번 독해지기를 경험해보면 언제나 독해질 수 있는 것이다.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h1 id="p77"&gt;p77&lt;/h1&gt;
+&lt;blockquote&gt;
+&lt;p&gt;무시당하는 느낌이 없어졌다. 조롱당하는 느낌, 모욕당하는 느낌도 없어졌다. 기대를 받는다는 느낌도 생겼다. &amp;ldquo;이거 해도 되나?&amp;rdquo; 자문하던 주저감이 줄어들었다. &amp;ldquo;이거 말해도 되나? 이런 거 물어봐도 되나?&amp;rdquo; 같은 자기검열도 사라졌다.&lt;br&gt;
+&amp;hellip;&lt;br&gt;
+사람 대접받는다는 느낌, 같은 사람으로 대할 수 있고 대해질 수 있다는 느낌이었다. 서로의 차이는 있지만 가능성은 누구에게나 열려 있고 역할은 누구에게나 주어질 수 있다는 분위기였다.&lt;/p&gt;</description></item><item><title>(책) 빅데이터 승리의 과학</title><link>https://cychong47.github.io/post/2014/caeg-bigdeiteo-seungriyi-gwahag/</link><pubDate>Tue, 09 Sep 2014 03:41:02 +0900</pubDate><guid>https://cychong47.github.io/post/2014/caeg-bigdeiteo-seungriyi-gwahag/</guid><description>&lt;p&gt;(책) 빅데이터 승리의 과학&lt;/p&gt;
+&lt;h2 id="technology-팀"&gt;Technology 팀&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;오바마 2012년 선거 당시 2008년 당시의 SNS를 활용하는 수준을 넘어서 통합적인 선거 지원을 위해 빅데이터 기술 활용.&lt;/li&gt;
+&lt;li&gt;선거 특성에 맞는 AWS 를 이용해서 인프라를 구축하고, R 언어를 활용. 하둡은 실시간성이 부족하여 제한적으로 사용.&lt;/li&gt;
+&lt;li&gt;디지털 팀의 CDS(Chief Digital Strategist)는 31살 Joe Rosparse, CTO는 하퍼 리드(33)등을 고용.&lt;br&gt;
+벤처기업 엔지니어 출신. 혁신을 좋아하고, 기존 틀과 문화에 얽매이지 않고 오직 해결책에만 관심을 둠.
+리드는 50명에 이르는 Technology 팀 멤버를 구성. Twitter, Google, Facebook, Craiglist, Quora, orbits, IBM, MS 등에서 일하는 인력들이 합류.&lt;/li&gt;
+&lt;li&gt;&amp;ldquo;외뿔고래(Narwhal)&amp;ldquo;라고 불린 IT 통합 프로젝트 . 하나의 애플리케이션이나 서비스가 아니라 아키텍쳐였으며 전체를 아우르는 API의 집합&lt;/li&gt;
+&lt;li&gt;서로 다른 형태의 DB를 통합하여 하나처럼 작동하는 시스템 구축. RestFul API를 이용해서 구축&lt;/li&gt;
+&lt;li&gt;모든 애플리케이션이 오직 외뿔고래 API를 통해서만 DB에 접근할 수 있게 함. 외뿔고래 API를 이용해서 각각의 앱들을 모두 분리시킴으로써 각각의 앱들을 개별적으로 확장할 수 있게 하고, 앱들 간의 데이터를 공유하게 함.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id="이전-선거-실패에-대한-반성"&gt;이전 선거 실패에 대한 반성&lt;/h2&gt;
+&lt;blockquote&gt;
+&lt;p&gt;2000년에 이어 2004년 선거까지 연거푸 패배의 쓴 잔을 마신 민주당 케리 후보 캠프에서 활동했던 사람들과 진보진영의 시민사회단체 활동가 20여 명이 2004년 대선이 끝난 후 2박3일간의 모임을 가졌다. 그 자리에서 그들은 민주당과 진보진영의 문제점과 개선방안에 대해서 치열하게 토론을 갖고, 그 동안 민주당과 시민사회단체들이 너무 선언적인 활동에만 치우치고 자기들끼리만 연대하여 활동하였으며 선거운동은 대부분 상층 정치전략가들에 의해서 좌우되었다고 반성하였다. 그들은 민주당이 선거에서 승리하기 위해서는 대중 속으로 더 파고들어야 하고 더 효율적이고 실질적인 조직활동을 해야 한다고 결론 내렸다.&lt;/p&gt;</description></item><item><title>(책) 구글은 SKY를 모른다</title><link>https://cychong47.github.io/post/2014/caeg-gugeuleun-skyreul-moreunda/</link><pubDate>Sun, 31 Aug 2014 13:29:59 +0900</pubDate><guid>https://cychong47.github.io/post/2014/caeg-gugeuleun-skyreul-moreunda/</guid><description>&lt;blockquote&gt;
+&lt;p&gt;나는 매주 금요일 오후가 되면 구글이라는 회사의 위력을 다시금 실감한다. 알려진 대로 구글은 매주 금요일마다 전 직원이 모이는 TGIF라는 행사가 있다.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;정말 지금도 이걸 하고 있다니 놀랍기만 하다. 회사 규모가 커져서 못할 줄 알았는데.&lt;br&gt;
+과연 우리 회사의 임원들은 같은 시간에 뭘 하고 있을까? 구글보다 비즈니스의 폭이 넓어서 더 많은 회의가 필요해서?&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;이들 두 창업자의 가장 큰 관심사는 구글 비즈니스가 아니라, 구글러들의 행복과 문화를 어떻게 하면 좀 더 발전시켜나갈 것인가에 있다. 이들은 직원들이 진정으로 행복한 삶을 살면서 사명감을 갖고 일할 수 있는 비전을 제시한다. 우리 스스로가 행복해야, 우리가 세상을 바꾸고 행복하게 만들 수 있다는 경영 철학 때문이다. 나는 &amp;lsquo;행복하게 일해야 행복한 제품을 만들고, 세상 사람들이 다 같이 행복할 수 있다&amp;rsquo;는 아름다운 이야기를 매주 들으면서 나 스스로도 그렇게 바뀌어가고 있다.&lt;/p&gt;</description></item><item><title>(책) 누가 미래를 가질 것인가?</title><link>https://cychong47.github.io/post/2014/nuga-miraereul-gajil-geosinga/</link><pubDate>Sun, 17 Aug 2014 14:29:31 +0900</pubDate><guid>https://cychong47.github.io/post/2014/nuga-miraereul-gajil-geosinga/</guid><description>&lt;p&gt;p19&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&amp;lsquo;인생은 해석&amp;rsquo;이라는 말이 있다. 인생을 살면서 많은 사건을 겪게 되는데, 그 사건들을 어떻게 해석하느냐에 따라 삶의 방향이 달라진다는 뜻이다. 마찬가지로 우리가 살고 있는 시대를 명확하게 바라보고 해석할 필요가 있다. 그에 다라 우리가 삶을 사는 방식과 이 사회가 문제에 대처해나가는 방향은 완전히 달라진다.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;해석에 따라 어떻게 나에게 의미를 갖는 지가 달라진다.&lt;/p&gt;
+&lt;p&gt;p109&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;문제는 목표과 자세다. 성공의 지름길만 걸어가는 왕도는 없다. 오히려 외도를 하면서도, 전혀 다른 커뮤니티에 참여하면서 기회를 포착하기도 한다. 도전을 통해 얻은 시행착오오 처절한 조절도 커리어에는 오히려 큰 도움이 된다.&lt;/p&gt;</description></item><item><title>(책) 스핀 잇</title><link>https://cychong47.github.io/post/2014/seupin-is/</link><pubDate>Fri, 15 Aug 2014 14:58:34 +0900</pubDate><guid>https://cychong47.github.io/post/2014/seupin-is/</guid><description>&lt;h2 id="p76"&gt;p76&lt;/h2&gt;
+&lt;blockquote&gt;
+&lt;p&gt;이 아이디어를 MIT 경영대학원 교수인 Glen Urban에게 가져갔을 때 그는 &amp;ldquo;이 아이디어는 당신이 생각하는 것보다 훨씬 스케일이 크다. 두 배의 속도로 움직이고, 두 배 크게 생각해야 한다&amp;quot;고 조언했다.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;&amp;ldquo;이 아이디어는 당신이 생각하는 것보다 훨씬 스케일이 크다. 그러므로 도전하지 말아라&amp;rdquo; 라고 말할 줄 알았는데&amp;hellip;&lt;/p&gt;
+&lt;h2 id="p85"&gt;p85&lt;/h2&gt;
+&lt;blockquote&gt;
+&lt;p&gt;자포스 CEO 토니. 회사를 판매한 경우 그 돈을 가지고 할 수 있는 일을 나열해 봤더니 대부분의 것들이 회사를 팔지 않고도 할 수 있는 일이 대부분이었다고. 시간이 부족할 뿐. 그래서 회사를 판매하지 않기로 결심했다고&lt;/p&gt;</description></item><item><title>(책) 화웨이의 위대한 늑대문화</title><link>https://cychong47.github.io/post/2014/hwaweiyi-widaehan-neugdaemunhwa/</link><pubDate>Thu, 14 Aug 2014 14:41:23 +0900</pubDate><guid>https://cychong47.github.io/post/2014/hwaweiyi-widaehan-neugdaemunhwa/</guid><description>&lt;p&gt;화웨이가 어떻게 지금과 같이 세계 2위의 통신업체가 될 수 있었는지 CEO인 런정페이를 중심으로 그 비결을 설명한 책.&lt;/p&gt;
+&lt;p&gt;늙지 않는 조직을 만들기 위해 끊임없이 노력하고 일괄 사퇴 후 재취업과 같은 극단적인 선택도 마다하지 않은 화웨이. 시스코가 괜히 건드려 무료 홍보해주고(마치 애플이 삼성을 고소해 홍보해 줬다는 것과 유사) 모토롤라가 CEO가 바뀌지 않았으면 화웨이의 시스템 사업을 인수해서 지금의 화웨이가 없었을 텐데. 만일 모토로라가 화웨이의 사업을 인수했다 해도 모토로라의 시스템 사업은 망했을 거라고 생각. 화웨이는 런정페이가 없으면, 혹은 그가 만들어 놓은 문화와 시스템이 동작하지 않으면 다른 회사와 다름이 없으므로.&lt;/p&gt;</description></item></channel></rss>

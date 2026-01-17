@@ -1,5 +1,22 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>논문 on Keep calm and write something</title><link>https://cychong47.github.io/tags/%EB%85%BC%EB%AC%B8/</link><description>Recent content in 논문 on Keep calm and write something</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Sun, 01 Apr 2018 02:38:40 +0000</lastBuildDate><atom:link href="https://cychong47.github.io/tags/%EB%85%BC%EB%AC%B8/index.xml" rel="self" type="application/rss+xml"/><item><title>Cuckoo Switch</title><link>https://cychong47.github.io/post/2014/cuckoo-switch/</link><pubDate>Sun, 09 Nov 2014 08:48:38 +0900</pubDate><guid>https://cychong47.github.io/post/2014/cuckoo-switch/</guid><description>Cuckoo 알고리즘을 사용하여 Flow lookup과 flow update 성능을 높힌 것과 DPDK를 이용하여 패킷 처리 성능을 높힌 것
-출처 : Scalable, High Performance Ethernet Forwarding with CuckooSwitch
-DPDK DPDK를 이용한 IO 성능 개선한 것 외에 특이한 것은 없음. Cuckoo hashing 대개 FIB update를 위해 RCU(Read Copy Update)를 사용함. 이 경우 완전한 정보를 갖는 additional entry가 필요
-수정된 cuckoo algorithm을 기반으로 한 flow table 사용 Basic Cuckoo hashing
-ensures 50% table space utilization 4-way associative hash table has 95% utilization</description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>논문 on Keep calm and Write something</title><link>https://cychong47.github.io/tags/%EB%85%BC%EB%AC%B8/</link><description>Recent content in 논문 on Keep calm and Write something</description><generator>Hugo</generator><language>en-us</language><lastBuildDate>Sun, 01 Apr 2018 02:38:40 +0000</lastBuildDate><atom:link href="https://cychong47.github.io/tags/%EB%85%BC%EB%AC%B8/index.xml" rel="self" type="application/rss+xml"/><item><title>Cuckoo Switch</title><link>https://cychong47.github.io/post/2014/cuckoo-switch/</link><pubDate>Sun, 09 Nov 2014 08:48:38 +0900</pubDate><guid>https://cychong47.github.io/post/2014/cuckoo-switch/</guid><description>&lt;p&gt;Cuckoo 알고리즘을 사용하여 Flow lookup과 flow update 성능을 높힌 것과 DPDK를 이용하여 패킷 처리 성능을 높힌 것&lt;/p&gt;
+&lt;p&gt;출처 : &lt;a href="https://www.cs.cmu.edu/~binfan/papers/conext13_cuckooswitch.pdf"&gt;Scalable, High Performance Ethernet Forwarding with CuckooSwitch&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id="dpdk"&gt;DPDK&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;DPDK를 이용한 IO 성능 개선한 것 외에 특이한 것은 없음.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id="cuckoo-hashing"&gt;Cuckoo hashing&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;대개 FIB update를 위해 RCU(Read Copy Update)를 사용함. 이 경우 완전한 정보를 갖는 additional entry가 필요&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;수정된 cuckoo algorithm을 기반으로 한 flow table 사용&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Basic Cuckoo hashing&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;ensures 50% table space utilization&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;4-way associative hash table has 95% utilization&lt;/p&gt;</description></item></channel></rss>

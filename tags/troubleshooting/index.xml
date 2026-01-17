@@ -1,25 +1,158 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Troubleshooting on Keep calm and write something</title><link>https://cychong47.github.io/tags/troubleshooting/</link><description>Recent content in Troubleshooting on Keep calm and write something</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Fri, 24 Jul 2020 00:22:45 +0900</lastBuildDate><atom:link href="https://cychong47.github.io/tags/troubleshooting/index.xml" rel="self" type="application/rss+xml"/><item><title>Troubleshooting - rss.xml is not updated</title><link>https://cychong47.github.io/post/2020/2020-07-24-rss-is-not-updated/</link><pubDate>Fri, 24 Jul 2020 00:22:45 +0900</pubDate><guid>https://cychong47.github.io/post/2020/2020-07-24-rss-is-not-updated/</guid><description>갑자기 어느 날 부터(정확히 말하면 7월 14일부터) podcast가 업데이트가 되지 않는다.
-다음 날도, 그 다음 날도. 흠. 뭐가 문제일까?
-아무튼 hugo를 이용해서 직접 사이트를 빌드해 봤다. 그랬더니 이상한 에러가 난다. os.Stat 파일이 없다는 이야기도 나오고.
-뭔가 문제가 있는데 밤이라 그런지 그냥 단순하게 Hugo zen-theme 이 rss를 제대로 생성하지 못한다는 내용으로 검색을 해 봤는데 결과가 안 나온다.
-cychong@mini1:~/work/cbs-ost$ hugo -t zen Building sites … WARN 2020/07/23 23:21:25 .File.UniqueID on zero object. Wrap it in if or with: {{ with .</description></item><item><title>No Podcast Update?</title><link>https://cychong47.github.io/post/2020/2020-06-26-no-podcast-update/</link><pubDate>Fri, 26 Jun 2020 22:11:32 +0900</pubDate><guid>https://cychong47.github.io/post/2020/2020-06-26-no-podcast-update/</guid><description>음
-이건 무슨 상황일까?
-mp3 파일은 레코딩이 제대로 되었고, md 파일도 만들었는데 site를 rebuild했다는 메시지가 오질 않는다. 안그래도 Telegram 을 이용해서 메시지를 보내는 기능을 추가해야 겠다고 생각했을때 아래처럼 정상적으로 동작하는 경우가 아니라 뭔가 문제가 있는 상황을 어떻게 알 수 있을까 하는 고민을 했었는데 생각보다 일찍 그 상황(아마도 많은 경우 중 하나 겠지만) 이 온 듯했다. 이렇게 메시지가 안 온 것으로 뭔가 문제가 있다는 걸 판단하는 건 비효율적인 방법이라 보다 적극적으로 어떤 비정상 상황이고, 가능하면 왜 그런 지도 파악해서 메시지를 보내게 할 필요가 있다는 생각을 했었는데&amp;hellip;</description></item><item><title>WordPress 로그인 불가 문제 해결</title><link>https://cychong47.github.io/post/2020/recover-broken-users-table/</link><pubDate>Fri, 08 May 2020 23:36:45 +0900</pubDate><guid>https://cychong47.github.io/post/2020/recover-broken-users-table/</guid><description>말썽쟁이(?) wordpress 블로그가 또 문제를 일으켰다.
-이번에도 로그인이 안되는 현상인데 지난 번과는 다른 에러 메시지가 나온다. 즉 지난 번 해결책은 소용이 없을 거라는 불길한 예감이.
-로그인 계정 자체가 없다는 이 어이없는 상황.
-그래서 지난 번에 유용하게 사용했던 phpmyadmin을 이용해서 DB 정보를 확인해봤다. (다행히 MySql, wordpress 와 함께 실행시켜놓은 phpmyadmin container가 동작하고 있어서 지난 번과 같이 8181 포트로 접속하면 된단. 다만 로그인 암호를 기억하지 못하고 있는 나 대신 Safari가 기억하고 있어서 그냥 접속했다는)</description></item><item><title>Upgrade ghost to v3.0</title><link>https://cychong47.github.io/post/2019/upgrade-ghost-to-v3-0/</link><pubDate>Tue, 05 Nov 2019 14:58:16 +0900</pubDate><guid>https://cychong47.github.io/post/2019/upgrade-ghost-to-v3-0/</guid><description>부제 1. pod가 동작하지 않을때 원인 찾기 부제 2. helm upgrade 명령을 이용하여 업데이트 하기 부제 3. sqlite를 이용해서 ghost.db 직접 수정하기 values.yaml에 명시되어 있는 ghost docker image의 버전 정보를 2.31.0에서 3.0.2 최신 버전으로 업데이트 후 아래 명령어로 업데이트
-$ helm upgrade --debug my-ghost ghost-with-helm [debug] Created tunnel using local port: &amp;#39;45263&amp;#39; [debug] SERVER: &amp;#34;127.0.0.1:45263&amp;#34; REVISION: 6 RELEASED: Tue Nov 5 22:25:19 2019 CHART: ghost-0.1.0 USER-SUPPLIED VALUES: {} COMPUTED VALUES: affinity: {} env: node_env: production url: http://sosa0sa.</description></item><item><title>What if helm command refuse to execute</title><link>https://cychong47.github.io/post/2019/what-if-helm-command-refuses/</link><pubDate>Tue, 05 Nov 2019 14:47:41 +0900</pubDate><guid>https://cychong47.github.io/post/2019/what-if-helm-command-refuses/</guid><description>helm 명령을 입력했는데 다음과 같은 에러 메시지를 내면서 실행을 거부한다.
-$ helm ls snap-confine has elevated permissions and is not confined but should be. Refusing to continue to avoid permission escalation attacks 에러 메시지를 찾아보니 보안 관련된 내용이 이슈라고 다음과 같이 하면 해결된다.
-$ sudo systemctl enable --now apparmor.service Synchronizing state of apparmor.service with SysV service script with /lib/systemd/systemd-sysv-install. Executing: /lib/systemd/systemd-sysv-install enable apparmor 하지만 이제는 helm의 client와 server 버전이 맞지 않다는 에러</description></item><item><title>kubelet이 실행되지 않을때</title><link>https://cychong47.github.io/post/2019/what-if-kubelet-is-not-started/</link><pubDate>Tue, 05 Nov 2019 14:43:35 +0900</pubDate><guid>https://cychong47.github.io/post/2019/what-if-kubelet-is-not-started/</guid><description>mini1 리붓 후 ghost 접속이 안됨.
-docker를 직접 실행시키는 wordpress는 정상적으로 실행
-그래서 kubectl get svc 명령을 치니 접속이 안된다고.
-$ ps -ef |grep kube cychong 7461 2486 0 23:26 pts/0 00:00:00 grep --color=auto kube $ service kubelet status ● kubelet.service - kubelet: The Kubernetes Node Agent Loaded: loaded (/lib/systemd/system/kubelet.service; enabled; vendor preset: enabled) Drop-In: /etc/systemd/system/kubelet.service.d └─10-kubeadm.conf Active: activating (auto-restart) (Result: exit-code) since Mon 2019-11-04 23:26:47 KST; 5s ago Docs: https://kubernetes.</description></item><item><title>Recover WordPress container</title><link>https://cychong47.github.io/post/2018/recovery-failed-wordpress-container/</link><pubDate>Wed, 05 Sep 2018 14:10:39 +0900</pubDate><guid>https://cychong47.github.io/post/2018/recovery-failed-wordpress-container/</guid><description>One day The Wordpress container does not work at all. docker ps로 확인하면 1분 주기로 restart를 반복하고 있다. 경험상 이건 wordpress 앱이 초기화 과정에서 문제가 있는 거라는 걸로 짐작된다. 로그를 확인해 보니 아래와 같은 에러만 출력.
-뭐가 문제일까 멀쩡히 잘 돌던 녀석들인데.
-mini2:html cychong$ docker logs -f f12c3b3a57ef ... Warning: mysqli::__construct(): Unexpected server respose while doing caching_sha2 auth: 109 in Standard input code on line 22 MySQL Connection Error: (2006) MySQL server has gone away Warning: mysqli::__construct(): MySQL server has gone away in Standard input code on line 22 Warning: mysqli::__construct(): (HY000/2006): MySQL server has gone away in Standard input code on line 22 Warning: mysqli::__construct(): Unexpected server respose while doing caching_sha2 auth: 109 in Standard input code on line 22 Warning: mysqli::__construct(): MySQL server has gone away in Standard input code on line 22 Warning: mysqli::__construct(): (HY000/2006): MySQL server has gone away in Standard input code on line 22 MySQL Connection Error: (2006) MySQL server has gone away Warning: mysqli::__construct(): Unexpected server respose while doing caching_sha2 auth: 109 in Standard input code on line 22 MySQL Connection Error: (2006) MySQL server has gone away Warning: mysqli::__construct(): MySQL server has gone away in Standard input code on line 22 Warning: mysqli::__construct(): (HY000/2006): MySQL server has gone away in Standard input code on line 22 Let’s debug 하지만 뭔가 달라진 게 있으니 갑자기 문제가 발생했겠지.</description></item><item><title>Update ansible-playbook for wordpress</title><link>https://cychong47.github.io/post/2018/update-ansible-playbook-for-wordpress/</link><pubDate>Thu, 14 Jun 2018 15:13:52 +0900</pubDate><guid>https://cychong47.github.io/post/2018/update-ansible-playbook-for-wordpress/</guid><description>이상하게 wordpress 버전이 올라가면 docker용 wordpress 버전도 함께 올라갈 텐데 아무리 최신 docker image를 받아 container를 만들어도 wordpress admin 계정에 들어가면 wordpress를 업데이트 해야 한다고 한다. docket store(http://store.docker.com)에 가면 분명히 wordpress 최신 버전으로 패키징되어 있는 데&amp;hellip;
-혹시나 하고 ansible-playbook을 보니 /var/www/html에 마운트되는 위치에 이전 버전의 wordpress 파일들이 존재하고 있었다.
-volumes: - &amp;#34;/Users/cychong/Documents/wordpress/html:/var/www/html&amp;#34; - &amp;#34;/Users/cychong/Documents/wordpress/uploads:/var/www/html/wp-content/uploads&amp;#34; - &amp;#34;/Users/cychong/Documents/wordpress/conf/php_uploads.ini:/usr/local/etc/php/conf.d/uploads.ini&amp;#34; 바로 첫번째 줄이 문제를 유발하고 있는 곳&amp;hellip; 내가 왜 굳이 저렇게 했을까 생각해 보니 저 디렉토리에 바로 wp-content가 있고, 그 아래 themes와 plugins가 있다.</description></item><item><title>wordpress admin 계정 복구</title><link>https://cychong47.github.io/post/2018/wordpress-admin-login-fail/</link><pubDate>Thu, 14 Jun 2018 14:21:13 +0900</pubDate><guid>https://cychong47.github.io/post/2018/wordpress-admin-login-fail/</guid><description>문제 블로그 보는 거 자체는 문제가 없는데 admin 계정으로 로그인 시도하면 반복해서 로그인 페이지로 redirect됨
-http://sosa0sa.com/wp-login.php?redirect_to=http://sosa0sa.com/wp-admin/&amp;amp;reauth=1 구글링을 하니 대부분 쿠키를 초기화하고, theme, plugin등을 초기화하라는 의견이 대부분. 모두 따라해 봤으니 제대로 동작하지 않는다&amp;hellip; -_-;;;
-마지막으로 wp_usermeta table에서 session_token 값을 초기화하라는 말이 있어 이것도 해 보기로. phpmyadmin을 설치해서 table의 값을 변경하라고 해서 phpmyadmin을 역시 docker로 설치해 보기로
-https://wordpress.org/support/topic/possible-fix-for-sudden-redirect-loop-at-wp-login-with-reauth1/
-Phpmyadmin docker 설치 Wordpress ansible-playbook 에 다음과 같이 추가
-links를 통해 mysql container와 연결하고 PMA_HOST를 해당 mysql container의 name으로 지정하는 것이 중요한 내용임.</description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Troubleshooting on Keep calm and Write something</title><link>https://cychong47.github.io/tags/troubleshooting/</link><description>Recent content in Troubleshooting on Keep calm and Write something</description><generator>Hugo</generator><language>en-us</language><lastBuildDate>Fri, 24 Jul 2020 00:22:45 +0900</lastBuildDate><atom:link href="https://cychong47.github.io/tags/troubleshooting/index.xml" rel="self" type="application/rss+xml"/><item><title>Troubleshooting - rss.xml is not updated</title><link>https://cychong47.github.io/post/2020/2020-07-24-rss-is-not-updated/</link><pubDate>Fri, 24 Jul 2020 00:22:45 +0900</pubDate><guid>https://cychong47.github.io/post/2020/2020-07-24-rss-is-not-updated/</guid><description>&lt;p&gt;갑자기 어느 날 부터(정확히 말하면 7월 14일부터) podcast가 업데이트가 되지 않는다.&lt;/p&gt;
+&lt;p&gt;다음 날도, 그 다음 날도. 흠. 뭐가 문제일까?&lt;/p&gt;
+&lt;p&gt;아무튼 &lt;code&gt;hugo&lt;/code&gt;를 이용해서 직접 사이트를 빌드해 봤다. 그랬더니 이상한 에러가 난다. &lt;code&gt;os.Stat&lt;/code&gt; 파일이 없다는 이야기도 나오고.&lt;/p&gt;
+&lt;p&gt;뭔가 문제가 있는데 밤이라 그런지 그냥 단순하게 Hugo &lt;code&gt;zen-theme&lt;/code&gt; 이 rss를 제대로 생성하지 못한다는 내용으로 검색을 해 봤는데 결과가 안 나온다.&lt;/p&gt;
+&lt;pre tabindex="0"&gt;&lt;code&gt;cychong@mini1:~/work/cbs-ost$ hugo -t zen
+Building sites … WARN 2020/07/23 23:21:25 .File.UniqueID on zero object. Wrap it in if or with: {{ with .File }}{{ .UniqueID }}{{ end }}
+Total in 10016 ms
+Error: Error building site: failed to render pages: render of &amp;#34;section&amp;#34; failed: &amp;#34;/home/cychong/work/cbs-ost/themes/zen/layouts/podcast/rss.xml:53:55&amp;#34;: execute of template failed: template: podcast/rss.xml:53:55: executing &amp;#34;podcast/rss.xml&amp;#34; at &amp;lt;os.Stat&amp;gt;: error calling Stat: LStat content/static/podcast/cinema-2020-07-14.mp3: file does not exist
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;똑같은 방법을 시도하면서 다른 결과를 기다하는 건 바보라는 말을 잊고 그 다음 날도 똑같은 짓을 했다. 여전히 답이 나올리가.&lt;/p&gt;</description></item><item><title>No Podcast Update?</title><link>https://cychong47.github.io/post/2020/2020-06-26-no-podcast-update/</link><pubDate>Fri, 26 Jun 2020 22:11:32 +0900</pubDate><guid>https://cychong47.github.io/post/2020/2020-06-26-no-podcast-update/</guid><description>&lt;p&gt;음&lt;/p&gt;
+&lt;p&gt;&lt;img src="https://cychong47.github.io/images/2020/06/20200626_1315_IMG_4474.PNG" alt=""&gt;&lt;/p&gt;
+&lt;p&gt;이건 무슨 상황일까?&lt;br&gt;
+mp3 파일은 레코딩이 제대로 되었고, md 파일도 만들었는데 site를 rebuild했다는 메시지가 오질 않는다. 안그래도 Telegram 을 이용해서 메시지를 보내는 기능을 추가해야 겠다고 생각했을때 아래처럼 정상적으로 동작하는 경우가 아니라 뭔가 문제가 있는 상황을 어떻게 알 수 있을까 하는 고민을 했었는데 생각보다 일찍 그 상황(아마도 많은 경우 중 하나 겠지만) 이 온 듯했다.
+이렇게 메시지가 안 온 것으로 뭔가 문제가 있다는 걸 판단하는 건 비효율적인 방법이라 보다 적극적으로 어떤 비정상 상황이고, 가능하면 왜 그런 지도 파악해서 메시지를 보내게 할 필요가 있다는 생각을 했었는데&amp;hellip;&lt;/p&gt;</description></item><item><title>WordPress 로그인 불가 문제 해결</title><link>https://cychong47.github.io/post/2020/recover-broken-users-table/</link><pubDate>Fri, 08 May 2020 23:36:45 +0900</pubDate><guid>https://cychong47.github.io/post/2020/recover-broken-users-table/</guid><description>&lt;p&gt;말썽쟁이(?) wordpress 블로그가 또 문제를 일으켰다.&lt;br&gt;
+이번에도 로그인이 안되는 현상인데 &lt;a href="https://cychong47.github.io/post/wordpress-admin-login-fail/"&gt;지난 번&lt;/a&gt;과는 다른 에러 메시지가 나온다. 즉 지난 번 해결책은 소용이 없을 거라는 불길한 예감이.&lt;/p&gt;
+&lt;p&gt;&lt;img src="https://cychong47.github.io/images/2020/05/wordpress_login_error_account_is_missing.png" alt="wordpress_login_error_account_is_missing"&gt;&lt;/p&gt;
+&lt;p&gt;로그인 계정 자체가 없다는 이 어이없는 상황.&lt;/p&gt;
+&lt;p&gt;그래서 지난 번에 유용하게 사용했던 phpmyadmin을 이용해서 DB 정보를 확인해봤다.
+(다행히 MySql, wordpress 와 함께 실행시켜놓은 phpmyadmin container가 동작하고 있어서 지난 번과 같이 &lt;code&gt;8181&lt;/code&gt; 포트로 접속하면 된단. 다만 로그인 암호를 기억하지 못하고 있는 나 대신 Safari가 기억하고 있어서 그냥 접속했다는)&lt;/p&gt;</description></item><item><title>Upgrade ghost to v3.0</title><link>https://cychong47.github.io/post/2019/upgrade-ghost-to-v3-0/</link><pubDate>Tue, 05 Nov 2019 14:58:16 +0900</pubDate><guid>https://cychong47.github.io/post/2019/upgrade-ghost-to-v3-0/</guid><description>&lt;ul&gt;
+&lt;li&gt;부제 1. pod가 동작하지 않을때 원인 찾기&lt;/li&gt;
+&lt;li&gt;부제 2. helm upgrade 명령을 이용하여 업데이트 하기&lt;/li&gt;
+&lt;li&gt;부제 3. sqlite를 이용해서 ghost.db 직접 수정하기&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;values.yaml에 명시되어 있는 ghost docker image의 버전 정보를 2.31.0에서 3.0.2 최신 버전으로 업데이트 후 아래 명령어로 업데이트&lt;/p&gt;
+&lt;pre tabindex="0"&gt;&lt;code&gt;$ helm upgrade --debug my-ghost ghost-with-helm
+[debug] Created tunnel using local port: &amp;#39;45263&amp;#39;
+
+[debug] SERVER: &amp;#34;127.0.0.1:45263&amp;#34;
+
+REVISION: 6
+RELEASED: Tue Nov 5 22:25:19 2019
+CHART: ghost-0.1.0
+USER-SUPPLIED VALUES:
+{}
+
+COMPUTED VALUES:
+affinity: {}
+env:
+ node_env: production
+ url: http://sosa0sa.com:2368
+fullnameOverride: &amp;#34;&amp;#34;
+image:
+ pullPolicy: Always
+ registry: docekr.io
+ repository: ghost
+ tag: 3.0.2
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Helm upgrade는 완료되었지만 ghost 블로그가 접속이 되지 않는다. 상태를 확인해 보니&lt;/p&gt;</description></item><item><title>What if helm command refuse to execute</title><link>https://cychong47.github.io/post/2019/what-if-helm-command-refuses/</link><pubDate>Tue, 05 Nov 2019 14:47:41 +0900</pubDate><guid>https://cychong47.github.io/post/2019/what-if-helm-command-refuses/</guid><description>&lt;p&gt;helm 명령을 입력했는데 다음과 같은 에러 메시지를 내면서 실행을 거부한다.&lt;/p&gt;
+&lt;pre tabindex="0"&gt;&lt;code&gt;$ helm ls
+snap-confine has elevated permissions and is not confined but should be. Refusing to continue to avoid permission escalation attacks
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;에러 메시지를 찾아보니 보안 관련된 내용이 이슈라고
+다음과 같이 하면 해결된다.&lt;/p&gt;
+&lt;pre tabindex="0"&gt;&lt;code&gt;$ sudo systemctl enable --now apparmor.service
+Synchronizing state of apparmor.service with SysV service script with /lib/systemd/systemd-sysv-install.
+Executing: /lib/systemd/systemd-sysv-install enable apparmor
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;하지만 이제는 helm의 client와 server 버전이 맞지 않다는 에러&lt;/p&gt;</description></item><item><title>kubelet이 실행되지 않을때</title><link>https://cychong47.github.io/post/2019/what-if-kubelet-is-not-started/</link><pubDate>Tue, 05 Nov 2019 14:43:35 +0900</pubDate><guid>https://cychong47.github.io/post/2019/what-if-kubelet-is-not-started/</guid><description>&lt;p&gt;mini1 리붓 후 ghost 접속이 안됨.&lt;/p&gt;
+&lt;p&gt;docker를 직접 실행시키는 wordpress는 정상적으로 실행&lt;/p&gt;
+&lt;p&gt;그래서 kubectl get svc 명령을 치니 접속이 안된다고.&lt;/p&gt;
+&lt;pre tabindex="0"&gt;&lt;code&gt;$ ps -ef |grep kube
+cychong 7461 2486 0 23:26 pts/0 00:00:00 grep --color=auto kube
+$ service kubelet status
+● kubelet.service - kubelet: The Kubernetes Node Agent
+ Loaded: loaded (/lib/systemd/system/kubelet.service; enabled; vendor preset: enabled)
+ Drop-In: /etc/systemd/system/kubelet.service.d
+ └─10-kubeadm.conf
+ Active: activating (auto-restart) (Result: exit-code) since Mon 2019-11-04 23:26:47 KST; 5s ago
+ Docs: https://kubernetes.io/docs/home/
+ Process: 7664 ExecStart=/usr/bin/kubelet $KUBELET_KUBECONFIG_ARGS $KUBELET_CONFIG_ARGS $KUBELET_KUBEADM_ARGS $KUBELET_EXTRA_ARGS (code=exited, status=255
+ Main PID: 7664 (code=exited, status=255)
+&lt;/code&gt;&lt;/pre&gt;&lt;pre tabindex="0"&gt;&lt;code&gt;$ journalctl -xeu kubelet
+Nov 04 23:28:32 mini1 kubelet[8695]: I1104 23:28:32.418274 8695 server.go:773] Client rotation is on, will bootstrap in background
+Nov 04 23:28:32 mini1 kubelet[8695]: I1104 23:28:32.427223 8695 certificate_store.go:129] Loading cert/key pair from &amp;#34;/var/lib/kubelet/pki/kubelet-clien
+Nov 04 23:28:32 mini1 kubelet[8695]: I1104 23:28:32.580296 8695 server.go:644] --cgroups-per-qos enabled, but --cgroup-root was not specified. defaulti
+Nov 04 23:28:32 mini1 kubelet[8695]: F1104 23:28:32.580915 8695 server.go:271] failed to run Kubelet: running with swap on is not supported, please disa
+Nov 04 23:28:32 mini1 systemd[1]: kubelet.service: Main process exited, code=exited, status=255/n/a
+Nov 04 23:28:32 mini1 systemd[1]: kubelet.service: Failed with result &amp;#39;exit-code&amp;#39;.
+Nov 04 23:28:42 mini1 systemd[1]: kubelet.service: Service hold-off time over, scheduling restart.
+Nov 04 23:28:42 mini1 systemd[1]: kubelet.service: Scheduled restart job, restart counter is at 30.
+-- Subject: Automatic restarting of a unit has been scheduled
+-- Defined-By: systemd
+-- Support: http://www.ubuntu.com/support
+--
+-- Automatic restarting of the unit kubelet.service has been scheduled, as the result for
+-- the configured Restart= setting for the unit.
+Nov 04 23:28:42 mini1 systemd[1]: Stopped kubelet: The Kubernetes Node Agent.
+-- Subject: Unit kubelet.service has finished shutting down
+-- Defined-By: systemd
+-- Support: http://www.ubuntu.com/support
+--
+-- Unit kubelet.service has finished shutting down.
+Nov 04 23:28:42 mini1 systemd[1]: Started kubelet: The Kubernetes Node Agent.
+-- Subject: Unit kubelet.service has finished start-up
+-- Defined-By: systemd
+-- Support: http://www.ubuntu.com/support
+--
+-- Unit kubelet.service has finished starting up.
+--
+-- The start-up result is RESULT.
+Nov 04 23:28:42 mini1 kubelet[8795]: Flag --cgroup-driver has been deprecated, This parameter should be set via the config file specified by the Kubelet&amp;#39;s
+Nov 04 23:28:42 mini1 kubelet[8795]: Flag --resolv-conf has been deprecated, This parameter should be set via the config file specified by the Kubelet&amp;#39;s --
+Nov 04 23:28:42 mini1 kubelet[8795]: Flag --cgroup-driver has been deprecated, This parameter should be set via the config file specified by the Kubelet&amp;#39;s
+Nov 04 23:28:42 mini1 kubelet[8795]: Flag --resolv-conf has been deprecated, This parameter should be set via the config file specified by the Kubelet&amp;#39;s --
+Nov 04 23:28:42 mini1 kubelet[8795]: I1104 23:28:42.907863 8795 server.go:410] Version: v1.16.1
+Nov 04 23:28:42 mini1 kubelet[8795]: I1104 23:28:42.908251 8795 plugins.go:100] No cloud provider specified.
+Nov 04 23:28:42 mini1 kubelet[8795]: I1104 23:28:42.908283 8795 server.go:773] Client rotation is on, will bootstrap in background
+Nov 04 23:28:42 mini1 kubelet[8795]: I1104 23:28:42.917653 8795 certificate_store.go:129] Loading cert/key pair from &amp;#34;/var/lib/kubelet/pki/kubelet-clien
+Nov 04 23:28:43 mini1 kubelet[8795]: I1104 23:28:43.073234 8795 server.go:644] --cgroups-per-qos enabled, but --cgroup-root was not specified. defaulti
+Nov 04 23:28:43 mini1 kubelet[8795]: F1104 23:28:43.073886 8795 server.go:271] failed to run Kubelet: running with swap on is not supported, please disa
+Nov 04 23:28:43 mini1 systemd[1]: kubelet.service: Main process exited, code=exited, status=255/n/a
+Nov 04 23:28:43 mini1 systemd[1]: kubelet.service: Failed with result &amp;#39;exit-code&amp;#39;.
+lines 1947-1986/1986 (END)
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;찾아보니 &lt;code&gt;docker&lt;/code&gt;가 정상적으로 실행 중인지 확인해 보라고.&lt;/p&gt;</description></item><item><title>Recover WordPress container</title><link>https://cychong47.github.io/post/2018/recovery-failed-wordpress-container/</link><pubDate>Wed, 05 Sep 2018 14:10:39 +0900</pubDate><guid>https://cychong47.github.io/post/2018/recovery-failed-wordpress-container/</guid><description>&lt;h2 id="one-day"&gt;One day&lt;/h2&gt;
+&lt;p&gt;The Wordpress container does not work at all. &lt;code&gt;docker ps&lt;/code&gt;로 확인하면 1분 주기로 restart를 반복하고 있다. 경험상 이건 wordpress 앱이 초기화 과정에서 문제가 있는 거라는 걸로 짐작된다. 로그를 확인해 보니 아래와 같은 에러만 출력.&lt;/p&gt;
+&lt;p&gt;뭐가 문제일까 멀쩡히 잘 돌던 녀석들인데.&lt;/p&gt;
+&lt;pre tabindex="0"&gt;&lt;code&gt;mini2:html cychong$ docker logs -f f12c3b3a57ef
+...
+
+Warning: mysqli::__construct(): Unexpected server respose while doing caching_sha2 auth: 109 in Standard input code on line 22
+
+MySQL Connection Error: (2006) MySQL server has gone away
+
+Warning: mysqli::__construct(): MySQL server has gone away in Standard input code on line 22
+
+Warning: mysqli::__construct(): (HY000/2006): MySQL server has gone away in Standard input code on line 22
+
+Warning: mysqli::__construct(): Unexpected server respose while doing caching_sha2 auth: 109 in Standard input code on line 22
+
+Warning: mysqli::__construct(): MySQL server has gone away in Standard input code on line 22
+
+Warning: mysqli::__construct(): (HY000/2006): MySQL server has gone away in Standard input code on line 22
+
+MySQL Connection Error: (2006) MySQL server has gone away
+
+Warning: mysqli::__construct(): Unexpected server respose while doing caching_sha2 auth: 109 in Standard input code on line 22
+
+MySQL Connection Error: (2006) MySQL server has gone away
+
+Warning: mysqli::__construct(): MySQL server has gone away in Standard input code on line 22
+
+Warning: mysqli::__construct(): (HY000/2006): MySQL server has gone away in Standard input code on line 22
+&lt;/code&gt;&lt;/pre&gt;&lt;h2 id="lets-debug"&gt;Let’s debug&lt;/h2&gt;
+&lt;blockquote&gt;
+&lt;p&gt;하지만 뭔가 달라진 게 있으니 갑자기 문제가 발생했겠지.&lt;/p&gt;</description></item><item><title>Update ansible-playbook for wordpress</title><link>https://cychong47.github.io/post/2018/update-ansible-playbook-for-wordpress/</link><pubDate>Thu, 14 Jun 2018 15:13:52 +0900</pubDate><guid>https://cychong47.github.io/post/2018/update-ansible-playbook-for-wordpress/</guid><description>&lt;p&gt;이상하게 wordpress 버전이 올라가면 docker용 wordpress 버전도 함께 올라갈 텐데 아무리 최신 docker image를 받아 container를 만들어도 wordpress admin 계정에 들어가면 wordpress를 업데이트 해야 한다고 한다.
+docket store(&lt;a href="http://store.docker.com"&gt;http://store.docker.com&lt;/a&gt;)에 가면 분명히 wordpress 최신 버전으로 패키징되어 있는 데&amp;hellip;&lt;/p&gt;
+&lt;p&gt;혹시나 하고 ansible-playbook을 보니 &lt;code&gt;/var/www/html&lt;/code&gt;에 마운트되는 위치에 이전 버전의 wordpress 파일들이 존재하고 있었다.&lt;/p&gt;
+&lt;pre tabindex="0"&gt;&lt;code&gt; volumes:
+ - &amp;#34;/Users/cychong/Documents/wordpress/html:/var/www/html&amp;#34;
+ - &amp;#34;/Users/cychong/Documents/wordpress/uploads:/var/www/html/wp-content/uploads&amp;#34;
+ - &amp;#34;/Users/cychong/Documents/wordpress/conf/php_uploads.ini:/usr/local/etc/php/conf.d/uploads.ini&amp;#34;
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;바로 첫번째 줄이 문제를 유발하고 있는 곳&amp;hellip;
+내가 왜 굳이 저렇게 했을까 생각해 보니 저 디렉토리에 바로 &lt;code&gt;wp-content&lt;/code&gt;가 있고, 그 아래 &lt;code&gt;themes&lt;/code&gt;와 &lt;code&gt;plugins&lt;/code&gt;가 있다. 처음 docker로 wordpress를 띄울 때 이미 설치한 theme이나 plugin이 wordpress docker 버전이 올라가서 새로 container를 만들 때마다 다시 설치해야 하는 번거로움을 피하려고 저렇게 한 듯 하다. 지금 생각하면 참 바보같은&amp;hellip;&lt;/p&gt;</description></item><item><title>wordpress admin 계정 복구</title><link>https://cychong47.github.io/post/2018/wordpress-admin-login-fail/</link><pubDate>Thu, 14 Jun 2018 14:21:13 +0900</pubDate><guid>https://cychong47.github.io/post/2018/wordpress-admin-login-fail/</guid><description>&lt;h2 id="문제"&gt;문제&lt;/h2&gt;
+&lt;p&gt;블로그 보는 거 자체는 문제가 없는데 admin 계정으로 로그인 시도하면 반복해서 로그인 페이지로 redirect됨&lt;/p&gt;
+&lt;pre tabindex="0"&gt;&lt;code&gt;http://sosa0sa.com/wp-login.php?redirect_to=http://sosa0sa.com/wp-admin/&amp;amp;reauth=1
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;구글링을 하니 대부분 쿠키를 초기화하고, theme, plugin등을 초기화하라는 의견이 대부분. 모두 따라해 봤으니 제대로 동작하지 않는다&amp;hellip; &lt;code&gt;-_-&lt;/code&gt;;;;&lt;/p&gt;
+&lt;p&gt;마지막으로 wp_usermeta table에서 session_token 값을 초기화하라는 말이 있어 이것도 해 보기로. &lt;code&gt;phpmyadmin&lt;/code&gt;을 설치해서 table의 값을 변경하라고 해서 &lt;code&gt;phpmyadmin&lt;/code&gt;을 역시 docker로 설치해 보기로&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://wordpress.org/support/topic/possible-fix-for-sudden-redirect-loop-at-wp-login-with-reauth1/"&gt;https://wordpress.org/support/topic/possible-fix-for-sudden-redirect-loop-at-wp-login-with-reauth1/&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id="phpmyadmin-docker-설치"&gt;Phpmyadmin docker 설치&lt;/h2&gt;
+&lt;p&gt;Wordpress ansible-playbook 에 다음과 같이 추가&lt;/p&gt;
+&lt;p&gt;links를 통해 mysql container와 연결하고 PMA_HOST를 해당 mysql container의 name으로 지정하는 것이 중요한 내용임.
+처음에는 PMA_HOST를 “localhost”나 “127.0.0.1”로 지정하니 정상적으로 mysql에 로그인이 되지 않음&lt;/p&gt;</description></item></channel></rss>

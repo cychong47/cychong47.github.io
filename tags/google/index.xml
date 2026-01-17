@@ -1,9 +1,120 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Google on Keep calm and write something</title><link>https://cychong47.github.io/tags/google/</link><description>Recent content in Google on Keep calm and write something</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Sun, 01 Apr 2018 02:38:51 +0000</lastBuildDate><atom:link href="https://cychong47.github.io/tags/google/index.xml" rel="self" type="application/rss+xml"/><item><title>Google's Load Balancer</title><link>https://cychong47.github.io/post/2017/googles-load-balancer/</link><pubDate>Sun, 01 Oct 2017 08:34:30 +0900</pubDate><guid>https://cychong47.github.io/post/2017/googles-load-balancer/</guid><description>Maglev Google( https://research.google.com/pubs/pub44824.html ) Used in Google Cloud since 2008 Scalable load balancer Consistent hashing Connection Tracking Scale-out model backed by router&amp;rsquo;s ECMP Bypass kernel space for performance. Support connection persistence Network Architecture DNS - Routers - Maglevs - Service EndPoints. One service is served by one or more VIPs DNS returns VIP considering geolocation and load of location One VIP is served by multiple Maglevs Router use ECMP to select one Maglev One VIP is mapped to multiple Service EndPoints Maglev select Service EndPoint by seletion algorithm and connection tracking table Maglev use GRE to send incoming packet to Service EndPoint or another Maglev Send to IP fragment to another special Maglev servers Use only 3-tuple for IP fragment Each Service EndPoint use Direct Server Return(DSR) Maglev Controller Responsible for VIP announcement with BGP Check health status of forwarder If forwarder is not headthy, withdraw all VIP announcements Forwarder Each VIP has one or multiple backend pools(BP) BP contain physical IP address of the Service EndPoint Each BP has specific health checking methods - depends on the service requirement(just reachability or more) Config Manager parse and update configuration of forwarder&amp;rsquo;s behavior based on the Config Objects Sharding Sharding of Maglev enables service isolation - new service or QoS Backend Selection Consistent Hashing distribute loads Record selection in LOCAL connection tracking table Connection tracking table is not shared with another Maglev Does not guarantee consistency on Maglev or Service EndPoint Changes(add/delete) For different traffic type TCP SYN : select Backend and record it in connection tracking table TCP non-SYN : lookup connection tracking table 5-tuple : (maybe) lookup connection tracking table and select backend if not found Consistent Hashing If Maglev is added or removed, router select different Maglev for the exsiting session - ECMP is changed If one Maglev&amp;rsquo;s local connection tracking table is overflowed, it will lose previous selection To resolve this issues, Synchronize local connection tracking table between Maglevs -&amp;gt; overhead, overhead, overhead Consistent hashing for minimize disruption in member changes Maglev hashing - load balancing and minimal disruption on member changes reference Maglev: A Fast and Reliable Software Network Load Balancer Consistent Hashing The Simple Magic of Consistent Hashing</description></item><item><title>Espresso - Google's peering edge architecture</title><link>https://cychong47.github.io/post/2017/espresso-googles-peering-edge-architecture/</link><pubDate>Wed, 12 Apr 2017 00:32:57 +0900</pubDate><guid>https://cychong47.github.io/post/2017/espresso-googles-peering-edge-architecture/</guid><description>Google Fellow Amin Vahdat,
-“Early on, we realized that the network we needed to support our services did not exist and could not be bought,”
-Espresso makes Google cloud faster, more available and cost effective by extending SDN to the public internet
-network should be treated as a large-scale distributed system leveraging the same control infrastructure we developed for Google’s compute and storage systems Four pillars on Google&amp;rsquo;s SDN strategy Jupiter: Google employed SDN principles to build Jupiter, a data center interconnect capable of supporting more than 100,000 servers.</description></item><item><title>Googlegeist vs. SCI</title><link>https://cychong47.github.io/post/2016/googlegeist_vs_sci/</link><pubDate>Sat, 02 Jan 2016 02:44:51 +0900</pubDate><guid>https://cychong47.github.io/post/2016/googlegeist_vs_sci/</guid><description>SCI 결과를 개선하기 위해 실질적으로 이뤄지는 노력이 안 보인다는 것. 노력한다해도 그건 관리자와 비관리자가 함께 노력해야 하는 일일텐데(관리자나 회사에 대한 불만이므로 그 불만 개선이 노력이 맞는 방향인지는 당연히 비관리지에게도 한께 논의되어야 한다) 그런 건 보기 어렵다.
-문제 제기는 니들이 하지만 문제 해결은 나만 할 수 있다고 착각은 버려야 한다. 직원들이 불만에 대해 공감도 못하는데 어떻게 그 불만을 해결하기 위해 노력할 수 있겠나. 아니 공감을 하지 못하면 이해하기 위해 혹은 설득하기 위해 함께 이야기해야 하는데 그런 노력은 대부분 알아서 하란다.</description></item><item><title>Culture should be setup first</title><link>https://cychong47.github.io/post/2015/culture/</link><pubDate>Sun, 13 Dec 2015 13:44:24 +0900</pubDate><guid>https://cychong47.github.io/post/2015/culture/</guid><description>from Google Work Rules
-2006년에 구글에 입사. 72년 생
-구글 임직원 나이 평균에 비하면 많지만, 그래도 비슷한 덩치의 국내 기업의 인사 담당자와 비교하면. 하긴 구글을 국내 (대)기업과 비교하는 것 자체가 의미없는 일이지만
-과연 현실은 그렇다해도 저런 생각을 가진 사람을 주변에서 볼 수 있을까?
-그러기에 현실은 너무 지난하다.</description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Google on Keep calm and Write something</title><link>https://cychong47.github.io/tags/google/</link><description>Recent content in Google on Keep calm and Write something</description><generator>Hugo</generator><language>en-us</language><lastBuildDate>Sun, 01 Apr 2018 02:38:51 +0000</lastBuildDate><atom:link href="https://cychong47.github.io/tags/google/index.xml" rel="self" type="application/rss+xml"/><item><title>Google's Load Balancer</title><link>https://cychong47.github.io/post/2017/googles-load-balancer/</link><pubDate>Sun, 01 Oct 2017 08:34:30 +0900</pubDate><guid>https://cychong47.github.io/post/2017/googles-load-balancer/</guid><description>&lt;h1 id="maglev"&gt;Maglev&lt;/h1&gt;
+&lt;ul&gt;
+&lt;li&gt;Google( &lt;a href="https://research.google.com/pubs/pub44824.html"&gt;https://research.google.com/pubs/pub44824.html&lt;/a&gt; )&lt;/li&gt;
+&lt;li&gt;Used in Google Cloud since 2008&lt;/li&gt;
+&lt;li&gt;Scalable load balancer
+&lt;ul&gt;
+&lt;li&gt;Consistent hashing&lt;/li&gt;
+&lt;li&gt;Connection Tracking&lt;/li&gt;
+&lt;li&gt;Scale-out model backed by router&amp;rsquo;s ECMP&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Bypass kernel space for performance.&lt;/li&gt;
+&lt;li&gt;Support connection persistence&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h1 id="network-architecture"&gt;Network Architecture&lt;/h1&gt;
+&lt;ul&gt;
+&lt;li&gt;DNS - Routers - Maglevs - Service EndPoints.&lt;/li&gt;
+&lt;li&gt;One service is served by one or more VIPs
+&lt;ul&gt;
+&lt;li&gt;DNS returns VIP considering geolocation and load of location&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;One VIP is served by multiple Maglevs
+&lt;ul&gt;
+&lt;li&gt;Router use ECMP to select one Maglev&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;One VIP is mapped to multiple Service EndPoints
+&lt;ul&gt;
+&lt;li&gt;Maglev select Service EndPoint by seletion algorithm and connection tracking table&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Maglev use GRE to send incoming packet to Service EndPoint or another Maglev
+&lt;ul&gt;
+&lt;li&gt;Send to IP fragment to another special Maglev servers&lt;/li&gt;
+&lt;li&gt;Use only 3-tuple for IP fragment&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Each Service EndPoint use Direct Server Return(DSR)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h1 id="maglev-1"&gt;Maglev&lt;/h1&gt;
+&lt;h2 id="controller"&gt;Controller&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Responsible for VIP announcement with BGP&lt;/li&gt;
+&lt;li&gt;Check health status of forwarder&lt;/li&gt;
+&lt;li&gt;If forwarder is not headthy, withdraw all VIP announcements&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id="forwarder"&gt;Forwarder&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Each VIP has one or multiple backend pools(BP)&lt;/li&gt;
+&lt;li&gt;BP contain physical IP address of the Service EndPoint&lt;/li&gt;
+&lt;li&gt;Each BP has specific health checking methods - depends on the service requirement(just reachability or more)&lt;/li&gt;
+&lt;li&gt;Config Manager parse and update configuration of forwarder&amp;rsquo;s behavior based on the &lt;strong&gt;Config Objects&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;Sharding
+&lt;ul&gt;
+&lt;li&gt;Sharding of Maglev enables service isolation - new service or QoS&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id="backend-selection"&gt;Backend Selection&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;Consistent Hashing distribute loads&lt;/li&gt;
+&lt;li&gt;Record selection in &lt;strong&gt;LOCAL connection tracking table&lt;/strong&gt;
+&lt;ul&gt;
+&lt;li&gt;Connection tracking table is &lt;strong&gt;not shared&lt;/strong&gt; with another Maglev&lt;/li&gt;
+&lt;li&gt;Does not guarantee consistency on Maglev or Service EndPoint Changes(add/delete)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;For different traffic type
+&lt;ul&gt;
+&lt;li&gt;TCP SYN : select Backend and record it in connection tracking table&lt;/li&gt;
+&lt;li&gt;TCP non-SYN : lookup connection tracking table&lt;/li&gt;
+&lt;li&gt;5-tuple : (maybe) lookup connection tracking table and select backend if not found&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h1 id="consistent-hashing"&gt;Consistent Hashing&lt;/h1&gt;
+&lt;ul&gt;
+&lt;li&gt;If Maglev is added or removed, router select different Maglev for the exsiting session - ECMP is changed&lt;/li&gt;
+&lt;li&gt;If one Maglev&amp;rsquo;s local connection tracking table is overflowed, it will lose previous selection&lt;/li&gt;
+&lt;li&gt;To resolve this issues,
+&lt;ul&gt;
+&lt;li&gt;Synchronize local connection tracking table between Maglevs -&amp;gt; overhead, overhead, overhead&lt;/li&gt;
+&lt;li&gt;Consistent hashing for minimize disruption in member changes&lt;/li&gt;
+&lt;li&gt;Maglev hashing - load balancing and minimal disruption on member changes&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h1 id="reference"&gt;reference&lt;/h1&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="https://blog.acolyer.org/2016/03/21/maglev-a-fast-and-reliable-software-network-load-balancer/"&gt;Maglev: A Fast and Reliable Software Network Load Balancer&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="http://blog.carlosgaldino.com/consistent-hashing.html"&gt;Consistent Hashing&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://dzone.com/articles/simple-magic-consistent"&gt;The Simple Magic of Consistent Hashing&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;</description></item><item><title>Espresso - Google's peering edge architecture</title><link>https://cychong47.github.io/post/2017/espresso-googles-peering-edge-architecture/</link><pubDate>Wed, 12 Apr 2017 00:32:57 +0900</pubDate><guid>https://cychong47.github.io/post/2017/espresso-googles-peering-edge-architecture/</guid><description>&lt;p&gt;Google Fellow Amin Vahdat,&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;“Early on, we realized that the network we needed to support our services did not exist and could not be bought,”&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;&lt;a href="https://blog.google/topics/google-cloud/making-google-cloud-faster-more-available-and-cost-effective-extending-sdn-public-internet-espresso/"&gt;Espresso makes Google cloud faster, more available and cost effective by extending SDN to the public internet&lt;/a&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;network should be treated as a large-scale distributed system&lt;/li&gt;
+&lt;li&gt;leveraging the same control infrastructure we developed for Google’s compute and storage systems&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img src="https://storage.googleapis.com/gweb-uniblog-publish-prod/images/nespresso-2.width-566.png" alt="nespresso-1"&gt;&lt;/p&gt;
+&lt;h2 id="four-pillars-on-googles-sdn-strategy"&gt;Four pillars on Google&amp;rsquo;s SDN strategy&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Jupiter&lt;/strong&gt;: Google employed SDN principles to build Jupiter, a data center interconnect capable of supporting more than 100,000 servers. As of 2013 it supports more than 1 Pb/s of total bandwidth to host its services.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;B4 WAN interconnect&lt;/strong&gt;: Google constructed B4 to connect its data centers to one another to replicate data in real-time between individual campuses. “It’s built on white boxes with our software controlling it,” said Vahdat at today’s session. “Our goal was to build a copy network. As it’s grown it’s become mission critical. B4 grows faster than our public network.”&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Andromeda&lt;/strong&gt;: Google’s Andromeda is a &lt;a href="https://www.sdxcentral.com/nfv/"&gt;&lt;strong&gt;network functions virtualization (NFV)&lt;/strong&gt;&lt;/a&gt; stack that allows it to deliver the same capabilities available to its native applications all the way to &lt;a href="https://www.sdxcentral.com/cloud/containers/"&gt;containers&lt;/a&gt; and &lt;a href="https://www.sdxcentral.com/cloud/containers/definitions/what-is-a-linux-container/"&gt;virtual machines&lt;/a&gt; running on the Google Cloud Platform.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Espresso&lt;/strong&gt; : Google&amp;rsquo;s peering edge architecture. Select the optimal internal server and route based on the real-time information&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id="background"&gt;Background&lt;/h3&gt;
+&lt;blockquote&gt;
+&lt;p&gt;For example, consider real-time voice search. Answering the question “What’s the latest news?” with &lt;a href="https://assistant.google.com/"&gt;Google Assistant&lt;/a&gt; requires a fast, low-latency connection from a user’s device to the edge of Google’s network, and from the edge of our network to one of our data centers. Once inside a data center, hundreds—or even thousands—of individual servers must consult vast amounts of data to score the mapping of an audio recording to possible phrases in one of many languages and dialects. The resulting phrase is then passed to another cluster to perform a web search, consulting a real-time index of internet content. The results are then gathered, scored and returned to the edge of Google’s network back to the end user.&lt;/p&gt;</description></item><item><title>Googlegeist vs. SCI</title><link>https://cychong47.github.io/post/2016/googlegeist_vs_sci/</link><pubDate>Sat, 02 Jan 2016 02:44:51 +0900</pubDate><guid>https://cychong47.github.io/post/2016/googlegeist_vs_sci/</guid><description>&lt;p&gt;SCI 결과를 개선하기 위해 실질적으로 이뤄지는 노력이 안 보인다는 것. 노력한다해도 그건 관리자와 비관리자가 함께 노력해야 하는 일일텐데(관리자나 회사에 대한 불만이므로 그 불만 개선이 노력이 맞는 방향인지는 당연히 비관리지에게도 한께 논의되어야 한다) 그런 건 보기 어렵다.&lt;/p&gt;
+&lt;p&gt;문제 제기는 니들이 하지만 문제 해결은 나만 할 수 있다고 착각은 버려야 한다. 직원들이 불만에 대해 공감도 못하는데 어떻게 그 불만을 해결하기 위해 노력할 수 있겠나. 아니 공감을 하지 못하면 이해하기 위해 혹은 설득하기 위해 함께 이야기해야 하는데 그런 노력은 대부분 알아서 하란다. 잘 될 턱이 있나.&lt;/p&gt;</description></item><item><title>Culture should be setup first</title><link>https://cychong47.github.io/post/2015/culture/</link><pubDate>Sun, 13 Dec 2015 13:44:24 +0900</pubDate><guid>https://cychong47.github.io/post/2015/culture/</guid><description>&lt;p&gt;&lt;img src="https://cychong47.github.io/images/2015/12/based_on_culture_from_workrules-net.png" alt=""&gt;&lt;/p&gt;
+&lt;p&gt;from Google Work Rules&lt;/p&gt;
+&lt;p&gt;2006년에 구글에 입사.
+72년 생&lt;/p&gt;
+&lt;p&gt;구글 임직원 나이 평균에 비하면 많지만, 그래도 비슷한 덩치의 국내 기업의 인사 담당자와 비교하면. 하긴 구글을 국내 (대)기업과 비교하는 것 자체가 의미없는 일이지만&lt;/p&gt;
+&lt;p&gt;과연 현실은 그렇다해도 저런 생각을 가진 사람을 주변에서 볼 수 있을까?&lt;/p&gt;
+&lt;p&gt;그러기에 현실은 너무 지난하다.&lt;/p&gt;</description></item></channel></rss>
