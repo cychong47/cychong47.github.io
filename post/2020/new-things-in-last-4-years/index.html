@@ -1,42 +1,818 @@
-<!doctype html><html lang=en-us><head><meta http-equiv=X-Clacks-Overhead content="GNU Terry Pratchett"><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><title>새로운 경험 들 | Keep calm and Write something</title><meta name=title content="새로운 경험 들"><meta name=description content="지난 2016년 난생 처음으로 자발적으로 부서를 옮긴 후에 경험한 것들.
-그 전의 십수년간에는 해보지 않은 많은 새로운 경험들을 가질 수 있었다. 주변의 도움 덕에. 특히 날 믿어주는 지인 덕에 이런 새로운 경험을 해 봐서 재밌었다.
+<!doctype html><html lang=en-us><head><meta http-equiv=X-Clacks-Overhead content="GNU Terry Pratchett"><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><title>Upgrade kubenetes to 1.17.2-0 | Keep calm and Write something</title><meta name=title content="Upgrade kubenetes to 1.17.2-0"><meta name=description content='preparation
+cychong@mini1:~$ sudo apt update
+[sudo] password for cychong:
+Ign:1 http://dl.google.com/linux/chrome/deb stable InRelease
+Get:2 http://dl.google.com/linux/chrome/deb stable Release [943 B]
+Get:3 http://dl.google.com/linux/chrome/deb stable Release.gpg [819 B]
+...
+Get the lastest version
+cychong@mini1:~$ sudo apt-cache policy kubeadm
+kubeadm:
+  Installed: 1.16.1-00
+  Candidate: 1.17.2-00
+  Version table:
+     1.17.2-00 500
+        500 http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages
+     1.17.1-00 500
+        500 http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages
+     1.17.0-00 500
+        500 http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages
+...
+cychong@mini1:~$ apt-cache madison kubeadm
+   kubeadm |  1.17.2-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages
+   kubeadm |  1.17.1-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages
+   kubeadm |  1.17.0-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages
+   kubeadm |  1.16.6-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages
+   kubeadm |  1.16.5-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages
+   kubeadm |  1.16.4-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages
+   kubeadm |  1.16.3-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages
+   kubeadm |  1.16.2-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages
+   kubeadm |  1.16.1-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages
+   kubeadm |  1.16.0-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages
+   kubeadm |  1.15.9-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages
+   kubeadm |  1.15.8-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages
+   kubeadm |  1.15.7-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages
+   kubeadm |  1.15.6-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages
+   kubeadm |  1.15.5-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages
+   kubeadm |  1.15.4-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages
+   kubeadm |  1.15.3-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages
+   kubeadm |  1.15.2-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages
+   kubeadm |  1.15.1-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages
+   kubeadm |  1.15.0-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages
+   kubeadm | 1.14.10-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages
+   kubeadm |  1.14.9-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages
+   kubeadm |  1.14.8-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages
+   kubeadm |  1.14.7-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages
+   kubeadm |  1.14.6-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages
+   kubeadm |  1.14.5-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages
+   kubeadm |  1.14.4-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages
+   kubeadm |  1.14.3-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages
+   kubeadm |  1.14.2-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages
+   kubeadm |  1.14.1-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages
+   kubeadm |  1.14.0-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages
+   kubeadm | 1.13.12-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages
+   kubeadm | 1.13.11-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages
+   kubeadm | 1.13.10-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages
+   kubeadm |  1.13.9-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages
+   kubeadm |  1.13.8-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages
+   kubeadm |  1.13.7-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages
+   kubeadm |  1.13.6-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages
+   kubeadm |  1.13.5-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages
+   kubeadm |  1.13.4-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages
+   kubeadm |  1.13.3-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages
+   kubeadm |  1.13.2-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages
+   kubeadm |  1.13.1-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages
+   kubeadm |  1.13.0-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages
+   kubeadm | 1.12.10-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages
+   kubeadm |  1.12.9-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages
+   kubeadm |  1.12.8-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages
+   kubeadm |  1.12.7-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages
+   kubeadm |  1.12.6-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages
+   kubeadm |  1.12.5-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages
+   kubeadm |  1.12.4-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages
+   kubeadm |  1.12.3-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages
+   kubeadm |  1.12.2-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages
+   kubeadm |  1.12.1-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages
+   kubeadm |  1.12.0-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages
+   kubeadm | 1.11.10-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages
+   kubeadm |  1.11.9-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages
+   kubeadm |  1.11.8-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages
+   kubeadm |  1.11.7-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages
+   kubeadm |  1.11.6-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages
+   kubeadm |  1.11.5-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages
+   kubeadm |  1.11.4-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages
+   kubeadm |  1.11.3-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages
+   kubeadm |  1.11.2-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages
+   kubeadm |  1.11.1-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages
+   kubeadm |  1.11.0-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages
+   kubeadm | 1.10.13-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages
+   kubeadm | 1.10.12-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages
+   kubeadm | 1.10.11-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages
+   kubeadm | 1.10.10-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages
+   kubeadm |  1.10.9-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages
+   kubeadm |  1.10.8-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages
+   kubeadm |  1.10.7-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages
+   kubeadm |  1.10.6-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages
+   kubeadm |  1.10.5-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages
+   kubeadm |  1.10.4-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages
+   kubeadm |  1.10.3-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages
+   kubeadm |  1.10.2-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages
+   kubeadm |  1.10.1-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages
+   kubeadm |  1.10.0-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages
+   kubeadm |  1.9.11-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages
+   kubeadm |  1.9.10-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages
+   kubeadm |   1.9.9-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages
+   kubeadm |   1.9.8-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages
+   kubeadm |   1.9.7-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages
+   kubeadm |   1.9.6-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages
+   kubeadm |   1.9.5-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages
+   kubeadm |   1.9.4-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages
+   kubeadm |   1.9.3-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages
+   kubeadm |   1.9.2-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages
+   kubeadm |   1.9.1-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages
+   kubeadm |   1.9.0-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages
+   kubeadm |  1.8.15-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages
+   kubeadm |  1.8.14-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages
+   kubeadm |  1.8.13-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages
+   kubeadm |  1.8.12-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages
+   kubeadm |  1.8.11-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages
+   kubeadm |  1.8.10-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages
+   kubeadm |   1.8.9-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages
+   kubeadm |   1.8.8-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages
+   kubeadm |   1.8.7-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages
+   kubeadm |   1.8.6-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages
+   kubeadm |   1.8.5-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages
+   kubeadm |   1.8.4-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages
+   kubeadm |   1.8.3-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages
+   kubeadm |   1.8.2-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages
+   kubeadm |   1.8.1-01 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages
+   kubeadm |   1.8.0-01 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages
+   kubeadm |   1.8.0-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages
+   kubeadm |  1.7.16-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages
+   kubeadm |  1.7.15-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages
+   kubeadm |  1.7.14-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages
+   kubeadm |  1.7.11-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages
+   kubeadm |  1.7.10-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages
+   kubeadm |   1.7.9-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages
+   kubeadm |   1.7.8-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages
+   kubeadm |   1.7.7-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages
+   kubeadm |   1.7.6-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages
+   kubeadm |   1.7.5-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages
+   kubeadm |   1.7.4-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages
+   kubeadm |   1.7.3-01 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages
+   kubeadm |   1.7.2-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages
+   kubeadm |   1.7.1-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages
+   kubeadm |   1.7.0-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages
+   kubeadm |  1.6.13-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages
+   kubeadm |  1.6.12-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages
+   kubeadm |  1.6.11-01 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages
+   kubeadm |  1.6.10-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages
+   kubeadm |   1.6.9-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages
+   kubeadm |   1.6.8-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages
+   kubeadm |   1.6.7-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages
+   kubeadm |   1.6.6-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages
+   kubeadm |   1.6.5-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages
+   kubeadm |   1.6.4-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages
+   kubeadm |   1.6.3-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages
+   kubeadm |   1.6.2-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages
+   kubeadm |   1.6.1-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages
+   kubeadm |   1.5.7-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages
+cychong@mini1:~$ sudo apt-mark unhold kubeadm && sudo apt-get install -y kubeadm=1.17.2-00 && sudo apt-mark hold kubeadm
+Canceled hold on kubeadm.
+Reading package lists... Done
+Building dependency tree       
+Reading state information... Done
+The following packages will be upgraded:
+  kubeadm
+1 upgraded, 0 newly installed, 0 to remove and 46 not upgraded.
+Need to get 8061 kB of archives.
+After this operation, 4907 kB disk space will be freed.
+Get:1 https://packages.cloud.google.com/apt kubernetes-xenial/main amd64 kubeadm amd64 1.17.2-00 [8061 kB]
+Fetched 8061 kB in 3s (3164 kB/s)           
+(Reading database ... 248932 files and directories currently installed.)
+Preparing to unpack .../kubeadm_1.17.2-00_amd64.deb ...
+Unpacking kubeadm (1.17.2-00) over (1.16.1-00) ...
+Setting up kubeadm (1.17.2-00) ...
+kubeadm set on hold.
+cychong@mini1:~$ sudo apt-get update && apt-get install -y --allow-change-held-packages kubeadm=1.17.2-00
+Ign:2 http://dl.google.com/linux/chrome/deb stable InRelease                                                                                            
+Hit:3 https://download.docker.com/linux/ubuntu bionic InRelease                                                                                         
+Hit:4 http://dl.google.com/linux/chrome/deb stable Release                                                                
+Hit:5 http://archive.ubuntu.com/ubuntu bionic InRelease                                                                   
+Hit:7 http://archive.ubuntu.com/ubuntu bionic-updates InRelease                                               
+Hit:8 http://ppa.launchpad.net/x2go/stable/ubuntu bionic InRelease                                                                 
+Hit:9 http://archive.ubuntu.com/ubuntu bionic-backports InRelease                                                                  
+Hit:1 https://packages.cloud.google.com/apt kubernetes-xenial InRelease                                      
+Hit:10 http://archive.ubuntu.com/ubuntu bionic-security InRelease        
+Reading package lists... Done                      
+E: Could not open lock file /var/lib/dpkg/lock-frontend - open (13: Permission denied)
+E: Unable to acquire the dpkg frontend lock (/var/lib/dpkg/lock-frontend), are you root?
+cychong@mini1:~$ sudo apt-get install -y --allow-change-held-packages kubeadm=1.17.2-00
+Reading package lists... Done
+Building dependency tree       
+Reading state information... Done
+kubeadm is already the newest version (1.17.2-00).
+0 upgraded, 0 newly installed, 0 to remove and 46 not upgraded.
+cychong@mini1:~$ kubeadm version
+kubeadm version: &amp;version.Info{Major:"1", Minor:"17", GitVersion:"v1.17.2", GitCommit:"59603c6e503c87169aea6106f57b9f242f64df89", GitTreeState:"clean", BuildDate:"2020-01-18T23:27:49Z", GoVersion:"go1.13.5", Compiler:"gc", Platform:"linux/amd64"}
+cychong@mini1:~$ sudo kubeadm upgrade plan
+[upgrade/config] Making sure the configuration is correct:
+[upgrade/config] Reading configuration from the cluster...
+[upgrade/config] FYI: You can look at this config file with &#39;kubectl -n kube-system get cm kubeadm-config -oyaml&#39;
+[preflight] Running pre-flight checks.
+[upgrade] Making sure the cluster is healthy:
+[upgrade] Fetching available versions to upgrade to
+[upgrade/versions] Cluster version: v1.16.1
+[upgrade/versions] kubeadm version: v1.17.2
+[upgrade/versions] Latest stable version: v1.17.2
+[upgrade/versions] Latest version in the v1.16 series: v1.16.6
 
-팀으로 일하기
-Agile practice 해보기. Scrum meeting, Daily meeting, 회고 등
-재밌게 일하기
-의미를 가지며 일하기
-의미있는 TF하기
-Leading(TF, 파트)
-외국 연구소, 사업자 직접 만나서 대화하기
-정보를 입수해 가공해서 잘 전달하기
-정보를 집중해서 관리하는 사이트 구축하기
-사람들 독려하기
-주간 리포트를 통해 업무 진행 공유하기
-정치 맛 보기(이건 좀 힘들었네)
-새로운 분야의 일 - Bearer Processing, OAM, MAC, PHY,
-가상화 인프라 구축 - OpenStack, container
-상용 솔류션 도입 - DB, Container platform
-신기술을 컴파일해서 우리 것에 적용방안 찾기 (가상화 TF)
-전화 영어로 일하기
-밤 늦은 시간에 사업자마 해외 연구소와 콜하기
-전략적으로 판단하기 (무조건 아는 걸 다 이야기하면 안되는)
-팀 빌드의 중요성 옆에서 보기
-다른 사람 평가하기
-회사 평가 시스템 이해(TO는 생각보다 많이 적다, 연봉 캡, 동기부여의 수단은 별로 없다)
-아는 것과 남들 특히 다른 생각을 가진 사람들을 설득하는 것이 어떤 지 배우기
-영어로 업무하기. 외국 업체나 해외연구소 혹은 외국 인력과 함께 일하기
-해외 연구소와 함께 일하기. Wiki등을 이용하여 협업하고, 주간 콜을 통해 업무 상황 공유.
-사내 정치 맛 보기
+Components that must be upgraded manually after you have upgraded the control plane with &#39;kubeadm upgrade apply&#39;:
+COMPONENT   CURRENT       AVAILABLE
+Kubelet     1 x v1.16.1   v1.16.6
 
-그 전의 십수년간 경험한 것보다 훨씬 많은, 다양한 일들을 짧은 시간 동안 경험한 듯. 덕분에 새로운 사람들도 많이 만날 수 있었고, 이전과 다른 입장에서 일할 수 있는 기회도 가졌다. 그 전에는 SW architecture 측면에서 가장 아래쪽에 가까운 분야를 했다면, 그것보다는 보다 높은 layer의 업무도 해보고, 극단적으로 사업자와 대화를 하는 상당히 높은 게층의 일(계급이 아니라&mldr;)도 해보고, 무형의 결과물을 만들어내는 일도 잠시나마 해 봤다."><meta name=keywords content="life,"><meta property="og:url" content="https://cychong47.github.io/post/2020/new-things-in-last-4-years/"><meta property="og:site_name" content="Keep calm and Write something"><meta property="og:title" content="새로운 경험 들"><meta property="og:description" content="지난 2016년 난생 처음으로 자발적으로 부서를 옮긴 후에 경험한 것들.
-그 전의 십수년간에는 해보지 않은 많은 새로운 경험들을 가질 수 있었다. 주변의 도움 덕에. 특히 날 믿어주는 지인 덕에 이런 새로운 경험을 해 봐서 재밌었다.
-팀으로 일하기 Agile practice 해보기. Scrum meeting, Daily meeting, 회고 등 재밌게 일하기 의미를 가지며 일하기 의미있는 TF하기 Leading(TF, 파트) 외국 연구소, 사업자 직접 만나서 대화하기 정보를 입수해 가공해서 잘 전달하기 정보를 집중해서 관리하는 사이트 구축하기 사람들 독려하기 주간 리포트를 통해 업무 진행 공유하기 정치 맛 보기(이건 좀 힘들었네) 새로운 분야의 일 - Bearer Processing, OAM, MAC, PHY, 가상화 인프라 구축 - OpenStack, container 상용 솔류션 도입 - DB, Container platform 신기술을 컴파일해서 우리 것에 적용방안 찾기 (가상화 TF) 전화 영어로 일하기 밤 늦은 시간에 사업자마 해외 연구소와 콜하기 전략적으로 판단하기 (무조건 아는 걸 다 이야기하면 안되는) 팀 빌드의 중요성 옆에서 보기 다른 사람 평가하기 회사 평가 시스템 이해(TO는 생각보다 많이 적다, 연봉 캡, 동기부여의 수단은 별로 없다) 아는 것과 남들 특히 다른 생각을 가진 사람들을 설득하는 것이 어떤 지 배우기 영어로 업무하기. 외국 업체나 해외연구소 혹은 외국 인력과 함께 일하기 해외 연구소와 함께 일하기. Wiki등을 이용하여 협업하고, 주간 콜을 통해 업무 상황 공유. 사내 정치 맛 보기 그 전의 십수년간 경험한 것보다 훨씬 많은, 다양한 일들을 짧은 시간 동안 경험한 듯. 덕분에 새로운 사람들도 많이 만날 수 있었고, 이전과 다른 입장에서 일할 수 있는 기회도 가졌다. 그 전에는 SW architecture 측면에서 가장 아래쪽에 가까운 분야를 했다면, 그것보다는 보다 높은 layer의 업무도 해보고, 극단적으로 사업자와 대화를 하는 상당히 높은 게층의 일(계급이 아니라…)도 해보고, 무형의 결과물을 만들어내는 일도 잠시나마 해 봤다."><meta property="og:locale" content="en_us"><meta property="og:type" content="article"><meta property="article:section" content="post"><meta property="article:published_time" content="2020-05-07T14:34:55+09:00"><meta property="article:modified_time" content="2020-05-07T14:43:36+00:00"><meta property="article:tag" content="Life"><meta name=twitter:card content="summary"><meta name=twitter:title content="새로운 경험 들"><meta name=twitter:description content="지난 2016년 난생 처음으로 자발적으로 부서를 옮긴 후에 경험한 것들.
-그 전의 십수년간에는 해보지 않은 많은 새로운 경험들을 가질 수 있었다. 주변의 도움 덕에. 특히 날 믿어주는 지인 덕에 이런 새로운 경험을 해 봐서 재밌었다.
-팀으로 일하기 Agile practice 해보기. Scrum meeting, Daily meeting, 회고 등 재밌게 일하기 의미를 가지며 일하기 의미있는 TF하기 Leading(TF, 파트) 외국 연구소, 사업자 직접 만나서 대화하기 정보를 입수해 가공해서 잘 전달하기 정보를 집중해서 관리하는 사이트 구축하기 사람들 독려하기 주간 리포트를 통해 업무 진행 공유하기 정치 맛 보기(이건 좀 힘들었네) 새로운 분야의 일 - Bearer Processing, OAM, MAC, PHY, 가상화 인프라 구축 - OpenStack, container 상용 솔류션 도입 - DB, Container platform 신기술을 컴파일해서 우리 것에 적용방안 찾기 (가상화 TF) 전화 영어로 일하기 밤 늦은 시간에 사업자마 해외 연구소와 콜하기 전략적으로 판단하기 (무조건 아는 걸 다 이야기하면 안되는) 팀 빌드의 중요성 옆에서 보기 다른 사람 평가하기 회사 평가 시스템 이해(TO는 생각보다 많이 적다, 연봉 캡, 동기부여의 수단은 별로 없다) 아는 것과 남들 특히 다른 생각을 가진 사람들을 설득하는 것이 어떤 지 배우기 영어로 업무하기. 외국 업체나 해외연구소 혹은 외국 인력과 함께 일하기 해외 연구소와 함께 일하기. Wiki등을 이용하여 협업하고, 주간 콜을 통해 업무 상황 공유. 사내 정치 맛 보기 그 전의 십수년간 경험한 것보다 훨씬 많은, 다양한 일들을 짧은 시간 동안 경험한 듯. 덕분에 새로운 사람들도 많이 만날 수 있었고, 이전과 다른 입장에서 일할 수 있는 기회도 가졌다. 그 전에는 SW architecture 측면에서 가장 아래쪽에 가까운 분야를 했다면, 그것보다는 보다 높은 layer의 업무도 해보고, 극단적으로 사업자와 대화를 하는 상당히 높은 게층의 일(계급이 아니라…)도 해보고, 무형의 결과물을 만들어내는 일도 잠시나마 해 봤다."><meta itemprop=name content="새로운 경험 들"><meta itemprop=description content="지난 2016년 난생 처음으로 자발적으로 부서를 옮긴 후에 경험한 것들.
-그 전의 십수년간에는 해보지 않은 많은 새로운 경험들을 가질 수 있었다. 주변의 도움 덕에. 특히 날 믿어주는 지인 덕에 이런 새로운 경험을 해 봐서 재밌었다.
-팀으로 일하기 Agile practice 해보기. Scrum meeting, Daily meeting, 회고 등 재밌게 일하기 의미를 가지며 일하기 의미있는 TF하기 Leading(TF, 파트) 외국 연구소, 사업자 직접 만나서 대화하기 정보를 입수해 가공해서 잘 전달하기 정보를 집중해서 관리하는 사이트 구축하기 사람들 독려하기 주간 리포트를 통해 업무 진행 공유하기 정치 맛 보기(이건 좀 힘들었네) 새로운 분야의 일 - Bearer Processing, OAM, MAC, PHY, 가상화 인프라 구축 - OpenStack, container 상용 솔류션 도입 - DB, Container platform 신기술을 컴파일해서 우리 것에 적용방안 찾기 (가상화 TF) 전화 영어로 일하기 밤 늦은 시간에 사업자마 해외 연구소와 콜하기 전략적으로 판단하기 (무조건 아는 걸 다 이야기하면 안되는) 팀 빌드의 중요성 옆에서 보기 다른 사람 평가하기 회사 평가 시스템 이해(TO는 생각보다 많이 적다, 연봉 캡, 동기부여의 수단은 별로 없다) 아는 것과 남들 특히 다른 생각을 가진 사람들을 설득하는 것이 어떤 지 배우기 영어로 업무하기. 외국 업체나 해외연구소 혹은 외국 인력과 함께 일하기 해외 연구소와 함께 일하기. Wiki등을 이용하여 협업하고, 주간 콜을 통해 업무 상황 공유. 사내 정치 맛 보기 그 전의 십수년간 경험한 것보다 훨씬 많은, 다양한 일들을 짧은 시간 동안 경험한 듯. 덕분에 새로운 사람들도 많이 만날 수 있었고, 이전과 다른 입장에서 일할 수 있는 기회도 가졌다. 그 전에는 SW architecture 측면에서 가장 아래쪽에 가까운 분야를 했다면, 그것보다는 보다 높은 layer의 업무도 해보고, 극단적으로 사업자와 대화를 하는 상당히 높은 게층의 일(계급이 아니라…)도 해보고, 무형의 결과물을 만들어내는 일도 잠시나마 해 봤다."><meta itemprop=datePublished content="2020-05-07T14:34:55+09:00"><meta itemprop=dateModified content="2020-05-07T14:43:36+00:00"><meta itemprop=wordCount content="257"><meta itemprop=keywords content="Life"><meta name=referrer content="no-referrer-when-downgrade"><style>:root{--width:720px;--font-main:Verdana, sans-serif;--font-secondary:Verdana, sans-serif;--font-scale:1em;--background-color:#fafafa;--heading-color:#222;--text-color:#444;--link-color:#3273dc;--visited-color:#8b6fcb;--blockquote-color:#222}@media(prefers-color-scheme:dark){:root{--background-color:#fafafa;--heading-color:#222;--text-color:#444;--link-color:#3273dc;--visited-color:#8b6fcb;--blockquote-color:#222}}body{font-family:var(--font-secondary);font-size:var(--font-scale);margin:auto;padding:20px;max-width:var(--width);text-align:left;background-color:var(--background-color);word-wrap:break-word;overflow-wrap:break-word;line-height:1.5;color:var(--text-color)}h1,h2,h3,h4,h5,h6{font-family:var(--font-main);color:var(--heading-color)}a{color:var(--link-color);cursor:pointer;text-decoration:none}a:hover{text-decoration:underline}nav a{margin-right:8px}strong,b{color:var(--heading-color)}button{margin:0;cursor:pointer}time{font-family:monospace;font-style:normal;font-size:15px}main{line-height:1.6}table{width:100%}hr{border:0;border-top:1px dashed}img{max-width:100%}code{font-family:monospace;padding:2px;border-radius:3px}blockquote{border-left:1px solid #999;color:var(--blockquote-color);padding-left:20px;font-style:italic}footer{padding:25px 0;text-align:center}.title:hover{text-decoration:none}.title h1{font-size:1.5em}.inline{width:auto!important}.highlight,.code{border-radius:3px;margin-block-start:1em;margin-block-end:1em;overflow-x:auto}ul.blog-posts{list-style-type:none;padding:unset}ul.blog-posts li{display:flex}ul.blog-posts li span{flex:0 0 130px}ul.blog-posts li a:visited{color:var(--visited-color)}</style></head><body><header><a href=/ class=title><h2>Keep calm and Write something</h2></a><nav><a href=/post/>Post</a>
+Upgrade to the latest version in the v1.16 series:
+
+COMPONENT            CURRENT   AVAILABLE
+API Server           v1.16.1   v1.16.6
+Controller Manager   v1.16.1   v1.16.6
+Scheduler            v1.16.1   v1.16.6
+Kube Proxy           v1.16.1   v1.16.6
+CoreDNS              1.6.2     1.6.5
+Etcd                 3.3.15    3.3.17-0
+
+You can now apply the upgrade by executing the following command:
+
+	kubeadm upgrade apply v1.16.6
+
+_____________________________________________________________________
+
+Components that must be upgraded manually after you have upgraded the control plane with &#39;kubeadm upgrade apply&#39;:
+COMPONENT   CURRENT       AVAILABLE
+Kubelet     1 x v1.16.1   v1.17.2
+
+Upgrade to the latest stable version:
+
+COMPONENT            CURRENT   AVAILABLE
+API Server           v1.16.1   v1.17.2
+Controller Manager   v1.16.1   v1.17.2
+Scheduler            v1.16.1   v1.17.2
+Kube Proxy           v1.16.1   v1.17.2
+CoreDNS              1.6.2     1.6.5
+Etcd                 3.3.15    3.4.3-0
+
+You can now apply the upgrade by executing the following command:
+
+	kubeadm upgrade apply v1.17.2
+
+_____________________________________________________________________
+
+cychong@mini1:~$ sudo kubeadm upgrade apply v1.17.2
+[upgrade/config] Making sure the configuration is correct:
+[upgrade/config] Reading configuration from the cluster...
+[upgrade/config] FYI: You can look at this config file with &#39;kubectl -n kube-system get cm kubeadm-config -oyaml&#39;
+[preflight] Running pre-flight checks.
+[upgrade] Making sure the cluster is healthy:
+[upgrade/version] You have chosen to change the cluster version to "v1.17.2"
+[upgrade/versions] Cluster version: v1.16.1
+[upgrade/versions] kubeadm version: v1.17.2
+[upgrade/confirm] Are you sure you want to proceed with the upgrade? [y/N]: y
+[upgrade/prepull] Will prepull images for components [kube-apiserver kube-controller-manager kube-scheduler etcd]
+[upgrade/prepull] Prepulling image for component etcd.
+[upgrade/prepull] Prepulling image for component kube-apiserver.
+[upgrade/prepull] Prepulling image for component kube-controller-manager.
+[upgrade/prepull] Prepulling image for component kube-scheduler.
+[apiclient] Found 1 Pods for label selector k8s-app=upgrade-prepull-kube-controller-manager
+[apiclient] Found 0 Pods for label selector k8s-app=upgrade-prepull-kube-scheduler
+[apiclient] Found 1 Pods for label selector k8s-app=upgrade-prepull-kube-apiserver
+[apiclient] Found 0 Pods for label selector k8s-app=upgrade-prepull-etcd
+[apiclient] Found 1 Pods for label selector k8s-app=upgrade-prepull-kube-scheduler
+[apiclient] Found 1 Pods for label selector k8s-app=upgrade-prepull-etcd
+[upgrade/prepull] Prepulled image for component kube-controller-manager.
+[upgrade/prepull] Prepulled image for component kube-apiserver.
+[upgrade/prepull] Prepulled image for component kube-scheduler.
+[upgrade/prepull] Prepulled image for component etcd.
+[upgrade/prepull] Successfully prepulled the images for all the control plane components
+[upgrade/apply] Upgrading your Static Pod-hosted control plane to version "v1.17.2"...
+Static pod: kube-apiserver-mini1 hash: 66d5b6802b69fcb461e22c159ef72783
+Static pod: kube-controller-manager-mini1 hash: 98ded181cb6da00c408078fe0832bddf
+Static pod: kube-scheduler-mini1 hash: e05eb744bc3406614b4a55dd00e7af9f
+[upgrade/etcd] Upgrading to TLS for etcd
+Static pod: etcd-mini1 hash: 9e59bd8449d154ddd6acfbbb3a74181f
+[upgrade/staticpods] Preparing for "etcd" upgrade
+[upgrade/staticpods] Renewing etcd-server certificate
+[upgrade/staticpods] Renewing etcd-peer certificate
+[upgrade/staticpods] Renewing etcd-healthcheck-client certificate
+[upgrade/staticpods] Moved new manifest to "/etc/kubernetes/manifests/etcd.yaml" and backed up old manifest to "/etc/kubernetes/tmp/kubeadm-backup-manifests-2020-01-30-22-21-26/etcd.yaml"
+[upgrade/staticpods] Waiting for the kubelet to restart the component
+[upgrade/staticpods] This might take a minute or longer depending on the component/version gap (timeout 5m0s)
+Static pod: etcd-mini1 hash: 9e59bd8449d154ddd6acfbbb3a74181f
+Static pod: etcd-mini1 hash: 9b305733637de70ef82ca5b0b18c65e1
+[apiclient] Found 1 Pods for label selector component=etcd
+[upgrade/staticpods] Component "etcd" upgraded successfully!
+[upgrade/etcd] Waiting for etcd to become available
+[upgrade/staticpods] Writing new Static Pod manifests to "/etc/kubernetes/tmp/kubeadm-upgraded-manifests216455436"
+W0130 22:22:01.351368   10213 manifests.go:214] the default kube-apiserver authorization-mode is "Node,RBAC"; using "Node,RBAC"
+[upgrade/staticpods] Preparing for "kube-apiserver" upgrade
+[upgrade/staticpods] Renewing apiserver certificate
+[upgrade/staticpods] Renewing apiserver-kubelet-client certificate
+[upgrade/staticpods] Renewing front-proxy-client certificate
+[upgrade/staticpods] Renewing apiserver-etcd-client certificate
+[upgrade/staticpods] Moved new manifest to "/etc/kubernetes/manifests/kube-apiserver.yaml" and backed up old manifest to "/etc/kubernetes/tmp/kubeadm-backup-manifests-2020-01-30-22-21-26/kube-apiserver.yaml"
+[upgrade/staticpods] Waiting for the kubelet to restart the component
+[upgrade/staticpods] This might take a minute or longer depending on the component/version gap (timeout 5m0s)
+Static pod: kube-apiserver-mini1 hash: 66d5b6802b69fcb461e22c159ef72783
+Static pod: kube-apiserver-mini1 hash: 4d9a965c0a14a45ea3d7db1e023096d4
+[apiclient] Found 1 Pods for label selector component=kube-apiserver
+[upgrade/staticpods] Component "kube-apiserver" upgraded successfully!
+[upgrade/staticpods] Preparing for "kube-controller-manager" upgrade
+[upgrade/staticpods] Renewing controller-manager.conf certificate
+[upgrade/staticpods] Moved new manifest to "/etc/kubernetes/manifests/kube-controller-manager.yaml" and backed up old manifest to "/etc/kubernetes/tmp/kubeadm-backup-manifests-2020-01-30-22-21-26/kube-controller-manager.yaml"
+[upgrade/staticpods] Waiting for the kubelet to restart the component
+[upgrade/staticpods] This might take a minute or longer depending on the component/version gap (timeout 5m0s)
+Static pod: kube-controller-manager-mini1 hash: 98ded181cb6da00c408078fe0832bddf
+Static pod: kube-controller-manager-mini1 hash: 98ded181cb6da00c408078fe0832bddf
+Static pod: kube-controller-manager-mini1 hash: 85a33dac6d806801ba5efe4a4544194c
+[apiclient] Found 1 Pods for label selector component=kube-controller-manager
+[upgrade/staticpods] Component "kube-controller-manager" upgraded successfully!
+[upgrade/staticpods] Preparing for "kube-scheduler" upgrade
+[upgrade/staticpods] Renewing scheduler.conf certificate
+[upgrade/staticpods] Moved new manifest to "/etc/kubernetes/manifests/kube-scheduler.yaml" and backed up old manifest to "/etc/kubernetes/tmp/kubeadm-backup-manifests-2020-01-30-22-21-26/kube-scheduler.yaml"
+[upgrade/staticpods] Waiting for the kubelet to restart the component
+[upgrade/staticpods] This might take a minute or longer depending on the component/version gap (timeout 5m0s)
+Static pod: kube-scheduler-mini1 hash: e05eb744bc3406614b4a55dd00e7af9f
+Static pod: kube-scheduler-mini1 hash: 9c994ea62a2d8d6f1bb7498f10aa6fcf
+[apiclient] Found 1 Pods for label selector component=kube-scheduler
+[upgrade/staticpods] Component "kube-scheduler" upgraded successfully!
+[upload-config] Storing the configuration used in ConfigMap "kubeadm-config" in the "kube-system" Namespace
+[kubelet] Creating a ConfigMap "kubelet-config-1.17" in namespace kube-system with the configuration for the kubelets in the cluster
+[kubelet-start] Downloading configuration for the kubelet from the "kubelet-config-1.17" ConfigMap in the kube-system namespace
+[kubelet-start] Writing kubelet configuration to file "/var/lib/kubelet/config.yaml"
+[bootstrap-token] configured RBAC rules to allow Node Bootstrap tokens to post CSRs in order for nodes to get long term certificate credentials
+[bootstrap-token] configured RBAC rules to allow the csrapprover controller automatically approve CSRs from a Node Bootstrap Token
+[bootstrap-token] configured RBAC rules to allow certificate rotation for all node client certificates in the cluster
+[addons]: Migrating CoreDNS Corefile
+[addons] Applied essential addon: CoreDNS
+[addons] Applied essential addon: kube-proxy
+
+[upgrade/successful] SUCCESS! Your cluster was upgraded to "v1.17.2". Enjoy!
+
+[upgrade/kubelet] Now that your control plane is upgraded, please proceed with upgrading your kubelets if you haven&#39;t already done so.
+calico
+cychong@mini1:~$ wget https://docs.projectcalico.org/manifests/calico.yaml
+--2020-01-30 22:34:28--  https://docs.projectcalico.org/manifests/calico.yaml
+Resolving docs.projectcalico.org (docs.projectcalico.org)... 206.189.89.118, 2400:6180:0:d1::57a:6001
+Connecting to docs.projectcalico.org (docs.projectcalico.org)|206.189.89.118|:443... connected.
+HTTP request sent, awaiting response... 200 OK
+Length: 20935 (20K) [application/x-yaml]
+Saving to: ‘calico.yaml.2’
+
+calico.yaml.2                                               100%[===========================================================================================================================================>]  20.44K  --.-KB/s    in 0.07s   
+
+2020-01-30 22:34:29 (275 KB/s) - ‘calico.yaml.2’ saved [20935/20935]
+618             - name: CALICO_IPV4POOL_CIDR
+619               value: "10.201.0.0/24"
+cychong@mini1:~$ kubectl apply -f calico.yaml
+configmap/calico-config unchanged
+customresourcedefinition.apiextensions.k8s.io/felixconfigurations.crd.projectcalico.org unchanged
+customresourcedefinition.apiextensions.k8s.io/ipamblocks.crd.projectcalico.org unchanged
+customresourcedefinition.apiextensions.k8s.io/blockaffinities.crd.projectcalico.org unchanged
+customresourcedefinition.apiextensions.k8s.io/ipamhandles.crd.projectcalico.org unchanged
+customresourcedefinition.apiextensions.k8s.io/ipamconfigs.crd.projectcalico.org unchanged
+customresourcedefinition.apiextensions.k8s.io/bgppeers.crd.projectcalico.org unchanged
+customresourcedefinition.apiextensions.k8s.io/bgpconfigurations.crd.projectcalico.org unchanged
+customresourcedefinition.apiextensions.k8s.io/ippools.crd.projectcalico.org unchanged
+customresourcedefinition.apiextensions.k8s.io/hostendpoints.crd.projectcalico.org unchanged
+customresourcedefinition.apiextensions.k8s.io/clusterinformations.crd.projectcalico.org unchanged
+customresourcedefinition.apiextensions.k8s.io/globalnetworkpolicies.crd.projectcalico.org unchanged
+customresourcedefinition.apiextensions.k8s.io/globalnetworksets.crd.projectcalico.org unchanged
+customresourcedefinition.apiextensions.k8s.io/networkpolicies.crd.projectcalico.org unchanged
+customresourcedefinition.apiextensions.k8s.io/networksets.crd.projectcalico.org unchanged
+clusterrole.rbac.authorization.k8s.io/calico-kube-controllers unchanged
+clusterrolebinding.rbac.authorization.k8s.io/calico-kube-controllers unchanged
+clusterrole.rbac.authorization.k8s.io/calico-node configured
+clusterrolebinding.rbac.authorization.k8s.io/calico-node unchanged
+daemonset.apps/calico-node configured
+serviceaccount/calico-node unchanged
+deployment.apps/calico-kube-controllers configured
+serviceaccount/calico-kube-controllers unchanged
+kubelet and kubectl
+cychong@mini1:~$ sudo apt-mark unhold kubelet kubectl && sudo apt-get install -y kubelet=1.17.2-00 kubectl=1.17.2-00 && sudo apt-mark hold kubelet kubectl
+kubelet was already not hold.
+kubectl was already not hold.
+Reading package lists... Done
+Building dependency tree       
+Reading state information... Done
+The following packages will be upgraded:
+  kubectl kubelet
+2 upgraded, 0 newly installed, 0 to remove and 44 not upgraded.
+Need to get 27.9 MB of archives.
+After this operation, 14.8 MB disk space will be freed.
+Get:1 https://packages.cloud.google.com/apt kubernetes-xenial/main amd64 kubectl amd64 1.17.2-00 [8738 kB]
+Get:2 https://packages.cloud.google.com/apt kubernetes-xenial/main amd64 kubelet amd64 1.17.2-00 [19.2 MB]
+Fetched 27.9 MB in 6s (4994 kB/s)   
+(Reading database ... 248932 files and directories currently installed.)
+Preparing to unpack .../kubectl_1.17.2-00_amd64.deb ...
+Unpacking kubectl (1.17.2-00) over (1.16.1-00) ...
+Preparing to unpack .../kubelet_1.17.2-00_amd64.deb ...
+Unpacking kubelet (1.17.2-00) over (1.16.1-00) ...
+Setting up kubelet (1.17.2-00) ...
+Setting up kubectl (1.17.2-00) ...
+kubelet set on hold.
+kubectl set on hold.
+wrap-up
+cychong@mini1:~$ sudo systemctl restart kubelet
+cychong@mini1:~$ kubectl get nodes
+NAME    STATUS   ROLES    AGE    VERSION
+mini1   Ready    master   144d   v1.17.2
+reference
+
+https://kubernetes.io/docs/tasks/administer-cluster/kubeadm/kubeadm-upgrade/
+'><meta name=keywords content="kubernetes,"><meta property="og:url" content="https://cychong47.github.io/post/2020/new-things-in-last-4-years/"><meta property="og:site_name" content="Keep calm and Write something"><meta property="og:title" content="Upgrade kubenetes to 1.17.2-0"><meta property="og:description" content='preparation cychong@mini1:~$ sudo apt update [sudo] password for cychong: Ign:1 http://dl.google.com/linux/chrome/deb stable InRelease Get:2 http://dl.google.com/linux/chrome/deb stable Release [943 B] Get:3 http://dl.google.com/linux/chrome/deb stable Release.gpg [819 B] ... Get the lastest version cychong@mini1:~$ sudo apt-cache policy kubeadm kubeadm: Installed: 1.16.1-00 Candidate: 1.17.2-00 Version table: 1.17.2-00 500 500 http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages 1.17.1-00 500 500 http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages 1.17.0-00 500 500 http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages ... cychong@mini1:~$ apt-cache madison kubeadm kubeadm | 1.17.2-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages kubeadm | 1.17.1-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages kubeadm | 1.17.0-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages kubeadm | 1.16.6-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages kubeadm | 1.16.5-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages kubeadm | 1.16.4-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages kubeadm | 1.16.3-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages kubeadm | 1.16.2-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages kubeadm | 1.16.1-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages kubeadm | 1.16.0-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages kubeadm | 1.15.9-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages kubeadm | 1.15.8-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages kubeadm | 1.15.7-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages kubeadm | 1.15.6-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages kubeadm | 1.15.5-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages kubeadm | 1.15.4-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages kubeadm | 1.15.3-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages kubeadm | 1.15.2-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages kubeadm | 1.15.1-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages kubeadm | 1.15.0-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages kubeadm | 1.14.10-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages kubeadm | 1.14.9-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages kubeadm | 1.14.8-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages kubeadm | 1.14.7-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages kubeadm | 1.14.6-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages kubeadm | 1.14.5-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages kubeadm | 1.14.4-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages kubeadm | 1.14.3-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages kubeadm | 1.14.2-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages kubeadm | 1.14.1-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages kubeadm | 1.14.0-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages kubeadm | 1.13.12-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages kubeadm | 1.13.11-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages kubeadm | 1.13.10-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages kubeadm | 1.13.9-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages kubeadm | 1.13.8-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages kubeadm | 1.13.7-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages kubeadm | 1.13.6-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages kubeadm | 1.13.5-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages kubeadm | 1.13.4-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages kubeadm | 1.13.3-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages kubeadm | 1.13.2-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages kubeadm | 1.13.1-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages kubeadm | 1.13.0-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages kubeadm | 1.12.10-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages kubeadm | 1.12.9-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages kubeadm | 1.12.8-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages kubeadm | 1.12.7-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages kubeadm | 1.12.6-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages kubeadm | 1.12.5-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages kubeadm | 1.12.4-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages kubeadm | 1.12.3-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages kubeadm | 1.12.2-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages kubeadm | 1.12.1-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages kubeadm | 1.12.0-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages kubeadm | 1.11.10-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages kubeadm | 1.11.9-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages kubeadm | 1.11.8-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages kubeadm | 1.11.7-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages kubeadm | 1.11.6-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages kubeadm | 1.11.5-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages kubeadm | 1.11.4-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages kubeadm | 1.11.3-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages kubeadm | 1.11.2-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages kubeadm | 1.11.1-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages kubeadm | 1.11.0-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages kubeadm | 1.10.13-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages kubeadm | 1.10.12-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages kubeadm | 1.10.11-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages kubeadm | 1.10.10-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages kubeadm | 1.10.9-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages kubeadm | 1.10.8-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages kubeadm | 1.10.7-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages kubeadm | 1.10.6-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages kubeadm | 1.10.5-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages kubeadm | 1.10.4-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages kubeadm | 1.10.3-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages kubeadm | 1.10.2-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages kubeadm | 1.10.1-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages kubeadm | 1.10.0-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages kubeadm | 1.9.11-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages kubeadm | 1.9.10-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages kubeadm | 1.9.9-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages kubeadm | 1.9.8-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages kubeadm | 1.9.7-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages kubeadm | 1.9.6-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages kubeadm | 1.9.5-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages kubeadm | 1.9.4-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages kubeadm | 1.9.3-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages kubeadm | 1.9.2-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages kubeadm | 1.9.1-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages kubeadm | 1.9.0-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages kubeadm | 1.8.15-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages kubeadm | 1.8.14-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages kubeadm | 1.8.13-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages kubeadm | 1.8.12-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages kubeadm | 1.8.11-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages kubeadm | 1.8.10-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages kubeadm | 1.8.9-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages kubeadm | 1.8.8-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages kubeadm | 1.8.7-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages kubeadm | 1.8.6-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages kubeadm | 1.8.5-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages kubeadm | 1.8.4-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages kubeadm | 1.8.3-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages kubeadm | 1.8.2-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages kubeadm | 1.8.1-01 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages kubeadm | 1.8.0-01 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages kubeadm | 1.8.0-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages kubeadm | 1.7.16-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages kubeadm | 1.7.15-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages kubeadm | 1.7.14-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages kubeadm | 1.7.11-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages kubeadm | 1.7.10-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages kubeadm | 1.7.9-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages kubeadm | 1.7.8-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages kubeadm | 1.7.7-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages kubeadm | 1.7.6-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages kubeadm | 1.7.5-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages kubeadm | 1.7.4-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages kubeadm | 1.7.3-01 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages kubeadm | 1.7.2-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages kubeadm | 1.7.1-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages kubeadm | 1.7.0-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages kubeadm | 1.6.13-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages kubeadm | 1.6.12-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages kubeadm | 1.6.11-01 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages kubeadm | 1.6.10-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages kubeadm | 1.6.9-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages kubeadm | 1.6.8-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages kubeadm | 1.6.7-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages kubeadm | 1.6.6-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages kubeadm | 1.6.5-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages kubeadm | 1.6.4-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages kubeadm | 1.6.3-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages kubeadm | 1.6.2-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages kubeadm | 1.6.1-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages kubeadm | 1.5.7-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages cychong@mini1:~$ sudo apt-mark unhold kubeadm && sudo apt-get install -y kubeadm=1.17.2-00 && sudo apt-mark hold kubeadm Canceled hold on kubeadm. Reading package lists... Done Building dependency tree Reading state information... Done The following packages will be upgraded: kubeadm 1 upgraded, 0 newly installed, 0 to remove and 46 not upgraded. Need to get 8061 kB of archives. After this operation, 4907 kB disk space will be freed. Get:1 https://packages.cloud.google.com/apt kubernetes-xenial/main amd64 kubeadm amd64 1.17.2-00 [8061 kB] Fetched 8061 kB in 3s (3164 kB/s) (Reading database ... 248932 files and directories currently installed.) Preparing to unpack .../kubeadm_1.17.2-00_amd64.deb ... Unpacking kubeadm (1.17.2-00) over (1.16.1-00) ... Setting up kubeadm (1.17.2-00) ... kubeadm set on hold. cychong@mini1:~$ sudo apt-get update && apt-get install -y --allow-change-held-packages kubeadm=1.17.2-00 Ign:2 http://dl.google.com/linux/chrome/deb stable InRelease Hit:3 https://download.docker.com/linux/ubuntu bionic InRelease Hit:4 http://dl.google.com/linux/chrome/deb stable Release Hit:5 http://archive.ubuntu.com/ubuntu bionic InRelease Hit:7 http://archive.ubuntu.com/ubuntu bionic-updates InRelease Hit:8 http://ppa.launchpad.net/x2go/stable/ubuntu bionic InRelease Hit:9 http://archive.ubuntu.com/ubuntu bionic-backports InRelease Hit:1 https://packages.cloud.google.com/apt kubernetes-xenial InRelease Hit:10 http://archive.ubuntu.com/ubuntu bionic-security InRelease Reading package lists... Done E: Could not open lock file /var/lib/dpkg/lock-frontend - open (13: Permission denied) E: Unable to acquire the dpkg frontend lock (/var/lib/dpkg/lock-frontend), are you root? cychong@mini1:~$ sudo apt-get install -y --allow-change-held-packages kubeadm=1.17.2-00 Reading package lists... Done Building dependency tree Reading state information... Done kubeadm is already the newest version (1.17.2-00). 0 upgraded, 0 newly installed, 0 to remove and 46 not upgraded. cychong@mini1:~$ kubeadm version kubeadm version: &amp;version.Info{Major:"1", Minor:"17", GitVersion:"v1.17.2", GitCommit:"59603c6e503c87169aea6106f57b9f242f64df89", GitTreeState:"clean", BuildDate:"2020-01-18T23:27:49Z", GoVersion:"go1.13.5", Compiler:"gc", Platform:"linux/amd64"} cychong@mini1:~$ sudo kubeadm upgrade plan [upgrade/config] Making sure the configuration is correct: [upgrade/config] Reading configuration from the cluster... [upgrade/config] FYI: You can look at this config file with &#39;kubectl -n kube-system get cm kubeadm-config -oyaml&#39; [preflight] Running pre-flight checks. [upgrade] Making sure the cluster is healthy: [upgrade] Fetching available versions to upgrade to [upgrade/versions] Cluster version: v1.16.1 [upgrade/versions] kubeadm version: v1.17.2 [upgrade/versions] Latest stable version: v1.17.2 [upgrade/versions] Latest version in the v1.16 series: v1.16.6 Components that must be upgraded manually after you have upgraded the control plane with &#39;kubeadm upgrade apply&#39;: COMPONENT CURRENT AVAILABLE Kubelet 1 x v1.16.1 v1.16.6 Upgrade to the latest version in the v1.16 series: COMPONENT CURRENT AVAILABLE API Server v1.16.1 v1.16.6 Controller Manager v1.16.1 v1.16.6 Scheduler v1.16.1 v1.16.6 Kube Proxy v1.16.1 v1.16.6 CoreDNS 1.6.2 1.6.5 Etcd 3.3.15 3.3.17-0 You can now apply the upgrade by executing the following command: kubeadm upgrade apply v1.16.6 _____________________________________________________________________ Components that must be upgraded manually after you have upgraded the control plane with &#39;kubeadm upgrade apply&#39;: COMPONENT CURRENT AVAILABLE Kubelet 1 x v1.16.1 v1.17.2 Upgrade to the latest stable version: COMPONENT CURRENT AVAILABLE API Server v1.16.1 v1.17.2 Controller Manager v1.16.1 v1.17.2 Scheduler v1.16.1 v1.17.2 Kube Proxy v1.16.1 v1.17.2 CoreDNS 1.6.2 1.6.5 Etcd 3.3.15 3.4.3-0 You can now apply the upgrade by executing the following command: kubeadm upgrade apply v1.17.2 _____________________________________________________________________ cychong@mini1:~$ sudo kubeadm upgrade apply v1.17.2 [upgrade/config] Making sure the configuration is correct: [upgrade/config] Reading configuration from the cluster... [upgrade/config] FYI: You can look at this config file with &#39;kubectl -n kube-system get cm kubeadm-config -oyaml&#39; [preflight] Running pre-flight checks. [upgrade] Making sure the cluster is healthy: [upgrade/version] You have chosen to change the cluster version to "v1.17.2" [upgrade/versions] Cluster version: v1.16.1 [upgrade/versions] kubeadm version: v1.17.2 [upgrade/confirm] Are you sure you want to proceed with the upgrade? [y/N]: y [upgrade/prepull] Will prepull images for components [kube-apiserver kube-controller-manager kube-scheduler etcd] [upgrade/prepull] Prepulling image for component etcd. [upgrade/prepull] Prepulling image for component kube-apiserver. [upgrade/prepull] Prepulling image for component kube-controller-manager. [upgrade/prepull] Prepulling image for component kube-scheduler. [apiclient] Found 1 Pods for label selector k8s-app=upgrade-prepull-kube-controller-manager [apiclient] Found 0 Pods for label selector k8s-app=upgrade-prepull-kube-scheduler [apiclient] Found 1 Pods for label selector k8s-app=upgrade-prepull-kube-apiserver [apiclient] Found 0 Pods for label selector k8s-app=upgrade-prepull-etcd [apiclient] Found 1 Pods for label selector k8s-app=upgrade-prepull-kube-scheduler [apiclient] Found 1 Pods for label selector k8s-app=upgrade-prepull-etcd [upgrade/prepull] Prepulled image for component kube-controller-manager. [upgrade/prepull] Prepulled image for component kube-apiserver. [upgrade/prepull] Prepulled image for component kube-scheduler. [upgrade/prepull] Prepulled image for component etcd. [upgrade/prepull] Successfully prepulled the images for all the control plane components [upgrade/apply] Upgrading your Static Pod-hosted control plane to version "v1.17.2"... Static pod: kube-apiserver-mini1 hash: 66d5b6802b69fcb461e22c159ef72783 Static pod: kube-controller-manager-mini1 hash: 98ded181cb6da00c408078fe0832bddf Static pod: kube-scheduler-mini1 hash: e05eb744bc3406614b4a55dd00e7af9f [upgrade/etcd] Upgrading to TLS for etcd Static pod: etcd-mini1 hash: 9e59bd8449d154ddd6acfbbb3a74181f [upgrade/staticpods] Preparing for "etcd" upgrade [upgrade/staticpods] Renewing etcd-server certificate [upgrade/staticpods] Renewing etcd-peer certificate [upgrade/staticpods] Renewing etcd-healthcheck-client certificate [upgrade/staticpods] Moved new manifest to "/etc/kubernetes/manifests/etcd.yaml" and backed up old manifest to "/etc/kubernetes/tmp/kubeadm-backup-manifests-2020-01-30-22-21-26/etcd.yaml" [upgrade/staticpods] Waiting for the kubelet to restart the component [upgrade/staticpods] This might take a minute or longer depending on the component/version gap (timeout 5m0s) Static pod: etcd-mini1 hash: 9e59bd8449d154ddd6acfbbb3a74181f Static pod: etcd-mini1 hash: 9b305733637de70ef82ca5b0b18c65e1 [apiclient] Found 1 Pods for label selector component=etcd [upgrade/staticpods] Component "etcd" upgraded successfully! [upgrade/etcd] Waiting for etcd to become available [upgrade/staticpods] Writing new Static Pod manifests to "/etc/kubernetes/tmp/kubeadm-upgraded-manifests216455436" W0130 22:22:01.351368 10213 manifests.go:214] the default kube-apiserver authorization-mode is "Node,RBAC"; using "Node,RBAC" [upgrade/staticpods] Preparing for "kube-apiserver" upgrade [upgrade/staticpods] Renewing apiserver certificate [upgrade/staticpods] Renewing apiserver-kubelet-client certificate [upgrade/staticpods] Renewing front-proxy-client certificate [upgrade/staticpods] Renewing apiserver-etcd-client certificate [upgrade/staticpods] Moved new manifest to "/etc/kubernetes/manifests/kube-apiserver.yaml" and backed up old manifest to "/etc/kubernetes/tmp/kubeadm-backup-manifests-2020-01-30-22-21-26/kube-apiserver.yaml" [upgrade/staticpods] Waiting for the kubelet to restart the component [upgrade/staticpods] This might take a minute or longer depending on the component/version gap (timeout 5m0s) Static pod: kube-apiserver-mini1 hash: 66d5b6802b69fcb461e22c159ef72783 Static pod: kube-apiserver-mini1 hash: 4d9a965c0a14a45ea3d7db1e023096d4 [apiclient] Found 1 Pods for label selector component=kube-apiserver [upgrade/staticpods] Component "kube-apiserver" upgraded successfully! [upgrade/staticpods] Preparing for "kube-controller-manager" upgrade [upgrade/staticpods] Renewing controller-manager.conf certificate [upgrade/staticpods] Moved new manifest to "/etc/kubernetes/manifests/kube-controller-manager.yaml" and backed up old manifest to "/etc/kubernetes/tmp/kubeadm-backup-manifests-2020-01-30-22-21-26/kube-controller-manager.yaml" [upgrade/staticpods] Waiting for the kubelet to restart the component [upgrade/staticpods] This might take a minute or longer depending on the component/version gap (timeout 5m0s) Static pod: kube-controller-manager-mini1 hash: 98ded181cb6da00c408078fe0832bddf Static pod: kube-controller-manager-mini1 hash: 98ded181cb6da00c408078fe0832bddf Static pod: kube-controller-manager-mini1 hash: 85a33dac6d806801ba5efe4a4544194c [apiclient] Found 1 Pods for label selector component=kube-controller-manager [upgrade/staticpods] Component "kube-controller-manager" upgraded successfully! [upgrade/staticpods] Preparing for "kube-scheduler" upgrade [upgrade/staticpods] Renewing scheduler.conf certificate [upgrade/staticpods] Moved new manifest to "/etc/kubernetes/manifests/kube-scheduler.yaml" and backed up old manifest to "/etc/kubernetes/tmp/kubeadm-backup-manifests-2020-01-30-22-21-26/kube-scheduler.yaml" [upgrade/staticpods] Waiting for the kubelet to restart the component [upgrade/staticpods] This might take a minute or longer depending on the component/version gap (timeout 5m0s) Static pod: kube-scheduler-mini1 hash: e05eb744bc3406614b4a55dd00e7af9f Static pod: kube-scheduler-mini1 hash: 9c994ea62a2d8d6f1bb7498f10aa6fcf [apiclient] Found 1 Pods for label selector component=kube-scheduler [upgrade/staticpods] Component "kube-scheduler" upgraded successfully! [upload-config] Storing the configuration used in ConfigMap "kubeadm-config" in the "kube-system" Namespace [kubelet] Creating a ConfigMap "kubelet-config-1.17" in namespace kube-system with the configuration for the kubelets in the cluster [kubelet-start] Downloading configuration for the kubelet from the "kubelet-config-1.17" ConfigMap in the kube-system namespace [kubelet-start] Writing kubelet configuration to file "/var/lib/kubelet/config.yaml" [bootstrap-token] configured RBAC rules to allow Node Bootstrap tokens to post CSRs in order for nodes to get long term certificate credentials [bootstrap-token] configured RBAC rules to allow the csrapprover controller automatically approve CSRs from a Node Bootstrap Token [bootstrap-token] configured RBAC rules to allow certificate rotation for all node client certificates in the cluster [addons]: Migrating CoreDNS Corefile [addons] Applied essential addon: CoreDNS [addons] Applied essential addon: kube-proxy [upgrade/successful] SUCCESS! Your cluster was upgraded to "v1.17.2". Enjoy! [upgrade/kubelet] Now that your control plane is upgraded, please proceed with upgrading your kubelets if you haven&#39;t already done so. calico cychong@mini1:~$ wget https://docs.projectcalico.org/manifests/calico.yaml --2020-01-30 22:34:28-- https://docs.projectcalico.org/manifests/calico.yaml Resolving docs.projectcalico.org (docs.projectcalico.org)... 206.189.89.118, 2400:6180:0:d1::57a:6001 Connecting to docs.projectcalico.org (docs.projectcalico.org)|206.189.89.118|:443... connected. HTTP request sent, awaiting response... 200 OK Length: 20935 (20K) [application/x-yaml] Saving to: ‘calico.yaml.2’ calico.yaml.2 100%[===========================================================================================================================================>] 20.44K --.-KB/s in 0.07s 2020-01-30 22:34:29 (275 KB/s) - ‘calico.yaml.2’ saved [20935/20935] 618 - name: CALICO_IPV4POOL_CIDR 619 value: "10.201.0.0/24" cychong@mini1:~$ kubectl apply -f calico.yaml configmap/calico-config unchanged customresourcedefinition.apiextensions.k8s.io/felixconfigurations.crd.projectcalico.org unchanged customresourcedefinition.apiextensions.k8s.io/ipamblocks.crd.projectcalico.org unchanged customresourcedefinition.apiextensions.k8s.io/blockaffinities.crd.projectcalico.org unchanged customresourcedefinition.apiextensions.k8s.io/ipamhandles.crd.projectcalico.org unchanged customresourcedefinition.apiextensions.k8s.io/ipamconfigs.crd.projectcalico.org unchanged customresourcedefinition.apiextensions.k8s.io/bgppeers.crd.projectcalico.org unchanged customresourcedefinition.apiextensions.k8s.io/bgpconfigurations.crd.projectcalico.org unchanged customresourcedefinition.apiextensions.k8s.io/ippools.crd.projectcalico.org unchanged customresourcedefinition.apiextensions.k8s.io/hostendpoints.crd.projectcalico.org unchanged customresourcedefinition.apiextensions.k8s.io/clusterinformations.crd.projectcalico.org unchanged customresourcedefinition.apiextensions.k8s.io/globalnetworkpolicies.crd.projectcalico.org unchanged customresourcedefinition.apiextensions.k8s.io/globalnetworksets.crd.projectcalico.org unchanged customresourcedefinition.apiextensions.k8s.io/networkpolicies.crd.projectcalico.org unchanged customresourcedefinition.apiextensions.k8s.io/networksets.crd.projectcalico.org unchanged clusterrole.rbac.authorization.k8s.io/calico-kube-controllers unchanged clusterrolebinding.rbac.authorization.k8s.io/calico-kube-controllers unchanged clusterrole.rbac.authorization.k8s.io/calico-node configured clusterrolebinding.rbac.authorization.k8s.io/calico-node unchanged daemonset.apps/calico-node configured serviceaccount/calico-node unchanged deployment.apps/calico-kube-controllers configured serviceaccount/calico-kube-controllers unchanged kubelet and kubectl cychong@mini1:~$ sudo apt-mark unhold kubelet kubectl && sudo apt-get install -y kubelet=1.17.2-00 kubectl=1.17.2-00 && sudo apt-mark hold kubelet kubectl kubelet was already not hold. kubectl was already not hold. Reading package lists... Done Building dependency tree Reading state information... Done The following packages will be upgraded: kubectl kubelet 2 upgraded, 0 newly installed, 0 to remove and 44 not upgraded. Need to get 27.9 MB of archives. After this operation, 14.8 MB disk space will be freed. Get:1 https://packages.cloud.google.com/apt kubernetes-xenial/main amd64 kubectl amd64 1.17.2-00 [8738 kB] Get:2 https://packages.cloud.google.com/apt kubernetes-xenial/main amd64 kubelet amd64 1.17.2-00 [19.2 MB] Fetched 27.9 MB in 6s (4994 kB/s) (Reading database ... 248932 files and directories currently installed.) Preparing to unpack .../kubectl_1.17.2-00_amd64.deb ... Unpacking kubectl (1.17.2-00) over (1.16.1-00) ... Preparing to unpack .../kubelet_1.17.2-00_amd64.deb ... Unpacking kubelet (1.17.2-00) over (1.16.1-00) ... Setting up kubelet (1.17.2-00) ... Setting up kubectl (1.17.2-00) ... kubelet set on hold. kubectl set on hold. wrap-up cychong@mini1:~$ sudo systemctl restart kubelet cychong@mini1:~$ kubectl get nodes NAME STATUS ROLES AGE VERSION mini1 Ready master 144d v1.17.2 reference https://kubernetes.io/docs/tasks/administer-cluster/kubeadm/kubeadm-upgrade/'><meta property="og:locale" content="en_us"><meta property="og:type" content="article"><meta property="article:section" content="post"><meta property="article:published_time" content="2020-01-30T00:00:00+09:00"><meta property="article:modified_time" content="2020-05-07T14:43:36+00:00"><meta property="article:tag" content="Kubernetes"><meta property="og:see_also" content="https://cychong47.github.io/post/2020/2020-10-19-use-the-secret-and-configmaps/"><meta property="og:see_also" content="https://cychong47.github.io/post/2020/2020-10-19-how-to-fix-no-timezone-support-of-cronjob/"><meta property="og:see_also" content="https://cychong47.github.io/post/2020/2020-10-09-cronjob-in-kubernetes/"><meta property="og:see_also" content="https://cychong47.github.io/post/2020/2020-10-09-job-instead-of-deployment/"><meta property="og:see_also" content="https://cychong47.github.io/post/2020/2020-09-10-helmize-slackbot/"><meta name=twitter:card content="summary"><meta name=twitter:title content="Upgrade kubenetes to 1.17.2-0"><meta name=twitter:description content='preparation cychong@mini1:~$ sudo apt update [sudo] password for cychong: Ign:1 http://dl.google.com/linux/chrome/deb stable InRelease Get:2 http://dl.google.com/linux/chrome/deb stable Release [943 B] Get:3 http://dl.google.com/linux/chrome/deb stable Release.gpg [819 B] ... Get the lastest version cychong@mini1:~$ sudo apt-cache policy kubeadm kubeadm: Installed: 1.16.1-00 Candidate: 1.17.2-00 Version table: 1.17.2-00 500 500 http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages 1.17.1-00 500 500 http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages 1.17.0-00 500 500 http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages ... cychong@mini1:~$ apt-cache madison kubeadm kubeadm | 1.17.2-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages kubeadm | 1.17.1-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages kubeadm | 1.17.0-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages kubeadm | 1.16.6-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages kubeadm | 1.16.5-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages kubeadm | 1.16.4-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages kubeadm | 1.16.3-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages kubeadm | 1.16.2-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages kubeadm | 1.16.1-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages kubeadm | 1.16.0-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages kubeadm | 1.15.9-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages kubeadm | 1.15.8-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages kubeadm | 1.15.7-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages kubeadm | 1.15.6-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages kubeadm | 1.15.5-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages kubeadm | 1.15.4-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages kubeadm | 1.15.3-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages kubeadm | 1.15.2-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages kubeadm | 1.15.1-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages kubeadm | 1.15.0-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages kubeadm | 1.14.10-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages kubeadm | 1.14.9-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages kubeadm | 1.14.8-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages kubeadm | 1.14.7-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages kubeadm | 1.14.6-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages kubeadm | 1.14.5-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages kubeadm | 1.14.4-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages kubeadm | 1.14.3-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages kubeadm | 1.14.2-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages kubeadm | 1.14.1-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages kubeadm | 1.14.0-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages kubeadm | 1.13.12-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages kubeadm | 1.13.11-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages kubeadm | 1.13.10-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages kubeadm | 1.13.9-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages kubeadm | 1.13.8-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages kubeadm | 1.13.7-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages kubeadm | 1.13.6-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages kubeadm | 1.13.5-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages kubeadm | 1.13.4-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages kubeadm | 1.13.3-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages kubeadm | 1.13.2-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages kubeadm | 1.13.1-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages kubeadm | 1.13.0-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages kubeadm | 1.12.10-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages kubeadm | 1.12.9-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages kubeadm | 1.12.8-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages kubeadm | 1.12.7-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages kubeadm | 1.12.6-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages kubeadm | 1.12.5-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages kubeadm | 1.12.4-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages kubeadm | 1.12.3-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages kubeadm | 1.12.2-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages kubeadm | 1.12.1-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages kubeadm | 1.12.0-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages kubeadm | 1.11.10-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages kubeadm | 1.11.9-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages kubeadm | 1.11.8-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages kubeadm | 1.11.7-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages kubeadm | 1.11.6-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages kubeadm | 1.11.5-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages kubeadm | 1.11.4-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages kubeadm | 1.11.3-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages kubeadm | 1.11.2-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages kubeadm | 1.11.1-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages kubeadm | 1.11.0-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages kubeadm | 1.10.13-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages kubeadm | 1.10.12-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages kubeadm | 1.10.11-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages kubeadm | 1.10.10-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages kubeadm | 1.10.9-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages kubeadm | 1.10.8-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages kubeadm | 1.10.7-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages kubeadm | 1.10.6-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages kubeadm | 1.10.5-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages kubeadm | 1.10.4-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages kubeadm | 1.10.3-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages kubeadm | 1.10.2-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages kubeadm | 1.10.1-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages kubeadm | 1.10.0-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages kubeadm | 1.9.11-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages kubeadm | 1.9.10-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages kubeadm | 1.9.9-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages kubeadm | 1.9.8-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages kubeadm | 1.9.7-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages kubeadm | 1.9.6-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages kubeadm | 1.9.5-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages kubeadm | 1.9.4-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages kubeadm | 1.9.3-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages kubeadm | 1.9.2-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages kubeadm | 1.9.1-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages kubeadm | 1.9.0-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages kubeadm | 1.8.15-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages kubeadm | 1.8.14-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages kubeadm | 1.8.13-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages kubeadm | 1.8.12-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages kubeadm | 1.8.11-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages kubeadm | 1.8.10-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages kubeadm | 1.8.9-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages kubeadm | 1.8.8-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages kubeadm | 1.8.7-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages kubeadm | 1.8.6-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages kubeadm | 1.8.5-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages kubeadm | 1.8.4-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages kubeadm | 1.8.3-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages kubeadm | 1.8.2-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages kubeadm | 1.8.1-01 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages kubeadm | 1.8.0-01 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages kubeadm | 1.8.0-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages kubeadm | 1.7.16-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages kubeadm | 1.7.15-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages kubeadm | 1.7.14-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages kubeadm | 1.7.11-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages kubeadm | 1.7.10-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages kubeadm | 1.7.9-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages kubeadm | 1.7.8-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages kubeadm | 1.7.7-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages kubeadm | 1.7.6-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages kubeadm | 1.7.5-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages kubeadm | 1.7.4-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages kubeadm | 1.7.3-01 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages kubeadm | 1.7.2-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages kubeadm | 1.7.1-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages kubeadm | 1.7.0-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages kubeadm | 1.6.13-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages kubeadm | 1.6.12-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages kubeadm | 1.6.11-01 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages kubeadm | 1.6.10-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages kubeadm | 1.6.9-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages kubeadm | 1.6.8-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages kubeadm | 1.6.7-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages kubeadm | 1.6.6-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages kubeadm | 1.6.5-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages kubeadm | 1.6.4-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages kubeadm | 1.6.3-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages kubeadm | 1.6.2-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages kubeadm | 1.6.1-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages kubeadm | 1.5.7-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages cychong@mini1:~$ sudo apt-mark unhold kubeadm && sudo apt-get install -y kubeadm=1.17.2-00 && sudo apt-mark hold kubeadm Canceled hold on kubeadm. Reading package lists... Done Building dependency tree Reading state information... Done The following packages will be upgraded: kubeadm 1 upgraded, 0 newly installed, 0 to remove and 46 not upgraded. Need to get 8061 kB of archives. After this operation, 4907 kB disk space will be freed. Get:1 https://packages.cloud.google.com/apt kubernetes-xenial/main amd64 kubeadm amd64 1.17.2-00 [8061 kB] Fetched 8061 kB in 3s (3164 kB/s) (Reading database ... 248932 files and directories currently installed.) Preparing to unpack .../kubeadm_1.17.2-00_amd64.deb ... Unpacking kubeadm (1.17.2-00) over (1.16.1-00) ... Setting up kubeadm (1.17.2-00) ... kubeadm set on hold. cychong@mini1:~$ sudo apt-get update && apt-get install -y --allow-change-held-packages kubeadm=1.17.2-00 Ign:2 http://dl.google.com/linux/chrome/deb stable InRelease Hit:3 https://download.docker.com/linux/ubuntu bionic InRelease Hit:4 http://dl.google.com/linux/chrome/deb stable Release Hit:5 http://archive.ubuntu.com/ubuntu bionic InRelease Hit:7 http://archive.ubuntu.com/ubuntu bionic-updates InRelease Hit:8 http://ppa.launchpad.net/x2go/stable/ubuntu bionic InRelease Hit:9 http://archive.ubuntu.com/ubuntu bionic-backports InRelease Hit:1 https://packages.cloud.google.com/apt kubernetes-xenial InRelease Hit:10 http://archive.ubuntu.com/ubuntu bionic-security InRelease Reading package lists... Done E: Could not open lock file /var/lib/dpkg/lock-frontend - open (13: Permission denied) E: Unable to acquire the dpkg frontend lock (/var/lib/dpkg/lock-frontend), are you root? cychong@mini1:~$ sudo apt-get install -y --allow-change-held-packages kubeadm=1.17.2-00 Reading package lists... Done Building dependency tree Reading state information... Done kubeadm is already the newest version (1.17.2-00). 0 upgraded, 0 newly installed, 0 to remove and 46 not upgraded. cychong@mini1:~$ kubeadm version kubeadm version: &amp;version.Info{Major:"1", Minor:"17", GitVersion:"v1.17.2", GitCommit:"59603c6e503c87169aea6106f57b9f242f64df89", GitTreeState:"clean", BuildDate:"2020-01-18T23:27:49Z", GoVersion:"go1.13.5", Compiler:"gc", Platform:"linux/amd64"} cychong@mini1:~$ sudo kubeadm upgrade plan [upgrade/config] Making sure the configuration is correct: [upgrade/config] Reading configuration from the cluster... [upgrade/config] FYI: You can look at this config file with &#39;kubectl -n kube-system get cm kubeadm-config -oyaml&#39; [preflight] Running pre-flight checks. [upgrade] Making sure the cluster is healthy: [upgrade] Fetching available versions to upgrade to [upgrade/versions] Cluster version: v1.16.1 [upgrade/versions] kubeadm version: v1.17.2 [upgrade/versions] Latest stable version: v1.17.2 [upgrade/versions] Latest version in the v1.16 series: v1.16.6 Components that must be upgraded manually after you have upgraded the control plane with &#39;kubeadm upgrade apply&#39;: COMPONENT CURRENT AVAILABLE Kubelet 1 x v1.16.1 v1.16.6 Upgrade to the latest version in the v1.16 series: COMPONENT CURRENT AVAILABLE API Server v1.16.1 v1.16.6 Controller Manager v1.16.1 v1.16.6 Scheduler v1.16.1 v1.16.6 Kube Proxy v1.16.1 v1.16.6 CoreDNS 1.6.2 1.6.5 Etcd 3.3.15 3.3.17-0 You can now apply the upgrade by executing the following command: kubeadm upgrade apply v1.16.6 _____________________________________________________________________ Components that must be upgraded manually after you have upgraded the control plane with &#39;kubeadm upgrade apply&#39;: COMPONENT CURRENT AVAILABLE Kubelet 1 x v1.16.1 v1.17.2 Upgrade to the latest stable version: COMPONENT CURRENT AVAILABLE API Server v1.16.1 v1.17.2 Controller Manager v1.16.1 v1.17.2 Scheduler v1.16.1 v1.17.2 Kube Proxy v1.16.1 v1.17.2 CoreDNS 1.6.2 1.6.5 Etcd 3.3.15 3.4.3-0 You can now apply the upgrade by executing the following command: kubeadm upgrade apply v1.17.2 _____________________________________________________________________ cychong@mini1:~$ sudo kubeadm upgrade apply v1.17.2 [upgrade/config] Making sure the configuration is correct: [upgrade/config] Reading configuration from the cluster... [upgrade/config] FYI: You can look at this config file with &#39;kubectl -n kube-system get cm kubeadm-config -oyaml&#39; [preflight] Running pre-flight checks. [upgrade] Making sure the cluster is healthy: [upgrade/version] You have chosen to change the cluster version to "v1.17.2" [upgrade/versions] Cluster version: v1.16.1 [upgrade/versions] kubeadm version: v1.17.2 [upgrade/confirm] Are you sure you want to proceed with the upgrade? [y/N]: y [upgrade/prepull] Will prepull images for components [kube-apiserver kube-controller-manager kube-scheduler etcd] [upgrade/prepull] Prepulling image for component etcd. [upgrade/prepull] Prepulling image for component kube-apiserver. [upgrade/prepull] Prepulling image for component kube-controller-manager. [upgrade/prepull] Prepulling image for component kube-scheduler. [apiclient] Found 1 Pods for label selector k8s-app=upgrade-prepull-kube-controller-manager [apiclient] Found 0 Pods for label selector k8s-app=upgrade-prepull-kube-scheduler [apiclient] Found 1 Pods for label selector k8s-app=upgrade-prepull-kube-apiserver [apiclient] Found 0 Pods for label selector k8s-app=upgrade-prepull-etcd [apiclient] Found 1 Pods for label selector k8s-app=upgrade-prepull-kube-scheduler [apiclient] Found 1 Pods for label selector k8s-app=upgrade-prepull-etcd [upgrade/prepull] Prepulled image for component kube-controller-manager. [upgrade/prepull] Prepulled image for component kube-apiserver. [upgrade/prepull] Prepulled image for component kube-scheduler. [upgrade/prepull] Prepulled image for component etcd. [upgrade/prepull] Successfully prepulled the images for all the control plane components [upgrade/apply] Upgrading your Static Pod-hosted control plane to version "v1.17.2"... Static pod: kube-apiserver-mini1 hash: 66d5b6802b69fcb461e22c159ef72783 Static pod: kube-controller-manager-mini1 hash: 98ded181cb6da00c408078fe0832bddf Static pod: kube-scheduler-mini1 hash: e05eb744bc3406614b4a55dd00e7af9f [upgrade/etcd] Upgrading to TLS for etcd Static pod: etcd-mini1 hash: 9e59bd8449d154ddd6acfbbb3a74181f [upgrade/staticpods] Preparing for "etcd" upgrade [upgrade/staticpods] Renewing etcd-server certificate [upgrade/staticpods] Renewing etcd-peer certificate [upgrade/staticpods] Renewing etcd-healthcheck-client certificate [upgrade/staticpods] Moved new manifest to "/etc/kubernetes/manifests/etcd.yaml" and backed up old manifest to "/etc/kubernetes/tmp/kubeadm-backup-manifests-2020-01-30-22-21-26/etcd.yaml" [upgrade/staticpods] Waiting for the kubelet to restart the component [upgrade/staticpods] This might take a minute or longer depending on the component/version gap (timeout 5m0s) Static pod: etcd-mini1 hash: 9e59bd8449d154ddd6acfbbb3a74181f Static pod: etcd-mini1 hash: 9b305733637de70ef82ca5b0b18c65e1 [apiclient] Found 1 Pods for label selector component=etcd [upgrade/staticpods] Component "etcd" upgraded successfully! [upgrade/etcd] Waiting for etcd to become available [upgrade/staticpods] Writing new Static Pod manifests to "/etc/kubernetes/tmp/kubeadm-upgraded-manifests216455436" W0130 22:22:01.351368 10213 manifests.go:214] the default kube-apiserver authorization-mode is "Node,RBAC"; using "Node,RBAC" [upgrade/staticpods] Preparing for "kube-apiserver" upgrade [upgrade/staticpods] Renewing apiserver certificate [upgrade/staticpods] Renewing apiserver-kubelet-client certificate [upgrade/staticpods] Renewing front-proxy-client certificate [upgrade/staticpods] Renewing apiserver-etcd-client certificate [upgrade/staticpods] Moved new manifest to "/etc/kubernetes/manifests/kube-apiserver.yaml" and backed up old manifest to "/etc/kubernetes/tmp/kubeadm-backup-manifests-2020-01-30-22-21-26/kube-apiserver.yaml" [upgrade/staticpods] Waiting for the kubelet to restart the component [upgrade/staticpods] This might take a minute or longer depending on the component/version gap (timeout 5m0s) Static pod: kube-apiserver-mini1 hash: 66d5b6802b69fcb461e22c159ef72783 Static pod: kube-apiserver-mini1 hash: 4d9a965c0a14a45ea3d7db1e023096d4 [apiclient] Found 1 Pods for label selector component=kube-apiserver [upgrade/staticpods] Component "kube-apiserver" upgraded successfully! [upgrade/staticpods] Preparing for "kube-controller-manager" upgrade [upgrade/staticpods] Renewing controller-manager.conf certificate [upgrade/staticpods] Moved new manifest to "/etc/kubernetes/manifests/kube-controller-manager.yaml" and backed up old manifest to "/etc/kubernetes/tmp/kubeadm-backup-manifests-2020-01-30-22-21-26/kube-controller-manager.yaml" [upgrade/staticpods] Waiting for the kubelet to restart the component [upgrade/staticpods] This might take a minute or longer depending on the component/version gap (timeout 5m0s) Static pod: kube-controller-manager-mini1 hash: 98ded181cb6da00c408078fe0832bddf Static pod: kube-controller-manager-mini1 hash: 98ded181cb6da00c408078fe0832bddf Static pod: kube-controller-manager-mini1 hash: 85a33dac6d806801ba5efe4a4544194c [apiclient] Found 1 Pods for label selector component=kube-controller-manager [upgrade/staticpods] Component "kube-controller-manager" upgraded successfully! [upgrade/staticpods] Preparing for "kube-scheduler" upgrade [upgrade/staticpods] Renewing scheduler.conf certificate [upgrade/staticpods] Moved new manifest to "/etc/kubernetes/manifests/kube-scheduler.yaml" and backed up old manifest to "/etc/kubernetes/tmp/kubeadm-backup-manifests-2020-01-30-22-21-26/kube-scheduler.yaml" [upgrade/staticpods] Waiting for the kubelet to restart the component [upgrade/staticpods] This might take a minute or longer depending on the component/version gap (timeout 5m0s) Static pod: kube-scheduler-mini1 hash: e05eb744bc3406614b4a55dd00e7af9f Static pod: kube-scheduler-mini1 hash: 9c994ea62a2d8d6f1bb7498f10aa6fcf [apiclient] Found 1 Pods for label selector component=kube-scheduler [upgrade/staticpods] Component "kube-scheduler" upgraded successfully! [upload-config] Storing the configuration used in ConfigMap "kubeadm-config" in the "kube-system" Namespace [kubelet] Creating a ConfigMap "kubelet-config-1.17" in namespace kube-system with the configuration for the kubelets in the cluster [kubelet-start] Downloading configuration for the kubelet from the "kubelet-config-1.17" ConfigMap in the kube-system namespace [kubelet-start] Writing kubelet configuration to file "/var/lib/kubelet/config.yaml" [bootstrap-token] configured RBAC rules to allow Node Bootstrap tokens to post CSRs in order for nodes to get long term certificate credentials [bootstrap-token] configured RBAC rules to allow the csrapprover controller automatically approve CSRs from a Node Bootstrap Token [bootstrap-token] configured RBAC rules to allow certificate rotation for all node client certificates in the cluster [addons]: Migrating CoreDNS Corefile [addons] Applied essential addon: CoreDNS [addons] Applied essential addon: kube-proxy [upgrade/successful] SUCCESS! Your cluster was upgraded to "v1.17.2". Enjoy! [upgrade/kubelet] Now that your control plane is upgraded, please proceed with upgrading your kubelets if you haven&#39;t already done so. calico cychong@mini1:~$ wget https://docs.projectcalico.org/manifests/calico.yaml --2020-01-30 22:34:28-- https://docs.projectcalico.org/manifests/calico.yaml Resolving docs.projectcalico.org (docs.projectcalico.org)... 206.189.89.118, 2400:6180:0:d1::57a:6001 Connecting to docs.projectcalico.org (docs.projectcalico.org)|206.189.89.118|:443... connected. HTTP request sent, awaiting response... 200 OK Length: 20935 (20K) [application/x-yaml] Saving to: ‘calico.yaml.2’ calico.yaml.2 100%[===========================================================================================================================================>] 20.44K --.-KB/s in 0.07s 2020-01-30 22:34:29 (275 KB/s) - ‘calico.yaml.2’ saved [20935/20935] 618 - name: CALICO_IPV4POOL_CIDR 619 value: "10.201.0.0/24" cychong@mini1:~$ kubectl apply -f calico.yaml configmap/calico-config unchanged customresourcedefinition.apiextensions.k8s.io/felixconfigurations.crd.projectcalico.org unchanged customresourcedefinition.apiextensions.k8s.io/ipamblocks.crd.projectcalico.org unchanged customresourcedefinition.apiextensions.k8s.io/blockaffinities.crd.projectcalico.org unchanged customresourcedefinition.apiextensions.k8s.io/ipamhandles.crd.projectcalico.org unchanged customresourcedefinition.apiextensions.k8s.io/ipamconfigs.crd.projectcalico.org unchanged customresourcedefinition.apiextensions.k8s.io/bgppeers.crd.projectcalico.org unchanged customresourcedefinition.apiextensions.k8s.io/bgpconfigurations.crd.projectcalico.org unchanged customresourcedefinition.apiextensions.k8s.io/ippools.crd.projectcalico.org unchanged customresourcedefinition.apiextensions.k8s.io/hostendpoints.crd.projectcalico.org unchanged customresourcedefinition.apiextensions.k8s.io/clusterinformations.crd.projectcalico.org unchanged customresourcedefinition.apiextensions.k8s.io/globalnetworkpolicies.crd.projectcalico.org unchanged customresourcedefinition.apiextensions.k8s.io/globalnetworksets.crd.projectcalico.org unchanged customresourcedefinition.apiextensions.k8s.io/networkpolicies.crd.projectcalico.org unchanged customresourcedefinition.apiextensions.k8s.io/networksets.crd.projectcalico.org unchanged clusterrole.rbac.authorization.k8s.io/calico-kube-controllers unchanged clusterrolebinding.rbac.authorization.k8s.io/calico-kube-controllers unchanged clusterrole.rbac.authorization.k8s.io/calico-node configured clusterrolebinding.rbac.authorization.k8s.io/calico-node unchanged daemonset.apps/calico-node configured serviceaccount/calico-node unchanged deployment.apps/calico-kube-controllers configured serviceaccount/calico-kube-controllers unchanged kubelet and kubectl cychong@mini1:~$ sudo apt-mark unhold kubelet kubectl && sudo apt-get install -y kubelet=1.17.2-00 kubectl=1.17.2-00 && sudo apt-mark hold kubelet kubectl kubelet was already not hold. kubectl was already not hold. Reading package lists... Done Building dependency tree Reading state information... Done The following packages will be upgraded: kubectl kubelet 2 upgraded, 0 newly installed, 0 to remove and 44 not upgraded. Need to get 27.9 MB of archives. After this operation, 14.8 MB disk space will be freed. Get:1 https://packages.cloud.google.com/apt kubernetes-xenial/main amd64 kubectl amd64 1.17.2-00 [8738 kB] Get:2 https://packages.cloud.google.com/apt kubernetes-xenial/main amd64 kubelet amd64 1.17.2-00 [19.2 MB] Fetched 27.9 MB in 6s (4994 kB/s) (Reading database ... 248932 files and directories currently installed.) Preparing to unpack .../kubectl_1.17.2-00_amd64.deb ... Unpacking kubectl (1.17.2-00) over (1.16.1-00) ... Preparing to unpack .../kubelet_1.17.2-00_amd64.deb ... Unpacking kubelet (1.17.2-00) over (1.16.1-00) ... Setting up kubelet (1.17.2-00) ... Setting up kubectl (1.17.2-00) ... kubelet set on hold. kubectl set on hold. wrap-up cychong@mini1:~$ sudo systemctl restart kubelet cychong@mini1:~$ kubectl get nodes NAME STATUS ROLES AGE VERSION mini1 Ready master 144d v1.17.2 reference https://kubernetes.io/docs/tasks/administer-cluster/kubeadm/kubeadm-upgrade/'><meta itemprop=name content="Upgrade kubenetes to 1.17.2-0"><meta itemprop=description content='preparation cychong@mini1:~$ sudo apt update [sudo] password for cychong: Ign:1 http://dl.google.com/linux/chrome/deb stable InRelease Get:2 http://dl.google.com/linux/chrome/deb stable Release [943 B] Get:3 http://dl.google.com/linux/chrome/deb stable Release.gpg [819 B] ... Get the lastest version cychong@mini1:~$ sudo apt-cache policy kubeadm kubeadm: Installed: 1.16.1-00 Candidate: 1.17.2-00 Version table: 1.17.2-00 500 500 http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages 1.17.1-00 500 500 http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages 1.17.0-00 500 500 http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages ... cychong@mini1:~$ apt-cache madison kubeadm kubeadm | 1.17.2-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages kubeadm | 1.17.1-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages kubeadm | 1.17.0-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages kubeadm | 1.16.6-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages kubeadm | 1.16.5-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages kubeadm | 1.16.4-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages kubeadm | 1.16.3-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages kubeadm | 1.16.2-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages kubeadm | 1.16.1-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages kubeadm | 1.16.0-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages kubeadm | 1.15.9-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages kubeadm | 1.15.8-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages kubeadm | 1.15.7-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages kubeadm | 1.15.6-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages kubeadm | 1.15.5-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages kubeadm | 1.15.4-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages kubeadm | 1.15.3-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages kubeadm | 1.15.2-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages kubeadm | 1.15.1-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages kubeadm | 1.15.0-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages kubeadm | 1.14.10-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages kubeadm | 1.14.9-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages kubeadm | 1.14.8-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages kubeadm | 1.14.7-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages kubeadm | 1.14.6-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages kubeadm | 1.14.5-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages kubeadm | 1.14.4-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages kubeadm | 1.14.3-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages kubeadm | 1.14.2-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages kubeadm | 1.14.1-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages kubeadm | 1.14.0-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages kubeadm | 1.13.12-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages kubeadm | 1.13.11-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages kubeadm | 1.13.10-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages kubeadm | 1.13.9-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages kubeadm | 1.13.8-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages kubeadm | 1.13.7-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages kubeadm | 1.13.6-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages kubeadm | 1.13.5-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages kubeadm | 1.13.4-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages kubeadm | 1.13.3-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages kubeadm | 1.13.2-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages kubeadm | 1.13.1-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages kubeadm | 1.13.0-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages kubeadm | 1.12.10-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages kubeadm | 1.12.9-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages kubeadm | 1.12.8-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages kubeadm | 1.12.7-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages kubeadm | 1.12.6-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages kubeadm | 1.12.5-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages kubeadm | 1.12.4-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages kubeadm | 1.12.3-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages kubeadm | 1.12.2-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages kubeadm | 1.12.1-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages kubeadm | 1.12.0-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages kubeadm | 1.11.10-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages kubeadm | 1.11.9-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages kubeadm | 1.11.8-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages kubeadm | 1.11.7-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages kubeadm | 1.11.6-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages kubeadm | 1.11.5-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages kubeadm | 1.11.4-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages kubeadm | 1.11.3-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages kubeadm | 1.11.2-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages kubeadm | 1.11.1-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages kubeadm | 1.11.0-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages kubeadm | 1.10.13-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages kubeadm | 1.10.12-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages kubeadm | 1.10.11-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages kubeadm | 1.10.10-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages kubeadm | 1.10.9-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages kubeadm | 1.10.8-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages kubeadm | 1.10.7-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages kubeadm | 1.10.6-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages kubeadm | 1.10.5-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages kubeadm | 1.10.4-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages kubeadm | 1.10.3-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages kubeadm | 1.10.2-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages kubeadm | 1.10.1-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages kubeadm | 1.10.0-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages kubeadm | 1.9.11-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages kubeadm | 1.9.10-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages kubeadm | 1.9.9-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages kubeadm | 1.9.8-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages kubeadm | 1.9.7-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages kubeadm | 1.9.6-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages kubeadm | 1.9.5-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages kubeadm | 1.9.4-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages kubeadm | 1.9.3-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages kubeadm | 1.9.2-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages kubeadm | 1.9.1-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages kubeadm | 1.9.0-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages kubeadm | 1.8.15-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages kubeadm | 1.8.14-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages kubeadm | 1.8.13-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages kubeadm | 1.8.12-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages kubeadm | 1.8.11-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages kubeadm | 1.8.10-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages kubeadm | 1.8.9-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages kubeadm | 1.8.8-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages kubeadm | 1.8.7-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages kubeadm | 1.8.6-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages kubeadm | 1.8.5-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages kubeadm | 1.8.4-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages kubeadm | 1.8.3-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages kubeadm | 1.8.2-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages kubeadm | 1.8.1-01 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages kubeadm | 1.8.0-01 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages kubeadm | 1.8.0-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages kubeadm | 1.7.16-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages kubeadm | 1.7.15-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages kubeadm | 1.7.14-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages kubeadm | 1.7.11-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages kubeadm | 1.7.10-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages kubeadm | 1.7.9-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages kubeadm | 1.7.8-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages kubeadm | 1.7.7-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages kubeadm | 1.7.6-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages kubeadm | 1.7.5-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages kubeadm | 1.7.4-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages kubeadm | 1.7.3-01 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages kubeadm | 1.7.2-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages kubeadm | 1.7.1-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages kubeadm | 1.7.0-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages kubeadm | 1.6.13-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages kubeadm | 1.6.12-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages kubeadm | 1.6.11-01 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages kubeadm | 1.6.10-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages kubeadm | 1.6.9-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages kubeadm | 1.6.8-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages kubeadm | 1.6.7-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages kubeadm | 1.6.6-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages kubeadm | 1.6.5-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages kubeadm | 1.6.4-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages kubeadm | 1.6.3-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages kubeadm | 1.6.2-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages kubeadm | 1.6.1-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages kubeadm | 1.5.7-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages cychong@mini1:~$ sudo apt-mark unhold kubeadm && sudo apt-get install -y kubeadm=1.17.2-00 && sudo apt-mark hold kubeadm Canceled hold on kubeadm. Reading package lists... Done Building dependency tree Reading state information... Done The following packages will be upgraded: kubeadm 1 upgraded, 0 newly installed, 0 to remove and 46 not upgraded. Need to get 8061 kB of archives. After this operation, 4907 kB disk space will be freed. Get:1 https://packages.cloud.google.com/apt kubernetes-xenial/main amd64 kubeadm amd64 1.17.2-00 [8061 kB] Fetched 8061 kB in 3s (3164 kB/s) (Reading database ... 248932 files and directories currently installed.) Preparing to unpack .../kubeadm_1.17.2-00_amd64.deb ... Unpacking kubeadm (1.17.2-00) over (1.16.1-00) ... Setting up kubeadm (1.17.2-00) ... kubeadm set on hold. cychong@mini1:~$ sudo apt-get update && apt-get install -y --allow-change-held-packages kubeadm=1.17.2-00 Ign:2 http://dl.google.com/linux/chrome/deb stable InRelease Hit:3 https://download.docker.com/linux/ubuntu bionic InRelease Hit:4 http://dl.google.com/linux/chrome/deb stable Release Hit:5 http://archive.ubuntu.com/ubuntu bionic InRelease Hit:7 http://archive.ubuntu.com/ubuntu bionic-updates InRelease Hit:8 http://ppa.launchpad.net/x2go/stable/ubuntu bionic InRelease Hit:9 http://archive.ubuntu.com/ubuntu bionic-backports InRelease Hit:1 https://packages.cloud.google.com/apt kubernetes-xenial InRelease Hit:10 http://archive.ubuntu.com/ubuntu bionic-security InRelease Reading package lists... Done E: Could not open lock file /var/lib/dpkg/lock-frontend - open (13: Permission denied) E: Unable to acquire the dpkg frontend lock (/var/lib/dpkg/lock-frontend), are you root? cychong@mini1:~$ sudo apt-get install -y --allow-change-held-packages kubeadm=1.17.2-00 Reading package lists... Done Building dependency tree Reading state information... Done kubeadm is already the newest version (1.17.2-00). 0 upgraded, 0 newly installed, 0 to remove and 46 not upgraded. cychong@mini1:~$ kubeadm version kubeadm version: &amp;version.Info{Major:"1", Minor:"17", GitVersion:"v1.17.2", GitCommit:"59603c6e503c87169aea6106f57b9f242f64df89", GitTreeState:"clean", BuildDate:"2020-01-18T23:27:49Z", GoVersion:"go1.13.5", Compiler:"gc", Platform:"linux/amd64"} cychong@mini1:~$ sudo kubeadm upgrade plan [upgrade/config] Making sure the configuration is correct: [upgrade/config] Reading configuration from the cluster... [upgrade/config] FYI: You can look at this config file with &#39;kubectl -n kube-system get cm kubeadm-config -oyaml&#39; [preflight] Running pre-flight checks. [upgrade] Making sure the cluster is healthy: [upgrade] Fetching available versions to upgrade to [upgrade/versions] Cluster version: v1.16.1 [upgrade/versions] kubeadm version: v1.17.2 [upgrade/versions] Latest stable version: v1.17.2 [upgrade/versions] Latest version in the v1.16 series: v1.16.6 Components that must be upgraded manually after you have upgraded the control plane with &#39;kubeadm upgrade apply&#39;: COMPONENT CURRENT AVAILABLE Kubelet 1 x v1.16.1 v1.16.6 Upgrade to the latest version in the v1.16 series: COMPONENT CURRENT AVAILABLE API Server v1.16.1 v1.16.6 Controller Manager v1.16.1 v1.16.6 Scheduler v1.16.1 v1.16.6 Kube Proxy v1.16.1 v1.16.6 CoreDNS 1.6.2 1.6.5 Etcd 3.3.15 3.3.17-0 You can now apply the upgrade by executing the following command: kubeadm upgrade apply v1.16.6 _____________________________________________________________________ Components that must be upgraded manually after you have upgraded the control plane with &#39;kubeadm upgrade apply&#39;: COMPONENT CURRENT AVAILABLE Kubelet 1 x v1.16.1 v1.17.2 Upgrade to the latest stable version: COMPONENT CURRENT AVAILABLE API Server v1.16.1 v1.17.2 Controller Manager v1.16.1 v1.17.2 Scheduler v1.16.1 v1.17.2 Kube Proxy v1.16.1 v1.17.2 CoreDNS 1.6.2 1.6.5 Etcd 3.3.15 3.4.3-0 You can now apply the upgrade by executing the following command: kubeadm upgrade apply v1.17.2 _____________________________________________________________________ cychong@mini1:~$ sudo kubeadm upgrade apply v1.17.2 [upgrade/config] Making sure the configuration is correct: [upgrade/config] Reading configuration from the cluster... [upgrade/config] FYI: You can look at this config file with &#39;kubectl -n kube-system get cm kubeadm-config -oyaml&#39; [preflight] Running pre-flight checks. [upgrade] Making sure the cluster is healthy: [upgrade/version] You have chosen to change the cluster version to "v1.17.2" [upgrade/versions] Cluster version: v1.16.1 [upgrade/versions] kubeadm version: v1.17.2 [upgrade/confirm] Are you sure you want to proceed with the upgrade? [y/N]: y [upgrade/prepull] Will prepull images for components [kube-apiserver kube-controller-manager kube-scheduler etcd] [upgrade/prepull] Prepulling image for component etcd. [upgrade/prepull] Prepulling image for component kube-apiserver. [upgrade/prepull] Prepulling image for component kube-controller-manager. [upgrade/prepull] Prepulling image for component kube-scheduler. [apiclient] Found 1 Pods for label selector k8s-app=upgrade-prepull-kube-controller-manager [apiclient] Found 0 Pods for label selector k8s-app=upgrade-prepull-kube-scheduler [apiclient] Found 1 Pods for label selector k8s-app=upgrade-prepull-kube-apiserver [apiclient] Found 0 Pods for label selector k8s-app=upgrade-prepull-etcd [apiclient] Found 1 Pods for label selector k8s-app=upgrade-prepull-kube-scheduler [apiclient] Found 1 Pods for label selector k8s-app=upgrade-prepull-etcd [upgrade/prepull] Prepulled image for component kube-controller-manager. [upgrade/prepull] Prepulled image for component kube-apiserver. [upgrade/prepull] Prepulled image for component kube-scheduler. [upgrade/prepull] Prepulled image for component etcd. [upgrade/prepull] Successfully prepulled the images for all the control plane components [upgrade/apply] Upgrading your Static Pod-hosted control plane to version "v1.17.2"... Static pod: kube-apiserver-mini1 hash: 66d5b6802b69fcb461e22c159ef72783 Static pod: kube-controller-manager-mini1 hash: 98ded181cb6da00c408078fe0832bddf Static pod: kube-scheduler-mini1 hash: e05eb744bc3406614b4a55dd00e7af9f [upgrade/etcd] Upgrading to TLS for etcd Static pod: etcd-mini1 hash: 9e59bd8449d154ddd6acfbbb3a74181f [upgrade/staticpods] Preparing for "etcd" upgrade [upgrade/staticpods] Renewing etcd-server certificate [upgrade/staticpods] Renewing etcd-peer certificate [upgrade/staticpods] Renewing etcd-healthcheck-client certificate [upgrade/staticpods] Moved new manifest to "/etc/kubernetes/manifests/etcd.yaml" and backed up old manifest to "/etc/kubernetes/tmp/kubeadm-backup-manifests-2020-01-30-22-21-26/etcd.yaml" [upgrade/staticpods] Waiting for the kubelet to restart the component [upgrade/staticpods] This might take a minute or longer depending on the component/version gap (timeout 5m0s) Static pod: etcd-mini1 hash: 9e59bd8449d154ddd6acfbbb3a74181f Static pod: etcd-mini1 hash: 9b305733637de70ef82ca5b0b18c65e1 [apiclient] Found 1 Pods for label selector component=etcd [upgrade/staticpods] Component "etcd" upgraded successfully! [upgrade/etcd] Waiting for etcd to become available [upgrade/staticpods] Writing new Static Pod manifests to "/etc/kubernetes/tmp/kubeadm-upgraded-manifests216455436" W0130 22:22:01.351368 10213 manifests.go:214] the default kube-apiserver authorization-mode is "Node,RBAC"; using "Node,RBAC" [upgrade/staticpods] Preparing for "kube-apiserver" upgrade [upgrade/staticpods] Renewing apiserver certificate [upgrade/staticpods] Renewing apiserver-kubelet-client certificate [upgrade/staticpods] Renewing front-proxy-client certificate [upgrade/staticpods] Renewing apiserver-etcd-client certificate [upgrade/staticpods] Moved new manifest to "/etc/kubernetes/manifests/kube-apiserver.yaml" and backed up old manifest to "/etc/kubernetes/tmp/kubeadm-backup-manifests-2020-01-30-22-21-26/kube-apiserver.yaml" [upgrade/staticpods] Waiting for the kubelet to restart the component [upgrade/staticpods] This might take a minute or longer depending on the component/version gap (timeout 5m0s) Static pod: kube-apiserver-mini1 hash: 66d5b6802b69fcb461e22c159ef72783 Static pod: kube-apiserver-mini1 hash: 4d9a965c0a14a45ea3d7db1e023096d4 [apiclient] Found 1 Pods for label selector component=kube-apiserver [upgrade/staticpods] Component "kube-apiserver" upgraded successfully! [upgrade/staticpods] Preparing for "kube-controller-manager" upgrade [upgrade/staticpods] Renewing controller-manager.conf certificate [upgrade/staticpods] Moved new manifest to "/etc/kubernetes/manifests/kube-controller-manager.yaml" and backed up old manifest to "/etc/kubernetes/tmp/kubeadm-backup-manifests-2020-01-30-22-21-26/kube-controller-manager.yaml" [upgrade/staticpods] Waiting for the kubelet to restart the component [upgrade/staticpods] This might take a minute or longer depending on the component/version gap (timeout 5m0s) Static pod: kube-controller-manager-mini1 hash: 98ded181cb6da00c408078fe0832bddf Static pod: kube-controller-manager-mini1 hash: 98ded181cb6da00c408078fe0832bddf Static pod: kube-controller-manager-mini1 hash: 85a33dac6d806801ba5efe4a4544194c [apiclient] Found 1 Pods for label selector component=kube-controller-manager [upgrade/staticpods] Component "kube-controller-manager" upgraded successfully! [upgrade/staticpods] Preparing for "kube-scheduler" upgrade [upgrade/staticpods] Renewing scheduler.conf certificate [upgrade/staticpods] Moved new manifest to "/etc/kubernetes/manifests/kube-scheduler.yaml" and backed up old manifest to "/etc/kubernetes/tmp/kubeadm-backup-manifests-2020-01-30-22-21-26/kube-scheduler.yaml" [upgrade/staticpods] Waiting for the kubelet to restart the component [upgrade/staticpods] This might take a minute or longer depending on the component/version gap (timeout 5m0s) Static pod: kube-scheduler-mini1 hash: e05eb744bc3406614b4a55dd00e7af9f Static pod: kube-scheduler-mini1 hash: 9c994ea62a2d8d6f1bb7498f10aa6fcf [apiclient] Found 1 Pods for label selector component=kube-scheduler [upgrade/staticpods] Component "kube-scheduler" upgraded successfully! [upload-config] Storing the configuration used in ConfigMap "kubeadm-config" in the "kube-system" Namespace [kubelet] Creating a ConfigMap "kubelet-config-1.17" in namespace kube-system with the configuration for the kubelets in the cluster [kubelet-start] Downloading configuration for the kubelet from the "kubelet-config-1.17" ConfigMap in the kube-system namespace [kubelet-start] Writing kubelet configuration to file "/var/lib/kubelet/config.yaml" [bootstrap-token] configured RBAC rules to allow Node Bootstrap tokens to post CSRs in order for nodes to get long term certificate credentials [bootstrap-token] configured RBAC rules to allow the csrapprover controller automatically approve CSRs from a Node Bootstrap Token [bootstrap-token] configured RBAC rules to allow certificate rotation for all node client certificates in the cluster [addons]: Migrating CoreDNS Corefile [addons] Applied essential addon: CoreDNS [addons] Applied essential addon: kube-proxy [upgrade/successful] SUCCESS! Your cluster was upgraded to "v1.17.2". Enjoy! [upgrade/kubelet] Now that your control plane is upgraded, please proceed with upgrading your kubelets if you haven&#39;t already done so. calico cychong@mini1:~$ wget https://docs.projectcalico.org/manifests/calico.yaml --2020-01-30 22:34:28-- https://docs.projectcalico.org/manifests/calico.yaml Resolving docs.projectcalico.org (docs.projectcalico.org)... 206.189.89.118, 2400:6180:0:d1::57a:6001 Connecting to docs.projectcalico.org (docs.projectcalico.org)|206.189.89.118|:443... connected. HTTP request sent, awaiting response... 200 OK Length: 20935 (20K) [application/x-yaml] Saving to: ‘calico.yaml.2’ calico.yaml.2 100%[===========================================================================================================================================>] 20.44K --.-KB/s in 0.07s 2020-01-30 22:34:29 (275 KB/s) - ‘calico.yaml.2’ saved [20935/20935] 618 - name: CALICO_IPV4POOL_CIDR 619 value: "10.201.0.0/24" cychong@mini1:~$ kubectl apply -f calico.yaml configmap/calico-config unchanged customresourcedefinition.apiextensions.k8s.io/felixconfigurations.crd.projectcalico.org unchanged customresourcedefinition.apiextensions.k8s.io/ipamblocks.crd.projectcalico.org unchanged customresourcedefinition.apiextensions.k8s.io/blockaffinities.crd.projectcalico.org unchanged customresourcedefinition.apiextensions.k8s.io/ipamhandles.crd.projectcalico.org unchanged customresourcedefinition.apiextensions.k8s.io/ipamconfigs.crd.projectcalico.org unchanged customresourcedefinition.apiextensions.k8s.io/bgppeers.crd.projectcalico.org unchanged customresourcedefinition.apiextensions.k8s.io/bgpconfigurations.crd.projectcalico.org unchanged customresourcedefinition.apiextensions.k8s.io/ippools.crd.projectcalico.org unchanged customresourcedefinition.apiextensions.k8s.io/hostendpoints.crd.projectcalico.org unchanged customresourcedefinition.apiextensions.k8s.io/clusterinformations.crd.projectcalico.org unchanged customresourcedefinition.apiextensions.k8s.io/globalnetworkpolicies.crd.projectcalico.org unchanged customresourcedefinition.apiextensions.k8s.io/globalnetworksets.crd.projectcalico.org unchanged customresourcedefinition.apiextensions.k8s.io/networkpolicies.crd.projectcalico.org unchanged customresourcedefinition.apiextensions.k8s.io/networksets.crd.projectcalico.org unchanged clusterrole.rbac.authorization.k8s.io/calico-kube-controllers unchanged clusterrolebinding.rbac.authorization.k8s.io/calico-kube-controllers unchanged clusterrole.rbac.authorization.k8s.io/calico-node configured clusterrolebinding.rbac.authorization.k8s.io/calico-node unchanged daemonset.apps/calico-node configured serviceaccount/calico-node unchanged deployment.apps/calico-kube-controllers configured serviceaccount/calico-kube-controllers unchanged kubelet and kubectl cychong@mini1:~$ sudo apt-mark unhold kubelet kubectl && sudo apt-get install -y kubelet=1.17.2-00 kubectl=1.17.2-00 && sudo apt-mark hold kubelet kubectl kubelet was already not hold. kubectl was already not hold. Reading package lists... Done Building dependency tree Reading state information... Done The following packages will be upgraded: kubectl kubelet 2 upgraded, 0 newly installed, 0 to remove and 44 not upgraded. Need to get 27.9 MB of archives. After this operation, 14.8 MB disk space will be freed. Get:1 https://packages.cloud.google.com/apt kubernetes-xenial/main amd64 kubectl amd64 1.17.2-00 [8738 kB] Get:2 https://packages.cloud.google.com/apt kubernetes-xenial/main amd64 kubelet amd64 1.17.2-00 [19.2 MB] Fetched 27.9 MB in 6s (4994 kB/s) (Reading database ... 248932 files and directories currently installed.) Preparing to unpack .../kubectl_1.17.2-00_amd64.deb ... Unpacking kubectl (1.17.2-00) over (1.16.1-00) ... Preparing to unpack .../kubelet_1.17.2-00_amd64.deb ... Unpacking kubelet (1.17.2-00) over (1.16.1-00) ... Setting up kubelet (1.17.2-00) ... Setting up kubectl (1.17.2-00) ... kubelet set on hold. kubectl set on hold. wrap-up cychong@mini1:~$ sudo systemctl restart kubelet cychong@mini1:~$ kubectl get nodes NAME STATUS ROLES AGE VERSION mini1 Ready master 144d v1.17.2 reference https://kubernetes.io/docs/tasks/administer-cluster/kubeadm/kubeadm-upgrade/'><meta itemprop=datePublished content="2020-01-30T00:00:00+09:00"><meta itemprop=dateModified content="2020-05-07T14:43:36+00:00"><meta itemprop=wordCount content="2615"><meta itemprop=keywords content="Kubernetes"><meta name=referrer content="no-referrer-when-downgrade"><style>:root{--width:720px;--font-main:Verdana, sans-serif;--font-secondary:Verdana, sans-serif;--font-scale:1em;--background-color:#fafafa;--heading-color:#222;--text-color:#444;--link-color:#3273dc;--visited-color:#8b6fcb;--blockquote-color:#222}@media(prefers-color-scheme:dark){:root{--background-color:#fafafa;--heading-color:#222;--text-color:#444;--link-color:#3273dc;--visited-color:#8b6fcb;--blockquote-color:#222}}body{font-family:var(--font-secondary);font-size:var(--font-scale);margin:auto;padding:20px;max-width:var(--width);text-align:left;background-color:var(--background-color);word-wrap:break-word;overflow-wrap:break-word;line-height:1.5;color:var(--text-color)}h1,h2,h3,h4,h5,h6{font-family:var(--font-main);color:var(--heading-color)}a{color:var(--link-color);cursor:pointer;text-decoration:none}a:hover{text-decoration:underline}nav a{margin-right:8px}strong,b{color:var(--heading-color)}button{margin:0;cursor:pointer}time{font-family:monospace;font-style:normal;font-size:15px}main{line-height:1.6}table{width:100%}hr{border:0;border-top:1px dashed}img{max-width:100%}code{font-family:monospace;padding:2px;border-radius:3px}blockquote{border-left:1px solid #999;color:var(--blockquote-color);padding-left:20px;font-style:italic}footer{padding:25px 0;text-align:center}.title:hover{text-decoration:none}.title h1{font-size:1.5em}.inline{width:auto!important}.highlight,.code{border-radius:3px;margin-block-start:1em;margin-block-end:1em;overflow-x:auto}ul.blog-posts{list-style-type:none;padding:unset}ul.blog-posts li{display:flex}ul.blog-posts li span{flex:0 0 130px}ul.blog-posts li a:visited{color:var(--visited-color)}</style></head><body><header><a href=/ class=title><h2>Keep calm and Write something</h2></a><nav><a href=/post/>Post</a>
 <a href=/page/>Page</a>
 <a href=/series/>Series</a>
 <a href=/tags/>Tag</a>
 <a href=/archive/>Archive</a>
-<a href=/search/>Search</a></nav></header><main><content><p>지난 2016년 난생 처음으로 자발적으로 부서를 옮긴 후에 경험한 것들.<br>그 전의 십수년간에는 해보지 않은 많은 새로운 경험들을 가질 수 있었다. 주변의 도움 덕에. 특히 날 믿어주는 지인 덕에 이런 새로운 경험을 해 봐서 재밌었다.</p><ul><li>팀으로 일하기</li><li>Agile practice 해보기. Scrum meeting, Daily meeting, 회고 등</li><li>재밌게 일하기</li><li>의미를 가지며 일하기</li><li>의미있는 TF하기</li><li>Leading(TF, 파트)</li><li>외국 연구소, 사업자 직접 만나서 대화하기</li><li>정보를 입수해 가공해서 잘 전달하기</li><li>정보를 집중해서 관리하는 사이트 구축하기</li><li>사람들 독려하기</li><li>주간 리포트를 통해 업무 진행 공유하기</li><li>정치 맛 보기(이건 좀 힘들었네)</li><li>새로운 분야의 일 - Bearer Processing, OAM, MAC, PHY,</li><li>가상화 인프라 구축 - OpenStack, container</li><li>상용 솔류션 도입 - DB, Container platform</li><li>신기술을 컴파일해서 우리 것에 적용방안 찾기 (가상화 TF)</li><li>전화 영어로 일하기</li><li>밤 늦은 시간에 사업자마 해외 연구소와 콜하기</li><li>전략적으로 판단하기 (무조건 아는 걸 다 이야기하면 안되는)</li><li>팀 빌드의 중요성 옆에서 보기</li><li>다른 사람 평가하기</li><li>회사 평가 시스템 이해(TO는 생각보다 많이 적다, 연봉 캡, 동기부여의 수단은 별로 없다)</li><li>아는 것과 남들 특히 다른 생각을 가진 사람들을 설득하는 것이 어떤 지 배우기</li><li>영어로 업무하기. 외국 업체나 해외연구소 혹은 외국 인력과 함께 일하기</li><li>해외 연구소와 함께 일하기. Wiki등을 이용하여 협업하고, 주간 콜을 통해 업무 상황 공유.</li><li>사내 정치 맛 보기</li></ul><p>그 전의 십수년간 경험한 것보다 훨씬 많은, 다양한 일들을 짧은 시간 동안 경험한 듯. 덕분에 새로운 사람들도 많이 만날 수 있었고, 이전과 다른 입장에서 일할 수 있는 기회도 가졌다. 그 전에는 SW architecture 측면에서 가장 아래쪽에 가까운 분야를 했다면, 그것보다는 보다 높은 layer의 업무도 해보고, 극단적으로 사업자와 대화를 하는 상당히 높은 게층의 일(계급이 아니라&mldr;)도 해보고, 무형의 결과물을 만들어내는 일도 잠시나마 해 봤다.</p><p>그리고 앞으로는&mldr;?</p></content><p><a href=https://cychong47.github.io/tags/life/>#Life</a></p></main><footer>Made with <a href=https://github.com/janraasch/hugo-bearblog/>Hugo ʕ•ᴥ•ʔ Bear</a></footer></body></html>
+<a href=/search/>Search</a></nav></header><main><content><h1 id=preparation>preparation</h1><pre tabindex=0><code>cychong@mini1:~$ sudo apt update
+[sudo] password for cychong:
+Ign:1 http://dl.google.com/linux/chrome/deb stable InRelease
+Get:2 http://dl.google.com/linux/chrome/deb stable Release [943 B]
+Get:3 http://dl.google.com/linux/chrome/deb stable Release.gpg [819 B]
+...
+</code></pre><h1 id=get-the-lastest-version>Get the lastest version</h1><pre tabindex=0><code>cychong@mini1:~$ sudo apt-cache policy kubeadm
+kubeadm:
+  Installed: 1.16.1-00
+  Candidate: 1.17.2-00
+  Version table:
+     1.17.2-00 500
+        500 http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages
+     1.17.1-00 500
+        500 http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages
+     1.17.0-00 500
+        500 http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages
+...
+</code></pre><pre tabindex=0><code>cychong@mini1:~$ apt-cache madison kubeadm
+   kubeadm |  1.17.2-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages
+   kubeadm |  1.17.1-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages
+   kubeadm |  1.17.0-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages
+   kubeadm |  1.16.6-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages
+   kubeadm |  1.16.5-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages
+   kubeadm |  1.16.4-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages
+   kubeadm |  1.16.3-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages
+   kubeadm |  1.16.2-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages
+   kubeadm |  1.16.1-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages
+   kubeadm |  1.16.0-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages
+   kubeadm |  1.15.9-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages
+   kubeadm |  1.15.8-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages
+   kubeadm |  1.15.7-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages
+   kubeadm |  1.15.6-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages
+   kubeadm |  1.15.5-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages
+   kubeadm |  1.15.4-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages
+   kubeadm |  1.15.3-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages
+   kubeadm |  1.15.2-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages
+   kubeadm |  1.15.1-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages
+   kubeadm |  1.15.0-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages
+   kubeadm | 1.14.10-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages
+   kubeadm |  1.14.9-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages
+   kubeadm |  1.14.8-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages
+   kubeadm |  1.14.7-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages
+   kubeadm |  1.14.6-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages
+   kubeadm |  1.14.5-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages
+   kubeadm |  1.14.4-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages
+   kubeadm |  1.14.3-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages
+   kubeadm |  1.14.2-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages
+   kubeadm |  1.14.1-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages
+   kubeadm |  1.14.0-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages
+   kubeadm | 1.13.12-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages
+   kubeadm | 1.13.11-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages
+   kubeadm | 1.13.10-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages
+   kubeadm |  1.13.9-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages
+   kubeadm |  1.13.8-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages
+   kubeadm |  1.13.7-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages
+   kubeadm |  1.13.6-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages
+   kubeadm |  1.13.5-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages
+   kubeadm |  1.13.4-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages
+   kubeadm |  1.13.3-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages
+   kubeadm |  1.13.2-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages
+   kubeadm |  1.13.1-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages
+   kubeadm |  1.13.0-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages
+   kubeadm | 1.12.10-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages
+   kubeadm |  1.12.9-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages
+   kubeadm |  1.12.8-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages
+   kubeadm |  1.12.7-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages
+   kubeadm |  1.12.6-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages
+   kubeadm |  1.12.5-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages
+   kubeadm |  1.12.4-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages
+   kubeadm |  1.12.3-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages
+   kubeadm |  1.12.2-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages
+   kubeadm |  1.12.1-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages
+   kubeadm |  1.12.0-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages
+   kubeadm | 1.11.10-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages
+   kubeadm |  1.11.9-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages
+   kubeadm |  1.11.8-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages
+   kubeadm |  1.11.7-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages
+   kubeadm |  1.11.6-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages
+   kubeadm |  1.11.5-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages
+   kubeadm |  1.11.4-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages
+   kubeadm |  1.11.3-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages
+   kubeadm |  1.11.2-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages
+   kubeadm |  1.11.1-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages
+   kubeadm |  1.11.0-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages
+   kubeadm | 1.10.13-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages
+   kubeadm | 1.10.12-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages
+   kubeadm | 1.10.11-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages
+   kubeadm | 1.10.10-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages
+   kubeadm |  1.10.9-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages
+   kubeadm |  1.10.8-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages
+   kubeadm |  1.10.7-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages
+   kubeadm |  1.10.6-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages
+   kubeadm |  1.10.5-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages
+   kubeadm |  1.10.4-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages
+   kubeadm |  1.10.3-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages
+   kubeadm |  1.10.2-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages
+   kubeadm |  1.10.1-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages
+   kubeadm |  1.10.0-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages
+   kubeadm |  1.9.11-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages
+   kubeadm |  1.9.10-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages
+   kubeadm |   1.9.9-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages
+   kubeadm |   1.9.8-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages
+   kubeadm |   1.9.7-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages
+   kubeadm |   1.9.6-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages
+   kubeadm |   1.9.5-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages
+   kubeadm |   1.9.4-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages
+   kubeadm |   1.9.3-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages
+   kubeadm |   1.9.2-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages
+   kubeadm |   1.9.1-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages
+   kubeadm |   1.9.0-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages
+   kubeadm |  1.8.15-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages
+   kubeadm |  1.8.14-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages
+   kubeadm |  1.8.13-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages
+   kubeadm |  1.8.12-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages
+   kubeadm |  1.8.11-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages
+   kubeadm |  1.8.10-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages
+   kubeadm |   1.8.9-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages
+   kubeadm |   1.8.8-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages
+   kubeadm |   1.8.7-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages
+   kubeadm |   1.8.6-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages
+   kubeadm |   1.8.5-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages
+   kubeadm |   1.8.4-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages
+   kubeadm |   1.8.3-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages
+   kubeadm |   1.8.2-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages
+   kubeadm |   1.8.1-01 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages
+   kubeadm |   1.8.0-01 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages
+   kubeadm |   1.8.0-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages
+   kubeadm |  1.7.16-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages
+   kubeadm |  1.7.15-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages
+   kubeadm |  1.7.14-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages
+   kubeadm |  1.7.11-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages
+   kubeadm |  1.7.10-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages
+   kubeadm |   1.7.9-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages
+   kubeadm |   1.7.8-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages
+   kubeadm |   1.7.7-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages
+   kubeadm |   1.7.6-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages
+   kubeadm |   1.7.5-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages
+   kubeadm |   1.7.4-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages
+   kubeadm |   1.7.3-01 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages
+   kubeadm |   1.7.2-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages
+   kubeadm |   1.7.1-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages
+   kubeadm |   1.7.0-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages
+   kubeadm |  1.6.13-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages
+   kubeadm |  1.6.12-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages
+   kubeadm |  1.6.11-01 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages
+   kubeadm |  1.6.10-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages
+   kubeadm |   1.6.9-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages
+   kubeadm |   1.6.8-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages
+   kubeadm |   1.6.7-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages
+   kubeadm |   1.6.6-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages
+   kubeadm |   1.6.5-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages
+   kubeadm |   1.6.4-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages
+   kubeadm |   1.6.3-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages
+   kubeadm |   1.6.2-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages
+   kubeadm |   1.6.1-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages
+   kubeadm |   1.5.7-00 | http://apt.kubernetes.io kubernetes-xenial/main amd64 Packages
+cychong@mini1:~$ sudo apt-mark unhold kubeadm &amp;&amp; sudo apt-get install -y kubeadm=1.17.2-00 &amp;&amp; sudo apt-mark hold kubeadm
+Canceled hold on kubeadm.
+Reading package lists... Done
+Building dependency tree       
+Reading state information... Done
+The following packages will be upgraded:
+  kubeadm
+1 upgraded, 0 newly installed, 0 to remove and 46 not upgraded.
+Need to get 8061 kB of archives.
+After this operation, 4907 kB disk space will be freed.
+Get:1 https://packages.cloud.google.com/apt kubernetes-xenial/main amd64 kubeadm amd64 1.17.2-00 [8061 kB]
+Fetched 8061 kB in 3s (3164 kB/s)           
+(Reading database ... 248932 files and directories currently installed.)
+Preparing to unpack .../kubeadm_1.17.2-00_amd64.deb ...
+Unpacking kubeadm (1.17.2-00) over (1.16.1-00) ...
+Setting up kubeadm (1.17.2-00) ...
+kubeadm set on hold.
+cychong@mini1:~$ sudo apt-get update &amp;&amp; apt-get install -y --allow-change-held-packages kubeadm=1.17.2-00
+Ign:2 http://dl.google.com/linux/chrome/deb stable InRelease                                                                                            
+Hit:3 https://download.docker.com/linux/ubuntu bionic InRelease                                                                                         
+Hit:4 http://dl.google.com/linux/chrome/deb stable Release                                                                
+Hit:5 http://archive.ubuntu.com/ubuntu bionic InRelease                                                                   
+Hit:7 http://archive.ubuntu.com/ubuntu bionic-updates InRelease                                               
+Hit:8 http://ppa.launchpad.net/x2go/stable/ubuntu bionic InRelease                                                                 
+Hit:9 http://archive.ubuntu.com/ubuntu bionic-backports InRelease                                                                  
+Hit:1 https://packages.cloud.google.com/apt kubernetes-xenial InRelease                                      
+Hit:10 http://archive.ubuntu.com/ubuntu bionic-security InRelease        
+Reading package lists... Done                      
+E: Could not open lock file /var/lib/dpkg/lock-frontend - open (13: Permission denied)
+E: Unable to acquire the dpkg frontend lock (/var/lib/dpkg/lock-frontend), are you root?
+cychong@mini1:~$ sudo apt-get install -y --allow-change-held-packages kubeadm=1.17.2-00
+Reading package lists... Done
+Building dependency tree       
+Reading state information... Done
+kubeadm is already the newest version (1.17.2-00).
+0 upgraded, 0 newly installed, 0 to remove and 46 not upgraded.
+cychong@mini1:~$ kubeadm version
+kubeadm version: &amp;version.Info{Major:&#34;1&#34;, Minor:&#34;17&#34;, GitVersion:&#34;v1.17.2&#34;, GitCommit:&#34;59603c6e503c87169aea6106f57b9f242f64df89&#34;, GitTreeState:&#34;clean&#34;, BuildDate:&#34;2020-01-18T23:27:49Z&#34;, GoVersion:&#34;go1.13.5&#34;, Compiler:&#34;gc&#34;, Platform:&#34;linux/amd64&#34;}
+cychong@mini1:~$ sudo kubeadm upgrade plan
+[upgrade/config] Making sure the configuration is correct:
+[upgrade/config] Reading configuration from the cluster...
+[upgrade/config] FYI: You can look at this config file with &#39;kubectl -n kube-system get cm kubeadm-config -oyaml&#39;
+[preflight] Running pre-flight checks.
+[upgrade] Making sure the cluster is healthy:
+[upgrade] Fetching available versions to upgrade to
+[upgrade/versions] Cluster version: v1.16.1
+[upgrade/versions] kubeadm version: v1.17.2
+[upgrade/versions] Latest stable version: v1.17.2
+[upgrade/versions] Latest version in the v1.16 series: v1.16.6
+
+Components that must be upgraded manually after you have upgraded the control plane with &#39;kubeadm upgrade apply&#39;:
+COMPONENT   CURRENT       AVAILABLE
+Kubelet     1 x v1.16.1   v1.16.6
+
+Upgrade to the latest version in the v1.16 series:
+
+COMPONENT            CURRENT   AVAILABLE
+API Server           v1.16.1   v1.16.6
+Controller Manager   v1.16.1   v1.16.6
+Scheduler            v1.16.1   v1.16.6
+Kube Proxy           v1.16.1   v1.16.6
+CoreDNS              1.6.2     1.6.5
+Etcd                 3.3.15    3.3.17-0
+
+You can now apply the upgrade by executing the following command:
+
+	kubeadm upgrade apply v1.16.6
+
+_____________________________________________________________________
+
+Components that must be upgraded manually after you have upgraded the control plane with &#39;kubeadm upgrade apply&#39;:
+COMPONENT   CURRENT       AVAILABLE
+Kubelet     1 x v1.16.1   v1.17.2
+
+Upgrade to the latest stable version:
+
+COMPONENT            CURRENT   AVAILABLE
+API Server           v1.16.1   v1.17.2
+Controller Manager   v1.16.1   v1.17.2
+Scheduler            v1.16.1   v1.17.2
+Kube Proxy           v1.16.1   v1.17.2
+CoreDNS              1.6.2     1.6.5
+Etcd                 3.3.15    3.4.3-0
+
+You can now apply the upgrade by executing the following command:
+
+	kubeadm upgrade apply v1.17.2
+
+_____________________________________________________________________
+
+cychong@mini1:~$ sudo kubeadm upgrade apply v1.17.2
+[upgrade/config] Making sure the configuration is correct:
+[upgrade/config] Reading configuration from the cluster...
+[upgrade/config] FYI: You can look at this config file with &#39;kubectl -n kube-system get cm kubeadm-config -oyaml&#39;
+[preflight] Running pre-flight checks.
+[upgrade] Making sure the cluster is healthy:
+[upgrade/version] You have chosen to change the cluster version to &#34;v1.17.2&#34;
+[upgrade/versions] Cluster version: v1.16.1
+[upgrade/versions] kubeadm version: v1.17.2
+[upgrade/confirm] Are you sure you want to proceed with the upgrade? [y/N]: y
+[upgrade/prepull] Will prepull images for components [kube-apiserver kube-controller-manager kube-scheduler etcd]
+[upgrade/prepull] Prepulling image for component etcd.
+[upgrade/prepull] Prepulling image for component kube-apiserver.
+[upgrade/prepull] Prepulling image for component kube-controller-manager.
+[upgrade/prepull] Prepulling image for component kube-scheduler.
+[apiclient] Found 1 Pods for label selector k8s-app=upgrade-prepull-kube-controller-manager
+[apiclient] Found 0 Pods for label selector k8s-app=upgrade-prepull-kube-scheduler
+[apiclient] Found 1 Pods for label selector k8s-app=upgrade-prepull-kube-apiserver
+[apiclient] Found 0 Pods for label selector k8s-app=upgrade-prepull-etcd
+[apiclient] Found 1 Pods for label selector k8s-app=upgrade-prepull-kube-scheduler
+[apiclient] Found 1 Pods for label selector k8s-app=upgrade-prepull-etcd
+[upgrade/prepull] Prepulled image for component kube-controller-manager.
+[upgrade/prepull] Prepulled image for component kube-apiserver.
+[upgrade/prepull] Prepulled image for component kube-scheduler.
+[upgrade/prepull] Prepulled image for component etcd.
+[upgrade/prepull] Successfully prepulled the images for all the control plane components
+[upgrade/apply] Upgrading your Static Pod-hosted control plane to version &#34;v1.17.2&#34;...
+Static pod: kube-apiserver-mini1 hash: 66d5b6802b69fcb461e22c159ef72783
+Static pod: kube-controller-manager-mini1 hash: 98ded181cb6da00c408078fe0832bddf
+Static pod: kube-scheduler-mini1 hash: e05eb744bc3406614b4a55dd00e7af9f
+[upgrade/etcd] Upgrading to TLS for etcd
+Static pod: etcd-mini1 hash: 9e59bd8449d154ddd6acfbbb3a74181f
+[upgrade/staticpods] Preparing for &#34;etcd&#34; upgrade
+[upgrade/staticpods] Renewing etcd-server certificate
+[upgrade/staticpods] Renewing etcd-peer certificate
+[upgrade/staticpods] Renewing etcd-healthcheck-client certificate
+[upgrade/staticpods] Moved new manifest to &#34;/etc/kubernetes/manifests/etcd.yaml&#34; and backed up old manifest to &#34;/etc/kubernetes/tmp/kubeadm-backup-manifests-2020-01-30-22-21-26/etcd.yaml&#34;
+[upgrade/staticpods] Waiting for the kubelet to restart the component
+[upgrade/staticpods] This might take a minute or longer depending on the component/version gap (timeout 5m0s)
+Static pod: etcd-mini1 hash: 9e59bd8449d154ddd6acfbbb3a74181f
+Static pod: etcd-mini1 hash: 9b305733637de70ef82ca5b0b18c65e1
+[apiclient] Found 1 Pods for label selector component=etcd
+[upgrade/staticpods] Component &#34;etcd&#34; upgraded successfully!
+[upgrade/etcd] Waiting for etcd to become available
+[upgrade/staticpods] Writing new Static Pod manifests to &#34;/etc/kubernetes/tmp/kubeadm-upgraded-manifests216455436&#34;
+W0130 22:22:01.351368   10213 manifests.go:214] the default kube-apiserver authorization-mode is &#34;Node,RBAC&#34;; using &#34;Node,RBAC&#34;
+[upgrade/staticpods] Preparing for &#34;kube-apiserver&#34; upgrade
+[upgrade/staticpods] Renewing apiserver certificate
+[upgrade/staticpods] Renewing apiserver-kubelet-client certificate
+[upgrade/staticpods] Renewing front-proxy-client certificate
+[upgrade/staticpods] Renewing apiserver-etcd-client certificate
+[upgrade/staticpods] Moved new manifest to &#34;/etc/kubernetes/manifests/kube-apiserver.yaml&#34; and backed up old manifest to &#34;/etc/kubernetes/tmp/kubeadm-backup-manifests-2020-01-30-22-21-26/kube-apiserver.yaml&#34;
+[upgrade/staticpods] Waiting for the kubelet to restart the component
+[upgrade/staticpods] This might take a minute or longer depending on the component/version gap (timeout 5m0s)
+Static pod: kube-apiserver-mini1 hash: 66d5b6802b69fcb461e22c159ef72783
+Static pod: kube-apiserver-mini1 hash: 4d9a965c0a14a45ea3d7db1e023096d4
+[apiclient] Found 1 Pods for label selector component=kube-apiserver
+[upgrade/staticpods] Component &#34;kube-apiserver&#34; upgraded successfully!
+[upgrade/staticpods] Preparing for &#34;kube-controller-manager&#34; upgrade
+[upgrade/staticpods] Renewing controller-manager.conf certificate
+[upgrade/staticpods] Moved new manifest to &#34;/etc/kubernetes/manifests/kube-controller-manager.yaml&#34; and backed up old manifest to &#34;/etc/kubernetes/tmp/kubeadm-backup-manifests-2020-01-30-22-21-26/kube-controller-manager.yaml&#34;
+[upgrade/staticpods] Waiting for the kubelet to restart the component
+[upgrade/staticpods] This might take a minute or longer depending on the component/version gap (timeout 5m0s)
+Static pod: kube-controller-manager-mini1 hash: 98ded181cb6da00c408078fe0832bddf
+Static pod: kube-controller-manager-mini1 hash: 98ded181cb6da00c408078fe0832bddf
+Static pod: kube-controller-manager-mini1 hash: 85a33dac6d806801ba5efe4a4544194c
+[apiclient] Found 1 Pods for label selector component=kube-controller-manager
+[upgrade/staticpods] Component &#34;kube-controller-manager&#34; upgraded successfully!
+[upgrade/staticpods] Preparing for &#34;kube-scheduler&#34; upgrade
+[upgrade/staticpods] Renewing scheduler.conf certificate
+[upgrade/staticpods] Moved new manifest to &#34;/etc/kubernetes/manifests/kube-scheduler.yaml&#34; and backed up old manifest to &#34;/etc/kubernetes/tmp/kubeadm-backup-manifests-2020-01-30-22-21-26/kube-scheduler.yaml&#34;
+[upgrade/staticpods] Waiting for the kubelet to restart the component
+[upgrade/staticpods] This might take a minute or longer depending on the component/version gap (timeout 5m0s)
+Static pod: kube-scheduler-mini1 hash: e05eb744bc3406614b4a55dd00e7af9f
+Static pod: kube-scheduler-mini1 hash: 9c994ea62a2d8d6f1bb7498f10aa6fcf
+[apiclient] Found 1 Pods for label selector component=kube-scheduler
+[upgrade/staticpods] Component &#34;kube-scheduler&#34; upgraded successfully!
+[upload-config] Storing the configuration used in ConfigMap &#34;kubeadm-config&#34; in the &#34;kube-system&#34; Namespace
+[kubelet] Creating a ConfigMap &#34;kubelet-config-1.17&#34; in namespace kube-system with the configuration for the kubelets in the cluster
+[kubelet-start] Downloading configuration for the kubelet from the &#34;kubelet-config-1.17&#34; ConfigMap in the kube-system namespace
+[kubelet-start] Writing kubelet configuration to file &#34;/var/lib/kubelet/config.yaml&#34;
+[bootstrap-token] configured RBAC rules to allow Node Bootstrap tokens to post CSRs in order for nodes to get long term certificate credentials
+[bootstrap-token] configured RBAC rules to allow the csrapprover controller automatically approve CSRs from a Node Bootstrap Token
+[bootstrap-token] configured RBAC rules to allow certificate rotation for all node client certificates in the cluster
+[addons]: Migrating CoreDNS Corefile
+[addons] Applied essential addon: CoreDNS
+[addons] Applied essential addon: kube-proxy
+
+[upgrade/successful] SUCCESS! Your cluster was upgraded to &#34;v1.17.2&#34;. Enjoy!
+
+[upgrade/kubelet] Now that your control plane is upgraded, please proceed with upgrading your kubelets if you haven&#39;t already done so.
+</code></pre><h1 id=calico>calico</h1><pre tabindex=0><code>cychong@mini1:~$ wget https://docs.projectcalico.org/manifests/calico.yaml
+--2020-01-30 22:34:28--  https://docs.projectcalico.org/manifests/calico.yaml
+Resolving docs.projectcalico.org (docs.projectcalico.org)... 206.189.89.118, 2400:6180:0:d1::57a:6001
+Connecting to docs.projectcalico.org (docs.projectcalico.org)|206.189.89.118|:443... connected.
+HTTP request sent, awaiting response... 200 OK
+Length: 20935 (20K) [application/x-yaml]
+Saving to: ‘calico.yaml.2’
+
+calico.yaml.2                                               100%[===========================================================================================================================================&gt;]  20.44K  --.-KB/s    in 0.07s   
+
+2020-01-30 22:34:29 (275 KB/s) - ‘calico.yaml.2’ saved [20935/20935]
+</code></pre><pre tabindex=0><code>618             - name: CALICO_IPV4POOL_CIDR
+619               value: &#34;10.201.0.0/24&#34;
+</code></pre><pre tabindex=0><code>cychong@mini1:~$ kubectl apply -f calico.yaml
+configmap/calico-config unchanged
+customresourcedefinition.apiextensions.k8s.io/felixconfigurations.crd.projectcalico.org unchanged
+customresourcedefinition.apiextensions.k8s.io/ipamblocks.crd.projectcalico.org unchanged
+customresourcedefinition.apiextensions.k8s.io/blockaffinities.crd.projectcalico.org unchanged
+customresourcedefinition.apiextensions.k8s.io/ipamhandles.crd.projectcalico.org unchanged
+customresourcedefinition.apiextensions.k8s.io/ipamconfigs.crd.projectcalico.org unchanged
+customresourcedefinition.apiextensions.k8s.io/bgppeers.crd.projectcalico.org unchanged
+customresourcedefinition.apiextensions.k8s.io/bgpconfigurations.crd.projectcalico.org unchanged
+customresourcedefinition.apiextensions.k8s.io/ippools.crd.projectcalico.org unchanged
+customresourcedefinition.apiextensions.k8s.io/hostendpoints.crd.projectcalico.org unchanged
+customresourcedefinition.apiextensions.k8s.io/clusterinformations.crd.projectcalico.org unchanged
+customresourcedefinition.apiextensions.k8s.io/globalnetworkpolicies.crd.projectcalico.org unchanged
+customresourcedefinition.apiextensions.k8s.io/globalnetworksets.crd.projectcalico.org unchanged
+customresourcedefinition.apiextensions.k8s.io/networkpolicies.crd.projectcalico.org unchanged
+customresourcedefinition.apiextensions.k8s.io/networksets.crd.projectcalico.org unchanged
+clusterrole.rbac.authorization.k8s.io/calico-kube-controllers unchanged
+clusterrolebinding.rbac.authorization.k8s.io/calico-kube-controllers unchanged
+clusterrole.rbac.authorization.k8s.io/calico-node configured
+clusterrolebinding.rbac.authorization.k8s.io/calico-node unchanged
+daemonset.apps/calico-node configured
+serviceaccount/calico-node unchanged
+deployment.apps/calico-kube-controllers configured
+serviceaccount/calico-kube-controllers unchanged
+</code></pre><h1 id=kubelet-and-kubectl>kubelet and kubectl</h1><pre tabindex=0><code>cychong@mini1:~$ sudo apt-mark unhold kubelet kubectl &amp;&amp; sudo apt-get install -y kubelet=1.17.2-00 kubectl=1.17.2-00 &amp;&amp; sudo apt-mark hold kubelet kubectl
+kubelet was already not hold.
+kubectl was already not hold.
+Reading package lists... Done
+Building dependency tree       
+Reading state information... Done
+The following packages will be upgraded:
+  kubectl kubelet
+2 upgraded, 0 newly installed, 0 to remove and 44 not upgraded.
+Need to get 27.9 MB of archives.
+After this operation, 14.8 MB disk space will be freed.
+Get:1 https://packages.cloud.google.com/apt kubernetes-xenial/main amd64 kubectl amd64 1.17.2-00 [8738 kB]
+Get:2 https://packages.cloud.google.com/apt kubernetes-xenial/main amd64 kubelet amd64 1.17.2-00 [19.2 MB]
+Fetched 27.9 MB in 6s (4994 kB/s)   
+(Reading database ... 248932 files and directories currently installed.)
+Preparing to unpack .../kubectl_1.17.2-00_amd64.deb ...
+Unpacking kubectl (1.17.2-00) over (1.16.1-00) ...
+Preparing to unpack .../kubelet_1.17.2-00_amd64.deb ...
+Unpacking kubelet (1.17.2-00) over (1.16.1-00) ...
+Setting up kubelet (1.17.2-00) ...
+Setting up kubectl (1.17.2-00) ...
+kubelet set on hold.
+kubectl set on hold.
+</code></pre><h1 id=wrap-up>wrap-up</h1><pre tabindex=0><code>cychong@mini1:~$ sudo systemctl restart kubelet
+cychong@mini1:~$ kubectl get nodes
+NAME    STATUS   ROLES    AGE    VERSION
+mini1   Ready    master   144d   v1.17.2
+</code></pre><h1 id=reference>reference</h1><ul><li><a href=https://kubernetes.io/docs/tasks/administer-cluster/kubeadm/kubeadm-upgrade/>https://kubernetes.io/docs/tasks/administer-cluster/kubeadm/kubeadm-upgrade/</a></li></ul></content><p><a href=https://cychong47.github.io/tags/kubernetes/>#Kubernetes</a></p></main><footer>Made with <a href=https://github.com/janraasch/hugo-bearblog/>Hugo ʕ•ᴥ•ʔ Bear</a></footer></body></html>
