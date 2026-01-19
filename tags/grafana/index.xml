@@ -94,4 +94,43 @@ influxdb-0 1/1 Running 0 36h
 pocket-stat-5b86fbc8f7-xpf9j 1/1 Running 0 20s
 podcast-nginx-659bcb6485-ps7qq 1/1 Running 0 37h
 sosa0sa-nginx-87fc9949c-wb4jp 1/1 Running 0 37h
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;&lt;code&gt;pocket-stat&lt;/code&gt; example app은 5초 주기로 임의의 데이터를 influxdb에 저장하는 동작 수행&lt;/p&gt;</description></item></channel></rss>
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;&lt;code&gt;pocket-stat&lt;/code&gt; example app은 5초 주기로 임의의 데이터를 influxdb에 저장하는 동작 수행&lt;/p&gt;</description></item></channel></rss>le="display:flex;"&gt;&lt;span&gt;deployment.apps/prometheus created
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id="kubectl-get-all"&gt;kubectl get all&lt;/h3&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"&gt;&lt;code class="language-sh" data-lang="sh"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;❯ kubectl get all -n cilium-monitoring 
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;NAME READY STATUS RESTARTS AGE
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;pod/grafana-6f4755f98c-8c7sg 1/1 Running &lt;span style="color:#ae81ff"&gt;0&lt;/span&gt; 57s
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;pod/prometheus-67fdcf4796-vc8hd 1/1 Running &lt;span style="color:#ae81ff"&gt;0&lt;/span&gt; 57s
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;NAME TYPE CLUSTER-IP EXTERNAL-IP PORT&lt;span style="color:#f92672"&gt;(&lt;/span&gt;S&lt;span style="color:#f92672"&gt;)&lt;/span&gt; AGE
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;service/grafana ClusterIP 10.102.147.187 &amp;lt;none&amp;gt; 3000/TCP 57s
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;service/prometheus ClusterIP 10.104.8.139 &amp;lt;none&amp;gt; 9090/TCP 57s
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;NAME READY UP-TO-DATE AVAILABLE AGE
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;deployment.apps/grafana 1/1 &lt;span style="color:#ae81ff"&gt;1&lt;/span&gt; &lt;span style="color:#ae81ff"&gt;1&lt;/span&gt; 57s
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;deployment.apps/prometheus 1/1 &lt;span style="color:#ae81ff"&gt;1&lt;/span&gt; &lt;span style="color:#ae81ff"&gt;1&lt;/span&gt; 57s
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;NAME DESIRED CURRENT READY AGE
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;replicaset.apps/grafana-6f4755f98c &lt;span style="color:#ae81ff"&gt;1&lt;/span&gt; &lt;span style="color:#ae81ff"&gt;1&lt;/span&gt; &lt;span style="color:#ae81ff"&gt;1&lt;/span&gt; 57s
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;replicaset.apps/prometheus-67fdcf4796 &lt;span style="color:#ae81ff"&gt;1&lt;/span&gt; &lt;span style="color:#ae81ff"&gt;1&lt;/span&gt; &lt;span style="color:#ae81ff"&gt;1&lt;/span&gt; 57s
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id="change-service-type-to-loadbalancer"&gt;Change service type to LoadBalancer&lt;/h3&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"&gt;&lt;code class="language-sh" data-lang="sh"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;❯ kubectl patch svc prometheus -n cilium-monitoring -p &lt;span style="color:#e6db74"&gt;&amp;#39;{&amp;#34;spec&amp;#34;: {&amp;#34;type&amp;#34;: &amp;#34;LoadBalancer&amp;#34;}}&amp;#39;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;❯ kubectl patch svc grafana -n cilium-monitoring -p &lt;span style="color:#e6db74"&gt;&amp;#39;{&amp;#34;spec&amp;#34;: {&amp;#34;type&amp;#34;: &amp;#34;LoadBalancer&amp;#34;}}&amp;#39;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Now &lt;code&gt;TYPE&lt;/code&gt; is &lt;code&gt;LoadBalancer&lt;/code&gt; and &lt;code&gt;EXTERNAL-IP&lt;/code&gt; is assigned for each service&lt;/p&gt;</description></item><item><title>Grafana, influxDB and python</title><link>https://cychong47.github.io/post/2018/grafana-influxdb-and-python/</link><pubDate>Wed, 06 Jun 2018 04:33:06 +0900</pubDate><guid>https://cychong47.github.io/post/2018/grafana-influxdb-and-python/</guid><description>&lt;p&gt;Time-series data를 python을 이용해서 influxDB에 저장하고, Grafana로 그래프를 보여주는 예제&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://github.com/cychong47/influxdb_example.git"&gt;https://github.com/cychong47/influxdb_example.git&lt;/a&gt;&lt;/p&gt;
+&lt;h1 id="install-grafana-and-influxdb"&gt;Install Grafana and influxDB&lt;/h1&gt;
+&lt;h2 id="install-grafana"&gt;Install Grafana&lt;/h2&gt;
+&lt;p&gt;직접 호스트에 설치할 수도 있지만, 세상 편하게 만들어준 docker를 이용해서 grafana, influxdb등을 설치하자.&lt;/p&gt;
+&lt;pre tabindex="0"&gt;&lt;code&gt;mbpr15:~ cychong$ docker pull grafana/grafana 
+Using default tag: latest
+latest: Pulling from grafana/grafana
+f2aa67a397c4: Pull complete 
+89573effc7c8: Pull complete 
+b55c103da375: Pull complete 
+Digest: sha256:364bec4a39ecbec744ea4270aae35f6554eb6f2047b3ee08f7b5f1134857c32c
+Status: Downloaded newer image for grafana/grafana:latest
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Start &lt;code&gt;grafana&lt;/code&gt;&lt;/p&gt;
+&lt;pre tabindex="0"&gt;&lt;code&gt;mbpr15:~ cychong$ docker run -d -p 3000:3000 —name grafana grafana/grafana 
+148894d7009259b02b04e1a98467f549400be91f9b055f8686557d69b9339e4b
+&lt;/code&gt;&lt;/pre&gt;&lt;h2 id="install-influxdb"&gt;Install influxDB&lt;/h2&gt;
+&lt;p&gt;influxdb도 docker 명령어 하나로 설치&lt;/p&gt;</description></item></channel></rss>

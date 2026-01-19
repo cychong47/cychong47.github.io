@@ -7,404 +7,316 @@ Since it supports metadata for cloud-init, you can simulate a small cloud deploy
 Since it supports metadata for cloud-init, you can simulate a small cloud deployment on your laptop or workstation."><meta itemprop=datePublished content="2019-09-28T15:17:26+09:00"><meta itemprop=dateModified content="2019-09-28T15:19:40+00:00"><meta itemprop=wordCount content="2307"><meta itemprop=keywords content="Vmware,Ubuntu,Multipass"><meta name=referrer content="no-referrer-when-downgrade"><style>:root{--width:720px;--font-main:Verdana, sans-serif;--font-secondary:Verdana, sans-serif;--font-scale:1em;--background-color:#fafafa;--heading-color:#222;--text-color:#444;--link-color:#3273dc;--visited-color:#8b6fcb;--blockquote-color:#222}@media(prefers-color-scheme:dark){:root{--background-color:#fafafa;--heading-color:#222;--text-color:#444;--link-color:#3273dc;--visited-color:#8b6fcb;--blockquote-color:#222}}body{font-family:var(--font-secondary);font-size:var(--font-scale);margin:auto;padding:20px;max-width:var(--width);text-align:left;background-color:var(--background-color);word-wrap:break-word;overflow-wrap:break-word;line-height:1.5;color:var(--text-color)}h1,h2,h3,h4,h5,h6{font-family:var(--font-main);color:var(--heading-color)}a{color:var(--link-color);cursor:pointer;text-decoration:none}a:hover{text-decoration:underline}nav a{margin-right:8px}strong,b{color:var(--heading-color)}button{margin:0;cursor:pointer}time{font-family:monospace;font-style:normal;font-size:15px}main{line-height:1.6}table{width:100%}hr{border:0;border-top:1px dashed}img{max-width:100%}code{font-family:monospace;padding:2px;border-radius:3px}blockquote{border-left:1px solid #999;color:var(--blockquote-color);padding-left:20px;font-style:italic}footer{padding:25px 0;text-align:center}.title:hover{text-decoration:none}.title h1{font-size:1.5em}.inline{width:auto!important}.highlight,.code{border-radius:3px;margin-block-start:1em;margin-block-end:1em;overflow-x:auto}ul.blog-posts{list-style-type:none;padding:unset}ul.blog-posts li{display:flex}ul.blog-posts li span{flex:0 0 130px}ul.blog-posts li a:visited{color:var(--visited-color)}</style></head><body><header><a href=/ class=title><h2>Keep calm and Write something</h2></a><nav><a href=/post/>Post</a>
 <a href=/page/>Page</a>
 <a href=/series/>Series</a>
-<a href=/tags/>Tag</a>
-<a href=/archive/>Archive</a>
-<a href=/search/>Search</a></nav></header><main><content><h2 id=multipass>multipass?</h2><blockquote><p>Multipass is a lightweight VM manager for Linux, Windows and macOS. It&rsquo;s designed for developers who want a fresh Ubuntu environment with a single command. It uses KVM on Linux, Hyper-V on Windows and HyperKit on macOS to run the VM with minimal overhead. It can also use VirtualBox on Windows and macOS. Multipass will fetch images for you and keep them up to date.</p><p>Since it supports metadata for cloud-init, you can simulate a small cloud deployment on your laptop or workstation.</p></blockquote><p><a href=https://github.com/CanonicalLtd/multipass>https://github.com/CanonicalLtd/multipass</a></p><p>Linux 외에 Windows 그리고 Mac OS를 지원하는 multipass를 사용하면 virtualbox를 사용하지 않고도 OS X에서 VM을 쉽게 만들어 linux 기반의 환경을 구성할 수 있다.</p><p>아래 예에서는 OS X에서 multipass를 이용해서 Linux(Ubuntu) VM을 생성하고, kubernetes를 설치해 본다.</p><h2 id=install-multipass-with-brew>install <code>multipass</code> with brew</h2><pre tabindex=0><code>mbpr15:~ cychong$ brew cask install multipass
-Updating Homebrew...
-...
-
-==&gt; Satisfying dependencies
-==&gt; Downloading https://github.com/CanonicalLtd/multipass/releases/download/v0.8.0/multipass-0.8.0+mac-Darwin.pkg
-==&gt; Downloading from https://github-production-release-asset-2e65be.s3.amazonaws.com/114128199/8489a680-ac9c-11e9-99
-######################################################################## 100.0%
-==&gt; Verifying SHA-256 checksum for Cask &#39;multipass&#39;.
-==&gt; Installing Cask multipass
-==&gt; Running installer for multipass; your password may be necessary.
-==&gt; Package installers may write to any location; options such as --appdir are ignored.
-Password:
-installer: Package name is multipass
-installer: Installing at base path /
-installer: The install was successful.
-🍺  multipass was successfully installed!
-</code></pre><h2 id=multipass-1>Multipass</h2><h3 id=multipass-find>multipass find</h3><pre tabindex=0><code>mbpr15:~ cychong$ multipass find
-Image                   Aliases           Version          Description
-snapcraft:core          core16            20190819         Snapcraft builder for Core 16
-snapcraft:core18                          20190820         Snapcraft builder for Core 18
-16.04                   xenial            20190814         Ubuntu 16.04 LTS
-18.04                   bionic,lts        20190813.1       Ubuntu 18.04 LTS
-</code></pre><h2 id=create-vm>Create VM</h2><h3 id=multipass-launch>multipass launch</h3><pre tabindex=0><code>mbpr15:~ cychong$ multipass launch --name vm --mem 4G --disk 20G --cpus 2 
-Launched: vm
-</code></pre><h3 id=list-vms>list VMs</h3><pre tabindex=0><code>mbpr15:~ cychong$ multipass list
-Name                    State             IPv4             Image
-vm                      Running           192.168.64.2     Ubuntu 18.04 LTS
-</code></pre><h4 id=execute-command-in-vm-from-host>execute command in VM from host</h4><pre tabindex=0><code>mbpr15:~ cychong$ multipass exec vm -- uname -a
-Linux vm 4.15.0-58-generic #64-Ubuntu SMP Tue Aug 6 11:12:41 UTC 2019 x86_64 x86_64 x86_64 GNU/Linux
-</code></pre><h3 id=login-to-vm>login to VM</h3><pre tabindex=0><code>mbpr15:~ cychong$ multipass shell vm
-Welcome to Ubuntu 18.04.3 LTS (GNU/Linux 4.15.0-58-generic x86_64)
-
- * Documentation:  https://help.ubuntu.com
- * Management:     https://landscape.canonical.com
- * Support:        https://ubuntu.com/advantage
-
-  System information as of Sun Aug 25 20:26:01 KST 2019
-
-  System load:  0.0               Processes:             101
-  Usage of /:   5.1% of 19.21GB   Users logged in:       0
-  Memory usage: 3%                IP address for enp0s2: 192.168.64.2
-  Swap usage:   0%
-
-
-0 packages can be updated.
-0 updates are security updates.
-
-
-To run a command as administrator (user &#34;root&#34;), use &#34;sudo &lt;command&gt;&#34;.
-See &#34;man sudo_root&#34; for details.
-
-multipass@vm:~$
-</code></pre><h3 id=setup-a-single-node-kubernetes-cluster>Setup a single node kubernetes cluster</h3><pre tabindex=0><code>multipass@vm:~$ curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
-OK
-</code></pre><pre tabindex=0><code>multipass@vm:~$ sudo add-apt-repository &#34;deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable&#34;
-Get:1 https://download.docker.com/linux/ubuntu bionic InRelease [64.4 kB]
-Hit:2 http://archive.ubuntu.com/ubuntu bionic InRelease
-Get:3 http://archive.ubuntu.com/ubuntu bionic-updates InRelease [88.7 kB]
-Get:4 http://security.ubuntu.com/ubuntu bionic-security InRelease [88.7 kB]
-Get:5 https://download.docker.com/linux/ubuntu bionic/stable amd64 Packages [7889 B]
-Get:6 http://security.ubuntu.com/ubuntu bionic-security/main amd64 Packages [485 kB]
-Get:7 http://archive.ubuntu.com/ubuntu bionic-backports InRelease [74.6 kB]
-Get:8 http://archive.ubuntu.com/ubuntu bionic/universe amd64 Packages [8570 kB]
-Get:9 http://security.ubuntu.com/ubuntu bionic-security/main Translation-en [165 kB]
-Get:10 http://security.ubuntu.com/ubuntu bionic-security/restricted amd64 Packages [4976 B]
-Get:11 http://security.ubuntu.com/ubuntu bionic-security/restricted Translation-en [2476 B]
-Get:12 http://security.ubuntu.com/ubuntu bionic-security/universe amd64 Packages [598 kB]
-Get:13 http://security.ubuntu.com/ubuntu bionic-security/universe Translation-en [199 kB]
-Get:14 http://security.ubuntu.com/ubuntu bionic-security/multiverse amd64 Packages [4004 B]
-Get:15 http://security.ubuntu.com/ubuntu bionic-security/multiverse Translation-en [2060 B]
-Get:16 http://archive.ubuntu.com/ubuntu bionic/universe Translation-en [4941 kB]
-Get:17 http://archive.ubuntu.com/ubuntu bionic/multiverse amd64 Packages [151 kB]
-Get:18 http://archive.ubuntu.com/ubuntu bionic/multiverse Translation-en [108 kB]
-Get:19 http://archive.ubuntu.com/ubuntu bionic-updates/main amd64 Packages [712 kB]
-Get:20 http://archive.ubuntu.com/ubuntu bionic-updates/main Translation-en [259 kB]
-Get:21 http://archive.ubuntu.com/ubuntu bionic-updates/restricted amd64 Packages [11.9 kB]
-Get:22 http://archive.ubuntu.com/ubuntu bionic-updates/restricted Translation-en [4156 B]
-Get:23 http://archive.ubuntu.com/ubuntu bionic-updates/universe amd64 Packages [999 kB]
-Get:24 http://archive.ubuntu.com/ubuntu bionic-updates/universe Translation-en [306 kB]
-Get:25 http://archive.ubuntu.com/ubuntu bionic-updates/multiverse amd64 Packages [6636 B]
-Get:26 http://archive.ubuntu.com/ubuntu bionic-updates/multiverse Translation-en [3556 B]
-Get:27 http://archive.ubuntu.com/ubuntu bionic-backports/main amd64 Packages [2512 B]
-Get:28 http://archive.ubuntu.com/ubuntu bionic-backports/main Translation-en [1644 B]
-Get:29 http://archive.ubuntu.com/ubuntu bionic-backports/universe amd64 Packages [4000 B]
-Get:30 http://archive.ubuntu.com/ubuntu bionic-backports/universe Translation-en [1856 B]
-Preparing to unpack .../1-aufs-tools_1%3a4.9+20170918-1ubuntu1_amd64.deb ...
-Unpacking aufs-tools (1:4.9+20170918-1ubuntu1) ...
-Selecting previously unselected package cgroupfs-mount.
-Preparing to unpack .../2-cgroupfs-mount_1.4_all.deb ...
-Unpacking cgroupfs-mount (1.4) ...
-Selecting previously unselected package containerd.io.
-Preparing to unpack .../3-containerd.io_1.2.6-3_amd64.deb ...
-Unpacking containerd.io (1.2.6-3) ...
-Selecting previously unselected package docker-ce-cli.
-Preparing to unpack .../4-docker-ce-cli_5%3a19.03.1~3-0~ubuntu-bionic_amd64.deb ...
-Unpacking docker-ce-cli (5:19.03.1~3-0~ubuntu-bionic) ...
-Selecting previously unselected package docker-ce.
-Preparing to unpack .../5-docker-ce_5%3a19.03.1~3-0~ubuntu-bionic_amd64.deb ...
-Unpacking docker-ce (5:19.03.1~3-0~ubuntu-bionic) ...
-Selecting previously unselected package libltdl7:amd64.
-Preparing to unpack .../6-libltdl7_2.4.6-2_amd64.deb ...
-Unpacking libltdl7:amd64 (2.4.6-2) ...
-Setting up aufs-tools (1:4.9+20170918-1ubuntu1) ...
-Setting up containerd.io (1.2.6-3) ...
-Created symlink /etc/systemd/system/multi-user.target.wants/containerd.service → /lib/systemd/system/containerd.service.
-Processing triggers for ureadahead (0.100.0-21) ...
-Setting up cgroupfs-mount (1.4) ...
-Processing triggers for libc-bin (2.27-3ubuntu1) ...
-Processing triggers for systemd (237-3ubuntu10.25) ...
-Setting up libltdl7:amd64 (2.4.6-2) ...
-Processing triggers for man-db (2.8.3-2ubuntu0.1) ...
-Setting up docker-ce-cli (5:19.03.1~3-0~ubuntu-bionic) ...
-Setting up pigz (2.4-1) ...
-Setting up docker-ce (5:19.03.1~3-0~ubuntu-bionic) ...
-Created symlink /etc/systemd/system/multi-user.target.wants/docker.service → /lib/systemd/system/docker.service.
-Created symlink /etc/systemd/system/sockets.target.wants/docker.socket → /lib/systemd/system/docker.socket.
-Processing triggers for ureadahead (0.100.0-21) ...
-Processing triggers for libc-bin (2.27-3ubuntu1) ...
-Processing triggers for systemd (237-3ubuntu10.25) ...
-</code></pre><pre tabindex=0><code>multipass@vm:~$ sudo swapoff -a
-multipass@vm:~$ sudo sed -i &#39;/ swap / s/^\(.*\)$/#\1/g&#39; /etc/fstab
-</code></pre><pre tabindex=0><code>multipass@vm:~$ sudo apt-get update &amp;&amp; sudo apt-get install -y apt-transport-https &amp;&amp; curl -s https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo apt-key add -
-Hit:1 http://security.ubuntu.com/ubuntu bionic-security InRelease
-Hit:2 http://archive.ubuntu.com/ubuntu bionic InRelease
-Hit:3 https://download.docker.com/linux/ubuntu bionic InRelease
-Hit:4 http://archive.ubuntu.com/ubuntu bionic-updates InRelease
-Hit:5 http://archive.ubuntu.com/ubuntu bionic-backports InRelease
-Reading package lists... Done
-Reading package lists... Done
-Building dependency tree
-Reading state information... Done
-The following package was automatically installed and is no longer required:
-  grub-pc-bin
-Use &#39;sudo apt autoremove&#39; to remove it.
-The following NEW packages will be installed:
-  apt-transport-https
-0 upgraded, 1 newly installed, 0 to remove and 6 not upgraded.
-Need to get 1692 B of archives.
-After this operation, 153 kB of additional disk space will be used.
-Get:1 http://archive.ubuntu.com/ubuntu bionic-updates/universe amd64 apt-transport-https all 1.6.11 [1692 B]
-Fetched 1692 B in 1s (2906 B/s)
-Selecting previously unselected package apt-transport-https.
-(Reading database ... 60304 files and directories currently installed.)
-Preparing to unpack .../apt-transport-https_1.6.11_all.deb ...
-Unpacking apt-transport-https (1.6.11) ...
-Setting up apt-transport-https (1.6.11) ...
-OK
-</code></pre><pre tabindex=0><code>multipass@vm:~$ echo &#34;deb http://apt.kubernetes.io/ kubernetes-xenial main&#34; | sudo tee -a /etc/apt/sources.list.d/kubernetes.list &amp;&amp; sudo apt-get update
-deb http://apt.kubernetes.io/ kubernetes-xenial main
-Hit:1 http://security.ubuntu.com/ubuntu bionic-security InRelease
-Hit:2 http://archive.ubuntu.com/ubuntu bionic InRelease
-Hit:3 https://download.docker.com/linux/ubuntu bionic InRelease
-Hit:4 http://archive.ubuntu.com/ubuntu bionic-updates InRelease
-Hit:5 http://archive.ubuntu.com/ubuntu bionic-backports InRelease
-Get:6 https://packages.cloud.google.com/apt kubernetes-xenial InRelease [8993 B]
-Get:7 https://packages.cloud.google.com/apt kubernetes-xenial/main amd64 Packages [28.9 kB]
-Fetched 37.9 kB in 2s (15.3 kB/s)
-Reading package lists... Done
-</code></pre><pre tabindex=0><code>multipass@vm:~$ sudo apt-get update &amp;&amp; sudo apt-get install -y apt-transport-https &amp;&amp; curl -s https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo apt-key add -
-Hit:1 http://security.ubuntu.com/ubuntu bionic-security InRelease
-Hit:2 http://archive.ubuntu.com/ubuntu bionic InRelease
-Hit:3 https://download.docker.com/linux/ubuntu bionic InRelease
-Hit:4 http://archive.ubuntu.com/ubuntu bionic-updates InRelease
-Hit:5 http://archive.ubuntu.com/ubuntu bionic-backports InRelease
-Reading package lists... Done
-Reading package lists... Done
-Building dependency tree
-Reading state information... Done
-The following package was automatically installed and is no longer required:
-  grub-pc-bin
-Use &#39;sudo apt autoremove&#39; to remove it.
-The following NEW packages will be installed:
-  apt-transport-https
-0 upgraded, 1 newly installed, 0 to remove and 6 not upgraded.
-Need to get 1692 B of archives.
-After this operation, 153 kB of additional disk space will be used.
-Get:1 http://archive.ubuntu.com/ubuntu bionic-updates/universe amd64 apt-transport-https all 1.6.11 [1692 B]
-Fetched 1692 B in 1s (2906 B/s)
-Selecting previously unselected package apt-transport-https.
-(Reading database ... 60304 files and directories currently installed.)
-Preparing to unpack .../apt-transport-https_1.6.11_all.deb ...
-Unpacking apt-transport-https (1.6.11) ...
-Get:3 https://packages.cloud.google.com/apt kubernetes-xenial/main amd64 kubelet amd64 1.15.3-00 [20.2 MB]
-Get:4 https://packages.cloud.google.com/apt kubernetes-xenial/main amd64 kubectl amd64 1.15.3-00 [8763 kB]
-Get:5 https://packages.cloud.google.com/apt kubernetes-xenial/main amd64 kubeadm amd64 1.15.3-00 [8248 kB]
-Fetched 52.9 MB in 27s (1972 kB/s)
-Selecting previously unselected package conntrack.
-(Reading database ... 60308 files and directories currently installed.)
-Preparing to unpack .../0-conntrack_1%3a1.4.4+snapshot20161117-6ubuntu2_amd64.deb ...
-Unpacking conntrack (1:1.4.4+snapshot20161117-6ubuntu2) ...
-Selecting previously unselected package cri-tools.
-Preparing to unpack .../1-cri-tools_1.13.0-00_amd64.deb ...
-Unpacking cri-tools (1.13.0-00) ...
-Selecting previously unselected package kubernetes-cni.
-Preparing to unpack .../2-kubernetes-cni_0.7.5-00_amd64.deb ...
-Unpacking kubernetes-cni (0.7.5-00) ...
-Selecting previously unselected package socat.
-Preparing to unpack .../3-socat_1.7.3.2-2ubuntu2_amd64.deb ...
-Unpacking socat (1.7.3.2-2ubuntu2) ...
-Selecting previously unselected package kubelet.
-Preparing to unpack .../4-kubelet_1.15.3-00_amd64.deb ...
-Unpacking kubelet (1.15.3-00) ...
-Selecting previously unselected package kubectl.
-Preparing to unpack .../5-kubectl_1.15.3-00_amd64.deb ...
-Unpacking kubectl (1.15.3-00) ...
-Selecting previously unselected package kubeadm.
-Preparing to unpack .../6-kubeadm_1.15.3-00_amd64.deb ...
-Unpacking kubeadm (1.15.3-00) ...
-Setting up conntrack (1:1.4.4+snapshot20161117-6ubuntu2) ...
-Setting up kubernetes-cni (0.7.5-00) ...
-Setting up cri-tools (1.13.0-00) ...
-Setting up socat (1.7.3.2-2ubuntu2) ...
-Setting up kubelet (1.15.3-00) ...
-Created symlink /etc/systemd/system/multi-user.target.wants/kubelet.service → /lib/systemd/system/kubelet.service.
-Setting up kubectl (1.15.3-00) ...
-Processing triggers for man-db (2.8.3-2ubuntu0.1) ...
-Setting up kubeadm (1.15.3-00) ...
-</code></pre><pre tabindex=0><code>multipass@vm:~$ sudo kubeadm init --pod-network-cidr=10.201.0.0/24 --token-ttl 0
-...
-
-multipass@vm:~$ mkdir -p $HOME/.kube
-multipass@vm:~$ sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
-multipass@vm:~$ sudo chown $(id -u):$(id -g) $HOME/.kube/config
-</code></pre><pre tabindex=0><code>multipass@vm:~$ kubectl get pods --all-namespaces -o wide
-NAMESPACE     NAME                         READY   STATUS    RESTARTS   AGE   IP             NODE     NOMINATED NODE   READINESS GATES
-kube-system   coredns-5c98db65d4-ksh4p     0/1     Pending   0          21m   &lt;none&gt;         &lt;none&gt;   &lt;none&gt;           &lt;none&gt;
-kube-system   coredns-5c98db65d4-nvvzg     0/1     Pending   0          21m   &lt;none&gt;         &lt;none&gt;   &lt;none&gt;           &lt;none&gt;
-kube-system   etcd-vm                      1/1     Running   0          20m   192.168.64.2   vm       &lt;none&gt;           &lt;none&gt;
-kube-system   kube-apiserver-vm            1/1     Running   0          20m   192.168.64.2   vm       &lt;none&gt;           &lt;none&gt;
-kube-system   kube-controller-manager-vm   1/1     Running   0          20m   192.168.64.2   vm       &lt;none&gt;           &lt;none&gt;
-kube-system   kube-proxy-b8qf2             1/1     Running   0          21m   192.168.64.2   vm       &lt;none&gt;           &lt;none&gt;
-kube-system   kube-scheduler-vm            1/1     Running   0          20m   192.168.64.2   vm       &lt;none&gt;           &lt;none&gt;
-</code></pre><h4 id=install-calico>install calico</h4><pre tabindex=0><code>multipass@vm:~$ wget https://docs.projectcalico.org/v3.8/manifests/calico.yaml
---2019-08-25 21:26:00--  https://docs.projectcalico.org/v3.8/manifests/calico.yaml
-Resolving docs.projectcalico.org (docs.projectcalico.org)... 206.189.73.52, 2604:a880:2:d0::21e9:c001
-Connecting to docs.projectcalico.org (docs.projectcalico.org)|206.189.73.52|:443... connected.
-HTTP request sent, awaiting response... 200 OK
-Length: 20628 (20K) [application/x-yaml]
-Saving to: ‘calico.yaml’
-
-calico.yaml                  100%[==============================================&gt;]  20.14K  93.2KB/s    in 0.2s
-
-2019-08-25 21:26:02 (93.2 KB/s) - ‘calico.yaml’ saved [20628/20628]
-</code></pre><p>Change <code>CALICO_IPV4POOL_CIDR</code></p><pre tabindex=0><code>            - name: CALICO_IPV4POOL_CIDR
-              value: &#34;10.201.0.0/24&#34;
-</code></pre><pre tabindex=0><code>multipass@vm:~$ kubectl apply -f calico.yaml
-configmap/calico-config unchanged
-customresourcedefinition.apiextensions.k8s.io/felixconfigurations.crd.projectcalico.org unchanged
-customresourcedefinition.apiextensions.k8s.io/ipamblocks.crd.projectcalico.org unchanged
-customresourcedefinition.apiextensions.k8s.io/blockaffinities.crd.projectcalico.org unchanged
-customresourcedefinition.apiextensions.k8s.io/ipamhandles.crd.projectcalico.org unchanged
-customresourcedefinition.apiextensions.k8s.io/ipamconfigs.crd.projectcalico.org unchanged
-customresourcedefinition.apiextensions.k8s.io/bgppeers.crd.projectcalico.org unchanged
-customresourcedefinition.apiextensions.k8s.io/bgpconfigurations.crd.projectcalico.org unchanged
-customresourcedefinition.apiextensions.k8s.io/ippools.crd.projectcalico.org unchanged
-customresourcedefinition.apiextensions.k8s.io/hostendpoints.crd.projectcalico.org unchanged
-customresourcedefinition.apiextensions.k8s.io/clusterinformations.crd.projectcalico.org unchanged
-customresourcedefinition.apiextensions.k8s.io/globalnetworkpolicies.crd.projectcalico.org unchanged
-customresourcedefinition.apiextensions.k8s.io/globalnetworksets.crd.projectcalico.org unchanged
-customresourcedefinition.apiextensions.k8s.io/networkpolicies.crd.projectcalico.org unchanged
-customresourcedefinition.apiextensions.k8s.io/networksets.crd.projectcalico.org unchanged
-clusterrole.rbac.authorization.k8s.io/calico-kube-controllers unchanged
-clusterrolebinding.rbac.authorization.k8s.io/calico-kube-controllers unchanged
-clusterrole.rbac.authorization.k8s.io/calico-node unchanged
-clusterrolebinding.rbac.authorization.k8s.io/calico-node unchanged
-daemonset.apps/calico-node configured
-serviceaccount/calico-node unchanged
-deployment.apps/calico-kube-controllers unchanged
-serviceaccount/calico-kube-controllers unchanged
-</code></pre><pre tabindex=0><code>multipass@vm:~$ kubectl get pods --all-namespaces -o wide
-NAMESPACE     NAME                                       READY   STATUS    RESTARTS   AGE     IP               NODE   NOMINATED NODE   READINESS GATES
-kube-system   calico-kube-controllers-65b8787765-5rftm   1/1     Running   0          3m57s   192.168.141.65   vm     &lt;none&gt;           &lt;none&gt;
-kube-system   calico-node-dtbhl                          1/1     Running   0          44s     192.168.64.2     vm     &lt;none&gt;           &lt;none&gt;
-kube-system   coredns-5c98db65d4-ksh4p                   1/1     Running   0          25m     192.168.141.66   vm     &lt;none&gt;           &lt;none&gt;
-kube-system   coredns-5c98db65d4-nvvzg                   1/1     Running   0          25m     192.168.141.67   vm     &lt;none&gt;           &lt;none&gt;
-kube-system   etcd-vm                                    1/1     Running   0          24m     192.168.64.2     vm     &lt;none&gt;           &lt;none&gt;
-kube-system   kube-apiserver-vm                          1/1     Running   0          24m     192.168.64.2     vm     &lt;none&gt;           &lt;none&gt;
-kube-system   kube-controller-manager-vm                 1/1     Running   0          24m     192.168.64.2     vm     &lt;none&gt;           &lt;none&gt;
-kube-system   kube-proxy-b8qf2                           1/1     Running   0          25m     192.168.64.2     vm     &lt;none&gt;           &lt;none&gt;
-kube-system   kube-scheduler-vm                          1/1     Running   0          25m     192.168.64.2     vm     &lt;none&gt;           &lt;none&gt;
-</code></pre><pre tabindex=0><code>multipass@vm:~$ kubectl taint nodes --all node-role.kubernetes.io/master-
-node/vm untainted
-</code></pre><h3 id=install-calicoctl>Install calicoctl</h3><p><a href=https://docs.projectcalico.org/v3.5/usage/calicoctl/install>https://docs.projectcalico.org/v3.5/usage/calicoctl/install</a></p><pre tabindex=0><code>multipass@vm:~$ curl -O -L  https://github.com/projectcalico/calicoctl/releases/download/v3.5.8/calicoctl
-multipass@vm:~$ chmod +x calicoctl
-multipass@vm:~$ ./calicoctl get profiles
-Failed to create Calico API client: no etcd endpoints specified
-multipass@vm:~$ kubectl apply -f \
-&gt;  https://docs.projectcalico.org/v3.5/getting-started/kubernetes/installation/hosted/calicoctl.yaml
-pod/calicoctl created
-multipass@vm:~$ kubectl exec -ti -n kube-system calicoctl -- /calicoctl get profiles -o wide
-error: unable to upgrade connection: container not found (&#34;calicoctl&#34;)
-</code></pre><pre tabindex=0><code>multipass@vm:~$ kubectl get pods --all-namespaces
-NAMESPACE     NAME                                       READY   STATUS                       RESTARTS   AGE
-kube-system   calico-kube-controllers-65b8787765-5rftm   1/1     Running                      0          10m
-kube-system   calico-node-dtbhl                          1/1     Running                      0          7m46s
-kube-system   calicoctl                                  0/1     CreateContainerConfigError   0          38s
-kube-system   coredns-5c98db65d4-ksh4p                   1/1     Running                      0          33m
-kube-system   coredns-5c98db65d4-nvvzg                   1/1     Running                      0          33m
-kube-system   etcd-vm                                    1/1     Running                      0          32m
-kube-system   kube-apiserver-vm                          1/1     Running                      0          31m
-kube-system   kube-controller-manager-vm                 1/1     Running                      0          31m
-kube-system   kube-proxy-b8qf2                           1/1     Running                      0          33m
-kube-system   kube-scheduler-vm                          1/1     Running                      0          32m
-</code></pre><pre tabindex=0><code>multipass@vm:~$ kubectl describe pod calicoctl --namespace=kube-system
-Name:         calicoctl
-Namespace:    kube-system
-Priority:     0
-Node:         vm/192.168.64.2
-Start Time:   Sun, 25 Aug 2019 21:35:02 +0900
-Labels:       &lt;none&gt;
-Annotations:  kubectl.kubernetes.io/last-applied-configuration:
-                {&#34;apiVersion&#34;:&#34;v1&#34;,&#34;kind&#34;:&#34;Pod&#34;,&#34;metadata&#34;:{&#34;annotations&#34;:{},&#34;name&#34;:&#34;calicoctl&#34;,&#34;namespace&#34;:&#34;kube-system&#34;},&#34;spec&#34;:{&#34;containers&#34;:[{&#34;command...
-Status:       Pending
-IP:           192.168.64.2
-Containers:
-  calicoctl:
-    Container ID:
-    Image:         calico/ctl:v3.5.8
-    Image ID:
-    Port:          &lt;none&gt;
-    Host Port:     &lt;none&gt;
-    Command:
-      /bin/sh
-      -c
-      while true; do sleep 3600; done
-    State:          Waiting
-      Reason:       CreateContainerConfigError
-    Ready:          False
-    Restart Count:  0
-    Environment:
-      ETCD_ENDPOINTS:  &lt;set to the key &#39;etcd_endpoints&#39; of config map &#39;calico-config&#39;&gt;  Optional: false
-    Mounts:
-      /var/run/secrets/kubernetes.io/serviceaccount from default-token-w2l7q (ro)
-Conditions:
-  Type              Status
-  Initialized       True
-  Ready             False
-  ContainersReady   False
-  PodScheduled      True
-Volumes:
-  default-token-w2l7q:
-    Type:        Secret (a volume populated by a Secret)
-    SecretName:  default-token-w2l7q
-    Optional:    false
-QoS Class:       BestEffort
-Node-Selectors:  beta.kubernetes.io/os=linux
-Tolerations:     node.kubernetes.io/not-ready:NoExecute for 300s
-                 node.kubernetes.io/unreachable:NoExecute for 300s
-Events:
-  Type     Reason     Age               From               Message
-  ----     ------     ----              ----               -------
-  Normal   Scheduled  72s               default-scheduler  Successfully assigned kube-system/calicoctl to vm
-  Normal   Pulling    71s               kubelet, vm        Pulling image &#34;calico/ctl:v3.5.8&#34;
-  Normal   Pulled     57s               kubelet, vm        Successfully pulled image &#34;calico/ctl:v3.5.8&#34;
-  Warning  Failed     3s (x6 over 57s)  kubelet, vm        Error: Couldn&#39;t find key etcd_endpoints in ConfigMap kube-system/calico-config
-  Normal   Pulled     3s (x5 over 57s)  kubelet, vm        Container image &#34;calico/ctl:v3.5.8&#34; already present on machine
-</code></pre><h3 id=delete-kubenetes-cluster>delete kubenetes cluster</h3><pre tabindex=0><code>multipass@vm:~$ kubectl drain vm --delete-local-data --force --ignore-daemonsets
-node/vm cordoned
-WARNING: ignoring DaemonSet-managed Pods: kube-system/calico-node-dtbhl, kube-system/kube-proxy-b8qf2; deleting Pods not managed by ReplicationController, ReplicaSet, Job, DaemonSet or StatefulSet: kube-system/calicoctl
-evicting pod &#34;coredns-5c98db65d4-nvvzg&#34;
-evicting pod &#34;calico-kube-controllers-65b8787765-5rftm&#34;
-evicting pod &#34;calicoctl&#34;
-evicting pod &#34;coredns-5c98db65d4-ksh4p&#34;
-pod/calicoctl evicted
-pod/coredns-5c98db65d4-nvvzg evicted
-pod/calico-kube-controllers-65b8787765-5rftm evicted
-pod/coredns-5c98db65d4-ksh4p evicted
-node/vm evicted
-multipass@vm:~$ sudo kubeadm reset
-[reset] Reading configuration from the cluster...
-[reset] FYI: You can look at this config file with &#39;kubectl -n kube-system get cm kubeadm-config -oyaml&#39;
-[reset] WARNING: Changes made to this host by &#39;kubeadm init&#39; or &#39;kubeadm join&#39; will be reverted.
-[reset] Are you sure you want to proceed? [y/N]: y
-[preflight] Running pre-flight checks
-[reset] Removing info for node &#34;vm&#34; from the ConfigMap &#34;kubeadm-config&#34; in the &#34;kube-system&#34; Namespace
-W0825 21:46:06.943208    4603 removeetcdmember.go:61] [reset] failed to remove etcd member: error syncing endpoints with etc: etcdclient: no available endpoints
-.Please manually remove this etcd member using etcdctl
-[reset] Stopping the kubelet service
-[reset] Unmounting mounted directories in &#34;/var/lib/kubelet&#34;
-[reset] Deleting contents of config directories: [/etc/kubernetes/manifests /etc/kubernetes/pki]
-[reset] Deleting files: [/etc/kubernetes/admin.conf /etc/kubernetes/kubelet.conf /etc/kubernetes/bootstrap-kubelet.conf /etc/kubernetes/controller-manager.conf /etc/kubernetes/scheduler.conf]
-[reset] Deleting contents of stateful directories: [/var/lib/etcd /var/lib/kubelet /etc/cni/net.d /var/lib/dockershim /var/run/kubernetes]
-
-The reset process does not reset or clean up iptables rules or IPVS tables.
-If you wish to reset iptables, you must do so manually.
-For example:
-iptables -F &amp;&amp; iptables -t nat -F &amp;&amp; iptables -t mangle -F &amp;&amp; iptables -X
-
-If your cluster was setup to utilize IPVS, run ipvsadm --clear (or similar)
-to reset your system&#39;s IPVS tables.
-
-The reset process does not clean your kubeconfig files and you must remove them manually.
-Please, check the contents of the $HOME/.kube/config file.
-
-multipass@vm:~$ sudo rm -rf /var/etcd
-</code></pre><h2 id=reference>Reference</h2><h3 id=multipass-2>multipass</h3><ul><li><a href=https://multipass.run>https://multipass.run</a></li><li><a href=https://github.com/CanonicalLtd/multipass>https://github.com/CanonicalLtd/multipass</a></li><li><a href=https://ubuntu.com/blog/kubernetes-on-mac-how-to-set-up>OS X에서 multipass를 이용하여 microk8s 환경 구성</a></li><li><a href=https://raaaimund.github.io/tech/2018/10/23/create-single-node-k8s-cluster/>Create a single node Kubernetes cluster on Ubuntu 18.04.1 (Bionic Beaver) with kubeadm</a></li><li><a href=https://docs.projectcalico.org/v3.8/getting-started/kubernetes/>https://docs.projectcalico.org/v3.8/getting-started/kubernetes/</a></li><li><a href=https://kubernetes.io/docs/setup/production-environment/tools/kubeadm/create-cluster-kubeadm/>k8s 설치 상세 절차</a></li><li><a href=https://bcho.tistory.com/1341>private helm repository 구성하기-조대협</a></li></ul></content><p><a href=https://cychong47.github.io/tags/vmware/>#Vmware</a>
-<a href=https://cychong47.github.io/tags/ubuntu/>#Ubuntu</a>
-<a href=https://cychong47.github.io/tags/multipass/>#Multipass</a></p></main><footer>Made with <a href=https://github.com/janraasch/hugo-bearblog/>Hugo ʕ•ᴥ•ʔ Bear</a></footer></body></html>
+<a href=/archives/>Archives</a>
+<a href=/search/>Search</a></nav></header><main><div class=archive-page><div class=archive-section><h3 class=page-title>Archive</h3><ul style=list-style-type:disc;padding-left:20px;font-size:.9rem><li style=margin-bottom:5px><a href=/#2026 style=text-decoration:none;color:inherit>2026: 3 posts</a></li><li style=margin-bottom:5px><a href=/#2024 style=text-decoration:none;color:inherit>2024: 2 posts</a></li><li style=margin-bottom:5px><a href=/#2023 style=text-decoration:none;color:inherit>2023: 1 posts</a></li><li style=margin-bottom:5px><a href=/#2022 style=text-decoration:none;color:inherit>2022: 7 posts</a></li><li style=margin-bottom:5px><a href=/#2021 style=text-decoration:none;color:inherit>2021: 38 posts</a></li><li style=margin-bottom:5px><a href=/#2020 style=text-decoration:none;color:inherit>2020: 71 posts</a></li><li style=margin-bottom:5px><a href=/#2019 style=text-decoration:none;color:inherit>2019: 22 posts</a></li><li style=margin-bottom:5px><a href=/#2018 style=text-decoration:none;color:inherit>2018: 37 posts</a></li><li style=margin-bottom:5px><a href=/#2017 style=text-decoration:none;color:inherit>2017: 49 posts</a></li><li style=margin-bottom:5px><a href=/#2016 style=text-decoration:none;color:inherit>2016: 30 posts</a></li><li style=margin-bottom:5px><a href=/#2015 style=text-decoration:none;color:inherit>2015: 43 posts</a></li><li style=margin-bottom:5px><a href=/#2014 style=text-decoration:none;color:inherit>2014: 36 posts</a></li></ul></div><div class=tags-section style=margin-top:2rem><h3 class=page-title>Tags</h3><div style=margin-top:1rem><a href=https://cychong47.github.io/tags/2015/ style=display:inline-block;margin-right:10px;font-size:.9rem>#2015</a>
+<a href=https://cychong47.github.io/tags/5g/ style=display:inline-block;margin-right:10px;font-size:.9rem>#5g</a>
+<a href=https://cychong47.github.io/tags/agentic-ai/ style=display:inline-block;margin-right:10px;font-size:.9rem>#Agentic AI</a>
+<a href=https://cychong47.github.io/tags/agile/ style=display:inline-block;margin-right:10px;font-size:.9rem>#Agile</a>
+<a href=https://cychong47.github.io/tags/aic/ style=display:inline-block;margin-right:10px;font-size:.9rem>#Aic</a>
+<a href=https://cychong47.github.io/tags/algorithm/ style=display:inline-block;margin-right:10px;font-size:.9rem>#Algorithm</a>
+<a href=https://cychong47.github.io/tags/amazon/ style=display:inline-block;margin-right:10px;font-size:.9rem>#Amazon</a>
+<a href=https://cychong47.github.io/tags/amd/ style=display:inline-block;margin-right:10px;font-size:.9rem>#Amd</a>
+<a href=https://cychong47.github.io/tags/amdocs/ style=display:inline-block;margin-right:10px;font-size:.9rem>#Amdocs</a>
+<a href=https://cychong47.github.io/tags/amsterdam-release/ style=display:inline-block;margin-right:10px;font-size:.9rem>#Amsterdam Release</a>
+<a href=https://cychong47.github.io/tags/andromeda/ style=display:inline-block;margin-right:10px;font-size:.9rem>#Andromeda</a>
+<a href=https://cychong47.github.io/tags/ansible/ style=display:inline-block;margin-right:10px;font-size:.9rem>#Ansible</a>
+<a href=https://cychong47.github.io/tags/ansible-playbook/ style=display:inline-block;margin-right:10px;font-size:.9rem>#Ansible-Playbook</a>
+<a href=https://cychong47.github.io/tags/anti-work-pattern/ style=display:inline-block;margin-right:10px;font-size:.9rem>#Anti-Work Pattern</a>
+<a href=https://cychong47.github.io/tags/apple/shortcuts/ style=display:inline-block;margin-right:10px;font-size:.9rem>#Apple/Shortcuts</a>
+<a href=https://cychong47.github.io/tags/apple-silicon/ style=display:inline-block;margin-right:10px;font-size:.9rem>#Apple Silicon</a>
+<a href=https://cychong47.github.io/tags/apple-watch/ style=display:inline-block;margin-right:10px;font-size:.9rem>#Apple-Watch</a>
+<a href=https://cychong47.github.io/tags/apple/shortcuts/ style=display:inline-block;margin-right:10px;font-size:.9rem>#Apple/Shortcuts</a>
+<a href=https://cychong47.github.io/tags/arm/ style=display:inline-block;margin-right:10px;font-size:.9rem>#Arm</a>
+<a href=https://cychong47.github.io/tags/att/ style=display:inline-block;margin-right:10px;font-size:.9rem>#ATT</a>
+<a href=https://cychong47.github.io/tags/automation/ style=display:inline-block;margin-right:10px;font-size:.9rem>#Automation</a>
+<a href=https://cychong47.github.io/tags/b4/ style=display:inline-block;margin-right:10px;font-size:.9rem>#B4</a>
+<a href=https://cychong47.github.io/tags/backup/ style=display:inline-block;margin-right:10px;font-size:.9rem>#Backup</a>
+<a href=https://cychong47.github.io/tags/barometer/ style=display:inline-block;margin-right:10px;font-size:.9rem>#Barometer</a>
+<a href=https://cychong47.github.io/tags/bitnami/ style=display:inline-block;margin-right:10px;font-size:.9rem>#Bitnami</a>
+<a href=https://cychong47.github.io/tags/blog/ style=display:inline-block;margin-right:10px;font-size:.9rem>#Blog</a>
+<a href=https://cychong47.github.io/tags/blogging/ style=display:inline-block;margin-right:10px;font-size:.9rem>#Blogging</a>
+<a href=https://cychong47.github.io/tags/book/ style=display:inline-block;margin-right:10px;font-size:.9rem>#Book</a>
+<a href=https://cychong47.github.io/tags/brew/ style=display:inline-block;margin-right:10px;font-size:.9rem>#Brew</a>
+<a href=https://cychong47.github.io/tags/brocade/ style=display:inline-block;margin-right:10px;font-size:.9rem>#Brocade</a>
+<a href=https://cychong47.github.io/tags/c/ style=display:inline-block;margin-right:10px;font-size:.9rem>#C</a>
+<a href=https://cychong47.github.io/tags/calico/ style=display:inline-block;margin-right:10px;font-size:.9rem>#Calico</a>
+<a href=https://cychong47.github.io/tags/car/ style=display:inline-block;margin-right:10px;font-size:.9rem>#Car</a>
+<a href=https://cychong47.github.io/tags/cavium/ style=display:inline-block;margin-right:10px;font-size:.9rem>#Cavium</a>
+<a href=https://cychong47.github.io/tags/chair/ style=display:inline-block;margin-right:10px;font-size:.9rem>#Chair</a>
+<a href=https://cychong47.github.io/tags/cilium/ style=display:inline-block;margin-right:10px;font-size:.9rem>#Cilium</a>
+<a href=https://cychong47.github.io/tags/cisco/ style=display:inline-block;margin-right:10px;font-size:.9rem>#Cisco</a>
+<a href=https://cychong47.github.io/tags/click/ style=display:inline-block;margin-right:10px;font-size:.9rem>#Click</a>
+<a href=https://cychong47.github.io/tags/cncf/ style=display:inline-block;margin-right:10px;font-size:.9rem>#Cncf</a>
+<a href=https://cychong47.github.io/tags/cni/ style=display:inline-block;margin-right:10px;font-size:.9rem>#Cni</a>
+<a href=https://cychong47.github.io/tags/cockpit/ style=display:inline-block;margin-right:10px;font-size:.9rem>#Cockpit</a>
+<a href=https://cychong47.github.io/tags/coding-style/ style=display:inline-block;margin-right:10px;font-size:.9rem>#Coding Style</a>
+<a href=https://cychong47.github.io/tags/collaboration/ style=display:inline-block;margin-right:10px;font-size:.9rem>#Collaboration</a>
+<a href=https://cychong47.github.io/tags/collectd/ style=display:inline-block;margin-right:10px;font-size:.9rem>#Collectd</a>
+<a href=https://cychong47.github.io/tags/configmap/ style=display:inline-block;margin-right:10px;font-size:.9rem>#Configmap</a>
+<a href=https://cychong47.github.io/tags/connectx-5/ style=display:inline-block;margin-right:10px;font-size:.9rem>#ConnectX-5</a>
+<a href=https://cychong47.github.io/tags/container/ style=display:inline-block;margin-right:10px;font-size:.9rem>#Container</a>
+<a href=https://cychong47.github.io/tags/continuous-deployment/ style=display:inline-block;margin-right:10px;font-size:.9rem>#Continuous Deployment</a>
+<a href=https://cychong47.github.io/tags/cpu/ style=display:inline-block;margin-right:10px;font-size:.9rem>#Cpu</a>
+<a href=https://cychong47.github.io/tags/cran/ style=display:inline-block;margin-right:10px;font-size:.9rem>#Cran</a>
+<a href=https://cychong47.github.io/tags/cron/ style=display:inline-block;margin-right:10px;font-size:.9rem>#Cron</a>
+<a href=https://cychong47.github.io/tags/crond/ style=display:inline-block;margin-right:10px;font-size:.9rem>#Crond</a>
+<a href=https://cychong47.github.io/tags/cronjob/ style=display:inline-block;margin-right:10px;font-size:.9rem>#Cronjob</a>
+<a href=https://cychong47.github.io/tags/cubb/ style=display:inline-block;margin-right:10px;font-size:.9rem>#Cubb</a>
+<a href=https://cychong47.github.io/tags/cuda/ style=display:inline-block;margin-right:10px;font-size:.9rem>#CUDA</a>
+<a href=https://cychong47.github.io/tags/culture/ style=display:inline-block;margin-right:10px;font-size:.9rem>#Culture</a>
+<a href=https://cychong47.github.io/tags/cuphy/ style=display:inline-block;margin-right:10px;font-size:.9rem>#Cuphy</a>
+<a href=https://cychong47.github.io/tags/cuvnf/ style=display:inline-block;margin-right:10px;font-size:.9rem>#Cuvnf</a>
+<a href=https://cychong47.github.io/tags/database/ style=display:inline-block;margin-right:10px;font-size:.9rem>#Database</a>
+<a href=https://cychong47.github.io/tags/dev-culture/ style=display:inline-block;margin-right:10px;font-size:.9rem>#Dev Culture</a>
+<a href=https://cychong47.github.io/tags/devnothink/ style=display:inline-block;margin-right:10px;font-size:.9rem>#Devnothink</a>
+<a href=https://cychong47.github.io/tags/devonthink/ style=display:inline-block;margin-right:10px;font-size:.9rem>#Devonthink</a>
+<a href=https://cychong47.github.io/tags/docker/ style=display:inline-block;margin-right:10px;font-size:.9rem>#Docker</a>
+<a href=https://cychong47.github.io/tags/docker-compose/ style=display:inline-block;margin-right:10px;font-size:.9rem>#Docker-Compose</a>
+<a href=https://cychong47.github.io/tags/dpdk/ style=display:inline-block;margin-right:10px;font-size:.9rem>#DPDK</a>
+<a href=https://cychong47.github.io/tags/dpi/ style=display:inline-block;margin-right:10px;font-size:.9rem>#Dpi</a>
+<a href=https://cychong47.github.io/tags/dpkt/ style=display:inline-block;margin-right:10px;font-size:.9rem>#Dpkt</a>
+<a href=https://cychong47.github.io/tags/edge/ style=display:inline-block;margin-right:10px;font-size:.9rem>#Edge</a>
+<a href=https://cychong47.github.io/tags/elasticsearch/ style=display:inline-block;margin-right:10px;font-size:.9rem>#Elasticsearch</a>
+<a href=https://cychong47.github.io/tags/elk/ style=display:inline-block;margin-right:10px;font-size:.9rem>#Elk</a>
+<a href=https://cychong47.github.io/tags/english/ style=display:inline-block;margin-right:10px;font-size:.9rem>#English</a>
+<a href=https://cychong47.github.io/tags/espresso/ style=display:inline-block;margin-right:10px;font-size:.9rem>#Espresso</a>
+<a href=https://cychong47.github.io/tags/fapi/ style=display:inline-block;margin-right:10px;font-size:.9rem>#Fapi</a>
+<a href=https://cychong47.github.io/tags/feature-flag-driven-development/ style=display:inline-block;margin-right:10px;font-size:.9rem>#Feature Flag Driven Development</a>
+<a href=https://cychong47.github.io/tags/feedback/ style=display:inline-block;margin-right:10px;font-size:.9rem>#Feedback</a>
+<a href=https://cychong47.github.io/tags/ffmpeg/ style=display:inline-block;margin-right:10px;font-size:.9rem>#Ffmpeg</a>
+<a href=https://cychong47.github.io/tags/finder/ style=display:inline-block;margin-right:10px;font-size:.9rem>#Finder</a>
+<a href=https://cychong47.github.io/tags/flask/ style=display:inline-block;margin-right:10px;font-size:.9rem>#Flask</a>
+<a href=https://cychong47.github.io/tags/fragment/ style=display:inline-block;margin-right:10px;font-size:.9rem>#Fragment</a>
+<a href=https://cychong47.github.io/tags/ftp/ style=display:inline-block;margin-right:10px;font-size:.9rem>#Ftp</a>
+<a href=https://cychong47.github.io/tags/getting-started/ style=display:inline-block;margin-right:10px;font-size:.9rem>#Getting Started</a>
+<a href=https://cychong47.github.io/tags/ghost/ style=display:inline-block;margin-right:10px;font-size:.9rem>#Ghost</a>
+<a href=https://cychong47.github.io/tags/ghost-theme/ style=display:inline-block;margin-right:10px;font-size:.9rem>#Ghost-Theme</a>
+<a href=https://cychong47.github.io/tags/git/ style=display:inline-block;margin-right:10px;font-size:.9rem>#Git</a>
+<a href=https://cychong47.github.io/tags/github/ style=display:inline-block;margin-right:10px;font-size:.9rem>#GitHub</a>
+<a href=https://cychong47.github.io/tags/go/ style=display:inline-block;margin-right:10px;font-size:.9rem>#Go</a>
+<a href=https://cychong47.github.io/tags/golang/ style=display:inline-block;margin-right:10px;font-size:.9rem>#Golang</a>
+<a href=https://cychong47.github.io/tags/google/ style=display:inline-block;margin-right:10px;font-size:.9rem>#Google</a>
+<a href=https://cychong47.github.io/tags/google-cloud-platform/ style=display:inline-block;margin-right:10px;font-size:.9rem>#Google-Cloud-Platform</a>
+<a href=https://cychong47.github.io/tags/gpb/ style=display:inline-block;margin-right:10px;font-size:.9rem>#Gpb</a>
+<a href=https://cychong47.github.io/tags/gpu/ style=display:inline-block;margin-right:10px;font-size:.9rem>#Gpu</a>
+<a href=https://cychong47.github.io/tags/grafana/ style=display:inline-block;margin-right:10px;font-size:.9rem>#Grafana</a>
+<a href=https://cychong47.github.io/tags/grafana/ style=display:inline-block;margin-right:10px;font-size:.9rem>#Grafana"</a>
+<a href=https://cychong47.github.io/tags/graviton/ style=display:inline-block;margin-right:10px;font-size:.9rem>#Graviton</a>
+<a href=https://cychong47.github.io/tags/grpc/ style=display:inline-block;margin-right:10px;font-size:.9rem>#Grpc</a>
+<a href=https://cychong47.github.io/tags/happy-hacking/ style=display:inline-block;margin-right:10px;font-size:.9rem>#Happy-Hacking</a>
+<a href=https://cychong47.github.io/tags/hbr/ style=display:inline-block;margin-right:10px;font-size:.9rem>#HBR</a>
+<a href=https://cychong47.github.io/tags/helm/ style=display:inline-block;margin-right:10px;font-size:.9rem>#Helm</a>
+<a href=https://cychong47.github.io/tags/homebrew/ style=display:inline-block;margin-right:10px;font-size:.9rem>#Homebrew</a>
+<a href=https://cychong47.github.io/tags/homelab/ style=display:inline-block;margin-right:10px;font-size:.9rem>#Homelab</a>
+<a href=https://cychong47.github.io/tags/homepod/ style=display:inline-block;margin-right:10px;font-size:.9rem>#HomePod</a>
+<a href=https://cychong47.github.io/tags/http/ style=display:inline-block;margin-right:10px;font-size:.9rem>#Http</a>
+<a href=https://cychong47.github.io/tags/hugepage/ style=display:inline-block;margin-right:10px;font-size:.9rem>#Hugepage</a>
+<a href=https://cychong47.github.io/tags/hugo/ style=display:inline-block;margin-right:10px;font-size:.9rem>#Hugo</a>
+<a href=https://cychong47.github.io/tags/influxdb/ style=display:inline-block;margin-right:10px;font-size:.9rem>#Influxdb</a>
+<a href=https://cychong47.github.io/tags/inspiration/ style=display:inline-block;margin-right:10px;font-size:.9rem>#Inspiration</a>
+<a href=https://cychong47.github.io/tags/intel/ style=display:inline-block;margin-right:10px;font-size:.9rem>#Intel</a>
+<a href=https://cychong47.github.io/tags/ios14/ style=display:inline-block;margin-right:10px;font-size:.9rem>#IOS14</a>
+<a href=https://cychong47.github.io/tags/ipad/ style=display:inline-block;margin-right:10px;font-size:.9rem>#Ipad</a>
+<a href=https://cychong47.github.io/tags/iphone/ style=display:inline-block;margin-right:10px;font-size:.9rem>#IPhone</a>
+<a href=https://cychong47.github.io/tags/iphone6/ style=display:inline-block;margin-right:10px;font-size:.9rem>#IPhone6</a>
+<a href=https://cychong47.github.io/tags/iphonex/ style=display:inline-block;margin-right:10px;font-size:.9rem>#IPhoneX</a>
+<a href=https://cychong47.github.io/tags/ipsec/ style=display:inline-block;margin-right:10px;font-size:.9rem>#IPsec</a>
+<a href=https://cychong47.github.io/tags/ipv4/ style=display:inline-block;margin-right:10px;font-size:.9rem>#Ipv4</a>
+<a href=https://cychong47.github.io/tags/istio/ style=display:inline-block;margin-right:10px;font-size:.9rem>#Istio</a>
+<a href=https://cychong47.github.io/tags/jetpack/ style=display:inline-block;margin-right:10px;font-size:.9rem>#Jetpack</a>
+<a href=https://cychong47.github.io/tags/job/ style=display:inline-block;margin-right:10px;font-size:.9rem>#Job</a>
+<a href=https://cychong47.github.io/tags/json/ style=display:inline-block;margin-right:10px;font-size:.9rem>#Json</a>
+<a href=https://cychong47.github.io/tags/jtbc/ style=display:inline-block;margin-right:10px;font-size:.9rem>#Jtbc</a>
+<a href=https://cychong47.github.io/tags/jupiter/ style=display:inline-block;margin-right:10px;font-size:.9rem>#Jupiter</a>
+<a href=https://cychong47.github.io/tags/k3s/ style=display:inline-block;margin-right:10px;font-size:.9rem>#K3s</a>
+<a href=https://cychong47.github.io/tags/kafka/ style=display:inline-block;margin-right:10px;font-size:.9rem>#Kafka</a>
+<a href=https://cychong47.github.io/tags/kldp/ style=display:inline-block;margin-right:10px;font-size:.9rem>#KLDP</a>
+<a href=https://cychong47.github.io/tags/kni/ style=display:inline-block;margin-right:10px;font-size:.9rem>#Kni</a>
+<a href=https://cychong47.github.io/tags/kubelet/ style=display:inline-block;margin-right:10px;font-size:.9rem>#Kubelet</a>
+<a href=https://cychong47.github.io/tags/kubernetes/ style=display:inline-block;margin-right:10px;font-size:.9rem>#Kubernetes</a>
+<a href=https://cychong47.github.io/tags/kuberntes/ style=display:inline-block;margin-right:10px;font-size:.9rem>#Kuberntes</a>
+<a href=https://cychong47.github.io/tags/launchd/ style=display:inline-block;margin-right:10px;font-size:.9rem>#Launchd</a>
+<a href=https://cychong47.github.io/tags/lb/ style=display:inline-block;margin-right:10px;font-size:.9rem>#Lb</a>
+<a href=https://cychong47.github.io/tags/life/ style=display:inline-block;margin-right:10px;font-size:.9rem>#Life</a>
+<a href=https://cychong47.github.io/tags/lifehack/ style=display:inline-block;margin-right:10px;font-size:.9rem>#Lifehack</a>
+<a href=https://cychong47.github.io/tags/linux/ style=display:inline-block;margin-right:10px;font-size:.9rem>#Linux</a>
+<a href=https://cychong47.github.io/tags/llm/ style=display:inline-block;margin-right:10px;font-size:.9rem>#Llm</a>
+<a href=https://cychong47.github.io/tags/load-balancer/ style=display:inline-block;margin-right:10px;font-size:.9rem>#Load Balancer</a>
+<a href=https://cychong47.github.io/tags/lte/ style=display:inline-block;margin-right:10px;font-size:.9rem>#Lte</a>
+<a href=https://cychong47.github.io/tags/m1/ style=display:inline-block;margin-right:10px;font-size:.9rem>#M1</a>
+<a href=https://cychong47.github.io/tags/mac/ style=display:inline-block;margin-right:10px;font-size:.9rem>#Mac</a>
+<a href=https://cychong47.github.io/tags/mac-mini-2009/ style=display:inline-block;margin-right:10px;font-size:.9rem>#Mac Mini 2009</a>
+<a href=https://cychong47.github.io/tags/maglev/ style=display:inline-block;margin-right:10px;font-size:.9rem>#Maglev</a>
+<a href=https://cychong47.github.io/tags/manager/ style=display:inline-block;margin-right:10px;font-size:.9rem>#Manager</a>
+<a href=https://cychong47.github.io/tags/markdown/ style=display:inline-block;margin-right:10px;font-size:.9rem>#Markdown</a>
+<a href=https://cychong47.github.io/tags/mbuf/ style=display:inline-block;margin-right:10px;font-size:.9rem>#Mbuf</a>
+<a href=https://cychong47.github.io/tags/mec/ style=display:inline-block;margin-right:10px;font-size:.9rem>#Mec</a>
+<a href=https://cychong47.github.io/tags/mediawiki/ style=display:inline-block;margin-right:10px;font-size:.9rem>#Mediawiki</a>
+<a href=https://cychong47.github.io/tags/meetup/ style=display:inline-block;margin-right:10px;font-size:.9rem>#Meetup</a>
+<a href=https://cychong47.github.io/tags/message-queue/ style=display:inline-block;margin-right:10px;font-size:.9rem>#Message Queue</a>
+<a href=https://cychong47.github.io/tags/metricbeat/ style=display:inline-block;margin-right:10px;font-size:.9rem>#Metricbeat</a>
+<a href=https://cychong47.github.io/tags/microk8s/ style=display:inline-block;margin-right:10px;font-size:.9rem>#Microk8s</a>
+<a href=https://cychong47.github.io/tags/microservice/ style=display:inline-block;margin-right:10px;font-size:.9rem>#Microservice</a>
+<a href=https://cychong47.github.io/tags/mindmap/ style=display:inline-block;margin-right:10px;font-size:.9rem>#Mindmap</a>
+<a href=https://cychong47.github.io/tags/model-driven/ style=display:inline-block;margin-right:10px;font-size:.9rem>#Model-Driven</a>
+<a href=https://cychong47.github.io/tags/monitoring/ style=display:inline-block;margin-right:10px;font-size:.9rem>#Monitoring</a>
+<a href=https://cychong47.github.io/tags/multipass/ style=display:inline-block;margin-right:10px;font-size:.9rem>#Multipass</a>
+<a href=https://cychong47.github.io/tags/mysql/ style=display:inline-block;margin-right:10px;font-size:.9rem>#Mysql</a>
+<a href=https://cychong47.github.io/tags/naim/ style=display:inline-block;margin-right:10px;font-size:.9rem>#Naim</a>
+<a href=https://cychong47.github.io/tags/nas/ style=display:inline-block;margin-right:10px;font-size:.9rem>#Nas</a>
+<a href=https://cychong47.github.io/tags/nasa/ style=display:inline-block;margin-right:10px;font-size:.9rem>#Nasa</a>
+<a href=https://cychong47.github.io/tags/nec/ style=display:inline-block;margin-right:10px;font-size:.9rem>#NEC</a>
+<a href=https://cychong47.github.io/tags/nested-chart/ style=display:inline-block;margin-right:10px;font-size:.9rem>#Nested-Chart</a>
+<a href=https://cychong47.github.io/tags/netconf/ style=display:inline-block;margin-right:10px;font-size:.9rem>#Netconf</a>
+<a href=https://cychong47.github.io/tags/network/ style=display:inline-block;margin-right:10px;font-size:.9rem>#Network</a>
+<a href=https://cychong47.github.io/tags/neuron/ style=display:inline-block;margin-right:10px;font-size:.9rem>#Neuron</a>
+<a href=https://cychong47.github.io/tags/nfv/ style=display:inline-block;margin-right:10px;font-size:.9rem>#NFV</a>
+<a href=https://cychong47.github.io/tags/nginmesh/ style=display:inline-block;margin-right:10px;font-size:.9rem>#Nginmesh</a>
+<a href=https://cychong47.github.io/tags/nginx/ style=display:inline-block;margin-right:10px;font-size:.9rem>#Nginx</a>
+<a href=https://cychong47.github.io/tags/nhn/ style=display:inline-block;margin-right:10px;font-size:.9rem>#NHN</a>
+<a href=https://cychong47.github.io/tags/nic/ style=display:inline-block;margin-right:10px;font-size:.9rem>#NIC</a>
+<a href=https://cychong47.github.io/tags/nokia/ style=display:inline-block;margin-right:10px;font-size:.9rem>#Nokia</a>
+<a href=https://cychong47.github.io/tags/note/ style=display:inline-block;margin-right:10px;font-size:.9rem>#Note</a>
+<a href=https://cychong47.github.io/tags/nvidia/ style=display:inline-block;margin-right:10px;font-size:.9rem>#Nvidia</a>
+<a href=https://cychong47.github.io/tags/odp/ style=display:inline-block;margin-right:10px;font-size:.9rem>#Odp</a>
+<a href=https://cychong47.github.io/tags/ofp/ style=display:inline-block;margin-right:10px;font-size:.9rem>#OFP</a>
+<a href=https://cychong47.github.io/tags/onap/ style=display:inline-block;margin-right:10px;font-size:.9rem>#Onap</a>
+<a href=https://cychong47.github.io/tags/onp/ style=display:inline-block;margin-right:10px;font-size:.9rem>#ONP</a>
+<a href=https://cychong47.github.io/tags/openfastpath/ style=display:inline-block;margin-right:10px;font-size:.9rem>#OpenFastPath</a>
+<a href=https://cychong47.github.io/tags/opensource/ style=display:inline-block;margin-right:10px;font-size:.9rem>#Opensource</a>
+<a href=https://cychong47.github.io/tags/openstack/ style=display:inline-block;margin-right:10px;font-size:.9rem>#Openstack</a>
+<a href=https://cychong47.github.io/tags/opnfv/ style=display:inline-block;margin-right:10px;font-size:.9rem>#Opnfv</a>
+<a href=https://cychong47.github.io/tags/osx/ style=display:inline-block;margin-right:10px;font-size:.9rem>#Osx</a>
+<a href=https://cychong47.github.io/tags/ovdk/ style=display:inline-block;margin-right:10px;font-size:.9rem>#OVDK</a>
+<a href=https://cychong47.github.io/tags/ovs/ style=display:inline-block;margin-right:10px;font-size:.9rem>#OVS</a>
+<a href=https://cychong47.github.io/tags/p4/ style=display:inline-block;margin-right:10px;font-size:.9rem>#P4</a>
+<a href=https://cychong47.github.io/tags/pagefind/ style=display:inline-block;margin-right:10px;font-size:.9rem>#Pagefind</a>
+<a href=https://cychong47.github.io/tags/patch/ style=display:inline-block;margin-right:10px;font-size:.9rem>#Patch</a>
+<a href=https://cychong47.github.io/tags/perl/ style=display:inline-block;margin-right:10px;font-size:.9rem>#Perl</a>
+<a href=https://cychong47.github.io/tags/photo/ style=display:inline-block;margin-right:10px;font-size:.9rem>#Photo</a>
+<a href=https://cychong47.github.io/tags/photoaa/ style=display:inline-block;margin-right:10px;font-size:.9rem>#Photoaa</a>
+<a href=https://cychong47.github.io/tags/pinpoint/ style=display:inline-block;margin-right:10px;font-size:.9rem>#Pinpoint</a>
+<a href=https://cychong47.github.io/tags/plist/ style=display:inline-block;margin-right:10px;font-size:.9rem>#Plist</a>
+<a href=https://cychong47.github.io/tags/pluribus/ style=display:inline-block;margin-right:10px;font-size:.9rem>#Pluribus</a>
+<a href=https://cychong47.github.io/tags/podcast/ style=display:inline-block;margin-right:10px;font-size:.9rem>#Podcast</a>
+<a href=https://cychong47.github.io/tags/powermate/ style=display:inline-block;margin-right:10px;font-size:.9rem>#Powermate</a>
+<a href=https://cychong47.github.io/tags/prediction/ style=display:inline-block;margin-right:10px;font-size:.9rem>#Prediction</a>
+<a href=https://cychong47.github.io/tags/programming/ style=display:inline-block;margin-right:10px;font-size:.9rem>#Programming</a>
+<a href=https://cychong47.github.io/tags/prometheus/ style=display:inline-block;margin-right:10px;font-size:.9rem>#Prometheus</a>
+<a href=https://cychong47.github.io/tags/protobufs/ style=display:inline-block;margin-right:10px;font-size:.9rem>#Protobufs</a>
+<a href=https://cychong47.github.io/tags/protocol-buffer/ style=display:inline-block;margin-right:10px;font-size:.9rem>#Protocol Buffer</a>
+<a href=https://cychong47.github.io/tags/pyftplib/ style=display:inline-block;margin-right:10px;font-size:.9rem>#Pyftplib</a>
+<a href=https://cychong47.github.io/tags/python/ style=display:inline-block;margin-right:10px;font-size:.9rem>#Python</a>
+<a href=https://cychong47.github.io/tags/qat/ style=display:inline-block;margin-right:10px;font-size:.9rem>#QAT</a>
+<a href=https://cychong47.github.io/tags/quality/ style=display:inline-block;margin-right:10px;font-size:.9rem>#Quality</a>
+<a href=https://cychong47.github.io/tags/quanta/ style=display:inline-block;margin-right:10px;font-size:.9rem>#Quanta</a>
+<a href=https://cychong47.github.io/tags/quicklook/ style=display:inline-block;margin-right:10px;font-size:.9rem>#Quicklook</a>
+<a href=https://cychong47.github.io/tags/r210/ style=display:inline-block;margin-right:10px;font-size:.9rem>#R210</a>
+<a href=https://cychong47.github.io/tags/readiness/ style=display:inline-block;margin-right:10px;font-size:.9rem>#Readiness</a>
+<a href=https://cychong47.github.io/tags/reassembly/ style=display:inline-block;margin-right:10px;font-size:.9rem>#Reassembly</a>
+<a href=https://cychong47.github.io/tags/recovery/ style=display:inline-block;margin-right:10px;font-size:.9rem>#Recovery</a>
+<a href=https://cychong47.github.io/tags/resources/ style=display:inline-block;margin-right:10px;font-size:.9rem>#Resources</a>
+<a href=https://cychong47.github.io/tags/restful/ style=display:inline-block;margin-right:10px;font-size:.9rem>#RESTful</a>
+<a href=https://cychong47.github.io/tags/rmda/ style=display:inline-block;margin-right:10px;font-size:.9rem>#RMDA</a>
+<a href=https://cychong47.github.io/tags/scapy/ style=display:inline-block;margin-right:10px;font-size:.9rem>#Scapy</a>
+<a href=https://cychong47.github.io/tags/sci/ style=display:inline-block;margin-right:10px;font-size:.9rem>#Sci</a>
+<a href=https://cychong47.github.io/tags/scrum/ style=display:inline-block;margin-right:10px;font-size:.9rem>#Scrum</a>
+<a href=https://cychong47.github.io/tags/sctp/ style=display:inline-block;margin-right:10px;font-size:.9rem>#Sctp</a>
+<a href=https://cychong47.github.io/tags/sdn/ style=display:inline-block;margin-right:10px;font-size:.9rem>#SDN</a>
+<a href=https://cychong47.github.io/tags/secret/ style=display:inline-block;margin-right:10px;font-size:.9rem>#Secret</a>
+<a href=https://cychong47.github.io/tags/service-agility/ style=display:inline-block;margin-right:10px;font-size:.9rem>#Service Agility</a>
+<a href=https://cychong47.github.io/tags/service-mesh/ style=display:inline-block;margin-right:10px;font-size:.9rem>#Service Mesh</a>
+<a href=https://cychong47.github.io/tags/setup/ style=display:inline-block;margin-right:10px;font-size:.9rem>#Setup</a>
+<a href=https://cychong47.github.io/tags/slack/ style=display:inline-block;margin-right:10px;font-size:.9rem>#Slack</a>
+<a href=https://cychong47.github.io/tags/sleeve/ style=display:inline-block;margin-right:10px;font-size:.9rem>#Sleeve</a>
+<a href=https://cychong47.github.io/tags/snmp/ style=display:inline-block;margin-right:10px;font-size:.9rem>#Snmp</a>
+<a href=https://cychong47.github.io/tags/soft-skill/ style=display:inline-block;margin-right:10px;font-size:.9rem>#Soft-Skill</a>
+<a href=https://cychong47.github.io/tags/sqlite/ style=display:inline-block;margin-right:10px;font-size:.9rem>#Sqlite</a>
+<a href=https://cychong47.github.io/tags/sriov/ style=display:inline-block;margin-right:10px;font-size:.9rem>#SRIOV</a>
+<a href=https://cychong47.github.io/tags/standingdesk/ style=display:inline-block;margin-right:10px;font-size:.9rem>#StandingDesk</a>
+<a href=https://cychong47.github.io/tags/startup/ style=display:inline-block;margin-right:10px;font-size:.9rem>#Startup</a>
+<a href=https://cychong47.github.io/tags/storage/ style=display:inline-block;margin-right:10px;font-size:.9rem>#Storage</a>
+<a href=https://cychong47.github.io/tags/study/ style=display:inline-block;margin-right:10px;font-size:.9rem>#Study</a>
+<a href=https://cychong47.github.io/tags/subchart/ style=display:inline-block;margin-right:10px;font-size:.9rem>#Subchart</a>
+<a href=https://cychong47.github.io/tags/sw/ style=display:inline-block;margin-right:10px;font-size:.9rem>#SW</a>
+<a href=https://cychong47.github.io/tags/sw-quality/ style=display:inline-block;margin-right:10px;font-size:.9rem>#SW Quality</a>
+<a href=https://cychong47.github.io/tags/sw-%EA%B0%9C%EB%B0%9C-%EB%AC%B8%ED%99%94/ style=display:inline-block;margin-right:10px;font-size:.9rem>#SW 개발 문화</a>
+<a href=https://cychong47.github.io/tags/swarm/ style=display:inline-block;margin-right:10px;font-size:.9rem>#Swarm</a>
+<a href=https://cychong47.github.io/tags/synology/ style=display:inline-block;margin-right:10px;font-size:.9rem>#Synology</a>
+<a href=https://cychong47.github.io/tags/tag/ style=display:inline-block;margin-right:10px;font-size:.9rem>#Tag</a>
+<a href=https://cychong47.github.io/tags/tcp/ style=display:inline-block;margin-right:10px;font-size:.9rem>#Tcp</a>
+<a href=https://cychong47.github.io/tags/team/ style=display:inline-block;margin-right:10px;font-size:.9rem>#Team</a>
+<a href=https://cychong47.github.io/tags/telemetry/ style=display:inline-block;margin-right:10px;font-size:.9rem>#Telemetry</a>
+<a href=https://cychong47.github.io/tags/the-pragmatic-programmer/ style=display:inline-block;margin-right:10px;font-size:.9rem>#The Pragmatic Programmer</a>
+<a href=https://cychong47.github.io/tags/theme/ style=display:inline-block;margin-right:10px;font-size:.9rem>#Theme</a>
+<a href=https://cychong47.github.io/tags/til/ style=display:inline-block;margin-right:10px;font-size:.9rem>#Til</a>
+<a href=https://cychong47.github.io/tags/time-machine/ style=display:inline-block;margin-right:10px;font-size:.9rem>#Time Machine</a>
+<a href=https://cychong47.github.io/tags/track-pad/ style=display:inline-block;margin-right:10px;font-size:.9rem>#Track-Pad</a>
+<a href=https://cychong47.github.io/tags/traefik/ style=display:inline-block;margin-right:10px;font-size:.9rem>#Traefik</a>
+<a href=https://cychong47.github.io/tags/troubleshooting/ style=display:inline-block;margin-right:10px;font-size:.9rem>#Troubleshooting</a>
+<a href=https://cychong47.github.io/tags/tutorial/ style=display:inline-block;margin-right:10px;font-size:.9rem>#Tutorial</a>
+<a href=https://cychong47.github.io/tags/ubuntu/ style=display:inline-block;margin-right:10px;font-size:.9rem>#Ubuntu</a>
+<a href=https://cychong47.github.io/tags/vagrant/ style=display:inline-block;margin-right:10px;font-size:.9rem>#Vagrant</a>
+<a href=https://cychong47.github.io/tags/vertical-pod-autoscaler/ style=display:inline-block;margin-right:10px;font-size:.9rem>#Vertical-Pod-Autoscaler</a>
+<a href=https://cychong47.github.io/tags/ves/ style=display:inline-block;margin-right:10px;font-size:.9rem>#Ves</a>
+<a href=https://cychong47.github.io/tags/vibe-coding/ style=display:inline-block;margin-right:10px;font-size:.9rem>#Vibe-Coding</a>
+<a href=https://cychong47.github.io/tags/video/ style=display:inline-block;margin-right:10px;font-size:.9rem>#Video</a>
+<a href=https://cychong47.github.io/tags/vim/ style=display:inline-block;margin-right:10px;font-size:.9rem>#Vim</a>
+<a href=https://cychong47.github.io/tags/virtualbox/ style=display:inline-block;margin-right:10px;font-size:.9rem>#Virtualbox</a>
+<a href=https://cychong47.github.io/tags/virtualenv/ style=display:inline-block;margin-right:10px;font-size:.9rem>#Virtualenv</a>
+<a href=https://cychong47.github.io/tags/virtualization/ style=display:inline-block;margin-right:10px;font-size:.9rem>#Virtualization</a>
+<a href=https://cychong47.github.io/tags/vmware/ style=display:inline-block;margin-right:10px;font-size:.9rem>#Vmware</a>
+<a href=https://cychong47.github.io/tags/vnf/ style=display:inline-block;margin-right:10px;font-size:.9rem>#VNF</a>
+<a href=https://cychong47.github.io/tags/volvo/ style=display:inline-block;margin-right:10px;font-size:.9rem>#Volvo</a>
+<a href=https://cychong47.github.io/tags/vran/ style=display:inline-block;margin-right:10px;font-size:.9rem>#Vran</a>
+<a href=https://cychong47.github.io/tags/vrouter/ style=display:inline-block;margin-right:10px;font-size:.9rem>#VRouter</a>
+<a href=https://cychong47.github.io/tags/vswitch/ style=display:inline-block;margin-right:10px;font-size:.9rem>#VSwitch</a>
+<a href=https://cychong47.github.io/tags/web-scrapping/ style=display:inline-block;margin-right:10px;font-size:.9rem>#Web-Scrapping</a>
+<a href=https://cychong47.github.io/tags/webdav/ style=display:inline-block;margin-right:10px;font-size:.9rem>#Webdav</a>
+<a href=https://cychong47.github.io/tags/wiki/ style=display:inline-block;margin-right:10px;font-size:.9rem>#Wiki</a>
+<a href=https://cychong47.github.io/tags/windows10/ style=display:inline-block;margin-right:10px;font-size:.9rem>#Windows10</a>
+<a href=https://cychong47.github.io/tags/wordpress/ style=display:inline-block;margin-right:10px;font-size:.9rem>#Wordpress</a>
+<a href=https://cychong47.github.io/tags/work_rules/ style=display:inline-block;margin-right:10px;font-size:.9rem>#Work_rules</a>
+<a href=https://cychong47.github.io/tags/writing/ style=display:inline-block;margin-right:10px;font-size:.9rem>#Writing</a>
+<a href=https://cychong47.github.io/tags/xcrun/ style=display:inline-block;margin-right:10px;font-size:.9rem>#Xcrun</a>
+<a href=https://cychong47.github.io/tags/yang/ style=display:inline-block;margin-right:10px;font-size:.9rem>#Yang</a>
+<a href=https://cychong47.github.io/tags/automation/ style=display:inline-block;margin-right:10px;font-size:.9rem>#“Automation”</a>
+<a href=https://cychong47.github.io/tags/book/ style=display:inline-block;margin-right:10px;font-size:.9rem>#“Book”</a>
+<a href=https://cychong47.github.io/tags/containerd/ style=display:inline-block;margin-right:10px;font-size:.9rem>#“Containerd”</a>
+<a href=https://cychong47.github.io/tags/cronjob/ style=display:inline-block;margin-right:10px;font-size:.9rem>#“CronJob”</a>
+<a href=https://cychong47.github.io/tags/github-action/ style=display:inline-block;margin-right:10px;font-size:.9rem>#“GitHub Action”</a>
+<a href=https://cychong47.github.io/tags/github/ style=display:inline-block;margin-right:10px;font-size:.9rem>#“GitHub”</a>
+<a href=https://cychong47.github.io/tags/go/ style=display:inline-block;margin-right:10px;font-size:.9rem>#“Go”</a>
+<a href=https://cychong47.github.io/tags/gpu/ style=display:inline-block;margin-right:10px;font-size:.9rem>#“GPU”</a>
+<a href=https://cychong47.github.io/tags/helm/ style=display:inline-block;margin-right:10px;font-size:.9rem>#“Helm”</a>
+<a href=https://cychong47.github.io/tags/ios-shortcut/ style=display:inline-block;margin-right:10px;font-size:.9rem>#“IOS-Shortcut”</a>
+<a href=https://cychong47.github.io/tags/kubernetes/ style=display:inline-block;margin-right:10px;font-size:.9rem>#“Kubernetes”</a>
+<a href=https://cychong47.github.io/tags/podcast/ style=display:inline-block;margin-right:10px;font-size:.9rem>#“Podcast”</a>
+<a href=https://cychong47.github.io/tags/rust/ style=display:inline-block;margin-right:10px;font-size:.9rem>#“Rust”</a>
+<a href=https://cychong47.github.io/tags/timezone/ style=display:inline-block;margin-right:10px;font-size:.9rem>#“Timezone”</a>
+<a href=https://cychong47.github.io/tags/%EA%B0%9C%EB%B0%9C%EC%9D%B4%EC%95%BC%EA%B8%B0/ style=display:inline-block;margin-right:10px;font-size:.9rem>#개발이야기</a>
+<a href=https://cychong47.github.io/tags/%EA%B2%BD%EC%9F%81/ style=display:inline-block;margin-right:10px;font-size:.9rem>#경쟁</a>
+<a href=https://cychong47.github.io/tags/%EA%B3%B5%EB%B6%80/ style=display:inline-block;margin-right:10px;font-size:.9rem>#공부</a>
+<a href=https://cychong47.github.io/tags/%EA%B3%B5%EC%9C%A0/ style=display:inline-block;margin-right:10px;font-size:.9rem>#공유</a>
+<a href=https://cychong47.github.io/tags/%EA%B4%80%EB%A6%AC%EB%8A%A5%EB%A0%A5/ style=display:inline-block;margin-right:10px;font-size:.9rem>#관리능력</a>
+<a href=https://cychong47.github.io/tags/%EA%B8%B0%EB%A1%9D/ style=display:inline-block;margin-right:10px;font-size:.9rem>#기록</a>
+<a href=https://cychong47.github.io/tags/%EB%85%BC%EB%AC%B8/ style=display:inline-block;margin-right:10px;font-size:.9rem>#논문</a>
+<a href=https://cychong47.github.io/tags/%EB%A6%AC%EB%8D%94/ style=display:inline-block;margin-right:10px;font-size:.9rem>#리더</a>
+<a href=https://cychong47.github.io/tags/%EB%A7%A4%EB%84%88%EB%A6%AC%EC%A6%98/ style=display:inline-block;margin-right:10px;font-size:.9rem>#매너리즘</a>
+<a href=https://cychong47.github.io/tags/%EB%AC%B8%ED%99%94/ style=display:inline-block;margin-right:10px;font-size:.9rem>#문화</a>
+<a href=https://cychong47.github.io/tags/%EC%82%AC%EB%9E%8C%EC%9D%B4-%ED%95%B5%EC%8B%AC/ style=display:inline-block;margin-right:10px;font-size:.9rem>#사람이 핵심</a>
+<a href=https://cychong47.github.io/tags/%EC%83%9D%EA%B0%81/ style=display:inline-block;margin-right:10px;font-size:.9rem>#생각</a>
+<a href=https://cychong47.github.io/tags/%EC%83%9D%EC%82%B0%EC%84%B1/ style=display:inline-block;margin-right:10px;font-size:.9rem>#생산성</a>
+<a href=https://cychong47.github.io/tags/%EC%9C%A4%EC%8B%9D%EB%8B%B9/ style=display:inline-block;margin-right:10px;font-size:.9rem>#윤식당</a>
+<a href=https://cychong47.github.io/tags/%EC%9D%B8%EC%9A%A9/ style=display:inline-block;margin-right:10px;font-size:.9rem>#인용</a>
+<a href=https://cychong47.github.io/tags/%EC%9E%84%EB%B0%B1%EC%A4%80/ style=display:inline-block;margin-right:10px;font-size:.9rem>#임백준</a>
+<a href=https://cychong47.github.io/tags/%EC%9E%A1%EC%83%9D%EA%B0%81/ style=display:inline-block;margin-right:10px;font-size:.9rem>#잡생각</a>
+<a href=https://cychong47.github.io/tags/%EC%A0%84%EB%9E%8C%ED%9A%8C/ style=display:inline-block;margin-right:10px;font-size:.9rem>#전람회</a>
+<a href=https://cychong47.github.io/tags/%EC%A1%B0%EC%A7%81/ style=display:inline-block;margin-right:10px;font-size:.9rem>#조직</a>
+<a href=https://cychong47.github.io/tags/%EC%A1%B0%EC%A7%81%EA%B4%80%EB%A6%AC/ style=display:inline-block;margin-right:10px;font-size:.9rem>#조직관리</a>
+<a href=https://cychong47.github.io/tags/%EC%A1%B0%EC%A7%81%EB%AC%B8%ED%99%94/ style=display:inline-block;margin-right:10px;font-size:.9rem>#조직문화</a>
+<a href=https://cychong47.github.io/tags/%EC%A2%8B%EC%9D%80%EA%B8%80/ style=display:inline-block;margin-right:10px;font-size:.9rem>#좋은글</a>
+<a href=https://cychong47.github.io/tags/%EC%B0%A9%EA%B0%81%ED%95%98%EB%8A%94-ceo/ style=display:inline-block;margin-right:10px;font-size:.9rem>#착각하는 CEO</a>
+<a href=https://cychong47.github.io/tags/%EC%B6%94%EC%96%B5/ style=display:inline-block;margin-right:10px;font-size:.9rem>#추억</a>
+<a href=https://cychong47.github.io/tags/%EC%BD%94%EB%93%9C%EB%A6%AC%EB%B7%B0/ style=display:inline-block;margin-right:10px;font-size:.9rem>#코드리뷰</a>
+<a href=https://cychong47.github.io/tags/%ED%9A%8C%EC%9D%98/ style=display:inline-block;margin-right:10px;font-size:.9rem>#회의</a></div></div></div></main><footer>Made with <a href=https://github.com/janraasch/hugo-bearblog/>Hugo ʕ•ᴥ•ʔ Bear</a></footer></body></html>

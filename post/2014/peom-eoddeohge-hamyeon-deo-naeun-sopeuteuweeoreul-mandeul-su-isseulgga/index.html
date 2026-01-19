@@ -22,6 +22,316 @@ Code Reviewer 업무를 함에 있어 참고할 만한 좋은 내용이 많아 �
 우리가 모질라와 함께 일한 것은 2011년으로 거슬러 올라갑니다. 두 회사 모두에게 잘 맞는 공통된 작업 절차를 찾기까지 꽤 많은 시간이 걸렸습니다. 제말은, 우리는 텔코(telco) 문화에서 일하던 사람입니다. 텔코 문화에서는 대부분의 작업들이 폐쇄적이고 비밀입니다. 이것은 모질라의 공개적이고 투명한 문화와는 반대죠."><meta itemprop=datePublished content="2014-08-24T10:55:06+09:00"><meta itemprop=dateModified content="2018-04-01T02:38:51+00:00"><meta itemprop=wordCount content="701"><meta itemprop=keywords content="코드리뷰"><meta name=referrer content="no-referrer-when-downgrade"><style>:root{--width:720px;--font-main:Verdana, sans-serif;--font-secondary:Verdana, sans-serif;--font-scale:1em;--background-color:#fafafa;--heading-color:#222;--text-color:#444;--link-color:#3273dc;--visited-color:#8b6fcb;--blockquote-color:#222}@media(prefers-color-scheme:dark){:root{--background-color:#fafafa;--heading-color:#222;--text-color:#444;--link-color:#3273dc;--visited-color:#8b6fcb;--blockquote-color:#222}}body{font-family:var(--font-secondary);font-size:var(--font-scale);margin:auto;padding:20px;max-width:var(--width);text-align:left;background-color:var(--background-color);word-wrap:break-word;overflow-wrap:break-word;line-height:1.5;color:var(--text-color)}h1,h2,h3,h4,h5,h6{font-family:var(--font-main);color:var(--heading-color)}a{color:var(--link-color);cursor:pointer;text-decoration:none}a:hover{text-decoration:underline}nav a{margin-right:8px}strong,b{color:var(--heading-color)}button{margin:0;cursor:pointer}time{font-family:monospace;font-style:normal;font-size:15px}main{line-height:1.6}table{width:100%}hr{border:0;border-top:1px dashed}img{max-width:100%}code{font-family:monospace;padding:2px;border-radius:3px}blockquote{border-left:1px solid #999;color:var(--blockquote-color);padding-left:20px;font-style:italic}footer{padding:25px 0;text-align:center}.title:hover{text-decoration:none}.title h1{font-size:1.5em}.inline{width:auto!important}.highlight,.code{border-radius:3px;margin-block-start:1em;margin-block-end:1em;overflow-x:auto}ul.blog-posts{list-style-type:none;padding:unset}ul.blog-posts li{display:flex}ul.blog-posts li span{flex:0 0 130px}ul.blog-posts li a:visited{color:var(--visited-color)}</style></head><body><header><a href=/ class=title><h2>Keep calm and Write something</h2></a><nav><a href=/post/>Post</a>
 <a href=/page/>Page</a>
 <a href=/series/>Series</a>
-<a href=/tags/>Tag</a>
-<a href=/archive/>Archive</a>
-<a href=/search/>Search</a></nav></header><main><content><p>어떻게 하면 더 나은 소프트웨어를 만들 수 있을까? – 인터뷰 시리즈 part 1, Fernando Jimenez Moreno와 함께</p><p>출처 : <a href=http://hacks.mozilla.or.kr/2014/08/how-can-we-write-better-software-interview-series-part-1/>http://hacks.mozilla.or.kr/2014/08/how-can-we-write-better-software-interview-series-part-1/</a><br>영문 원본 : <a href=https://hacks.mozilla.org/2014/07/how-can-we-write-better-software-interview-series-part-1/>https://hacks.mozilla.org/2014/07/how-can-we-write-better-software-interview-series-part-1/</a></p><p>Telefonica에서 근무하고 있으면서 MozillaOS 개발에 참여하고 있는 사람의 인터뷰 기사<br>Code Reviewer 업무를 함에 있어 참고할 만한 좋은 내용이 많아 옮겨 본다.</p><blockquote><p>우리가 모질라와 함께 일한 것은 2011년으로 거슬러 올라갑니다. 두 회사 모두에게 잘 맞는 공통된 작업 절차를 찾기까지 꽤 많은 시간이 걸렸습니다. 제말은, 우리는 텔코(telco) 문화에서 일하던 사람입니다. 텔코 문화에서는 대부분의 작업들이 폐쇄적이고 비밀입니다. 이것은 모질라의 공개적이고 투명한 문화와는 반대죠.</p></blockquote><p>Telco 문화가 왜 폐쇄적이어야 할까? Telco 문화가 폐쇄적이라기 보다 Mozilla와 같은 Web 기반 기술을 사용하는 회사나 조직의 문화가 공개적이고 투명한 게 아닐까 싶다. Telco가 아니라 자동차 산업도 폐쇄적일 거라고 생각</p><blockquote><p>우리는 텔레포니카에서 애자일 방법론을 쓰고 있었는데, 당시 모질라는 애자일 방법론을 쓰고 있지 않았습니다. 우리는 양쪽 모두에게 맞는 작업 절차를 찾아야 했습니다. 그러기 위해 꽤 많은 시간이 필요했습니다. 작업 절차에 대해 의논하기 위해 아주 많이 만났고, 아주 많이 토론했습니다. 다른 텔코 회사들과 일하는 것의 경우는 지금까지 무척 만족합니다. 특히 텔레노르와 잘 협조하고 있습니다. 아직까지 우리는 그들(텔레노르)과 정보를 공유할 때 조심합니다. 왜냐하면 궁극적으로 그들은 우리의 경쟁사니까요. 하지만 그렇다고 해서 파이어폭스 계정 시스템 개발 같은 공동의 목표를 위해 협조 못한다는 말은 아닙니다.</p></blockquote><p>Telefonica가 Agile을 사용하고, Mozilla가 그렇지 않다는 게 의외네. 반대가 아닐까 싶었는데 NFV관련 내용을 봐도 그렇고 Telefonia가 상당해 개발 지향적인 듯</p><blockquote><p>많은 원칙이 적용되고, 많은 회사가 참여하는 프로젝트의 경우 스타일가이드, 도구, 프로세스 등의 공통 표준이 얼마나 중요한가요?</p><p>글쎄요, 나는 소프트웨어 엔지니어링에 대해 일반적으로 말할 때 표준이 중요하다고 합니다. 하지만, 나는 그것을 SCRUM이라고 부르던, KANBAN이라고 부르던, SCRUMBAN이라고 부런던 상관하지 않습니다. 마찬가지로 Git 워크플로우를 따르던, Mercurial 워크플로우를 따르던, 아니면 구글의 자바스크립트 스타일가이드를 따르던, 모질라의 자바스크립트 스타일가이드를 따르던 상관하지 않습니다. 어떤 공통의 프로세스와 표준은 반드시 필요합니다. 특히 대규모의 엔지니어링 그룹의 경우는 더욱 그렇습니다. 오픈소스 프로젝트나 모질라 프로젝트가 이에 해당합니다. 공통 표준에 대해 말하자면, 규칙은 매우 간단합니다. 보통의 경우 이런 표준과 공통 프로세스들을 정의하고 토론하는데 너무 많은 시간을 소비하는 나머진 진정한 개발 목표를 잃어버리는 수가 있습니다. 나는 이런 공통 표준이 결국은 도구일뿐이라는 사실을 잊으면 안된다고 생각합니다. 우리 개발자들과 우리 매니저들을 돕는 도구지요. 공통 표준에 대해 유연하게 접근하는 지혜가 필요합니다.</p><p>우리는 코드를 리뷰할 때 코딩 스타일을 많이 보곤합니다. 하지만 결과적으로 우리가 원하는 것은 코드를 수정해서 문제를 해결하는 것입니다. 만약 코딩 스타일에 문제가 있다면 고치면 됩니다. 연습삼아 패치를 남기는 상황이라면 일단 패치 코드를 버그 시스템에 기록으로 남겨 두세요. 그러면 코드 리뷰어가 기회 있을 때 코멘트할 것입니다.</p></blockquote><p>다소 모호한 답변인 듯. 표준이 필요하다는 듯 한데 또 그 표준에 대해서는 유연하게 접근하자는 말. 모호하다. 동시에 여러 style을 사용해도 문제가 없다는 건지<br>당연히 코딩 스타일보다 동작을 보는 게 중요하지. 코딩 스타일에 문제가 있으면 고치면 된다는 말은 코드도 문제가 있으면 고치면 된다는 거랑 뭐가 다른 걸까?</p><blockquote><p><strong>코드를 리뷰할 때 무엇을 살펴보나요?</strong></p><p>일반적으로 제가 가장 먼저 확인하는 것은 정확성입니다. 그러니까, 패치 코드는 원래 의도했던 문제를 실제로 해결해야 합니다. 그리고 당연히 부가적인 문제를 일으켜서는 안됩니다. 어떤 회귀적 문제도 일으켜서는 안됩니다. 시간이 허락되면 패치 코드를 제가 직접 테스트합니다. 패치 코드가 어떻게 동작하는지 알고 싶어서 이기도 하고, 아주 중요한 패치 코드일 경우 제대로 동작하는지 회귀적 문제를 일으키지는 않는지 확인하고 싶어서 이기도 합니다. 또 코드가 효율적으로 동작하는지 안전한지 살펴봅니다. 패치 코드에 대한 테스트 슈트 작성이 가능해 보이면 거의 언제나 테스트 슈트 작성을 요구합니다. 마지막으로 전반적인 코드의 품질, 문서, 코딩스타일, 기여정도, 프로세스의 정확성 등을 살펴봅니다</p></blockquote><p>직접 리뷰어가 테스트까지 한다는 게 의외(?). 가능하면 언제나 테스트 슈트 작성을 요구한다는 것이 인상적이다.</p><blockquote><p>당신은 지금까지 제가 겪은 다른 어떤 리뷰어보다 더 일관성을 강조했습니다. 다른 어떤 리뷰어보다 말이죠.</p><p>글쎄요. 일관성은 코드의 전반적인 품질을 향상시킵니다. 리뷰할 때, 나는 종종 “nit:”라는 코멘트를 남깁니다. 이건 모질라에서 아주 일반적인 코멘트인데, “이 코드를 수정하면 좋겠습니다. 만약 수정하지 않더라도 리뷰 결과는 긍정적입니다. 하지만 이 코드가 조금 더 수정되기를 희망합니다.”라는 뜻입니다.</p></blockquote><p>동작은 하겠지만, 수정했으면 좋겠다라는 의미. 나도 이런 코멘트를 많이 하는 편인데 사람에 따라 받아들이는 게 달라서 고민. 물론 이렇게 의켠을 주는 거슨 받아들이는 사람이 판단하라는 의미이긴 하지만&mldr;</p><blockquote><p>개발자로서 당신은 엄격한 리뷰를 배우는 기회로 삼으려 했단 말이지요? 그렇다면 리뷰어로서 리뷰를 가르치는 수단으로 사용하기도 했나요?</p><p>예, 물론입니다. 그러니까 패치 코드를 리뷰하는 것은 가르치는 일입니다. 리뷰어는 코드를 작성한 사람에게 옳다고 생각하는 것을 말하는 것입니다. 때때로 코멘트를 뒷받침할만한 이론이나 이유가 불분명할 때도 있지만, 리뷰어는 자기 주장을 해야 합니다. 리뷰어는 가능한 최선의 이유를 설명해야 하고 최선의 진보를 이뤄내야 합니다.</p></blockquote><p>코드 리뷰어의 의견은 코드 리뷰어의 생각을 말하는 것. 당연히 잘못된 생각이 있을 수 있으므로. 다만 위 글처럼 근거가 부족한 경우 설득하기 어렵다. 개발자들은 누구보다 자존심이 강하고 자신만의 스타일을 가지고 있는 것들이라.</p></content><p><a href=https://cychong47.github.io/tags/%EC%BD%94%EB%93%9C%EB%A6%AC%EB%B7%B0/>#코드리뷰</a></p></main><footer>Made with <a href=https://github.com/janraasch/hugo-bearblog/>Hugo ʕ•ᴥ•ʔ Bear</a></footer></body></html>
+<a href=/archives/>Archives</a>
+<a href=/search/>Search</a></nav></header><main><div class=archive-page><div class=archive-section><h3 class=page-title>Archive</h3><ul style=list-style-type:disc;padding-left:20px;font-size:.9rem><li style=margin-bottom:5px><a href=/#2026 style=text-decoration:none;color:inherit>2026: 3 posts</a></li><li style=margin-bottom:5px><a href=/#2024 style=text-decoration:none;color:inherit>2024: 2 posts</a></li><li style=margin-bottom:5px><a href=/#2023 style=text-decoration:none;color:inherit>2023: 1 posts</a></li><li style=margin-bottom:5px><a href=/#2022 style=text-decoration:none;color:inherit>2022: 7 posts</a></li><li style=margin-bottom:5px><a href=/#2021 style=text-decoration:none;color:inherit>2021: 38 posts</a></li><li style=margin-bottom:5px><a href=/#2020 style=text-decoration:none;color:inherit>2020: 71 posts</a></li><li style=margin-bottom:5px><a href=/#2019 style=text-decoration:none;color:inherit>2019: 22 posts</a></li><li style=margin-bottom:5px><a href=/#2018 style=text-decoration:none;color:inherit>2018: 37 posts</a></li><li style=margin-bottom:5px><a href=/#2017 style=text-decoration:none;color:inherit>2017: 49 posts</a></li><li style=margin-bottom:5px><a href=/#2016 style=text-decoration:none;color:inherit>2016: 30 posts</a></li><li style=margin-bottom:5px><a href=/#2015 style=text-decoration:none;color:inherit>2015: 43 posts</a></li><li style=margin-bottom:5px><a href=/#2014 style=text-decoration:none;color:inherit>2014: 36 posts</a></li></ul></div><div class=tags-section style=margin-top:2rem><h3 class=page-title>Tags</h3><div style=margin-top:1rem><a href=https://cychong47.github.io/tags/2015/ style=display:inline-block;margin-right:10px;font-size:.9rem>#2015</a>
+<a href=https://cychong47.github.io/tags/5g/ style=display:inline-block;margin-right:10px;font-size:.9rem>#5g</a>
+<a href=https://cychong47.github.io/tags/agentic-ai/ style=display:inline-block;margin-right:10px;font-size:.9rem>#Agentic AI</a>
+<a href=https://cychong47.github.io/tags/agile/ style=display:inline-block;margin-right:10px;font-size:.9rem>#Agile</a>
+<a href=https://cychong47.github.io/tags/aic/ style=display:inline-block;margin-right:10px;font-size:.9rem>#Aic</a>
+<a href=https://cychong47.github.io/tags/algorithm/ style=display:inline-block;margin-right:10px;font-size:.9rem>#Algorithm</a>
+<a href=https://cychong47.github.io/tags/amazon/ style=display:inline-block;margin-right:10px;font-size:.9rem>#Amazon</a>
+<a href=https://cychong47.github.io/tags/amd/ style=display:inline-block;margin-right:10px;font-size:.9rem>#Amd</a>
+<a href=https://cychong47.github.io/tags/amdocs/ style=display:inline-block;margin-right:10px;font-size:.9rem>#Amdocs</a>
+<a href=https://cychong47.github.io/tags/amsterdam-release/ style=display:inline-block;margin-right:10px;font-size:.9rem>#Amsterdam Release</a>
+<a href=https://cychong47.github.io/tags/andromeda/ style=display:inline-block;margin-right:10px;font-size:.9rem>#Andromeda</a>
+<a href=https://cychong47.github.io/tags/ansible/ style=display:inline-block;margin-right:10px;font-size:.9rem>#Ansible</a>
+<a href=https://cychong47.github.io/tags/ansible-playbook/ style=display:inline-block;margin-right:10px;font-size:.9rem>#Ansible-Playbook</a>
+<a href=https://cychong47.github.io/tags/anti-work-pattern/ style=display:inline-block;margin-right:10px;font-size:.9rem>#Anti-Work Pattern</a>
+<a href=https://cychong47.github.io/tags/apple/shortcuts/ style=display:inline-block;margin-right:10px;font-size:.9rem>#Apple/Shortcuts</a>
+<a href=https://cychong47.github.io/tags/apple-silicon/ style=display:inline-block;margin-right:10px;font-size:.9rem>#Apple Silicon</a>
+<a href=https://cychong47.github.io/tags/apple-watch/ style=display:inline-block;margin-right:10px;font-size:.9rem>#Apple-Watch</a>
+<a href=https://cychong47.github.io/tags/apple/shortcuts/ style=display:inline-block;margin-right:10px;font-size:.9rem>#Apple/Shortcuts</a>
+<a href=https://cychong47.github.io/tags/arm/ style=display:inline-block;margin-right:10px;font-size:.9rem>#Arm</a>
+<a href=https://cychong47.github.io/tags/att/ style=display:inline-block;margin-right:10px;font-size:.9rem>#ATT</a>
+<a href=https://cychong47.github.io/tags/automation/ style=display:inline-block;margin-right:10px;font-size:.9rem>#Automation</a>
+<a href=https://cychong47.github.io/tags/b4/ style=display:inline-block;margin-right:10px;font-size:.9rem>#B4</a>
+<a href=https://cychong47.github.io/tags/backup/ style=display:inline-block;margin-right:10px;font-size:.9rem>#Backup</a>
+<a href=https://cychong47.github.io/tags/barometer/ style=display:inline-block;margin-right:10px;font-size:.9rem>#Barometer</a>
+<a href=https://cychong47.github.io/tags/bitnami/ style=display:inline-block;margin-right:10px;font-size:.9rem>#Bitnami</a>
+<a href=https://cychong47.github.io/tags/blog/ style=display:inline-block;margin-right:10px;font-size:.9rem>#Blog</a>
+<a href=https://cychong47.github.io/tags/blogging/ style=display:inline-block;margin-right:10px;font-size:.9rem>#Blogging</a>
+<a href=https://cychong47.github.io/tags/book/ style=display:inline-block;margin-right:10px;font-size:.9rem>#Book</a>
+<a href=https://cychong47.github.io/tags/brew/ style=display:inline-block;margin-right:10px;font-size:.9rem>#Brew</a>
+<a href=https://cychong47.github.io/tags/brocade/ style=display:inline-block;margin-right:10px;font-size:.9rem>#Brocade</a>
+<a href=https://cychong47.github.io/tags/c/ style=display:inline-block;margin-right:10px;font-size:.9rem>#C</a>
+<a href=https://cychong47.github.io/tags/calico/ style=display:inline-block;margin-right:10px;font-size:.9rem>#Calico</a>
+<a href=https://cychong47.github.io/tags/car/ style=display:inline-block;margin-right:10px;font-size:.9rem>#Car</a>
+<a href=https://cychong47.github.io/tags/cavium/ style=display:inline-block;margin-right:10px;font-size:.9rem>#Cavium</a>
+<a href=https://cychong47.github.io/tags/chair/ style=display:inline-block;margin-right:10px;font-size:.9rem>#Chair</a>
+<a href=https://cychong47.github.io/tags/cilium/ style=display:inline-block;margin-right:10px;font-size:.9rem>#Cilium</a>
+<a href=https://cychong47.github.io/tags/cisco/ style=display:inline-block;margin-right:10px;font-size:.9rem>#Cisco</a>
+<a href=https://cychong47.github.io/tags/click/ style=display:inline-block;margin-right:10px;font-size:.9rem>#Click</a>
+<a href=https://cychong47.github.io/tags/cncf/ style=display:inline-block;margin-right:10px;font-size:.9rem>#Cncf</a>
+<a href=https://cychong47.github.io/tags/cni/ style=display:inline-block;margin-right:10px;font-size:.9rem>#Cni</a>
+<a href=https://cychong47.github.io/tags/cockpit/ style=display:inline-block;margin-right:10px;font-size:.9rem>#Cockpit</a>
+<a href=https://cychong47.github.io/tags/coding-style/ style=display:inline-block;margin-right:10px;font-size:.9rem>#Coding Style</a>
+<a href=https://cychong47.github.io/tags/collaboration/ style=display:inline-block;margin-right:10px;font-size:.9rem>#Collaboration</a>
+<a href=https://cychong47.github.io/tags/collectd/ style=display:inline-block;margin-right:10px;font-size:.9rem>#Collectd</a>
+<a href=https://cychong47.github.io/tags/configmap/ style=display:inline-block;margin-right:10px;font-size:.9rem>#Configmap</a>
+<a href=https://cychong47.github.io/tags/connectx-5/ style=display:inline-block;margin-right:10px;font-size:.9rem>#ConnectX-5</a>
+<a href=https://cychong47.github.io/tags/container/ style=display:inline-block;margin-right:10px;font-size:.9rem>#Container</a>
+<a href=https://cychong47.github.io/tags/continuous-deployment/ style=display:inline-block;margin-right:10px;font-size:.9rem>#Continuous Deployment</a>
+<a href=https://cychong47.github.io/tags/cpu/ style=display:inline-block;margin-right:10px;font-size:.9rem>#Cpu</a>
+<a href=https://cychong47.github.io/tags/cran/ style=display:inline-block;margin-right:10px;font-size:.9rem>#Cran</a>
+<a href=https://cychong47.github.io/tags/cron/ style=display:inline-block;margin-right:10px;font-size:.9rem>#Cron</a>
+<a href=https://cychong47.github.io/tags/crond/ style=display:inline-block;margin-right:10px;font-size:.9rem>#Crond</a>
+<a href=https://cychong47.github.io/tags/cronjob/ style=display:inline-block;margin-right:10px;font-size:.9rem>#Cronjob</a>
+<a href=https://cychong47.github.io/tags/cubb/ style=display:inline-block;margin-right:10px;font-size:.9rem>#Cubb</a>
+<a href=https://cychong47.github.io/tags/cuda/ style=display:inline-block;margin-right:10px;font-size:.9rem>#CUDA</a>
+<a href=https://cychong47.github.io/tags/culture/ style=display:inline-block;margin-right:10px;font-size:.9rem>#Culture</a>
+<a href=https://cychong47.github.io/tags/cuphy/ style=display:inline-block;margin-right:10px;font-size:.9rem>#Cuphy</a>
+<a href=https://cychong47.github.io/tags/cuvnf/ style=display:inline-block;margin-right:10px;font-size:.9rem>#Cuvnf</a>
+<a href=https://cychong47.github.io/tags/database/ style=display:inline-block;margin-right:10px;font-size:.9rem>#Database</a>
+<a href=https://cychong47.github.io/tags/dev-culture/ style=display:inline-block;margin-right:10px;font-size:.9rem>#Dev Culture</a>
+<a href=https://cychong47.github.io/tags/devnothink/ style=display:inline-block;margin-right:10px;font-size:.9rem>#Devnothink</a>
+<a href=https://cychong47.github.io/tags/devonthink/ style=display:inline-block;margin-right:10px;font-size:.9rem>#Devonthink</a>
+<a href=https://cychong47.github.io/tags/docker/ style=display:inline-block;margin-right:10px;font-size:.9rem>#Docker</a>
+<a href=https://cychong47.github.io/tags/docker-compose/ style=display:inline-block;margin-right:10px;font-size:.9rem>#Docker-Compose</a>
+<a href=https://cychong47.github.io/tags/dpdk/ style=display:inline-block;margin-right:10px;font-size:.9rem>#DPDK</a>
+<a href=https://cychong47.github.io/tags/dpi/ style=display:inline-block;margin-right:10px;font-size:.9rem>#Dpi</a>
+<a href=https://cychong47.github.io/tags/dpkt/ style=display:inline-block;margin-right:10px;font-size:.9rem>#Dpkt</a>
+<a href=https://cychong47.github.io/tags/edge/ style=display:inline-block;margin-right:10px;font-size:.9rem>#Edge</a>
+<a href=https://cychong47.github.io/tags/elasticsearch/ style=display:inline-block;margin-right:10px;font-size:.9rem>#Elasticsearch</a>
+<a href=https://cychong47.github.io/tags/elk/ style=display:inline-block;margin-right:10px;font-size:.9rem>#Elk</a>
+<a href=https://cychong47.github.io/tags/english/ style=display:inline-block;margin-right:10px;font-size:.9rem>#English</a>
+<a href=https://cychong47.github.io/tags/espresso/ style=display:inline-block;margin-right:10px;font-size:.9rem>#Espresso</a>
+<a href=https://cychong47.github.io/tags/fapi/ style=display:inline-block;margin-right:10px;font-size:.9rem>#Fapi</a>
+<a href=https://cychong47.github.io/tags/feature-flag-driven-development/ style=display:inline-block;margin-right:10px;font-size:.9rem>#Feature Flag Driven Development</a>
+<a href=https://cychong47.github.io/tags/feedback/ style=display:inline-block;margin-right:10px;font-size:.9rem>#Feedback</a>
+<a href=https://cychong47.github.io/tags/ffmpeg/ style=display:inline-block;margin-right:10px;font-size:.9rem>#Ffmpeg</a>
+<a href=https://cychong47.github.io/tags/finder/ style=display:inline-block;margin-right:10px;font-size:.9rem>#Finder</a>
+<a href=https://cychong47.github.io/tags/flask/ style=display:inline-block;margin-right:10px;font-size:.9rem>#Flask</a>
+<a href=https://cychong47.github.io/tags/fragment/ style=display:inline-block;margin-right:10px;font-size:.9rem>#Fragment</a>
+<a href=https://cychong47.github.io/tags/ftp/ style=display:inline-block;margin-right:10px;font-size:.9rem>#Ftp</a>
+<a href=https://cychong47.github.io/tags/getting-started/ style=display:inline-block;margin-right:10px;font-size:.9rem>#Getting Started</a>
+<a href=https://cychong47.github.io/tags/ghost/ style=display:inline-block;margin-right:10px;font-size:.9rem>#Ghost</a>
+<a href=https://cychong47.github.io/tags/ghost-theme/ style=display:inline-block;margin-right:10px;font-size:.9rem>#Ghost-Theme</a>
+<a href=https://cychong47.github.io/tags/git/ style=display:inline-block;margin-right:10px;font-size:.9rem>#Git</a>
+<a href=https://cychong47.github.io/tags/github/ style=display:inline-block;margin-right:10px;font-size:.9rem>#GitHub</a>
+<a href=https://cychong47.github.io/tags/go/ style=display:inline-block;margin-right:10px;font-size:.9rem>#Go</a>
+<a href=https://cychong47.github.io/tags/golang/ style=display:inline-block;margin-right:10px;font-size:.9rem>#Golang</a>
+<a href=https://cychong47.github.io/tags/google/ style=display:inline-block;margin-right:10px;font-size:.9rem>#Google</a>
+<a href=https://cychong47.github.io/tags/google-cloud-platform/ style=display:inline-block;margin-right:10px;font-size:.9rem>#Google-Cloud-Platform</a>
+<a href=https://cychong47.github.io/tags/gpb/ style=display:inline-block;margin-right:10px;font-size:.9rem>#Gpb</a>
+<a href=https://cychong47.github.io/tags/gpu/ style=display:inline-block;margin-right:10px;font-size:.9rem>#Gpu</a>
+<a href=https://cychong47.github.io/tags/grafana/ style=display:inline-block;margin-right:10px;font-size:.9rem>#Grafana</a>
+<a href=https://cychong47.github.io/tags/grafana/ style=display:inline-block;margin-right:10px;font-size:.9rem>#Grafana"</a>
+<a href=https://cychong47.github.io/tags/graviton/ style=display:inline-block;margin-right:10px;font-size:.9rem>#Graviton</a>
+<a href=https://cychong47.github.io/tags/grpc/ style=display:inline-block;margin-right:10px;font-size:.9rem>#Grpc</a>
+<a href=https://cychong47.github.io/tags/happy-hacking/ style=display:inline-block;margin-right:10px;font-size:.9rem>#Happy-Hacking</a>
+<a href=https://cychong47.github.io/tags/hbr/ style=display:inline-block;margin-right:10px;font-size:.9rem>#HBR</a>
+<a href=https://cychong47.github.io/tags/helm/ style=display:inline-block;margin-right:10px;font-size:.9rem>#Helm</a>
+<a href=https://cychong47.github.io/tags/homebrew/ style=display:inline-block;margin-right:10px;font-size:.9rem>#Homebrew</a>
+<a href=https://cychong47.github.io/tags/homelab/ style=display:inline-block;margin-right:10px;font-size:.9rem>#Homelab</a>
+<a href=https://cychong47.github.io/tags/homepod/ style=display:inline-block;margin-right:10px;font-size:.9rem>#HomePod</a>
+<a href=https://cychong47.github.io/tags/http/ style=display:inline-block;margin-right:10px;font-size:.9rem>#Http</a>
+<a href=https://cychong47.github.io/tags/hugepage/ style=display:inline-block;margin-right:10px;font-size:.9rem>#Hugepage</a>
+<a href=https://cychong47.github.io/tags/hugo/ style=display:inline-block;margin-right:10px;font-size:.9rem>#Hugo</a>
+<a href=https://cychong47.github.io/tags/influxdb/ style=display:inline-block;margin-right:10px;font-size:.9rem>#Influxdb</a>
+<a href=https://cychong47.github.io/tags/inspiration/ style=display:inline-block;margin-right:10px;font-size:.9rem>#Inspiration</a>
+<a href=https://cychong47.github.io/tags/intel/ style=display:inline-block;margin-right:10px;font-size:.9rem>#Intel</a>
+<a href=https://cychong47.github.io/tags/ios14/ style=display:inline-block;margin-right:10px;font-size:.9rem>#IOS14</a>
+<a href=https://cychong47.github.io/tags/ipad/ style=display:inline-block;margin-right:10px;font-size:.9rem>#Ipad</a>
+<a href=https://cychong47.github.io/tags/iphone/ style=display:inline-block;margin-right:10px;font-size:.9rem>#IPhone</a>
+<a href=https://cychong47.github.io/tags/iphone6/ style=display:inline-block;margin-right:10px;font-size:.9rem>#IPhone6</a>
+<a href=https://cychong47.github.io/tags/iphonex/ style=display:inline-block;margin-right:10px;font-size:.9rem>#IPhoneX</a>
+<a href=https://cychong47.github.io/tags/ipsec/ style=display:inline-block;margin-right:10px;font-size:.9rem>#IPsec</a>
+<a href=https://cychong47.github.io/tags/ipv4/ style=display:inline-block;margin-right:10px;font-size:.9rem>#Ipv4</a>
+<a href=https://cychong47.github.io/tags/istio/ style=display:inline-block;margin-right:10px;font-size:.9rem>#Istio</a>
+<a href=https://cychong47.github.io/tags/jetpack/ style=display:inline-block;margin-right:10px;font-size:.9rem>#Jetpack</a>
+<a href=https://cychong47.github.io/tags/job/ style=display:inline-block;margin-right:10px;font-size:.9rem>#Job</a>
+<a href=https://cychong47.github.io/tags/json/ style=display:inline-block;margin-right:10px;font-size:.9rem>#Json</a>
+<a href=https://cychong47.github.io/tags/jtbc/ style=display:inline-block;margin-right:10px;font-size:.9rem>#Jtbc</a>
+<a href=https://cychong47.github.io/tags/jupiter/ style=display:inline-block;margin-right:10px;font-size:.9rem>#Jupiter</a>
+<a href=https://cychong47.github.io/tags/k3s/ style=display:inline-block;margin-right:10px;font-size:.9rem>#K3s</a>
+<a href=https://cychong47.github.io/tags/kafka/ style=display:inline-block;margin-right:10px;font-size:.9rem>#Kafka</a>
+<a href=https://cychong47.github.io/tags/kldp/ style=display:inline-block;margin-right:10px;font-size:.9rem>#KLDP</a>
+<a href=https://cychong47.github.io/tags/kni/ style=display:inline-block;margin-right:10px;font-size:.9rem>#Kni</a>
+<a href=https://cychong47.github.io/tags/kubelet/ style=display:inline-block;margin-right:10px;font-size:.9rem>#Kubelet</a>
+<a href=https://cychong47.github.io/tags/kubernetes/ style=display:inline-block;margin-right:10px;font-size:.9rem>#Kubernetes</a>
+<a href=https://cychong47.github.io/tags/kuberntes/ style=display:inline-block;margin-right:10px;font-size:.9rem>#Kuberntes</a>
+<a href=https://cychong47.github.io/tags/launchd/ style=display:inline-block;margin-right:10px;font-size:.9rem>#Launchd</a>
+<a href=https://cychong47.github.io/tags/lb/ style=display:inline-block;margin-right:10px;font-size:.9rem>#Lb</a>
+<a href=https://cychong47.github.io/tags/life/ style=display:inline-block;margin-right:10px;font-size:.9rem>#Life</a>
+<a href=https://cychong47.github.io/tags/lifehack/ style=display:inline-block;margin-right:10px;font-size:.9rem>#Lifehack</a>
+<a href=https://cychong47.github.io/tags/linux/ style=display:inline-block;margin-right:10px;font-size:.9rem>#Linux</a>
+<a href=https://cychong47.github.io/tags/llm/ style=display:inline-block;margin-right:10px;font-size:.9rem>#Llm</a>
+<a href=https://cychong47.github.io/tags/load-balancer/ style=display:inline-block;margin-right:10px;font-size:.9rem>#Load Balancer</a>
+<a href=https://cychong47.github.io/tags/lte/ style=display:inline-block;margin-right:10px;font-size:.9rem>#Lte</a>
+<a href=https://cychong47.github.io/tags/m1/ style=display:inline-block;margin-right:10px;font-size:.9rem>#M1</a>
+<a href=https://cychong47.github.io/tags/mac/ style=display:inline-block;margin-right:10px;font-size:.9rem>#Mac</a>
+<a href=https://cychong47.github.io/tags/mac-mini-2009/ style=display:inline-block;margin-right:10px;font-size:.9rem>#Mac Mini 2009</a>
+<a href=https://cychong47.github.io/tags/maglev/ style=display:inline-block;margin-right:10px;font-size:.9rem>#Maglev</a>
+<a href=https://cychong47.github.io/tags/manager/ style=display:inline-block;margin-right:10px;font-size:.9rem>#Manager</a>
+<a href=https://cychong47.github.io/tags/markdown/ style=display:inline-block;margin-right:10px;font-size:.9rem>#Markdown</a>
+<a href=https://cychong47.github.io/tags/mbuf/ style=display:inline-block;margin-right:10px;font-size:.9rem>#Mbuf</a>
+<a href=https://cychong47.github.io/tags/mec/ style=display:inline-block;margin-right:10px;font-size:.9rem>#Mec</a>
+<a href=https://cychong47.github.io/tags/mediawiki/ style=display:inline-block;margin-right:10px;font-size:.9rem>#Mediawiki</a>
+<a href=https://cychong47.github.io/tags/meetup/ style=display:inline-block;margin-right:10px;font-size:.9rem>#Meetup</a>
+<a href=https://cychong47.github.io/tags/message-queue/ style=display:inline-block;margin-right:10px;font-size:.9rem>#Message Queue</a>
+<a href=https://cychong47.github.io/tags/metricbeat/ style=display:inline-block;margin-right:10px;font-size:.9rem>#Metricbeat</a>
+<a href=https://cychong47.github.io/tags/microk8s/ style=display:inline-block;margin-right:10px;font-size:.9rem>#Microk8s</a>
+<a href=https://cychong47.github.io/tags/microservice/ style=display:inline-block;margin-right:10px;font-size:.9rem>#Microservice</a>
+<a href=https://cychong47.github.io/tags/mindmap/ style=display:inline-block;margin-right:10px;font-size:.9rem>#Mindmap</a>
+<a href=https://cychong47.github.io/tags/model-driven/ style=display:inline-block;margin-right:10px;font-size:.9rem>#Model-Driven</a>
+<a href=https://cychong47.github.io/tags/monitoring/ style=display:inline-block;margin-right:10px;font-size:.9rem>#Monitoring</a>
+<a href=https://cychong47.github.io/tags/multipass/ style=display:inline-block;margin-right:10px;font-size:.9rem>#Multipass</a>
+<a href=https://cychong47.github.io/tags/mysql/ style=display:inline-block;margin-right:10px;font-size:.9rem>#Mysql</a>
+<a href=https://cychong47.github.io/tags/naim/ style=display:inline-block;margin-right:10px;font-size:.9rem>#Naim</a>
+<a href=https://cychong47.github.io/tags/nas/ style=display:inline-block;margin-right:10px;font-size:.9rem>#Nas</a>
+<a href=https://cychong47.github.io/tags/nasa/ style=display:inline-block;margin-right:10px;font-size:.9rem>#Nasa</a>
+<a href=https://cychong47.github.io/tags/nec/ style=display:inline-block;margin-right:10px;font-size:.9rem>#NEC</a>
+<a href=https://cychong47.github.io/tags/nested-chart/ style=display:inline-block;margin-right:10px;font-size:.9rem>#Nested-Chart</a>
+<a href=https://cychong47.github.io/tags/netconf/ style=display:inline-block;margin-right:10px;font-size:.9rem>#Netconf</a>
+<a href=https://cychong47.github.io/tags/network/ style=display:inline-block;margin-right:10px;font-size:.9rem>#Network</a>
+<a href=https://cychong47.github.io/tags/neuron/ style=display:inline-block;margin-right:10px;font-size:.9rem>#Neuron</a>
+<a href=https://cychong47.github.io/tags/nfv/ style=display:inline-block;margin-right:10px;font-size:.9rem>#NFV</a>
+<a href=https://cychong47.github.io/tags/nginmesh/ style=display:inline-block;margin-right:10px;font-size:.9rem>#Nginmesh</a>
+<a href=https://cychong47.github.io/tags/nginx/ style=display:inline-block;margin-right:10px;font-size:.9rem>#Nginx</a>
+<a href=https://cychong47.github.io/tags/nhn/ style=display:inline-block;margin-right:10px;font-size:.9rem>#NHN</a>
+<a href=https://cychong47.github.io/tags/nic/ style=display:inline-block;margin-right:10px;font-size:.9rem>#NIC</a>
+<a href=https://cychong47.github.io/tags/nokia/ style=display:inline-block;margin-right:10px;font-size:.9rem>#Nokia</a>
+<a href=https://cychong47.github.io/tags/note/ style=display:inline-block;margin-right:10px;font-size:.9rem>#Note</a>
+<a href=https://cychong47.github.io/tags/nvidia/ style=display:inline-block;margin-right:10px;font-size:.9rem>#Nvidia</a>
+<a href=https://cychong47.github.io/tags/odp/ style=display:inline-block;margin-right:10px;font-size:.9rem>#Odp</a>
+<a href=https://cychong47.github.io/tags/ofp/ style=display:inline-block;margin-right:10px;font-size:.9rem>#OFP</a>
+<a href=https://cychong47.github.io/tags/onap/ style=display:inline-block;margin-right:10px;font-size:.9rem>#Onap</a>
+<a href=https://cychong47.github.io/tags/onp/ style=display:inline-block;margin-right:10px;font-size:.9rem>#ONP</a>
+<a href=https://cychong47.github.io/tags/openfastpath/ style=display:inline-block;margin-right:10px;font-size:.9rem>#OpenFastPath</a>
+<a href=https://cychong47.github.io/tags/opensource/ style=display:inline-block;margin-right:10px;font-size:.9rem>#Opensource</a>
+<a href=https://cychong47.github.io/tags/openstack/ style=display:inline-block;margin-right:10px;font-size:.9rem>#Openstack</a>
+<a href=https://cychong47.github.io/tags/opnfv/ style=display:inline-block;margin-right:10px;font-size:.9rem>#Opnfv</a>
+<a href=https://cychong47.github.io/tags/osx/ style=display:inline-block;margin-right:10px;font-size:.9rem>#Osx</a>
+<a href=https://cychong47.github.io/tags/ovdk/ style=display:inline-block;margin-right:10px;font-size:.9rem>#OVDK</a>
+<a href=https://cychong47.github.io/tags/ovs/ style=display:inline-block;margin-right:10px;font-size:.9rem>#OVS</a>
+<a href=https://cychong47.github.io/tags/p4/ style=display:inline-block;margin-right:10px;font-size:.9rem>#P4</a>
+<a href=https://cychong47.github.io/tags/pagefind/ style=display:inline-block;margin-right:10px;font-size:.9rem>#Pagefind</a>
+<a href=https://cychong47.github.io/tags/patch/ style=display:inline-block;margin-right:10px;font-size:.9rem>#Patch</a>
+<a href=https://cychong47.github.io/tags/perl/ style=display:inline-block;margin-right:10px;font-size:.9rem>#Perl</a>
+<a href=https://cychong47.github.io/tags/photo/ style=display:inline-block;margin-right:10px;font-size:.9rem>#Photo</a>
+<a href=https://cychong47.github.io/tags/photoaa/ style=display:inline-block;margin-right:10px;font-size:.9rem>#Photoaa</a>
+<a href=https://cychong47.github.io/tags/pinpoint/ style=display:inline-block;margin-right:10px;font-size:.9rem>#Pinpoint</a>
+<a href=https://cychong47.github.io/tags/plist/ style=display:inline-block;margin-right:10px;font-size:.9rem>#Plist</a>
+<a href=https://cychong47.github.io/tags/pluribus/ style=display:inline-block;margin-right:10px;font-size:.9rem>#Pluribus</a>
+<a href=https://cychong47.github.io/tags/podcast/ style=display:inline-block;margin-right:10px;font-size:.9rem>#Podcast</a>
+<a href=https://cychong47.github.io/tags/powermate/ style=display:inline-block;margin-right:10px;font-size:.9rem>#Powermate</a>
+<a href=https://cychong47.github.io/tags/prediction/ style=display:inline-block;margin-right:10px;font-size:.9rem>#Prediction</a>
+<a href=https://cychong47.github.io/tags/programming/ style=display:inline-block;margin-right:10px;font-size:.9rem>#Programming</a>
+<a href=https://cychong47.github.io/tags/prometheus/ style=display:inline-block;margin-right:10px;font-size:.9rem>#Prometheus</a>
+<a href=https://cychong47.github.io/tags/protobufs/ style=display:inline-block;margin-right:10px;font-size:.9rem>#Protobufs</a>
+<a href=https://cychong47.github.io/tags/protocol-buffer/ style=display:inline-block;margin-right:10px;font-size:.9rem>#Protocol Buffer</a>
+<a href=https://cychong47.github.io/tags/pyftplib/ style=display:inline-block;margin-right:10px;font-size:.9rem>#Pyftplib</a>
+<a href=https://cychong47.github.io/tags/python/ style=display:inline-block;margin-right:10px;font-size:.9rem>#Python</a>
+<a href=https://cychong47.github.io/tags/qat/ style=display:inline-block;margin-right:10px;font-size:.9rem>#QAT</a>
+<a href=https://cychong47.github.io/tags/quality/ style=display:inline-block;margin-right:10px;font-size:.9rem>#Quality</a>
+<a href=https://cychong47.github.io/tags/quanta/ style=display:inline-block;margin-right:10px;font-size:.9rem>#Quanta</a>
+<a href=https://cychong47.github.io/tags/quicklook/ style=display:inline-block;margin-right:10px;font-size:.9rem>#Quicklook</a>
+<a href=https://cychong47.github.io/tags/r210/ style=display:inline-block;margin-right:10px;font-size:.9rem>#R210</a>
+<a href=https://cychong47.github.io/tags/readiness/ style=display:inline-block;margin-right:10px;font-size:.9rem>#Readiness</a>
+<a href=https://cychong47.github.io/tags/reassembly/ style=display:inline-block;margin-right:10px;font-size:.9rem>#Reassembly</a>
+<a href=https://cychong47.github.io/tags/recovery/ style=display:inline-block;margin-right:10px;font-size:.9rem>#Recovery</a>
+<a href=https://cychong47.github.io/tags/resources/ style=display:inline-block;margin-right:10px;font-size:.9rem>#Resources</a>
+<a href=https://cychong47.github.io/tags/restful/ style=display:inline-block;margin-right:10px;font-size:.9rem>#RESTful</a>
+<a href=https://cychong47.github.io/tags/rmda/ style=display:inline-block;margin-right:10px;font-size:.9rem>#RMDA</a>
+<a href=https://cychong47.github.io/tags/scapy/ style=display:inline-block;margin-right:10px;font-size:.9rem>#Scapy</a>
+<a href=https://cychong47.github.io/tags/sci/ style=display:inline-block;margin-right:10px;font-size:.9rem>#Sci</a>
+<a href=https://cychong47.github.io/tags/scrum/ style=display:inline-block;margin-right:10px;font-size:.9rem>#Scrum</a>
+<a href=https://cychong47.github.io/tags/sctp/ style=display:inline-block;margin-right:10px;font-size:.9rem>#Sctp</a>
+<a href=https://cychong47.github.io/tags/sdn/ style=display:inline-block;margin-right:10px;font-size:.9rem>#SDN</a>
+<a href=https://cychong47.github.io/tags/secret/ style=display:inline-block;margin-right:10px;font-size:.9rem>#Secret</a>
+<a href=https://cychong47.github.io/tags/service-agility/ style=display:inline-block;margin-right:10px;font-size:.9rem>#Service Agility</a>
+<a href=https://cychong47.github.io/tags/service-mesh/ style=display:inline-block;margin-right:10px;font-size:.9rem>#Service Mesh</a>
+<a href=https://cychong47.github.io/tags/setup/ style=display:inline-block;margin-right:10px;font-size:.9rem>#Setup</a>
+<a href=https://cychong47.github.io/tags/slack/ style=display:inline-block;margin-right:10px;font-size:.9rem>#Slack</a>
+<a href=https://cychong47.github.io/tags/sleeve/ style=display:inline-block;margin-right:10px;font-size:.9rem>#Sleeve</a>
+<a href=https://cychong47.github.io/tags/snmp/ style=display:inline-block;margin-right:10px;font-size:.9rem>#Snmp</a>
+<a href=https://cychong47.github.io/tags/soft-skill/ style=display:inline-block;margin-right:10px;font-size:.9rem>#Soft-Skill</a>
+<a href=https://cychong47.github.io/tags/sqlite/ style=display:inline-block;margin-right:10px;font-size:.9rem>#Sqlite</a>
+<a href=https://cychong47.github.io/tags/sriov/ style=display:inline-block;margin-right:10px;font-size:.9rem>#SRIOV</a>
+<a href=https://cychong47.github.io/tags/standingdesk/ style=display:inline-block;margin-right:10px;font-size:.9rem>#StandingDesk</a>
+<a href=https://cychong47.github.io/tags/startup/ style=display:inline-block;margin-right:10px;font-size:.9rem>#Startup</a>
+<a href=https://cychong47.github.io/tags/storage/ style=display:inline-block;margin-right:10px;font-size:.9rem>#Storage</a>
+<a href=https://cychong47.github.io/tags/study/ style=display:inline-block;margin-right:10px;font-size:.9rem>#Study</a>
+<a href=https://cychong47.github.io/tags/subchart/ style=display:inline-block;margin-right:10px;font-size:.9rem>#Subchart</a>
+<a href=https://cychong47.github.io/tags/sw/ style=display:inline-block;margin-right:10px;font-size:.9rem>#SW</a>
+<a href=https://cychong47.github.io/tags/sw-quality/ style=display:inline-block;margin-right:10px;font-size:.9rem>#SW Quality</a>
+<a href=https://cychong47.github.io/tags/sw-%EA%B0%9C%EB%B0%9C-%EB%AC%B8%ED%99%94/ style=display:inline-block;margin-right:10px;font-size:.9rem>#SW 개발 문화</a>
+<a href=https://cychong47.github.io/tags/swarm/ style=display:inline-block;margin-right:10px;font-size:.9rem>#Swarm</a>
+<a href=https://cychong47.github.io/tags/synology/ style=display:inline-block;margin-right:10px;font-size:.9rem>#Synology</a>
+<a href=https://cychong47.github.io/tags/tag/ style=display:inline-block;margin-right:10px;font-size:.9rem>#Tag</a>
+<a href=https://cychong47.github.io/tags/tcp/ style=display:inline-block;margin-right:10px;font-size:.9rem>#Tcp</a>
+<a href=https://cychong47.github.io/tags/team/ style=display:inline-block;margin-right:10px;font-size:.9rem>#Team</a>
+<a href=https://cychong47.github.io/tags/telemetry/ style=display:inline-block;margin-right:10px;font-size:.9rem>#Telemetry</a>
+<a href=https://cychong47.github.io/tags/the-pragmatic-programmer/ style=display:inline-block;margin-right:10px;font-size:.9rem>#The Pragmatic Programmer</a>
+<a href=https://cychong47.github.io/tags/theme/ style=display:inline-block;margin-right:10px;font-size:.9rem>#Theme</a>
+<a href=https://cychong47.github.io/tags/til/ style=display:inline-block;margin-right:10px;font-size:.9rem>#Til</a>
+<a href=https://cychong47.github.io/tags/time-machine/ style=display:inline-block;margin-right:10px;font-size:.9rem>#Time Machine</a>
+<a href=https://cychong47.github.io/tags/track-pad/ style=display:inline-block;margin-right:10px;font-size:.9rem>#Track-Pad</a>
+<a href=https://cychong47.github.io/tags/traefik/ style=display:inline-block;margin-right:10px;font-size:.9rem>#Traefik</a>
+<a href=https://cychong47.github.io/tags/troubleshooting/ style=display:inline-block;margin-right:10px;font-size:.9rem>#Troubleshooting</a>
+<a href=https://cychong47.github.io/tags/tutorial/ style=display:inline-block;margin-right:10px;font-size:.9rem>#Tutorial</a>
+<a href=https://cychong47.github.io/tags/ubuntu/ style=display:inline-block;margin-right:10px;font-size:.9rem>#Ubuntu</a>
+<a href=https://cychong47.github.io/tags/vagrant/ style=display:inline-block;margin-right:10px;font-size:.9rem>#Vagrant</a>
+<a href=https://cychong47.github.io/tags/vertical-pod-autoscaler/ style=display:inline-block;margin-right:10px;font-size:.9rem>#Vertical-Pod-Autoscaler</a>
+<a href=https://cychong47.github.io/tags/ves/ style=display:inline-block;margin-right:10px;font-size:.9rem>#Ves</a>
+<a href=https://cychong47.github.io/tags/vibe-coding/ style=display:inline-block;margin-right:10px;font-size:.9rem>#Vibe-Coding</a>
+<a href=https://cychong47.github.io/tags/video/ style=display:inline-block;margin-right:10px;font-size:.9rem>#Video</a>
+<a href=https://cychong47.github.io/tags/vim/ style=display:inline-block;margin-right:10px;font-size:.9rem>#Vim</a>
+<a href=https://cychong47.github.io/tags/virtualbox/ style=display:inline-block;margin-right:10px;font-size:.9rem>#Virtualbox</a>
+<a href=https://cychong47.github.io/tags/virtualenv/ style=display:inline-block;margin-right:10px;font-size:.9rem>#Virtualenv</a>
+<a href=https://cychong47.github.io/tags/virtualization/ style=display:inline-block;margin-right:10px;font-size:.9rem>#Virtualization</a>
+<a href=https://cychong47.github.io/tags/vmware/ style=display:inline-block;margin-right:10px;font-size:.9rem>#Vmware</a>
+<a href=https://cychong47.github.io/tags/vnf/ style=display:inline-block;margin-right:10px;font-size:.9rem>#VNF</a>
+<a href=https://cychong47.github.io/tags/volvo/ style=display:inline-block;margin-right:10px;font-size:.9rem>#Volvo</a>
+<a href=https://cychong47.github.io/tags/vran/ style=display:inline-block;margin-right:10px;font-size:.9rem>#Vran</a>
+<a href=https://cychong47.github.io/tags/vrouter/ style=display:inline-block;margin-right:10px;font-size:.9rem>#VRouter</a>
+<a href=https://cychong47.github.io/tags/vswitch/ style=display:inline-block;margin-right:10px;font-size:.9rem>#VSwitch</a>
+<a href=https://cychong47.github.io/tags/web-scrapping/ style=display:inline-block;margin-right:10px;font-size:.9rem>#Web-Scrapping</a>
+<a href=https://cychong47.github.io/tags/webdav/ style=display:inline-block;margin-right:10px;font-size:.9rem>#Webdav</a>
+<a href=https://cychong47.github.io/tags/wiki/ style=display:inline-block;margin-right:10px;font-size:.9rem>#Wiki</a>
+<a href=https://cychong47.github.io/tags/windows10/ style=display:inline-block;margin-right:10px;font-size:.9rem>#Windows10</a>
+<a href=https://cychong47.github.io/tags/wordpress/ style=display:inline-block;margin-right:10px;font-size:.9rem>#Wordpress</a>
+<a href=https://cychong47.github.io/tags/work_rules/ style=display:inline-block;margin-right:10px;font-size:.9rem>#Work_rules</a>
+<a href=https://cychong47.github.io/tags/writing/ style=display:inline-block;margin-right:10px;font-size:.9rem>#Writing</a>
+<a href=https://cychong47.github.io/tags/xcrun/ style=display:inline-block;margin-right:10px;font-size:.9rem>#Xcrun</a>
+<a href=https://cychong47.github.io/tags/yang/ style=display:inline-block;margin-right:10px;font-size:.9rem>#Yang</a>
+<a href=https://cychong47.github.io/tags/automation/ style=display:inline-block;margin-right:10px;font-size:.9rem>#“Automation”</a>
+<a href=https://cychong47.github.io/tags/book/ style=display:inline-block;margin-right:10px;font-size:.9rem>#“Book”</a>
+<a href=https://cychong47.github.io/tags/containerd/ style=display:inline-block;margin-right:10px;font-size:.9rem>#“Containerd”</a>
+<a href=https://cychong47.github.io/tags/cronjob/ style=display:inline-block;margin-right:10px;font-size:.9rem>#“CronJob”</a>
+<a href=https://cychong47.github.io/tags/github-action/ style=display:inline-block;margin-right:10px;font-size:.9rem>#“GitHub Action”</a>
+<a href=https://cychong47.github.io/tags/github/ style=display:inline-block;margin-right:10px;font-size:.9rem>#“GitHub”</a>
+<a href=https://cychong47.github.io/tags/go/ style=display:inline-block;margin-right:10px;font-size:.9rem>#“Go”</a>
+<a href=https://cychong47.github.io/tags/gpu/ style=display:inline-block;margin-right:10px;font-size:.9rem>#“GPU”</a>
+<a href=https://cychong47.github.io/tags/helm/ style=display:inline-block;margin-right:10px;font-size:.9rem>#“Helm”</a>
+<a href=https://cychong47.github.io/tags/ios-shortcut/ style=display:inline-block;margin-right:10px;font-size:.9rem>#“IOS-Shortcut”</a>
+<a href=https://cychong47.github.io/tags/kubernetes/ style=display:inline-block;margin-right:10px;font-size:.9rem>#“Kubernetes”</a>
+<a href=https://cychong47.github.io/tags/podcast/ style=display:inline-block;margin-right:10px;font-size:.9rem>#“Podcast”</a>
+<a href=https://cychong47.github.io/tags/rust/ style=display:inline-block;margin-right:10px;font-size:.9rem>#“Rust”</a>
+<a href=https://cychong47.github.io/tags/timezone/ style=display:inline-block;margin-right:10px;font-size:.9rem>#“Timezone”</a>
+<a href=https://cychong47.github.io/tags/%EA%B0%9C%EB%B0%9C%EC%9D%B4%EC%95%BC%EA%B8%B0/ style=display:inline-block;margin-right:10px;font-size:.9rem>#개발이야기</a>
+<a href=https://cychong47.github.io/tags/%EA%B2%BD%EC%9F%81/ style=display:inline-block;margin-right:10px;font-size:.9rem>#경쟁</a>
+<a href=https://cychong47.github.io/tags/%EA%B3%B5%EB%B6%80/ style=display:inline-block;margin-right:10px;font-size:.9rem>#공부</a>
+<a href=https://cychong47.github.io/tags/%EA%B3%B5%EC%9C%A0/ style=display:inline-block;margin-right:10px;font-size:.9rem>#공유</a>
+<a href=https://cychong47.github.io/tags/%EA%B4%80%EB%A6%AC%EB%8A%A5%EB%A0%A5/ style=display:inline-block;margin-right:10px;font-size:.9rem>#관리능력</a>
+<a href=https://cychong47.github.io/tags/%EA%B8%B0%EB%A1%9D/ style=display:inline-block;margin-right:10px;font-size:.9rem>#기록</a>
+<a href=https://cychong47.github.io/tags/%EB%85%BC%EB%AC%B8/ style=display:inline-block;margin-right:10px;font-size:.9rem>#논문</a>
+<a href=https://cychong47.github.io/tags/%EB%A6%AC%EB%8D%94/ style=display:inline-block;margin-right:10px;font-size:.9rem>#리더</a>
+<a href=https://cychong47.github.io/tags/%EB%A7%A4%EB%84%88%EB%A6%AC%EC%A6%98/ style=display:inline-block;margin-right:10px;font-size:.9rem>#매너리즘</a>
+<a href=https://cychong47.github.io/tags/%EB%AC%B8%ED%99%94/ style=display:inline-block;margin-right:10px;font-size:.9rem>#문화</a>
+<a href=https://cychong47.github.io/tags/%EC%82%AC%EB%9E%8C%EC%9D%B4-%ED%95%B5%EC%8B%AC/ style=display:inline-block;margin-right:10px;font-size:.9rem>#사람이 핵심</a>
+<a href=https://cychong47.github.io/tags/%EC%83%9D%EA%B0%81/ style=display:inline-block;margin-right:10px;font-size:.9rem>#생각</a>
+<a href=https://cychong47.github.io/tags/%EC%83%9D%EC%82%B0%EC%84%B1/ style=display:inline-block;margin-right:10px;font-size:.9rem>#생산성</a>
+<a href=https://cychong47.github.io/tags/%EC%9C%A4%EC%8B%9D%EB%8B%B9/ style=display:inline-block;margin-right:10px;font-size:.9rem>#윤식당</a>
+<a href=https://cychong47.github.io/tags/%EC%9D%B8%EC%9A%A9/ style=display:inline-block;margin-right:10px;font-size:.9rem>#인용</a>
+<a href=https://cychong47.github.io/tags/%EC%9E%84%EB%B0%B1%EC%A4%80/ style=display:inline-block;margin-right:10px;font-size:.9rem>#임백준</a>
+<a href=https://cychong47.github.io/tags/%EC%9E%A1%EC%83%9D%EA%B0%81/ style=display:inline-block;margin-right:10px;font-size:.9rem>#잡생각</a>
+<a href=https://cychong47.github.io/tags/%EC%A0%84%EB%9E%8C%ED%9A%8C/ style=display:inline-block;margin-right:10px;font-size:.9rem>#전람회</a>
+<a href=https://cychong47.github.io/tags/%EC%A1%B0%EC%A7%81/ style=display:inline-block;margin-right:10px;font-size:.9rem>#조직</a>
+<a href=https://cychong47.github.io/tags/%EC%A1%B0%EC%A7%81%EA%B4%80%EB%A6%AC/ style=display:inline-block;margin-right:10px;font-size:.9rem>#조직관리</a>
+<a href=https://cychong47.github.io/tags/%EC%A1%B0%EC%A7%81%EB%AC%B8%ED%99%94/ style=display:inline-block;margin-right:10px;font-size:.9rem>#조직문화</a>
+<a href=https://cychong47.github.io/tags/%EC%A2%8B%EC%9D%80%EA%B8%80/ style=display:inline-block;margin-right:10px;font-size:.9rem>#좋은글</a>
+<a href=https://cychong47.github.io/tags/%EC%B0%A9%EA%B0%81%ED%95%98%EB%8A%94-ceo/ style=display:inline-block;margin-right:10px;font-size:.9rem>#착각하는 CEO</a>
+<a href=https://cychong47.github.io/tags/%EC%B6%94%EC%96%B5/ style=display:inline-block;margin-right:10px;font-size:.9rem>#추억</a>
+<a href=https://cychong47.github.io/tags/%EC%BD%94%EB%93%9C%EB%A6%AC%EB%B7%B0/ style=display:inline-block;margin-right:10px;font-size:.9rem>#코드리뷰</a>
+<a href=https://cychong47.github.io/tags/%ED%9A%8C%EC%9D%98/ style=display:inline-block;margin-right:10px;font-size:.9rem>#회의</a></div></div></div></main><footer>Made with <a href=https://github.com/janraasch/hugo-bearblog/>Hugo ʕ•ᴥ•ʔ Bear</a></footer></body></html>
