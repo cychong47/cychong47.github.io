@@ -533,9 +533,9 @@ Saving to: ‘calico.yaml’
 calico.yaml                          0%[                                                              ]       0  --.-KB/s               icalico.yaml                        100%[=============================================================&gt;]  20.16K   123KB/s    in 0.2s
 
 c2019-10-07 23:49:14 (123 KB/s) - ‘calico.yaml’ saved [20648/20648]
-</code></pre><p>Change <code>CALICO_IPV4POOL_CIDR</code></p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-yaml data-lang=yaml><span style=display:flex><span>            - <span style=color:#f92672>name</span>: <span style=color:#ae81ff>CALICO_IPV4POOL_CIDR</span>
+</code></pre><p>Change <code>CALICO_IPV4POOL_CIDR</code></p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-yaml data-lang=yaml><span style=display:flex><span>            - <span style=color:#f92672>name</span>: <span style=color:#ae81ff>CALICO_IPV4POOL_CIDR</span>
 </span></span><span style=display:flex><span>              <span style=color:#f92672>value</span>: <span style=color:#e6db74>&#34;10.201.0.0/24&#34;</span>
-</span></span></code></pre></div><h2 id=upgrade-kubelet-and-kubectl>Upgrade kubelet and kubectl</h2><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span>cychong@mini1:~$ sudo apt-mark unhold kubelet kubectl <span style=color:#f92672>&amp;&amp;</span> sudo apt-get update <span style=color:#f92672>&amp;&amp;</span> sudo apt-get install -y kubelet<span style=color:#f92672>=</span>1.16.1-00 kubectl<span style=color:#f92672>=</span>1.16.1-00 <span style=color:#f92672>&amp;&amp;</span> sudo apt-mark hold kubelet kubectl
+</span></span></code></pre></div><h2 id=upgrade-kubelet-and-kubectl>Upgrade kubelet and kubectl</h2><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-bash data-lang=bash><span style=display:flex><span>cychong@mini1:~$ sudo apt-mark unhold kubelet kubectl <span style=color:#f92672>&amp;&amp;</span> sudo apt-get update <span style=color:#f92672>&amp;&amp;</span> sudo apt-get install -y kubelet<span style=color:#f92672>=</span>1.16.1-00 kubectl<span style=color:#f92672>=</span>1.16.1-00 <span style=color:#f92672>&amp;&amp;</span> sudo apt-mark hold kubelet kubectl
 </span></span><span style=display:flex><span>Canceled hold on kubelet.
 </span></span><span style=display:flex><span>Canceled hold on kubectl.
 </span></span><span style=display:flex><span>Ign:2 http://dl.google.com/linux/chrome/deb stable InRelease
@@ -570,7 +570,7 @@ c2019-10-07 23:49:14 (123 KB/s) - ‘calico.yaml’ saved [20648/20648]
 </span></span><span style=display:flex><span>Setting up kubectl <span style=color:#f92672>(</span>1.16.1-00<span style=color:#f92672>)</span> ...
 </span></span><span style=display:flex><span>kubelet set on hold.
 </span></span><span style=display:flex><span>kubectl set on hold.
-</span></span></code></pre></div><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span>cychong@mini1:~$ sudo systemctl restart kubelet
+</span></span></code></pre></div><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-bash data-lang=bash><span style=display:flex><span>cychong@mini1:~$ sudo systemctl restart kubelet
 </span></span><span style=display:flex><span>cychong@mini1:~$
 </span></span></code></pre></div><h2 id=check-the-status>Check the status</h2><pre tabindex=0><code>cychong@mini1:~$ kubectl get nodes
 NAME    STATUS   ROLES    AGE   VERSION

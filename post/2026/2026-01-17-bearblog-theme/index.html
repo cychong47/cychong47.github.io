@@ -32,20 +32,20 @@ Delete existing submodules
 <a href=/series/>Series</a>
 <a href=/tags/>Tag</a>
 <a href=/archive/>Archive</a>
-<a href=/search/>Search</a></nav></header><main><content><p>Change the blog theme from mainroad to bearblog which is more minimalist.</p><p>Delete existing submodules</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-sh data-lang=sh><span style=display:flex><span>&gt; git submodule deinit themes/mainroad themes/cleanwhite
-</span></span></code></pre></div><p>Add bearblog theme as a submodule</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-sh data-lang=sh><span style=display:flex><span>&gt; git submodule add &lt;theme_repository_url&gt; themes/&lt;theme_name&gt;
+<a href=/search/>Search</a></nav></header><main><content><p>Change the blog theme from mainroad to bearblog which is more minimalist.</p><p>Delete existing submodules</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-sh data-lang=sh><span style=display:flex><span>&gt; git submodule deinit themes/mainroad themes/cleanwhite
+</span></span></code></pre></div><p>Add bearblog theme as a submodule</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-sh data-lang=sh><span style=display:flex><span>&gt; git submodule add &lt;theme_repository_url&gt; themes/&lt;theme_name&gt;
 </span></span><span style=display:flex><span>&gt; git submodule add https://github.com/janraasch/hugo-bearblog themes/hugo-bearblog
-</span></span></code></pre></div><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-sh data-lang=sh><span style=display:flex><span>&gt; cat .gitmodules
+</span></span></code></pre></div><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-sh data-lang=sh><span style=display:flex><span>&gt; cat .gitmodules
 </span></span><span style=display:flex><span><span style=color:#f92672>[</span>submodule <span style=color:#e6db74>&#34;themes/hugo-bearblog&#34;</span><span style=color:#f92672>]</span>
 </span></span><span style=display:flex><span>        path <span style=color:#f92672>=</span> themes/hugo-bearblog
 </span></span><span style=display:flex><span>        url <span style=color:#f92672>=</span> https://github.com/janraasch/hugo-bearblog
-</span></span></code></pre></div><p>Install(update) theme submodule</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-sh data-lang=sh><span style=display:flex><span>&gt; git submodule update
+</span></span></code></pre></div><p>Install(update) theme submodule</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-sh data-lang=sh><span style=display:flex><span>&gt; git submodule update
 </span></span><span style=display:flex><span>Cloning into <span style=color:#e6db74>&#39;/Users/cychong/Developer/blog/another/themes/hugo-bearblog&#39;</span>...
 </span></span><span style=display:flex><span>Submodule path <span style=color:#e6db74>&#39;themes/hugo-bearblog&#39;</span>: checked out <span style=color:#e6db74>&#39;d44ea2fd106f1bc373e0040dc7da58644638e7f0&#39;</span>
 </span></span><span style=display:flex><span>
 </span></span><span style=display:flex><span>&gt; ls themes 
 </span></span><span style=display:flex><span>hugo-bearblog
-</span></span></code></pre></div><p>Change GitHub Action to get submodules</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-yaml data-lang=yaml><span style=display:flex><span><span style=color:#f92672>jobs</span>:
+</span></span></code></pre></div><p>Change GitHub Action to get submodules</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-yaml data-lang=yaml><span style=display:flex><span><span style=color:#f92672>jobs</span>:
 </span></span><span style=display:flex><span>  <span style=color:#f92672>deploy</span>:
 </span></span><span style=display:flex><span>    <span style=color:#f92672>runs-on</span>: <span style=color:#ae81ff>ubuntu-latest</span>
 </span></span><span style=display:flex><span>    <span style=color:#f92672>steps</span>:

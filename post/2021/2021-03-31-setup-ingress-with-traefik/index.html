@@ -222,7 +222,7 @@ index.html.1                                  100%[=============================
 $ diff index.html index.html.1
 $ 
 </code></pre><h1 id=해결>해결</h1><p>예상대로 해결책은 nginx 의 설정을 변경하는 간단한 수정으로 충분했다.
-nginx가 hosting하는 사이트는 SSG(Static Site Generator)인 hugo를 이용해서 생성한 파일들로 구성되는데, 그 site의 root에 <code>/ost</code>를 추가하는 것이다. 즉 hugo 설정 파일에서 baseURL에 <code>/ost</code>를 추가하는 거</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-yaml data-lang=yaml><span style=display:flex><span><span style=color:#ae81ff>$ cat config.yaml</span>
+nginx가 hosting하는 사이트는 SSG(Static Site Generator)인 hugo를 이용해서 생성한 파일들로 구성되는데, 그 site의 root에 <code>/ost</code>를 추가하는 것이다. 즉 hugo 설정 파일에서 baseURL에 <code>/ost</code>를 추가하는 거</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-yaml data-lang=yaml><span style=display:flex><span><span style=color:#ae81ff>$ cat config.yaml</span>
 </span></span><span style=display:flex><span>---
 </span></span><span style=display:flex><span>...
 </span></span><span style=display:flex><span><span style=color:#f92672>baseURL</span>: <span style=color:#e6db74>&#34;http://sosa0sa.com/ost/&#34;</span>     <span style=color:#ae81ff>&lt;&lt; 이전 값 &#34;http://sosa0sa.com:8099&#34; </span>

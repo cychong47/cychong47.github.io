@@ -35,7 +35,7 @@ Forwarding from [::1]:9000 -&gt; 9000
 Forwarding from 0.0.0.0:9000 -&gt; 9000
 Handling connection for 9000
 </code></pre><h1 id=try-again-with-valueyaml-from-traefik>Try again with value.yaml from Traefik</h1><p>동작시키는 환경에 맞게 옵션을 변경하기 위해 helm chart value.yaml 파일을 사용한다.
-values.yaml 파일은 helm chart가 위치한 git repo에서 받을 수 있다. <a href=https://github.com/traefik/traefik-helm-chart/tree/master/traefik>traefik-helm-chart/traefik at master · traefik/traefik-helm-chart · GitHub</a></p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-shell data-lang=shell><span style=display:flex><span>$ helm install -f value.yaml traefik traefik/traefik
+values.yaml 파일은 helm chart가 위치한 git repo에서 받을 수 있다. <a href=https://github.com/traefik/traefik-helm-chart/tree/master/traefik>traefik-helm-chart/traefik at master · traefik/traefik-helm-chart · GitHub</a></p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-shell data-lang=shell><span style=display:flex><span>$ helm install -f value.yaml traefik traefik/traefik
 </span></span><span style=display:flex><span>NAME: traefik
 </span></span><span style=display:flex><span>LAST DEPLOYED: Tue Jan <span style=color:#ae81ff>26</span> 19:04:47 <span style=color:#ae81ff>2021</span>
 </span></span><span style=display:flex><span>NAMESPACE: default
@@ -53,7 +53,7 @@ traefik-6fd6fbd4ff-v96bk         1/1     Running     0          21s
 NAME            TYPE           CLUSTER-IP       EXTERNAL-IP     PORT(S)                      AGE
 ...
 traefik         LoadBalancer   10.98.42.130     &lt;pending&gt;       80:32480/TCP,443:32398/TCP   24s
-</code></pre><h1 id=servicetype을-nodeport로-변경><code>service.type</code>을 <code>NodePort</code>로 변경</h1><p>Value파일을 수정해서 <code>LoadBalancer</code> 대신 <code>NodePort</code>를 사용하도록 한다. On-premise환경에서는 MetalLB같은 Load Balancer를 설치하지 않는 이상 NodePort를 사용해야 외부로부터의 접근이 가능하다.</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-yaml data-lang=yaml><span style=display:flex><span><span style=color:#f92672>service</span>:
+</code></pre><h1 id=servicetype을-nodeport로-변경><code>service.type</code>을 <code>NodePort</code>로 변경</h1><p>Value파일을 수정해서 <code>LoadBalancer</code> 대신 <code>NodePort</code>를 사용하도록 한다. On-premise환경에서는 MetalLB같은 Load Balancer를 설치하지 않는 이상 NodePort를 사용해야 외부로부터의 접근이 가능하다.</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-yaml data-lang=yaml><span style=display:flex><span><span style=color:#f92672>service</span>:
 </span></span><span style=display:flex><span>...
 </span></span><span style=display:flex><span>   <span style=color:#f92672>type</span>: <span style=color:#ae81ff>NodePort 	#LoadBalancer</span>
 </span></span><span style=display:flex><span><span style=color:#ae81ff>..</span>
@@ -77,7 +77,7 @@ traefik-6fd6fbd4ff-v96bk         1/1     Running     0          14m
 NAME            TYPE        CLUSTER-IP       EXTERNAL-IP     PORT(S)                      AGE
 ...
 traefik         NodePort    10.98.42.130     &lt;none&gt;          80:32480/TCP,443:32398/TCP   14m
-</code></pre><h1 id=serviceexternalips-설정><code>service.externalIPs</code> 설정</h1><p>아래와 같이 IP 주소를 지정하고, 이전과 같은 방법으로 helm upgrade로 변경사항을 적용한다.</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-yaml data-lang=yaml><span style=display:flex><span><span style=color:#f92672>service</span>:
+</code></pre><h1 id=serviceexternalips-설정><code>service.externalIPs</code> 설정</h1><p>아래와 같이 IP 주소를 지정하고, 이전과 같은 방법으로 helm upgrade로 변경사항을 적용한다.</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-yaml data-lang=yaml><span style=display:flex><span><span style=color:#f92672>service</span>:
 </span></span><span style=display:flex><span>   <span style=color:#ae81ff>...</span>
 </span></span><span style=display:flex><span>  <span style=color:#f92672>externalIPs</span>: [<span style=color:#ae81ff>192.168.0.100</span>]
 </span></span></code></pre></div><pre tabindex=0><code>$ helm upgrade -f value.yaml traefik traefik/traefik
